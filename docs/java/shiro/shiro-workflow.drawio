@@ -1,0 +1,13 @@
+<mxfile host="Electron" modified="2023-12-06T09:56:03.342Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.6.5 Chrome/114.0.5735.243 Electron/25.3.1 Safari/537.36" etag="srG7J5s9nabya80S3H-B" version="21.6.5" type="device">
+  <diagram name="第 1 页" id="1-9yCvMRXxqnXvTH-tK8">
+    <mxGraphModel dx="1231" dy="764" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="fA-Vs_d1HhMpZC2BlHXp-1" value="&lt;h1 style=&quot;font-size: 16px;&quot;&gt;Shiro 工作原理 （v）&lt;/h1&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="40" y="20" width="480" height="100" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
