@@ -1,6 +1,6 @@
-<mxfile host="Electron" modified="2023-12-30T15:28:44.894Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.6.5 Chrome/114.0.5735.243 Electron/25.3.1 Safari/537.36" etag="G_Rn6IyZXQ1tN6nOj1Si" version="21.6.5" type="device" pages="2">
+<mxfile host="Electron" modified="2023-12-31T13:56:24.484Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.6.5 Chrome/114.0.5735.243 Electron/25.3.1 Safari/537.36" etag="AqBFkeNXguNieJXa36FG" version="21.6.5" type="device" pages="2">
   <diagram name="SpringSecurityOAuth2工作流程" id="BB3JgpRIZgwQwiqXOJlF">
-    <mxGraphModel dx="3088" dy="879" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="3805" dy="837" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -198,7 +198,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="Jysl4UP8jRCQiMBeIVnq-31" value="String clientId = getClientId(principal);&lt;br&gt;ClientDetails &lt;b&gt;authenticatedClient&lt;/b&gt; = &lt;b&gt;getClientDetailsService&lt;/b&gt;()&lt;br&gt;.&lt;b&gt;loadClientByClientId&lt;/b&gt;(clientId);&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;principal是经过认证的客户端应用信息&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
-          <mxGeometry x="1200.5" y="5280" width="200" height="60" as="geometry" />
+          <mxGeometry x="1440" y="5280" width="200" height="60" as="geometry" />
         </mxCell>
         <mxCell id="Jysl4UP8jRCQiMBeIVnq-47" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" source="Jysl4UP8jRCQiMBeIVnq-50" target="Jysl4UP8jRCQiMBeIVnq-38" edge="1">
           <mxGeometry relative="1" as="geometry">
@@ -469,7 +469,10 @@
         <mxCell id="gpTnpa3g8ZrnLY71u2b0-10" value="WebSecurityConfiguration" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
           <mxGeometry x="500" y="1430" width="160" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="gpTnpa3g8ZrnLY71u2b0-27" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="gpTnpa3g8ZrnLY71u2b0-25" target="Jysl4UP8jRCQiMBeIVnq-31" edge="1">
+        <mxCell id="C9ku3EbWxnKkE-glZPp3-17" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="gpTnpa3g8ZrnLY71u2b0-25" target="C9ku3EbWxnKkE-glZPp3-16">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="C9ku3EbWxnKkE-glZPp3-20" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="gpTnpa3g8ZrnLY71u2b0-25" target="C9ku3EbWxnKkE-glZPp3-19">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="gpTnpa3g8ZrnLY71u2b0-25" value="端点请求处理&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;入参、返回值、异常处理器都是写死的&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
@@ -1204,6 +1207,9 @@
         <mxCell id="J0giTLENruao22hqI6kO-38" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="BTdmhbfbiTqf7HtIRt79-177" target="J0giTLENruao22hqI6kO-37" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
+        <mxCell id="C9ku3EbWxnKkE-glZPp3-25" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="BTdmhbfbiTqf7HtIRt79-177" target="C9ku3EbWxnKkE-glZPp3-22">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
         <mxCell id="BTdmhbfbiTqf7HtIRt79-177" value="&lt;font style=&quot;&quot;&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;return ((Boolean) expr.&lt;b&gt;getValue&lt;/b&gt;(ctx, Boolean.class)).booleanValue();&lt;/font&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;font-size: 10px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;执行表达式获取结果&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
           <mxGeometry x="2400" y="4490" width="200" height="60" as="geometry" />
         </mxCell>
@@ -1367,7 +1373,7 @@
         <mxCell id="J0giTLENruao22hqI6kO-40" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="J0giTLENruao22hqI6kO-37" target="J0giTLENruao22hqI6kO-39" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="J0giTLENruao22hqI6kO-37" value="&lt;font style=&quot;font-size: 10px;&quot;&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp;&lt;b&gt;WebSecurityExpressionRoot&lt;/b&gt;#&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;b&gt;isFullyAuthenticated&lt;/b&gt;()&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;以&amp;nbsp;/oauth/token 为例，SpEL表示式实际执行的是此方法&lt;/font&gt;&lt;/div&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+        <mxCell id="J0giTLENruao22hqI6kO-37" value="&lt;font style=&quot;font-size: 10px;&quot;&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp;&lt;b&gt;WebSecurityExpressionRoot&lt;/b&gt;#&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;b&gt;isFullyAuthenticated&lt;/b&gt;()&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;以&amp;nbsp;/oauth/token 为例，SpEL表达式实际执行的是此方法&lt;/font&gt;&lt;/div&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
           <mxGeometry x="2640" y="4490" width="200" height="60" as="geometry" />
         </mxCell>
         <mxCell id="J0giTLENruao22hqI6kO-39" value="&lt;font style=&quot;font-size: 9px;&quot;&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;div&gt;return !trustResolver.isAnonymous(authentication)&lt;/div&gt;&lt;div&gt;&amp;amp;&amp;amp; !trustResolver.isRememberMe(authentication);&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;认证用户信息不是匿名用户信息也不是RememberMe信息&lt;/font&gt;&lt;/div&gt;&lt;/div&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
@@ -1395,34 +1401,34 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="yOIgcuZ7kVqAaMvxTEpn-1" value="TokenRequest &lt;b&gt;tokenRequest&lt;/b&gt; = getOAuth2RequestFactory()&lt;br&gt;.createTokenRequest(parameters, authenticatedClient);" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" parent="1" vertex="1">
-          <mxGeometry x="1200.5" y="5360" width="200" height="60" as="geometry" />
+          <mxGeometry x="1440" y="5360" width="200" height="60" as="geometry" />
         </mxCell>
         <mxCell id="yOIgcuZ7kVqAaMvxTEpn-6" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="yOIgcuZ7kVqAaMvxTEpn-3" target="yOIgcuZ7kVqAaMvxTEpn-5" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="yOIgcuZ7kVqAaMvxTEpn-3" value="oAuth2RequestValidator.validateScope(&lt;br&gt;tokenRequest, authenticatedClient);&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;校验请求的scope是否全存在于可授权的scope&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
-          <mxGeometry x="1200.5" y="5440" width="200" height="60" as="geometry" />
+          <mxGeometry x="1440" y="5440" width="200" height="60" as="geometry" />
         </mxCell>
         <mxCell id="yOIgcuZ7kVqAaMvxTEpn-9" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="yOIgcuZ7kVqAaMvxTEpn-5" target="yOIgcuZ7kVqAaMvxTEpn-8" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="yOIgcuZ7kVqAaMvxTEpn-5" value="校验授权模式 grant_type&amp;nbsp;&lt;br&gt;不能为空， 不能为简化模式（2.3.5版本暂不支持）" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" parent="1" vertex="1">
-          <mxGeometry x="1200.5" y="5520" width="200" height="60" as="geometry" />
+          <mxGeometry x="1440" y="5520" width="200" height="60" as="geometry" />
         </mxCell>
         <mxCell id="yOIgcuZ7kVqAaMvxTEpn-7" value="&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;如果请求参数中没有 scope, 默认在 TokenRequest 中填充&lt;br&gt;authenticatedClient 中授权的 scope&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
-          <mxGeometry x="1400.5" y="5370" width="280" height="40" as="geometry" />
+          <mxGeometry x="1640" y="5370" width="280" height="40" as="geometry" />
         </mxCell>
         <mxCell id="yOIgcuZ7kVqAaMvxTEpn-11" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="yOIgcuZ7kVqAaMvxTEpn-8" target="yOIgcuZ7kVqAaMvxTEpn-10" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="yOIgcuZ7kVqAaMvxTEpn-8" value="如果是认证码模式需要将 TokenRequest 对象中的scope集合清空，因为认证码模式scope在认证阶段已经校验" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" parent="1" vertex="1">
-          <mxGeometry x="1200.5" y="5600" width="200" height="60" as="geometry" />
+          <mxGeometry x="1440" y="5600" width="200" height="60" as="geometry" />
         </mxCell>
         <mxCell id="yOIgcuZ7kVqAaMvxTEpn-13" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="yOIgcuZ7kVqAaMvxTEpn-10" target="yOIgcuZ7kVqAaMvxTEpn-12" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="yOIgcuZ7kVqAaMvxTEpn-10" value="是否是刷新令牌请求及处理" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" parent="1" vertex="1">
-          <mxGeometry x="1200.5" y="5680" width="200" height="60" as="geometry" />
+          <mxGeometry x="1440" y="5680" width="200" height="60" as="geometry" />
         </mxCell>
         <mxCell id="yOIgcuZ7kVqAaMvxTEpn-15" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="yOIgcuZ7kVqAaMvxTEpn-12" target="yOIgcuZ7kVqAaMvxTEpn-14" edge="1">
           <mxGeometry relative="1" as="geometry" />
@@ -1431,260 +1437,317 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="yOIgcuZ7kVqAaMvxTEpn-12" value="OAuth2AccessToken token = getTokenGranter()&lt;br&gt;.grant(tokenRequest.getGrantType(), tokenRequest);" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
-          <mxGeometry x="1200.5" y="5760" width="200" height="60" as="geometry" />
+          <mxGeometry x="1440" y="5760" width="200" height="60" as="geometry" />
         </mxCell>
         <mxCell id="yOIgcuZ7kVqAaMvxTEpn-19" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="yOIgcuZ7kVqAaMvxTEpn-14" target="yOIgcuZ7kVqAaMvxTEpn-18" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="yOIgcuZ7kVqAaMvxTEpn-14" value="OAuth2AccessToken token = getTokenGranter()&lt;br&gt;.&lt;b&gt;grant&lt;/b&gt;(tokenRequest.getGrantType(), tokenRequest);" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" parent="1" vertex="1">
-          <mxGeometry x="1440.5" y="5760" width="200" height="60" as="geometry" />
+          <mxGeometry x="1680" y="5760" width="200" height="60" as="geometry" />
         </mxCell>
         <mxCell id="yOIgcuZ7kVqAaMvxTEpn-16" value="return getResponse(token);" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" parent="1" vertex="1">
-          <mxGeometry x="1200.5" y="5840" width="200" height="60" as="geometry" />
+          <mxGeometry x="1440" y="5840" width="200" height="60" as="geometry" />
         </mxCell>
         <mxCell id="yOIgcuZ7kVqAaMvxTEpn-21" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="yOIgcuZ7kVqAaMvxTEpn-18" target="yOIgcuZ7kVqAaMvxTEpn-20" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="8Ed1EF93PBzpXC4AOwfi-23" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="yOIgcuZ7kVqAaMvxTEpn-18" target="8Ed1EF93PBzpXC4AOwfi-67">
+        <mxCell id="8Ed1EF93PBzpXC4AOwfi-23" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="yOIgcuZ7kVqAaMvxTEpn-18" target="8Ed1EF93PBzpXC4AOwfi-67" edge="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="1920" y="5790" as="targetPoint" />
+            <mxPoint x="2159.5" y="5790" as="targetPoint" />
             <Array as="points">
-              <mxPoint x="1901" y="5790" />
-              <mxPoint x="1901" y="5550" />
+              <mxPoint x="2140.5" y="5790" />
+              <mxPoint x="2140.5" y="5550" />
             </Array>
           </mxGeometry>
         </mxCell>
         <mxCell id="yOIgcuZ7kVqAaMvxTEpn-18" value="if (delegate == null)&amp;nbsp;&lt;br&gt;delegate = new CompositeTokenGranter(&lt;br&gt;&lt;b&gt;getDefaultTokenGranters&lt;/b&gt;());" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
-          <mxGeometry x="1680.5" y="5760" width="200" height="60" as="geometry" />
+          <mxGeometry x="1920" y="5760" width="200" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="8Ed1EF93PBzpXC4AOwfi-26" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="yOIgcuZ7kVqAaMvxTEpn-20" target="8Ed1EF93PBzpXC4AOwfi-25">
+        <mxCell id="8Ed1EF93PBzpXC4AOwfi-26" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="yOIgcuZ7kVqAaMvxTEpn-20" target="8Ed1EF93PBzpXC4AOwfi-25" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="yOIgcuZ7kVqAaMvxTEpn-20" value="return delegate.grant(grantType, tokenRequest);" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
-          <mxGeometry x="1680.5" y="6160" width="200" height="60" as="geometry" />
+          <mxGeometry x="1920" y="6160" width="200" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="8Ed1EF93PBzpXC4AOwfi-3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="yOIgcuZ7kVqAaMvxTEpn-22" target="8Ed1EF93PBzpXC4AOwfi-2">
+        <mxCell id="8Ed1EF93PBzpXC4AOwfi-3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="yOIgcuZ7kVqAaMvxTEpn-22" target="8Ed1EF93PBzpXC4AOwfi-2" edge="1">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="2140" y="5870" />
-              <mxPoint x="2140" y="5950" />
+              <mxPoint x="2379.5" y="5870" />
+              <mxPoint x="2379.5" y="5950" />
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="8Ed1EF93PBzpXC4AOwfi-7" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="yOIgcuZ7kVqAaMvxTEpn-22" target="8Ed1EF93PBzpXC4AOwfi-6">
+        <mxCell id="8Ed1EF93PBzpXC4AOwfi-7" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="yOIgcuZ7kVqAaMvxTEpn-22" target="8Ed1EF93PBzpXC4AOwfi-6" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="8Ed1EF93PBzpXC4AOwfi-11" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="yOIgcuZ7kVqAaMvxTEpn-22" target="8Ed1EF93PBzpXC4AOwfi-10">
+        <mxCell id="8Ed1EF93PBzpXC4AOwfi-11" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="yOIgcuZ7kVqAaMvxTEpn-22" target="8Ed1EF93PBzpXC4AOwfi-10" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="yOIgcuZ7kVqAaMvxTEpn-22" value="这里针对四种模式注册了4个TokenGranter&lt;br&gt;另外还注册了一个用于刷新令牌的 TokenGranter" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
-          <mxGeometry x="1920" y="5840" width="200" height="60" as="geometry" />
+          <mxGeometry x="2159.5" y="5840" width="200" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="8Ed1EF93PBzpXC4AOwfi-1" value="&lt;font style=&quot;font-size: 10px;&quot;&gt;&lt;b&gt;AuthorizationServerEndpointsConfigurer&lt;/b&gt;&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
-          <mxGeometry x="1670.5" y="5730" width="220" height="30" as="geometry" />
+        <mxCell id="8Ed1EF93PBzpXC4AOwfi-1" value="&lt;font style=&quot;font-size: 10px;&quot;&gt;&lt;b&gt;AuthorizationServerEndpointsConfigurer&lt;/b&gt;&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
+          <mxGeometry x="1910" y="5730" width="220" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="8Ed1EF93PBzpXC4AOwfi-5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="8Ed1EF93PBzpXC4AOwfi-2" target="8Ed1EF93PBzpXC4AOwfi-4">
+        <mxCell id="8Ed1EF93PBzpXC4AOwfi-5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="8Ed1EF93PBzpXC4AOwfi-2" target="8Ed1EF93PBzpXC4AOwfi-4" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="8Ed1EF93PBzpXC4AOwfi-2" value="密码模式" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
-          <mxGeometry x="2160" y="5920" width="120" height="60" as="geometry" />
+        <mxCell id="8Ed1EF93PBzpXC4AOwfi-2" value="密码模式" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxGeometry x="2399.5" y="5920" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="8Ed1EF93PBzpXC4AOwfi-4" value="&lt;div&gt;tokenGranters.add(new &lt;b&gt;ResourceOwnerPasswordTokenGranter&lt;/b&gt;(&lt;/div&gt;&lt;div&gt;&lt;b&gt;authenticationManager&lt;/b&gt;, &lt;b&gt;tokenServices&lt;/b&gt;,&lt;/div&gt;&lt;div&gt;&lt;b&gt;clientDetails&lt;/b&gt;, requestFactory));&lt;span style=&quot;&quot;&gt;&lt;/span&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
-          <mxGeometry x="2320" y="5920" width="200" height="60" as="geometry" />
+        <mxCell id="8Ed1EF93PBzpXC4AOwfi-4" value="&lt;div&gt;tokenGranters.add(new &lt;b&gt;ResourceOwnerPasswordTokenGranter&lt;/b&gt;(&lt;/div&gt;&lt;div&gt;&lt;b&gt;authenticationManager&lt;/b&gt;, &lt;b&gt;tokenServices&lt;/b&gt;,&lt;/div&gt;&lt;div&gt;&lt;b&gt;clientDetails&lt;/b&gt;, requestFactory));&lt;span style=&quot;&quot;&gt;&lt;/span&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="2559.5" y="5920" width="200" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="8Ed1EF93PBzpXC4AOwfi-9" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="8Ed1EF93PBzpXC4AOwfi-6" target="8Ed1EF93PBzpXC4AOwfi-8">
+        <mxCell id="8Ed1EF93PBzpXC4AOwfi-9" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="8Ed1EF93PBzpXC4AOwfi-6" target="8Ed1EF93PBzpXC4AOwfi-8" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="8Ed1EF93PBzpXC4AOwfi-6" value="授权码模式" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
-          <mxGeometry x="2160" y="5840" width="120" height="60" as="geometry" />
+        <mxCell id="8Ed1EF93PBzpXC4AOwfi-6" value="授权码模式" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxGeometry x="2399.5" y="5840" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="8Ed1EF93PBzpXC4AOwfi-8" value="&lt;div&gt;tokenGranters.add(new &lt;b&gt;AuthorizationCodeTokenGranter&lt;/b&gt;(&lt;/div&gt;&lt;div&gt;&lt;b&gt;tokenServices&lt;/b&gt;, &lt;b&gt;authorizationCodeServices&lt;/b&gt;, &lt;b&gt;clientDetails&lt;/b&gt;,&lt;span style=&quot;background-color: initial;&quot;&gt;requestFactory));&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;&quot;&gt;&lt;/span&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
-          <mxGeometry x="2315" y="5840" width="210" height="60" as="geometry" />
+        <mxCell id="8Ed1EF93PBzpXC4AOwfi-8" value="&lt;div&gt;tokenGranters.add(new &lt;b&gt;AuthorizationCodeTokenGranter&lt;/b&gt;(&lt;/div&gt;&lt;div&gt;&lt;b&gt;tokenServices&lt;/b&gt;, &lt;b&gt;authorizationCodeServices&lt;/b&gt;, &lt;b&gt;clientDetails&lt;/b&gt;,&lt;span style=&quot;background-color: initial;&quot;&gt;requestFactory));&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;&quot;&gt;&lt;/span&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="2554.5" y="5840" width="210" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="8Ed1EF93PBzpXC4AOwfi-13" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="8Ed1EF93PBzpXC4AOwfi-10" target="8Ed1EF93PBzpXC4AOwfi-12">
+        <mxCell id="8Ed1EF93PBzpXC4AOwfi-13" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="8Ed1EF93PBzpXC4AOwfi-10" target="8Ed1EF93PBzpXC4AOwfi-12" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="8Ed1EF93PBzpXC4AOwfi-10" value="刷新令牌" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
-          <mxGeometry x="2160" y="6000" width="120" height="60" as="geometry" />
+        <mxCell id="8Ed1EF93PBzpXC4AOwfi-10" value="刷新令牌" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxGeometry x="2399.5" y="6000" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="8Ed1EF93PBzpXC4AOwfi-12" value="tokenGranters.add(new &lt;b&gt;RefreshTokenGranter&lt;/b&gt;(&lt;b&gt;tokenServices&lt;/b&gt;, &lt;b&gt;clientDetails&lt;/b&gt;, requestFactory));" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
-          <mxGeometry x="2320" y="6000" width="200" height="60" as="geometry" />
+        <mxCell id="8Ed1EF93PBzpXC4AOwfi-12" value="tokenGranters.add(new &lt;b&gt;RefreshTokenGranter&lt;/b&gt;(&lt;b&gt;tokenServices&lt;/b&gt;, &lt;b&gt;clientDetails&lt;/b&gt;, requestFactory));" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="2559.5" y="6000" width="200" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="8Ed1EF93PBzpXC4AOwfi-14" value="&lt;p style=&quot;margin: 4px 0px 0px; text-align: center;&quot;&gt;&lt;b&gt;AbstractTokenGranter&lt;/b&gt;&lt;br style=&quot;font-size: 10px;&quot;&gt;&lt;/p&gt;&lt;hr style=&quot;font-size: 10px;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//Token生成、校验的服务&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private final AuthorizationServerTokenServices &lt;b&gt;tokenServices&lt;/b&gt;;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//客户端应用详细信息服务&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private final ClientDetailsService &lt;b&gt;clientDetailsService&lt;/b&gt;;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private final OAuth2RequestFactory &lt;b&gt;requestFactory&lt;/b&gt;;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//授权模式类型&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private final String &lt;b&gt;grantType&lt;/b&gt;;&lt;/p&gt;&lt;hr style=&quot;font-size: 10px;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 10px;&quot;&gt;&lt;br style=&quot;font-size: 10px;&quot;&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=10;fontFamily=Helvetica;html=1;" vertex="1" parent="1">
+        <mxCell id="8Ed1EF93PBzpXC4AOwfi-14" value="&lt;p style=&quot;margin: 4px 0px 0px; text-align: center;&quot;&gt;&lt;b&gt;AbstractTokenGranter&lt;/b&gt;&lt;br style=&quot;font-size: 10px;&quot;&gt;&lt;/p&gt;&lt;hr style=&quot;font-size: 10px;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//Token生成、校验的服务&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private final AuthorizationServerTokenServices &lt;b&gt;tokenServices&lt;/b&gt;;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//客户端应用详细信息服务&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private final ClientDetailsService &lt;b&gt;clientDetailsService&lt;/b&gt;;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private final OAuth2RequestFactory &lt;b&gt;requestFactory&lt;/b&gt;;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//授权模式类型&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private final String &lt;b&gt;grantType&lt;/b&gt;;&lt;/p&gt;&lt;hr style=&quot;font-size: 10px;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 10px;&quot;&gt;&lt;br style=&quot;font-size: 10px;&quot;&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=10;fontFamily=Helvetica;html=1;" parent="1" vertex="1">
           <mxGeometry x="-400" y="3560" width="360" height="160" as="geometry" />
         </mxCell>
-        <mxCell id="8Ed1EF93PBzpXC4AOwfi-18" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;endArrow=block;endFill=0;" edge="1" parent="1" source="8Ed1EF93PBzpXC4AOwfi-17" target="8Ed1EF93PBzpXC4AOwfi-14">
+        <mxCell id="8Ed1EF93PBzpXC4AOwfi-18" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;endArrow=block;endFill=0;" parent="1" source="8Ed1EF93PBzpXC4AOwfi-17" target="8Ed1EF93PBzpXC4AOwfi-14" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="8Ed1EF93PBzpXC4AOwfi-17" value="&lt;p style=&quot;margin: 4px 0px 0px; text-align: center;&quot;&gt;&lt;b&gt;ResourceOwnerPasswordTokenGranter&lt;/b&gt;&lt;br style=&quot;font-size: 10px;&quot;&gt;&lt;/p&gt;&lt;hr style=&quot;font-size: 10px;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//认证管理器&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private final AuthenticationManager &lt;b&gt;authenticationManager&lt;/b&gt;;&lt;br&gt;&lt;/p&gt;&lt;hr style=&quot;font-size: 10px;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 10px;&quot;&gt;&lt;br style=&quot;font-size: 10px;&quot;&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=10;fontFamily=Helvetica;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+        <mxCell id="8Ed1EF93PBzpXC4AOwfi-17" value="&lt;p style=&quot;margin: 4px 0px 0px; text-align: center;&quot;&gt;&lt;b&gt;ResourceOwnerPasswordTokenGranter&lt;/b&gt;&lt;br style=&quot;font-size: 10px;&quot;&gt;&lt;/p&gt;&lt;hr style=&quot;font-size: 10px;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//认证管理器&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private final AuthenticationManager &lt;b&gt;authenticationManager&lt;/b&gt;;&lt;br&gt;&lt;/p&gt;&lt;hr style=&quot;font-size: 10px;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 10px;&quot;&gt;&lt;br style=&quot;font-size: 10px;&quot;&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=10;fontFamily=Helvetica;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
           <mxGeometry x="-400" y="3760" width="360" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="8Ed1EF93PBzpXC4AOwfi-20" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;endArrow=block;endFill=0;" edge="1" parent="1" source="8Ed1EF93PBzpXC4AOwfi-19" target="8Ed1EF93PBzpXC4AOwfi-14">
+        <mxCell id="8Ed1EF93PBzpXC4AOwfi-20" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;endArrow=block;endFill=0;" parent="1" source="8Ed1EF93PBzpXC4AOwfi-19" target="8Ed1EF93PBzpXC4AOwfi-14" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="8Ed1EF93PBzpXC4AOwfi-19" value="&lt;p style=&quot;margin: 4px 0px 0px; text-align: center;&quot;&gt;&lt;b&gt;AuthorizationCodeTokenGranter&lt;/b&gt;&lt;br style=&quot;font-size: 10px;&quot;&gt;&lt;/p&gt;&lt;hr style=&quot;font-size: 10px;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//认证码生成、校验服务&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private final AuthorizationCodeServices authorizationCodeServices;&lt;br&gt;&lt;/p&gt;&lt;hr style=&quot;font-size: 10px;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 10px;&quot;&gt;&lt;br style=&quot;font-size: 10px;&quot;&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=10;fontFamily=Helvetica;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+        <mxCell id="8Ed1EF93PBzpXC4AOwfi-19" value="&lt;p style=&quot;margin: 4px 0px 0px; text-align: center;&quot;&gt;&lt;b&gt;AuthorizationCodeTokenGranter&lt;/b&gt;&lt;br style=&quot;font-size: 10px;&quot;&gt;&lt;/p&gt;&lt;hr style=&quot;font-size: 10px;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//认证码生成、校验服务&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private final AuthorizationCodeServices authorizationCodeServices;&lt;br&gt;&lt;/p&gt;&lt;hr style=&quot;font-size: 10px;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 10px;&quot;&gt;&lt;br style=&quot;font-size: 10px;&quot;&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=10;fontFamily=Helvetica;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
           <mxGeometry x="-800" y="3760" width="360" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="8Ed1EF93PBzpXC4AOwfi-28" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="8Ed1EF93PBzpXC4AOwfi-25" target="8Ed1EF93PBzpXC4AOwfi-29">
+        <mxCell id="8Ed1EF93PBzpXC4AOwfi-28" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="8Ed1EF93PBzpXC4AOwfi-25" target="8Ed1EF93PBzpXC4AOwfi-29" edge="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="2160" y="6190" as="targetPoint" />
+            <mxPoint x="2399.5" y="6190" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="8Ed1EF93PBzpXC4AOwfi-25" value="for&amp;nbsp;tokenGranters:&amp;nbsp;&lt;br&gt;&lt;div&gt;OAuth2AccessToken grant = granter.grant(grantType, tokenRequest);&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;选择grantType对应的 TokenGranter&lt;/font&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="1">
-          <mxGeometry x="1920" y="6160" width="200" height="60" as="geometry" />
+        <mxCell id="8Ed1EF93PBzpXC4AOwfi-25" value="for&amp;nbsp;tokenGranters:&amp;nbsp;&lt;br&gt;&lt;div&gt;OAuth2AccessToken grant = granter.grant(grantType, tokenRequest);&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;选择grantType对应的 TokenGranter&lt;/font&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" parent="1" vertex="1">
+          <mxGeometry x="2159.5" y="6160" width="200" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="8Ed1EF93PBzpXC4AOwfi-32" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="8Ed1EF93PBzpXC4AOwfi-29" target="8Ed1EF93PBzpXC4AOwfi-31">
+        <mxCell id="8Ed1EF93PBzpXC4AOwfi-32" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="8Ed1EF93PBzpXC4AOwfi-29" target="8Ed1EF93PBzpXC4AOwfi-31" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="8Ed1EF93PBzpXC4AOwfi-29" value="String clientId = tokenRequest.getClientId();&lt;br&gt;ClientDetails client = clientDetailsService&lt;br&gt;.loadClientByClientId(clientId);" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="1">
-          <mxGeometry x="2160" y="6160" width="200" height="60" as="geometry" />
+        <mxCell id="8Ed1EF93PBzpXC4AOwfi-29" value="String clientId = tokenRequest.getClientId();&lt;br&gt;ClientDetails client = clientDetailsService&lt;br&gt;.loadClientByClientId(clientId);" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" parent="1" vertex="1">
+          <mxGeometry x="2399.5" y="6160" width="200" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="8Ed1EF93PBzpXC4AOwfi-34" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="8Ed1EF93PBzpXC4AOwfi-31" target="8Ed1EF93PBzpXC4AOwfi-33">
+        <mxCell id="8Ed1EF93PBzpXC4AOwfi-34" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="8Ed1EF93PBzpXC4AOwfi-31" target="8Ed1EF93PBzpXC4AOwfi-33" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="8Ed1EF93PBzpXC4AOwfi-31" value="validateGrantType(grantType, client);" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="1">
-          <mxGeometry x="2160" y="6240" width="200" height="60" as="geometry" />
+        <mxCell id="8Ed1EF93PBzpXC4AOwfi-31" value="validateGrantType(grantType, client);" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" parent="1" vertex="1">
+          <mxGeometry x="2399.5" y="6240" width="200" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="8Ed1EF93PBzpXC4AOwfi-36" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="8Ed1EF93PBzpXC4AOwfi-33" target="8Ed1EF93PBzpXC4AOwfi-35">
+        <mxCell id="8Ed1EF93PBzpXC4AOwfi-36" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="8Ed1EF93PBzpXC4AOwfi-33" target="8Ed1EF93PBzpXC4AOwfi-35" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="8Ed1EF93PBzpXC4AOwfi-33" value="return getAccessToken(client, tokenRequest);" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
-          <mxGeometry x="2160" y="6320" width="200" height="60" as="geometry" />
+        <mxCell id="8Ed1EF93PBzpXC4AOwfi-33" value="return getAccessToken(client, tokenRequest);" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="2399.5" y="6320" width="200" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="8Ed1EF93PBzpXC4AOwfi-40" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="8Ed1EF93PBzpXC4AOwfi-35" target="8Ed1EF93PBzpXC4AOwfi-39">
+        <mxCell id="8Ed1EF93PBzpXC4AOwfi-40" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="8Ed1EF93PBzpXC4AOwfi-35" target="8Ed1EF93PBzpXC4AOwfi-39" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="8Ed1EF93PBzpXC4AOwfi-53" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="8Ed1EF93PBzpXC4AOwfi-35" target="8Ed1EF93PBzpXC4AOwfi-52">
+        <mxCell id="8Ed1EF93PBzpXC4AOwfi-53" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="8Ed1EF93PBzpXC4AOwfi-35" target="8Ed1EF93PBzpXC4AOwfi-52" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="8Ed1EF93PBzpXC4AOwfi-35" value="return tokenServices.createAccessToken(&lt;br&gt;&lt;b&gt;getOAuth2Authentication&lt;/b&gt;(client, tokenRequest));" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
-          <mxGeometry x="2400" y="6320" width="200" height="60" as="geometry" />
+        <mxCell id="8Ed1EF93PBzpXC4AOwfi-35" value="return tokenServices.createAccessToken(&lt;br&gt;&lt;b&gt;getOAuth2Authentication&lt;/b&gt;(client, tokenRequest));" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="2639.5" y="6320" width="200" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="8Ed1EF93PBzpXC4AOwfi-42" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="8Ed1EF93PBzpXC4AOwfi-39" target="8Ed1EF93PBzpXC4AOwfi-41">
+        <mxCell id="8Ed1EF93PBzpXC4AOwfi-42" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="8Ed1EF93PBzpXC4AOwfi-39" target="8Ed1EF93PBzpXC4AOwfi-41" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="8Ed1EF93PBzpXC4AOwfi-39" value="密码模式" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
-          <mxGeometry x="2640" y="6320" width="120" height="60" as="geometry" />
+        <mxCell id="8Ed1EF93PBzpXC4AOwfi-39" value="密码模式" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxGeometry x="2879.5" y="6320" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="8Ed1EF93PBzpXC4AOwfi-44" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="8Ed1EF93PBzpXC4AOwfi-41" target="8Ed1EF93PBzpXC4AOwfi-43">
+        <mxCell id="8Ed1EF93PBzpXC4AOwfi-44" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="8Ed1EF93PBzpXC4AOwfi-41" target="8Ed1EF93PBzpXC4AOwfi-43" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="8Ed1EF93PBzpXC4AOwfi-41" value="先从请求参数中读取用户名username密码password" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="1">
-          <mxGeometry x="2800" y="6320" width="200" height="60" as="geometry" />
+        <mxCell id="8Ed1EF93PBzpXC4AOwfi-41" value="先从请求参数中读取用户名username密码password" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" parent="1" vertex="1">
+          <mxGeometry x="3039.5" y="6320" width="200" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="8Ed1EF93PBzpXC4AOwfi-46" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="8Ed1EF93PBzpXC4AOwfi-43" target="8Ed1EF93PBzpXC4AOwfi-45">
+        <mxCell id="8Ed1EF93PBzpXC4AOwfi-46" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="8Ed1EF93PBzpXC4AOwfi-43" target="8Ed1EF93PBzpXC4AOwfi-45" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="8Ed1EF93PBzpXC4AOwfi-43" value="Authentication userAuth = new &lt;b&gt;UsernamePasswordAuthenticationToken&lt;/b&gt;(&lt;br&gt;username, password);&lt;br&gt;((AbstractAuthenticationToken) userAuth).setDetails(parameters);" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="1">
-          <mxGeometry x="2800" y="6400" width="200" height="60" as="geometry" />
+        <mxCell id="8Ed1EF93PBzpXC4AOwfi-43" value="Authentication userAuth = new &lt;b&gt;UsernamePasswordAuthenticationToken&lt;/b&gt;(&lt;br&gt;username, password);&lt;br&gt;((AbstractAuthenticationToken) userAuth).setDetails(parameters);" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" parent="1" vertex="1">
+          <mxGeometry x="3039.5" y="6400" width="200" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="8Ed1EF93PBzpXC4AOwfi-48" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="8Ed1EF93PBzpXC4AOwfi-45" target="8Ed1EF93PBzpXC4AOwfi-47">
+        <mxCell id="8Ed1EF93PBzpXC4AOwfi-48" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="8Ed1EF93PBzpXC4AOwfi-45" target="8Ed1EF93PBzpXC4AOwfi-47" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="8Ed1EF93PBzpXC4AOwfi-45" value="userAuth = authenticationManager&lt;br&gt;.&lt;b&gt;authenticate&lt;/b&gt;(userAuth);&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;这里默认还是借助 authenticationManager 对用户名密码做认证校验&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
-          <mxGeometry x="2800" y="6480" width="200" height="60" as="geometry" />
+        <mxCell id="8Ed1EF93PBzpXC4AOwfi-45" value="userAuth = authenticationManager&lt;br&gt;.&lt;b&gt;authenticate&lt;/b&gt;(userAuth);&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;这里默认还是借助 authenticationManager 对用户名密码做认证校验&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxGeometry x="3039.5" y="6480" width="200" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="8Ed1EF93PBzpXC4AOwfi-50" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="8Ed1EF93PBzpXC4AOwfi-47" target="8Ed1EF93PBzpXC4AOwfi-49">
+        <mxCell id="8Ed1EF93PBzpXC4AOwfi-50" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="8Ed1EF93PBzpXC4AOwfi-47" target="8Ed1EF93PBzpXC4AOwfi-49" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="8Ed1EF93PBzpXC4AOwfi-47" value="if (userAuth == null || !userAuth.isAuthenticated())&lt;br&gt;throw new &lt;b&gt;InvalidGrantException&lt;/b&gt;()" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="1">
-          <mxGeometry x="2800" y="6560" width="200" height="60" as="geometry" />
+        <mxCell id="8Ed1EF93PBzpXC4AOwfi-47" value="if (userAuth == null || !userAuth.isAuthenticated())&lt;br&gt;throw new &lt;b&gt;InvalidGrantException&lt;/b&gt;()" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" parent="1" vertex="1">
+          <mxGeometry x="3039.5" y="6560" width="200" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="8Ed1EF93PBzpXC4AOwfi-49" value="OAuth2Request storedOAuth2Request = getRequestFactory().createOAuth2Request(&lt;br&gt;client, tokenRequest);&#x9;&#x9;&lt;br&gt;return new &lt;b&gt;OAuth2Authentication&lt;/b&gt;(&lt;br&gt;storedOAuth2Request, userAuth);" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;arcSize=9;" vertex="1" parent="1">
-          <mxGeometry x="2800" y="6640" width="200" height="80" as="geometry" />
+        <mxCell id="8Ed1EF93PBzpXC4AOwfi-49" value="OAuth2Request storedOAuth2Request = getRequestFactory().createOAuth2Request(&lt;br&gt;client, tokenRequest);&#x9;&#x9;&lt;br&gt;return new &lt;b&gt;OAuth2Authentication&lt;/b&gt;(&lt;br&gt;storedOAuth2Request, userAuth);" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;arcSize=9;" parent="1" vertex="1">
+          <mxGeometry x="3039.5" y="6640" width="200" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="8Ed1EF93PBzpXC4AOwfi-51" value="&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;到这里原始请求已经被封装了很多层&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
-          <mxGeometry x="3000" y="6665" width="180" height="30" as="geometry" />
+        <mxCell id="8Ed1EF93PBzpXC4AOwfi-51" value="&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;到这里原始请求已经被封装了很多层&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
+          <mxGeometry x="3239.5" y="6665" width="180" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="8Ed1EF93PBzpXC4AOwfi-55" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="8Ed1EF93PBzpXC4AOwfi-52" target="8Ed1EF93PBzpXC4AOwfi-54">
+        <mxCell id="8Ed1EF93PBzpXC4AOwfi-55" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="8Ed1EF93PBzpXC4AOwfi-52" target="8Ed1EF93PBzpXC4AOwfi-54" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="8Ed1EF93PBzpXC4AOwfi-52" value="return tokenServices.createAccessToken(&lt;br&gt;oauth2Authentication);" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
-          <mxGeometry x="2400" y="6760" width="200" height="60" as="geometry" />
+        <mxCell id="8Ed1EF93PBzpXC4AOwfi-52" value="return tokenServices.createAccessToken(&lt;br&gt;oauth2Authentication);" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="2639.5" y="6760" width="200" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="8Ed1EF93PBzpXC4AOwfi-58" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="8Ed1EF93PBzpXC4AOwfi-54" target="8Ed1EF93PBzpXC4AOwfi-57">
+        <mxCell id="8Ed1EF93PBzpXC4AOwfi-58" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="8Ed1EF93PBzpXC4AOwfi-54" target="8Ed1EF93PBzpXC4AOwfi-57" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="8Ed1EF93PBzpXC4AOwfi-54" value="refreshToken = createRefreshToken(authentication);&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;生成刷新令牌&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
-          <mxGeometry x="2640" y="6760" width="200" height="60" as="geometry" />
+        <mxCell id="8Ed1EF93PBzpXC4AOwfi-54" value="refreshToken = createRefreshToken(authentication);&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;生成刷新令牌&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxGeometry x="2879.5" y="6760" width="200" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="8Ed1EF93PBzpXC4AOwfi-56" value="DefaultTokenService" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
-          <mxGeometry x="2675" y="6730" width="130" height="30" as="geometry" />
+        <mxCell id="8Ed1EF93PBzpXC4AOwfi-56" value="DefaultTokenService" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
+          <mxGeometry x="2914.5" y="6730" width="130" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="8Ed1EF93PBzpXC4AOwfi-60" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="8Ed1EF93PBzpXC4AOwfi-57" target="8Ed1EF93PBzpXC4AOwfi-59">
+        <mxCell id="8Ed1EF93PBzpXC4AOwfi-60" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="8Ed1EF93PBzpXC4AOwfi-57" target="8Ed1EF93PBzpXC4AOwfi-59" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="8Ed1EF93PBzpXC4AOwfi-57" value="OAuth2AccessToken accessToken = createAccessToken(authentication, refreshToken);&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;生成访问令牌&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
-          <mxGeometry x="2640" y="6840" width="200" height="60" as="geometry" />
+        <mxCell id="8Ed1EF93PBzpXC4AOwfi-57" value="OAuth2AccessToken accessToken = createAccessToken(authentication, refreshToken);&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;生成访问令牌&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxGeometry x="2879.5" y="6840" width="200" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="8Ed1EF93PBzpXC4AOwfi-62" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="8Ed1EF93PBzpXC4AOwfi-59" target="8Ed1EF93PBzpXC4AOwfi-61">
+        <mxCell id="8Ed1EF93PBzpXC4AOwfi-62" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="8Ed1EF93PBzpXC4AOwfi-59" target="8Ed1EF93PBzpXC4AOwfi-61" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="8Ed1EF93PBzpXC4AOwfi-59" value="tokenStore.storeAccessToken(accessToken, authentication);&lt;br&gt;tokenStore.storeRefreshToken(refreshToken, authentication);" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="1">
-          <mxGeometry x="2640" y="6920" width="200" height="60" as="geometry" />
+        <mxCell id="8Ed1EF93PBzpXC4AOwfi-59" value="tokenStore.storeAccessToken(accessToken, authentication);&lt;br&gt;tokenStore.storeRefreshToken(refreshToken, authentication);" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" parent="1" vertex="1">
+          <mxGeometry x="2879.5" y="6920" width="200" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="8Ed1EF93PBzpXC4AOwfi-61" value="return accessToken;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="1">
-          <mxGeometry x="2640" y="7000" width="200" height="60" as="geometry" />
+        <mxCell id="8Ed1EF93PBzpXC4AOwfi-61" value="return accessToken;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" parent="1" vertex="1">
+          <mxGeometry x="2879.5" y="7000" width="200" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="8Ed1EF93PBzpXC4AOwfi-64" value="&lt;font color=&quot;#007fff&quot;&gt;也是先校验然后生成Token(包括访问令牌和刷新令牌)&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
-          <mxGeometry x="2160" y="6390" width="300" height="30" as="geometry" />
+        <mxCell id="8Ed1EF93PBzpXC4AOwfi-64" value="&lt;font color=&quot;#007fff&quot;&gt;也是先校验然后生成Token(包括访问令牌和刷新令牌)&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
+          <mxGeometry x="2399.5" y="6390" width="300" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="8Ed1EF93PBzpXC4AOwfi-72" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="8Ed1EF93PBzpXC4AOwfi-65" target="8Ed1EF93PBzpXC4AOwfi-66">
+        <mxCell id="8Ed1EF93PBzpXC4AOwfi-72" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" source="8Ed1EF93PBzpXC4AOwfi-65" target="8Ed1EF93PBzpXC4AOwfi-66" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="8Ed1EF93PBzpXC4AOwfi-65" value="&lt;div&gt;AuthorizationCodeServices authorizationCodeServices = authorizationCodeServices();&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
-          <mxGeometry x="1920" y="5680" width="200" height="60" as="geometry" />
+        <mxCell id="8Ed1EF93PBzpXC4AOwfi-65" value="&lt;div&gt;AuthorizationCodeServices authorizationCodeServices = authorizationCodeServices();&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxGeometry x="2159.5" y="5680" width="200" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="8Ed1EF93PBzpXC4AOwfi-69" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="8Ed1EF93PBzpXC4AOwfi-66" target="yOIgcuZ7kVqAaMvxTEpn-22">
+        <mxCell id="8Ed1EF93PBzpXC4AOwfi-69" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" source="8Ed1EF93PBzpXC4AOwfi-66" target="yOIgcuZ7kVqAaMvxTEpn-22" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="8Ed1EF93PBzpXC4AOwfi-66" value="&lt;div&gt;OAuth2RequestFactory requestFactory = requestFactory();&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;用于装饰请求对象&lt;/font&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="1">
-          <mxGeometry x="1920" y="5760" width="200" height="60" as="geometry" />
+        <mxCell id="8Ed1EF93PBzpXC4AOwfi-66" value="&lt;div&gt;OAuth2RequestFactory requestFactory = requestFactory();&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;用于装饰请求对象&lt;/font&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" parent="1" vertex="1">
+          <mxGeometry x="2159.5" y="5760" width="200" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="8Ed1EF93PBzpXC4AOwfi-70" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="8Ed1EF93PBzpXC4AOwfi-67" target="8Ed1EF93PBzpXC4AOwfi-68">
+        <mxCell id="8Ed1EF93PBzpXC4AOwfi-70" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="8Ed1EF93PBzpXC4AOwfi-67" target="8Ed1EF93PBzpXC4AOwfi-68" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="8Ed1EF93PBzpXC4AOwfi-74" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;fillColor=#d5e8d4;strokeColor=#82b366;" edge="1" parent="1" source="8Ed1EF93PBzpXC4AOwfi-67" target="8Ed1EF93PBzpXC4AOwfi-73">
+        <mxCell id="8Ed1EF93PBzpXC4AOwfi-74" style="rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" source="8Ed1EF93PBzpXC4AOwfi-67" target="8Ed1EF93PBzpXC4AOwfi-73" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="8Ed1EF93PBzpXC4AOwfi-67" value="&lt;div&gt;ClientDetailsService clientDetails = clientDetailsService();&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;这里获取的就是通过&amp;nbsp;ClientDetailsServiceConfigurer 配置的ClientDetailsService实例&lt;/font&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
-          <mxGeometry x="1920" y="5520" width="200" height="60" as="geometry" />
+        <mxCell id="8Ed1EF93PBzpXC4AOwfi-67" value="&lt;div&gt;ClientDetailsService clientDetails = clientDetailsService();&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;这里获取的就是通过&amp;nbsp;ClientDetailsServiceConfigurer 配置的ClientDetailsService实例&lt;/font&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxGeometry x="2159.5" y="5520" width="200" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="8Ed1EF93PBzpXC4AOwfi-71" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="8Ed1EF93PBzpXC4AOwfi-68" target="8Ed1EF93PBzpXC4AOwfi-65">
+        <mxCell id="8Ed1EF93PBzpXC4AOwfi-71" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" source="8Ed1EF93PBzpXC4AOwfi-68" target="8Ed1EF93PBzpXC4AOwfi-65" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="8Ed1EF93PBzpXC4AOwfi-76" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="8Ed1EF93PBzpXC4AOwfi-68" target="8Ed1EF93PBzpXC4AOwfi-75">
+        <mxCell id="8Ed1EF93PBzpXC4AOwfi-76" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="8Ed1EF93PBzpXC4AOwfi-68" target="8Ed1EF93PBzpXC4AOwfi-75" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="8Ed1EF93PBzpXC4AOwfi-68" value="&lt;div&gt;AuthorizationServerTokenServices tokenServices = tokenServices();&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;用于生成和校验Token的服务&lt;/font&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
-          <mxGeometry x="1920" y="5600" width="200" height="60" as="geometry" />
+        <mxCell id="8Ed1EF93PBzpXC4AOwfi-68" value="&lt;div&gt;AuthorizationServerTokenServices tokenServices = tokenServices();&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;用于生成和校验Token的服务&lt;/font&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxGeometry x="2159.5" y="5600" width="200" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="8Ed1EF93PBzpXC4AOwfi-73" value="&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;ClientDetailsService Bean实例是怎么&lt;span style=&quot;background-color: initial;&quot;&gt;传递&lt;/span&gt;&lt;/font&gt;&lt;span style=&quot;font-size: 10px; color: rgb(0, 127, 255); background-color: initial;&quot;&gt;到&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;b style=&quot;font-size: 10px; color: rgb(0, 127, 255); background-color: initial;&quot;&gt;AuthorizationServerEndpointsConfigurer &lt;/b&gt;&lt;span style=&quot;font-size: 10px; color: rgb(0, 127, 255); background-color: initial;&quot;&gt;的？&lt;/span&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/font&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;自动配置阶段&amp;nbsp;AuthorizationServerEndpointsConfiguration&lt;br&gt;&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;public class &lt;b&gt;AuthorizationServerEndpointsConfiguration&lt;/b&gt; {&lt;br&gt;&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp; &amp;nbsp; private AuthorizationServerEndpointsConfigurer endpoints = new &lt;b&gt;AuthorizationServerEndpointsConfigurer&lt;/b&gt;();&lt;br&gt;&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp; &amp;nbsp;&amp;nbsp;&lt;/font&gt;&lt;/span&gt;@PostConstruct&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;&lt;span style=&quot;&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;/span&gt;public void init() {&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;span style=&quot;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;    ...&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp; &lt;/span&gt;&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;&lt;span style=&quot;&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;/span&gt;endpoints.setClientDetailsService(clientDetailsService);&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;&lt;span style=&quot;&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;/span&gt;}&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;}&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="2140" y="5420" width="600" height="160" as="geometry" />
+        <mxCell id="8Ed1EF93PBzpXC4AOwfi-73" value="&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;ClientDetailsService Bean实例是怎么&lt;span style=&quot;background-color: initial;&quot;&gt;传递&lt;/span&gt;&lt;/font&gt;&lt;span style=&quot;font-size: 10px; color: rgb(0, 127, 255); background-color: initial;&quot;&gt;到&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;b style=&quot;font-size: 10px; color: rgb(0, 127, 255); background-color: initial;&quot;&gt;AuthorizationServerEndpointsConfigurer &lt;/b&gt;&lt;span style=&quot;font-size: 10px; color: rgb(0, 127, 255); background-color: initial;&quot;&gt;的？&lt;/span&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/font&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;自动配置阶段&amp;nbsp;AuthorizationServerEndpointsConfiguration&lt;br&gt;&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;public class &lt;b&gt;AuthorizationServerEndpointsConfiguration&lt;/b&gt; {&lt;br&gt;&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp; &amp;nbsp; private AuthorizationServerEndpointsConfigurer endpoints = new &lt;b&gt;AuthorizationServerEndpointsConfigurer&lt;/b&gt;();&lt;br&gt;&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp; &amp;nbsp;&amp;nbsp;&lt;/font&gt;&lt;/span&gt;@PostConstruct&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;&lt;span style=&quot;&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;/span&gt;public void init() {&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;span style=&quot;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;    ...&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp; &lt;/span&gt;&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;&lt;span style=&quot;&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;/span&gt;endpoints.setClientDetailsService(clientDetailsService);&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;&lt;span style=&quot;&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;/span&gt;}&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;}&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="2379.5" y="5420" width="600" height="160" as="geometry" />
         </mxCell>
-        <mxCell id="8Ed1EF93PBzpXC4AOwfi-78" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="8Ed1EF93PBzpXC4AOwfi-75" target="8Ed1EF93PBzpXC4AOwfi-77">
+        <mxCell id="8Ed1EF93PBzpXC4AOwfi-78" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="8Ed1EF93PBzpXC4AOwfi-75" target="8Ed1EF93PBzpXC4AOwfi-77" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="8Ed1EF93PBzpXC4AOwfi-75" value="&lt;div&gt;if (tokenServices != null)&amp;nbsp;&lt;/div&gt;&lt;div&gt;return tokenServices;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="1">
-          <mxGeometry x="2160" y="5600" width="200" height="60" as="geometry" />
+        <mxCell id="8Ed1EF93PBzpXC4AOwfi-75" value="&lt;div&gt;if (tokenServices != null)&amp;nbsp;&lt;/div&gt;&lt;div&gt;return tokenServices;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" parent="1" vertex="1">
+          <mxGeometry x="2399.5" y="5600" width="200" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="8Ed1EF93PBzpXC4AOwfi-82" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="8Ed1EF93PBzpXC4AOwfi-77" target="8Ed1EF93PBzpXC4AOwfi-81">
+        <mxCell id="8Ed1EF93PBzpXC4AOwfi-82" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="8Ed1EF93PBzpXC4AOwfi-77" target="8Ed1EF93PBzpXC4AOwfi-81" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="8Ed1EF93PBzpXC4AOwfi-77" value="&lt;div&gt;this.tokenServices = createDefaultTokenServices();&lt;/div&gt;&lt;div&gt;return tokenServices;&lt;span style=&quot;&quot;&gt;&lt;/span&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="1">
-          <mxGeometry x="2160" y="5680" width="200" height="60" as="geometry" />
+        <mxCell id="8Ed1EF93PBzpXC4AOwfi-77" value="&lt;div&gt;this.tokenServices = createDefaultTokenServices();&lt;/div&gt;&lt;div&gt;return tokenServices;&lt;span style=&quot;&quot;&gt;&lt;/span&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" parent="1" vertex="1">
+          <mxGeometry x="2399.5" y="5680" width="200" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="8Ed1EF93PBzpXC4AOwfi-83" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="8Ed1EF93PBzpXC4AOwfi-79" target="8Ed1EF93PBzpXC4AOwfi-75">
+        <mxCell id="8Ed1EF93PBzpXC4AOwfi-83" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="8Ed1EF93PBzpXC4AOwfi-79" target="8Ed1EF93PBzpXC4AOwfi-75" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="8Ed1EF93PBzpXC4AOwfi-79" value="AuthorizationServerEndpointsConfigurer#&lt;br&gt;&lt;b&gt;tokenServices&lt;/b&gt;(&lt;br&gt;AuthorizationServerTokenServices tokenServices)&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;可以通过此方法修改成自定义的AuthorizationServerTokenServices&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#f0a30a;fontColor=#000000;strokeColor=#BD7000;" vertex="1" parent="1">
-          <mxGeometry x="2380" y="5590" width="240" height="80" as="geometry" />
+        <mxCell id="8Ed1EF93PBzpXC4AOwfi-79" value="AuthorizationServerEndpointsConfigurer#&lt;br&gt;&lt;b&gt;tokenServices&lt;/b&gt;(&lt;br&gt;AuthorizationServerTokenServices tokenServices)&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;可以通过此方法修改成自定义的AuthorizationServerTokenServices&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#f0a30a;fontColor=#000000;strokeColor=#BD7000;" parent="1" vertex="1">
+          <mxGeometry x="2619.5" y="5590" width="240" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="8Ed1EF93PBzpXC4AOwfi-81" value="new &lt;b&gt;DefaultTokenServices&lt;/b&gt;();&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;默认的AuthorizationServerTokenServices实现&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="1">
-          <mxGeometry x="2400" y="5680" width="200" height="60" as="geometry" />
+        <mxCell id="8Ed1EF93PBzpXC4AOwfi-81" value="new &lt;b&gt;DefaultTokenServices&lt;/b&gt;();&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;默认的AuthorizationServerTokenServices实现&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" parent="1" vertex="1">
+          <mxGeometry x="2639.5" y="5680" width="200" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="8Ed1EF93PBzpXC4AOwfi-84" value="&lt;p style=&quot;margin: 4px 0px 0px; text-align: center;&quot;&gt;&lt;b&gt;DefaultTokenServices&lt;/b&gt;&lt;br style=&quot;font-size: 10px;&quot;&gt;&lt;/p&gt;&lt;hr style=&quot;font-size: 10px;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;private int refreshTokenValiditySeconds = 60 * 60 * 24 * 30; // default 30 days.&lt;/span&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private int accessTokenValiditySeconds = 60 * 60 * 12; // default 12 hours.&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private boolean supportRefreshToken = false;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private boolean reuseRefreshToken = true;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private TokenStore &lt;b&gt;tokenStore&lt;/b&gt;;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private ClientDetailsService &lt;b&gt;clientDetailsService&lt;/b&gt;;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private TokenEnhancer &lt;b&gt;accessTokenEnhancer&lt;/b&gt;;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private AuthenticationManager &lt;b&gt;authenticationManager&lt;/b&gt;;&lt;/p&gt;&lt;hr style=&quot;font-size: 10px;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 10px;&quot;&gt;&lt;br style=&quot;font-size: 10px;&quot;&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=10;fontFamily=Helvetica;html=1;" vertex="1" parent="1">
+        <mxCell id="8Ed1EF93PBzpXC4AOwfi-84" value="&lt;p style=&quot;margin: 4px 0px 0px; text-align: center;&quot;&gt;&lt;b&gt;DefaultTokenServices&lt;/b&gt;&lt;br style=&quot;font-size: 10px;&quot;&gt;&lt;/p&gt;&lt;hr style=&quot;font-size: 10px;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;private int refreshTokenValiditySeconds = 60 * 60 * 24 * 30; // default 30 days.&lt;/span&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private int accessTokenValiditySeconds = 60 * 60 * 12; // default 12 hours.&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private boolean supportRefreshToken = false;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private boolean reuseRefreshToken = true;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private TokenStore &lt;b&gt;tokenStore&lt;/b&gt;;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private ClientDetailsService &lt;b&gt;clientDetailsService&lt;/b&gt;;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private TokenEnhancer &lt;b&gt;accessTokenEnhancer&lt;/b&gt;;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private AuthenticationManager &lt;b&gt;authenticationManager&lt;/b&gt;;&lt;/p&gt;&lt;hr style=&quot;font-size: 10px;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 10px;&quot;&gt;&lt;br style=&quot;font-size: 10px;&quot;&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=10;fontFamily=Helvetica;html=1;" parent="1" vertex="1">
           <mxGeometry x="-800" y="3520" width="360" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="C9ku3EbWxnKkE-glZPp3-1" value="&lt;font color=&quot;#007fff&quot;&gt;&lt;span style=&quot;font-size: 10px;&quot;&gt;TokenStore默认实现是&lt;b&gt;InMemoryTokenStore&lt;/b&gt;&lt;/span&gt;&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="3079.5" y="6935" width="230" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="C9ku3EbWxnKkE-glZPp3-2" value="&lt;p style=&quot;margin: 4px 0px 0px; text-align: center;&quot;&gt;&lt;b&gt;TokenStore (I)&lt;/b&gt;&lt;br style=&quot;font-size: 10px;&quot;&gt;&lt;/p&gt;&lt;hr style=&quot;font-size: 10px;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;包括生成、读取（查找）、删除访问令牌和刷新令牌的各种方法定义&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 10px;&quot;&gt;&lt;br style=&quot;font-size: 10px;&quot;&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=10;fontFamily=Helvetica;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-580" y="3920" width="360" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="C9ku3EbWxnKkE-glZPp3-4" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;endArrow=block;endFill=1;dashed=1;" edge="1" parent="1" source="C9ku3EbWxnKkE-glZPp3-3" target="C9ku3EbWxnKkE-glZPp3-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="C9ku3EbWxnKkE-glZPp3-3" value="&lt;p style=&quot;margin: 4px 0px 0px; text-align: center;&quot;&gt;&lt;b&gt;InMemoryTokenStore&lt;/b&gt;&lt;br style=&quot;font-size: 10px;&quot;&gt;&lt;/p&gt;&lt;hr style=&quot;font-size: 10px;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;private static final int DEFAULT_FLUSH_INTERVAL = 1000;&lt;/span&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private final ConcurrentHashMap&amp;lt;String, OAuth2AccessToken&amp;gt; accessTokenStore = new ConcurrentHashMap&amp;lt;String, OAuth2AccessToken&amp;gt;();&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private final ConcurrentHashMap&amp;lt;String, OAuth2AccessToken&amp;gt; authenticationToAccessTokenStore =&amp;nbsp;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;new ConcurrentHashMap&amp;lt;String, OAuth2AccessToken&amp;gt;();&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private final ConcurrentHashMap&amp;lt;String, Collection&amp;lt;OAuth2AccessToken&amp;gt;&amp;gt; userNameToAccessTokenStore =&amp;nbsp;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;new ConcurrentHashMap&amp;lt;String, Collection&amp;lt;OAuth2AccessToken&amp;gt;&amp;gt;();&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private final ConcurrentHashMap&amp;lt;String, Collection&amp;lt;OAuth2AccessToken&amp;gt;&amp;gt; clientIdToAccessTokenStore =&amp;nbsp;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;new ConcurrentHashMap&amp;lt;String, Collection&amp;lt;OAuth2AccessToken&amp;gt;&amp;gt;();&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private final ConcurrentHashMap&amp;lt;String, OAuth2RefreshToken&amp;gt; refreshTokenStore = new ConcurrentHashMap&amp;lt;String, OAuth2RefreshToken&amp;gt;();&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private final ConcurrentHashMap&amp;lt;String, String&amp;gt; accessTokenToRefreshTokenStore = new ConcurrentHashMap&amp;lt;String, String&amp;gt;();&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private final ConcurrentHashMap&amp;lt;String, OAuth2Authentication&amp;gt; authenticationStore = new ConcurrentHashMap&amp;lt;String, OAuth2Authentication&amp;gt;();&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private final ConcurrentHashMap&amp;lt;String, OAuth2Authentication&amp;gt; refreshTokenAuthenticationStore = new ConcurrentHashMap&amp;lt;String, OAuth2Authentication&amp;gt;();&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private final ConcurrentHashMap&amp;lt;String, String&amp;gt; refreshTokenToAccessTokenStore = new ConcurrentHashMap&amp;lt;String, String&amp;gt;();&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private final DelayQueue&amp;lt;TokenExpiry&amp;gt; expiryQueue = new DelayQueue&amp;lt;TokenExpiry&amp;gt;();&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private final ConcurrentHashMap&amp;lt;String, TokenExpiry&amp;gt; expiryMap = new ConcurrentHashMap&amp;lt;String, TokenExpiry&amp;gt;();&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private int flushInterval = DEFAULT_FLUSH_INTERVAL;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private AuthenticationKeyGenerator authenticationKeyGenerator = new DefaultAuthenticationKeyGenerator();&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private AtomicInteger flushCounter = new AtomicInteger(0);&lt;/p&gt;&lt;hr style=&quot;font-size: 10px;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 10px;&quot;&gt;&lt;br style=&quot;font-size: 10px;&quot;&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=10;fontFamily=Helvetica;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-760" y="4040" width="720" height="280" as="geometry" />
+        </mxCell>
+        <mxCell id="C9ku3EbWxnKkE-glZPp3-11" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;dashed=1;endArrow=block;endFill=1;" edge="1" parent="1" source="C9ku3EbWxnKkE-glZPp3-5" target="C9ku3EbWxnKkE-glZPp3-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="C9ku3EbWxnKkE-glZPp3-5" value="&lt;p style=&quot;margin: 4px 0px 0px; text-align: center;&quot;&gt;&lt;b&gt;JwtTokenStore&lt;/b&gt;&lt;br style=&quot;font-size: 10px;&quot;&gt;&lt;/p&gt;&lt;hr style=&quot;font-size: 10px;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=10;fontFamily=Helvetica;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-1000" y="4040" width="200" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="C9ku3EbWxnKkE-glZPp3-12" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;dashed=1;endArrow=block;endFill=1;" edge="1" parent="1" source="C9ku3EbWxnKkE-glZPp3-6" target="C9ku3EbWxnKkE-glZPp3-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="C9ku3EbWxnKkE-glZPp3-6" value="&lt;p style=&quot;margin: 4px 0px 0px; text-align: center;&quot;&gt;&lt;b&gt;JdbcTokenStore&lt;/b&gt;&lt;br style=&quot;font-size: 10px;&quot;&gt;&lt;/p&gt;&lt;hr style=&quot;font-size: 10px;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=10;fontFamily=Helvetica;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-1240" y="4040" width="200" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="C9ku3EbWxnKkE-glZPp3-9" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;dashed=1;endArrow=block;endFill=1;" edge="1" parent="1" source="C9ku3EbWxnKkE-glZPp3-7" target="C9ku3EbWxnKkE-glZPp3-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="C9ku3EbWxnKkE-glZPp3-7" value="&lt;p style=&quot;margin: 4px 0px 0px; text-align: center;&quot;&gt;&lt;b&gt;RedisTokenStore&lt;/b&gt;&lt;br style=&quot;font-size: 10px;&quot;&gt;&lt;/p&gt;&lt;hr style=&quot;font-size: 10px;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=10;fontFamily=Helvetica;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-1480" y="4040" width="200" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="C9ku3EbWxnKkE-glZPp3-13" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;dashed=1;endArrow=block;endFill=1;" edge="1" parent="1" source="C9ku3EbWxnKkE-glZPp3-8" target="C9ku3EbWxnKkE-glZPp3-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="C9ku3EbWxnKkE-glZPp3-8" value="&lt;p style=&quot;margin: 4px 0px 0px; text-align: center;&quot;&gt;&lt;b&gt;JwkTokenStore&lt;/b&gt;&lt;br style=&quot;font-size: 10px;&quot;&gt;&lt;/p&gt;&lt;hr style=&quot;font-size: 10px;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=10;fontFamily=Helvetica;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-1720" y="4040" width="200" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="C9ku3EbWxnKkE-glZPp3-18" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="C9ku3EbWxnKkE-glZPp3-16" target="Jysl4UP8jRCQiMBeIVnq-31">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="C9ku3EbWxnKkE-glZPp3-16" value="/oauth/token" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="1199" y="5280" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="C9ku3EbWxnKkE-glZPp3-19" value="&lt;div&gt;/oauth/check_token&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="1200.5" y="5920" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="C9ku3EbWxnKkE-glZPp3-21" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="C9ku3EbWxnKkE-glZPp3-22" target="C9ku3EbWxnKkE-glZPp3-23">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="C9ku3EbWxnKkE-glZPp3-22" value="&lt;font style=&quot;&quot;&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp;&lt;b&gt;WebSecurityExpressionRoot&lt;/b&gt;#&lt;/div&gt;&lt;b style=&quot;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;isAuthenticated&lt;/font&gt;&lt;span style=&quot;font-size: 11px;&quot;&gt;()&lt;br&gt;&lt;/span&gt;&lt;/b&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;以&amp;nbsp;/oauth/check_token 为例，SpEL表达式实际执行的是此方法&lt;/font&gt;&lt;/div&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="2640" y="4620" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="C9ku3EbWxnKkE-glZPp3-23" value="&lt;font style=&quot;&quot;&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;div style=&quot;&quot;&gt;&lt;font size=&quot;1&quot;&gt;return !isAnonymous();&lt;/font&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;认证用户信息不是匿名用户信息&lt;/font&gt;&lt;/div&gt;&lt;/div&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="2880" y="4620" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="C9ku3EbWxnKkE-glZPp3-24" value="&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;此处可见 a&lt;b&gt;uthenticated&lt;/b&gt; 表达&lt;br&gt;&lt;b&gt;除匿名外已经认证&lt;/b&gt;&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="3095" y="4630" width="150" height="40" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
