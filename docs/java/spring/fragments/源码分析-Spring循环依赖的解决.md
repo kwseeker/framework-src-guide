@@ -1,5 +1,7 @@
 # 源码分析-Spring循环依赖的解决
 
+测试DEMO：SpringBoot-Labs/spring-basic/spring-beans/circular-dependency。
+
 主要依赖 `DefaultSingletonBeanRegistry` 3个容器类实现：
 
 + singletonObjects ConcurrentHashMap 保存已经完成初始化的单例Bean对象
@@ -15,9 +17,17 @@
 
 **简图**：
 
-以相互依赖的两个Bean A、B为例，这里不涉及代理对象；如果循环依赖中有代理对象通过单例工厂ObjectFactory获取Bean会复杂一些，这里面会额外有一级缓存 `earlyProxyReferences`。
+以相互依赖的两个Bean A、B为例。
+
+**不涉及AOP代理的流程**：
 
 ![](../imgs/spring-beans-circular-dependency.png)
+
+**带AOP代理的流程**：
+
+循环依赖中有代理对象通过单例工厂ObjectFactory获取Bean会复杂一点，这里面会额外有一级缓存 `earlyProxyReferences`。
+
+![](../imgs/spring-beans-circular-dependency-with-proxy.png)
 
 **源码流程图**：
 
