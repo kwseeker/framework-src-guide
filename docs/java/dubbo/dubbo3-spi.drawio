@@ -1,0 +1,473 @@
+<mxfile host="Electron" modified="2024-01-10T12:58:36.352Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.6.5 Chrome/114.0.5735.243 Electron/25.3.1 Safari/537.36" etag="LH1EjbPD2wDven1Yw6DC" version="21.6.5" type="device">
+  <diagram name="第 1 页" id="UC6zfxpho-fM6Mz8ni64">
+    <mxGraphModel dx="3088" dy="879" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="nFbYhWVqmTEnoM216xpz-1" value="&lt;h1 style=&quot;font-size: 16px;&quot;&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;Dubbo SPI 工作原理 &lt;/font&gt;&lt;font style=&quot;font-size: 16px; font-weight: normal;&quot;&gt;（3.2.9）&lt;/font&gt;&lt;/h1&gt;&lt;p style=&quot;font-size: 10px;&quot;&gt;SPI机制在框架中应用还是非常常见的，这里打算详细研究一下Dubbo SPI实现(怎么封装的JDK SPI)。&lt;br&gt;对比一下JDK SPI 还 Dubbo SPI 的优缺点。&lt;br&gt;源码位于：dubbo-common/src/main/java/org/apache/dubbo/common/extension, （代码量3K行）官方还提供了丰富的单元测试。&lt;br&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;可以从官方单元测试 ExtensionDirectorTest#testInheritanceAndScope()&amp;nbsp; 入手；&lt;br&gt;以 Dubbo SPI 加载 ProxyFactory 为例。&lt;/span&gt;&lt;br&gt;&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="40" y="10" width="580" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="nFbYhWVqmTEnoM216xpz-15" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="nFbYhWVqmTEnoM216xpz-2" target="nFbYhWVqmTEnoM216xpz-14" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="nFbYhWVqmTEnoM216xpz-2" value="ExtensionDirectorTest#&lt;br style=&quot;font-size: 10px;&quot;&gt;testInheritanceAndScope()" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" parent="1" vertex="1">
+          <mxGeometry x="40" y="120" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="nFbYhWVqmTEnoM216xpz-3" value="&lt;div style=&quot;text-align: center;&quot;&gt;&lt;b&gt;ExtensionAccessor （I）&lt;/b&gt;&lt;br&gt;&lt;/div&gt;&lt;hr style=&quot;font-size: 10px;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;ExtensionDirector getExtensionDirector();&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&amp;lt;T&amp;gt; ExtensionLoader&amp;lt;T&amp;gt; getExtensionLoader(Class&amp;lt;T&amp;gt; type);&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&amp;lt;T&amp;gt; T getExtension(Class&amp;lt;T&amp;gt; type, String name);&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//获取自适应拓展类型&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&amp;lt;T&amp;gt; T getAdaptiveExtension(Class&amp;lt;T&amp;gt; type);&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&amp;lt;T&amp;gt; T getDefaultExtension(Class&amp;lt;T&amp;gt; type)&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=10;fontFamily=Helvetica;html=1;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="-480" y="480" width="440" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="nFbYhWVqmTEnoM216xpz-5" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;endArrow=block;endFill=0;dashed=1;" parent="1" source="nFbYhWVqmTEnoM216xpz-4" target="nFbYhWVqmTEnoM216xpz-3" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="nFbYhWVqmTEnoM216xpz-7" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;endArrow=diamondThin;endFill=1;" parent="1" source="nFbYhWVqmTEnoM216xpz-4" target="nFbYhWVqmTEnoM216xpz-6" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="nFbYhWVqmTEnoM216xpz-4" value="&lt;div style=&quot;text-align: center;&quot;&gt;&lt;b&gt;ExtensionDirector&lt;/b&gt;&lt;br&gt;&lt;/div&gt;&lt;hr style=&quot;font-size: 10px;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 10px;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;ExtensionLoader的管理器&lt;/span&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//拓展类 -&amp;gt; ExtensionLoader, ExtensionLoader缓存&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private final ConcurrentMap&amp;lt;Class&amp;lt;?&amp;gt;, ExtensionLoader&amp;lt;?&amp;gt;&amp;gt; &lt;b&gt;extensionLoadersMap&lt;/b&gt; = new ConcurrentHashMap&amp;lt;&amp;gt;(64);&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//拓展类 -&amp;gt; ExtensionScope&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private final ConcurrentMap&amp;lt;Class&amp;lt;?&amp;gt;, ExtensionScope&amp;gt; &lt;b&gt;extensionScopeMap&lt;/b&gt; = new ConcurrentHashMap&amp;lt;&amp;gt;(64);&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//父管理器，&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private final ExtensionDirector &lt;b&gt;parent&lt;/b&gt;;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//拓展分享范围, FRAMEWORK APPLICATION MODULE SELF&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private final ExtensionScope &lt;b&gt;scope&lt;/b&gt;;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//拓展后置处理器，for ???&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private final List&amp;lt;ExtensionPostProcessor&amp;gt; &lt;b&gt;extensionPostProcessors&lt;/b&gt; = new ArrayList&amp;lt;&amp;gt;();&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//模型对象，做什么用的？&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private final ScopeModel &lt;b&gt;scopeModel&lt;/b&gt;;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private final AtomicBoolean destroyed = new AtomicBoolean();&lt;/p&gt;&lt;hr style=&quot;font-size: 10px;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 10px;&quot;&gt;&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=10;fontFamily=Helvetica;html=1;whiteSpace=wrap;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxGeometry x="-480" y="640" width="440" height="280" as="geometry" />
+        </mxCell>
+        <mxCell id="334U5BKtB8SHjy518kIA-117" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;endArrow=diamondThin;endFill=1;" edge="1" parent="1" source="nFbYhWVqmTEnoM216xpz-6" target="334U5BKtB8SHjy518kIA-100">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="nFbYhWVqmTEnoM216xpz-6" value="&lt;div style=&quot;text-align: center;&quot;&gt;&lt;b&gt;ExtensionLoader&lt;/b&gt;&lt;br&gt;&lt;/div&gt;&lt;hr style=&quot;font-size: 10px;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 10px;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;拓展类加载器，与拓展接口类一一对应&lt;/span&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;private static final Pattern NAME_SEPARATOR = Pattern.compile(&quot;\\s*[,]+\\s*&quot;);&lt;/span&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private static final String SPECIAL_SPI_PROPERTIES = &quot;special_spi.properties&quot;;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//已加载的类型（type的子类）和实例&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private final ConcurrentMap&amp;lt;Class&amp;lt;?&amp;gt;, Object&amp;gt; &lt;b&gt;extensionInstances&lt;/b&gt; = new ConcurrentHashMap&amp;lt;&amp;gt;(64);&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//加载的目标类型&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private final Class&amp;lt;?&amp;gt; &lt;b&gt;type&lt;/b&gt;;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//自适应的ExtensionInjector实例，用于给type类实例属性注入值&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private final ExtensionInjector &lt;b&gt;injector&lt;/b&gt;;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private final ConcurrentMap&amp;lt;Class&amp;lt;?&amp;gt;, String&amp;gt; &lt;b&gt;cachedNames&lt;/b&gt; = new ConcurrentHashMap&amp;lt;&amp;gt;();&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//加载的类型（除了@Adaptive 和 wrapper class, 这两种有专门的缓存位置 cachedAdaptiveClass cachedWrapperClasses&lt;/font&gt;&lt;font color=&quot;#007fff&quot;&gt;）&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private final Holder&amp;lt;Map&amp;lt;String, Class&amp;lt;?&amp;gt;&amp;gt;&amp;gt; &lt;b&gt;cachedClasses&lt;/b&gt; = new Holder&amp;lt;&amp;gt;();&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private final Map&amp;lt;String, Object&amp;gt; &lt;b&gt;cachedActivates&lt;/b&gt; = Collections.synchronizedMap(new LinkedHashMap&amp;lt;&amp;gt;());&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private final Map&amp;lt;String, Set&amp;lt;String&amp;gt;&amp;gt; &lt;b&gt;cachedActivateGroups&lt;/b&gt; = Collections.synchronizedMap(new LinkedHashMap&amp;lt;&amp;gt;());&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private final Map&amp;lt;String, String[][]&amp;gt; &lt;b&gt;cachedActivateValues&lt;/b&gt; = Collections.synchronizedMap(new LinkedHashMap&amp;lt;&amp;gt;());&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//加载的拓展类的实例Holder&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private final ConcurrentMap&amp;lt;String, Holder&amp;lt;Object&amp;gt;&amp;gt; &lt;b&gt;cachedInstances&lt;/b&gt; = new ConcurrentHashMap&amp;lt;&amp;gt;();&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//缓存已加载的自适应的拓展类的实例&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private final Holder&amp;lt;Object&amp;gt; &lt;b&gt;cachedAdaptiveInstance&lt;/b&gt; = new Holder&amp;lt;&amp;gt;();&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//缓存已加载的自适应拓展类, 这里可以看到每种接口类型的自适应拓展类只有一个&lt;/font&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private volatile Class&amp;lt;?&amp;gt; &lt;b&gt;cachedAdaptiveClass&lt;/b&gt; = null;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private String &lt;b&gt;cachedDefaultName&lt;/b&gt;;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private volatile Throwable createAdaptiveInstanceError;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//加载的 wrapper class 类型&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private Set&amp;lt;Class&amp;lt;?&amp;gt;&amp;gt; &lt;b&gt;cachedWrapperClasses&lt;/b&gt;;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private final Map&amp;lt;String, IllegalStateException&amp;gt; exceptions = new ConcurrentHashMap&amp;lt;&amp;gt;();&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//加载策略列表，加载优先级从高到底依次是：DubboInternalLoadingStrategy DubboExternalLoadingStrategy&amp;nbsp;&lt;br&gt;DubboLoadingStrategy ServicesLoadingStrategy&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private static volatile LoadingStrategy[] &lt;b&gt;strategies&lt;/b&gt; = loadLoadingStrategies();&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private static final Map&amp;lt;String, String&amp;gt; &lt;b&gt;specialSPILoadingStrategyMap&lt;/b&gt; = getSpecialSPILoadingStrategyMap();&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private static SoftReference&amp;lt;Map&amp;lt;java.net.URL, List&amp;lt;String&amp;gt;&amp;gt;&amp;gt; &lt;b&gt;urlListMapCache&lt;/b&gt; =&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; new SoftReference&amp;lt;&amp;gt;(new ConcurrentHashMap&amp;lt;&amp;gt;());&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private static final List&amp;lt;String&amp;gt; &lt;b&gt;ignoredInjectMethodsDesc&lt;/b&gt; = getIgnoredInjectMethodsDesc();&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//使用SPI时产生的无法接受的异常&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private final Set&amp;lt;String&amp;gt; &lt;b&gt;unacceptableExceptions&lt;/b&gt; = new ConcurrentHashSet&amp;lt;&amp;gt;();&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//所属的管理器&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private final ExtensionDirector &lt;b&gt;extensionDirector&lt;/b&gt;;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//指向所属的管理器的拓展后置处理器&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private final List&amp;lt;ExtensionPostProcessor&amp;gt; &lt;b&gt;extensionPostProcessors&lt;/b&gt;;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private InstantiationStrategy &lt;b&gt;instantiationStrategy&lt;/b&gt;;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private final ActivateComparator &lt;b&gt;activateComparator&lt;/b&gt;;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private final ScopeModel &lt;b&gt;scopeModel&lt;/b&gt;;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private final AtomicBoolean destroyed = new AtomicBoolean();&lt;/p&gt;&lt;hr style=&quot;font-size: 10px;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 10px;&quot;&gt;&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=10;fontFamily=Helvetica;html=1;whiteSpace=wrap;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxGeometry x="-1080" y="640" width="560" height="680" as="geometry" />
+        </mxCell>
+        <mxCell id="nFbYhWVqmTEnoM216xpz-8" value="&lt;div style=&quot;text-align: center; font-size: 9px;&quot;&gt;&lt;b style=&quot;font-size: 9px;&quot;&gt;ExtensionScope (E)&lt;/b&gt;&lt;br style=&quot;font-size: 9px;&quot;&gt;&lt;/div&gt;&lt;hr style=&quot;font-size: 9px;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 9px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 9px;&quot;&gt;//表示拓展实例（ExtensionLoader加载的实例）用在framework,所有applications 和 modules 共享&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 9px;&quot;&gt;FRAMEWORK,&lt;br style=&quot;font-size: 9px;&quot;&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 9px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 9px;&quot;&gt;//表示拓展实例用于某个应用，应用下所有modules共享&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 9px;&quot;&gt;APPLICATION,&lt;br style=&quot;font-size: 9px;&quot;&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 9px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 9px;&quot;&gt;//表示拓展实例用于某个模块&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 9px;&quot;&gt;MODULE,&lt;br style=&quot;font-size: 9px;&quot;&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 9px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 9px;&quot;&gt;//用于特殊SPI拓展(没有共享范围层级)，如ExtensionInjector&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 9px;&quot;&gt;SELF&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=9;fontFamily=Helvetica;html=1;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="-480" y="320" width="280" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="nFbYhWVqmTEnoM216xpz-9" value="&lt;div style=&quot;text-align: center;&quot;&gt;&lt;b&gt;ExtensionPostProcessor&lt;/b&gt;&lt;br&gt;&lt;/div&gt;&lt;hr style=&quot;font-size: 10px;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 10px;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;hr style=&quot;font-size: 10px;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 10px;&quot;&gt;&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=10;fontFamily=Helvetica;html=1;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="-480" y="960" width="440" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="nFbYhWVqmTEnoM216xpz-10" value="&lt;div style=&quot;text-align: center;&quot;&gt;&lt;b&gt;ExtensionInjector (I)&lt;/b&gt;&lt;br&gt;&lt;/div&gt;&lt;hr style=&quot;font-size: 10px;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;b&gt;拓展类属性注入器&lt;/b&gt;，类上注释有：@SPI(scope = ExtensionScope.SELF)&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&amp;lt;T&amp;gt; T getInstance(final Class&amp;lt;T&amp;gt; type, final String name);&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;default void setExtensionAccessor(final &lt;b&gt;ExtensionAccessor&lt;/b&gt; extensionAccessor) {}&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=10;fontFamily=Helvetica;html=1;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="-1200" y="320" width="401" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="nFbYhWVqmTEnoM216xpz-11" value="&lt;div style=&quot;text-align: center;&quot;&gt;&lt;b&gt;LoadingStrategy (I)&lt;/b&gt;&lt;br&gt;&lt;/div&gt;&lt;hr style=&quot;font-size: 10px;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 10px;&quot;&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 10px;&quot;&gt;加载拓展类的策略&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=10;fontFamily=Helvetica;html=1;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="-1500" y="640" width="240" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="nFbYhWVqmTEnoM216xpz-12" value="&lt;div style=&quot;text-align: center;&quot;&gt;&lt;b&gt;InstantiationStrategy&lt;/b&gt;&lt;br&gt;&lt;/div&gt;&lt;hr style=&quot;font-size: 10px;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private final ScopeModelAccessor scopeModelAccessor;&lt;br&gt;&lt;/p&gt;&lt;hr style=&quot;font-size: 10px;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;public &amp;lt;T&amp;gt; T instantiate(Class&amp;lt;T&amp;gt; type) throws ReflectiveOperationException;&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=10;fontFamily=Helvetica;html=1;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="-1560" y="1100" width="360" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="nFbYhWVqmTEnoM216xpz-13" value="&lt;div style=&quot;text-align: center;&quot;&gt;&lt;b&gt;ActivateComparator&lt;/b&gt;&lt;br&gt;&lt;/div&gt;&lt;hr style=&quot;font-size: 10px;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private final List&amp;lt;ExtensionDirector&amp;gt; extensionDirectors;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private final Map&amp;lt;Class&amp;lt;?&amp;gt;, ActivateInfo&amp;gt; activateInfoMap = new ConcurrentHashMap&amp;lt;&amp;gt;();&lt;/p&gt;&lt;hr style=&quot;font-size: 10px;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 10px;&quot;&gt;&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=10;fontFamily=Helvetica;html=1;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="-1600" y="940" width="440" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="nFbYhWVqmTEnoM216xpz-18" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="nFbYhWVqmTEnoM216xpz-14" target="nFbYhWVqmTEnoM216xpz-17" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="nFbYhWVqmTEnoM216xpz-14" value="&lt;div&gt;ExtensionDirector fwExtensionDirector =&lt;/div&gt;&lt;div&gt;new ExtensionDirector(null, ExtensionScope.FRAMEWORK, FrameworkModel.defaultModel());&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" parent="1" vertex="1">
+          <mxGeometry x="280" y="120" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="nFbYhWVqmTEnoM216xpz-20" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="nFbYhWVqmTEnoM216xpz-17" target="nFbYhWVqmTEnoM216xpz-19" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="nFbYhWVqmTEnoM216xpz-17" value="&lt;div&gt;ExtensionDirector appExtensionDirector =&lt;/div&gt;&lt;div&gt;new ExtensionDirector(fwExtensionDirector, ExtensionScope.APPLICATION, ApplicationModel.defaultModel());&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" parent="1" vertex="1">
+          <mxGeometry x="280" y="200" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="nFbYhWVqmTEnoM216xpz-24" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="nFbYhWVqmTEnoM216xpz-19" target="nFbYhWVqmTEnoM216xpz-23" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="nFbYhWVqmTEnoM216xpz-19" value="&lt;div style=&quot;font-size: 9px;&quot;&gt;ExtensionDirector moduleExtensionDirector = new ExtensionDirector(&lt;span style=&quot;background-color: initial; font-size: 9px;&quot;&gt;appExtensionDirector, ExtensionScope.MODULE,&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;ApplicationModel.defaultModel()&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;.getDefaultModule());&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=9;" parent="1" vertex="1">
+          <mxGeometry x="280" y="280" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="nFbYhWVqmTEnoM216xpz-26" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="nFbYhWVqmTEnoM216xpz-23" target="nFbYhWVqmTEnoM216xpz-25" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="nFbYhWVqmTEnoM216xpz-23" value="&lt;div style=&quot;font-size: 9px;&quot;&gt;FooFrameworkService testFwSrvFromModule =&lt;span style=&quot;background-color: initial; font-size: 9px;&quot;&gt;&amp;nbsp;moduleExtensionDirector.getExtension(&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;span style=&quot;background-color: initial; font-size: 9px;&quot;&gt;FooFrameworkService.class, testFwSrvName);&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;span style=&quot;background-color: initial; font-size: 9px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;演示使用MODULE scope的管理器加载&amp;nbsp;&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;&lt;font color=&quot;#007fff&quot;&gt;FRAMEWORK scope 的类实例&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=9;" parent="1" vertex="1">
+          <mxGeometry x="280" y="360" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="nFbYhWVqmTEnoM216xpz-28" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="nFbYhWVqmTEnoM216xpz-25" target="nFbYhWVqmTEnoM216xpz-27" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="nFbYhWVqmTEnoM216xpz-30" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="nFbYhWVqmTEnoM216xpz-25" target="nFbYhWVqmTEnoM216xpz-29" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="nFbYhWVqmTEnoM216xpz-25" value="ExtensionLoader&amp;lt;T&amp;gt; extensionLoader = getExtensionLoader(type);" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="520" y="360" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="334U5BKtB8SHjy518kIA-119" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="nFbYhWVqmTEnoM216xpz-27" target="334U5BKtB8SHjy518kIA-118">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="nFbYhWVqmTEnoM216xpz-27" value="return extensionLoader != null ? extensionLoader.&lt;b&gt;getExtension&lt;/b&gt;(name) : null;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" parent="1" vertex="1">
+          <mxGeometry x="520" y="1320" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="334U5BKtB8SHjy518kIA-2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="nFbYhWVqmTEnoM216xpz-29" target="334U5BKtB8SHjy518kIA-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="nFbYhWVqmTEnoM216xpz-29" value="ExtensionLoader&amp;lt;T&amp;gt; loader = (ExtensionLoader&amp;lt;T&amp;gt;) extensionLoadersMap.get(type);&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;可能已经创建过加载这个类的ExtensionLoader先从缓存中查&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" parent="1" vertex="1">
+          <mxGeometry x="760" y="360" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="334U5BKtB8SHjy518kIA-22" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="334U5BKtB8SHjy518kIA-1" target="334U5BKtB8SHjy518kIA-9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="334U5BKtB8SHjy518kIA-1" value="ExtensionScope scope = extensionScopeMap.get(type);&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;同样先从缓存中查这个类共享范围&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="760" y="440" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="334U5BKtB8SHjy518kIA-3" value="解析类上&amp;nbsp;&lt;b&gt;@SPI&amp;nbsp;&lt;/b&gt;注解 scope 字段并缓存" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="520" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="334U5BKtB8SHjy518kIA-28" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="334U5BKtB8SHjy518kIA-5" target="334U5BKtB8SHjy518kIA-27">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="334U5BKtB8SHjy518kIA-5" value="loader = createExtensionLoader0(type);" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="600" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="334U5BKtB8SHjy518kIA-11" value="Y" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="334U5BKtB8SHjy518kIA-9" target="334U5BKtB8SHjy518kIA-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="334U5BKtB8SHjy518kIA-13" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="334U5BKtB8SHjy518kIA-9" target="334U5BKtB8SHjy518kIA-12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="334U5BKtB8SHjy518kIA-9" value="scope == null" style="rhombus;whiteSpace=wrap;html=1;rounded=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="780" y="520" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="334U5BKtB8SHjy518kIA-14" value="Y" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="334U5BKtB8SHjy518kIA-12" target="334U5BKtB8SHjy518kIA-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="334U5BKtB8SHjy518kIA-18" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="334U5BKtB8SHjy518kIA-12" target="334U5BKtB8SHjy518kIA-17">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="334U5BKtB8SHjy518kIA-12" value="loader == null &amp;amp;&amp;amp; scope == ExtensionScope.SELF" style="rhombus;whiteSpace=wrap;html=1;rounded=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="780" y="600" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="334U5BKtB8SHjy518kIA-21" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.75;entryDx=0;entryDy=0;" edge="1" parent="1" source="334U5BKtB8SHjy518kIA-15" target="nFbYhWVqmTEnoM216xpz-29">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1310" y="560" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="1220" y="710" />
+              <mxPoint x="1220" y="430" />
+              <mxPoint x="740" y="430" />
+              <mxPoint x="740" y="405" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="334U5BKtB8SHjy518kIA-24" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="334U5BKtB8SHjy518kIA-15" target="334U5BKtB8SHjy518kIA-23">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="334U5BKtB8SHjy518kIA-15" value="loader = this.&lt;b&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;parent&lt;/font&gt;&lt;/b&gt;.getExtensionLoader(type);&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;如果父管理器不为空，通过父管理器获取ExtensionLoader&lt;/font&gt;" style="whiteSpace=wrap;html=1;fontSize=10;rounded=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="680" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="334U5BKtB8SHjy518kIA-19" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="334U5BKtB8SHjy518kIA-17" target="334U5BKtB8SHjy518kIA-15">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="334U5BKtB8SHjy518kIA-20" value="Y" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="334U5BKtB8SHjy518kIA-19">
+          <mxGeometry x="-0.0667" y="-3" relative="1" as="geometry">
+            <mxPoint y="-3" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="334U5BKtB8SHjy518kIA-17" value="loader == null" style="rhombus;whiteSpace=wrap;html=1;rounded=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="780" y="680" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="334U5BKtB8SHjy518kIA-26" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="334U5BKtB8SHjy518kIA-23" target="334U5BKtB8SHjy518kIA-25">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="334U5BKtB8SHjy518kIA-23" value="loader = createExtensionLoader(type);&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;如果没有父管理器，直接创建&lt;/font&gt;" style="whiteSpace=wrap;html=1;fontSize=10;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="760" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="334U5BKtB8SHjy518kIA-75" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.75;entryDx=0;entryDy=0;" edge="1" parent="1" source="334U5BKtB8SHjy518kIA-25" target="334U5BKtB8SHjy518kIA-27">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1450" y="790" />
+              <mxPoint x="1450" y="750" />
+              <mxPoint x="1230" y="750" />
+              <mxPoint x="1230" y="645" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="334U5BKtB8SHjy518kIA-25" value="loader = createExtensionLoader0(type);&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;需要类型的Scope范围和ExtensionLoader的Scope相同，才会调用createExtensionLoader0() 创建&lt;/font&gt;" style="whiteSpace=wrap;html=1;fontSize=10;rounded=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="1241" y="760" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="334U5BKtB8SHjy518kIA-31" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="334U5BKtB8SHjy518kIA-27" target="334U5BKtB8SHjy518kIA-30">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="334U5BKtB8SHjy518kIA-87" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="334U5BKtB8SHjy518kIA-27" target="334U5BKtB8SHjy518kIA-34">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="334U5BKtB8SHjy518kIA-27" value="&lt;b&gt;extensionLoadersMap&lt;/b&gt;.putIfAbsent(type, &lt;br&gt;new &lt;b&gt;ExtensionLoader&lt;/b&gt;&amp;lt;T&amp;gt;(type, this, scopeModel));&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;为type类型创建并缓存拓展类加载器&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;align=center;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="1241" y="600" width="199" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="334U5BKtB8SHjy518kIA-30" value="&lt;div&gt;loader = (ExtensionLoader&amp;lt;T&amp;gt;) extensionLoadersMap.get(type);&lt;/div&gt;&lt;div&gt;return loader;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;align=center;" vertex="1" parent="1">
+          <mxGeometry x="1241" y="680" width="199" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="334U5BKtB8SHjy518kIA-45" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="334U5BKtB8SHjy518kIA-34" target="334U5BKtB8SHjy518kIA-40">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="334U5BKtB8SHjy518kIA-34" value="&lt;div style=&quot;font-size: 9px;&quot;&gt;this.&lt;b&gt;type&lt;/b&gt; = type;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;this.&lt;b&gt;extensionDirector&lt;/b&gt; = extensionDirector;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;this.&lt;b&gt;extensionPostProcessors&lt;/b&gt; =&amp;nbsp;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;extensionDirector.getExtensionPostProcessors();&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=9;align=left;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="1480" y="600" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="334U5BKtB8SHjy518kIA-38" value="&lt;b&gt;ExtensionLoader&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="1521" y="570" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="334U5BKtB8SHjy518kIA-39" value="&lt;b&gt;ExtensionDirector&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="555" y="330" width="130" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="334U5BKtB8SHjy518kIA-42" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="334U5BKtB8SHjy518kIA-40" target="334U5BKtB8SHjy518kIA-41">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="334U5BKtB8SHjy518kIA-49" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="334U5BKtB8SHjy518kIA-40" target="334U5BKtB8SHjy518kIA-48">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="334U5BKtB8SHjy518kIA-40" value="&lt;div&gt;initInstantiationStrategy();&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;align=center;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="1480" y="680" width="199" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="334U5BKtB8SHjy518kIA-44" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="334U5BKtB8SHjy518kIA-41" target="334U5BKtB8SHjy518kIA-43">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="334U5BKtB8SHjy518kIA-66" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="334U5BKtB8SHjy518kIA-41" target="334U5BKtB8SHjy518kIA-65">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1700" y="790" />
+              <mxPoint x="1700" y="920" />
+              <mxPoint x="740" y="920" />
+              <mxPoint x="740" y="970" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="334U5BKtB8SHjy518kIA-41" value="&lt;div style=&quot;font-size: 9px;&quot;&gt;this.&lt;b&gt;injector&lt;/b&gt; = (type == ExtensionInjector.class&amp;nbsp;&lt;span style=&quot;background-color: initial; font-size: 9px;&quot;&gt;? null&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;background-color: initial; font-size: 9px;&quot;&gt;: extensionDirector.getExtensionLoader(&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;span style=&quot;background-color: initial; font-size: 9px;&quot;&gt;&lt;b&gt;ExtensionInjector&lt;/b&gt;.class).getAdaptiveExtension());&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;加载ExtensionInjector自适应拓展类并实例化&lt;/font&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=9;align=center;" vertex="1" parent="1">
+          <mxGeometry x="1480" y="760" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="334U5BKtB8SHjy518kIA-43" value="&lt;div&gt;this.&lt;b&gt;activateComparator&lt;/b&gt; = new ActivateComparator(extensionDirector);&lt;/div&gt;&lt;div&gt;this.&lt;b&gt;scopeModel&lt;/b&gt; = scopeModel;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;align=center;" vertex="1" parent="1">
+          <mxGeometry x="1480" y="840" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="334U5BKtB8SHjy518kIA-48" value="从后置处理器列表中过滤ScopeModelAccessor类型，并用它们创建InstantiationStrategy，返回第一个；&lt;br&gt;否则直接 new InstantiationStrategy()" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;align=center;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="1721" y="680" width="199" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="334U5BKtB8SHjy518kIA-50" value="这里显示获取ExtensionInjector自适应拓展类实例，&lt;br style=&quot;font-size: 10px;&quot;&gt;什么是自适应拓展类？看源码有3种格式：&lt;br style=&quot;font-size: 10px;&quot;&gt;1 @Adaptive注释的类&lt;br style=&quot;font-size: 10px;&quot;&gt;2 classLoader.loadClass(type.getName() + &quot;$Adaptive&quot;)&lt;br style=&quot;font-size: 10px;&quot;&gt;3 使用代码生成器（解析@Adaptive注释的方法）和Dubbo编译器编译生成&lt;br&gt;获取自适应拓展类的流程：&lt;br&gt;1 按LoadingStrategy加载自适应拓展类并缓存&lt;br&gt;2 按InstantiationStrategy实例化并缓存&lt;br&gt;&lt;br&gt;比如：&lt;br&gt;META-INF/dubbo/internal/org.apache.dubbo.common.extension.ExtensionInjector 文件下列举了3个实现类&lt;br&gt;&lt;div&gt;adaptive=org.apache.dubbo.common.extension.inject.AdaptiveExtensionInjector&lt;/div&gt;&lt;div&gt;spi=org.apache.dubbo.common.extension.inject.SpiExtensionInjector&lt;/div&gt;&lt;div&gt;scopeBean=org.apache.dubbo.common.beans.ScopeBeanExtensionInjector&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=top;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;fontColor=#007FFF;" vertex="1" parent="1">
+          <mxGeometry x="1721" y="760" width="490" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="334U5BKtB8SHjy518kIA-55" value="1. 自适应拓展类的作用？" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="680" y="10" width="400" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="334U5BKtB8SHjy518kIA-60" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;endArrow=block;endFill=0;dashed=1;" edge="1" parent="1" source="334U5BKtB8SHjy518kIA-56" target="nFbYhWVqmTEnoM216xpz-11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="334U5BKtB8SHjy518kIA-56" value="&lt;div style=&quot;text-align: center;&quot;&gt;&lt;b&gt;DubboExternalLoadingStrategy&lt;/b&gt;&lt;br&gt;&lt;/div&gt;&lt;hr style=&quot;font-size: 10px;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 10px;&quot;&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;加载 META-INF/dubbo/external/ 下文件列举的拓展类&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;优先级：MAX_PRIORITY + 1&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=10;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="-1360" y="720" width="240" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="334U5BKtB8SHjy518kIA-61" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;endArrow=block;endFill=0;dashed=1;" edge="1" parent="1" source="334U5BKtB8SHjy518kIA-57">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="-1380" y="680" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="334U5BKtB8SHjy518kIA-57" value="&lt;div style=&quot;text-align: center;&quot;&gt;&lt;b&gt;DubboInternalLoadingStrategy&lt;/b&gt;&lt;br&gt;&lt;/div&gt;&lt;hr style=&quot;font-size: 10px;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 10px;&quot;&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;加载 META-INF/dubbo/internal/ 下的拓展类&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;优先级：MAX_PRIORITY&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=10;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="-1640" y="720" width="240" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="334U5BKtB8SHjy518kIA-64" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;endArrow=block;endFill=0;dashed=1;" edge="1" parent="1" source="334U5BKtB8SHjy518kIA-58" target="nFbYhWVqmTEnoM216xpz-11">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="-1520" y="810" />
+              <mxPoint x="-1380" y="810" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="334U5BKtB8SHjy518kIA-58" value="&lt;div style=&quot;text-align: center;&quot;&gt;&lt;b&gt;DubboLoadingStrategy&lt;/b&gt;&lt;br&gt;&lt;/div&gt;&lt;hr style=&quot;font-size: 10px;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 10px;&quot;&gt;加载&amp;nbsp;META-INF/dubbo/ 下的拓展类&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;优先级：NORMAL_PRIORITY&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=10;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="-1640" y="820" width="240" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="334U5BKtB8SHjy518kIA-63" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;endArrow=block;endFill=0;dashed=1;" edge="1" parent="1" source="334U5BKtB8SHjy518kIA-59" target="nFbYhWVqmTEnoM216xpz-11">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="-1240" y="810" />
+              <mxPoint x="-1380" y="810" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="334U5BKtB8SHjy518kIA-59" value="&lt;div style=&quot;text-align: center;&quot;&gt;&lt;b&gt;ServicesLoadingStrategy&lt;/b&gt;&lt;br&gt;&lt;/div&gt;&lt;hr style=&quot;font-size: 10px;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 10px;&quot;&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;加载 META-INF/services/ 下的拓展类&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;优先级：MIN_PRIORITY&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;这个类是为了加载其他三个LoadingStrategy实现类&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=10;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="-1360" y="820" width="240" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="334U5BKtB8SHjy518kIA-68" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="334U5BKtB8SHjy518kIA-65" target="334U5BKtB8SHjy518kIA-67">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="334U5BKtB8SHjy518kIA-65" value="instance = &lt;b&gt;createAdaptiveExtension&lt;/b&gt;();&lt;br&gt;cachedAdaptiveInstance.set(instance);&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;&amp;nbsp;先从缓存 cachedAdaptiveInstance 中读取，没有则创建，最后再缓存一下&lt;br&gt;以 ExtensionInjector 为例&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="760" y="940" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="334U5BKtB8SHjy518kIA-70" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="334U5BKtB8SHjy518kIA-67" target="334U5BKtB8SHjy518kIA-69">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="334U5BKtB8SHjy518kIA-72" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="334U5BKtB8SHjy518kIA-67" target="334U5BKtB8SHjy518kIA-71">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="334U5BKtB8SHjy518kIA-67" value="T instance = (T) &lt;b&gt;getAdaptiveExtensionClass&lt;/b&gt;()&lt;br&gt;.&lt;b&gt;newInstance&lt;/b&gt;();&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;先加载自适应拓展类，然后实例化&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="940" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="334U5BKtB8SHjy518kIA-69" value="&lt;div&gt;instance = postProcessBeforeInitialization(&lt;/div&gt;&lt;div&gt;&amp;nbsp; instance, null);&lt;/div&gt;&lt;div&gt;&lt;b&gt;injectExtension&lt;/b&gt;(instance);&lt;/div&gt;&lt;div&gt;instance = postProcessAfterInitialization(&lt;/div&gt;&lt;div&gt;&amp;nbsp; instance, null);&lt;/div&gt;&lt;div&gt;&lt;b&gt;initExtension&lt;/b&gt;(instance);&lt;font color=&quot;#007fff&quot;&gt;//lifecycle.initialize();&lt;/font&gt;&lt;/div&gt;&lt;div&gt;return instance;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;初始化前处理、属性注入、初始化后处理、调用Lifecycle初始化方法&lt;/font&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;align=left;arcSize=5;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="1180" width="200" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="334U5BKtB8SHjy518kIA-89" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="334U5BKtB8SHjy518kIA-71" target="334U5BKtB8SHjy518kIA-88">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="334U5BKtB8SHjy518kIA-111" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="334U5BKtB8SHjy518kIA-71" target="334U5BKtB8SHjy518kIA-110">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="334U5BKtB8SHjy518kIA-71" value="getExtensionClasses();&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;加载SPI文件中的拓展类&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="1240" y="940" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="334U5BKtB8SHjy518kIA-73" value="&lt;font color=&quot;#007fff&quot; style=&quot;&quot;&gt;上面按 Scope 层级创建了 FRAMEWORK APPLICATION MOUDLE 范围&lt;br style=&quot;font-size: 10px;&quot;&gt;的三个拓展类加载器的管理器&lt;br&gt;moduleExtensionDirector ---parent---&amp;gt;&amp;nbsp; appExtensionDirector ---parent---&amp;gt;&amp;nbsp; fwExtensionDirector&amp;nbsp;&lt;br&gt;&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=top;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="490" y="290" width="450" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="334U5BKtB8SHjy518kIA-74" value="&lt;font color=&quot;#007fff&quot;&gt;这一步为拓展类型选择合适的拓展类加载器&lt;br&gt;&lt;br&gt;由于类共享范围的不同，应该使用对应共享范围的&lt;br&gt;ExtensionDirector加载、实例化、缓存;&lt;br&gt;这样才能实现上层Scope加载的类、实例可以被下层&lt;br&gt;Scope读取（通过 parent 引用）而下层Scope加载的&lt;br&gt;类、实例不会被上层读取&lt;br&gt;&lt;br&gt;如果类scope为空&lt;br&gt;这里的实现就类似JVM类加载器的双亲委派机制，&lt;br&gt;优先使用父ExtensionDirector的ExtensionLoader&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="520" y="430" width="250" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="334U5BKtB8SHjy518kIA-78" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="334U5BKtB8SHjy518kIA-76" target="334U5BKtB8SHjy518kIA-77">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="334U5BKtB8SHjy518kIA-80" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="334U5BKtB8SHjy518kIA-76" target="334U5BKtB8SHjy518kIA-79">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="334U5BKtB8SHjy518kIA-76" value="FRAMEWORK" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="40" y="560" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="334U5BKtB8SHjy518kIA-82" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="334U5BKtB8SHjy518kIA-77" target="334U5BKtB8SHjy518kIA-81">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="334U5BKtB8SHjy518kIA-84" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="334U5BKtB8SHjy518kIA-77" target="334U5BKtB8SHjy518kIA-83">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="334U5BKtB8SHjy518kIA-77" value="APPLICATION&lt;br&gt;1" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="160" y="510" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="334U5BKtB8SHjy518kIA-86" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="334U5BKtB8SHjy518kIA-79" target="334U5BKtB8SHjy518kIA-85">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="334U5BKtB8SHjy518kIA-79" value="APPLICATION&lt;br&gt;2" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="160" y="610" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="334U5BKtB8SHjy518kIA-81" value="MODULE&lt;br&gt;11" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="280" y="460" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="334U5BKtB8SHjy518kIA-83" value="MODULE&lt;br&gt;12" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="280" y="560" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="334U5BKtB8SHjy518kIA-85" value="MODULE&lt;br&gt;21" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="280" y="660" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="334U5BKtB8SHjy518kIA-92" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="334U5BKtB8SHjy518kIA-88" target="334U5BKtB8SHjy518kIA-91">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="334U5BKtB8SHjy518kIA-88" value="classes = &lt;b&gt;loadExtensionClasses&lt;/b&gt;();&lt;br&gt;cachedClasses.set(classes);" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1480" y="940" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="334U5BKtB8SHjy518kIA-94" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="334U5BKtB8SHjy518kIA-91" target="334U5BKtB8SHjy518kIA-93">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="334U5BKtB8SHjy518kIA-95" value="..." style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="334U5BKtB8SHjy518kIA-94">
+          <mxGeometry x="-0.3333" y="-3" relative="1" as="geometry">
+            <mxPoint x="7" y="-3" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="334U5BKtB8SHjy518kIA-91" value="for strategies:&lt;br&gt;&lt;b&gt;loadDirectory&lt;/b&gt;(extensionClasses, strategy, type.getName());&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;后面逻辑比较清晰，就是遍历加载策略，加载META-INF目录下的&lt;b&gt;type&lt;/b&gt;类型&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1720" y="940" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="334U5BKtB8SHjy518kIA-93" value="&lt;div&gt;&lt;b&gt;loadClass&lt;/b&gt;(classLoader,&lt;/div&gt;&lt;div&gt;extensionClasses,resourceURL,&lt;/div&gt;&lt;div&gt;Class.&lt;b&gt;forName&lt;/b&gt;(clazz, true, classLoader),&lt;/div&gt;&lt;div&gt;name, overridden);&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1960" y="940" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="334U5BKtB8SHjy518kIA-99" value="&lt;font color=&quot;#007fff&quot;&gt;&lt;b&gt;不过类加载后缓存的位置不一定一样：&lt;br&gt;类上有@Adaptive -&amp;gt;&amp;nbsp;cachedAdaptiveClass&lt;br&gt;wrapper class -&amp;gt;&amp;nbsp;cachedWrapperClasses&lt;br&gt;其他类型 -&amp;gt; cachedClasses&lt;/b&gt;&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="2170" y="935" width="260" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="334U5BKtB8SHjy518kIA-103" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;dashed=1;endArrow=block;endFill=0;" edge="1" parent="1" source="334U5BKtB8SHjy518kIA-100" target="nFbYhWVqmTEnoM216xpz-10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="334U5BKtB8SHjy518kIA-107" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;dashed=1;endArrow=block;endFill=0;" edge="1" parent="1" source="334U5BKtB8SHjy518kIA-100" target="334U5BKtB8SHjy518kIA-106">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="334U5BKtB8SHjy518kIA-100" value="&lt;div style=&quot;text-align: center;&quot;&gt;&lt;b&gt;AdaptiveExtensionInjector&lt;/b&gt;&lt;br&gt;&lt;/div&gt;&lt;hr style=&quot;font-size: 10px;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;这个类其实相当于&lt;b&gt;代理&lt;/b&gt;，为实例注入属性时&lt;b&gt;通过此类间接调用其他ExtensionInjector实现&lt;/b&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//ExtensionInjector实现类实例&lt;/font&gt;&lt;/span&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private Collection&amp;lt;ExtensionInjector&amp;gt; &lt;b&gt;injectors&lt;/b&gt; = Collections.emptyList();&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private ExtensionAccessor extensionAccessor;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=10;fontFamily=Helvetica;html=1;whiteSpace=wrap;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="-980" y="440" width="400" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="334U5BKtB8SHjy518kIA-104" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;dashed=1;endArrow=block;endFill=0;" edge="1" parent="1" source="334U5BKtB8SHjy518kIA-101" target="334U5BKtB8SHjy518kIA-102">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="334U5BKtB8SHjy518kIA-105" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;dashed=1;endArrow=block;endFill=0;" edge="1" parent="1" source="334U5BKtB8SHjy518kIA-101" target="nFbYhWVqmTEnoM216xpz-10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="334U5BKtB8SHjy518kIA-101" value="&lt;div style=&quot;text-align: center;&quot;&gt;&lt;b&gt;ScopeBeanExtensionInjector&lt;/b&gt;&lt;br&gt;&lt;/div&gt;&lt;hr style=&quot;font-size: 10px;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private ScopeBeanFactory beanFactory;&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=10;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="-1580" y="440" width="240" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="334U5BKtB8SHjy518kIA-102" value="&lt;div style=&quot;text-align: center;&quot;&gt;&lt;b&gt;ScopeModelAware&lt;/b&gt;&lt;b style=&quot;background-color: initial;&quot;&gt;&amp;nbsp;(I)&lt;/b&gt;&lt;/div&gt;&lt;hr style=&quot;font-size: 10px;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;default void setScopeModel(ScopeModel scopeModel) {}&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;default void setFrameworkModel(FrameworkModel frameworkModel) {}&lt;/span&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;default void setApplicationModel(ApplicationModel applicationModel) {}&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;default void setModuleModel(ModuleModel moduleModel) {}&lt;br&gt;&lt;/span&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=10;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="-1560" y="320" width="320" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="334U5BKtB8SHjy518kIA-106" value="&lt;div style=&quot;text-align: center;&quot;&gt;&lt;b&gt;Lifecycle&lt;/b&gt;&lt;b style=&quot;background-color: initial;&quot;&gt;&amp;nbsp;(I)&lt;/b&gt;&lt;/div&gt;&lt;hr style=&quot;font-size: 10px;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;void initialize() throws IllegalStateException;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;void start() throws IllegalStateException;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;void destroy() throws IllegalStateException;&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=10;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="-760" y="320" width="240" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="334U5BKtB8SHjy518kIA-109" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;dashed=1;endArrow=block;endFill=0;entryX=0.396;entryY=1.014;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="334U5BKtB8SHjy518kIA-108" target="nFbYhWVqmTEnoM216xpz-10">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="-1100" y="400" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="-1160" y="430" />
+              <mxPoint x="-1041" y="430" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="334U5BKtB8SHjy518kIA-108" value="&lt;div style=&quot;text-align: center;&quot;&gt;&lt;b&gt;SpiExtensionInjector&lt;/b&gt;&lt;br&gt;&lt;/div&gt;&lt;hr style=&quot;font-size: 10px;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private ExtensionAccessor extensionAccessor;&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=10;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="-1300" y="440" width="280" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="334U5BKtB8SHjy518kIA-113" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="334U5BKtB8SHjy518kIA-110" target="334U5BKtB8SHjy518kIA-112">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="334U5BKtB8SHjy518kIA-110" value="&lt;div&gt;if (cachedAdaptiveClass != null) {&lt;/div&gt;&lt;div&gt;return cachedAdaptiveClass;&lt;/div&gt;&lt;div&gt;}&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;如果SPI文件有自适应拓展类，直接返回&lt;/font&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;align=left;" vertex="1" parent="1">
+          <mxGeometry x="1240" y="1020" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="334U5BKtB8SHjy518kIA-112" value="return cachedAdaptiveClass = &lt;b&gt;createAdaptiveExtensionClass&lt;/b&gt;();&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;SPI文件中没有自适应拓展类，创建&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;align=center;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="1240" y="1100" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="334U5BKtB8SHjy518kIA-116" value="&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;1 classLoader.loadClass(type.getName() + &quot;$Adaptive&quot;)&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;2 使用代码生成器（解析@Adaptive注释的方法）和Dubbo编译器编译生成&lt;/font&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1450" y="1110" width="350" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="334U5BKtB8SHjy518kIA-121" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="334U5BKtB8SHjy518kIA-118" target="334U5BKtB8SHjy518kIA-120">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="334U5BKtB8SHjy518kIA-123" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="334U5BKtB8SHjy518kIA-118" target="334U5BKtB8SHjy518kIA-122">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="334U5BKtB8SHjy518kIA-118" value="&lt;div&gt;String cacheKey = name;&lt;/div&gt;final Holder&amp;lt;Object&amp;gt; holder = getOrCreateHolder(cacheKey);" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="760" y="1320" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="334U5BKtB8SHjy518kIA-125" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="334U5BKtB8SHjy518kIA-120" target="334U5BKtB8SHjy518kIA-124">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="334U5BKtB8SHjy518kIA-120" value="Object instance = holder.get();" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="760" y="1400" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="334U5BKtB8SHjy518kIA-122" value="&lt;div&gt;String cacheKey = name;&lt;/div&gt;final Holder&amp;lt;Object&amp;gt; holder = getOrCreateHolder(cacheKey);" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="1320" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="334U5BKtB8SHjy518kIA-127" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="334U5BKtB8SHjy518kIA-124" target="334U5BKtB8SHjy518kIA-126">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="334U5BKtB8SHjy518kIA-124" value="&lt;div&gt;instance = &lt;b&gt;createExtension&lt;/b&gt;(name, wrap);&lt;/div&gt;&lt;div&gt;holder.set(instance);&lt;/div&gt;&lt;div&gt;return instance;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;类似&amp;nbsp;createAdaptiveExtension()&lt;/font&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="760" y="1480" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="334U5BKtB8SHjy518kIA-129" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="334U5BKtB8SHjy518kIA-126" target="334U5BKtB8SHjy518kIA-128">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="334U5BKtB8SHjy518kIA-134" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.75;entryDx=0;entryDy=0;" edge="1" parent="1" source="334U5BKtB8SHjy518kIA-126" target="334U5BKtB8SHjy518kIA-71">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1240" y="1510" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="334U5BKtB8SHjy518kIA-126" value="Class&amp;lt;?&amp;gt; clazz = getExtensionClasses().get(name);&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;首次获取拓展类实例时，需要先加载拓展类&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="1480" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="334U5BKtB8SHjy518kIA-138" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="334U5BKtB8SHjy518kIA-128" target="334U5BKtB8SHjy518kIA-137">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="334U5BKtB8SHjy518kIA-128" value="&amp;nbsp;extensionInstances.putIfAbsent(clazz, &lt;b&gt;createExtensionInstance&lt;/b&gt;(clazz));&lt;br&gt;&lt;div&gt;instance = (T)extensionInstances.get(clazz);&lt;/div&gt;&lt;div&gt;instance = postProcessBeforeInitialization(&lt;br&gt;&amp;nbsp; instance, name);&lt;/div&gt;&lt;div&gt;&lt;b&gt;injectExtension&lt;/b&gt;(instance);&lt;/div&gt;&lt;div&gt;instance = postProcessAfterInitialization(&lt;br&gt;&amp;nbsp; instance, name);&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;align=left;arcSize=5;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="1560" width="200" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="334U5BKtB8SHjy518kIA-130" value="&lt;div style=&quot;text-align: center;&quot;&gt;&lt;b&gt;SPI&lt;/b&gt;&lt;b style=&quot;background-color: initial;&quot;&gt;&amp;nbsp;(@)&lt;/b&gt;&lt;/div&gt;&lt;hr style=&quot;font-size: 10px;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;拓展类标识&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;String value() default &quot;&quot;;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;ExtensionScope scope() default ExtensionScope.APPLICATION;&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=10;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="-360" y="200" width="320" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="334U5BKtB8SHjy518kIA-131" value="&lt;div style=&quot;text-align: center;&quot;&gt;&lt;b&gt;Adaptive&lt;/b&gt;&lt;b style=&quot;background-color: initial;&quot;&gt;&amp;nbsp;(@)&lt;/b&gt;&lt;/div&gt;&lt;hr style=&quot;font-size: 10px;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;拓展类属性注入器标识&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;String[] value() default {};&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=10;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="-600" y="200" width="200" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="334U5BKtB8SHjy518kIA-132" value="&lt;div style=&quot;text-align: center;&quot;&gt;&lt;b&gt;Activate&lt;/b&gt;&lt;b style=&quot;background-color: initial;&quot;&gt;&amp;nbsp;(@)&lt;/b&gt;&lt;/div&gt;&lt;hr style=&quot;font-size: 10px;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;拓展类自动激活条件注解&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;String[] group() default {};&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;String[] value() default {};&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;int order() default 0;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;String[] onClass() default {};&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=10;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="-840" y="200" width="200" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="334U5BKtB8SHjy518kIA-140" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="334U5BKtB8SHjy518kIA-137" target="334U5BKtB8SHjy518kIA-139">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="334U5BKtB8SHjy518kIA-137" value="包装类处理器" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="1700" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="334U5BKtB8SHjy518kIA-139" value="&lt;div&gt;initExtension(instance);&lt;/div&gt;&lt;div&gt;return instance;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="1780" width="200" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
