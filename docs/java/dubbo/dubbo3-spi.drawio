@@ -1,6 +1,6 @@
-<mxfile host="Electron" modified="2024-01-12T16:41:14.579Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.6.5 Chrome/114.0.5735.243 Electron/25.3.1 Safari/537.36" etag="-b1jsU4-N6ijYVoGGOZy" version="21.6.5" type="device">
+<mxfile host="Electron" modified="2024-01-13T07:05:23.788Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.6.5 Chrome/114.0.5735.243 Electron/25.3.1 Safari/537.36" etag="nOErsT5vRUinCOw11oH4" version="21.6.5" type="device">
   <diagram name="Dubbo-SPI-SRC" id="UC6zfxpho-fM6Mz8ni64">
-    <mxGraphModel dx="3341" dy="1034" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="3088" dy="879" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -10,7 +10,7 @@
         <mxCell id="nFbYhWVqmTEnoM216xpz-15" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="nFbYhWVqmTEnoM216xpz-2" target="nFbYhWVqmTEnoM216xpz-14" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="nFbYhWVqmTEnoM216xpz-2" value="ExtensionDirectorTest#&lt;br style=&quot;font-size: 10px;&quot;&gt;testInheritanceAndScope()" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" parent="1" vertex="1">
+        <mxCell id="nFbYhWVqmTEnoM216xpz-2" value="ExtensionDirectorTest#&lt;br style=&quot;font-size: 10px;&quot;&gt;testInheritanceAndScope()" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
           <mxGeometry x="40" y="120" width="200" height="60" as="geometry" />
         </mxCell>
         <mxCell id="nFbYhWVqmTEnoM216xpz-3" value="&lt;div style=&quot;text-align: center;&quot;&gt;&lt;b&gt;ExtensionAccessor （I）&lt;/b&gt;&lt;br&gt;&lt;/div&gt;&lt;hr style=&quot;font-size: 10px;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;ExtensionDirector getExtensionDirector();&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&amp;lt;T&amp;gt; ExtensionLoader&amp;lt;T&amp;gt; getExtensionLoader(Class&amp;lt;T&amp;gt; type);&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&amp;lt;T&amp;gt; T getExtension(Class&amp;lt;T&amp;gt; type, String name);&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//获取自适应拓展类型&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&amp;lt;T&amp;gt; T getAdaptiveExtension(Class&amp;lt;T&amp;gt; type);&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&amp;lt;T&amp;gt; T getDefaultExtension(Class&amp;lt;T&amp;gt; type)&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=10;fontFamily=Helvetica;html=1;whiteSpace=wrap;" parent="1" vertex="1">
@@ -562,125 +562,128 @@
         <mxCell id="FCzHFgoopw6_MdKlwMNN-31" value="&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font style=&quot;font-size: 9px;&quot;&gt;String code = new AdaptiveClassCodeGenerator(type, cachedDefaultName).generate();&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font style=&quot;font-size: 9px;&quot;&gt;org.apache.dubbo.common.compiler.Compiler compiler = extensionDirector&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font style=&quot;font-size: 9px;&quot;&gt;&amp;nbsp; .getExtensionLoader(org.apache.dubbo.common.compiler.&lt;b&gt;Compiler&lt;/b&gt;.class)&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font style=&quot;font-size: 9px;&quot;&gt;&amp;nbsp; .getAdaptiveExtension();&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font style=&quot;font-size: 9px;&quot;&gt;return compiler.&lt;b&gt;compile&lt;/b&gt;(type, code, classLoader);&lt;/font&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=9;align=left;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
           <mxGeometry x="1480" y="1095" width="319" height="70" as="geometry" />
         </mxCell>
-        <mxCell id="BtQ9-s-YfgyTIdZ3fDr7-3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="BtQ9-s-YfgyTIdZ3fDr7-1" target="BtQ9-s-YfgyTIdZ3fDr7-2">
+        <mxCell id="BtQ9-s-YfgyTIdZ3fDr7-3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="BtQ9-s-YfgyTIdZ3fDr7-1" target="BtQ9-s-YfgyTIdZ3fDr7-2" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="BtQ9-s-YfgyTIdZ3fDr7-1" value="AdaptiveClassCodeGenerator&lt;br&gt;自适应类生成原理" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="1">
+        <mxCell id="BtQ9-s-YfgyTIdZ3fDr7-1" value="&lt;b&gt;AdaptiveClassCodeGenerator&lt;/b&gt;&lt;br&gt;自适应类生成原理" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
           <mxGeometry x="40" y="2040" width="200" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="BtQ9-s-YfgyTIdZ3fDr7-5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="BtQ9-s-YfgyTIdZ3fDr7-2" target="BtQ9-s-YfgyTIdZ3fDr7-4">
+        <mxCell id="BtQ9-s-YfgyTIdZ3fDr7-5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="BtQ9-s-YfgyTIdZ3fDr7-2" target="BtQ9-s-YfgyTIdZ3fDr7-4" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="BtQ9-s-YfgyTIdZ3fDr7-2" value="AdaptiveClassCodeGenerator generator = new AdaptiveClassCodeGenerator(&lt;br&gt;ProxyFactory.class, &quot;proxyFactory&quot;);" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="1">
+        <mxCell id="BtQ9-s-YfgyTIdZ3fDr7-2" value="AdaptiveClassCodeGenerator generator = new AdaptiveClassCodeGenerator(&lt;br&gt;ProxyFactory.class, &quot;proxyFactory&quot;);" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" parent="1" vertex="1">
           <mxGeometry x="280" y="2040" width="200" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="BtQ9-s-YfgyTIdZ3fDr7-7" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="BtQ9-s-YfgyTIdZ3fDr7-4" target="BtQ9-s-YfgyTIdZ3fDr7-6">
+        <mxCell id="BtQ9-s-YfgyTIdZ3fDr7-7" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="BtQ9-s-YfgyTIdZ3fDr7-4" target="BtQ9-s-YfgyTIdZ3fDr7-6" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="BtQ9-s-YfgyTIdZ3fDr7-8" value="..." style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="BtQ9-s-YfgyTIdZ3fDr7-7">
+        <mxCell id="BtQ9-s-YfgyTIdZ3fDr7-8" value="..." style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="BtQ9-s-YfgyTIdZ3fDr7-7" vertex="1" connectable="0">
           <mxGeometry x="-0.1" y="3" relative="1" as="geometry">
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="BtQ9-s-YfgyTIdZ3fDr7-4" value="String value = generator.generate();" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="1">
+        <mxCell id="BtQ9-s-YfgyTIdZ3fDr7-4" value="String value = generator.generate();" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" parent="1" vertex="1">
           <mxGeometry x="280" y="2120" width="200" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="BtQ9-s-YfgyTIdZ3fDr7-11" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="BtQ9-s-YfgyTIdZ3fDr7-6" target="BtQ9-s-YfgyTIdZ3fDr7-10">
+        <mxCell id="BtQ9-s-YfgyTIdZ3fDr7-11" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="BtQ9-s-YfgyTIdZ3fDr7-6" target="BtQ9-s-YfgyTIdZ3fDr7-10" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="BtQ9-s-YfgyTIdZ3fDr7-6" value="&amp;nbsp;String methodContent = generateMethodContent(method);&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;其他部分代码比较固定，主要是方法&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+        <mxCell id="BtQ9-s-YfgyTIdZ3fDr7-6" value="&amp;nbsp;String methodContent = generateMethodContent(method);&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;其他部分代码比较固定，主要是方法&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
           <mxGeometry x="520" y="2120" width="200" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="BtQ9-s-YfgyTIdZ3fDr7-9" value="&lt;font color=&quot;#007fff&quot;&gt;没找到官方文档哪里有讲自适应方法参数定义规则&lt;br&gt;本来以为方法第一个参数需要是&lt;br&gt;org.apache.dubbo.common.URL，&lt;br&gt;但看其他源码发现并不是这样，甚至顺序也不需要是第一个&lt;br&gt;感觉很困惑，所以看下源码，看看方法参数到底怎么定义&lt;br&gt;&lt;br&gt;结论：&lt;b&gt;自适应方法参数列表中要么包含URL参数，要么有参数包含能返回URL的方法&lt;/b&gt;&lt;br&gt;&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;" vertex="1" parent="1">
-          <mxGeometry x="10" y="2110" width="390" height="100" as="geometry" />
+        <mxCell id="BtQ9-s-YfgyTIdZ3fDr7-9" value="&lt;font color=&quot;#007fff&quot;&gt;没找到官方文档哪里有讲自适应方法参数定义规则&lt;br&gt;本来以为方法第一个参数需要是&lt;br&gt;org.apache.dubbo.common.URL，&lt;br&gt;但看其他源码发现并不是这样，甚至顺序也不需要是第一个&lt;br&gt;感觉很困惑，所以看下源码，看看方法参数到底怎么定义&lt;br&gt;&lt;br&gt;结论：&lt;b&gt;自适应方法参数列表中要么包含URL参数，要么有参数包含能返回URL的方法&lt;br&gt;&lt;/b&gt;&lt;br&gt;&lt;div&gt;另外需要关注两个重要语句生成原理：&lt;/div&gt;&lt;div&gt;1 获取Url对象代码的生成逻辑&lt;/div&gt;&lt;div&gt;2 获取最终引用的拓展类名代码的生成逻辑&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;比如：org.apache.dubbo.rpc.Protocol 的自适应拓展类export方法的下面两行代码&lt;/div&gt;&lt;div&gt;org.apache.dubbo.common.URL url = arg0.getUrl();&lt;/div&gt;&lt;div&gt;String extName = ( url.getProtocol() == null ? &quot;dubbo&quot; : url.getProtocol() );&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;div&gt;@SPI(value = &quot;dubbo&quot;, scope = ExtensionScope.FRAMEWORK)&lt;/div&gt;&lt;div&gt;public interface Protocol {&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; @Adaptive&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;lt;T&amp;gt; Exporter&amp;lt;T&amp;gt; export(Invoker&amp;lt;T&amp;gt; invoker) throws RpcException;&lt;/div&gt;&lt;/div&gt;&lt;div&gt;}&lt;/div&gt;&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;" parent="1" vertex="1">
+          <mxGeometry x="40" y="2140" width="390" height="290" as="geometry" />
         </mxCell>
-        <mxCell id="BtQ9-s-YfgyTIdZ3fDr7-13" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="BtQ9-s-YfgyTIdZ3fDr7-10" target="BtQ9-s-YfgyTIdZ3fDr7-12">
+        <mxCell id="BtQ9-s-YfgyTIdZ3fDr7-13" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="BtQ9-s-YfgyTIdZ3fDr7-10" target="BtQ9-s-YfgyTIdZ3fDr7-12" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="BtQ9-s-YfgyTIdZ3fDr7-10" value="Adaptive adaptiveAnnotation = method.getAnnotation(Adaptive.class);" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="1">
+        <mxCell id="BtQ9-s-YfgyTIdZ3fDr7-10" value="Adaptive adaptiveAnnotation = method.getAnnotation(Adaptive.class);" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" parent="1" vertex="1">
           <mxGeometry x="760" y="2120" width="200" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="BtQ9-s-YfgyTIdZ3fDr7-15" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="BtQ9-s-YfgyTIdZ3fDr7-12" target="BtQ9-s-YfgyTIdZ3fDr7-14">
+        <mxCell id="BtQ9-s-YfgyTIdZ3fDr7-15" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="BtQ9-s-YfgyTIdZ3fDr7-12" target="BtQ9-s-YfgyTIdZ3fDr7-14" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="BtQ9-s-YfgyTIdZ3fDr7-12" value="int urlTypeIndex = getUrlTypeIndex(method);&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;获取URL类型参数的索引&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="1">
+        <mxCell id="BtQ9-s-YfgyTIdZ3fDr7-12" value="int urlTypeIndex = getUrlTypeIndex(method);&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;获取URL类型参数的索引&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" parent="1" vertex="1">
           <mxGeometry x="760" y="2200" width="200" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="BtQ9-s-YfgyTIdZ3fDr7-17" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="BtQ9-s-YfgyTIdZ3fDr7-14" target="BtQ9-s-YfgyTIdZ3fDr7-16">
+        <mxCell id="BtQ9-s-YfgyTIdZ3fDr7-17" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="BtQ9-s-YfgyTIdZ3fDr7-14" target="BtQ9-s-YfgyTIdZ3fDr7-16" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="BtQ9-s-YfgyTIdZ3fDr7-18" value="Y" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="BtQ9-s-YfgyTIdZ3fDr7-17">
+        <mxCell id="BtQ9-s-YfgyTIdZ3fDr7-18" value="Y" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="BtQ9-s-YfgyTIdZ3fDr7-17" vertex="1" connectable="0">
           <mxGeometry x="-0.04" y="-4" relative="1" as="geometry">
             <mxPoint x="6" y="-22" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="BtQ9-s-YfgyTIdZ3fDr7-20" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="BtQ9-s-YfgyTIdZ3fDr7-14" target="BtQ9-s-YfgyTIdZ3fDr7-19">
+        <mxCell id="BtQ9-s-YfgyTIdZ3fDr7-20" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="BtQ9-s-YfgyTIdZ3fDr7-14" target="BtQ9-s-YfgyTIdZ3fDr7-19" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="BtQ9-s-YfgyTIdZ3fDr7-21" value="N" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="BtQ9-s-YfgyTIdZ3fDr7-20">
+        <mxCell id="BtQ9-s-YfgyTIdZ3fDr7-21" value="N" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="BtQ9-s-YfgyTIdZ3fDr7-20" vertex="1" connectable="0">
           <mxGeometry x="0.625" relative="1" as="geometry">
             <mxPoint x="-8" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="BtQ9-s-YfgyTIdZ3fDr7-14" value="urlTypeIndex &lt;br&gt;!= -1" style="rhombus;whiteSpace=wrap;html=1;fontSize=10;rounded=1;" vertex="1" parent="1">
+        <mxCell id="34Wvdx35s0JXqbyZLGz6-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="BtQ9-s-YfgyTIdZ3fDr7-14" target="34Wvdx35s0JXqbyZLGz6-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="BtQ9-s-YfgyTIdZ3fDr7-14" value="urlTypeIndex &lt;br&gt;!= -1" style="rhombus;whiteSpace=wrap;html=1;fontSize=10;rounded=1;" parent="1" vertex="1">
           <mxGeometry x="800" y="2320" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="BtQ9-s-YfgyTIdZ3fDr7-40" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="BtQ9-s-YfgyTIdZ3fDr7-16" target="BtQ9-s-YfgyTIdZ3fDr7-39">
+        <mxCell id="BtQ9-s-YfgyTIdZ3fDr7-40" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="BtQ9-s-YfgyTIdZ3fDr7-16" target="BtQ9-s-YfgyTIdZ3fDr7-39" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="BtQ9-s-YfgyTIdZ3fDr7-16" value="code.append(&lt;br&gt;generateUrlNullCheck(urlTypeIndex));&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;即参数列表中包含URL类型参数&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="1">
+        <mxCell id="BtQ9-s-YfgyTIdZ3fDr7-16" value="code.append(&lt;br&gt;generateUrlNullCheck(urlTypeIndex));&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;即参数列表中包含URL类型参数&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
           <mxGeometry x="1000" y="2280" width="200" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="BtQ9-s-YfgyTIdZ3fDr7-23" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="BtQ9-s-YfgyTIdZ3fDr7-19" target="BtQ9-s-YfgyTIdZ3fDr7-22">
+        <mxCell id="BtQ9-s-YfgyTIdZ3fDr7-23" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="BtQ9-s-YfgyTIdZ3fDr7-19" target="BtQ9-s-YfgyTIdZ3fDr7-22" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="BtQ9-s-YfgyTIdZ3fDr7-19" value="code.append(&lt;br&gt;generateUrlAssignmentIndirectly(method));&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;即参数列表中不包含URL类型参数，那就遍历参数列表寻找返回URL的方法&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="1">
+        <mxCell id="BtQ9-s-YfgyTIdZ3fDr7-19" value="code.append(&lt;br&gt;generateUrlAssignmentIndirectly(method));&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;即参数列表中不包含URL类型参数，那就遍历参数列表寻找返回URL的方法&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
           <mxGeometry x="1000" y="2360" width="200" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="BtQ9-s-YfgyTIdZ3fDr7-25" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="BtQ9-s-YfgyTIdZ3fDr7-22" target="BtQ9-s-YfgyTIdZ3fDr7-24">
+        <mxCell id="BtQ9-s-YfgyTIdZ3fDr7-25" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="BtQ9-s-YfgyTIdZ3fDr7-22" target="BtQ9-s-YfgyTIdZ3fDr7-24" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="BtQ9-s-YfgyTIdZ3fDr7-22" value="Class&amp;lt;?&amp;gt;[] pts = method.getParameterTypes();&lt;br&gt;获取参数类型列表" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="1">
+        <mxCell id="BtQ9-s-YfgyTIdZ3fDr7-22" value="Class&amp;lt;?&amp;gt;[] pts = method.getParameterTypes();&lt;br&gt;获取参数类型列表" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" parent="1" vertex="1">
           <mxGeometry x="1240" y="2360" width="200" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="BtQ9-s-YfgyTIdZ3fDr7-27" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="BtQ9-s-YfgyTIdZ3fDr7-24" target="BtQ9-s-YfgyTIdZ3fDr7-26">
+        <mxCell id="BtQ9-s-YfgyTIdZ3fDr7-27" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="BtQ9-s-YfgyTIdZ3fDr7-24" target="BtQ9-s-YfgyTIdZ3fDr7-26" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="BtQ9-s-YfgyTIdZ3fDr7-24" value="遍历所有参数的所有方法&lt;br&gt;找到所有返回 URL 类型且 public 非static&lt;br&gt;（以get开头 || 方法名长度大于3）的方法&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;如果没有满足要求的方法就直接抛异常&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+        <mxCell id="BtQ9-s-YfgyTIdZ3fDr7-24" value="遍历所有参数的所有方法&lt;br&gt;找到所有返回 URL 类型且 public 非static&lt;br&gt;（以get开头 || 方法名长度大于3）的方法&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;如果没有满足要求的方法就直接抛异常&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
           <mxGeometry x="1240" y="2440" width="200" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="BtQ9-s-YfgyTIdZ3fDr7-35" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="BtQ9-s-YfgyTIdZ3fDr7-26" target="BtQ9-s-YfgyTIdZ3fDr7-32">
+        <mxCell id="BtQ9-s-YfgyTIdZ3fDr7-35" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" source="BtQ9-s-YfgyTIdZ3fDr7-26" target="BtQ9-s-YfgyTIdZ3fDr7-32" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="BtQ9-s-YfgyTIdZ3fDr7-26" value="Integer index = getterReturnUrl.get(&quot;getUrl&quot;);&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;先查上一步中有没有名为 getUrl的方法&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="1">
+        <mxCell id="BtQ9-s-YfgyTIdZ3fDr7-26" value="Integer index = getterReturnUrl.get(&quot;getUrl&quot;);&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;先查上一步中有没有名为 getUrl的方法&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" parent="1" vertex="1">
           <mxGeometry x="1240" y="2520" width="200" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="BtQ9-s-YfgyTIdZ3fDr7-28" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="BtQ9-s-YfgyTIdZ3fDr7-32" target="BtQ9-s-YfgyTIdZ3fDr7-33">
+        <mxCell id="BtQ9-s-YfgyTIdZ3fDr7-28" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="BtQ9-s-YfgyTIdZ3fDr7-32" target="BtQ9-s-YfgyTIdZ3fDr7-33" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="BtQ9-s-YfgyTIdZ3fDr7-29" value="Y" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="BtQ9-s-YfgyTIdZ3fDr7-28">
+        <mxCell id="BtQ9-s-YfgyTIdZ3fDr7-29" value="Y" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="BtQ9-s-YfgyTIdZ3fDr7-28" vertex="1" connectable="0">
           <mxGeometry x="-0.04" y="-4" relative="1" as="geometry">
             <mxPoint x="6" y="-22" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="BtQ9-s-YfgyTIdZ3fDr7-30" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="BtQ9-s-YfgyTIdZ3fDr7-32" target="BtQ9-s-YfgyTIdZ3fDr7-34">
+        <mxCell id="BtQ9-s-YfgyTIdZ3fDr7-30" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="BtQ9-s-YfgyTIdZ3fDr7-32" target="BtQ9-s-YfgyTIdZ3fDr7-34" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="BtQ9-s-YfgyTIdZ3fDr7-31" value="N" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="BtQ9-s-YfgyTIdZ3fDr7-30">
+        <mxCell id="BtQ9-s-YfgyTIdZ3fDr7-31" value="N" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="BtQ9-s-YfgyTIdZ3fDr7-30" vertex="1" connectable="0">
           <mxGeometry x="0.625" relative="1" as="geometry">
             <mxPoint x="-8" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="BtQ9-s-YfgyTIdZ3fDr7-32" value="index != null" style="rhombus;whiteSpace=wrap;html=1;fontSize=10;rounded=1;" vertex="1" parent="1">
+        <mxCell id="BtQ9-s-YfgyTIdZ3fDr7-32" value="index != null" style="rhombus;whiteSpace=wrap;html=1;fontSize=10;rounded=1;" parent="1" vertex="1">
           <mxGeometry x="1280" y="2640" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="BtQ9-s-YfgyTIdZ3fDr7-37" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="BtQ9-s-YfgyTIdZ3fDr7-33" target="BtQ9-s-YfgyTIdZ3fDr7-36">
+        <mxCell id="BtQ9-s-YfgyTIdZ3fDr7-37" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="BtQ9-s-YfgyTIdZ3fDr7-33" target="BtQ9-s-YfgyTIdZ3fDr7-36" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="BtQ9-s-YfgyTIdZ3fDr7-33" value="return &lt;b&gt;generateGetUrlNullCheck&lt;/b&gt;(index, pts[index], &quot;getUrl&quot;);&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;即有getUrl方法&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="1">
+        <mxCell id="BtQ9-s-YfgyTIdZ3fDr7-33" value="return &lt;b&gt;generateGetUrlNullCheck&lt;/b&gt;(index, pts[index], &quot;getUrl&quot;);&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;即有getUrl方法&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" parent="1" vertex="1">
           <mxGeometry x="1481" y="2600" width="200" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="BtQ9-s-YfgyTIdZ3fDr7-38" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.75;entryDx=0;entryDy=0;" edge="1" parent="1" source="BtQ9-s-YfgyTIdZ3fDr7-34" target="BtQ9-s-YfgyTIdZ3fDr7-33">
+        <mxCell id="BtQ9-s-YfgyTIdZ3fDr7-38" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.75;entryDx=0;entryDy=0;" parent="1" source="BtQ9-s-YfgyTIdZ3fDr7-34" target="BtQ9-s-YfgyTIdZ3fDr7-33" edge="1">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="1701" y="2720" />
@@ -690,17 +693,59 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="BtQ9-s-YfgyTIdZ3fDr7-34" value="&lt;div&gt;Map.Entry&amp;lt;String, Integer&amp;gt; entry =&lt;span style=&quot;background-color: initial;&quot;&gt;&amp;nbsp; getterReturnUrl.entrySet().iterator().next();&lt;/span&gt;&lt;/div&gt;&lt;div&gt;return &lt;b&gt;generateGetUrlNullCheck&lt;/b&gt;(&lt;/div&gt;&lt;div&gt;entry.getValue(), pts[entry.getValue()], entry.getKey());&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;没有getUrl方法，就默认使用第一个返回URL的方法&lt;/font&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="1">
+        <mxCell id="BtQ9-s-YfgyTIdZ3fDr7-34" value="&lt;div&gt;Map.Entry&amp;lt;String, Integer&amp;gt; entry =&lt;span style=&quot;background-color: initial;&quot;&gt;&amp;nbsp; getterReturnUrl.entrySet().iterator().next();&lt;/span&gt;&lt;/div&gt;&lt;div&gt;return &lt;b&gt;generateGetUrlNullCheck&lt;/b&gt;(&lt;/div&gt;&lt;div&gt;entry.getValue(), pts[entry.getValue()], entry.getKey());&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;没有getUrl方法，就默认使用第一个返回URL的方法&lt;/font&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" parent="1" vertex="1">
           <mxGeometry x="1481" y="2680" width="200" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="BtQ9-s-YfgyTIdZ3fDr7-36" value="...&lt;br&gt;code.append(String.format(&quot;%s url = arg%d.%s();\n&quot;, URL.class.getName(), index, method));&lt;br&gt;..." style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+        <mxCell id="BtQ9-s-YfgyTIdZ3fDr7-36" value="...&lt;br&gt;code.append(String.format(&quot;%s url = arg%d.%s();\n&quot;, URL.class.getName(), index, method));&lt;br&gt;..." style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
           <mxGeometry x="1720" y="2600" width="200" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="BtQ9-s-YfgyTIdZ3fDr7-39" value="return String.format(CODE_URL_NULL_CHECK, index, URL.class.getName(), index);" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+        <mxCell id="BtQ9-s-YfgyTIdZ3fDr7-39" value="return String.format(CODE_URL_NULL_CHECK, index, URL.class.getName(), index);" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
           <mxGeometry x="1241" y="2280" width="200" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="BtQ9-s-YfgyTIdZ3fDr7-41" value="&quot;if (arg%d == null) throw new IllegalArgumentException(\&quot;url == null\&quot;);\n&lt;br&gt;%s &lt;b&gt;url = arg%d&lt;/b&gt;;\n&quot;;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+        <mxCell id="BtQ9-s-YfgyTIdZ3fDr7-41" value="&quot;if (arg%d == null) throw new IllegalArgumentException(\&quot;url == null\&quot;);\n&lt;br&gt;%s &lt;b&gt;url = arg%d&lt;/b&gt;;\n&quot;;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
           <mxGeometry x="1450" y="2290" width="410" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="34Wvdx35s0JXqbyZLGz6-6" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="34Wvdx35s0JXqbyZLGz6-1" target="34Wvdx35s0JXqbyZLGz6-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="34Wvdx35s0JXqbyZLGz6-1" value="&amp;nbsp;String[] value = getMethodAdaptiveValue(&lt;br&gt;adaptiveAnnotation);&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;获取@Adaptive value数组，数组为空就获取接口类名（CAMEL转全小写，英文句号分割）&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="760" y="2440" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="34Wvdx35s0JXqbyZLGz6-4" value="&lt;font color=&quot;#007fff&quot;&gt;以org.apache.dubbo.rpc.Protocol export()为例&lt;br&gt;这一步获取的是 [&quot;protocol&quot;]&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="490" y="2450" width="270" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="34Wvdx35s0JXqbyZLGz6-8" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="34Wvdx35s0JXqbyZLGz6-5" target="34Wvdx35s0JXqbyZLGz6-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="34Wvdx35s0JXqbyZLGz6-5" value="boolean hasInvocation = hasInvocationArgument(method);&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;是否有Invocation类型参数&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="760" y="2520" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="34Wvdx35s0JXqbyZLGz6-10" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="34Wvdx35s0JXqbyZLGz6-7" target="34Wvdx35s0JXqbyZLGz6-9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="34Wvdx35s0JXqbyZLGz6-7" value="code.append(&lt;br&gt;generateInvocationArgumentNullCheck(&lt;br&gt;method));" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="760" y="2600" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="34Wvdx35s0JXqbyZLGz6-13" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="34Wvdx35s0JXqbyZLGz6-9" target="34Wvdx35s0JXqbyZLGz6-12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="34Wvdx35s0JXqbyZLGz6-16" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="34Wvdx35s0JXqbyZLGz6-9" target="34Wvdx35s0JXqbyZLGz6-15">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="34Wvdx35s0JXqbyZLGz6-9" value="code.append(&lt;br&gt;&lt;b&gt;generateExtNameAssignment&lt;/b&gt;(&lt;br&gt;value, hasInvocation));" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="760" y="2680" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="34Wvdx35s0JXqbyZLGz6-11" value="&lt;font color=&quot;#007fff&quot;&gt;以org.apache.dubbo.rpc.Protocol export()为例&lt;br&gt;这一步生成的是&lt;br&gt;String extName = ( url.getProtocol() == null ? &lt;br&gt;&quot;dubbo&quot; : url.getProtocol() );&lt;br&gt;&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="490" y="2675" width="270" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="34Wvdx35s0JXqbyZLGz6-12" value="直接去看代码吧，不太方便描述&lt;br&gt;代码倒是比较简单" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="2680" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="34Wvdx35s0JXqbyZLGz6-14" value="&lt;font color=&quot;#007fff&quot;&gt;以org.apache.dubbo.rpc.Protocol export()为例&lt;br&gt;这一步生成的是&lt;br&gt;&lt;div&gt;org.apache.dubbo.common.URL url = arg0.getUrl();&lt;/div&gt;&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="1920" y="2600" width="300" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="34Wvdx35s0JXqbyZLGz6-15" value="其他不太重要" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="760" y="2760" width="200" height="60" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

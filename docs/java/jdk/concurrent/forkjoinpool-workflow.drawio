@@ -1,0 +1,977 @@
+<mxfile host="Electron" modified="2024-02-07T13:40:33.833Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.6.5 Chrome/114.0.5735.243 Electron/25.3.1 Safari/537.36" etag="yjD92TYTKgX-3fy-xS1j" version="21.6.5" type="device">
+  <diagram id="CkkpEGL-JcrP4vNnKdJq" name="第 1 页">
+    <mxGraphModel dx="2603" dy="879" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="X0HKkTIcBq6q-AQzs4eG-156" style="edgeStyle=entityRelationEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.75;exitDx=0;exitDy=0;entryX=1;entryY=0;entryDx=0;entryDy=0;dashed=1;fontSize=8;fontColor=#3399FF;strokeColor=#4D9900;shape=link;" parent="1" source="X0HKkTIcBq6q-AQzs4eG-112" target="X0HKkTIcBq6q-AQzs4eG-74" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Oymi44IFPG7ip9I0upf_-1" value="&lt;h1 style=&quot;font-size: 16px;&quot;&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;ForkJoinPool 原理&lt;/font&gt;&lt;/h1&gt;&lt;p style=&quot;&quot;&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;&lt;b style=&quot;&quot;&gt;预备知识：&lt;/b&gt;&lt;br&gt;1）最好先对ThreadPoolExecutor有个清晰的认识，方便理解ForkJoinPool；&lt;br&gt;2）ThreadLocalRandom.getProbe() 探针；参考java-relearn 或 参考网文：&lt;a style=&quot;&quot; href=&quot;https://aobing.blog.csdn.net/article/details/115450889&quot;&gt;https://aobing.blog.csdn.net/article/details/115450889&lt;/a&gt;&lt;br&gt;3）理解“UNSAFE CAS 自旋”并发同步操作，以及UNSAFE修改对象的方法和Java对象的内存结构，代码里面有大量这种操作；&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;&quot;&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;基于测试：&lt;br&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;java-async/async-future/ThreadExhaustionTest.java&lt;br&gt;&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;java-async/async-future/ArraySumMain.java&lt;/span&gt;&lt;/font&gt;&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="40" y="20" width="760" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="Oymi44IFPG7ip9I0upf_-3" value="end" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="60" y="1671" width="80" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="TptHQJ5m2P_6lYXju_q3-1" value="submit()" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+          <mxGeometry x="240" y="1271" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="RIggC4py6Lmb-u4GaGXc-23" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=8;fontColor=#3399FF;" parent="1" source="RIggC4py6Lmb-u4GaGXc-21" target="TptHQJ5m2P_6lYXju_q3-1" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="RIggC4py6Lmb-u4GaGXc-26" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=8;fontColor=#3399FF;" parent="1" source="RIggC4py6Lmb-u4GaGXc-21" target="RIggC4py6Lmb-u4GaGXc-24" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="RIggC4py6Lmb-u4GaGXc-27" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=8;fontColor=#3399FF;" parent="1" source="RIggC4py6Lmb-u4GaGXc-21" target="RIggC4py6Lmb-u4GaGXc-25" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="X0HKkTIcBq6q-AQzs4eG-46" value="" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=8;fontColor=#3399FF;" parent="1" source="RIggC4py6Lmb-u4GaGXc-21" target="X0HKkTIcBq6q-AQzs4eG-45" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="RIggC4py6Lmb-u4GaGXc-21" value="提交任务" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="40" y="1271" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="RIggC4py6Lmb-u4GaGXc-24" value="execute()" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="240" y="1331" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="RIggC4py6Lmb-u4GaGXc-25" value="invokeAll() /&lt;br&gt;invokeAny()" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="240" y="1391" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a_vHJ03TcrBo9rNO5nsq-12" value="&lt;div style=&quot;font-size: 9px;&quot;&gt;线程池一共下面6种运行状态&lt;br style=&quot;&quot;&gt;&lt;div style=&quot;&quot;&gt;int&amp;nbsp; RSLOCK&amp;nbsp; &amp;nbsp; &amp;nbsp;= 1;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;int&amp;nbsp; RSIGNAL&amp;nbsp; &amp;nbsp; = 1 &amp;lt;&amp;lt; 1;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;int&amp;nbsp; STARTED&amp;nbsp; &amp;nbsp; = 1 &amp;lt;&amp;lt; 2;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;int&amp;nbsp; STOP&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;= 1 &amp;lt;&amp;lt; 29;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;int&amp;nbsp; TERMINATED = 1 &amp;lt;&amp;lt; 30;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;int&amp;nbsp; SHUTDOWN&amp;nbsp; &amp;nbsp;= 1 &amp;lt;&amp;lt; 31; //-2147483648&lt;/div&gt;&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#007FFF;" parent="1" vertex="1">
+          <mxGeometry x="1190" y="600" width="180" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="a_vHJ03TcrBo9rNO5nsq-70" value="&lt;div&gt;&lt;b&gt;任务队列类型&lt;/b&gt;：&lt;div&gt;MODE_MASK&amp;nbsp; &amp;nbsp; = 0xffff &amp;lt;&amp;lt; 16;&amp;nbsp; // top half of int&lt;/div&gt;&lt;div&gt;static final int LIFO_QUEUE&amp;nbsp; &amp;nbsp;= 0;&lt;/div&gt;&lt;div&gt;static final int FIFO_QUEUE&amp;nbsp; &amp;nbsp;= 1 &amp;lt;&amp;lt; 16;&lt;/div&gt;&lt;div&gt;static final int SHARED_QUEUE = 1 &amp;lt;&amp;lt; 31;&amp;nbsp; &amp;nbsp; // must be negative&lt;/div&gt;&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#007FFF;" parent="1" vertex="1">
+          <mxGeometry x="840" y="20" width="480" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="X0HKkTIcBq6q-AQzs4eG-13" value="&lt;span style=&quot;font-size: 10px;&quot;&gt;&lt;b&gt;任务往队列插入元素流程&lt;/b&gt;：&lt;br&gt;通过&lt;b&gt;UNSAFE&lt;/b&gt;将&lt;b&gt;ForkJoinTask&lt;/b&gt;插入数组q.top位置，然后更新q.top的值（+1）&lt;br&gt;&lt;br&gt;因为是用的UNSAFE往数组插入的元素，UNSAFE是靠偏移量指针（byte为单位）修改的&lt;br style=&quot;&quot;&gt;根据JVM中对象内存结构，需要先计算出其&lt;b&gt;偏移位置&lt;/b&gt;是&lt;br style=&quot;&quot;&gt;markword (8) + 压缩类型指针(4) + 数组长度(4) + top * 指针类型(4)&lt;br style=&quot;&quot;&gt;里面最内部的按位与操作是为了防止索引溢出&lt;br style=&quot;font-size: 6px;&quot;&gt;&lt;/span&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=6;fontColor=#3399FF;" parent="1" vertex="1">
+          <mxGeometry x="2290" y="501" width="410" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="X0HKkTIcBq6q-AQzs4eG-47" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;fontSize=8;fontColor=#3399FF;" parent="1" source="X0HKkTIcBq6q-AQzs4eG-45" target="Oymi44IFPG7ip9I0upf_-3" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="X0HKkTIcBq6q-AQzs4eG-49" value="" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=8;fontColor=#3399FF;" parent="1" source="X0HKkTIcBq6q-AQzs4eG-45" target="X0HKkTIcBq6q-AQzs4eG-48" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="X0HKkTIcBq6q-AQzs4eG-45" value="同步等待获取结果" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="40" y="1511" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="X0HKkTIcBq6q-AQzs4eG-48" value="ForkJoinTask$get()" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="240" y="1511" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="X0HKkTIcBq6q-AQzs4eG-71" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=10;fontColor=#3399FF;" parent="1" target="X0HKkTIcBq6q-AQzs4eG-70" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1100" y="2440" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="X0HKkTIcBq6q-AQzs4eG-73" value="Y" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;fontColor=#3399FF;" parent="1" source="X0HKkTIcBq6q-AQzs4eG-70" target="X0HKkTIcBq6q-AQzs4eG-72" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="X0HKkTIcBq6q-AQzs4eG-75" value="N" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;fontColor=#3399FF;" parent="1" source="X0HKkTIcBq6q-AQzs4eG-70" target="X0HKkTIcBq6q-AQzs4eG-74" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="X0HKkTIcBq6q-AQzs4eG-83" style="edgeStyle=entityRelationEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=9;fontColor=#000000;shape=flexArrow;strokeColor=#3399FF;width=6.363636363636363;endSize=6.390909090909091;endWidth=13.305785123966942;" parent="1" source="X0HKkTIcBq6q-AQzs4eG-70" target="X0HKkTIcBq6q-AQzs4eG-82" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="X0HKkTIcBq6q-AQzs4eG-70" value="(t = scan(w, r)) &lt;br style=&quot;font-size: 9px;&quot;&gt;!= null" style="rhombus;whiteSpace=wrap;html=1;shadow=0;glass=0;fontSize=9;fontColor=#000000;strokeColor=#000000;rounded=1;arcSize=7;" parent="1" vertex="1">
+          <mxGeometry x="1200" y="2520" width="80" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="X0HKkTIcBq6q-AQzs4eG-124" value="" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=8;fontColor=#3399FF;strokeColor=#000000;" parent="1" source="X0HKkTIcBq6q-AQzs4eG-72" target="X0HKkTIcBq6q-AQzs4eG-123" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="X0HKkTIcBq6q-AQzs4eG-72" value="w.runTask(t)&lt;br&gt;执行任务处理" style="whiteSpace=wrap;html=1;fontSize=10;strokeColor=#d6b656;shadow=0;glass=0;rounded=1;arcSize=7;fillColor=#fff2cc;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="1340" y="2520" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="X0HKkTIcBq6q-AQzs4eG-77" value="Y" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=9;fontColor=#3399FF;" parent="1" source="X0HKkTIcBq6q-AQzs4eG-74" target="X0HKkTIcBq6q-AQzs4eG-76" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="X0HKkTIcBq6q-AQzs4eG-79" value="N" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=9;fontColor=#3399FF;" parent="1" source="X0HKkTIcBq6q-AQzs4eG-74" target="X0HKkTIcBq6q-AQzs4eG-78" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="X0HKkTIcBq6q-AQzs4eG-159" style="edgeStyle=entityRelationEdgeStyle;shape=flexArrow;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=8;fontColor=#3399FF;strokeColor=#3399FF;startSize=6;width=5.454545454545454;endSize=6;endWidth=11.40495867768595;" parent="1" source="X0HKkTIcBq6q-AQzs4eG-74" target="X0HKkTIcBq6q-AQzs4eG-158" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="X0HKkTIcBq6q-AQzs4eG-184" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=8;fontColor=#007FFF;strokeColor=#4D9900;shape=link;dashed=1;elbow=vertical;" parent="1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1260" y="2606" as="sourcePoint" />
+            <mxPoint x="2431.51" y="2608.5" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="1260" y="2670" />
+              <mxPoint x="2431" y="2670" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="X0HKkTIcBq6q-AQzs4eG-74" value="!awaitWork(w, r)&lt;br&gt;没有任务就等待" style="rhombus;whiteSpace=wrap;html=1;shadow=1;glass=0;fontSize=9;strokeColor=#d6b656;rounded=1;arcSize=7;fillColor=#fff2cc;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="1200" y="2600" width="80" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="X0HKkTIcBq6q-AQzs4eG-80" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=9;fontColor=#000000;dashed=1;" parent="1" source="X0HKkTIcBq6q-AQzs4eG-76" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1400" y="2650" />
+              <mxPoint x="1030" y="2650" />
+              <mxPoint x="1030" y="2400" />
+              <mxPoint x="940" y="2400" />
+            </Array>
+            <mxPoint x="940" y="2420" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="X0HKkTIcBq6q-AQzs4eG-76" value="break;&lt;br&gt;跳出循环，线程走向死亡" style="whiteSpace=wrap;html=1;fontSize=9;strokeColor=#d6b656;shadow=0;glass=0;rounded=1;arcSize=7;fillColor=#fff2cc;" parent="1" vertex="1">
+          <mxGeometry x="1340" y="2600" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="X0HKkTIcBq6q-AQzs4eG-78" value="更新随机数种子" style="whiteSpace=wrap;html=1;fontSize=9;strokeColor=#000000;fontColor=#000000;shadow=0;glass=0;rounded=1;arcSize=7;" parent="1" vertex="1">
+          <mxGeometry x="1200" y="2680" width="80" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="X0HKkTIcBq6q-AQzs4eG-86" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=9;fontColor=#3399FF;strokeColor=#000000;curved=1;" parent="1" source="X0HKkTIcBq6q-AQzs4eG-82" target="X0HKkTIcBq6q-AQzs4eG-85" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="X0HKkTIcBq6q-AQzs4eG-82" value="ForkJoinPool$scan()&lt;br&gt;" style="whiteSpace=wrap;html=1;fontSize=10;strokeColor=#d6b656;shadow=0;glass=0;rounded=1;arcSize=7;fillColor=#fff2cc;" parent="1" vertex="1">
+          <mxGeometry x="1340" y="2200" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="X0HKkTIcBq6q-AQzs4eG-88" value="" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=9;fontColor=#3399FF;strokeColor=#000000;" parent="1" source="X0HKkTIcBq6q-AQzs4eG-85" target="X0HKkTIcBq6q-AQzs4eG-87" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="X0HKkTIcBq6q-AQzs4eG-120" value="Y" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=8;fontColor=#3399FF;" parent="X0HKkTIcBq6q-AQzs4eG-88" vertex="1" connectable="0">
+          <mxGeometry x="-0.2404" y="-2" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="X0HKkTIcBq6q-AQzs4eG-90" value="N" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=9;fontColor=#3399FF;strokeColor=#000000;" parent="1" source="X0HKkTIcBq6q-AQzs4eG-85" target="X0HKkTIcBq6q-AQzs4eG-89" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="X0HKkTIcBq6q-AQzs4eG-85" value="线程池任务队列数组不为空&lt;br&gt;且长度&amp;gt;1&lt;br&gt;&amp;amp;&amp;amp; 专属任务队列不为空" style="rhombus;whiteSpace=wrap;html=1;shadow=0;glass=0;fontSize=9;fontColor=#000000;strokeColor=#000000;rounded=1;arcSize=7;" parent="1" vertex="1">
+          <mxGeometry x="1460" y="2240" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="X0HKkTIcBq6q-AQzs4eG-93" value="" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=9;fontColor=#3399FF;strokeColor=#000000;" parent="1" source="X0HKkTIcBq6q-AQzs4eG-87" target="X0HKkTIcBq6q-AQzs4eG-92" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="X0HKkTIcBq6q-AQzs4eG-87" value="int ss = w.scanState;" style="whiteSpace=wrap;html=1;fontSize=9;strokeColor=#000000;fontColor=#000000;shadow=0;glass=0;rounded=1;arcSize=7;" parent="1" vertex="1">
+          <mxGeometry x="1623" y="2200" width="97" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="X0HKkTIcBq6q-AQzs4eG-121" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;fontSize=8;fontColor=#3399FF;strokeColor=#000000;dashed=1;" parent="1" source="X0HKkTIcBq6q-AQzs4eG-89" target="X0HKkTIcBq6q-AQzs4eG-82" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="X0HKkTIcBq6q-AQzs4eG-89" value="return null;" style="whiteSpace=wrap;html=1;fontSize=9;strokeColor=#000000;fontColor=#000000;shadow=0;glass=0;rounded=1;arcSize=7;" parent="1" vertex="1">
+          <mxGeometry x="1480" y="2360" width="80" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="X0HKkTIcBq6q-AQzs4eG-95" value="" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=9;fontColor=#3399FF;strokeColor=#000000;dashed=1;" parent="1" source="X0HKkTIcBq6q-AQzs4eG-92" target="X0HKkTIcBq6q-AQzs4eG-94" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="X0HKkTIcBq6q-AQzs4eG-98" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=9;fontColor=#3399FF;strokeColor=#000000;" parent="1" source="X0HKkTIcBq6q-AQzs4eG-92" target="X0HKkTIcBq6q-AQzs4eG-106" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="X0HKkTIcBq6q-AQzs4eG-99" value="(q = ws[k]) != null&lt;br&gt;从初始索引位置origin往后&lt;br&gt;k++依次索引，找到非空&lt;br&gt;任务队列" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=9;fontColor=#3399FF;" parent="X0HKkTIcBq6q-AQzs4eG-98" vertex="1" connectable="0">
+          <mxGeometry x="0.2388" y="13" relative="1" as="geometry">
+            <mxPoint x="-3" y="3" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="X0HKkTIcBq6q-AQzs4eG-101" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=9;fontColor=#3399FF;strokeColor=#000000;" parent="1" source="X0HKkTIcBq6q-AQzs4eG-92" target="X0HKkTIcBq6q-AQzs4eG-100" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="X0HKkTIcBq6q-AQzs4eG-102" value="(k = (k + 1) &amp;amp; m) == origin&lt;br&gt;&amp;nbsp;相当于k++,继续往后索引，&lt;br&gt;直到找到非空任务队列&lt;br&gt;或回到初始索引位置" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=9;fontColor=#3399FF;" parent="X0HKkTIcBq6q-AQzs4eG-101" vertex="1" connectable="0">
+          <mxGeometry x="0.0681" y="21" relative="1" as="geometry">
+            <mxPoint x="37" y="1" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="X0HKkTIcBq6q-AQzs4eG-92" value="for( int origin = r &amp;amp; m, k = origin, oldSum = 0, checkSum = 0;;) start" style="whiteSpace=wrap;html=1;fontSize=8;strokeColor=#000000;fontColor=#000000;shadow=0;glass=0;rounded=1;arcSize=7;" parent="1" vertex="1">
+          <mxGeometry x="1623" y="2260" width="97" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="X0HKkTIcBq6q-AQzs4eG-94" value="for( ;;) end" style="whiteSpace=wrap;html=1;fontSize=9;strokeColor=#000000;fontColor=#000000;shadow=0;glass=0;rounded=1;arcSize=7;" parent="1" vertex="1">
+          <mxGeometry x="1624" y="2480" width="96" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="X0HKkTIcBq6q-AQzs4eG-104" value="k = origin = r &amp;amp; m: 使用随机数计算出任务队列的一个&lt;br&gt;数组索引，k是随机值，可能k位上的任务队列为空；&lt;br&gt;oldSum: 上次扫描一圈的checkSum&lt;br&gt;checkSum: 某随机种子下获取非null任务队列任务失败计数" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=9;fontColor=#3399FF;" parent="1" vertex="1">
+          <mxGeometry x="1720" y="2245" width="250" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="X0HKkTIcBq6q-AQzs4eG-105" value="checkSum += b" style="whiteSpace=wrap;html=1;fontSize=9;strokeColor=#000000;fontColor=#000000;shadow=0;glass=0;rounded=1;arcSize=7;" parent="1" vertex="1">
+          <mxGeometry x="1800" y="2380" width="97" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="X0HKkTIcBq6q-AQzs4eG-107" value="N" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;fontSize=8;fontColor=#3399FF;strokeColor=#000000;" parent="1" source="X0HKkTIcBq6q-AQzs4eG-106" target="X0HKkTIcBq6q-AQzs4eG-105" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="X0HKkTIcBq6q-AQzs4eG-109" value="Y" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=8;fontColor=#3399FF;strokeColor=#000000;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="X0HKkTIcBq6q-AQzs4eG-106" target="X0HKkTIcBq6q-AQzs4eG-108" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="X0HKkTIcBq6q-AQzs4eG-106" value="队列中是否有任务" style="rhombus;whiteSpace=wrap;html=1;rounded=1;shadow=0;glass=0;fontSize=8;fontColor=#3399FF;strokeColor=#000000;arcSize=15;" parent="1" vertex="1">
+          <mxGeometry x="1803.5" y="2315" width="90" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="X0HKkTIcBq6q-AQzs4eG-111" value="" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=8;fontColor=#000000;strokeColor=#000000;" parent="1" source="X0HKkTIcBq6q-AQzs4eG-108" target="X0HKkTIcBq6q-AQzs4eG-110" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2091" y="2310" />
+              <mxPoint x="2160" y="2310" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="X0HKkTIcBq6q-AQzs4eG-116" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=8;fontColor=#000000;strokeColor=#000000;" parent="1" source="X0HKkTIcBq6q-AQzs4eG-108" target="X0HKkTIcBq6q-AQzs4eG-114" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="X0HKkTIcBq6q-AQzs4eG-108" value="&lt;div&gt;t = ((ForkJoinTask&amp;lt;?&amp;gt;)&lt;span&gt;&amp;nbsp;U.getObjectVolatile(a, i))&lt;/span&gt;&lt;/div&gt;计算偏移量&lt;br&gt;UNSAFE通过偏移量读取任务队列上的任务" style="whiteSpace=wrap;html=1;fontSize=8;strokeColor=#d6b656;rounded=1;shadow=0;glass=0;arcSize=15;fillColor=#fff2cc;" parent="1" vertex="1">
+          <mxGeometry x="2000" y="2261" width="181.5" height="37.5" as="geometry" />
+        </mxCell>
+        <mxCell id="X0HKkTIcBq6q-AQzs4eG-113" value="Y" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=8;fontColor=#000000;strokeColor=#000000;" parent="1" source="X0HKkTIcBq6q-AQzs4eG-110" target="X0HKkTIcBq6q-AQzs4eG-112" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="X0HKkTIcBq6q-AQzs4eG-115" value="N" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=8;fontColor=#000000;strokeColor=#000000;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="X0HKkTIcBq6q-AQzs4eG-110" target="X0HKkTIcBq6q-AQzs4eG-117" edge="1">
+          <mxGeometry x="-0.8273" relative="1" as="geometry">
+            <mxPoint x="2241.5" y="2402" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="2162" y="2420" />
+            </Array>
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="X0HKkTIcBq6q-AQzs4eG-119" value="&lt;div&gt;if (oldSum == 0 &amp;amp;&amp;amp;&amp;nbsp;&lt;/div&gt;&lt;div&gt;w.scanState &amp;lt; 0)&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=8;fontColor=#3399FF;" parent="X0HKkTIcBq6q-AQzs4eG-115" vertex="1" connectable="0">
+          <mxGeometry x="0.0765" y="9" relative="1" as="geometry">
+            <mxPoint x="15" y="-11" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="X0HKkTIcBq6q-AQzs4eG-110" value="ss &amp;gt;= 0&lt;br&gt;&lt;font color=&quot;#3399ff&quot;&gt;inactive状态ss&amp;lt;0&lt;/font&gt;" style="rhombus;whiteSpace=wrap;html=1;fontSize=8;strokeColor=#000000;fontColor=#000000;rounded=1;shadow=0;glass=0;arcSize=15;" parent="1" vertex="1">
+          <mxGeometry x="2120" y="2320" width="80.75" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="X0HKkTIcBq6q-AQzs4eG-122" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;fontSize=8;fontColor=#3399FF;strokeColor=#000000;dashed=1;" parent="1" source="X0HKkTIcBq6q-AQzs4eG-112" target="X0HKkTIcBq6q-AQzs4eG-82" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2302" y="2370" />
+              <mxPoint x="1370" y="2370" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="X0HKkTIcBq6q-AQzs4eG-112" value="if (n &amp;lt; -1) &lt;font color=&quot;#3399ff&quot;&gt;//即队列有多个任务，呼朋唤友来处理&lt;/font&gt;&lt;br&gt;&lt;b&gt;&amp;nbsp; &amp;nbsp; signalWork(ws, q);&lt;/b&gt;&lt;br&gt;&lt;b&gt;return t;&lt;/b&gt;" style="whiteSpace=wrap;html=1;fontSize=8;strokeColor=#d6b656;rounded=1;shadow=1;glass=0;arcSize=15;fillColor=#fff2cc;align=left;" parent="1" vertex="1">
+          <mxGeometry x="2241.5" y="2320" width="120.01" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="X0HKkTIcBq6q-AQzs4eG-114" value="获取专属任务队列的扫描状态&lt;br&gt;更新随机数种子" style="whiteSpace=wrap;html=1;fontSize=8;strokeColor=#000000;fontColor=#000000;rounded=1;shadow=0;glass=0;arcSize=15;" parent="1" vertex="1">
+          <mxGeometry x="2030.5700000000002" y="2420" width="120.37" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="X0HKkTIcBq6q-AQzs4eG-117" value="tryRelease(c = ctl, ws[m &amp;amp; (int)c], AC_UNIT)" style="whiteSpace=wrap;html=1;fontSize=8;strokeColor=#000000;fontColor=#000000;rounded=1;shadow=0;glass=0;arcSize=15;" parent="1" vertex="1">
+          <mxGeometry x="2241.5" y="2400" width="120.01" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="X0HKkTIcBq6q-AQzs4eG-127" value="" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=9;fontColor=#3399FF;strokeColor=#000000;" parent="1" source="X0HKkTIcBq6q-AQzs4eG-123" target="X0HKkTIcBq6q-AQzs4eG-126" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="X0HKkTIcBq6q-AQzs4eG-123" value="scanState &amp;amp;= ~SCANNING;&lt;br&gt;&lt;font color=&quot;#3399ff&quot;&gt;标记正在处理任务&lt;/font&gt;" style="whiteSpace=wrap;html=1;fontSize=9;strokeColor=#d6b656;shadow=0;glass=0;rounded=1;arcSize=7;fillColor=#fff2cc;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="1529.25" y="2530" width="120" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="X0HKkTIcBq6q-AQzs4eG-125" value="&lt;b&gt;由于有随机种子存在 以及结合任务提交和处理逻辑，&lt;br&gt;大概率是从公有任务队列上偷取任务&lt;/b&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=9;fontColor=#3399FF;" parent="1" vertex="1">
+          <mxGeometry x="2000" y="2235" width="220" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="X0HKkTIcBq6q-AQzs4eG-131" value="" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=9;fontColor=#3399FF;strokeColor=#000000;" parent="1" source="X0HKkTIcBq6q-AQzs4eG-126" target="X0HKkTIcBq6q-AQzs4eG-130" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="X0HKkTIcBq6q-AQzs4eG-135" value="" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=9;fontColor=#3399FF;strokeColor=#000000;" parent="1" source="X0HKkTIcBq6q-AQzs4eG-126" target="X0HKkTIcBq6q-AQzs4eG-134" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="X0HKkTIcBq6q-AQzs4eG-126" value="1 (currentSteal = task).doExec();&lt;br&gt;&lt;font color=&quot;#3399ff&quot;&gt;执行ForkJoinTask的doExec()方法&lt;/font&gt;" style="whiteSpace=wrap;html=1;fontSize=9;strokeColor=#d6b656;shadow=0;glass=0;rounded=1;arcSize=7;fillColor=#fff2cc;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="1514.25" y="2574" width="150" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="X0HKkTIcBq6q-AQzs4eG-133" value="" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=9;fontColor=#3399FF;strokeColor=#000000;" parent="1" source="X0HKkTIcBq6q-AQzs4eG-130" target="X0HKkTIcBq6q-AQzs4eG-132" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="X0HKkTIcBq6q-AQzs4eG-130" value="&amp;nbsp;U.putOrderedObject(this, QCURRENTSTEAL, null);&lt;br&gt;&lt;font color=&quot;#3399ff&quot;&gt;任务指针赋值null, 交给GC回收&lt;/font&gt;" style="whiteSpace=wrap;html=1;fontSize=9;shadow=0;glass=0;rounded=1;arcSize=7;fontStyle=0" parent="1" vertex="1">
+          <mxGeometry x="1520" y="2630" width="137" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="X0HKkTIcBq6q-AQzs4eG-147" value="" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;fontSize=9;fontColor=#3399FF;strokeColor=#000000;" parent="1" source="X0HKkTIcBq6q-AQzs4eG-132" target="X0HKkTIcBq6q-AQzs4eG-146" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="X0HKkTIcBq6q-AQzs4eG-132" value="&lt;b&gt;2 execLocalTasks();&lt;br&gt;&lt;font color=&quot;#3399ff&quot;&gt;执行本线程专属任务队列中的所有任务&lt;/font&gt;&lt;/b&gt;" style="whiteSpace=wrap;html=1;fontSize=9;strokeColor=#d6b656;shadow=0;glass=0;rounded=1;arcSize=7;fillColor=#fff2cc;fontStyle=0" parent="1" vertex="1">
+          <mxGeometry x="1520" y="2690" width="137" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="X0HKkTIcBq6q-AQzs4eG-139" value="最小任务" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=9;fontColor=#3399FF;strokeColor=#000000;" parent="1" source="X0HKkTIcBq6q-AQzs4eG-134" target="X0HKkTIcBq6q-AQzs4eG-136" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="X0HKkTIcBq6q-AQzs4eG-140" value="非最小任务" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;fontSize=9;fontColor=#3399FF;strokeColor=#000000;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="X0HKkTIcBq6q-AQzs4eG-134" target="X0HKkTIcBq6q-AQzs4eG-141" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1869.25" y="2635" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="X0HKkTIcBq6q-AQzs4eG-154" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.75;exitDx=0;exitDy=0;entryX=1;entryY=0.75;entryDx=0;entryDy=0;dashed=1;fontSize=8;fontColor=#3399FF;strokeColor=#000000;" parent="1" source="X0HKkTIcBq6q-AQzs4eG-134" target="X0HKkTIcBq6q-AQzs4eG-126" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="X0HKkTIcBq6q-AQzs4eG-134" value="Xxx$compute()&lt;br&gt;&lt;font color=&quot;#3399ff&quot;&gt;执行用户定义的任务&lt;/font&gt;" style="whiteSpace=wrap;html=1;fontSize=9;shadow=0;glass=0;rounded=1;arcSize=7;fontStyle=0" parent="1" vertex="1">
+          <mxGeometry x="1709.25" y="2575" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="X0HKkTIcBq6q-AQzs4eG-144" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0.75;entryDx=0;entryDy=0;fontSize=9;fontColor=#3399FF;strokeColor=#000000;dashed=1;" parent="1" source="X0HKkTIcBq6q-AQzs4eG-136" target="X0HKkTIcBq6q-AQzs4eG-134" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="X0HKkTIcBq6q-AQzs4eG-136" value="执行返回结果" style="whiteSpace=wrap;html=1;fontSize=9;shadow=0;glass=0;rounded=1;arcSize=7;fontStyle=0" parent="1" vertex="1">
+          <mxGeometry x="1889.25" y="2529" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="X0HKkTIcBq6q-AQzs4eG-143" value="" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=9;fontColor=#3399FF;strokeColor=#000000;" parent="1" source="X0HKkTIcBq6q-AQzs4eG-141" target="X0HKkTIcBq6q-AQzs4eG-142" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="X0HKkTIcBq6q-AQzs4eG-164" value="" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=8;fontColor=#3399FF;strokeColor=#000000;" parent="1" source="X0HKkTIcBq6q-AQzs4eG-141" target="X0HKkTIcBq6q-AQzs4eG-163" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="X0HKkTIcBq6q-AQzs4eG-141" value="ForkJoinTask$fork();" style="whiteSpace=wrap;html=1;fontSize=9;strokeColor=#b85450;shadow=0;glass=0;rounded=1;arcSize=7;fillColor=#f8cecc;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="1889.25" y="2615" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="X0HKkTIcBq6q-AQzs4eG-145" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0.75;entryDx=0;entryDy=0;dashed=1;fontSize=9;fontColor=#3399FF;strokeColor=#000000;" parent="1" source="X0HKkTIcBq6q-AQzs4eG-142" target="X0HKkTIcBq6q-AQzs4eG-134" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="X0HKkTIcBq6q-AQzs4eG-172" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;fontSize=7;fontColor=#FF3399;strokeColor=#000000;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="X0HKkTIcBq6q-AQzs4eG-142" target="X0HKkTIcBq6q-AQzs4eG-173" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="2050" y="2750" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="X0HKkTIcBq6q-AQzs4eG-142" value="ForkJoinTask$join();&lt;br&gt;注意并不阻塞工作者线程" style="whiteSpace=wrap;html=1;fontSize=9;strokeColor=#b85450;shadow=0;glass=0;rounded=1;arcSize=7;fillColor=#f8cecc;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="1889.25" y="2675" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="X0HKkTIcBq6q-AQzs4eG-149" value="" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;fontSize=9;fontColor=#3399FF;strokeColor=#000000;" parent="1" source="X0HKkTIcBq6q-AQzs4eG-146" target="X0HKkTIcBq6q-AQzs4eG-148" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="X0HKkTIcBq6q-AQzs4eG-146" value="&lt;div&gt;if (++nsteals &amp;lt; 0)&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; transferStealCount(pool);&lt;br&gt;&lt;font color=&quot;#3399ff&quot; style=&quot;font-size: 8px&quot;&gt;计数溢出，将计数加到pool.stealCounter上，并重置nsteals = 0&lt;/font&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontSize=9;shadow=0;glass=0;rounded=1;arcSize=7;fontStyle=0;align=left;" parent="1" vertex="1">
+          <mxGeometry x="1509.25" y="2750" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="X0HKkTIcBq6q-AQzs4eG-151" value="" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;fontSize=9;fontColor=#3399FF;strokeColor=#000000;" parent="1" source="X0HKkTIcBq6q-AQzs4eG-148" target="X0HKkTIcBq6q-AQzs4eG-150" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="X0HKkTIcBq6q-AQzs4eG-148" value="scanState |= SCANNING;&lt;br&gt;&lt;font color=&quot;#3399ff&quot;&gt;标记为正在扫描任务&lt;/font&gt;" style="whiteSpace=wrap;html=1;fontSize=9;strokeColor=#d6b656;shadow=0;glass=0;rounded=1;arcSize=7;fillColor=#fff2cc;fontStyle=1;align=center;" parent="1" vertex="1">
+          <mxGeometry x="1520" y="2810" width="138.5" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="X0HKkTIcBq6q-AQzs4eG-152" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.75;entryDx=0;entryDy=0;dashed=1;fontSize=9;fontColor=#3399FF;strokeColor=#000000;" parent="1" source="X0HKkTIcBq6q-AQzs4eG-150" target="X0HKkTIcBq6q-AQzs4eG-72" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="X0HKkTIcBq6q-AQzs4eG-150" value="&lt;div&gt;if (thread != null)&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; thread.afterTopLevelExec();&lt;br&gt;&lt;font color=&quot;#3399ff&quot;&gt;执行自定义钩子方法，默认空方法&lt;/font&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontSize=9;shadow=0;glass=0;rounded=1;arcSize=7;fontStyle=0;align=left;" parent="1" vertex="1">
+          <mxGeometry x="1520" y="2850" width="137" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="X0HKkTIcBq6q-AQzs4eG-153" value="可以看到每个线程首次执行都先从其他队列&lt;br&gt;（主要是公共队列）偷取任务执行，然后再&lt;br&gt;扫描自己的专属队列的任务执行；&lt;br&gt;因为分析前面的代码知道，任务提交总是放到公共队列&lt;br&gt;线程首次启动执行时私有队列肯定是没有任务可执行的" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=9;fontColor=#3399FF;" parent="1" vertex="1">
+          <mxGeometry x="1657" y="2680" width="230" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="X0HKkTIcBq6q-AQzs4eG-155" value="绿色标记部分为主要的任务提交阶段&lt;br&gt;黄色标记部分为主要的任务执行阶段" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;fontColor=#3399FF;" parent="1" vertex="1">
+          <mxGeometry x="100" y="1241" width="180" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="X0HKkTIcBq6q-AQzs4eG-100" value="int ss = w.scanState;" style="whiteSpace=wrap;html=1;fontSize=9;strokeColor=#000000;fontColor=#000000;shadow=0;glass=0;rounded=1;arcSize=7;" parent="1" vertex="1">
+          <mxGeometry x="1800" y="2440" width="97" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="X0HKkTIcBq6q-AQzs4eG-158" value="&lt;b&gt;awaitWork()&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#3399ff&quot;&gt;不看源码&lt;/font&gt;&lt;font color=&quot;#3399ff&quot;&gt;也能猜出来它想干啥&lt;/font&gt;" style="whiteSpace=wrap;html=1;fontSize=9;strokeColor=#d6b656;shadow=1;glass=0;rounded=1;arcSize=7;fillColor=#fff2cc;" parent="1" vertex="1">
+          <mxGeometry x="1340" y="2920" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="X0HKkTIcBq6q-AQzs4eG-160" value="基本就是每隔一小段时间唤醒自己&lt;br&gt;或者被其他线程唤醒, 然后去偷取任务执行&lt;br&gt;偷不到任务，就再去阻塞等待 &lt;b&gt;U.park()&lt;/b&gt;&lt;br&gt;线程池被关闭或线程等待超时会返回false,&amp;nbsp;&lt;br&gt;最终跳出循环，工作线程走向死亡" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=9;fontColor=#3399FF;" parent="1" vertex="1">
+          <mxGeometry x="1460" y="2910" width="180" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="X0HKkTIcBq6q-AQzs4eG-169" value="Y" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=7;fontColor=#3399FF;strokeColor=#000000;" parent="1" source="X0HKkTIcBq6q-AQzs4eG-163" target="X0HKkTIcBq6q-AQzs4eG-167" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="X0HKkTIcBq6q-AQzs4eG-170" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=7;fontColor=#3399FF;strokeColor=#000000;" parent="1" source="X0HKkTIcBq6q-AQzs4eG-163" target="X0HKkTIcBq6q-AQzs4eG-168" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="X0HKkTIcBq6q-AQzs4eG-171" value="N" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=7;fontColor=#3399FF;" parent="X0HKkTIcBq6q-AQzs4eG-170" vertex="1" connectable="0">
+          <mxGeometry x="0.0574" y="8" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="X0HKkTIcBq6q-AQzs4eG-163" value="当前线程是否是&lt;br style=&quot;font-size: 7px;&quot;&gt;ForkJoinWorkerThread&lt;br style=&quot;font-size: 7px;&quot;&gt;实例？" style="rhombus;whiteSpace=wrap;html=1;fontSize=7;shadow=0;glass=0;rounded=1;arcSize=7;fontStyle=0;" parent="1" vertex="1">
+          <mxGeometry x="2050.75" y="2607.5" width="80" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="X0HKkTIcBq6q-AQzs4eG-177" value="" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=7;fontColor=#FF3399;strokeColor=#000000;" parent="1" source="X0HKkTIcBq6q-AQzs4eG-167" target="X0HKkTIcBq6q-AQzs4eG-176" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="X0HKkTIcBq6q-AQzs4eG-167" value="&lt;span style=&quot;font-weight: normal&quot;&gt;((ForkJoinWorkerThread)t)&lt;br&gt;.workQueue.push(this);&lt;br&gt;&lt;font color=&quot;#3399ff&quot;&gt;直接推送到线程自己的专属任务队列，可能被其他空闲的线程偷走执行，也可能被线程自己doExec()执行&lt;/font&gt;&lt;br&gt;&lt;/span&gt;" style="whiteSpace=wrap;html=1;fontSize=9;strokeColor=#d6b656;shadow=0;glass=0;rounded=1;arcSize=7;fillColor=#fff2cc;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="2170.75" y="2608.5" width="150" height="53" as="geometry" />
+        </mxCell>
+        <mxCell id="X0HKkTIcBq6q-AQzs4eG-168" value="&lt;span style=&quot;font-weight: normal&quot;&gt;&amp;nbsp;ForkJoinPool.common&lt;br&gt;.externalPush(this);&lt;br&gt;&lt;font color=&quot;#3399ff&quot;&gt;提交给默认线程池common&lt;br&gt;&lt;/font&gt;&lt;font color=&quot;#ff3399&quot;&gt;？？？&lt;/font&gt;&lt;br&gt;&lt;/span&gt;" style="whiteSpace=wrap;html=1;fontSize=9;strokeColor=#d6b656;shadow=0;glass=0;rounded=1;arcSize=7;fillColor=#fff2cc;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="2170" y="2680" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="X0HKkTIcBq6q-AQzs4eG-175" value="" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=7;fontColor=#FF3399;strokeColor=#000000;" parent="1" source="X0HKkTIcBq6q-AQzs4eG-173" target="X0HKkTIcBq6q-AQzs4eG-174" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="X0HKkTIcBq6q-AQzs4eG-182" value="" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=7;fontColor=#FF3399;strokeColor=#000000;" parent="1" source="X0HKkTIcBq6q-AQzs4eG-173" target="X0HKkTIcBq6q-AQzs4eG-181" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="X0HKkTIcBq6q-AQzs4eG-173" value="&lt;div&gt;&lt;span style=&quot;font-weight: 400&quot;&gt;if ((s = &lt;/span&gt;doJoin()&lt;span style=&quot;font-weight: 400&quot;&gt; &amp;amp; DONE_MASK) != NORMAL)&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;font-weight: 400&quot;&gt;&amp;nbsp; &amp;nbsp; reportException(s);&lt;/span&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontSize=9;strokeColor=#d6b656;shadow=0;glass=0;rounded=1;arcSize=7;fillColor=#fff2cc;fontStyle=1;align=left;" parent="1" vertex="1">
+          <mxGeometry x="2050.75" y="2750" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="X0HKkTIcBq6q-AQzs4eG-174" value="&lt;span style=&quot;font-weight: 400&quot;&gt;getRawResult();&lt;br&gt;&lt;/span&gt;" style="whiteSpace=wrap;html=1;fontSize=9;strokeColor=#d6b656;shadow=0;glass=0;rounded=1;arcSize=7;fillColor=#fff2cc;fontStyle=1;align=center;" parent="1" vertex="1">
+          <mxGeometry x="2050" y="2810" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="X0HKkTIcBq6q-AQzs4eG-176" value="&lt;span style=&quot;&quot;&gt;p.signalWork(p.workQueues, this);&lt;/span&gt;" style="whiteSpace=wrap;html=1;fontSize=9;strokeColor=#d6b656;shadow=1;glass=0;rounded=1;arcSize=7;fillColor=#fff2cc;fontStyle=1;labelBackgroundColor=none;" parent="1" vertex="1">
+          <mxGeometry x="2361.51" y="2612.5" width="140" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="X0HKkTIcBq6q-AQzs4eG-181" value="&lt;font style=&quot;font-size: 8px&quot;&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;doJoin()&lt;/span&gt;&lt;br&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 8px&quot;&gt;&lt;span&gt;通过对象链表调用方法替代方法的递归调用&lt;br&gt;&lt;/span&gt;&lt;span style=&quot;font-weight: normal&quot;&gt;参考测试testDoJoin()&lt;/span&gt;&lt;/font&gt;&lt;br&gt;&lt;/font&gt;" style="whiteSpace=wrap;html=1;fontSize=9;strokeColor=#d6b656;shadow=0;glass=0;rounded=1;arcSize=7;fillColor=#fff2cc;fontStyle=1;align=center;" parent="1" vertex="1">
+          <mxGeometry x="2210" y="2750" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="X0HKkTIcBq6q-AQzs4eG-183" value="&lt;div style=&quot;font-size: 8px;&quot;&gt;换个好看的格式&lt;br style=&quot;font-size: 8px;&quot;&gt;private int doJoin() {&lt;/div&gt;&lt;div style=&quot;font-size: 8px;&quot;&gt;&amp;nbsp; &amp;nbsp; int s; Thread t; ForkJoinWorkerThread wt; ForkJoinPool.WorkQueue w;&lt;/div&gt;&lt;div style=&quot;font-size: 8px;&quot;&gt;&amp;nbsp; &amp;nbsp; return &lt;b style=&quot;font-size: 8px;&quot;&gt;(s = status) &amp;lt; 0&lt;/b&gt; ?&lt;/div&gt;&lt;div style=&quot;font-size: 8px;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; s&lt;/div&gt;&lt;div style=&quot;font-size: 8px;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; :&lt;/div&gt;&lt;div style=&quot;font-size: 8px;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &lt;b style=&quot;font-size: 8px;&quot;&gt;((t = Thread.currentThread()) instanceof ForkJoinWorkerThread)&lt;/b&gt; ?&lt;/div&gt;&lt;div style=&quot;font-size: 8px;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; (w = (wt = (ForkJoinWorkerThread)t).workQueue).tryUnpush(this) &amp;amp;&amp;amp; (s = doExec()) &amp;lt; 0 ?&lt;/div&gt;&lt;div style=&quot;font-size: 8px;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; s&lt;/div&gt;&lt;div style=&quot;font-size: 8px;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; :&lt;/div&gt;&lt;div style=&quot;font-size: 8px;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; wt.pool.awaitJoin(w, this, 0L)&lt;span style=&quot;white-space: pre; font-size: 8px;&quot;&gt;&#x9;&lt;/span&gt;//4&lt;/div&gt;&lt;div style=&quot;font-size: 8px;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; :&lt;/div&gt;&lt;div style=&quot;font-size: 8px;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; externalAwaitDone();&lt;/div&gt;&lt;div style=&quot;font-size: 8px;&quot;&gt;}&lt;br style=&quot;font-size: 8px;&quot;&gt;join()完整逻辑：&lt;/div&gt;&lt;div style=&quot;font-size: 8px;&quot;&gt;1. 检查调用 join() 的线程是否是 ForkJoinThread 线程。如果不是（例如 main 线程），则阻塞当前线程，等待任务完成。如果&lt;/div&gt;&lt;div style=&quot;font-size: 8px;&quot;&gt;是，则不阻塞。&lt;/div&gt;&lt;div style=&quot;font-size: 8px;&quot;&gt;2. 查看任务的完成状态，如果已经完成，直接返回结果。&lt;/div&gt;&lt;div style=&quot;font-size: 8px;&quot;&gt;3. 如果任务尚未完成，但处于自己的工作队列内，则完成它。&lt;/div&gt;&lt;div style=&quot;font-size: 8px;&quot;&gt;4. 如果任务已经被其他的工作线程偷走，则窃取这个小偷的工作队列内的任务（以 FIFO 方式），执行，以期帮助它早日完成欲&lt;/div&gt;&lt;div style=&quot;font-size: 8px;&quot;&gt;join 的任务。&lt;/div&gt;&lt;div style=&quot;font-size: 8px;&quot;&gt;5. 如果偷走任务的小偷也已经把自己的任务全部做完，正在等待需要 join 的任务时，则找到小偷的小偷，帮助它完成它的任务。&lt;/div&gt;&lt;div style=&quot;font-size: 8px;&quot;&gt;6. 递归地执行第5步&lt;br style=&quot;font-size: 8px;&quot;&gt;&lt;br style=&quot;font-size: 8px;&quot;&gt;比如测试案例中 计算1亿个随机数的和，&lt;br style=&quot;font-size: 8px;&quot;&gt;推测只有刚开始fork出的任务被8个工作线程给分摊了，但是后面所有线程都繁忙，此后各线程fork出的任务基本都是线程自己消化，直到有线程干完活。&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=8;fontColor=#007FFF;" parent="1" vertex="1">
+          <mxGeometry x="2330" y="2750" width="540" height="250" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-2" value="&lt;p style=&quot;margin: 4px 0px 0px; text-align: center;&quot;&gt;&lt;b&gt;ForkJoinPool&lt;/b&gt; extends AbstractExecutorService&lt;br style=&quot;font-size: 10px;&quot;&gt;&lt;/p&gt;&lt;hr style=&quot;font-size: 10px;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//用于取ctl低16位，bit:0-15&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;static final int &lt;b&gt;SMASK&lt;/b&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; = 0xffff;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; // short bits == max index&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;static final int MAX_CAP&amp;nbsp; &amp;nbsp; &amp;nbsp; = 0x7fff;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; // max #workers - 1&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;static final int EVENMASK&amp;nbsp; &amp;nbsp; &amp;nbsp;= 0xfffe;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; // even short bits&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;static final int SQMASK&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;= 0x007e;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; // max 64 (even) slots&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;// Masks and units for WorkQueue.scanState and ctl sp subfield&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;static final int SCANNING&amp;nbsp; &amp;nbsp; &amp;nbsp;= 1;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;// false when running tasks&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;static final int INACTIVE&amp;nbsp; &amp;nbsp; &amp;nbsp;= 1 &amp;lt;&amp;lt; 31;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;// must be negative&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;static final int SS_SEQ&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;= 1 &amp;lt;&amp;lt; 16;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;// version count&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;// Mode bits for ForkJoinPool.config and WorkQueue.config&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//工作队列的工作模式&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;static final int MODE_MASK&amp;nbsp; &amp;nbsp; = 0xffff &amp;lt;&amp;lt; 16;&amp;nbsp; &lt;font color=&quot;#007fff&quot;&gt;// int 的高16位记录工作模式&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;static final int LIFO_QUEUE&amp;nbsp; &amp;nbsp;= 0;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;font color=&quot;#007fff&quot;&gt;//默认&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;static final int FIFO_QUEUE&amp;nbsp; &amp;nbsp;= 1 &amp;lt;&amp;lt; 16;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;static final int SHARED_QUEUE = 1 &amp;lt;&amp;lt; 31;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;// must be negative&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;// static fields (initialized in static initializer below)&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;public static final ForkJoinWorkerThreadFactory defaultForkJoinWorkerThreadFactory;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private static final RuntimePermission modifyThreadPermission;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//默认实现&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;static final ForkJoinPool &lt;b&gt;common&lt;/b&gt;;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//common并行度，1~Max_CAP，默认为CPU核心数-1&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//可以通过系统属性“java.util.concurrent.ForkJoinPool.common.parallelism”设置&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;static final int &lt;b&gt;commonParallelism&lt;/b&gt;;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private static int commonMaxSpares;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private static int poolNumberSequence;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;// static configuration constants&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private static final long IDLE_TIMEOUT = 2000L * 1000L * 1000L; // 2sec&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private static final long TIMEOUT_SLOP = 20L * 1000L * 1000L;&amp;nbsp; // 20ms&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private static final int DEFAULT_COMMON_MAX_SPARES = 256;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private static final int SPINS&amp;nbsp; = 0;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private static final int SEED_INCREMENT = 0x9e3779b9;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;// Lower and upper word masks&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private static final long SP_MASK&amp;nbsp; &amp;nbsp; = 0xffffffffL;&amp;nbsp; &lt;font color=&quot;#007fff&quot;&gt;//低32位掩码&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private static final long UC_MASK&amp;nbsp; &amp;nbsp; = ~SP_MASK; &lt;font color=&quot;#007fff&quot;&gt;//高32位掩码 0xffffffff00000000L&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;// Active counts&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private static final int&amp;nbsp; &lt;b&gt;AC_SHIFT&lt;/b&gt;&amp;nbsp; &amp;nbsp;= 48;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private static final long AC_UNIT&amp;nbsp; &amp;nbsp; = 0x0001L &amp;lt;&amp;lt; AC_SHIFT; &lt;font color=&quot;#007fff&quot;&gt;//活跃线程数的计数单元,&quot;+1“操作&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private static final long AC_MASK&amp;nbsp; &amp;nbsp; = 0xffffL &amp;lt;&amp;lt; AC_SHIFT;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;// Total counts&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private static final int&amp;nbsp; &lt;b&gt;TC_SHIFT&lt;/b&gt;&amp;nbsp; &amp;nbsp;= 32;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private static final long TC_UNIT&amp;nbsp; &amp;nbsp; = 0x0001L &amp;lt;&amp;lt; TC_SHIFT;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private static final long TC_MASK&amp;nbsp; &amp;nbsp; = 0xffffL &amp;lt;&amp;lt; TC_SHIFT;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//ctl 中索引为47的bit&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private static final long &lt;b&gt;ADD_WORKER&lt;/b&gt; = 0x0001L &amp;lt;&amp;lt; (TC_SHIFT + 15); // sign&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;// runState bits: SHUTDOWN must be negative, others arbitrary powers of two&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private static final int&amp;nbsp; RSLOCK&amp;nbsp; &amp;nbsp; &amp;nbsp;= 1;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;font color=&quot;#007fff&quot;&gt;//索引为0的bit是加锁标志位&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private static final int&amp;nbsp; RSIGNAL&amp;nbsp; &amp;nbsp; = 1 &amp;lt;&amp;lt; 1;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private static final int&amp;nbsp; STARTED&amp;nbsp; &amp;nbsp; = 1 &amp;lt;&amp;lt; 2;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private static final int&amp;nbsp; STOP&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;= 1 &amp;lt;&amp;lt; 29;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private static final int&amp;nbsp; TERMINATED = 1 &amp;lt;&amp;lt; 30;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private static final int&amp;nbsp; SHUTDOWN&amp;nbsp; &amp;nbsp;= 1 &amp;lt;&amp;lt; 31;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;// Instance fields&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//控制参数&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//&lt;/font&gt;&lt;font color=&quot;#007fff&quot;&gt;高32位的前16位：活跃线程数&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//高32位的后16位：工作线程数（其中最高位作为&lt;b&gt;是否可以新建线程&lt;/b&gt;的标志）&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//低32位：空闲的工作线程数&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;volatile long &lt;b&gt;ctl&lt;/b&gt;;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;// main pool control&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//线程池运行状态，初始为0&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;span style=&quot;color: rgb(0, 127, 255); background-color: initial;&quot;&gt;//第1位：运行状态锁标志位，防止其他线程并发修改运行状态，此bit为1则是加锁状态&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;volatile int &lt;b&gt;runState&lt;/b&gt;;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;// lockable status&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//低16位表示并行度，高16位表示任务队列模式（默认LIFO_QUEUE）&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;final int &lt;b&gt;config&lt;/b&gt;;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; // parallelism, mode&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;int indexSeed;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;// to generate worker index&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//任务队列数组，即这里有多个队列&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;volatile WorkQueue[] &lt;b&gt;workQueues&lt;/b&gt;;&amp;nbsp; &amp;nbsp; &amp;nbsp;// main registry&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//工作者线程工厂&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;final ForkJoinWorkerThreadFactory &lt;b&gt;factory&lt;/b&gt;;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//未捕获异常处理器&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;final UncaughtExceptionHandler ueh;&amp;nbsp; // per-worker UEH&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//工作者线程的命名前缀，默认 “ForkJoinPool.commonPool-worker-”&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;final String &lt;b&gt;workerNamePrefix&lt;/b&gt;;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;// to create worker name string&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;volatile AtomicLong &lt;b&gt;stealCounter&lt;/b&gt;;&amp;nbsp; &amp;nbsp; // also used as sync monitor&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private static final sun.misc.Unsafe U;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private static final int&amp;nbsp; ABASE;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private static final int&amp;nbsp; ASHIFT;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private static final long CTL;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private static final long RUNSTATE;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private static final long STEALCOUNTER;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private static final long PARKBLOCKER;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private static final long QTOP;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private static final long QLOCK;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private static final long QSCANSTATE;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private static final long QPARKER;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private static final long QCURRENTSTEAL;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private static final long QCURRENTJOIN;&lt;/p&gt;&lt;hr style=&quot;font-size: 10px;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 10px;&quot;&gt;&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=10;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="-480" y="200" width="440" height="1080" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;" edge="1" parent="1" source="KyiJdkHfAW7Gcaq_ivn_-3" target="KyiJdkHfAW7Gcaq_ivn_-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-3" value="forkJoinSum(array);" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="40" y="200" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-7" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;" edge="1" parent="1" source="KyiJdkHfAW7Gcaq_ivn_-4" target="KyiJdkHfAW7Gcaq_ivn_-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-13" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;fontSize=10;" edge="1" parent="1" source="KyiJdkHfAW7Gcaq_ivn_-4" target="KyiJdkHfAW7Gcaq_ivn_-12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-4" value="ForkJoinPool fjp&amp;nbsp; = new ForkJoinPool(NCPU);" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="280" y="200" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-9" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;" edge="1" parent="1" source="KyiJdkHfAW7Gcaq_ivn_-6" target="KyiJdkHfAW7Gcaq_ivn_-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-6" value="SumRTask sumRTask = new SumRTask(array, 0, array.length);" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="280" y="280" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-11" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;" edge="1" parent="1" source="KyiJdkHfAW7Gcaq_ivn_-8" target="KyiJdkHfAW7Gcaq_ivn_-10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-18" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;" edge="1" parent="1" source="KyiJdkHfAW7Gcaq_ivn_-8" target="KyiJdkHfAW7Gcaq_ivn_-17">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-8" value="ForkJoinTask&amp;lt;Long&amp;gt; task = fjp.&lt;b&gt;submit&lt;/b&gt;(sumRTask);&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;提交任务，这里只关注submit()&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="280" y="360" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-10" value="result = task.get();&lt;br style=&quot;font-size: 10px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;同步等待获取结果&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="280" y="440" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-15" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;" edge="1" parent="1" source="KyiJdkHfAW7Gcaq_ivn_-12" target="KyiJdkHfAW7Gcaq_ivn_-14">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-12" value="静态初始化&lt;br style=&quot;font-size: 10px;&quot;&gt;部分关键静态变量" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="520" y="200" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-14" value="&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;b style=&quot;font-size: 10px;&quot;&gt;common&lt;/b&gt; = java.security.AccessController&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;.doPrivileged(&lt;span style=&quot;background-color: initial; font-size: 10px;&quot;&gt;() -&amp;gt; &lt;b style=&quot;font-size: 10px;&quot;&gt;makeCommonPool&lt;/b&gt;());&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;int &lt;b style=&quot;font-size: 10px;&quot;&gt;par&lt;/b&gt; = common.&lt;b style=&quot;font-size: 10px;&quot;&gt;config&lt;/b&gt; &amp;amp; SMASK;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;commonParallelism = par &amp;gt; 0 ? par : 1;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="760" y="200" width="240" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-16" value="&lt;div style=&quot;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;&lt;b&gt;parallelism 与 ctl:&amp;nbsp;&lt;/b&gt;&lt;br&gt;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;long np = (long)(-parallelism);&lt;br style=&quot;font-size: 10px;&quot;&gt;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;this.ctl = ((np &amp;lt;&amp;lt; AC_SHIFT) &amp;amp; AC_MASK) | ((np &amp;lt;&amp;lt; TC_SHIFT) &amp;amp; TC_MASK);&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;即 this.ctl = ((np &amp;lt;&amp;lt; 48) &amp;amp; 0xffffL &amp;lt;&amp;lt; 48) | ((np &amp;lt;&amp;lt; 32) &amp;amp; 0xffffL &amp;lt;&amp;lt; 32);&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;比如核心数8, parallelism=7, ctl = fff9fff900000000&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font color=&quot;#ea6b66&quot;&gt;这是个谜之操作？注释、资料中都没说为何这么做？只能先通读完整源码再回推这个操作的目的&lt;/font&gt;&lt;font color=&quot;#007fff&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1010" y="185" width="440" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-20" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="KyiJdkHfAW7Gcaq_ivn_-17" target="KyiJdkHfAW7Gcaq_ivn_-19">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-17" value="&lt;b&gt;externalPush&lt;/b&gt;(job);&lt;br style=&quot;font-size: 10px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;任务提交的统一方法，其他&lt;b&gt;execute&lt;/b&gt;() &lt;b&gt;invoke&lt;/b&gt;() 等方法都是简单封装的这个方法&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="520" y="360" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-22" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="KyiJdkHfAW7Gcaq_ivn_-19" target="KyiJdkHfAW7Gcaq_ivn_-21">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-19" value="一个复杂的判断条件处理&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;暂略&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="760" y="360" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-24" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="KyiJdkHfAW7Gcaq_ivn_-21" target="KyiJdkHfAW7Gcaq_ivn_-23">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-21" value="externalSubmit(task);" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="760" y="440" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-26" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="KyiJdkHfAW7Gcaq_ivn_-23" target="KyiJdkHfAW7Gcaq_ivn_-25">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-23" value="&lt;b&gt;r = ThreadLocalRandom.getProbe();&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;&lt;b&gt;线程探针&lt;/b&gt;未初始化就执行初始化并返回&lt;br&gt;用到其散列特性&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="440" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-28" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="KyiJdkHfAW7Gcaq_ivn_-25" target="KyiJdkHfAW7Gcaq_ivn_-27">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-25" value="for(::)&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;&lt;b&gt;一个提交操作可能涉及几次循环&lt;br&gt;&lt;/b&gt;任务提交到工作队列后返回&lt;br&gt;比如初始提交第一个任务：涉及工作队列数组初始化、创建工作队列、提交任务到队列&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="521" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-31" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="KyiJdkHfAW7Gcaq_ivn_-27" target="KyiJdkHfAW7Gcaq_ivn_-29">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1380" y="551" />
+              <mxPoint x="1380" y="390" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-32" value="&lt;font style=&quot;font-size: 10px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;(rs = runState) &amp;lt; 0&lt;br&gt;即关闭状态&lt;/font&gt;&lt;br&gt;&lt;/font&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="KyiJdkHfAW7Gcaq_ivn_-31">
+          <mxGeometry x="-0.0429" y="2" relative="1" as="geometry">
+            <mxPoint x="82" y="12" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-34" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="KyiJdkHfAW7Gcaq_ivn_-27" target="KyiJdkHfAW7Gcaq_ivn_-33">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1380" y="551" />
+              <mxPoint x="1380" y="470" />
+              <mxPoint x="1560" y="470" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-36" value="&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;未启动或&lt;br&gt;任务队列未初始化&lt;/font&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="KyiJdkHfAW7Gcaq_ivn_-34">
+          <mxGeometry x="0.453" y="-4" relative="1" as="geometry">
+            <mxPoint x="-24" y="16" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-43" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="KyiJdkHfAW7Gcaq_ivn_-27" target="KyiJdkHfAW7Gcaq_ivn_-42">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-44" value="&lt;div&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;(q = ws[k = r &amp;amp; m &amp;amp; SQMASK]) != null&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;&lt;span style=&quot;font-size: 10px;&quot;&gt;即通过线程探针值选取的偶数队列不为空&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;&lt;span style=&quot;font-size: 10px;&quot;&gt;即队列已经创建了&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="KyiJdkHfAW7Gcaq_ivn_-43">
+          <mxGeometry x="0.0346" y="-3" relative="1" as="geometry">
+            <mxPoint x="7" y="26" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-46" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="KyiJdkHfAW7Gcaq_ivn_-27" target="KyiJdkHfAW7Gcaq_ivn_-45">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1380" y="551" />
+              <mxPoint x="1380" y="810" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-47" value="&lt;font color=&quot;#007fff&quot;&gt;((rs = runState) &amp;amp; RSLOCK) == 0&lt;/font&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="KyiJdkHfAW7Gcaq_ivn_-46">
+          <mxGeometry x="0.3214" y="-3" relative="1" as="geometry">
+            <mxPoint x="66" y="7" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-51" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="KyiJdkHfAW7Gcaq_ivn_-27" target="KyiJdkHfAW7Gcaq_ivn_-50">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1380" y="551" />
+              <mxPoint x="1380" y="890" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-53" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="KyiJdkHfAW7Gcaq_ivn_-27" target="KyiJdkHfAW7Gcaq_ivn_-52">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-27" value="线程池运行状态" style="rhombus;whiteSpace=wrap;html=1;fontSize=10;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="1240" y="521" width="120" height="59" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-29" value="tryTerminate(false, false);&lt;br&gt;throw new RejectedExecutionException();" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="1560" y="361" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-30" value="&lt;p style=&quot;margin: 4px 0px 0px; text-align: center;&quot;&gt;&lt;b&gt;WorkQueue&lt;/b&gt;&lt;/p&gt;&lt;hr style=&quot;font-size: 10px;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;任务队列，ForkJoinPool一共有大于等于并行度的2的指数幂×2个任务队列，存储ForkJoinTask类型任务，初始化容量是8192&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//初始化容量&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;static final int INITIAL_QUEUE_CAPACITY = 1 &amp;lt;&amp;lt; 13;&amp;nbsp; //8192&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//最大容量&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;static final int MAXIMUM_QUEUE_CAPACITY = 1 &amp;lt;&amp;lt; 26; // 64M&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//&amp;lt;0未激活，为奇数时处于扫描状态，偶数为繁忙（处理任务）&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//从源码可以看到创建线程时会注册新的工作队列，记录最近插入工作队列数组的索引&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;volatile int &lt;b&gt;scanState&lt;/b&gt;;&lt;span style=&quot;&quot;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;// versioned, &amp;lt;0: inactive; odd:scanning&amp;nbsp;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//前一个工作队列的在工作队列数组中的索引&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;int &lt;b&gt;stackPred&lt;/b&gt;;&amp;nbsp; &amp;nbsp; &lt;span style=&quot;&quot;&gt;&lt;span style=&quot;&quot;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;/span&gt;// pool stack (ctl) predecessor&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;int nsteals;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;// number of steals&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//随机数种子&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;int &lt;b&gt;hint&lt;/b&gt;;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &lt;span style=&quot;&quot;&gt;&lt;span style=&quot;&quot;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;/span&gt;// randomization and stealer index hint&amp;nbsp;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//任务队列在队列数组中的索引以及队列模式（FIFO | FILO）&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//高16位是队列模式，低16位是最近插入工作队列数组的索引位置&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;int &lt;b&gt;config&lt;/b&gt;; &lt;span style=&quot;&quot;&gt;&lt;span style=&quot;&quot;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;&quot;&gt;&amp;nbsp; &amp;nbsp;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;span style=&quot;&quot;&gt;&lt;span style=&quot;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//队列锁，控制多个线程往队列中同步地提交任务&lt;/font&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;volatile int &lt;b&gt;qlock&lt;/b&gt;;&lt;span style=&quot;&quot;&gt;&lt;span style=&quot;&quot;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;/span&gt;// 1: locked, &amp;lt; 0: terminate; else 0&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//poll操作的下个位置索引，初始是规定容量的一半，即4096&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;volatile int &lt;b&gt;base&lt;/b&gt;;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//push操作的下个位置索引，初始是规定容量的一半，即4096&lt;/font&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;int &lt;b&gt;top&lt;/b&gt;;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &lt;span style=&quot;&quot;&gt;&lt;span style=&quot;&quot;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//任务数组，创建队列时，数组为null，首次提交任务时才实例化数组&lt;br&gt;&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;ForkJoinTask&amp;lt;?&amp;gt;[] &lt;b&gt;array&lt;/b&gt;; &lt;span style=&quot;&quot;&gt;&lt;span style=&quot;&quot;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;final ForkJoinPool &lt;b&gt;pool&lt;/b&gt;;&amp;nbsp; &amp;nbsp;&lt;span style=&quot;&quot;&gt;&lt;span style=&quot;&quot;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;/span&gt;// the containing pool (may be null)&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//创建工作者线程时创建的工作队列，会使用owner保存绑定的ForkJoinWorkerThread&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;final ForkJoinWorkerThread &lt;b&gt;owner&lt;/b&gt;; // owning thread or null if shared&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;volatile Thread &lt;b&gt;parker&lt;/b&gt;;&amp;nbsp; &amp;nbsp; &lt;span style=&quot;&quot;&gt;&lt;span style=&quot;&quot;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;/span&gt;// == owner during call to park; else null&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;volatile ForkJoinTask&amp;lt;?&amp;gt; currentJoin;&lt;span style=&quot;&quot;&gt;&lt;span style=&quot;&quot;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;/span&gt;// task being joined in awaitJoin&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//当前偷取的任务&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;volatile ForkJoinTask&amp;lt;?&amp;gt; currentSteal; &lt;span style=&quot;&quot;&gt;&lt;span style=&quot;&quot;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;/span&gt;// mainly used by helpStealer&amp;nbsp;&lt;/p&gt;&lt;hr style=&quot;font-size: 10px;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 10px;&quot;&gt;&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=10;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="-960" y="200" width="440" height="440" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-40" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="KyiJdkHfAW7Gcaq_ivn_-33" target="KyiJdkHfAW7Gcaq_ivn_-39">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-33" value="工作队列数组初始化&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;在&lt;b&gt;RSLOCK&lt;/b&gt;锁同步下创建工作队列数组（工作队列仍为初始化），然后修改运行状态为STARTED&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="1560" y="440" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-35" value="&lt;font style=&quot;font-size: 10px;&quot;&gt;&lt;br&gt;&lt;/font&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="1430.0000000000005" y="430.0033333333335" as="geometry">
+            <mxPoint x="-7" y="72" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-39" value="U.compareAndSwapObject(this, &lt;b&gt;STEALCOUNTER&lt;/b&gt;, null,new AtomicLong());&lt;br&gt;workQueues = new &lt;b&gt;WorkQueue&lt;/b&gt;[n];&lt;br&gt;ns = &lt;b&gt;STARTED&lt;/b&gt;;&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;本地CPU核心数8,实际并行度是7, 最终创建的工作队列个数是16&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="1800" y="430" width="200" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-41" value="&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;&lt;b style=&quot;&quot;&gt;RSLOCK锁的实现(lockRunState())&lt;/b&gt;&lt;b style=&quot;&quot;&gt;：&lt;/b&gt;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;借助UNSAFE CAS 接口实现&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;加锁：判断runState锁标志位是否加锁（1加锁0未加锁），已经加锁就自旋等待其他线程释放锁，&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;未加锁则CAS修改标志位为1&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;解锁：CAS修改标志位为0&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;&lt;b&gt;计算工作队列个数算法&lt;/b&gt;：&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;int p = 8; //比如并行度设置为8&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;int n = (p &amp;gt; 1) ? p - 1 : 1;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;n |= n &amp;gt;&amp;gt;&amp;gt; 1; n |= n &amp;gt;&amp;gt;&amp;gt; 2;&amp;nbsp; n |= n &amp;gt;&amp;gt;&amp;gt; 4;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;n |= n &amp;gt;&amp;gt;&amp;gt; 8; n |= n &amp;gt;&amp;gt;&amp;gt; 16; n = (n + 1) &amp;lt;&amp;lt; 1;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;写个测试跑一下, 参考测试用例：testGenerateWorkQueueArraySize()，或者用1024画一画&lt;br&gt;会很明显地看出就是求&lt;b style=&quot;&quot;&gt;大于并行度&lt;/b&gt;&lt;b style=&quot;&quot;&gt;的最小2的指数幂的2倍&lt;/b&gt;, &lt;br&gt;比如： 大于6的2的指数幂最小是8, 再乘以2就是16&lt;/font&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=8;fontColor=#3399FF;" vertex="1" parent="1">
+          <mxGeometry x="2000" y="305" width="450" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-59" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="KyiJdkHfAW7Gcaq_ivn_-42" target="KyiJdkHfAW7Gcaq_ivn_-58">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-42" value="提交任务到队列&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;在&lt;b&gt;队列锁qlock&lt;/b&gt;同步下提交&lt;br&gt;其他分支都是为这个分支服务的&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="1560" y="521" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-49" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="KyiJdkHfAW7Gcaq_ivn_-45" target="KyiJdkHfAW7Gcaq_ivn_-48">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-45" value="创建工作队列&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;在&lt;b&gt;RSLOCK&lt;/b&gt;锁同步下创建工作队列&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="1560" y="780" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-57" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="KyiJdkHfAW7Gcaq_ivn_-48" target="KyiJdkHfAW7Gcaq_ivn_-56">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-48" value="&lt;div&gt;q = new &lt;b&gt;WorkQueue&lt;/b&gt;(this, null);&lt;/div&gt;&lt;div&gt;q.hint = r;&lt;/div&gt;&lt;div&gt;q.config = k | SHARED_QUEUE;&lt;/div&gt;&lt;div&gt;q.scanState = INACTIVE;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1800" y="780" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-50" value="move= true;&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;走到这里基本都是因为取不到锁，需要尝试换一个工作队列提交&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="1560" y="860" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-55" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="KyiJdkHfAW7Gcaq_ivn_-52" target="KyiJdkHfAW7Gcaq_ivn_-54">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-67" value="Y" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="KyiJdkHfAW7Gcaq_ivn_-55">
+          <mxGeometry x="-0.0125" y="1" relative="1" as="geometry">
+            <mxPoint y="1" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-52" value="move == true ?" style="rhombus;whiteSpace=wrap;html=1;fontSize=10;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="1240" y="940" width="120" height="59" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-54" value="r = ThreadLocalRandom.advanceProbe(r);&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;更新线程探针值&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="1560" y="940" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-56" value="&lt;div&gt;if (rs &amp;gt; 0 &amp;amp;&amp;amp;&amp;nbsp; (ws = workQueues) != null &amp;amp;&amp;amp;&lt;/div&gt;&lt;div&gt;k &amp;lt; ws.length &amp;amp;&amp;amp; ws[k] == null)&lt;/div&gt;&lt;div&gt;&lt;b&gt;ws[k] = q;&amp;nbsp;&lt;/b&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;把工作队列注册到队列数组&lt;/font&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="1800" y="860" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-61" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="KyiJdkHfAW7Gcaq_ivn_-58" target="KyiJdkHfAW7Gcaq_ivn_-60">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-65" value="&lt;font color=&quot;#007fff&quot;&gt;成功&lt;/font&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="KyiJdkHfAW7Gcaq_ivn_-61">
+          <mxGeometry x="-0.2" y="-1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-63" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="KyiJdkHfAW7Gcaq_ivn_-58" target="KyiJdkHfAW7Gcaq_ivn_-62">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-64" value="&lt;font color=&quot;#007fff&quot;&gt;失败&lt;/font&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="KyiJdkHfAW7Gcaq_ivn_-63">
+          <mxGeometry x="0.0244" y="3" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-58" value="if (q.&lt;b&gt;qlock&lt;/b&gt; == 0 &amp;amp;&amp;amp; U.&lt;b&gt;compareAndSwapInt&lt;/b&gt;(q, QLOCK, 0, 1)) {...}&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;先尝试通过CAS获取队列锁 qlock&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1800" y="521" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-69" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="KyiJdkHfAW7Gcaq_ivn_-60" target="KyiJdkHfAW7Gcaq_ivn_-68">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-60" value="&lt;div&gt;if ((a != null &amp;amp;&amp;amp; a.length &amp;gt; s + 1 - q.base) ||&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; (a = q.&lt;b&gt;growArray&lt;/b&gt;()) != null) {&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;&amp;nbsp; &amp;nbsp; //计算插入位置&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font style=&quot;font-size: 9px;&quot;&gt;&amp;nbsp; &amp;nbsp; int j = (((a.length - 1) &amp;amp; s) &amp;lt;&amp;lt; ASHIFT) + ABASE;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&amp;nbsp; &amp;nbsp; U.&lt;b&gt;putOrderedObject&lt;/b&gt;(a, j, task);&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; U.&lt;b&gt;putOrderedInt&lt;/b&gt;(q, QTOP, s + 1);&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; submitted = true;&lt;/div&gt;&lt;div&gt;}&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;growArray() 实现q.array的初始化以及扩容&lt;/font&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;align=left;arcSize=7;" vertex="1" parent="1">
+          <mxGeometry x="2040" y="496.25" width="240" height="109.5" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-62" value="move = true;&amp;nbsp;&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;方法最后面会更新线程探针值，下一次循环大概率会换一个工作队列&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1800" y="620" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-71" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="KyiJdkHfAW7Gcaq_ivn_-68" target="KyiJdkHfAW7Gcaq_ivn_-70">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-68" value="&lt;div&gt;finally:&lt;/div&gt;&lt;div&gt;U.compareAndSwapInt(q, QLOCK, 1, 0);&lt;/div&gt;&lt;font color=&quot;#007fff&quot;&gt;通过CAS释放队列锁 qlock&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;align=center;" vertex="1" parent="1">
+          <mxGeometry x="2060" y="620" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-75" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="KyiJdkHfAW7Gcaq_ivn_-70" target="KyiJdkHfAW7Gcaq_ivn_-72">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2280" y="730" />
+              <mxPoint x="2280" y="1020" />
+              <mxPoint x="740" y="1020" />
+              <mxPoint x="740" y="1070" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-70" value="if (submitted) {&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;&amp;nbsp; &amp;nbsp; //ws是线程池运行状态，q是任务队列&lt;/font&gt;&lt;br&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &lt;b&gt;signalWork&lt;/b&gt;(ws, q);&amp;nbsp;&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &lt;b&gt;return&lt;/b&gt;; &lt;font color=&quot;#007fff&quot;&gt;//退出for(;;)&lt;/font&gt;&lt;br&gt;}&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;align=left;arcSize=10;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="2060" y="700" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-74" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="KyiJdkHfAW7Gcaq_ivn_-72" target="KyiJdkHfAW7Gcaq_ivn_-73">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-72" value="&lt;b&gt;signalWork&lt;/b&gt;(ws, q);&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;唤醒工作者线程处理任务，首次执行会创建工作者线程&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="760" y="1040" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-77" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="KyiJdkHfAW7Gcaq_ivn_-73" target="KyiJdkHfAW7Gcaq_ivn_-79">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1240.0000000000005" y="1070" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-78" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0;exitDx=0;exitDy=0;fillColor=#d5e8d4;strokeColor=#82b366;dashed=1;" edge="1" parent="1" source="KyiJdkHfAW7Gcaq_ivn_-73" target="KyiJdkHfAW7Gcaq_ivn_-16">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1220" y="1040" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-73" value="while ((&lt;b&gt;c&lt;/b&gt; = &lt;b&gt;ctl&lt;/b&gt;) &amp;lt; 0L)&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;和上面的&lt;b&gt;for(;;)&lt;/b&gt;类似，一个唤醒操作可能涉及&lt;b&gt;几次循环&lt;/b&gt;，由ctl初始化过程可知开始必定是负数&amp;nbsp;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="1040" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-81" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="KyiJdkHfAW7Gcaq_ivn_-82" target="KyiJdkHfAW7Gcaq_ivn_-80">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-85" value="Y" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="KyiJdkHfAW7Gcaq_ivn_-81">
+          <mxGeometry x="-0.2922" y="2" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-91" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="KyiJdkHfAW7Gcaq_ivn_-79" target="KyiJdkHfAW7Gcaq_ivn_-90">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-79" value="(sp = (int)c) == 0&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;long型的c转int&lt;br&gt;就是读取低32位&lt;/font&gt;" style="rhombus;whiteSpace=wrap;html=1;fontSize=10;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="1240" y="1040" width="120" height="59" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-93" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="KyiJdkHfAW7Gcaq_ivn_-135" target="KyiJdkHfAW7Gcaq_ivn_-92">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-80" value="&amp;nbsp;&lt;b&gt;tryAddWorker&lt;/b&gt;(c);&lt;br&gt;&lt;font style=&quot;font-size: 9px;&quot; color=&quot;#007fff&quot;&gt;ctl 低32位为0,且index=47的bit为1, 就新增工作者线程，也即 &lt;/font&gt;&lt;font color=&quot;#ea6b66&quot; style=&quot;font-size: 9px;&quot;&gt;ctl 低32位与工作者线程数量相关&lt;/font&gt;&lt;font style=&quot;font-size: 9px;&quot; color=&quot;#007fff&quot;&gt;，index=47的bit 控制是否可以新建工作者线程&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="1560" y="1040" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-83" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="KyiJdkHfAW7Gcaq_ivn_-79" target="KyiJdkHfAW7Gcaq_ivn_-82">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1360" y="1071" as="sourcePoint" />
+            <mxPoint x="1560" y="1070" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-84" value="Y" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="KyiJdkHfAW7Gcaq_ivn_-83">
+          <mxGeometry x="0.0083" y="2" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-89" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="KyiJdkHfAW7Gcaq_ivn_-82" target="KyiJdkHfAW7Gcaq_ivn_-88">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-82" value="(c &amp;amp; &lt;font style=&quot;font-size: 9px;&quot;&gt;ADD_WORKER&lt;/font&gt;)&lt;br&gt;&amp;nbsp;!= 0L&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;ctl中索引为47的bit&lt;br&gt;不为0&lt;/font&gt;" style="rhombus;whiteSpace=wrap;html=1;fontSize=10;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="1400" y="1040" width="120" height="59" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-88" value="break;" style="whiteSpace=wrap;html=1;fontSize=10;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="1400" y="1120" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-95" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="KyiJdkHfAW7Gcaq_ivn_-90" target="KyiJdkHfAW7Gcaq_ivn_-94">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-96" value="Y" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="KyiJdkHfAW7Gcaq_ivn_-95">
+          <mxGeometry x="-0.1167" y="-2" relative="1" as="geometry">
+            <mxPoint x="-7" y="-2" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-98" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="KyiJdkHfAW7Gcaq_ivn_-90" target="KyiJdkHfAW7Gcaq_ivn_-97">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-90" value="ws == null&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;前面已经初始化的工作队列数组又变成null, 基本是线程池被关闭了&lt;/font&gt;" style="rhombus;whiteSpace=wrap;html=1;fontSize=10;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="1240" y="1179" width="120" height="59" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-132" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="KyiJdkHfAW7Gcaq_ivn_-92" target="KyiJdkHfAW7Gcaq_ivn_-131">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-92" value="&lt;font style=&quot;&quot;&gt;&lt;div style=&quot;&quot;&gt;&lt;div style=&quot;&quot;&gt;long &lt;b&gt;nc&lt;/b&gt; = ((AC_MASK &amp;amp; (c + AC_UNIT)) |&lt;/div&gt;&lt;div style=&quot;&quot;&gt;(TC_MASK &amp;amp; (c + TC_UNIT)));&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;nc 是 &quot;new ctl&quot; 的意思，高48位&quot;+1”，bit32-47也 “+1”，即用于&lt;b&gt;更新 ctl 活跃线程数和工作线程数&lt;/b&gt;&lt;/font&gt;&lt;/div&gt;&lt;/div&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="2040" y="1040" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-94" value="break;&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;直接退出&lt;/font&gt;" style="whiteSpace=wrap;html=1;fontSize=10;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="1400" y="1187.5" width="120" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-99" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="KyiJdkHfAW7Gcaq_ivn_-97" target="KyiJdkHfAW7Gcaq_ivn_-94">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-100" value="Y" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="KyiJdkHfAW7Gcaq_ivn_-99">
+          <mxGeometry x="-0.766" y="-1" relative="1" as="geometry">
+            <mxPoint x="-4" y="-1" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-103" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="KyiJdkHfAW7Gcaq_ivn_-97" target="KyiJdkHfAW7Gcaq_ivn_-102">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-97" value="ws.length &amp;lt;= (i = sp &amp;amp; SMASK)&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;sp是ctl低32位，取其低16位&lt;/font&gt;" style="rhombus;whiteSpace=wrap;html=1;fontSize=10;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="1240" y="1261.5" width="120" height="59" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-101" value="&lt;span style=&quot;color: rgb(0, 127, 255); font-size: 10px;&quot;&gt;即工作队列的个数 &lt;/span&gt;&lt;br&gt;&lt;span style=&quot;color: rgb(0, 127, 255); font-size: 10px;&quot;&gt;&amp;lt;= ctl 低16位的值&lt;/span&gt;&lt;br&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;font-size: 10px;&quot;&gt;&lt;font color=&quot;#ea6b66&quot;&gt;ctl低16位与工作队列的个数相关&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="1390" y="1260.5" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-106" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="KyiJdkHfAW7Gcaq_ivn_-102" target="KyiJdkHfAW7Gcaq_ivn_-94">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-107" value="Y" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="KyiJdkHfAW7Gcaq_ivn_-106">
+          <mxGeometry x="-0.9098" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-109" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="KyiJdkHfAW7Gcaq_ivn_-102" target="KyiJdkHfAW7Gcaq_ivn_-111">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1300.0000000000005" y="1485" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="1300" y="1420" />
+              <mxPoint x="1340" y="1420" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-110" value="&lt;font color=&quot;#007fff&quot;&gt;即工作者线程和&lt;br&gt;工作队列都就绪&lt;/font&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="KyiJdkHfAW7Gcaq_ivn_-109">
+          <mxGeometry x="-0.2671" y="-1" relative="1" as="geometry">
+            <mxPoint x="15" y="19" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-102" value="(v = ws[i]) == null&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;基本是线程池正在关闭&lt;/font&gt;" style="rhombus;whiteSpace=wrap;html=1;fontSize=10;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="1240" y="1346" width="120" height="59" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-104" value="" style="shape=curlyBracket;whiteSpace=wrap;html=1;rounded=1;labelPosition=left;verticalLabelPosition=middle;align=right;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1220" y="1179" width="10" height="231" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-105" value="&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;检查工作队列数组、工作队列是否正常&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="1090" y="1274.5" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-119" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="KyiJdkHfAW7Gcaq_ivn_-111" target="KyiJdkHfAW7Gcaq_ivn_-118">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-111" value="&lt;div&gt;&lt;font color=&quot;#007fff&quot; size=&quot;1&quot;&gt;//即 (sp + 1&amp;lt;&amp;lt;16) &amp;amp; ~(1&amp;lt;&amp;lt;31)&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font size=&quot;1&quot;&gt;int vs = (sp + SS_SEQ) &amp;amp; ~INACTIVE;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font size=&quot;1&quot;&gt;int d = sp - v.scanState;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font size=&quot;1&quot;&gt;long &lt;b&gt;nc&lt;/b&gt; = (UC_MASK &amp;amp; (c + AC_UNIT)) | (SP_MASK &amp;amp; v.stackPred);&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot; size=&quot;1&quot;&gt;sp是ctl低32位，v 是ws[i]的工作队列，i=sp低16位，更新活跃线程计数和&lt;/font&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;align=left;strokeColor=#000000;fontColor=#000000;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="1240" y="1462.5" width="200" height="97.5" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-121" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="KyiJdkHfAW7Gcaq_ivn_-118" target="KyiJdkHfAW7Gcaq_ivn_-122">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1480.0000000000005" y="1612.5" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-123" value="Y" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="KyiJdkHfAW7Gcaq_ivn_-121">
+          <mxGeometry x="-0.1889" y="-1" relative="1" as="geometry">
+            <mxPoint x="6" y="-1" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-125" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="KyiJdkHfAW7Gcaq_ivn_-118" target="KyiJdkHfAW7Gcaq_ivn_-124">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-118" value="d == 0 &amp;amp;&amp;amp; U.&lt;b&gt;compareAndSwapLong&lt;/b&gt;(&lt;br&gt;this, CTL, c, nc)" style="rhombus;whiteSpace=wrap;html=1;fontSize=10;align=center;strokeColor=#000000;fontColor=#000000;rounded=1;arcSize=13;" vertex="1" parent="1">
+          <mxGeometry x="1260" y="1580" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-122" value="&lt;font size=&quot;1&quot;&gt;v.scanState = vs;&lt;br&gt;if ((p = v.parker) != null)&lt;br&gt;U.&lt;b&gt;unpark&lt;/b&gt;(p);&lt;br&gt;break;&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;即唤醒队列的owner工作者线程&lt;/font&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="1560" y="1580" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-127" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="KyiJdkHfAW7Gcaq_ivn_-124" target="KyiJdkHfAW7Gcaq_ivn_-126">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-128" value="Y" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="KyiJdkHfAW7Gcaq_ivn_-127">
+          <mxGeometry x="0.0132" relative="1" as="geometry">
+            <mxPoint x="-20" y="-1" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-124" value="q != null &amp;amp;&amp;amp; q.base == q.top&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;没有更多待执行的任务&lt;/font&gt;" style="rhombus;whiteSpace=wrap;html=1;fontSize=10;align=center;strokeColor=#000000;fontColor=#000000;rounded=1;arcSize=13;" vertex="1" parent="1">
+          <mxGeometry x="1260" y="1661" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-126" value="break;&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;没有更多带执行的任务&lt;br&gt;就直接退出&lt;br&gt;&lt;/font&gt;" style="whiteSpace=wrap;html=1;fontSize=10;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="1600" y="1671" width="120" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-129" value="&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;这里CAS其实是相当于乐观锁了&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="1090" y="1595" width="160" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-134" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="KyiJdkHfAW7Gcaq_ivn_-131" target="KyiJdkHfAW7Gcaq_ivn_-133">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-131" value="&lt;font style=&quot;&quot;&gt;&lt;div style=&quot;&quot;&gt;&lt;div style=&quot;&quot;&gt;add = U.compareAndSwapLong(this, CTL, c, nc);&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;lockRunState()锁同步下更新ctl&lt;/font&gt;&lt;/div&gt;&lt;/div&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="2040" y="1121" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-139" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="KyiJdkHfAW7Gcaq_ivn_-133" target="KyiJdkHfAW7Gcaq_ivn_-138">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-133" value="&lt;font style=&quot;&quot;&gt;&lt;div style=&quot;&quot;&gt;&lt;div style=&quot;&quot;&gt;&lt;div style=&quot;&quot;&gt;if (add) {&lt;/div&gt;&lt;div&gt;&lt;b&gt;&amp;nbsp; &amp;nbsp; createWorker();&lt;/b&gt;&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; break;&lt;/div&gt;&lt;div&gt;}&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;align=left;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="2040" y="1200.5" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-136" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="KyiJdkHfAW7Gcaq_ivn_-80" target="KyiJdkHfAW7Gcaq_ivn_-135">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1760" y="1070" as="sourcePoint" />
+            <mxPoint x="2040" y="1070" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-135" value="&lt;font style=&quot;&quot;&gt;&lt;div style=&quot;&quot;&gt;&lt;div style=&quot;&quot;&gt;do {...}&lt;/div&gt;&lt;div style=&quot;&quot;&gt;while (((c = ctl) &amp;amp; ADD_WORKER) != 0L &amp;amp;&amp;amp; (int)c == 0)&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;检查是否可以创建线程&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;(int)c == 0 即ctl低32位为0，是最初时的状态&lt;/font&gt;&lt;/div&gt;&lt;/div&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1800" y="1040" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-137" value="&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;这里的意思是最初创建线程时，&lt;br&gt;&lt;b&gt;如果失败会一直自旋重试&lt;/b&gt;，&lt;br style=&quot;font-size: 10px;&quot;&gt;但是后面再创建线程就不会自旋重试了&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1800" y="1110" width="190" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-141" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="KyiJdkHfAW7Gcaq_ivn_-138" target="KyiJdkHfAW7Gcaq_ivn_-140">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-143" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="KyiJdkHfAW7Gcaq_ivn_-138" target="KyiJdkHfAW7Gcaq_ivn_-142">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-165" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=1;exitDx=0;exitDy=0;fillColor=#d5e8d4;strokeColor=#82b366;" edge="1" parent="1" source="KyiJdkHfAW7Gcaq_ivn_-138" target="KyiJdkHfAW7Gcaq_ivn_-164">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2260" y="1261" />
+              <mxPoint x="2260" y="1780" />
+              <mxPoint x="860" y="1780" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-138" value="&lt;div style=&quot;&quot;&gt;&lt;div style=&quot;&quot;&gt;&lt;div style=&quot;&quot;&gt;wt = fac.&lt;b&gt;newThread&lt;/b&gt;(this);&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;wt.&lt;b&gt;start&lt;/b&gt;();&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;color: rgb(0, 127, 255);&quot;&gt;使用ForkJoinWorkerThreadFactory创建工作者线程并启动，启动成功之后返回true&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;align=center;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="2280" y="1200.5" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-140" value="&lt;div style=&quot;&quot;&gt;&lt;div style=&quot;&quot;&gt;&lt;div style=&quot;&quot;&gt;&lt;b&gt;deregisterWorker&lt;/b&gt;(wt, ex);&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;return false;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;color: rgb(0, 127, 255);&quot;&gt;如果线程启动时出现异常，注销线程并返回false&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;align=center;" vertex="1" parent="1">
+          <mxGeometry x="2280" y="1280" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-147" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="KyiJdkHfAW7Gcaq_ivn_-142" target="KyiJdkHfAW7Gcaq_ivn_-146">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-142" value="&lt;div style=&quot;&quot;&gt;&lt;div style=&quot;&quot;&gt;&lt;div style=&quot;&quot;&gt;return new &lt;b&gt;ForkJoinWorkerThread&lt;/b&gt;(pool, null);&lt;br&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;align=center;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="2520" y="1200.5" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-145" value="CommonPoolForkJoinWorkerThreadFactory&lt;br&gt;（commonPool默认的线程工厂）" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="2510" y="1165.5" width="220" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-150" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="KyiJdkHfAW7Gcaq_ivn_-146" target="KyiJdkHfAW7Gcaq_ivn_-149">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2980" y="1230" />
+              <mxPoint x="2980" y="1360" />
+              <mxPoint x="2020" y="1360" />
+              <mxPoint x="2020" y="1411" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-146" value="&lt;div style=&quot;&quot;&gt;&lt;div style=&quot;&quot;&gt;&lt;div style=&quot;&quot;&gt;&lt;div&gt;super(&quot;aForkJoinWorkerThread&quot;);&lt;/div&gt;&lt;div&gt;U.&lt;b&gt;putOrderedObject&lt;/b&gt;(this, INHERITEDACCESSCONTROLCONTEXT, INNOCUOUS_ACC);&lt;/div&gt;&lt;div&gt;this.&lt;b&gt;pool&lt;/b&gt; = pool;&lt;/div&gt;&lt;div&gt;this.&lt;b&gt;workQueue&lt;/b&gt;=pool.&lt;b&gt;registerWorker&lt;/b&gt;(this);&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;align=left;arcSize=6;" vertex="1" parent="1">
+          <mxGeometry x="2760" y="1180" width="200" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-148" value="&lt;p style=&quot;margin: 4px 0px 0px; text-align: center;&quot;&gt;&lt;b&gt;ForkJoinWorkerThread &lt;/b&gt;extends Thread&lt;br&gt;&lt;/p&gt;&lt;hr style=&quot;font-size: 10px;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;ForkJoinPool 的工作者线程实现&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;final ForkJoinPool &lt;b&gt;pool&lt;/b&gt;;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; // the pool this thread works in&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//这个工作队列是工作者线程初始化时创建的&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;final ForkJoinPool.WorkQueue &lt;b&gt;workQueue&lt;/b&gt;; // work-stealing mechanics&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private static final sun.misc.Unsafe U;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private static final long THREADLOCALS;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private static final long INHERITABLETHREADLOCALS;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private static final long INHERITEDACCESSCONTROLCONTEXT;&lt;/p&gt;&lt;hr style=&quot;font-size: 10px;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 10px;&quot;&gt;&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=10;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="-960" y="760" width="440" height="199" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-153" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="KyiJdkHfAW7Gcaq_ivn_-149" target="KyiJdkHfAW7Gcaq_ivn_-152">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-149" value="&lt;div style=&quot;&quot;&gt;&lt;div style=&quot;&quot;&gt;&lt;div style=&quot;&quot;&gt;ForkJoinPool#&lt;b&gt;registerWorker&lt;/b&gt;(&lt;/div&gt;&lt;div style=&quot;&quot;&gt;ForkJoinWorkerThread wt)&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;align=center;arcSize=14;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="2040" y="1381.75" width="200" height="59" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-155" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="KyiJdkHfAW7Gcaq_ivn_-152" target="KyiJdkHfAW7Gcaq_ivn_-158">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="2380.782608695653" y="1462.5" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-152" value="&lt;div style=&quot;&quot;&gt;&lt;div style=&quot;&quot;&gt;&lt;div style=&quot;&quot;&gt;wt.&lt;b&gt;setDaemon&lt;/b&gt;(true);&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;wt.&lt;b&gt;setUncaughtExceptionHandler&lt;/b&gt;(handler);&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;WorkQueue w = new &lt;b&gt;WorkQueue&lt;/b&gt;(this, wt);&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;这里可以看到&lt;b&gt;创建工作者线程的时候还创建了工作队列，这个工作队列是和线程绑定的&lt;/b&gt;&lt;/font&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;align=center;arcSize=14;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="2280.75" y="1381.25" width="200" height="59" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-157" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="KyiJdkHfAW7Gcaq_ivn_-158" target="KyiJdkHfAW7Gcaq_ivn_-156">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-156" value="&lt;div style=&quot;&quot;&gt;&lt;div style=&quot;&quot;&gt;&lt;div style=&quot;&quot;&gt;wt.&lt;b&gt;setName&lt;/b&gt;(workerNamePrefix.concat(&lt;/div&gt;&lt;div style=&quot;&quot;&gt;Integer.toString(i &amp;gt;&amp;gt;&amp;gt; 1)));&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;修改工作者线程名称，&lt;/font&gt;&lt;font color=&quot;#007fff&quot;&gt;&amp;nbsp;&quot;ForkJoinPool-&quot; + nextPoolId() + &quot;-worker-&quot; + 任务队列索引&amp;gt;&amp;gt;&amp;gt;1&lt;/font&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;align=center;arcSize=14;" vertex="1" parent="1">
+          <mxGeometry x="2280.75" y="1721" width="200" height="59" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-162" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="KyiJdkHfAW7Gcaq_ivn_-158" target="KyiJdkHfAW7Gcaq_ivn_-161">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-158" value="&lt;div style=&quot;&quot;&gt;&lt;div style=&quot;&quot;&gt;&lt;div style=&quot;&quot;&gt;锁同步控制下&lt;/div&gt;&lt;div style=&quot;&quot;&gt;将与工作者线程绑定的工作队列注册到线程池的工作队列数组中&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;align=center;arcSize=14;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="2280.75" y="1551" width="200" height="59" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-160" value="&lt;font color=&quot;#007fff&quot;&gt;创建工作者线程时会创建一个与线程绑定的工作队列，通过下面两个字段相互绑定：&lt;br&gt;ForkJoinWokerThread.workQueue;&lt;br&gt;WorkQueue.owner;&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="-960" y="665" width="470" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-176" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0;entryDx=0;entryDy=0;fillColor=#d5e8d4;strokeColor=#82b366;" edge="1" parent="1" source="KyiJdkHfAW7Gcaq_ivn_-161" target="KyiJdkHfAW7Gcaq_ivn_-174">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2700" y="1800" />
+              <mxPoint x="1460" y="1800" />
+              <mxPoint x="1460" y="1960" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-161" value="&lt;div style=&quot;&quot;&gt;&lt;div style=&quot;&quot;&gt;&lt;div style=&quot;&quot;&gt;&lt;div&gt;int i = 0;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; // assign a pool index&lt;/div&gt;&lt;div&gt;int &lt;b&gt;mode&lt;/b&gt; = config &amp;amp; MODE_MASK;&lt;/div&gt;&lt;div&gt;int rs = lockRunState();&lt;/div&gt;&lt;div&gt;try {&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; WorkQueue[] ws; int n;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; // skip if no array&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; if ((&lt;b&gt;ws&lt;/b&gt; = workQueues) != null &amp;amp;&amp;amp; (n = ws.length) &amp;gt; 0) {&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; //下面三行代码用于计算工作队列插入位置&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; int s = indexSeed += SEED_INCREMENT;&amp;nbsp; // unlikely to collide&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; int m = n - 1;&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; i = ((s &amp;lt;&amp;lt; 1) | 1) &amp;amp; m;&amp;nbsp; &lt;font color=&quot;#007fff&quot;&gt;//取模最后一位置1,即插入索引为奇数的位置&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; if (ws[i] != null) {&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &lt;font color=&quot;#007fff&quot;&gt;//此槽位已经有工作队列了&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; int probes = 0;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;// step by approx half n&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&amp;nbsp; &amp;nbsp; //从当前位置步进 (n&amp;gt;&amp;gt;&amp;gt;1) &amp;amp; EVENMASK + 2, 选择下一个奇数位置&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&amp;nbsp; &amp;nbsp; //直到找到空槽&lt;br&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; int step = (n &amp;lt;= 4) ? 2 : ((n &amp;gt;&amp;gt;&amp;gt; 1) &amp;amp; EVENMASK) + 2;&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; while (ws[i = (i + step) &amp;amp; m] != null) {&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;//试过所有奇数位置都没有空槽，就对工作队列进行扩容一倍&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; if (++probes &amp;gt;= n) {&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; workQueues = ws = Arrays.copyOf(ws, n &amp;lt;&amp;lt;= 1);&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; m = n - 1;&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; probes = 0;&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; }&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; }&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; }&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; w.&lt;b&gt;hint&lt;/b&gt; = s;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;font color=&quot;#007fff&quot;&gt;// 记录随机种子s&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; w.&lt;b&gt;config&lt;/b&gt; = i | mode;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;font color=&quot;#007fff&quot;&gt;// 更新最近插入工作队列数组的奇数位置&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; w.&lt;b&gt;scanState&lt;/b&gt; = i;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; // publication fence&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &lt;b&gt;ws[i] = w&lt;/b&gt;;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;font color=&quot;#007fff&quot;&gt;//插入空槽&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; }&lt;/div&gt;&lt;div&gt;} finally {&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; unlockRunState(rs, rs &amp;amp; ~RSLOCK);&lt;/div&gt;&lt;div&gt;}&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;align=left;arcSize=1;" vertex="1" parent="1">
+          <mxGeometry x="2520" y="1381.75" width="360" height="398.25" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-163" value="比如:队列数组length = 16, i = 1,&lt;br style=&quot;font-size: 10px;&quot;&gt;ws[1] 已经有工作队列的话，下次步进获取的奇数位置是11：&lt;br style=&quot;font-size: 10px;&quot;&gt;step = ((16&amp;gt;&amp;gt;&amp;gt;1 &amp;amp;&amp;nbsp;0xfffe) + 2 = 10;&lt;br style=&quot;font-size: 10px;&quot;&gt;i = (1 + 10) &amp;amp; 15 = 11;&lt;br style=&quot;font-size: 10px;&quot;&gt;下次步进：&lt;br style=&quot;font-size: 10px;&quot;&gt;5&lt;br style=&quot;font-size: 10px;&quot;&gt;15&lt;br style=&quot;font-size: 10px;&quot;&gt;9&lt;br style=&quot;font-size: 10px;&quot;&gt;3&lt;br style=&quot;font-size: 10px;&quot;&gt;13&lt;br style=&quot;font-size: 10px;&quot;&gt;7&lt;br style=&quot;font-size: 10px;&quot;&gt;1&lt;br style=&quot;font-size: 10px;&quot;&gt;11&lt;br style=&quot;font-size: 10px;&quot;&gt;5&lt;br style=&quot;font-size: 10px;&quot;&gt;..." style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontColor=#007FFF;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="2890" y="1465.87" width="290" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-167" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="KyiJdkHfAW7Gcaq_ivn_-164" target="KyiJdkHfAW7Gcaq_ivn_-166">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-164" value="&lt;div&gt;&lt;b&gt;ForkJoinPoolThread$run()&lt;/b&gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;&lt;font color=&quot;#007fff&quot;&gt;工作者线程执行&lt;/font&gt;&lt;/b&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="760" y="1800" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-169" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="KyiJdkHfAW7Gcaq_ivn_-166" target="KyiJdkHfAW7Gcaq_ivn_-168">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-166" value="onStart();&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;用于拓展，默认是空的&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="1800" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-171" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="KyiJdkHfAW7Gcaq_ivn_-168" target="KyiJdkHfAW7Gcaq_ivn_-170">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-173" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="KyiJdkHfAW7Gcaq_ivn_-168" target="KyiJdkHfAW7Gcaq_ivn_-172">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-168" value="pool.&lt;b&gt;runWorker&lt;/b&gt;(workQueue);&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;workQueue是和工作者线程绑定的工作队列&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="1880" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-170" value="finally:&lt;br&gt;onTermination(exception);&lt;br&gt;pool.deregisterWorker(this, exception);&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;即退出工作者线程的操作&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="1960" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-175" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="KyiJdkHfAW7Gcaq_ivn_-172" target="KyiJdkHfAW7Gcaq_ivn_-174">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-172" value="w.growArray();&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;前面只是创建了绑定的工作队列，但是并没有进行初始化，growArray是初始化或扩容&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="1240" y="1880" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-180" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="KyiJdkHfAW7Gcaq_ivn_-174" target="KyiJdkHfAW7Gcaq_ivn_-179">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-174" value="int seed = w.hint;&lt;br&gt;int r = (seed == 0) ? 1 : seed;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1240" y="1960" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-182" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="KyiJdkHfAW7Gcaq_ivn_-179" target="KyiJdkHfAW7Gcaq_ivn_-181">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-179" value="for (ForkJoinTask&amp;lt;?&amp;gt; t;;)" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="1240" y="2038" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="KyiJdkHfAW7Gcaq_ivn_-181" value="" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1480" y="2038" width="200" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

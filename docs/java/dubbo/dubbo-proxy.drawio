@@ -1,4 +1,4 @@
-<mxfile host="Electron" modified="2024-01-22T14:53:51.091Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.6.5 Chrome/114.0.5735.243 Electron/25.3.1 Safari/537.36" etag="wkxLCNgD14jPuQcQX4CH" version="21.6.5" type="device">
+<mxfile host="Electron" modified="2024-01-22T15:08:38.030Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.6.5 Chrome/114.0.5735.243 Electron/25.3.1 Safari/537.36" etag="HukLrGX99fu3mtvXA6T9" version="21.6.5" type="device">
   <diagram name="第 1 页" id="V3ZLgNQ4UihPFzSJVqWv">
     <mxGraphModel dx="2261" dy="879" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -126,7 +126,7 @@
         <mxCell id="uKQusk521EhnRiOU_Lvk-41" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="uKQusk521EhnRiOU_Lvk-57" target="uKQusk521EhnRiOU_Lvk-40">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="uKQusk521EhnRiOU_Lvk-37" value="&lt;font style=&quot;&quot;&gt;ccp.addField(&quot;public static java.lang.reflect.Method[] methods;&quot;);&lt;br&gt;ccp.addField(&quot;private &quot; + InvocationHandler.class.getName() + &quot; handler;&quot;);&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;代理类的两个成员字段 methods、handler&lt;/font&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;arcSize=14;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+        <mxCell id="uKQusk521EhnRiOU_Lvk-37" value="&lt;font style=&quot;&quot;&gt;ccp.addField(&quot;public static java.lang.reflect.Method[] methods;&quot;);&lt;br&gt;ccp.addField(&quot;private &quot; + &lt;b&gt;InvocationHandler&lt;/b&gt;.class.getName() + &quot; &lt;b&gt;handler&lt;/b&gt;;&quot;);&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;代理类的两个成员字段 methods、handler&lt;/font&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;arcSize=14;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
           <mxGeometry x="800" y="650" width="200" height="80" as="geometry" />
         </mxCell>
         <mxCell id="uKQusk521EhnRiOU_Lvk-39" value="&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;比如 ITest 的 String getName(); 方法，默认生成的代码:&lt;br&gt;Object[] args = new Object[0]; &lt;br&gt;Object ret = handler.invoke(this, methods[0], args); &lt;br&gt;return (java.lang.String)ret;&lt;br&gt;&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">

@@ -91,7 +91,7 @@ Dubbo SPI的数据结构和工作原理主流程图。
     > }
     > ```
 
-    AdaptiveClassCodeGenerator 代码生成原理，这里只关注方法生成原理：
+    **AdaptiveClassCodeGenerator 代码生成原理**，这里只关注方法生成原理：
 
     看单元测试代码发现所有自适应的接口方法第一个参数都是`org.apache.dubbo.common.URL`，一度以为所有自适应接口方法第一个参数都必须是这个类型，但是后面发现并不是，那如果自己拓展接口，参数应该怎么定义？还是需要看源码研究一下参数定义规则。
 
@@ -110,9 +110,51 @@ Dubbo SPI的数据结构和工作原理主流程图。
     }
     ```
   
+    另外需要关注两个重要语句生成原理：
+  
+    **1 获取Url对象代码的生成逻辑**
+  
+    **2 获取最终引用的拓展类名代码的生成逻辑**
+  
+    比如：org.apache.dubbo.rpc.Protocol 的自适应拓展类export方法的下面两行代码
+  
+    ```java
+    org.apache.dubbo.common.URL url = arg0.getUrl();
+    //这一句决定了自适应拓展类最终调用的拓展实现类的类型
+    String extName = ( url.getProtocol() == null ? "dubbo" : url.getProtocol() );
+    
+    //接口定义
+    @SPI(value = "dubbo", scope = ExtensionScope.FRAMEWORK)
+    public interface Protocol {
+      @Adaptive
+      <T> Exporter<T> export(Invoker<T> invoker) throws RpcException;
+    }
+    ```
+  
   + **@Activate**
   
     按条件激活拓展类。有点类似 Spring 条件注解。
+  
+    一方面用于加载拓展类时过滤掉不符合激活条件的；
+  
+    另一方面用于对激活的拓展类进行排序（借助 Activate.order属性）。
+  
+    ```java
+    private void loadClass(
+        ClassLoader classLoader,
+        Map<String, Class<?>> extensionClasses,
+        java.net.URL resourceURL,
+        Class<?> clazz,
+        String name,
+        boolean overridden) {
+       	//...
+        boolean isActive = loadClassIfActive(classLoader, clazz);
+        if (!isActive) {
+            return;
+        }
+        //...
+    }
+    ```
   
     主要用在`Filter`上，比如有的`Filter`需要在`provider`执行，有的需要在`consumer`执行，根据`url`中的参数指定和`group`(`provider`还是`consumer`)，运行时决定哪些`filter`需要被引入执行。
   
@@ -126,7 +168,7 @@ Dubbo SPI的数据结构和工作原理主流程图。
          */
         String[] group() default {};
     
-        /**
+        /**etcd
          * 比如@Activate("cache, validation")，还支持 @Activate("cache:redis, validation")这种写法，存储方式略有不同
          * ExtensionLoader#getActivateExtension 传参key对应URL中的value出现在 value数组中激活
          * @return URL parameter keys

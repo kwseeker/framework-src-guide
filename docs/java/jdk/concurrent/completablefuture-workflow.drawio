@@ -1,0 +1,93 @@
+<mxfile host="Electron" modified="2024-02-06T09:48:38.499Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.6.5 Chrome/114.0.5735.243 Electron/25.3.1 Safari/537.36" etag="jUwTvJp8vELUDLa-UU6T" version="21.6.5" type="device">
+  <diagram name="第 1 页" id="1pW2kvjGfipRLgd_ogxb">
+    <mxGraphModel dx="-2113" dy="733" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="Jc6cqmUtGkEXaGz-iM8d-1" value="&lt;h1&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;CompletableFuture 工作原理&lt;/font&gt;&lt;/h1&gt;&lt;div style=&quot;&quot;&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;测试代码： java-async/async-future/src/main/java/top.kwseeker.async.future.jdAsyncTool.ThreadExhaustionTest.java&lt;br&gt;这个测试是研究使用CompletableFuture默认的ForkJoinPool，为何不会导致线程被同步等待的任务占尽导致任务超时。&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="5000" y="20" width="760" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="Jc6cqmUtGkEXaGz-iM8d-4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;" edge="1" parent="1" source="Jc6cqmUtGkEXaGz-iM8d-2" target="Jc6cqmUtGkEXaGz-iM8d-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Jc6cqmUtGkEXaGz-iM8d-6" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;" edge="1" parent="1" source="Jc6cqmUtGkEXaGz-iM8d-2" target="Jc6cqmUtGkEXaGz-iM8d-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Jc6cqmUtGkEXaGz-iM8d-2" value="CompletableFuture&amp;lt;Void&amp;gt; future = CompletableFuture.&lt;b style=&quot;font-size: 10px;&quot;&gt;runAsync&lt;/b&gt;(() -&amp;gt; head.work(forkJoinPool), forkJoinPool);" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="5000" y="260" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Jc6cqmUtGkEXaGz-iM8d-9" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;" edge="1" parent="1" source="Jc6cqmUtGkEXaGz-iM8d-3" target="Jc6cqmUtGkEXaGz-iM8d-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Jc6cqmUtGkEXaGz-iM8d-3" value="return &lt;b&gt;asyncRunStage&lt;/b&gt;(&lt;br&gt;screenExecutor(executor), runnable);" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="5240" y="260" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Jc6cqmUtGkEXaGz-iM8d-35" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="Jc6cqmUtGkEXaGz-iM8d-5" target="Jc6cqmUtGkEXaGz-iM8d-34">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Jc6cqmUtGkEXaGz-iM8d-5" value="future.get();" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="5000" y="420" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Jc6cqmUtGkEXaGz-iM8d-7" value="CompletableFuture" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="5285" y="230" width="110" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Jc6cqmUtGkEXaGz-iM8d-11" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;" edge="1" parent="1" source="Jc6cqmUtGkEXaGz-iM8d-8" target="Jc6cqmUtGkEXaGz-iM8d-10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Jc6cqmUtGkEXaGz-iM8d-8" value="CompletableFuture&amp;lt;Void&amp;gt; d = new CompletableFuture&amp;lt;Void&amp;gt;();" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="5480" y="260" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Jc6cqmUtGkEXaGz-iM8d-33" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="Jc6cqmUtGkEXaGz-iM8d-10" target="Jc6cqmUtGkEXaGz-iM8d-32">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Jc6cqmUtGkEXaGz-iM8d-10" value="e.&lt;b&gt;execute&lt;/b&gt;(new &lt;b&gt;AsyncRun&lt;/b&gt;(d, f));&lt;br style=&quot;font-size: 10px;&quot;&gt;return d;&lt;br&gt;&lt;font style=&quot;font-size: 9px;&quot; color=&quot;#007fff&quot;&gt;将任务业务逻辑封装成AsyncRun任务是ForJoinTask的子类，提交给ForkJoinPool执行&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="5480" y="340" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Jc6cqmUtGkEXaGz-iM8d-19" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;dashed=1;endArrow=block;endFill=1;" edge="1" parent="1" source="Jc6cqmUtGkEXaGz-iM8d-12" target="Jc6cqmUtGkEXaGz-iM8d-17">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Jc6cqmUtGkEXaGz-iM8d-20" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;dashed=1;endArrow=block;endFill=1;" edge="1" parent="1" source="Jc6cqmUtGkEXaGz-iM8d-12" target="Jc6cqmUtGkEXaGz-iM8d-18">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Jc6cqmUtGkEXaGz-iM8d-12" value="&lt;p style=&quot;margin: 4px 0px 0px; text-align: center; font-size: 10px;&quot;&gt;&lt;span style=&quot;background-color: initial; font-size: 10px;&quot;&gt;&lt;b&gt;CompletableFuture&lt;/b&gt;&amp;lt;T&amp;gt; implements Future&amp;lt;T&amp;gt;, CompletionStage&amp;lt;T&amp;gt;&lt;/span&gt;&lt;br style=&quot;font-size: 10px;&quot;&gt;&lt;/p&gt;&lt;hr style=&quot;font-size: 10px;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//AltResult封装异常结果&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;static final AltResult NIL = new AltResult(null);&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//是否使用ForkJoinPool commonPool实现，并行度大于1就使用commonPool&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private static final boolean useCommonPool = (ForkJoinPool.getCommonPoolParallelism() &amp;gt; 1);&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//CF默认使用的线程池&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private static final Executor &lt;b&gt;asyncPool&lt;/b&gt; = useCommonPool ?&amp;nbsp;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&amp;nbsp; &amp;nbsp; ForkJoinPool.&lt;b&gt;commonPool&lt;/b&gt;() : new ThreadPerTaskExecutor();&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;static final int SYNC&amp;nbsp; &amp;nbsp;=&amp;nbsp; 0;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;static final int ASYNC&amp;nbsp; =&amp;nbsp; 1;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;static final int NESTED = -1;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//???&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private static final int SPINS = (Runtime.getRuntime().availableProcessors() &amp;gt; 1 ? 1 &amp;lt;&amp;lt; 8 : 0);&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private static final sun.misc.Unsafe UNSAFE;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private static final long RESULT;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private static final long STACK;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private static final long NEXT;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//Either the result or boxed AltResult&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//存储执行结果&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;volatile Object &lt;b&gt;result&lt;/b&gt;;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;// Top of Treiber stack of dependent actions&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;volatile Completion &lt;b&gt;stack&lt;/b&gt;;&lt;/p&gt;&lt;hr style=&quot;font-size: 10px;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 10px;&quot;&gt;&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=10;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="4480" y="240" width="440" height="360" as="geometry" />
+        </mxCell>
+        <mxCell id="Jc6cqmUtGkEXaGz-iM8d-17" value="&lt;p style=&quot;margin: 4px 0px 0px; text-align: center;&quot;&gt;Future&amp;lt;V&amp;gt;&lt;br style=&quot;font-size: 10px;&quot;&gt;&lt;/p&gt;&lt;hr style=&quot;font-size: 10px;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;同步等待读取异步处理结果的接口&lt;/font&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=10;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="4720" y="160" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="Jc6cqmUtGkEXaGz-iM8d-18" value="&lt;p style=&quot;margin: 4px 0px 0px; text-align: center;&quot;&gt;CompletionStage&amp;lt;T&amp;gt;&lt;br style=&quot;font-size: 10px;&quot;&gt;&lt;/p&gt;&lt;hr style=&quot;font-size: 10px;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;任务编排接口实现&lt;/font&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=10;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="4480" y="160" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="Jc6cqmUtGkEXaGz-iM8d-27" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="Jc6cqmUtGkEXaGz-iM8d-25" target="Jc6cqmUtGkEXaGz-iM8d-26">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Jc6cqmUtGkEXaGz-iM8d-28" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="Jc6cqmUtGkEXaGz-iM8d-25" target="Jc6cqmUtGkEXaGz-iM8d-2">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="5100" y="260" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Jc6cqmUtGkEXaGz-iM8d-25" value="测试初始化" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="5000" y="160" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Jc6cqmUtGkEXaGz-iM8d-26" value="static final ExecutorService forkJoinPool = new ForkJoinPool(2);&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;参考 forkjoinpool 的工作流程图&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="5240" y="160" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Jc6cqmUtGkEXaGz-iM8d-31" value="&lt;p style=&quot;margin: 4px 0px 0px; text-align: center;&quot;&gt;&lt;b&gt;AsyncRun&lt;/b&gt;&amp;nbsp;extends ForkJoinTask&amp;lt;Void&amp;gt;&lt;br&gt;implements Runnable, AsynchronousCompletionTask&lt;br style=&quot;font-size: 10px;&quot;&gt;&lt;/p&gt;&lt;hr style=&quot;font-size: 10px;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;封装了CompletableFuture的ForkJoinTask，实现很简单在ForkJoinTask基础上对run()后添加了completeNull() completeThrowable() postComplete() 等操作&lt;/font&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;CompletableFuture&amp;lt;Void&amp;gt; &lt;b&gt;dep&lt;/b&gt;;&amp;nbsp;&lt;/span&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//任务的业务方法&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;Runnable &lt;b&gt;fn&lt;/b&gt;;&lt;br&gt;&lt;/p&gt;&lt;hr style=&quot;font-size: 10px;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 10px;&quot;&gt;&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=10;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="4000" y="240" width="440" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="Jc6cqmUtGkEXaGz-iM8d-32" value="ForkJoinPool#&lt;b&gt;execute&lt;/b&gt;(Runnable task)&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;这里task是AsyncRun实例&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="5720" y="340" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Jc6cqmUtGkEXaGz-iM8d-37" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="Jc6cqmUtGkEXaGz-iM8d-34" target="Jc6cqmUtGkEXaGz-iM8d-36">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Jc6cqmUtGkEXaGz-iM8d-34" value="return reportGet((r = result) == null ? &lt;b&gt;waitingGet&lt;/b&gt;(true) : r);" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="5240" y="420" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Jc6cqmUtGkEXaGz-iM8d-36" value="CompletableFuture#&lt;br&gt;&lt;b&gt;waitingGet&lt;/b&gt;(boolean interruptible)&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;自旋等待result写入结果&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="5480" y="420" width="200" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
