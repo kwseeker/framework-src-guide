@@ -1,0 +1,256 @@
+<mxfile host="Electron" modified="2024-02-21T15:14:21.551Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.7.5 Chrome/114.0.5735.289 Electron/25.8.1 Safari/537.36" etag="5wXEUQ0OynD89APYhYmE" version="21.7.5" type="device" pages="2">
+  <diagram name="第 1 页" id="4JMoBGyp9v3T4AjweXGR">
+    <mxGraphModel dx="2563" dy="692" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="nBw4Y6OI8DKpcdZ5Eplv-1" value="&lt;h1&gt;&lt;span style=&quot;font-size: 16px;&quot;&gt;Activiti 工作原理&lt;/span&gt;&lt;/h1&gt;&lt;p style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;基于 activiti-engine 7.0.0.GA，参考网上一些入门教程（比如：https://www.baeldung.com/java-activiti）创建了一些测试工程，&lt;br&gt;参考：SpringBoot-Labs/workflow/activiti-simple-examples&lt;br&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;源码细节没时间看先忽略，部分方法功能先大胆猜测，下面分析内容可能存在错误，后面使用过程中慢慢更正。&lt;br&gt;&lt;/span&gt;&lt;/font&gt;主要关注核心接口相关类实现，https://www.activiti.org/userguide/#chapterApi&lt;span style=&quot;background-color: initial;&quot;&gt;。&lt;/span&gt;&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="40" y="10" width="600" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="nBw4Y6OI8DKpcdZ5Eplv-4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;" edge="1" parent="1" source="nBw4Y6OI8DKpcdZ5Eplv-2" target="nBw4Y6OI8DKpcdZ5Eplv-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="nBw4Y6OI8DKpcdZ5Eplv-30" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;fontSize=10;" edge="1" parent="1" source="nBw4Y6OI8DKpcdZ5Eplv-38" target="nBw4Y6OI8DKpcdZ5Eplv-29">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="nBw4Y6OI8DKpcdZ5Eplv-2" value="创建工作流引擎" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="40" y="160" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Y24drFMDoc7ggRzdU2q5-2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="nBw4Y6OI8DKpcdZ5Eplv-3" target="Y24drFMDoc7ggRzdU2q5-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="nBw4Y6OI8DKpcdZ5Eplv-3" value="ProcessEngine processEngine = ProcessEngines.getDefaultProcessEngine();&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;ProcessEngines 是ProcessEngine的容器&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="280" y="160" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="nBw4Y6OI8DKpcdZ5Eplv-14" value="工作原理概述：&lt;br&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="680" y="10" width="320" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="nBw4Y6OI8DKpcdZ5Eplv-15" value="&lt;p style=&quot;margin: 4px 0px 0px; text-align: center;&quot;&gt;&lt;b&gt;ProcessEngines&lt;/b&gt;&lt;br style=&quot;font-size: 10px;&quot;&gt;&lt;/p&gt;&lt;hr style=&quot;font-size: 10px;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;public static final String NAME_DEFAULT = &quot;default&quot;;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;protected static boolean &lt;b&gt;isInitialized&lt;/b&gt;;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;//工作流引擎名称 -&amp;gt; 引擎实例&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;protected static Map&amp;lt;String, ProcessEngine&amp;gt; &lt;b&gt;processEngines&lt;/b&gt; = new HashMap();&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;protected static Map&amp;lt;String, ProcessEngineInfo&amp;gt; processEngineInfosByName = new HashMap();&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;protected static Map&amp;lt;String, ProcessEngineInfo&amp;gt; processEngineInfosByResourceUrl = new HashMap();&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;protected static List&amp;lt;ProcessEngineInfo&amp;gt; processEngineInfos = new ArrayList();&lt;/p&gt;&lt;hr style=&quot;font-size: 10px;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 10px;&quot;&gt;重要接口方法：&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 10px;&quot;&gt;获取默认工作流引擎，名为“default”（不存在则创建）;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 10px;&quot;&gt;注册、注销工作流引擎；&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 10px;&quot;&gt;获取工作流引擎信息、查询工作流引擎；&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 10px;&quot;&gt;销毁工作流引擎容器及内部的引擎实例。&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=10;fontFamily=Helvetica;html=1;whiteSpace=wrap;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="-520" y="160" width="480" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="nBw4Y6OI8DKpcdZ5Eplv-32" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;" edge="1" parent="1" source="nBw4Y6OI8DKpcdZ5Eplv-29" target="nBw4Y6OI8DKpcdZ5Eplv-31">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="nBw4Y6OI8DKpcdZ5Eplv-29" value="工作流实例创建" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="40" y="560" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="nBw4Y6OI8DKpcdZ5Eplv-31" value="工作流实例启动" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="40" y="660" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="nBw4Y6OI8DKpcdZ5Eplv-39" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;fontSize=10;" edge="1" parent="1" source="nBw4Y6OI8DKpcdZ5Eplv-2" target="nBw4Y6OI8DKpcdZ5Eplv-38">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="140" y="220" as="sourcePoint" />
+            <mxPoint x="140" y="560" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="nBw4Y6OI8DKpcdZ5Eplv-41" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;" edge="1" parent="1" source="nBw4Y6OI8DKpcdZ5Eplv-38" target="nBw4Y6OI8DKpcdZ5Eplv-40">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="nBw4Y6OI8DKpcdZ5Eplv-38" value="依赖配置" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="40" y="440" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="nBw4Y6OI8DKpcdZ5Eplv-40" value="CommonRuntimeAutoConfiguration" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="280" y="440" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="JoRYXo11--v7-uUJcfo4-2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="Y24drFMDoc7ggRzdU2q5-1" target="JoRYXo11--v7-uUJcfo4-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Y24drFMDoc7ggRzdU2q5-1" value="init()&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;工作流引擎容器初始化&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="520" y="160" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="JoRYXo11--v7-uUJcfo4-4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="JoRYXo11--v7-uUJcfo4-1" target="JoRYXo11--v7-uUJcfo4-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="JoRYXo11--v7-uUJcfo4-7" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="JoRYXo11--v7-uUJcfo4-1" target="JoRYXo11--v7-uUJcfo4-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="JoRYXo11--v7-uUJcfo4-1" value="&lt;b&gt;加载配置文件创建工作流引擎实例并注册到ProcessEngins&lt;br&gt;&lt;/b&gt;&quot;activiti.cfg.xml&quot;、&quot;activiti-context.xml&quot;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="760" y="160" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="JoRYXo11--v7-uUJcfo4-10" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="JoRYXo11--v7-uUJcfo4-3" target="JoRYXo11--v7-uUJcfo4-9">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1220" y="190" />
+              <mxPoint x="1220" y="310" />
+              <mxPoint x="260" y="310" />
+              <mxPoint x="260" y="350" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="JoRYXo11--v7-uUJcfo4-3" value="ProcessEngine processEngine = buildProcessEngine(resourceUrl);&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;创建&quot;activiti.cfg.xml&quot;中定义的工作流引擎&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="160" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="JoRYXo11--v7-uUJcfo4-5" value="SpringConfigurationHelper#&lt;br&gt;buildProcessEngine()&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;创建&quot;activiti-context.xml&quot;中定义的工作流引擎&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="240" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="JoRYXo11--v7-uUJcfo4-8" value="&lt;p style=&quot;margin: 4px 0px 0px; text-align: center;&quot;&gt;&lt;b&gt;ProcessEngine （I）&lt;/b&gt;&lt;br style=&quot;font-size: 10px;&quot;&gt;&lt;/p&gt;&lt;hr style=&quot;font-size: 10px;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;String getName();&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;void close();&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;RepositoryService &lt;b&gt;getRepositoryService&lt;/b&gt;();&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;RuntimeService &lt;b&gt;getRuntimeService&lt;/b&gt;();&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;TaskService &lt;b&gt;getTaskService&lt;/b&gt;();&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;HistoryService &lt;b&gt;getHistoryService&lt;/b&gt;();&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;ManagementService &lt;b&gt;getManagementService&lt;/b&gt;();&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;DynamicBpmnService &lt;b&gt;getDynamicBpmnService&lt;/b&gt;();&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;ProcessEngineConfiguration &lt;b&gt;getProcessEngineConfiguration&lt;/b&gt;();&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=10;fontFamily=Helvetica;html=1;whiteSpace=wrap;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="-1040" y="160" width="480" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="JoRYXo11--v7-uUJcfo4-17" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="JoRYXo11--v7-uUJcfo4-9" target="JoRYXo11--v7-uUJcfo4-16">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="JoRYXo11--v7-uUJcfo4-18" value="配置类有多种实现这里暂只关注&lt;br&gt;StandaloneInMemProcessEngineConfiguration" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="JoRYXo11--v7-uUJcfo4-17">
+          <mxGeometry x="-0.0534" y="2" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="JoRYXo11--v7-uUJcfo4-9" value="processEngineConfiguration&lt;br&gt;.buildProcessEngine();" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="280" y="320" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="JoRYXo11--v7-uUJcfo4-14" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" target="JoRYXo11--v7-uUJcfo4-13">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="740" y="380" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="JoRYXo11--v7-uUJcfo4-15" value="&lt;div style=&quot;text-align: center;&quot;&gt;&lt;b&gt;ProcessEngineConfiguration&lt;/b&gt;&lt;b style=&quot;background-color: initial;&quot;&gt;（A）&lt;/b&gt;&lt;/div&gt;&lt;hr style=&quot;font-size: 10px;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 10px;&quot;&gt;&lt;br style=&quot;font-size: 10px;&quot;&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=10;fontFamily=Helvetica;html=1;whiteSpace=wrap;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="-400" y="400" width="240" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="JoRYXo11--v7-uUJcfo4-25" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="JoRYXo11--v7-uUJcfo4-16" target="JoRYXo11--v7-uUJcfo4-24">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="JoRYXo11--v7-uUJcfo4-16" value="StandaloneInMemProcessEngineConfiguration&lt;br&gt;#buildProcessEngine()" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="750" y="320" width="220" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="JoRYXo11--v7-uUJcfo4-22" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;endArrow=block;endFill=0;" edge="1" parent="1" source="JoRYXo11--v7-uUJcfo4-19" target="JoRYXo11--v7-uUJcfo4-15">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="JoRYXo11--v7-uUJcfo4-19" value="&lt;div style=&quot;text-align: center;&quot;&gt;&lt;b&gt;ProcessEngineConfigurationImpl&lt;/b&gt;&lt;b style=&quot;background-color: initial;&quot;&gt;（A）&lt;/b&gt;&lt;/div&gt;&lt;hr style=&quot;font-size: 10px;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 10px;&quot;&gt;&lt;br style=&quot;font-size: 10px;&quot;&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=10;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="-400" y="480" width="240" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="JoRYXo11--v7-uUJcfo4-21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;endArrow=block;endFill=0;" edge="1" parent="1" source="JoRYXo11--v7-uUJcfo4-20" target="JoRYXo11--v7-uUJcfo4-19">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="JoRYXo11--v7-uUJcfo4-23" value="..." style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="JoRYXo11--v7-uUJcfo4-21">
+          <mxGeometry x="-0.1184" y="-1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="JoRYXo11--v7-uUJcfo4-20" value="&lt;p style=&quot;margin: 4px 0px 0px; text-align: center;&quot;&gt;&lt;b&gt;StandaloneInMemProcessEngineConfiguration&lt;/b&gt;&lt;br style=&quot;font-size: 10px;&quot;&gt;&lt;/p&gt;&lt;hr style=&quot;font-size: 10px;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;有非常多的属性，都是从上面两个抽象类继承过来的，这里只列举重要且常用的属性&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;hr style=&quot;font-size: 10px;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 10px;&quot;&gt;重要接口方法：&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 10px;&quot;&gt;&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=10;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="-520" y="560" width="480" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="JoRYXo11--v7-uUJcfo4-27" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="JoRYXo11--v7-uUJcfo4-24" target="JoRYXo11--v7-uUJcfo4-26">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="JoRYXo11--v7-uUJcfo4-24" value="init();&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;初始化了很多组件&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="320" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="JoRYXo11--v7-uUJcfo4-26" value="ProcessEngineImpl processEngine = new &lt;b&gt;ProcessEngineImpl&lt;/b&gt;(this);" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="400" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="JoRYXo11--v7-uUJcfo4-30" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;dashed=1;" edge="1" parent="1" source="JoRYXo11--v7-uUJcfo4-29" target="JoRYXo11--v7-uUJcfo4-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="JoRYXo11--v7-uUJcfo4-29" value="&lt;p style=&quot;margin: 4px 0px 0px; text-align: center;&quot;&gt;&lt;b&gt;ProcessEngineImpl&lt;/b&gt;&lt;br style=&quot;font-size: 10px;&quot;&gt;&lt;/p&gt;&lt;hr style=&quot;font-size: 10px;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;protected String name;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;protected RepositoryService &lt;b&gt;repositoryService&lt;/b&gt;;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;protected RuntimeService &lt;b&gt;runtimeService&lt;/b&gt;;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;protected HistoryService &lt;b&gt;historicDataService&lt;/b&gt;;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;protected TaskService &lt;b&gt;taskService&lt;/b&gt;;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;protected ManagementService &lt;b&gt;managementService&lt;/b&gt;;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;protected DynamicBpmnService &lt;b&gt;dynamicBpmnService&lt;/b&gt;;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;protected AsyncExecutor &lt;b&gt;asyncExecutor&lt;/b&gt;;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;protected CommandExecutor &lt;b&gt;commandExecutor&lt;/b&gt;;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;protected Map&amp;lt;Class&amp;lt;?&amp;gt;, SessionFactory&amp;gt; sessionFactories;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;protected TransactionContextFactory transactionContextFactory;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;protected ProcessEngineConfigurationImpl &lt;b&gt;processEngineConfiguration&lt;/b&gt;;&lt;/p&gt;&lt;hr style=&quot;font-size: 10px;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 10px;&quot;&gt;&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=10;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="-1040" y="360" width="480" height="200" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="h2iQ7ISkH6K3LxmfOnTO" name="第 2 页">
+    <mxGraphModel dx="1781" dy="727" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="rb6MAtKawsLbe7v6Iaic-1" value="&lt;h1&gt;&lt;span style=&quot;font-size: 16px;&quot;&gt;Activiti SpringBoot 工作原理&lt;/span&gt;&lt;/h1&gt;&lt;p style=&quot;&quot;&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;基于 activiti-spring-boot-starter 7.0.0.GA，以官方示例activiti-api-basic-process-example为例分析工作原理。&lt;br&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;没时间细看，先忽略细节，下面分析内容可能存在错误，后面使用过程中慢慢更正。&lt;br&gt;&lt;/span&gt;&lt;/font&gt;主要关注核心接口相关类实现，https://www.activiti.org/userguide/#chapterApi&lt;span style=&quot;background-color: initial;&quot;&gt;。&lt;/span&gt;&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="40" y="10" width="600" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="rb6MAtKawsLbe7v6Iaic-2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;" edge="1" parent="1" source="rb6MAtKawsLbe7v6Iaic-4" target="rb6MAtKawsLbe7v6Iaic-10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rb6MAtKawsLbe7v6Iaic-3" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="rb6MAtKawsLbe7v6Iaic-24" target="rb6MAtKawsLbe7v6Iaic-18">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rb6MAtKawsLbe7v6Iaic-4" value="自动配置&lt;br style=&quot;font-size: 10px;&quot;&gt;spring.factories" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="40" y="160" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="rb6MAtKawsLbe7v6Iaic-5" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=10;" edge="1" parent="1" source="rb6MAtKawsLbe7v6Iaic-10" target="rb6MAtKawsLbe7v6Iaic-12">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="500" y="190" />
+              <mxPoint x="500" y="240" />
+              <mxPoint x="270" y="240" />
+              <mxPoint x="270" y="390" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rb6MAtKawsLbe7v6Iaic-6" value="&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;@AutoConfigureAfter&lt;/font&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;" vertex="1" connectable="0" parent="rb6MAtKawsLbe7v6Iaic-5">
+          <mxGeometry x="-0.3" y="1" relative="1" as="geometry">
+            <mxPoint x="-23" y="-1" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rb6MAtKawsLbe7v6Iaic-7" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="rb6MAtKawsLbe7v6Iaic-10" target="rb6MAtKawsLbe7v6Iaic-11">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="500" y="190" />
+              <mxPoint x="500" y="240" />
+              <mxPoint x="270" y="240" />
+              <mxPoint x="270" y="310" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rb6MAtKawsLbe7v6Iaic-8" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="rb6MAtKawsLbe7v6Iaic-10" target="rb6MAtKawsLbe7v6Iaic-16">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rb6MAtKawsLbe7v6Iaic-9" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="rb6MAtKawsLbe7v6Iaic-10" target="rb6MAtKawsLbe7v6Iaic-21">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="520" y="190" />
+              <mxPoint x="520" y="260" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rb6MAtKawsLbe7v6Iaic-10" value="ProcessEngineAutoConfiguration" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="280" y="160" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="rb6MAtKawsLbe7v6Iaic-11" value="DataSourceAutoConfiguration&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;数据源配置&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="280" y="280" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="rb6MAtKawsLbe7v6Iaic-12" value="TaskExecutionAutoConfiguration&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;线程池配置&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="280" y="360" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="rb6MAtKawsLbe7v6Iaic-13" value="&lt;font color=&quot;#007fff&quot;&gt;//&lt;/font&gt;&lt;br&gt;&lt;b&gt;SpringProcessEngineConfiguration&lt;/b&gt; springProcessEngineConfiguration&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;//工作流定义资源Finder&lt;br&gt;&lt;/font&gt;&lt;b&gt;ProcessDefinitionResourceFinder&lt;/b&gt; processDefinitionResourceFinder&amp;nbsp;&lt;br&gt;&lt;b&gt;ProcessDeployedEventProducer&lt;/b&gt; processDeployedEventProducer&lt;br&gt;&lt;b&gt;SpringAsyncExecutor&lt;/b&gt; springAsyncExecutor&lt;br&gt;&lt;b&gt;SpringRejectedJobsHandler&lt;/b&gt; springRejectedJobsHandler&lt;br&gt;&lt;b&gt;ProcessEngineFactoryBean&lt;/b&gt; processEngine&lt;br&gt;&lt;b&gt;RuntimeService&lt;/b&gt; runtimeServiceBean&lt;br&gt;&lt;b&gt;RepositoryService&lt;/b&gt; repositoryServiceBean&lt;br&gt;&lt;b&gt;TaskService&lt;/b&gt; taskServiceBean&lt;br&gt;&lt;b&gt;HistoryService&lt;/b&gt; historyServiceBean&lt;br&gt;&lt;b&gt;ManagementService&lt;/b&gt; managementServiceBeanBean&lt;br&gt;&lt;b&gt;TaskExecutor&lt;/b&gt; taskExecutor&lt;br&gt;&lt;b&gt;ntegrationContextManager&lt;/b&gt; integrationContextManagerBean&lt;br&gt;&lt;b&gt;IntegrationContextService&lt;/b&gt; integrationContextServiceBean" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;align=left;arcSize=4;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="800" y="160" width="440" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="rb6MAtKawsLbe7v6Iaic-14" value="工作原理概述：&lt;br&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="680" y="10" width="320" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="rb6MAtKawsLbe7v6Iaic-15" value="&lt;p style=&quot;margin: 4px 0px 0px; text-align: center; font-size: 10px;&quot;&gt;&lt;b style=&quot;font-size: 10px;&quot;&gt;SpringProcessEngineConfiguration&lt;/b&gt;&lt;br style=&quot;font-size: 10px;&quot;&gt;&lt;/p&gt;&lt;hr style=&quot;font-size: 10px;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 10px;&quot;&gt;protected PlatformTransactionManager &lt;b style=&quot;font-size: 10px;&quot;&gt;transactionManager&lt;/b&gt;;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 10px;&quot;&gt;protected String deploymentName = &quot;SpringAutoDeployment&quot;;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 10px;&quot;&gt;protected Resource[] &lt;b style=&quot;font-size: 10px;&quot;&gt;deploymentResources&lt;/b&gt; = new Resource[0];&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 10px;&quot;&gt;protected String deploymentMode = &quot;default&quot;;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 10px;&quot;&gt;protected ApplicationContext applicationContext;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 10px;&quot;&gt;protected Integer transactionSynchronizationAdapterOrder = null;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 10px;&quot;&gt;private Collection&amp;lt;AutoDeploymentStrategy&amp;gt; &lt;b style=&quot;font-size: 10px;&quot;&gt;deploymentStrategies&lt;/b&gt; = new ArrayList();&lt;/p&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;br style=&quot;font-size: 10px;&quot;&gt;&lt;/div&gt;&lt;hr style=&quot;font-size: 10px;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 10px;&quot;&gt;&lt;br style=&quot;font-size: 10px;&quot;&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=10;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="-520" y="160" width="480" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="rb6MAtKawsLbe7v6Iaic-16" value="@EnableConfigurationProperties({&lt;br&gt;&lt;b&gt;ActivitiProperties&lt;/b&gt;.class})" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="560" y="360" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="rb6MAtKawsLbe7v6Iaic-17" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="rb6MAtKawsLbe7v6Iaic-18" target="rb6MAtKawsLbe7v6Iaic-19">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rb6MAtKawsLbe7v6Iaic-18" value="工作流实例创建" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="40" y="560" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="rb6MAtKawsLbe7v6Iaic-19" value="工作流实例启动" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="40" y="660" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="rb6MAtKawsLbe7v6Iaic-20" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="rb6MAtKawsLbe7v6Iaic-21" target="rb6MAtKawsLbe7v6Iaic-13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rb6MAtKawsLbe7v6Iaic-21" value="Bean实例&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;可以看到自动配置阶段将Activiti的组件都创建好了&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="560" y="230" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="rb6MAtKawsLbe7v6Iaic-22" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="rb6MAtKawsLbe7v6Iaic-4" target="rb6MAtKawsLbe7v6Iaic-24">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="140" y="220" as="sourcePoint" />
+            <mxPoint x="140" y="560" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rb6MAtKawsLbe7v6Iaic-23" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="rb6MAtKawsLbe7v6Iaic-24" target="rb6MAtKawsLbe7v6Iaic-25">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rb6MAtKawsLbe7v6Iaic-24" value="依赖配置" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="40" y="440" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="rb6MAtKawsLbe7v6Iaic-25" value="CommonRuntimeAutoConfiguration" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="280" y="440" width="200" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
