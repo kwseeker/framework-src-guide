@@ -1,0 +1,244 @@
+<mxfile host="Electron" modified="2024-03-03T15:34:40.052Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.6.5 Chrome/114.0.5735.243 Electron/25.3.1 Safari/537.36" etag="kgGx8nItqdYKRA1yBnWW" version="21.6.5" type="device">
+  <diagram name="第 1 页" id="OCTsjvIejWmOWqxClBZ6">
+    <mxGraphModel dx="1114" dy="756" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="Hydc0WZ6Yl5BxTQzrqwC-1" value="&lt;h1&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;ruoyi-activiti 业务分析&lt;/font&gt;&lt;/h1&gt;&lt;div style=&quot;&quot;&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;这个开源项目中列举了工作流&lt;/font&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;一些典型的使用场景以及管理方式（大部分都是一些简单的增删改查）。&lt;/span&gt;&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="40" y="10" width="560" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="Hydc0WZ6Yl5BxTQzrqwC-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="Hydc0WZ6Yl5BxTQzrqwC-19" target="Hydc0WZ6Yl5BxTQzrqwC-20" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Hydc0WZ6Yl5BxTQzrqwC-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="Hydc0WZ6Yl5BxTQzrqwC-19" target="Hydc0WZ6Yl5BxTQzrqwC-21" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Hydc0WZ6Yl5BxTQzrqwC-19" value="流程管理" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="40" y="120" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Hydc0WZ6Yl5BxTQzrqwC-59" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="Hydc0WZ6Yl5BxTQzrqwC-20" target="Hydc0WZ6Yl5BxTQzrqwC-58" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Hydc0WZ6Yl5BxTQzrqwC-64" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="Hydc0WZ6Yl5BxTQzrqwC-20" target="Hydc0WZ6Yl5BxTQzrqwC-60" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Hydc0WZ6Yl5BxTQzrqwC-65" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="Hydc0WZ6Yl5BxTQzrqwC-20" target="Hydc0WZ6Yl5BxTQzrqwC-62" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Hydc0WZ6Yl5BxTQzrqwC-66" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="Hydc0WZ6Yl5BxTQzrqwC-20" target="Hydc0WZ6Yl5BxTQzrqwC-61" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Hydc0WZ6Yl5BxTQzrqwC-67" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="Hydc0WZ6Yl5BxTQzrqwC-20" target="Hydc0WZ6Yl5BxTQzrqwC-63" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Hydc0WZ6Yl5BxTQzrqwC-20" value="模型管理&lt;br&gt;&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;支持在线编辑、发布、导出、删除BPMN文件&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="200" y="120" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Hydc0WZ6Yl5BxTQzrqwC-78" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="Hydc0WZ6Yl5BxTQzrqwC-21" target="Hydc0WZ6Yl5BxTQzrqwC-77" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Hydc0WZ6Yl5BxTQzrqwC-82" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="Hydc0WZ6Yl5BxTQzrqwC-21" target="Hydc0WZ6Yl5BxTQzrqwC-80" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Hydc0WZ6Yl5BxTQzrqwC-83" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="Hydc0WZ6Yl5BxTQzrqwC-21" target="Hydc0WZ6Yl5BxTQzrqwC-81" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Hydc0WZ6Yl5BxTQzrqwC-85" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="Hydc0WZ6Yl5BxTQzrqwC-21" target="Hydc0WZ6Yl5BxTQzrqwC-84" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Hydc0WZ6Yl5BxTQzrqwC-87" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="Hydc0WZ6Yl5BxTQzrqwC-21" target="Hydc0WZ6Yl5BxTQzrqwC-86" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Hydc0WZ6Yl5BxTQzrqwC-21" value="部署管理&lt;br&gt;&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;即管理已经发布的流程模型&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="200" y="520" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Hydc0WZ6Yl5BxTQzrqwC-27" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="Hydc0WZ6Yl5BxTQzrqwC-29" target="Hydc0WZ6Yl5BxTQzrqwC-30" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Hydc0WZ6Yl5BxTQzrqwC-28" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="Hydc0WZ6Yl5BxTQzrqwC-29" target="Hydc0WZ6Yl5BxTQzrqwC-31" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Hydc0WZ6Yl5BxTQzrqwC-33" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="Hydc0WZ6Yl5BxTQzrqwC-29" target="Hydc0WZ6Yl5BxTQzrqwC-32" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Hydc0WZ6Yl5BxTQzrqwC-29" value="功能表&lt;br&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;即用于启动已经部署的流程，默认部署了3个流程&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="40" y="920" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="f0bjOWNWRlSOEQlmokw9-2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="Hydc0WZ6Yl5BxTQzrqwC-30" target="f0bjOWNWRlSOEQlmokw9-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Hydc0WZ6Yl5BxTQzrqwC-30" value="请假申请" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="200" y="920" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Hydc0WZ6Yl5BxTQzrqwC-31" value="采购申请" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="200" y="1000" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Hydc0WZ6Yl5BxTQzrqwC-32" value="发起会议" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="200" y="1080" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Hydc0WZ6Yl5BxTQzrqwC-37" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="Hydc0WZ6Yl5BxTQzrqwC-34" target="Hydc0WZ6Yl5BxTQzrqwC-35" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Hydc0WZ6Yl5BxTQzrqwC-38" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="Hydc0WZ6Yl5BxTQzrqwC-34" target="Hydc0WZ6Yl5BxTQzrqwC-36" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Hydc0WZ6Yl5BxTQzrqwC-34" value="代办任务&lt;br&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;即流程实例中需要处理的用户任务列表&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="40" y="1160" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="f0bjOWNWRlSOEQlmokw9-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="Hydc0WZ6Yl5BxTQzrqwC-35" target="f0bjOWNWRlSOEQlmokw9-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="f0bjOWNWRlSOEQlmokw9-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;" edge="1" parent="1" source="Hydc0WZ6Yl5BxTQzrqwC-35" target="f0bjOWNWRlSOEQlmokw9-10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Hydc0WZ6Yl5BxTQzrqwC-35" value="我的代办" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="200" y="1160" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="f0bjOWNWRlSOEQlmokw9-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="Hydc0WZ6Yl5BxTQzrqwC-36" target="f0bjOWNWRlSOEQlmokw9-11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="f0bjOWNWRlSOEQlmokw9-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.75;entryDx=0;entryDy=0;" edge="1" parent="1" source="Hydc0WZ6Yl5BxTQzrqwC-36" target="f0bjOWNWRlSOEQlmokw9-10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Hydc0WZ6Yl5BxTQzrqwC-36" value="全部代办" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="200" y="1320" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Hydc0WZ6Yl5BxTQzrqwC-39" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="Hydc0WZ6Yl5BxTQzrqwC-41" target="Hydc0WZ6Yl5BxTQzrqwC-42" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Hydc0WZ6Yl5BxTQzrqwC-40" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="Hydc0WZ6Yl5BxTQzrqwC-41" target="Hydc0WZ6Yl5BxTQzrqwC-43" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Hydc0WZ6Yl5BxTQzrqwC-41" value="&lt;font style=&quot;&quot;&gt;流程监控&lt;br&gt;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="40" y="1400" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Hydc0WZ6Yl5BxTQzrqwC-42" value="流程实例&lt;br&gt;&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;查询运行中的流程实例&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="200" y="1400" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Hydc0WZ6Yl5BxTQzrqwC-43" value="运行历史" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="200" y="1480" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Hydc0WZ6Yl5BxTQzrqwC-44" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="Hydc0WZ6Yl5BxTQzrqwC-50" target="Hydc0WZ6Yl5BxTQzrqwC-51" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Hydc0WZ6Yl5BxTQzrqwC-45" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="Hydc0WZ6Yl5BxTQzrqwC-50" target="Hydc0WZ6Yl5BxTQzrqwC-52" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Hydc0WZ6Yl5BxTQzrqwC-46" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="Hydc0WZ6Yl5BxTQzrqwC-50" target="Hydc0WZ6Yl5BxTQzrqwC-53" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Hydc0WZ6Yl5BxTQzrqwC-47" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="Hydc0WZ6Yl5BxTQzrqwC-50" target="Hydc0WZ6Yl5BxTQzrqwC-54" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Hydc0WZ6Yl5BxTQzrqwC-48" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="Hydc0WZ6Yl5BxTQzrqwC-50" target="Hydc0WZ6Yl5BxTQzrqwC-55" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Hydc0WZ6Yl5BxTQzrqwC-49" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="Hydc0WZ6Yl5BxTQzrqwC-50" target="Hydc0WZ6Yl5BxTQzrqwC-56" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Hydc0WZ6Yl5BxTQzrqwC-50" value="首页&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;是个报表页&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="40" y="1560" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Hydc0WZ6Yl5BxTQzrqwC-51" value="流程&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;当前月总流程数&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="200" y="1560" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Hydc0WZ6Yl5BxTQzrqwC-52" value="运行&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;今年总流程实例数&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="200" y="1640" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Hydc0WZ6Yl5BxTQzrqwC-53" value="执行&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;今日执行实例数&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="200" y="1720" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Hydc0WZ6Yl5BxTQzrqwC-54" value="代办任务数&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;当月待办任务数&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="200" y="1800" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Hydc0WZ6Yl5BxTQzrqwC-55" value="请假数" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="200" y="1880" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Hydc0WZ6Yl5BxTQzrqwC-56" value="最近流程申请列表" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="200" y="1960" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Hydc0WZ6Yl5BxTQzrqwC-58" value="新建模型" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="360" y="120" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Hydc0WZ6Yl5BxTQzrqwC-60" value="模型设计与保存&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;在线编辑&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="360" y="200" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Hydc0WZ6Yl5BxTQzrqwC-61" value="模型发布与删除" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="360" y="360" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Hydc0WZ6Yl5BxTQzrqwC-62" value="模型导出" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="360" y="280" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Hydc0WZ6Yl5BxTQzrqwC-63" value="模型搜索" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="360" y="440" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Hydc0WZ6Yl5BxTQzrqwC-70" value="&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;接口：Post /model/manage/add，通过Activiti &lt;b style=&quot;font-size: 10px;&quot;&gt;RepositoryService &lt;/b&gt;检查模型key是否存在，不存在则创建并保存模型(Model)。这里创建了Model和对应的空的ModelEditorSource。&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" parent="1" vertex="1">
+          <mxGeometry x="500" y="120" width="660" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Hydc0WZ6Yl5BxTQzrqwC-72" value="&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;编辑接口：GET /editor，直接返回&amp;nbsp;modeler.html，这个html就是BPMN的在线Web编辑器，参考：https://www.activiti.org/5.x/userguide/#activitiModeler&lt;br&gt;加载接口：GET /activiti-explorer/model/{modelId}/json， 加载模型的元数据和ModelEditorSource，用于在线编辑器中展示；&lt;br&gt;保存接口：PUT&amp;nbsp;/activiti-explorer/model/{modelId}/save，在线编辑器修改后保存元数据以及ModelEditorSource数据，这里可以看到参数中传的ModelEditorSource数据默认是json格式的，其实存储的是json还是xml无所谓，如果是json部署模型时转换成BPMN20 XML文件就行了&lt;br&gt;&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="500" y="200" width="660" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Hydc0WZ6Yl5BxTQzrqwC-73" value="&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;&lt;br style=&quot;font-size: 10px;&quot;&gt;&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" parent="1" vertex="1">
+          <mxGeometry x="500" y="280" width="540" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Hydc0WZ6Yl5BxTQzrqwC-74" value="&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;接口：GET&amp;nbsp;/model/manage&lt;span style=&quot;background-color: initial; font-size: 10px;&quot;&gt;/export/{modelId}，这个项目默认存储的模型定义文件是json, 导出是 BPMN20 xml文件，所以中间使用了&amp;nbsp;&lt;/span&gt;activiti-json-converter 进行了转换&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" parent="1" vertex="1">
+          <mxGeometry x="500" y="280" width="540" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Hydc0WZ6Yl5BxTQzrqwC-75" value="&lt;font color=&quot;#007fff&quot; style=&quot;&quot;&gt;发布接口：GET /model/manage/deploy/{modelId}，因为项目默认存储的是json, 部署模型时要先转成 BPMN20 xml文件，然后使用 RepositoryService 接口进行部署（发布），发布会将 BPMN文件插入 ACT_GE_BYTEARRAY 表&lt;br style=&quot;font-size: 10px;&quot;&gt;&lt;/font&gt;&lt;span style=&quot;color: rgb(0, 127, 255); font-size: 10px;&quot;&gt;删除接口：GET&amp;nbsp;/model/manage&lt;/span&gt;&lt;span style=&quot;border-color: var(--border-color); color: rgb(0, 127, 255); background-color: initial; font-size: 10px;&quot;&gt;/remove/{modelId}&lt;/span&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;&lt;span style=&quot;background-color: initial; font-size: 10px;&quot;&gt;&lt;br style=&quot;font-size: 10px;&quot;&gt;&lt;/span&gt;&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" parent="1" vertex="1">
+          <mxGeometry x="500" y="360" width="540" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Hydc0WZ6Yl5BxTQzrqwC-76" value="&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;接口：POST /model/manage/modelLists, 借助RepositoryService 主要查 ACT_RE_MODEL 表&lt;/font&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;&lt;span style=&quot;background-color: initial; font-size: 10px;&quot;&gt;&lt;br style=&quot;font-size: 10px;&quot;&gt;&lt;/span&gt;&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" parent="1" vertex="1">
+          <mxGeometry x="500" y="440" width="540" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Hydc0WZ6Yl5BxTQzrqwC-77" value="已部署模型列表" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="360" y="520" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Hydc0WZ6Yl5BxTQzrqwC-79" value="&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;接口：POST&amp;nbsp;&lt;/font&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;/flow/manage/getprocesslists，&amp;nbsp;&lt;/font&gt;&lt;span style=&quot;color: rgb(0, 127, 255);&quot;&gt;借助RepositoryService 主要查 ACT_RE_PROCDEF 表&lt;/span&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;&lt;span style=&quot;background-color: initial; font-size: 10px;&quot;&gt;&lt;br style=&quot;font-size: 10px;&quot;&gt;&lt;/span&gt;&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" parent="1" vertex="1">
+          <mxGeometry x="500" y="520" width="540" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Hydc0WZ6Yl5BxTQzrqwC-80" value="查看模型BPMN文件" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="360" y="600" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Hydc0WZ6Yl5BxTQzrqwC-81" value="查看模型图片" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="360" y="680" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Hydc0WZ6Yl5BxTQzrqwC-84" value="转为模型&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;？&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="360" y="760" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Hydc0WZ6Yl5BxTQzrqwC-86" value="删除模型&lt;br&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;和模型管理中删除模型相同&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="360" y="840" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="f0bjOWNWRlSOEQlmokw9-1" value="启动一个请假申请流程实例" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="360" y="920" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="f0bjOWNWRlSOEQlmokw9-3" value="&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;接口：POST&amp;nbsp;&lt;/font&gt;&lt;font color=&quot;#007fff&quot; style=&quot;&quot;&gt;/leaveapply/add， 获取当前登录用户信息作为申请人（流程启动传参），添加业务传参，通过 RuntimeService 接口启动流程实例。&lt;/font&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;&lt;span style=&quot;background-color: initial; font-size: 10px;&quot;&gt;&lt;br style=&quot;font-size: 10px;&quot;&gt;&lt;/span&gt;&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="500" y="920" width="540" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="f0bjOWNWRlSOEQlmokw9-6" value="&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;接口 POST&amp;nbsp;&lt;/font&gt;&lt;font color=&quot;#007fff&quot; style=&quot;&quot;&gt;/task/manage/mylist，&amp;nbsp;&lt;/font&gt;&lt;span style=&quot;color: rgb(0, 127, 255);&quot;&gt;借助 TaskService 接口查询待办用户任务。&lt;/span&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;&lt;span style=&quot;background-color: initial; font-size: 10px;&quot;&gt;&lt;br style=&quot;font-size: 10px;&quot;&gt;&lt;/span&gt;&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="500" y="1160" width="540" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="f0bjOWNWRlSOEQlmokw9-7" value="&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;接口：POST&amp;nbsp;&lt;/font&gt;&lt;font color=&quot;#007fff&quot; style=&quot;&quot;&gt;/task/manage/alllist，&amp;nbsp;&lt;/font&gt;&lt;font color=&quot;#007fff&quot; style=&quot;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;借助 TaskService 接口查询所有待办用户任务。&lt;br style=&quot;font-size: 10px;&quot;&gt;&lt;/span&gt;&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="500" y="1320" width="540" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="f0bjOWNWRlSOEQlmokw9-8" value="查询我的代办任务" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="360" y="1160" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="f0bjOWNWRlSOEQlmokw9-10" value="任务详情查询&amp;amp;办理" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="360" y="1240" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="f0bjOWNWRlSOEQlmokw9-11" value="查询所有代办任务" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="360" y="1320" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="f0bjOWNWRlSOEQlmokw9-15" value="&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;详情查询接口：GET&amp;nbsp;&lt;/font&gt;&lt;font color=&quot;#007fff&quot; style=&quot;&quot;&gt;/task/manage/history/{taskId}，其实是&lt;/font&gt;&lt;font color=&quot;#007fff&quot;&gt;借助 HistoryService 接口查询当前任务所属流程实例的所有历史任务列表。&lt;/font&gt;&lt;br&gt;&lt;font color=&quot;#007fff&quot; style=&quot;&quot;&gt;任务办理接口：POST /task/manage/completeTask/{taskId}, 借助 TaskService 接口完成任务。&lt;br style=&quot;font-size: 10px;&quot;&gt;&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="500" y="1240" width="540" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="f0bjOWNWRlSOEQlmokw9-16" value="&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;接口：&lt;/font&gt;&lt;font color=&quot;#007fff&quot; style=&quot;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;br style=&quot;font-size: 10px;&quot;&gt;&lt;/span&gt;&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="500" y="1400" width="540" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="f0bjOWNWRlSOEQlmokw9-17" value="&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;接口：&lt;/font&gt;&lt;font color=&quot;#007fff&quot; style=&quot;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;br style=&quot;font-size: 10px;&quot;&gt;&lt;/span&gt;&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="500" y="1480" width="540" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
