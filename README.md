@@ -22,7 +22,10 @@
 
 + **更好更合理地使用框架**
 
+  几乎所有框架的文档都没法将框架所有功能都讲解清楚。
+
 + **满足对框架内部工作原理的好奇心，也便于后期出现BUG排查BUG**
+
 + **学习代码架构设计、代码风格规范、对依赖框架的封装和使用、提取轮子等**
 
 **对框架源码的认识**：
@@ -102,7 +105,8 @@
     - [Web Frameworks](#web-frameworks)
     - [Workflow Orchestration Engines](#workflow-orchestration-engines)
   - [Go](#go)
-    - [SDK](#sdk)
+    - [Database]()
+    - [SDK]()
 - [Resources](#resources)
   - [Books](#books)
 
@@ -117,7 +121,7 @@
 ### Caching
 
 + Caffeine
-+ Ehcache
++ EhcacheDatabase
 
 ### CLI
 
@@ -172,6 +176,12 @@
 
 
 ## Go
+
+### Database
+
++ [Godis](docs/go/godis)
+
+### SDK
 
 
 
