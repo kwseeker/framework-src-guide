@@ -1,6 +1,6 @@
-<mxfile host="Electron" modified="2023-12-23T16:22:26.733Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.6.5 Chrome/114.0.5735.243 Electron/25.3.1 Safari/537.36" etag="GYwfVf-D4b2Ylm_AN1Ec" version="21.6.5" type="device" pages="2">
+<mxfile host="Electron" modified="2024-03-12T09:02:45.521Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.6.5 Chrome/114.0.5735.243 Electron/25.3.1 Safari/537.36" etag="1KvjQ3l2GtnpnnjLg_uF" version="21.6.5" type="device" pages="2">
   <diagram id="izJUiE_6dcGGzq4-B36X" name="SpringSecurity工作流程">
-    <mxGraphModel dx="3772" dy="879" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+    <mxGraphModel dx="3362" dy="628" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -57,9 +57,6 @@
         <mxCell id="mgh684Ju6QphpoWxp4na-5" value="先分析Maven pom 依赖&lt;br&gt;查到下面自动配置类&lt;br&gt;Security 的自动配置类位于 Spring-boot-starter 内" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
           <mxGeometry x="195" y="750" width="290" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="mgh684Ju6QphpoWxp4na-6" value="&lt;font style=&quot;font-size: 9px&quot;&gt;UserDetailsServiceAutoConfiguration&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
-          <mxGeometry x="240" y="1200" width="160" height="60" as="geometry" />
-        </mxCell>
         <mxCell id="KUAb-_XNP9Eb_uavuq1S-255" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=8;fontColor=#007FFF;" parent="1" source="mgh684Ju6QphpoWxp4na-8" target="KUAb-_XNP9Eb_uavuq1S-254" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
@@ -79,6 +76,9 @@
           <mxGeometry x="500" y="880" width="200" height="60" as="geometry" />
         </mxCell>
         <mxCell id="mgh684Ju6QphpoWxp4na-30" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=8;" parent="1" source="mgh684Ju6QphpoWxp4na-18" target="mgh684Ju6QphpoWxp4na-29" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="DT5Yx-Svt_Yo0Kt4Upq1-8" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="mgh684Ju6QphpoWxp4na-18" target="DT5Yx-Svt_Yo0Kt4Upq1-6">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="mgh684Ju6QphpoWxp4na-18" value="&lt;font style=&quot;font-size: 10px&quot;&gt;SpringBootWebSecurityConfiguration&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
@@ -241,18 +241,13 @@
         <mxCell id="KUAb-_XNP9Eb_uavuq1S-35" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;fontSize=10;" parent="1" source="KUAb-_XNP9Eb_uavuq1S-32" target="mgh684Ju6QphpoWxp4na-3" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="KUAb-_XNP9Eb_uavuq1S-249" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=10;fontColor=#007FFF;" parent="1" source="KUAb-_XNP9Eb_uavuq1S-32" target="mgh684Ju6QphpoWxp4na-6" edge="1">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="220" y="830" />
-              <mxPoint x="220" y="1230" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
         <mxCell id="KUAb-_XNP9Eb_uavuq1S-250" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=10;fontColor=#007FFF;" parent="1" source="KUAb-_XNP9Eb_uavuq1S-32" target="mgh684Ju6QphpoWxp4na-8" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="KUAb-_XNP9Eb_uavuq1S-251" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=10;fontColor=#007FFF;" parent="1" source="KUAb-_XNP9Eb_uavuq1S-32" target="mgh684Ju6QphpoWxp4na-12" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="DT5Yx-Svt_Yo0Kt4Upq1-2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="KUAb-_XNP9Eb_uavuq1S-32" target="DT5Yx-Svt_Yo0Kt4Upq1-1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="KUAb-_XNP9Eb_uavuq1S-32" value="自动配置阶段" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
@@ -291,7 +286,7 @@
         <mxCell id="KUAb-_XNP9Eb_uavuq1S-45" value="&lt;font style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;vfc.&lt;b&gt;doFilter&lt;/b&gt;(fwRequest, fwResponse);&lt;br&gt;&lt;/font&gt;&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;这个测试中SpringSecurity创建了14个过滤器&lt;/font&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
           <mxGeometry x="1080" y="1720" width="220" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="Fbp7wKhLBmgoR31z9oyL-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;dashed=1;" edge="1" parent="1" source="KUAb-_XNP9Eb_uavuq1S-49" target="Fbp7wKhLBmgoR31z9oyL-7">
+        <mxCell id="Fbp7wKhLBmgoR31z9oyL-13" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;dashed=1;" parent="1" source="KUAb-_XNP9Eb_uavuq1S-49" target="Fbp7wKhLBmgoR31z9oyL-7" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="KUAb-_XNP9Eb_uavuq1S-49" value="&lt;font style=&quot;font-size: 10px;&quot;&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;OncePerRequestFilter&lt;br&gt;&lt;/span&gt;&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;&lt;b&gt;左边多数拦截器都继承此过滤器&lt;br&gt;&lt;/b&gt;&lt;/font&gt;每个请求只会执行一次的过滤器&lt;/font&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
@@ -846,7 +841,7 @@
         <mxCell id="KUAb-_XNP9Eb_uavuq1S-203" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.75;entryDx=0;entryDy=0;fontSize=9;fontColor=#007FFF;" parent="1" source="KUAb-_XNP9Eb_uavuq1S-200" target="KUAb-_XNP9Eb_uavuq1S-1" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="KUAb-_XNP9Eb_uavuq1S-200" value="&lt;font style=&quot;font-size: 9px&quot;&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;@EnableGlobalMethodSecurity&lt;/span&gt;&lt;br&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 9px&quot;&gt;&lt;span&gt;starter 中默认没有启用这个注解，属于一个扩展项，可以在方法上配置安全访问控制，比如&lt;/span&gt;&lt;span&gt;@RolesAllowed、@PreAuthorize等注解&lt;/span&gt;&lt;/font&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+        <mxCell id="KUAb-_XNP9Eb_uavuq1S-200" value="&lt;font style=&quot;font-size: 9px&quot;&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;@EnableGlobalMethodSecurity&lt;/span&gt;&lt;br&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 9px&quot;&gt;&lt;span&gt;starter 中默认没有启用这个注解，属于一个扩展项，可以在方法上配置安全访问控制，比如&lt;/span&gt;&lt;span&gt;@RolesAllowed、@PreAuthorize等注解&lt;/span&gt;&lt;/font&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e3c800;strokeColor=#B09500;fontColor=#000000;" parent="1" vertex="1">
           <mxGeometry x="740" y="1420" width="200" height="60" as="geometry" />
         </mxCell>
         <mxCell id="KUAb-_XNP9Eb_uavuq1S-201" value="&lt;font&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;@Import(&lt;br&gt;GlobalMethodSecuritySelector)&lt;/span&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
@@ -920,10 +915,10 @@
         <mxCell id="KUAb-_XNP9Eb_uavuq1S-231" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=9;fontColor=#007FFF;" parent="1" source="KUAb-_XNP9Eb_uavuq1S-228" target="KUAb-_XNP9Eb_uavuq1S-230" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="9H62B6xVDZifgV9hTqks-9" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.513;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" source="KUAb-_XNP9Eb_uavuq1S-228" target="9H62B6xVDZifgV9hTqks-8" edge="1">
+        <mxCell id="9H62B6xVDZifgV9hTqks-9" style="rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.513;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" source="KUAb-_XNP9Eb_uavuq1S-228" target="9H62B6xVDZifgV9hTqks-8" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="9H62B6xVDZifgV9hTqks-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="KUAb-_XNP9Eb_uavuq1S-228" target="9H62B6xVDZifgV9hTqks-12" edge="1">
+        <mxCell id="9H62B6xVDZifgV9hTqks-13" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="KUAb-_XNP9Eb_uavuq1S-228" target="9H62B6xVDZifgV9hTqks-12" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="KUAb-_XNP9Eb_uavuq1S-228" value="&lt;font style=&quot;&quot;&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&amp;nbsp; &amp;nbsp; http&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; .csrf().and()&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;font-size: 9px; white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;font style=&quot;font-size: 8px;&quot; color=&quot;#007fff&quot;&gt;//只有这个是直接添加的，其他的都是注册的过滤器配置类&lt;/font&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; .&lt;b&gt;addFilter&lt;/b&gt;(new WebAsyncManagerIntegrationFilter())&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; .exceptionHandling().and()&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; .headers().and()&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; .sessionManagement().and()&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; .securityContext().and()&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; .requestCache().and()&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; .anonymous().and()&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; .servletApi().and()&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; .apply(new DefaultLoginPageConfigurer&amp;lt;&amp;gt;()).and()&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; .logout();&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;默认添加了一些基本的安全过滤器配置，这里解释了为何后面过滤器链中为何多了那么多Filter&lt;/font&gt;&lt;/div&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;arcSize=4;" parent="1" vertex="1">
@@ -932,13 +927,13 @@
         <mxCell id="KUAb-_XNP9Eb_uavuq1S-233" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;fontSize=10;fontColor=#007FFF;" parent="1" source="KUAb-_XNP9Eb_uavuq1S-230" target="KUAb-_XNP9Eb_uavuq1S-232" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="9H62B6xVDZifgV9hTqks-10" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=1.067;entryDx=0;entryDy=0;entryPerimeter=0;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" source="KUAb-_XNP9Eb_uavuq1S-230" target="9H62B6xVDZifgV9hTqks-8" edge="1">
+        <mxCell id="9H62B6xVDZifgV9hTqks-10" style="rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=1.067;entryDx=0;entryDy=0;entryPerimeter=0;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" source="KUAb-_XNP9Eb_uavuq1S-230" target="9H62B6xVDZifgV9hTqks-8" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="KUAb-_XNP9Eb_uavuq1S-230" value="&lt;font style=&quot;font-size: 10px&quot;&gt;&lt;span&gt;for defaultHttpConfigurers:&lt;br&gt;&lt;/span&gt;http.apply(configurer);&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;Spring SPI 加载&amp;nbsp;&lt;b&gt;AbstractHttpConfigurer&lt;/b&gt;，并应用配置，TODO&lt;/font&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;" parent="1" vertex="1">
           <mxGeometry x="2290" y="881" width="240" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="9H62B6xVDZifgV9hTqks-11" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=1.2;entryDx=0;entryDy=0;entryPerimeter=0;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" source="KUAb-_XNP9Eb_uavuq1S-232" target="9H62B6xVDZifgV9hTqks-8" edge="1">
+        <mxCell id="9H62B6xVDZifgV9hTqks-11" style="rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=1.2;entryDx=0;entryDy=0;entryPerimeter=0;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" source="KUAb-_XNP9Eb_uavuq1S-232" target="9H62B6xVDZifgV9hTqks-8" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="KUAb-_XNP9Eb_uavuq1S-232" value="&lt;font&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;&lt;b&gt;configure&lt;/b&gt;(http);&lt;br&gt;&lt;/span&gt;&lt;font color=&quot;#007fff&quot;&gt;调用自定义的HttpSecurity配置&lt;/font&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
@@ -1340,7 +1335,7 @@
         <mxCell id="KUAb-_XNP9Eb_uavuq1S-439" value="&lt;font&gt;&lt;font style=&quot;font-size: 10px&quot;&gt;&lt;div&gt;&lt;/div&gt;&lt;/font&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;catch(Exception ex&lt;/span&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;)&lt;/span&gt;&lt;br&gt;&lt;font style=&quot;font-size: 9px&quot; color=&quot;#007fff&quot;&gt;在 try catch 中处理后续流程产生的异常信息，比如后面鉴授权失败的AccessDeniedException&lt;/font&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="1860" y="4820" width="200" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="KUAb-_XNP9Eb_uavuq1S-444" value="&lt;font style=&quot;font-size: 8px&quot;&gt;AuthenticationException&lt;/font&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;fontSize=10;fontColor=#007FFF;endArrow=classic;endFill=1;" parent="1" source="KUAb-_XNP9Eb_uavuq1S-442" target="KUAb-_XNP9Eb_uavuq1S-436" edge="1">
+        <mxCell id="KUAb-_XNP9Eb_uavuq1S-444" value="&lt;font style=&quot;font-size: 10px;&quot;&gt;AuthenticationException&lt;/font&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;fontSize=10;fontColor=#007FFF;endArrow=classic;endFill=1;" parent="1" source="KUAb-_XNP9Eb_uavuq1S-442" target="KUAb-_XNP9Eb_uavuq1S-436" edge="1">
           <mxGeometry x="-0.0007" y="10" relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="2720" y="4850" />
@@ -1349,7 +1344,7 @@
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="KUAb-_XNP9Eb_uavuq1S-445" value="&lt;b&gt;AccessDeniedException&lt;/b&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=8;fontColor=#007FFF;endArrow=classic;endFill=1;" parent="1" source="KUAb-_XNP9Eb_uavuq1S-442" target="KUAb-_XNP9Eb_uavuq1S-437" edge="1">
+        <mxCell id="KUAb-_XNP9Eb_uavuq1S-445" value="&lt;b&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;AccessDeniedException&lt;/font&gt;&lt;/b&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=8;fontColor=#007FFF;endArrow=classic;endFill=1;" parent="1" source="KUAb-_XNP9Eb_uavuq1S-442" target="KUAb-_XNP9Eb_uavuq1S-437" edge="1">
           <mxGeometry x="0.4" relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="2680" y="4850" />
@@ -1387,7 +1382,7 @@
         <mxCell id="KUAb-_XNP9Eb_uavuq1S-455" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;fontColor=#007FFF;endArrow=classic;endFill=1;" parent="1" source="KUAb-_XNP9Eb_uavuq1S-452" target="KUAb-_XNP9Eb_uavuq1S-454" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="KUAb-_XNP9Eb_uavuq1S-452" value="&lt;font&gt;&lt;span style=&quot;font-size: 11px&quot;&gt;&lt;div&gt;&lt;/div&gt;&lt;/span&gt;&lt;div style=&quot;font-size: 10px&quot;&gt;&lt;span&gt;authenticationEntryPoint.commence(&lt;br&gt;request, response, reason);&lt;br&gt;&lt;/span&gt;&lt;font color=&quot;#007fff&quot;&gt;转发或重定向到认证入口&lt;/font&gt;&lt;/div&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+        <mxCell id="KUAb-_XNP9Eb_uavuq1S-452" value="&lt;font&gt;&lt;span style=&quot;font-size: 11px&quot;&gt;&lt;div&gt;&lt;/div&gt;&lt;/span&gt;&lt;div style=&quot;font-size: 10px&quot;&gt;&lt;span&gt;authenticationEntryPoint.commence(&lt;br&gt;request, response, reason);&lt;br&gt;&lt;/span&gt;&lt;font color=&quot;#007fff&quot;&gt;转发或重定向到认证入口&lt;/font&gt;&lt;/div&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
           <mxGeometry x="3040" y="4980" width="200" height="60" as="geometry" />
         </mxCell>
         <mxCell id="KUAb-_XNP9Eb_uavuq1S-458" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;fontColor=#007FFF;endArrow=classic;endFill=1;" parent="1" source="KUAb-_XNP9Eb_uavuq1S-454" target="KUAb-_XNP9Eb_uavuq1S-457" edge="1">
@@ -1797,7 +1792,7 @@
             <mxPoint x="1700" y="1240" as="sourcePoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="_URNkFme3GPZSscQ_u3h-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="qwSPwGrAE5PhXKtDNLOx-11" target="_URNkFme3GPZSscQ_u3h-1" edge="1">
+        <mxCell id="_URNkFme3GPZSscQ_u3h-2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="qwSPwGrAE5PhXKtDNLOx-11" target="_URNkFme3GPZSscQ_u3h-1" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="qwSPwGrAE5PhXKtDNLOx-11" value="&lt;font style=&quot;font-size: 10px&quot;&gt;&lt;div&gt;beforeConfigure();&lt;/div&gt;&lt;div&gt;&lt;b&gt;configure&lt;/b&gt;();&lt;/div&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
@@ -1866,35 +1861,47 @@
         <mxCell id="_URNkFme3GPZSscQ_u3h-1" value="&lt;font style=&quot;&quot;&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;for configurers:&lt;/div&gt;configurer.configure((B) this);&lt;div style=&quot;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;&lt;span style=&quot;font-size: 10px;&quot;&gt;configure() 都是空方法，略&lt;/span&gt;&lt;/font&gt;&lt;br&gt;&lt;/div&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="1820" y="1160" width="160" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="Fbp7wKhLBmgoR31z9oyL-1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;" edge="1" parent="1" source="Fbp7wKhLBmgoR31z9oyL-2" target="Fbp7wKhLBmgoR31z9oyL-5">
+        <mxCell id="Fbp7wKhLBmgoR31z9oyL-1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;" parent="1" source="Fbp7wKhLBmgoR31z9oyL-2" target="Fbp7wKhLBmgoR31z9oyL-5" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="Fbp7wKhLBmgoR31z9oyL-2" value="&lt;div style=&quot;font-size: 10px;&quot;&gt;String alreadyFilteredAttributeName = this.getAlreadyFilteredAttributeName();&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;boolean &lt;b style=&quot;font-size: 10px;&quot;&gt;hasAlreadyFilteredAttribute&lt;/b&gt; = request.getAttribute(&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;alreadyFilteredAttributeName) != null;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;判断当前请求是否已经经过此过滤器&lt;/font&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="1">
+        <mxCell id="Fbp7wKhLBmgoR31z9oyL-2" value="&lt;div style=&quot;font-size: 10px;&quot;&gt;String alreadyFilteredAttributeName = this.getAlreadyFilteredAttributeName();&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;boolean &lt;b style=&quot;font-size: 10px;&quot;&gt;hasAlreadyFilteredAttribute&lt;/b&gt; = request.getAttribute(&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;alreadyFilteredAttributeName) != null;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;判断当前请求是否已经经过此过滤器&lt;/font&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" parent="1" vertex="1">
           <mxGeometry x="2560" y="1630" width="200" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="Fbp7wKhLBmgoR31z9oyL-3" value="&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;就是判断请求属性中是否包含名为&lt;br style=&quot;font-size: 10px;&quot;&gt;&lt;b style=&quot;font-size: 10px;&quot;&gt;当前过滤器全限定类名+“.FILTERED”&lt;/b&gt;的属性&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;" vertex="1" parent="1">
+        <mxCell id="Fbp7wKhLBmgoR31z9oyL-3" value="&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;就是判断请求属性中是否包含名为&lt;br style=&quot;font-size: 10px;&quot;&gt;&lt;b style=&quot;font-size: 10px;&quot;&gt;当前过滤器全限定类名+“.FILTERED”&lt;/b&gt;的属性&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;" parent="1" vertex="1">
           <mxGeometry x="2760" y="1650" width="220" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="Fbp7wKhLBmgoR31z9oyL-4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;" edge="1" parent="1" source="Fbp7wKhLBmgoR31z9oyL-5" target="Fbp7wKhLBmgoR31z9oyL-9">
+        <mxCell id="Fbp7wKhLBmgoR31z9oyL-4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;" parent="1" source="Fbp7wKhLBmgoR31z9oyL-5" target="Fbp7wKhLBmgoR31z9oyL-9" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="Fbp7wKhLBmgoR31z9oyL-5" value="&lt;div style=&quot;font-size: 10px;&quot;&gt;判断当期过滤器是否应该跳过&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;是否已经经过此过滤器&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;正常都不会跳过也不会嵌套执行过滤器，&lt;br style=&quot;font-size: 10px;&quot;&gt;暂略&lt;/font&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="1">
+        <mxCell id="Fbp7wKhLBmgoR31z9oyL-5" value="&lt;div style=&quot;font-size: 10px;&quot;&gt;判断当期过滤器是否应该跳过&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;是否已经经过此过滤器&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;正常都不会跳过也不会嵌套执行过滤器，&lt;br style=&quot;font-size: 10px;&quot;&gt;暂略&lt;/font&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" parent="1" vertex="1">
           <mxGeometry x="2560.5" y="1730" width="200" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="Fbp7wKhLBmgoR31z9oyL-6" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=10;" edge="1" parent="1" source="Fbp7wKhLBmgoR31z9oyL-7" target="Fbp7wKhLBmgoR31z9oyL-2">
+        <mxCell id="Fbp7wKhLBmgoR31z9oyL-6" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=10;" parent="1" source="Fbp7wKhLBmgoR31z9oyL-7" target="Fbp7wKhLBmgoR31z9oyL-2" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="Fbp7wKhLBmgoR31z9oyL-7" value="OncePerRequestFilter#doFilter()" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+        <mxCell id="Fbp7wKhLBmgoR31z9oyL-7" value="OncePerRequestFilter#doFilter()" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
           <mxGeometry x="2320.5" y="1640" width="200" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="Fbp7wKhLBmgoR31z9oyL-8" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;" edge="1" parent="1" source="Fbp7wKhLBmgoR31z9oyL-9" target="Fbp7wKhLBmgoR31z9oyL-11">
+        <mxCell id="Fbp7wKhLBmgoR31z9oyL-8" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;" parent="1" source="Fbp7wKhLBmgoR31z9oyL-9" target="Fbp7wKhLBmgoR31z9oyL-11" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="Fbp7wKhLBmgoR31z9oyL-9" value="request.setAttribute(&lt;br style=&quot;font-size: 10px;&quot;&gt;alreadyFilteredAttributeName, Boolean.TRUE);&lt;br style=&quot;font-size: 10px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;在请求属性中记录一下已经执行过此过滤器&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="1">
+        <mxCell id="Fbp7wKhLBmgoR31z9oyL-9" value="request.setAttribute(&lt;br style=&quot;font-size: 10px;&quot;&gt;alreadyFilteredAttributeName, Boolean.TRUE);&lt;br style=&quot;font-size: 10px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;在请求属性中记录一下已经执行过此过滤器&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" parent="1" vertex="1">
           <mxGeometry x="2560.5" y="1810" width="200" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="Fbp7wKhLBmgoR31z9oyL-11" value="this.&lt;b style=&quot;font-size: 10px;&quot;&gt;doFilterInternal&lt;/b&gt;(httpRequest, httpResponse, filterChain);&lt;br style=&quot;font-size: 10px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;doFillterInternal 才是各个过滤器自己的逻辑&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="1">
+        <mxCell id="Fbp7wKhLBmgoR31z9oyL-11" value="this.&lt;b style=&quot;font-size: 10px;&quot;&gt;doFilterInternal&lt;/b&gt;(httpRequest, httpResponse, filterChain);&lt;br style=&quot;font-size: 10px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;doFillterInternal 才是各个过滤器自己的逻辑&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" parent="1" vertex="1">
           <mxGeometry x="2560.5" y="1890" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="DT5Yx-Svt_Yo0Kt4Upq1-1" value="&lt;font style=&quot;font-size: 9px&quot;&gt;UserDetailsServiceAutoConfiguration&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="240" y="1200" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="DT5Yx-Svt_Yo0Kt4Upq1-5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="DT5Yx-Svt_Yo0Kt4Upq1-6" target="DT5Yx-Svt_Yo0Kt4Upq1-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="DT5Yx-Svt_Yo0Kt4Upq1-6" value="&lt;font style=&quot;font-size: 9px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;@ConditionalOnDefaultWebSecurity&lt;/font&gt;&lt;br style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;SecurityFilterChainConfiguration&lt;/font&gt;&lt;br style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 9px;&quot; color=&quot;#007fff&quot;&gt;&lt;font style=&quot;font-size: 9px;&quot;&gt;注意此配置类里会创建一个默认的过滤器链, 但是我们并不需要，&lt;/font&gt;可以暂时通过添加这个解决@AutoConfigureBefore(&lt;br&gt;SecurityAutoConfiguration.class)&lt;/font&gt;&lt;br style=&quot;font-size: 10px;&quot;&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="740" y="870" width="200" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="DT5Yx-Svt_Yo0Kt4Upq1-7" value="&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font style=&quot;font-size: 9px;&quot;&gt;@Bean&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font style=&quot;font-size: 9px;&quot;&gt;@Order(2147483642)&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font style=&quot;font-size: 9px;&quot;&gt;SecurityFilterChain &lt;b style=&quot;font-size: 9px;&quot;&gt;defaultSecurityFilterChain&lt;/b&gt;(&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font style=&quot;font-size: 9px;&quot;&gt;HttpSecurity http) {...}&lt;/font&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=9;align=left;" vertex="1" parent="1">
+          <mxGeometry x="980" y="880" width="160" height="60" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

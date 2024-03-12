@@ -101,6 +101,16 @@ JWT（Json Web Token）是一种无状态的跨域的认证规范[RFC7519](https
     secret)
   ```
 
+> RSA 密钥对文件生成：
+>
+> openssl genpkey -algorithm RSA -out pri.pem -aes256
+> openssl rsa -pubout -in pri.pem -out pub.pem
+>
+> 另外使用密钥创建 RSAPublicKey RSAPrivateKey 时使用 PEM 格式会报错，需要转成 DER 格式。
+>
+> openssl pkcs8 -topk8 -inform PEM -outform DER -in pri.pem -nocrypt > pri.der
+> openssl pkey -in pub.pem -pubin -outform der -out pub.der
+
 
 
 ## 基础知识
