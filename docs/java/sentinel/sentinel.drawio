@@ -1,0 +1,550 @@
+<mxfile host="Electron" modified="2024-04-02T13:06:06.572Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.6.5 Chrome/114.0.5735.243 Electron/25.3.1 Safari/537.36" etag="AhXTVYUcE_H8njLoNACU" version="21.6.5" type="device" pages="2">
+  <diagram name="工作主流程" id="GKn8MqRBRS7uCVeujyc3">
+    <mxGraphModel dx="3088" dy="879" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-1" value="&lt;h1 style=&quot;font-size: 18px;&quot;&gt;&lt;font style=&quot;font-size: 18px;&quot;&gt;Sentinel 工作原理流程&lt;/font&gt;&lt;/h1&gt;&lt;div style=&quot;font-size: 12px;&quot;&gt;&lt;div style=&quot;&quot;&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;源码版本：spring-cloud-starter-alibaba-sentinel:2021.0.5.0, 使用Nacos 作为规则数据源。&lt;/font&gt;&lt;/div&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 12px;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="10" width="520" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="S1kR7U3J-qD7APwjgyKx-2" target="S1kR7U3J-qD7APwjgyKx-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-11" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="S1kR7U3J-qD7APwjgyKx-2" target="S1kR7U3J-qD7APwjgyKx-10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-14" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="S1kR7U3J-qD7APwjgyKx-2" target="S1kR7U3J-qD7APwjgyKx-12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-2" value="配置加载" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="40" y="120" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-8" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="S1kR7U3J-qD7APwjgyKx-4" target="S1kR7U3J-qD7APwjgyKx-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-27" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="S1kR7U3J-qD7APwjgyKx-4" target="S1kR7U3J-qD7APwjgyKx-26">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-30" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="S1kR7U3J-qD7APwjgyKx-4" target="S1kR7U3J-qD7APwjgyKx-28">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-31" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="S1kR7U3J-qD7APwjgyKx-4" target="S1kR7U3J-qD7APwjgyKx-29">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-4" value="组件初始化&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;主要关注3个自动配置类&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="40" y="540" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-9" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="S1kR7U3J-qD7APwjgyKx-6" target="S1kR7U3J-qD7APwjgyKx-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-142" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="S1kR7U3J-qD7APwjgyKx-6" target="S1kR7U3J-qD7APwjgyKx-141">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-6" value="请求流量统计、检查" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="40" y="1150" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-7" value="流控异常处理" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="40" y="1330" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-10" value="系统属性配置 &lt;br&gt;SentinelProperties" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="240" y="120" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-17" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="S1kR7U3J-qD7APwjgyKx-12" target="S1kR7U3J-qD7APwjgyKx-16">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-19" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="S1kR7U3J-qD7APwjgyKx-12" target="S1kR7U3J-qD7APwjgyKx-18">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-23" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="S1kR7U3J-qD7APwjgyKx-12" target="S1kR7U3J-qD7APwjgyKx-20">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-25" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="S1kR7U3J-qD7APwjgyKx-12" target="S1kR7U3J-qD7APwjgyKx-22">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-12" value="规则动态配置&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;调用&lt;b&gt;控制台&lt;/b&gt;的接口&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="240" y="200" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-47" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="S1kR7U3J-qD7APwjgyKx-16" target="S1kR7U3J-qD7APwjgyKx-46">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-16" value="流控规则动态配置&lt;br&gt;POST /v1/flow/rule" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="480" y="200" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-18" value="熔断规则动态配置&lt;br&gt;POST /degrade/rule" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="480" y="280" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-20" value="热点规则动态配置&lt;br&gt;POST /paramFlow/rule&amp;nbsp;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="480" y="360" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-22" value="授权规则动态配置&lt;br&gt;POST /authority/rule" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="480" y="440" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-33" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="S1kR7U3J-qD7APwjgyKx-26" target="S1kR7U3J-qD7APwjgyKx-32">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-26" value="SentinelAutoConfiguration" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="240" y="540" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-41" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="S1kR7U3J-qD7APwjgyKx-28" target="S1kR7U3J-qD7APwjgyKx-39">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-28" value="SentinelWebAutoConfiguration" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="240" y="720" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-43" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="S1kR7U3J-qD7APwjgyKx-29" target="S1kR7U3J-qD7APwjgyKx-42">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-29" value="SentinelFeignAutoConfiguration" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="240" y="800" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-35" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="S1kR7U3J-qD7APwjgyKx-32" target="S1kR7U3J-qD7APwjgyKx-34">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-32" value="设置一批系统属性" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="480" y="540" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-37" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="S1kR7U3J-qD7APwjgyKx-34" target="S1kR7U3J-qD7APwjgyKx-36">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-34" value="配置类&amp;amp;Bean" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="480" y="620" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-133" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="S1kR7U3J-qD7APwjgyKx-36" target="S1kR7U3J-qD7APwjgyKx-132">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-36" value="&lt;b&gt;SentinelResourceAspect&lt;/b&gt;&lt;br&gt;SentinelBeanPostProcessor&lt;br&gt;&lt;b&gt;SentinelDataSourceHandler&lt;/b&gt;&lt;br&gt;SentinelConverterConfiguration&lt;br&gt;SentinelJsonConfiguration" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="720" y="610" width="200" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-38" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="S1kR7U3J-qD7APwjgyKx-39" target="S1kR7U3J-qD7APwjgyKx-40">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-39" value="配置类&amp;amp;Bean" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="480" y="720" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-40" value="&lt;b&gt;SentinelWebInterceptor&lt;/b&gt;&lt;br&gt;SentinelWebMvcConfig&lt;br&gt;SentinelWebMvcConfigurer" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="720" y="720" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-45" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="S1kR7U3J-qD7APwjgyKx-42" target="S1kR7U3J-qD7APwjgyKx-44">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-42" value="SentinelFeignAutoConfiguration" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="480" y="800" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-44" value="SentinelFeign.Builder" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="720" y="800" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-50" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="S1kR7U3J-qD7APwjgyKx-46" target="S1kR7U3J-qD7APwjgyKx-49">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-46" value="FlowControllerV1#apiAddFlowRule()&lt;br&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="720" y="200" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-48" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;FlowRuleEntity&lt;/b&gt;&lt;br&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;流控规则实体定义。&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;private Long id;&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;private String app;&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;private String ip;&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;private Integer port;&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;//被限制的应用，即规则只对这些应用生效，默认default&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;private String &lt;b&gt;limitApp&lt;/b&gt;;&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;//流控目标资源。是&quot;路由&quot; 或 &quot;请求方法:路由&quot;&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;private String &lt;b&gt;resource&lt;/b&gt;;&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;//流控类型：0:线程数、1:QPS&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;private Integer &lt;b&gt;grade&lt;/b&gt;;&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;//流控阈值，比如：最多count个线程、最大count QPS&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;private Double &lt;b&gt;count&lt;/b&gt;;&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 10px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;//流控模式&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 10px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;//STRATEGY_DIRECT 根据调用方限流，需结合 limitApp 使用&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 10px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;//STRATEGY_RELATE 根据关联流量限流，比如写操作频繁时对读进行限流&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 10px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;//STRATEGY_CHAIN 根据调用链路入口限流&lt;/font&gt;&lt;/p&gt;&lt;font color=&quot;#007fff&quot;&gt;&lt;/font&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;private Integer &lt;b&gt;strategy&lt;/b&gt;;&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;private String refResource;&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;//流控效果&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;//CONTROL_BEHAVIOR_DEFAULT直接拒绝（快速失败）&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;//CONTROL_BEHAVIOR_WARM_UP 冷启动（让流量缓慢增加）&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;//&lt;/font&gt;&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;CONTROL_BEHAVIOR_RATE_LIMITER 排队等待，匀速器模式，处理间隔性突发流量让请求可以在接下来的空闲期间逐渐处理，比如处理MQ请求&lt;/font&gt;&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;private Integer &lt;b&gt;controlBehavior&lt;/b&gt;;&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;private Integer warmUpPeriodSec;&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;private Integer maxQueueingTimeMs;&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;private boolean clusterMode;&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;private ClusterFlowConfig clusterConfig;&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;private Date gmtCreate;&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;private Date gmtModified;&lt;/font&gt;&lt;/p&gt;&lt;hr style=&quot;font-size: 11px;&quot; size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="-400" y="120" width="360" height="480" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-52" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="S1kR7U3J-qD7APwjgyKx-49" target="S1kR7U3J-qD7APwjgyKx-51">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-49" value="各字段校验" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="960" y="200" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-54" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="S1kR7U3J-qD7APwjgyKx-51" target="S1kR7U3J-qD7APwjgyKx-53">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-51" value="entity = repository.&lt;b&gt;save&lt;/b&gt;(entity);&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;&lt;b&gt;先保存到内存&lt;/b&gt;，repository是InMemoryRuleRepositoryAdapter类型，是内存存储服务的适配器&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="960" y="280" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-56" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="S1kR7U3J-qD7APwjgyKx-53" target="S1kR7U3J-qD7APwjgyKx-55">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-53" value="&lt;b&gt;publishRules&lt;/b&gt;(entity.getApp(), entity.getIp(), entity.getPort()).get(5000, TimeUnit.MILLISECONDS);" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="960" y="360" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-59" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;strokeColor=#000000;" edge="1" parent="1" source="S1kR7U3J-qD7APwjgyKx-55" target="S1kR7U3J-qD7APwjgyKx-58">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-75" value="&lt;font color=&quot;#007fff&quot;&gt;从控制台请求到&lt;br&gt;Sentinel客户端，&lt;br&gt;即业务服务&lt;/font&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="S1kR7U3J-qD7APwjgyKx-59">
+          <mxGeometry x="-0.0167" y="2" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-55" value="先查找指定Sentinel客户端机器上所有流控规则，然后通过 sentinelApiClient&lt;br&gt;.setFlowRuleOfMachineAsync(...) 异步请求 http://ip:port(8719)/&lt;b&gt;setRules&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1200" y="350" width="200" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-57" value="&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;id = {Long@9265} 4&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;app = &quot;demo-provider&quot;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;ip = &quot;192.168.124.8&quot;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;port = {Integer@9268} &lt;b&gt;8719&lt;/b&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;limitApp = &quot;default&quot;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;resource = &quot;sentinel_default_context&quot;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;grade = {Integer@9271} 1&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;count = {Double@9272} 1.0&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;strategy = {Integer@9273} 0&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;refResource = null&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;controlBehavior = {Integer@9273} 0&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;warmUpPeriodSec = null&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;maxQueueingTimeMs = null&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;clusterMode = false&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;clusterConfig = {ClusterFlowConfig@9274}&amp;nbsp;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;gmtCreate = {Date@9256} &quot;Mon Apr 01 18:37:04 CST 2024&quot;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;gmtModified = {Date@9256} &quot;Mon Apr 01 18:37:04 CST 2024&quot;&lt;/font&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="-1200" y="120" width="360" height="260" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-61" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="S1kR7U3J-qD7APwjgyKx-58" target="S1kR7U3J-qD7APwjgyKx-60">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1740" y="390" />
+              <mxPoint x="1740" y="230" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-86" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="S1kR7U3J-qD7APwjgyKx-58" target="S1kR7U3J-qD7APwjgyKx-85">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-58" value="&lt;b&gt;ModifyRulesCommandHandler&lt;/b&gt;#&lt;br&gt;handle(CommandRequest request)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="1520" y="360" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-64" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="S1kR7U3J-qD7APwjgyKx-60" target="S1kR7U3J-qD7APwjgyKx-63">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-60" value="FLOW_RULE_TYPE &lt;br&gt;（flow）&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;流控规则&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1760" y="200" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-66" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="S1kR7U3J-qD7APwjgyKx-63" target="S1kR7U3J-qD7APwjgyKx-65">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-63" value="List&amp;lt;FlowRule&amp;gt; flowRules = JSONArray.parseArray(data, FlowRule.class);" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="2000" y="200" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-68" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="S1kR7U3J-qD7APwjgyKx-65" target="S1kR7U3J-qD7APwjgyKx-67">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-70" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="S1kR7U3J-qD7APwjgyKx-65" target="S1kR7U3J-qD7APwjgyKx-69">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-65" value="&lt;b&gt;FlowRuleManager&lt;/b&gt;.&lt;b&gt;loadRules&lt;/b&gt;(&lt;br&gt;flowRules);" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="2000" y="280" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-72" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="S1kR7U3J-qD7APwjgyKx-67" target="S1kR7U3J-qD7APwjgyKx-71">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-67" value="writeToDataSource(&lt;br&gt;getFlowDataSource(), flowRules)" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="2000" y="360" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-78" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="S1kR7U3J-qD7APwjgyKx-69" target="S1kR7U3J-qD7APwjgyKx-77">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-69" value="&lt;b&gt;currentProperty&lt;/b&gt;.updateValue(rules);&lt;br&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="2240" y="280" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-71" value="dataSource.write(value);&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;可写的数据源只有FileWritableDataSource,只有配置使用文件作为数据源才会执行这个方法&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="2240" y="360" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-73" value="&lt;font color=&quot;#007fff&quot;&gt;这里操作的是流控规则，&lt;br&gt;repository实际是&amp;nbsp;&lt;b&gt;InMemFlowRuleStore&lt;/b&gt;&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="1170" y="290" width="240" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-74" value="&lt;b&gt;sentinel-transport-common&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="1530" y="320" width="180" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-76" value="&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;请求参数包括两部分：&lt;br style=&quot;font-size: 10px;&quot;&gt;&quot;&lt;b&gt;type&lt;/b&gt;&quot;: &quot;flow&quot;&lt;br style=&quot;font-size: 10px;&quot;&gt;&quot;&lt;b&gt;data&lt;/b&gt;&quot;:&amp;nbsp;[&lt;/font&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;&amp;nbsp; {&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;&amp;nbsp; &amp;nbsp; &quot;clusterConfig&quot;: {&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &quot;acquireRefuseStrategy&quot;: 0,&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &quot;clientOfflineTime&quot;: 2000,&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &quot;fallbackToLocalWhenFail&quot;: true,&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &quot;resourceTimeout&quot;: 2000,&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &quot;resourceTimeoutStrategy&quot;: 0,&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &quot;sampleCount&quot;: 10,&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &quot;strategy&quot;: 0,&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &quot;thresholdType&quot;: 0,&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &quot;windowIntervalMs&quot;: 1000&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;&amp;nbsp; &amp;nbsp; },&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;&amp;nbsp; &amp;nbsp; &quot;clusterMode&quot;: false,&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;&amp;nbsp; &amp;nbsp; &quot;controlBehavior&quot;: 0,&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;&amp;nbsp; &amp;nbsp; &quot;count&quot;: 1.0,&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;&amp;nbsp; &amp;nbsp; &quot;grade&quot;: 1,&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;&amp;nbsp; &amp;nbsp; &quot;limitApp&quot;: &quot;default&quot;,&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;&amp;nbsp; &amp;nbsp; &quot;maxQueueingTimeMs&quot;: 500,&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;&amp;nbsp; &amp;nbsp; &quot;resource&quot;: &quot;/demo/echo&quot;,&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;&amp;nbsp; &amp;nbsp; &quot;strategy&quot;: 0,&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;&amp;nbsp; &amp;nbsp; &quot;warmUpPeriodSec&quot;: 10&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;&amp;nbsp; }&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;]&lt;/font&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1410" y="20" width="180" height="330" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-81" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="S1kR7U3J-qD7APwjgyKx-77" target="S1kR7U3J-qD7APwjgyKx-80">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-77" value="&lt;b&gt;value = newValue;&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;&quot; color=&quot;#007fff&quot;&gt;更新内存中的规则&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="2481" y="280" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-83" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="S1kR7U3J-qD7APwjgyKx-80" target="S1kR7U3J-qD7APwjgyKx-82">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-80" value="&lt;div&gt;for (PropertyListener&amp;lt;T&amp;gt; listener : listeners) {&lt;/div&gt;&lt;div&gt;&amp;nbsp; listener.&lt;b&gt;configUpdate&lt;/b&gt;(newValue);&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;}&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;&quot; color=&quot;#007fff&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;遍历所有FlowPropertyListener，回调更新规&lt;/font&gt;&lt;span style=&quot;font-size: 11px;&quot;&gt;则 比如Rules&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;align=left;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="2481" y="360" width="200" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-82" value="&lt;div&gt;更新 &lt;b&gt;FlowRuleManager&lt;/b&gt; &lt;b&gt;flowRules&lt;/b&gt;;&amp;nbsp;&lt;br&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;align=left;arcSize=15;" vertex="1" parent="1">
+          <mxGeometry x="2720" y="370" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-84" value="&lt;font color=&quot;#cc0000&quot;&gt;！！！从后面的流程可以看到 Sentinel 控制台默认并不支持将规则写入配置中心，&lt;br&gt;所以测试时可以发现控制台配置好规则后，去配置中心根本看不到配置的规则&lt;br&gt;如果想要支持，可以去修改控制台源码&lt;br&gt;&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="1760" y="140" width="460" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-151" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="S1kR7U3J-qD7APwjgyKx-85" target="S1kR7U3J-qD7APwjgyKx-150">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-85" value="DEGRADE_RULE_TYPE （degrade&lt;span style=&quot;background-color: initial;&quot;&gt;）&lt;/span&gt;&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;熔断规则&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1760" y="440" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-87" value="主要研究：&lt;br&gt;&lt;ol&gt;&lt;li&gt;基于配置中心的规则的管理：持久化，推送、拉取规则到各规则管理器的原理；&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;都是基于配置中心本身的能力，Sentinel客户端启动时会主动拉取一次规则配置、同时注册规则配置监听器；&lt;br&gt;配置中心有修改规则配置会回调监听器，最终配置会更新到各个客户端本地各种规则管理器，比如&amp;nbsp;&lt;/font&gt;&lt;/li&gt;&lt;li&gt;规则校验是怎么嵌入到请求处理流程中的；&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;其实就是通过定义一个拦截器实现（实现HandlerInterceptor接口），规则校验逻辑全部在&amp;nbsp;&lt;br&gt;SentinelWebInterceptor、SentinelWebTotalInterceptor 中执行&lt;/font&gt;&lt;/li&gt;&lt;li&gt;流控、限流等规则的校验流程实现原理。&lt;/li&gt;&lt;/ol&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="560" y="10" width="630" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-101" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="S1kR7U3J-qD7APwjgyKx-97" target="S1kR7U3J-qD7APwjgyKx-100">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-97" value="ExecutorService pool = new ThreadPoolExecutor(...)&lt;br&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;创建线程池 sentinel-nacos-ds-update&lt;br&gt;用于执行监听器回调&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="1440" y="620" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-103" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="S1kR7U3J-qD7APwjgyKx-100" target="S1kR7U3J-qD7APwjgyKx-102">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-105" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="S1kR7U3J-qD7APwjgyKx-100" target="S1kR7U3J-qD7APwjgyKx-104">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-100" value="this.configListener = new Listener() {...}" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="1440" y="700" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-113" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="S1kR7U3J-qD7APwjgyKx-102" target="S1kR7U3J-qD7APwjgyKx-112">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-102" value="&lt;b&gt;receiveConfigInfo&lt;/b&gt;(&lt;br&gt;final String configInfo)&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;配置变更NacosServer会回调此方法&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="1680" y="700" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-107" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="S1kR7U3J-qD7APwjgyKx-104" target="S1kR7U3J-qD7APwjgyKx-106">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-109" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="S1kR7U3J-qD7APwjgyKx-104" target="S1kR7U3J-qD7APwjgyKx-108">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-104" value="initNacosListener();&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;初始化Nacos配置监听器&lt;br&gt;Push模式实现&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="1440" y="780" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-139" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="S1kR7U3J-qD7APwjgyKx-106" target="S1kR7U3J-qD7APwjgyKx-138">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-106" value="loadInitialConfig();&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;数据源启动时主动拉取一次规则配置&lt;br&gt;pull模式实现&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="1440" y="940" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-111" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="S1kR7U3J-qD7APwjgyKx-108" target="S1kR7U3J-qD7APwjgyKx-110">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-108" value="this.configService = NacosFactory.createConfigService(&lt;br&gt;this.properties);&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;本质是创建了NacosClient 客户端&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1680" y="780" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-110" value="configService.&lt;b&gt;addListener&lt;/b&gt;(dataId, groupId, configListener);&lt;br&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;通过 NacosClient 向配置中心注册配置监听器，监听groupId分组、dataId配置集&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="1680" y="860" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-116" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="S1kR7U3J-qD7APwjgyKx-112" target="S1kR7U3J-qD7APwjgyKx-115">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-112" value="T newValue = NacosDataSource.this&lt;br&gt;.&lt;b&gt;parser&lt;/b&gt;.convert(configInfo);&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;转成 ArrayList&amp;lt;FlowRule&amp;gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1920" y="700" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-119" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="S1kR7U3J-qD7APwjgyKx-115" target="S1kR7U3J-qD7APwjgyKx-118">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-115" value="&lt;b&gt;getProperty&lt;/b&gt;().updateValue(&lt;br&gt;newValue);" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1920" y="780" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-128" style="rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;endArrow=diamondThin;endFill=1;" edge="1" parent="1" source="S1kR7U3J-qD7APwjgyKx-117" target="S1kR7U3J-qD7APwjgyKx-123">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-117" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;AbstractDataSource&lt;/b&gt;&lt;br&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;protected final Converter&amp;lt;S, T&amp;gt; parser;&lt;/span&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;protected final SentinelProperty&amp;lt;T&amp;gt; &lt;b&gt;property&lt;/b&gt;;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="-400" y="640" width="360" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-125" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="S1kR7U3J-qD7APwjgyKx-118" target="S1kR7U3J-qD7APwjgyKx-124">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-131" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="S1kR7U3J-qD7APwjgyKx-118" target="S1kR7U3J-qD7APwjgyKx-130">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2370" y="810" />
+              <mxPoint x="2370" y="890" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-118" value="&lt;div&gt;for (PropertyListener&amp;lt;T&amp;gt; listener : listeners) {&lt;/div&gt;&lt;div&gt;&amp;nbsp; listener.&lt;b&gt;configUpdate&lt;/b&gt;(newValue);&lt;/div&gt;&lt;div&gt;}&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;这里的PropertyListener是各个规则管理器内部定义的属性监听器&lt;/font&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;arcSize=12;" vertex="1" parent="1">
+          <mxGeometry x="2160" y="765" width="200" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-121" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;endArrow=block;endFill=0;" edge="1" parent="1" source="S1kR7U3J-qD7APwjgyKx-120" target="S1kR7U3J-qD7APwjgyKx-117">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-120" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;NacosDataSource&lt;/b&gt;&lt;br&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;规则的Nacos数据源&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;private static final int DEFAULT_TIMEOUT = 3000;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;private final ExecutorService &lt;b&gt;pool&lt;/b&gt; = new ThreadPoolExecutor(...);&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;private final Listener &lt;b&gt;configListener&lt;/b&gt;;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;private final String &lt;b&gt;groupId&lt;/b&gt;;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;private final String &lt;b&gt;dataId&lt;/b&gt;;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;private final Properties &lt;b&gt;properties&lt;/b&gt;;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;private ConfigService &lt;b&gt;configService&lt;/b&gt; = null;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="-400" y="760" width="360" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-122" value="DynamicSentinelProperty" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="2180" y="740" width="160" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-123" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;DynamicSentinelProperty&lt;/b&gt;&lt;br&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//属性监听器&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;protected Set&amp;lt;PropertyListener&amp;lt;T&amp;gt;&amp;gt; &lt;b&gt;listeners&lt;/b&gt; = Collections.synchronizedSet(&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;new HashSet&amp;lt;PropertyListener&amp;lt;T&amp;gt;&amp;gt;());&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//规则列表&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;private T &lt;b&gt;value&lt;/b&gt; = null;&lt;/span&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="-880" y="640" width="440" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-124" value="Map&amp;lt;String, List&amp;lt;FlowRule&amp;gt;&amp;gt; rules = FlowRuleUtil.buildFlowRuleMap(value);&lt;br&gt;flowRules.clear();&lt;br&gt;&lt;b&gt;flowRules&lt;/b&gt;.putAll(rules);" style="rounded=1;whiteSpace=wrap;html=1;align=left;arcSize=12;fillColor=#ffcc99;strokeColor=#36393d;" vertex="1" parent="1">
+          <mxGeometry x="2390" y="780" width="220" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-126" value="&lt;b&gt;FlowRuleManager&lt;/b&gt;$FlowPropertyListener" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="2375" y="750" width="250" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-127" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;FlowRuleManager&lt;/b&gt;&lt;br&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;流控规则管理器，流控规则的本地容器，配置中心更新流控规则配置后会通过监听器回调更新到这个实例&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//流控规则&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;private static final Map&amp;lt;String, List&amp;lt;FlowRule&amp;gt;&amp;gt; &lt;b&gt;flowRules&lt;/b&gt; = new &lt;span style=&quot;&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;/span&gt;ConcurrentHashMap&amp;lt;String, List&amp;lt;FlowRule&amp;gt;&amp;gt;();&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//Push模式，监听回调&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;private static final FlowPropertyListener &lt;b&gt;LISTENER&lt;/b&gt; = new FlowPropertyListener();&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;private static SentinelProperty&amp;lt;List&amp;lt;FlowRule&amp;gt;&amp;gt; &lt;b&gt;currentProperty&lt;/b&gt; = new &lt;span style=&quot;&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;/span&gt;DynamicSentinelProperty&amp;lt;List&amp;lt;FlowRule&amp;gt;&amp;gt;();&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//定时任务线程池，处理 MetricTimerListener&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;private static final ScheduledExecutorService &lt;b&gt;SCHEDULER&lt;/b&gt; = &lt;span style=&quot;&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;/span&gt;Executors.newScheduledThreadPool(&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;/span&gt;1,&amp;nbsp;&lt;span style=&quot;background-color: initial;&quot;&gt;new NamedThreadFactory(&quot;sentinel-metrics-record-task&quot;, true));&lt;/span&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="-1400" y="640" width="480" height="260" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-130" value="&lt;font style=&quot;font-size: 10px;&quot;&gt;其他 RuleManager PropertyListener&lt;br&gt;更新规则列表，如&amp;nbsp;DegradeRuleManager、AuthorityRuleManager，和 FlowRuleManager 处理基本相同&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;arcSize=12;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="2390" y="860" width="220" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-135" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="S1kR7U3J-qD7APwjgyKx-132" target="S1kR7U3J-qD7APwjgyKx-134">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-132" value="&lt;span style=&quot;border-color: var(--border-color); font-size: 11px;&quot;&gt;&lt;font style=&quot;font-size: 11px;&quot;&gt;&lt;b style=&quot;font-size: 11px;&quot;&gt;SentinelDataSourceHandler&lt;/b&gt; 实现 SmartInitializingSingleton接口在&lt;b&gt;afterSingletonsInstantiated&lt;/b&gt;() 方法中又通过DefaultListableBeanFactory的方法根据数据源定义属性注册了Sentinel数据源Bean&lt;/font&gt;&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="960" y="610" width="200" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-137" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="S1kR7U3J-qD7APwjgyKx-134" target="S1kR7U3J-qD7APwjgyKx-97">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-134" value="new &lt;b&gt;NacosDataSource&lt;/b&gt;(properties, this.groupId, this.dataId, this.converter);&lt;br&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;测试Demo中配置的是Nacos作为数据源&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="1200" y="620" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-140" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="S1kR7U3J-qD7APwjgyKx-138" target="S1kR7U3J-qD7APwjgyKx-118">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2140" y="970" />
+              <mxPoint x="2140" y="810" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-138" value="T newValue = loadConfig();&lt;br style=&quot;font-size: 11px;&quot;&gt;getProperty().updateValue(newValue);&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;先从NacosDataSource.configSevice主动拉取规则配置，然后通过parser转成规则对象列表&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1680" y="940" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-148" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="S1kR7U3J-qD7APwjgyKx-141" target="S1kR7U3J-qD7APwjgyKx-147">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-141" value="依旧是先经过 Tomcat 的一系列组件（最后是ApplictionFilterChain）、然后经过ApplictionFilterChain中SpringMVC的一些过滤器，再是HttpServlet -&amp;gt; DispatcherServlet -&amp;gt; 然后是走到&amp;nbsp;&lt;b style=&quot;font-size: 11px;&quot;&gt;SentinelWebInterceptor&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;arcSize=10;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="240" y="1140" width="200" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-155" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="S1kR7U3J-qD7APwjgyKx-147" target="S1kR7U3J-qD7APwjgyKx-154">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-147" value="&lt;b&gt;SentinelWebInterceptor&lt;br&gt;#preHandle（...）&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;由DispatcherServlet$&lt;b&gt;applyPreHandle&lt;/b&gt;()&lt;br&gt;方法发起调用&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="480" y="1150" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-150" value="&lt;font color=&quot;#007fff&quot;&gt;后续处理和流控规则基本相同&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="2000" y="440" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-153" value="&lt;font color=&quot;#007fff&quot;&gt;这部分详细参考 SpringMVC&lt;br&gt;源码工作流程图&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="255" y="1220" width="170" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-159" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="S1kR7U3J-qD7APwjgyKx-154" target="S1kR7U3J-qD7APwjgyKx-158">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-160" value="3" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="S1kR7U3J-qD7APwjgyKx-159">
+          <mxGeometry x="0.0702" y="3" relative="1" as="geometry">
+            <mxPoint x="13" y="-50" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-162" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="S1kR7U3J-qD7APwjgyKx-154" target="S1kR7U3J-qD7APwjgyKx-161">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-163" value="4" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="S1kR7U3J-qD7APwjgyKx-162">
+          <mxGeometry x="0.4289" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-165" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="S1kR7U3J-qD7APwjgyKx-154" target="S1kR7U3J-qD7APwjgyKx-164">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-166" value="6" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="S1kR7U3J-qD7APwjgyKx-165">
+          <mxGeometry x="0.8056" y="-3" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-154" value="&lt;div&gt;public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {&lt;/div&gt;&lt;div&gt;&amp;nbsp; try {&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; //1 先获取请求路由作为流控等目标资源，比如 /demo/echo、GET:/demo/echo&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; String resourceName = this.&lt;b&gt;getResourceName&lt;/b&gt;(request);&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; //2 为空不校验规则&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; if (StringUtil.isEmpty(resourceName)) {&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; return true;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; //3 非空先在&lt;b&gt;请求属性&lt;/b&gt;中记录调用次数（+1）&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; //&amp;nbsp; &amp;nbsp; 首次统计也不需要校验规则&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; } else if (this.&lt;b&gt;increaseReferece&lt;/b&gt;(request, this.baseWebMvcConfig.getRequestRefName(), 1) != 1) {&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; return true;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; //4 非首次统计需要校验规则&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; } else {&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; String origin = this.parseOrigin(request);&amp;nbsp;&lt;font color=&quot;#007fff&quot;&gt;//解析来源应用，默认为&quot;&quot;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; String contextName = this.getContextName(request);&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; ContextUtil.&lt;b&gt;enter&lt;/b&gt;(contextName, origin); &lt;font color=&quot;#007fff&quot;&gt;//使用ThreadLocal存储&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; Entry entry = SphU.&lt;b&gt;entry&lt;/b&gt;(resourceName, 1, EntryType.IN);&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; request.&lt;b&gt;setAttribute&lt;/b&gt;(this.baseWebMvcConfig.getRequestAttributeName(), entry);&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; return true;&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; }&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;&amp;nbsp; //5 规则校验失败会抛出BlockException&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&amp;nbsp; } catch (BlockException var12) {&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; BlockException e = var12;&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; try {&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; //6 处理异常&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; this.&lt;b&gt;handleBlockException&lt;/b&gt;(request, response, e);&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; } finally {&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; ContextUtil.exit();&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; }&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; return false;&lt;/div&gt;&lt;div&gt;&amp;nbsp; }&lt;/div&gt;&lt;div&gt;}&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;//这里不拆开了&lt;/font&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;arcSize=3;align=left;" vertex="1" parent="1">
+          <mxGeometry x="720" y="920" width="440" height="520" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-156" value="&lt;b&gt;SentinelWebTotalInterceptor&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;&lt;span style=&quot;font-size: 10px;&quot;&gt;Sentinel源码中还定义了这个拦截器，不过starter中默认并没有注入&lt;/span&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="480" y="1230" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-157" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;FlowRule&lt;/b&gt;&lt;br&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;流控规则实体定义。&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//流控类型：0:线程数、1:QPS&lt;br&gt;&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;private int &lt;b&gt;grade&lt;/b&gt; = 1;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//流控阈值&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;private double &lt;b&gt;count&lt;/b&gt;;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;private int &lt;b&gt;strategy&lt;/b&gt; = 0;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;private String &lt;b&gt;refResource&lt;/b&gt;;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;private int &lt;b&gt;controlBehavior&lt;/b&gt; = 0;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;private int &lt;b&gt;warmUpPeriodSec&lt;/b&gt; = 10;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;private int &lt;b&gt;maxQueueingTimeMs&lt;/b&gt; = 500;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;private boolean &lt;b&gt;clusterMode&lt;/b&gt;;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;private ClusterFlowConfig clusterConfig;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;private TrafficShapingController controller;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="-800" y="120" width="360" height="280" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-168" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="S1kR7U3J-qD7APwjgyKx-158" target="S1kR7U3J-qD7APwjgyKx-167">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-158" value="&lt;b&gt;increaseReferece&lt;/b&gt;(request, this.baseWebMvcConfig&lt;br&gt;.getRequestRefName(), 1)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="1200" y="1040" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-171" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="S1kR7U3J-qD7APwjgyKx-161" target="S1kR7U3J-qD7APwjgyKx-170">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-161" value="SphU.&lt;b&gt;entry&lt;/b&gt;(resourceName, 1, EntryType.IN);&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;记录统计并执行规则校验&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="1200" y="1150" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-164" value="handleBlockException(&lt;br&gt;request, response, e);&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;数据&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="1200" y="1260" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-167" value="通过请求属性&lt;b&gt;$$sentinel_spring_web_entry_attr-rc&lt;/b&gt;记录调用次数&lt;br&gt;request.&lt;b&gt;setAttribute&lt;/b&gt;(rcKey, newRc);" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1440" y="1040" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-169" value="&lt;font color=&quot;#007fff&quot;&gt;这里并不是最终统计接口调用次数的地方&lt;br&gt;后面应该还有地方取 $$sentinel_spring_web_entry_attr-rc&lt;br&gt;&amp;nbsp;这个属性值做汇总&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="1650" y="1040" width="330" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-179" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="S1kR7U3J-qD7APwjgyKx-170" target="S1kR7U3J-qD7APwjgyKx-178">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-170" value="Env.&lt;b&gt;sph&lt;/b&gt;.entryWithType(name, resourceType, trafficType, 1, OBJECTS0);" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1440" y="1150" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-172" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;SphU&lt;/b&gt;&lt;br&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;private static final Object[] OBJECTS0 = new Object[0];&lt;br&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="-400" y="1480" width="360" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-173" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Env&lt;/b&gt;&lt;br&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;public static final &lt;b&gt;Sph&lt;/b&gt; &lt;b&gt;sph&lt;/b&gt; = new CtSph();&lt;br&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="-800" y="1480" width="360" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-174" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Sph &lt;/b&gt;extends&amp;nbsp;&lt;span style=&quot;background-color: initial;&quot;&gt;SphResourceTypeSupport (I)&lt;/span&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;用于记录统计信息和执行资源规则检查的基本接口。&lt;br&gt;&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="-1200" y="1480" width="360" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-176" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;endArrow=classic;endFill=1;dashed=1;" edge="1" parent="1" source="S1kR7U3J-qD7APwjgyKx-177" target="S1kR7U3J-qD7APwjgyKx-174">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="-1020" y="1640" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-177" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;CtSph&lt;/b&gt;&lt;br&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;private static final Object[] &lt;b&gt;OBJECTS0&lt;/b&gt; = new Object[0];&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;private static volatile Map&amp;lt;ResourceWrapper, ProcessorSlotChain&amp;gt; &lt;b&gt;chainMap&lt;/b&gt; = &lt;span style=&quot;white-space: pre;&quot;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;new HashMap&amp;lt;ResourceWrapper, ProcessorSlotChain&amp;gt;();&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="-1240" y="1640" width="440" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-181" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="S1kR7U3J-qD7APwjgyKx-178" target="S1kR7U3J-qD7APwjgyKx-180">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-178" value="StringResourceWrapper resource = new StringResourceWrapper(name, entryType, resourceType);" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1680" y="1150" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-183" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="S1kR7U3J-qD7APwjgyKx-180" target="S1kR7U3J-qD7APwjgyKx-182">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-180" value="return &lt;b&gt;entryWithPriority&lt;/b&gt;(resource, count, prioritized, args);" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="1680" y="1230" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-182" value="&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;&amp;nbsp;&lt;/font&gt;&lt;/div&gt;&lt;font color=&quot;#007fff&quot;&gt;//获取前面ContextUtil.enter(contextName, origin)保存的上下文&lt;/font&gt;&lt;div&gt;Context context = ContextUtil.getContext();&lt;/div&gt;&lt;div&gt;if (context instanceof NullContext) {&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; // The {@link NullContext} indicates that the amount of context has exceeded the threshold,&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; // so here init the entry only. No rule checking will be done.&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; return new CtEntry(resourceWrapper, null, context);&lt;/div&gt;&lt;div&gt;}&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;if (context == null) {&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; // Using default context.&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; context = InternalContextUtil.internalEnter(Constants.CONTEXT_DEFAULT_NAME);&lt;/div&gt;&lt;div&gt;}&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;// Global switch is close, no rule checking will do.&lt;/div&gt;&lt;div&gt;if (!Constants.ON) {&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; return new CtEntry(resourceWrapper, null, context);&lt;/div&gt;&lt;div&gt;}&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;ProcessorSlot&amp;lt;Object&amp;gt; chain = lookProcessChain(resourceWrapper);&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;/*&lt;/div&gt;&lt;div&gt;&amp;nbsp; * Means amount of resources (slot chain) exceeds {@link Constants.MAX_SLOT_CHAIN_SIZE},&lt;/div&gt;&lt;div&gt;&amp;nbsp; * so no rule checking will be done.&lt;/div&gt;&lt;div&gt;&amp;nbsp; */&lt;/div&gt;&lt;div&gt;if (chain == null) {&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; return new CtEntry(resourceWrapper, null, context);&lt;/div&gt;&lt;div&gt;}&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Entry e = new CtEntry(resourceWrapper, chain, context);&lt;/div&gt;&lt;div&gt;try {&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; chain.entry(context, resourceWrapper, null, count, prioritized, args);&lt;/div&gt;&lt;div&gt;} catch (BlockException e1) {&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; e.exit(count, args);&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; throw e1;&lt;/div&gt;&lt;div&gt;} catch (Throwable e1) {&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; // This should not happen, unless there are errors existing in Sentinel internal.&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; RecordLog.info(&quot;Sentinel unexpected exception&quot;, e1);&lt;/div&gt;&lt;div&gt;}&lt;/div&gt;&lt;div&gt;return e;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;arcSize=1;" vertex="1" parent="1">
+          <mxGeometry x="1920" y="1150" width="560" height="650" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-184" value="&lt;b&gt;CtSph&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="1750" y="1120" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-185" value="&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;当前测试设置的流控规则， QPS、根据调用方限流、直接失败&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;[&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;&amp;nbsp; &amp;nbsp; {&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &quot;resource&quot;: &quot;/demo/echo&quot;,&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &quot;limitApp&quot;: &quot;default&quot;,&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &quot;grade&quot;: 1,&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &quot;count&quot;: 5,&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &quot;strategy&quot;: 0,&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &quot;controlBehavior&quot;: 0,&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &quot;clusterMode&quot;: false&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;&amp;nbsp; &amp;nbsp; }&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;]&lt;/font&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="240" y="960" width="300" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="gmwCS7IYYuH75fHtpYmN-1" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;endArrow=diamondThin;endFill=1;" edge="1" parent="1" source="S1kR7U3J-qD7APwjgyKx-186" target="S1kR7U3J-qD7APwjgyKx-187">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-186" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;ContextUtil&lt;/b&gt;&lt;br&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//保存请求调用上下文（该上下文标记为调用链的入口&lt;/font&gt;&lt;font color=&quot;#007fff&quot;&gt;）&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;private static ThreadLocal&amp;lt;Context&amp;gt; &lt;b&gt;contextHolder&lt;/b&gt; = new ThreadLocal&amp;lt;&amp;gt;();&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//contextName -&amp;gt; EntranceNode&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;private static volatile Map&amp;lt;String, DefaultNode&amp;gt; &lt;b&gt;contextNameNodeMap&lt;/b&gt; =&amp;nbsp;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;&quot;&gt;&lt;span style=&quot;&quot;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;/span&gt;new HashMap&amp;lt;&amp;gt;();&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="-480" y="1040" width="440" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="gmwCS7IYYuH75fHtpYmN-3" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;endArrow=diamondThin;endFill=1;" edge="1" parent="1" source="S1kR7U3J-qD7APwjgyKx-187" target="gmwCS7IYYuH75fHtpYmN-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="S1kR7U3J-qD7APwjgyKx-187" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Context&lt;/b&gt;&lt;br&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 11px;&quot;&gt;&lt;font style=&quot;font-size: 11px;&quot;&gt;&lt;font style=&quot;font-size: 11px;&quot; color=&quot;#007fff&quot;&gt;//请求调用上下文（该上下文标记为调用链的入口&lt;/font&gt;&lt;font style=&quot;font-size: 11px;&quot; color=&quot;#007fff&quot;&gt;）&lt;/font&gt;&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 11px;&quot;&gt;&lt;font style=&quot;font-size: 11px;&quot; color=&quot;#007fff&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 11px;&quot;&gt;&lt;font style=&quot;font-size: 11px;&quot; color=&quot;#007fff&quot;&gt;//上下文名称, 比如 sentinel_spring_web_context&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 11px;&quot;&gt;&lt;font style=&quot;font-size: 11px;&quot;&gt;private final String &lt;b&gt;name&lt;/b&gt;;&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 11px;&quot;&gt;&lt;font style=&quot;font-size: 11px;&quot; color=&quot;#007fff&quot;&gt;//当前调用树的 EntranceNode&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 11px;&quot;&gt;&lt;font style=&quot;font-size: 11px;&quot;&gt;private DefaultNode &lt;b&gt;entranceNode&lt;/b&gt;;&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 11px;&quot;&gt;&lt;font style=&quot;font-size: 11px;&quot; color=&quot;#007fff&quot;&gt;//当前正在执行的Entry&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 11px;&quot;&gt;&lt;font style=&quot;font-size: 11px;&quot;&gt;private Entry &lt;b&gt;curEntry&lt;/b&gt;;&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 11px;&quot;&gt;&lt;font style=&quot;font-size: 11px;&quot; color=&quot;#007fff&quot;&gt;//当前调用上下文来源&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 11px;&quot;&gt;&lt;font style=&quot;font-size: 11px;&quot;&gt;private String origin = &quot;&quot;;&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 11px;&quot;&gt;&lt;font style=&quot;font-size: 11px;&quot;&gt;private final boolean async;&lt;/font&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="-880" y="1040" width="360" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="gmwCS7IYYuH75fHtpYmN-2" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;EntranceNode&lt;/b&gt;&lt;br&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//&lt;br&gt;&lt;/font&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="-1280" y="1040" width="360" height="190" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="TN8HgY1CltahRotQwGUT" name="调用上下文">
+    <mxGraphModel dx="1434" dy="879" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="rv9ZlCTTiJ06F9HG7BeC-1" value="" style="rounded=0;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="40" y="80" width="200" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="rv9ZlCTTiJ06F9HG7BeC-2" value="ContextUtil" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="105" y="50" width="70" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="PiyzJssY4Ue3jckoztQY-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="rv9ZlCTTiJ06F9HG7BeC-3" target="rv9ZlCTTiJ06F9HG7BeC-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rv9ZlCTTiJ06F9HG7BeC-3" value="ThreadLocal&amp;lt;Context&amp;gt;&lt;br style=&quot;font-size: 10px;&quot;&gt;contextHolder" style="rounded=0;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="60" y="100" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="rv9ZlCTTiJ06F9HG7BeC-4" value="Map&amp;lt;String, DefaultNode&amp;gt; contextNameNodeMap" style="rounded=0;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="60" y="160" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="rv9ZlCTTiJ06F9HG7BeC-5" value="String name&lt;br&gt;private DefaultNode entranceNode;" style="rounded=0;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="280" y="80" width="200" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="rv9ZlCTTiJ06F9HG7BeC-6" value="Context" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="350" y="50" width="60" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
