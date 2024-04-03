@@ -11,7 +11,7 @@ sentinel-core 核心模块，限流、降级、系统保护等都在这里实现
 sentinel-dashboard 控制台模块，可以对连接上的sentinel客户端实现可视化的管理
 sentinel-transport 传输模块，提供了基本的监控服务端和客户端的API接口，以及一些基于不同库的实现
 sentinel-extension 扩展模块，主要对DataSource进行了部分扩展实现
-sentinel-adapter 适配器模块，主要实现了对一些常见框架的适配
+sentinel-adapter 适配器模块，主要实现了对一些常见框架的适配（比如dubbo、httpclient、grpc、okhttp、reactor、springmvc、gateway、zuul）,为它们整合Sentinel的功能
 sentinel-demo 样例模块，可参考怎么使用sentinel进行限流、降级等
 sentinel-benchmark 基准测试模块，对核心代码的精确性提供基准测试
 ```
