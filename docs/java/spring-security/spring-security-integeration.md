@@ -11,7 +11,12 @@
 **集成流程**：
 
 1. 首先看流程图快速回忆起Spring Security内部工作原理；
-2. 结合下面的“功能备忘”定制功能，多测试；
+2. 结合下面的“功能备忘”定制功能，各个功能可以先写个壳在后面边调试边完善；
+3. 测试登录请求发放Token；
+4. 带有权限控制的请求传参Token并发送；
+5. Token 认证过滤器，Token的解析，获取用户信息（解析流程可能涉及调用用户中心的接口）
+6. Token解析后的用户信息重新封装成`AbstractAuthenticationToken`并保存到Spring Security 安全上下文 `SecurityContextHolder`；
+7. `FilterSecurityInterceptor` 过滤器中执行自定义的权限校验（比如通过 @PreAuthorize()调用Bean方法检查权限）；
 
 
 
@@ -108,7 +113,7 @@
 
     所以需要自定义权限检查，由于 @PreAuthorize() 支持 SpEL，而 SpEL 中是可以包含方法调用的；
 
-    所以只需要自定义一个方法权限检查类即可。
+    所以只需要自定义一个方法权限检查类（系统启动时创建Bean）即可，请求时通过 @PreAuthorize 调用Bean的方法检查权限。
 
 + **密码编码器**
 

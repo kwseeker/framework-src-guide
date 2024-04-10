@@ -1,6 +1,6 @@
-<mxfile host="Electron" modified="2024-03-12T09:02:45.521Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.6.5 Chrome/114.0.5735.243 Electron/25.3.1 Safari/537.36" etag="1KvjQ3l2GtnpnnjLg_uF" version="21.6.5" type="device" pages="2">
+<mxfile host="Electron" modified="2024-03-14T09:50:32.051Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.6.5 Chrome/114.0.5735.243 Electron/25.3.1 Safari/537.36" etag="EEPJaWI2VQzF1mAxYWWQ" version="21.6.5" type="device" pages="2">
   <diagram id="izJUiE_6dcGGzq4-B36X" name="SpringSecurity工作流程">
-    <mxGraphModel dx="3362" dy="628" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+    <mxGraphModel dx="3403" dy="879" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -78,7 +78,7 @@
         <mxCell id="mgh684Ju6QphpoWxp4na-30" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=8;" parent="1" source="mgh684Ju6QphpoWxp4na-18" target="mgh684Ju6QphpoWxp4na-29" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="DT5Yx-Svt_Yo0Kt4Upq1-8" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="mgh684Ju6QphpoWxp4na-18" target="DT5Yx-Svt_Yo0Kt4Upq1-6">
+        <mxCell id="DT5Yx-Svt_Yo0Kt4Upq1-8" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="mgh684Ju6QphpoWxp4na-18" target="DT5Yx-Svt_Yo0Kt4Upq1-6" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="mgh684Ju6QphpoWxp4na-18" value="&lt;font style=&quot;font-size: 10px&quot;&gt;SpringBootWebSecurityConfiguration&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
@@ -247,7 +247,7 @@
         <mxCell id="KUAb-_XNP9Eb_uavuq1S-251" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=10;fontColor=#007FFF;" parent="1" source="KUAb-_XNP9Eb_uavuq1S-32" target="mgh684Ju6QphpoWxp4na-12" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="DT5Yx-Svt_Yo0Kt4Upq1-2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="KUAb-_XNP9Eb_uavuq1S-32" target="DT5Yx-Svt_Yo0Kt4Upq1-1">
+        <mxCell id="DT5Yx-Svt_Yo0Kt4Upq1-2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="KUAb-_XNP9Eb_uavuq1S-32" target="DT5Yx-Svt_Yo0Kt4Upq1-1" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="KUAb-_XNP9Eb_uavuq1S-32" value="自动配置阶段" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
@@ -739,14 +739,14 @@
         <mxCell id="KUAb-_XNP9Eb_uavuq1S-440" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;fontColor=#007FFF;endArrow=classic;endFill=1;" parent="1" source="KUAb-_XNP9Eb_uavuq1S-177" target="KUAb-_XNP9Eb_uavuq1S-439" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="KUAb-_XNP9Eb_uavuq1S-177" value="&lt;font&gt;&lt;font&gt;&lt;div&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;ExceptionTranslationFilter&lt;/span&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;/font&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;#doFilter()&lt;/span&gt;&lt;br&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px&quot;&gt;异常catch过滤器&lt;/font&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+        <mxCell id="KUAb-_XNP9Eb_uavuq1S-177" value="&lt;font&gt;&lt;font&gt;&lt;div&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;ExceptionTranslationFilter&lt;/span&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;/font&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;#doFilter()&lt;/span&gt;&lt;br&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px&quot;&gt;异常catch过滤器&lt;/font&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e3c800;strokeColor=#B09500;fontColor=#000000;" parent="1" vertex="1">
           <mxGeometry x="1620" y="4820" width="200" height="60" as="geometry" />
         </mxCell>
         <mxCell id="KUAb-_XNP9Eb_uavuq1S-377" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=8;fontColor=#007FFF;endArrow=classic;endFill=1;" parent="1" source="KUAb-_XNP9Eb_uavuq1S-178" target="KUAb-_XNP9Eb_uavuq1S-373" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="KUAb-_XNP9Eb_uavuq1S-178" value="&lt;font&gt;&lt;font&gt;&lt;div&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;FilterSecurityInterceptor&lt;/span&gt;&lt;br&gt;&lt;/div&gt;&lt;/font&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;#doFilter()&lt;/span&gt;&lt;br&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px&quot;&gt;鉴授权过滤器&lt;/font&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e3c800;strokeColor=#B09500;fontColor=#000000;" parent="1" vertex="1">
-          <mxGeometry x="1620" y="5000" width="200" height="60" as="geometry" />
+          <mxGeometry x="1620" y="5040" width="200" height="60" as="geometry" />
         </mxCell>
         <mxCell id="KUAb-_XNP9Eb_uavuq1S-179" value="&lt;font style=&quot;font-size: 11px;&quot;&gt;&amp;nbsp;如何理解SpringSecurity原理与使用：&lt;br&gt;&lt;br&gt;1 SpringSecurity 的本质：一个拦截请求的&lt;b&gt;过滤器链&lt;/b&gt;；分析的版本中提供了32个过滤器实现，主要提供三大功能：认证&amp;amp;授权&amp;amp;安全漏洞保护；&lt;br&gt;2 SpringSecurity 过滤器链装配到MVC（也可以是Flux）的方式和位置：通过 &lt;b&gt;DelegatingFilterProxyRegistrationBean&lt;/b&gt; 的方式注册并将 &lt;b&gt;springSecurityFilterChain&lt;/b&gt; 装配在 &lt;b&gt;ApplicationFilterChain&lt;/b&gt; 中；&lt;br&gt;3 过滤器链创建原理：WebSecurity&amp;nbsp; HttpSecurity 和&amp;nbsp;SecurityFilterChain 的关系;&lt;br&gt;4 找几个典型的功能（如：用户名密码认证、接口授权、OAuth、CAS等）从配置代码到认证授权实现调试一下代码的主流程；理解配置的底层数据结构，各种功能的原理主流程&lt;br&gt;4.1 &lt;b&gt;认证&lt;/b&gt;：通过一个凭据换取用户信息（比如用户名密码、Token），官方提供了一个用户名密码认证的例子：UsernamePasswordAuthenticationFilter&amp;nbsp;extends AbstractAuthenticationProcessingFilter&lt;br&gt;4.2 &lt;b&gt;授权&lt;/b&gt;：默认授权处理（权限校验）在&amp;nbsp;&lt;b&gt;FilterSecurityInterceptor&lt;/b&gt; 完成&lt;br&gt;5 学会如何在Spring Security 基础上为自己的业务拓展功能（官方提供的一些默认的实现其实就是最后的参考例子）&lt;br&gt;5.1 &lt;b&gt;自定义认证&lt;/b&gt;：比如现在普遍的认证方式是借助Token令牌认证，比如实现一个 TokenAuthenticationFilter&amp;nbsp;&lt;br&gt;5.2 &lt;b&gt;自定义授权：&lt;/b&gt;&lt;br&gt;&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=9;fontColor=#007FFF;" parent="1" vertex="1">
           <mxGeometry x="360" y="20" width="1120" height="180" as="geometry" />
@@ -1198,48 +1198,25 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="KUAb-_XNP9Eb_uavuq1S-373" value="&lt;font&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;&lt;font&gt;&lt;div&gt;&lt;/div&gt;&lt;/font&gt;FilterInvocation fi = new FilterInvocation(request, response, chain)&lt;br&gt;&lt;/span&gt;&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;这个类也仅仅是为了实现继续调用后续的过滤器&lt;/font&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="1860" y="5000" width="200" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="KUAb-_XNP9Eb_uavuq1S-374" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=8;fontColor=#007FFF;endArrow=classic;endFill=1;" parent="1" source="KUAb-_XNP9Eb_uavuq1S-375" target="KUAb-_XNP9Eb_uavuq1S-376" edge="1">
-          <mxGeometry relative="1" as="geometry" />
+          <mxGeometry x="1860" y="5040" width="200" height="60" as="geometry" />
         </mxCell>
         <mxCell id="KUAb-_XNP9Eb_uavuq1S-383" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;fontColor=#007FFF;endArrow=classic;endFill=1;" parent="1" source="KUAb-_XNP9Eb_uavuq1S-375" target="KUAb-_XNP9Eb_uavuq1S-382" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
+        <mxCell id="h3Jj5u51_VQ4Rpci0gh6-84" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="KUAb-_XNP9Eb_uavuq1S-375" target="h3Jj5u51_VQ4Rpci0gh6-3" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
         <mxCell id="KUAb-_XNP9Eb_uavuq1S-375" value="&lt;font style=&quot;font-size: 10px&quot;&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;&lt;font&gt;&lt;div&gt;&lt;/div&gt;&lt;/font&gt;&lt;b&gt;invoke&lt;/b&gt;(fi)&lt;br&gt;&lt;/span&gt;&lt;font color=&quot;#007fff&quot;&gt;鉴权失败就发失败事件并抛异常；&lt;br&gt;鉴权成功发布成功事件生成 TOKEN 并存储到安全上下文&lt;/font&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
-          <mxGeometry x="1860" y="5080" width="200" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="KUAb-_XNP9Eb_uavuq1S-379" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=8;fontColor=#007FFF;endArrow=classic;endFill=1;" parent="1" source="KUAb-_XNP9Eb_uavuq1S-376" target="KUAb-_XNP9Eb_uavuq1S-378" edge="1">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="KUAb-_XNP9Eb_uavuq1S-376" value="&lt;font&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;&lt;font&gt;&lt;div&gt;&lt;/div&gt;&lt;/font&gt;InterceptorStatusToken &lt;b&gt;token&lt;/b&gt; = super.beforeInvocation(fi);&lt;/span&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="2100" y="5080" width="200" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="KUAb-_XNP9Eb_uavuq1S-381" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=8;fontColor=#007FFF;endArrow=classic;endFill=1;" parent="1" source="KUAb-_XNP9Eb_uavuq1S-378" target="KUAb-_XNP9Eb_uavuq1S-380" edge="1">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="KUAb-_XNP9Eb_uavuq1S-378" value="&lt;font style=&quot;font-size: 10px&quot;&gt;&lt;span&gt;&lt;font&gt;&lt;div&gt;&lt;/div&gt;&lt;/font&gt;Authentication authenticated = this.authenticateIfRequired()&lt;br&gt;&lt;/span&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px&quot;&gt;读取认证信息&lt;/font&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
-          <mxGeometry x="2338" y="5080" width="200" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="KUAb-_XNP9Eb_uavuq1S-390" value="鉴权失败" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;fontColor=#007FFF;endArrow=classic;endFill=1;" parent="1" source="KUAb-_XNP9Eb_uavuq1S-380" target="KUAb-_XNP9Eb_uavuq1S-389" edge="1">
-          <mxGeometry x="0.3" y="10" relative="1" as="geometry">
-            <mxPoint as="offset" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="KUAb-_XNP9Eb_uavuq1S-392" value="鉴权成功" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=10;fontColor=#007FFF;endArrow=classic;endFill=1;" parent="1" source="KUAb-_XNP9Eb_uavuq1S-380" target="KUAb-_XNP9Eb_uavuq1S-391" edge="1">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="KUAb-_XNP9Eb_uavuq1S-380" value="&lt;font style=&quot;font-size: 10px&quot;&gt;&lt;span&gt;&lt;font&gt;&lt;div&gt;&lt;/div&gt;&lt;/font&gt;this.accessDecisionManager.decide(&lt;br&gt;authenticated, object, attributes);&lt;br&gt;&lt;/span&gt;&lt;font color=&quot;#007fff&quot;&gt;访问权限判定（鉴权）&lt;/font&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
-          <mxGeometry x="2338" y="5160" width="200" height="60" as="geometry" />
+          <mxGeometry x="1860" y="5120" width="200" height="60" as="geometry" />
         </mxCell>
         <mxCell id="KUAb-_XNP9Eb_uavuq1S-385" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;fontColor=#007FFF;endArrow=classic;endFill=1;" parent="1" source="KUAb-_XNP9Eb_uavuq1S-382" target="KUAb-_XNP9Eb_uavuq1S-384" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="KUAb-_XNP9Eb_uavuq1S-382" value="&lt;font&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;&lt;font&gt;&lt;div&gt;&lt;/div&gt;&lt;/font&gt;fi.getChain().doFilter(fi.getRequest(), fi.getResponse())&lt;/span&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="1860" y="5160" width="200" height="60" as="geometry" />
+          <mxGeometry x="1860" y="5200" width="200" height="60" as="geometry" />
         </mxCell>
         <mxCell id="KUAb-_XNP9Eb_uavuq1S-384" value="&lt;font style=&quot;font-size: 10px&quot;&gt;&lt;font style=&quot;font-size: 10px&quot;&gt;&lt;div&gt;&lt;/div&gt;&lt;/font&gt;&lt;span&gt;super.afterInvocation(token, null);&lt;br&gt;&lt;/span&gt;finally:&lt;br&gt;&lt;span&gt;super.finallyInvocation(token);&lt;/span&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
-          <mxGeometry x="1860" y="5240" width="200" height="60" as="geometry" />
+          <mxGeometry x="1860" y="5280" width="200" height="60" as="geometry" />
         </mxCell>
         <mxCell id="KUAb-_XNP9Eb_uavuq1S-470" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=10;fontColor=#007FFF;endArrow=classic;endFill=1;" parent="1" source="KUAb-_XNP9Eb_uavuq1S-386" target="KUAb-_XNP9Eb_uavuq1S-469" edge="1">
           <mxGeometry relative="1" as="geometry" />
@@ -1252,46 +1229,11 @@
         <mxCell id="KUAb-_XNP9Eb_uavuq1S-386" value="&lt;font&gt;&lt;font&gt;&lt;div&gt;&lt;/div&gt;&lt;/font&gt;ExceptionTranslationFilter&lt;br&gt;#catch()&lt;br&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px&quot;&gt;鉴权失败抛的AccessDeniedException被捕获，response&lt;/font&gt;&lt;span style=&quot;color: rgb(0 , 127 , 255) ; font-size: 10px&quot;&gt;未提交就处理此异常&lt;/span&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="760" y="2940" width="200" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="KUAb-_XNP9Eb_uavuq1S-389" value="&lt;font style=&quot;font-size: 10px&quot;&gt;&lt;span&gt;&lt;font&gt;&lt;div&gt;&lt;/div&gt;&lt;/font&gt;发布 AuthorizationFailureEvent&lt;br&gt;&lt;/span&gt;throw&amp;nbsp;AccessDeniedException&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
-          <mxGeometry x="2618" y="5160" width="200" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="KUAb-_XNP9Eb_uavuq1S-394" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;fontColor=#007FFF;endArrow=classic;endFill=1;" parent="1" source="KUAb-_XNP9Eb_uavuq1S-391" target="KUAb-_XNP9Eb_uavuq1S-393" edge="1">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="KUAb-_XNP9Eb_uavuq1S-391" value="&lt;font&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;&lt;font&gt;&lt;div&gt;&lt;/div&gt;&lt;/font&gt;发布 AuthorizedEvent&lt;/span&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
-          <mxGeometry x="2620" y="5240" width="200" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="KUAb-_XNP9Eb_uavuq1S-396" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;fontColor=#007FFF;endArrow=classic;endFill=1;" parent="1" source="KUAb-_XNP9Eb_uavuq1S-393" target="KUAb-_XNP9Eb_uavuq1S-395" edge="1">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="KUAb-_XNP9Eb_uavuq1S-393" value="&lt;font&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;&lt;font&gt;&lt;div&gt;&lt;/div&gt;&lt;/font&gt;Authentication runAs = this.runAsManager.&lt;b&gt;buildRunAs&lt;/b&gt;(&lt;br&gt;authenticated, object, attributes);&lt;/span&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="2620" y="5320" width="200" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="KUAb-_XNP9Eb_uavuq1S-400" value="Y" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;fontColor=#007FFF;endArrow=classic;endFill=1;" parent="1" source="KUAb-_XNP9Eb_uavuq1S-395" target="KUAb-_XNP9Eb_uavuq1S-399" edge="1">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="KUAb-_XNP9Eb_uavuq1S-403" value="N" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=10;fontColor=#007FFF;endArrow=classic;endFill=1;" parent="1" source="KUAb-_XNP9Eb_uavuq1S-395" target="KUAb-_XNP9Eb_uavuq1S-401" edge="1">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="2780" y="5440" />
-              <mxPoint x="2780" y="5520" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="KUAb-_XNP9Eb_uavuq1S-395" value="&lt;font style=&quot;font-size: 10px&quot;&gt;runAs == null&lt;/font&gt;" style="rhombus;whiteSpace=wrap;html=1;rounded=1;" parent="1" vertex="1">
-          <mxGeometry x="2680" y="5400" width="80" height="80" as="geometry" />
-        </mxCell>
-        <mxCell id="KUAb-_XNP9Eb_uavuq1S-399" value="&lt;font style=&quot;font-size: 10px&quot;&gt;return new &lt;b&gt;InterceptorStatusToken&lt;/b&gt;(&lt;br&gt;SecurityContextHolder.getContext(), false, attributes, object);&lt;/font&gt;" style="whiteSpace=wrap;html=1;rounded=1;arcSize=6;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
-          <mxGeometry x="2840" y="5410" width="240" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="KUAb-_XNP9Eb_uavuq1S-401" value="&lt;div style=&quot;font-size: 8px&quot;&gt;&lt;div&gt;SecurityContext origCtx = SecurityContextHolder.getContext();&lt;/div&gt;&lt;div&gt;SecurityContextHolder.&lt;b&gt;setContext&lt;/b&gt;(SecurityContextHolder&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre&quot;&gt;&#x9;&lt;/span&gt;.createEmptyContext());&lt;/div&gt;&lt;div&gt;SecurityContextHolder.getContext().&lt;b&gt;setAuthentication&lt;/b&gt;(runAs);&lt;/div&gt;&lt;div&gt;return new &lt;b&gt;InterceptorStatusToken&lt;/b&gt;(origCtx, true, attributes, object);&lt;/div&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;rounded=1;align=left;arcSize=9;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
-          <mxGeometry x="2840" y="5490" width="240" height="60" as="geometry" />
-        </mxCell>
         <mxCell id="KUAb-_XNP9Eb_uavuq1S-405" value="认证方式有多种，配置不同的认证方式，这一步的Filter就不同。&lt;br&gt;&lt;br&gt;认证成功后，会生成 Cookie Session 以及&lt;br&gt;在安全上下文中保存&amp;nbsp;UsernamePasswordAuthenticationToken&lt;br&gt;用于后续的授权校验" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;dashed=1;fontSize=10;fontColor=#007FFF;" parent="1" vertex="1">
           <mxGeometry x="1620" y="3190" width="290" height="60" as="geometry" />
         </mxCell>
         <mxCell id="KUAb-_XNP9Eb_uavuq1S-406" value="鉴权成功或失败虽然有发事件，但是没看到哪里有监听事件，估计此处事件还是一个拓展点，供用户自行拓展的" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;dashed=1;fontSize=10;fontColor=#007FFF;" parent="1" vertex="1">
-          <mxGeometry x="1620" y="5060" width="220" height="60" as="geometry" />
+          <mxGeometry x="1620" y="5100" width="220" height="60" as="geometry" />
         </mxCell>
         <mxCell id="KUAb-_XNP9Eb_uavuq1S-443" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;fontColor=#007FFF;endArrow=classic;endFill=1;" parent="1" source="KUAb-_XNP9Eb_uavuq1S-430" target="KUAb-_XNP9Eb_uavuq1S-442" edge="1">
           <mxGeometry relative="1" as="geometry" />
@@ -1742,8 +1684,8 @@
         <mxCell id="NMxKPJ_On7xpumNUUqYT-9" value="内部流程：&lt;br&gt;从请求头读取Token, Token有效性校验；&lt;br&gt;然后通过Token获取用户信息；&lt;br&gt;将用户信息存储到请求的属性（也可以存安全上下文）；" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;align=left;" parent="1" vertex="1">
           <mxGeometry x="440" y="3240" width="200" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="NMxKPJ_On7xpumNUUqYT-11" value="&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;@PreAuthorize() 原理其实是&lt;b&gt;通过动态代理给Controller的 HandlerMethod 进行了增强&lt;/b&gt;（参考流程图第2页）&lt;br&gt;在增强逻辑中执行权限检查逻辑，而不是在&amp;nbsp;&lt;/font&gt;FilterSecurityInterceptor 中做权限检查&lt;/font&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;&lt;br&gt;&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
-          <mxGeometry x="640" y="3330" width="500" height="40" as="geometry" />
+        <mxCell id="NMxKPJ_On7xpumNUUqYT-11" value="&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;@PreAuthorize() 原理其实是&lt;b&gt;通过动态代理给Controller的 HandlerMethod 进行了增强&lt;/b&gt;（参考流程图第2页）&lt;br&gt;在增强逻辑中执行权限检查逻辑，而不是在&amp;nbsp;&lt;/font&gt;FilterSecurityInterceptor 中做权限检查&lt;br&gt;&lt;/font&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;&lt;b&gt;但是在 2.7.12 版本中测试发现 @PreAuthorize 的逻辑放在了 FilterSecurityInteceptor 中&amp;nbsp;&lt;/b&gt;&lt;br&gt;&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
+          <mxGeometry x="640" y="3320" width="500" height="60" as="geometry" />
         </mxCell>
         <mxCell id="NMxKPJ_On7xpumNUUqYT-13" value="@PreAuthorize() 注解原理" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" parent="1" vertex="1">
           <mxGeometry x="440" y="3320" width="200" height="60" as="geometry" />
@@ -1891,17 +1833,284 @@
         <mxCell id="Fbp7wKhLBmgoR31z9oyL-11" value="this.&lt;b style=&quot;font-size: 10px;&quot;&gt;doFilterInternal&lt;/b&gt;(httpRequest, httpResponse, filterChain);&lt;br style=&quot;font-size: 10px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;doFillterInternal 才是各个过滤器自己的逻辑&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" parent="1" vertex="1">
           <mxGeometry x="2560.5" y="1890" width="200" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="DT5Yx-Svt_Yo0Kt4Upq1-1" value="&lt;font style=&quot;font-size: 9px&quot;&gt;UserDetailsServiceAutoConfiguration&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+        <mxCell id="DT5Yx-Svt_Yo0Kt4Upq1-1" value="&lt;font style=&quot;font-size: 9px&quot;&gt;UserDetailsServiceAutoConfiguration&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
           <mxGeometry x="240" y="1200" width="160" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="DT5Yx-Svt_Yo0Kt4Upq1-5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="DT5Yx-Svt_Yo0Kt4Upq1-6" target="DT5Yx-Svt_Yo0Kt4Upq1-7">
+        <mxCell id="DT5Yx-Svt_Yo0Kt4Upq1-5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="DT5Yx-Svt_Yo0Kt4Upq1-6" target="DT5Yx-Svt_Yo0Kt4Upq1-7" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="DT5Yx-Svt_Yo0Kt4Upq1-6" value="&lt;font style=&quot;font-size: 9px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;@ConditionalOnDefaultWebSecurity&lt;/font&gt;&lt;br style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;SecurityFilterChainConfiguration&lt;/font&gt;&lt;br style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 9px;&quot; color=&quot;#007fff&quot;&gt;&lt;font style=&quot;font-size: 9px;&quot;&gt;注意此配置类里会创建一个默认的过滤器链, 但是我们并不需要，&lt;/font&gt;可以暂时通过添加这个解决@AutoConfigureBefore(&lt;br&gt;SecurityAutoConfiguration.class)&lt;/font&gt;&lt;br style=&quot;font-size: 10px;&quot;&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;" vertex="1" parent="1">
+        <mxCell id="DT5Yx-Svt_Yo0Kt4Upq1-6" value="&lt;font style=&quot;font-size: 9px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;@ConditionalOnDefaultWebSecurity&lt;/font&gt;&lt;br style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;SecurityFilterChainConfiguration&lt;/font&gt;&lt;br style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 9px;&quot; color=&quot;#007fff&quot;&gt;&lt;font style=&quot;font-size: 9px;&quot;&gt;注意此配置类里会创建一个默认的过滤器链, 但是我们并不需要，&lt;/font&gt;可以暂时通过添加这个解决@AutoConfigureBefore(&lt;br&gt;SecurityAutoConfiguration.class)&lt;/font&gt;&lt;br style=&quot;font-size: 10px;&quot;&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;" parent="1" vertex="1">
           <mxGeometry x="740" y="870" width="200" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="DT5Yx-Svt_Yo0Kt4Upq1-7" value="&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font style=&quot;font-size: 9px;&quot;&gt;@Bean&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font style=&quot;font-size: 9px;&quot;&gt;@Order(2147483642)&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font style=&quot;font-size: 9px;&quot;&gt;SecurityFilterChain &lt;b style=&quot;font-size: 9px;&quot;&gt;defaultSecurityFilterChain&lt;/b&gt;(&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font style=&quot;font-size: 9px;&quot;&gt;HttpSecurity http) {...}&lt;/font&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=9;align=left;" vertex="1" parent="1">
+        <mxCell id="DT5Yx-Svt_Yo0Kt4Upq1-7" value="&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font style=&quot;font-size: 9px;&quot;&gt;@Bean&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font style=&quot;font-size: 9px;&quot;&gt;@Order(2147483642)&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font style=&quot;font-size: 9px;&quot;&gt;SecurityFilterChain &lt;b style=&quot;font-size: 9px;&quot;&gt;defaultSecurityFilterChain&lt;/b&gt;(&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font style=&quot;font-size: 9px;&quot;&gt;HttpSecurity http) {...}&lt;/font&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=9;align=left;" parent="1" vertex="1">
           <mxGeometry x="980" y="880" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="h3Jj5u51_VQ4Rpci0gh6-1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="h3Jj5u51_VQ4Rpci0gh6-3" target="h3Jj5u51_VQ4Rpci0gh6-27" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="h3Jj5u51_VQ4Rpci0gh6-2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="h3Jj5u51_VQ4Rpci0gh6-3" target="h3Jj5u51_VQ4Rpci0gh6-29" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="h3Jj5u51_VQ4Rpci0gh6-3" value="&lt;font&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;&lt;font&gt;&lt;div&gt;&lt;/div&gt;&lt;/font&gt;InterceptorStatusToken &lt;b&gt;token&lt;/b&gt; = super.&lt;b&gt;beforeInvocation&lt;/b&gt;(fi);&lt;/span&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="2100" y="5120" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="h3Jj5u51_VQ4Rpci0gh6-4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=8;fontColor=#007FFF;endArrow=classic;endFill=1;" parent="1" source="h3Jj5u51_VQ4Rpci0gh6-6" target="h3Jj5u51_VQ4Rpci0gh6-11" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="h3Jj5u51_VQ4Rpci0gh6-5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="h3Jj5u51_VQ4Rpci0gh6-6" target="h3Jj5u51_VQ4Rpci0gh6-31" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="h3Jj5u51_VQ4Rpci0gh6-6" value="&lt;font style=&quot;font-size: 10px&quot;&gt;&lt;span&gt;&lt;font&gt;&lt;div&gt;&lt;/div&gt;&lt;/font&gt;Authentication authenticated = this.authenticateIfRequired()&lt;br&gt;&lt;/span&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px&quot;&gt;读取认证信息&lt;/font&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="2341" y="5200" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="h3Jj5u51_VQ4Rpci0gh6-7" value="鉴权失败" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;fontColor=#007FFF;endArrow=classic;endFill=1;exitX=0.943;exitY=0.511;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="h3Jj5u51_VQ4Rpci0gh6-32" target="h3Jj5u51_VQ4Rpci0gh6-14" edge="1">
+          <mxGeometry x="-0.1498" y="11" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="h3Jj5u51_VQ4Rpci0gh6-8" value="鉴权成功" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;fontSize=10;fontColor=#007FFF;endArrow=classic;endFill=1;" parent="1" source="h3Jj5u51_VQ4Rpci0gh6-32" target="h3Jj5u51_VQ4Rpci0gh6-16" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="h3Jj5u51_VQ4Rpci0gh6-9" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" source="h3Jj5u51_VQ4Rpci0gh6-11" target="h3Jj5u51_VQ4Rpci0gh6-32" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="h3Jj5u51_VQ4Rpci0gh6-10" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="h3Jj5u51_VQ4Rpci0gh6-11" target="h3Jj5u51_VQ4Rpci0gh6-34" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="h3Jj5u51_VQ4Rpci0gh6-11" value="&lt;font style=&quot;font-size: 10px&quot;&gt;&lt;font&gt;&lt;div&gt;&lt;/div&gt;&lt;/font&gt;this.&lt;b&gt;accessDecisionManager&lt;/b&gt;.decide(&lt;br&gt;authenticated, object, attributes);&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;上面了获取了&lt;b&gt;认证信息&lt;/b&gt;和&lt;b&gt;访问权限要求&lt;/b&gt;，&lt;br&gt;执行&lt;b&gt;访问权限判定&lt;/b&gt;（鉴权）&lt;/font&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxGeometry x="2341" y="5280" width="200" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="h3Jj5u51_VQ4Rpci0gh6-12" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;fontColor=#007FFF;endArrow=classic;endFill=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" source="h3Jj5u51_VQ4Rpci0gh6-27" target="h3Jj5u51_VQ4Rpci0gh6-13" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="2061" y="5230.000000000001" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="h3Jj5u51_VQ4Rpci0gh6-13" value="&lt;font style=&quot;font-size: 10px&quot;&gt;&lt;font style=&quot;font-size: 10px&quot;&gt;&lt;div&gt;&lt;/div&gt;&lt;/font&gt;super.&lt;b&gt;afterInvocation&lt;/b&gt;(token, null);&lt;br&gt;finally:&lt;br&gt;super.finallyInvocation(token);&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="2100" y="5280" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="h3Jj5u51_VQ4Rpci0gh6-14" value="&lt;font style=&quot;font-size: 10px&quot;&gt;&lt;font&gt;&lt;div&gt;&lt;/div&gt;&lt;/font&gt;catch &lt;b&gt;AccessDeniedException&lt;/b&gt;:&amp;nbsp;&lt;br&gt;发布 AuthorizationFailureEvent&lt;br&gt;然后重新抛 throw&amp;nbsp;&lt;b&gt;AccessDeniedException&lt;/b&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxGeometry x="2581" y="5910" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="h3Jj5u51_VQ4Rpci0gh6-15" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;fontColor=#007FFF;endArrow=classic;endFill=1;" parent="1" source="h3Jj5u51_VQ4Rpci0gh6-16" target="h3Jj5u51_VQ4Rpci0gh6-19" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="h3Jj5u51_VQ4Rpci0gh6-16" value="&lt;font&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;&lt;font&gt;&lt;div&gt;&lt;/div&gt;&lt;/font&gt;发布 AuthorizedEvent&lt;/span&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="2342" y="6020" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="h3Jj5u51_VQ4Rpci0gh6-17" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;fontColor=#007FFF;endArrow=classic;endFill=1;" parent="1" source="h3Jj5u51_VQ4Rpci0gh6-19" target="h3Jj5u51_VQ4Rpci0gh6-23" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="h3Jj5u51_VQ4Rpci0gh6-18" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="h3Jj5u51_VQ4Rpci0gh6-19" target="h3Jj5u51_VQ4Rpci0gh6-78" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="h3Jj5u51_VQ4Rpci0gh6-19" value="&lt;font&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;&lt;font&gt;&lt;div&gt;&lt;/div&gt;&lt;/font&gt;Authentication runAs = this.&lt;b&gt;runAsManager&lt;/b&gt;.&lt;b&gt;buildRunAs&lt;/b&gt;(&lt;br&gt;authenticated, object, attributes);&lt;/span&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="2341.5" y="6100" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="h3Jj5u51_VQ4Rpci0gh6-20" value="Y" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;fontColor=#007FFF;endArrow=classic;endFill=1;" parent="1" source="h3Jj5u51_VQ4Rpci0gh6-23" target="h3Jj5u51_VQ4Rpci0gh6-24" edge="1">
+          <mxGeometry x="0.425" relative="1" as="geometry">
+            <mxPoint x="1" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="h3Jj5u51_VQ4Rpci0gh6-21" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" source="h3Jj5u51_VQ4Rpci0gh6-23" target="h3Jj5u51_VQ4Rpci0gh6-26" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="h3Jj5u51_VQ4Rpci0gh6-22" value="&lt;font color=&quot;#007fff&quot;&gt;N&lt;/font&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="h3Jj5u51_VQ4Rpci0gh6-21" vertex="1" connectable="0">
+          <mxGeometry x="-0.15" y="2" relative="1" as="geometry">
+            <mxPoint x="-3" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="h3Jj5u51_VQ4Rpci0gh6-23" value="&lt;font style=&quot;font-size: 10px&quot;&gt;runAs == null&lt;/font&gt;" style="rhombus;whiteSpace=wrap;html=1;rounded=1;" parent="1" vertex="1">
+          <mxGeometry x="2401" y="6180" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="h3Jj5u51_VQ4Rpci0gh6-24" value="&lt;font style=&quot;font-size: 10px&quot;&gt;return new &lt;b&gt;InterceptorStatusToken&lt;/b&gt;(&lt;br&gt;SecurityContextHolder.getContext(), &lt;br&gt;false, attributes, object);&lt;/font&gt;" style="whiteSpace=wrap;html=1;rounded=1;arcSize=12;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxGeometry x="2581" y="6190" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="h3Jj5u51_VQ4Rpci0gh6-25" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="h3Jj5u51_VQ4Rpci0gh6-26" target="h3Jj5u51_VQ4Rpci0gh6-79" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="h3Jj5u51_VQ4Rpci0gh6-26" value="&lt;div style=&quot;font-size: 8px&quot;&gt;&lt;div&gt;SecurityContext origCtx = SecurityContextHolder.getContext();&lt;/div&gt;&lt;div&gt;SecurityContextHolder.&lt;b&gt;setContext&lt;/b&gt;(SecurityContextHolder&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre&quot;&gt;&#x9;&lt;/span&gt;.createEmptyContext());&lt;/div&gt;&lt;div&gt;SecurityContextHolder.getContext().&lt;b&gt;setAuthentication&lt;/b&gt;(runAs);&lt;/div&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;rounded=1;align=left;arcSize=9;" parent="1" vertex="1">
+          <mxGeometry x="2321" y="6300" width="240" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="h3Jj5u51_VQ4Rpci0gh6-27" value="&lt;font&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;&quot;&gt;&lt;div&gt;&lt;/div&gt;&lt;/font&gt;fi.getChain().doFilter(fi.getRequest(), fi.getResponse());&lt;/font&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="2100" y="5200" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="h3Jj5u51_VQ4Rpci0gh6-28" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" source="h3Jj5u51_VQ4Rpci0gh6-29" target="h3Jj5u51_VQ4Rpci0gh6-6" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="h3Jj5u51_VQ4Rpci0gh6-29" value="&lt;font style=&quot;font-size: 10px;&quot;&gt;&lt;font&gt;&lt;div&gt;&lt;/div&gt;&lt;/font&gt;&lt;div&gt;Collection&amp;lt;ConfigAttribute&amp;gt; attributes = this.&lt;b&gt;obtainSecurityMetadataSource&lt;/b&gt;()&lt;/div&gt;&lt;div&gt;.getAttributes(object);&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;object 是 FilterInvocation，这里是获取 object 内请求对应的配置属性（访问权限）&lt;/font&gt;&lt;/div&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="2341" y="5120" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="h3Jj5u51_VQ4Rpci0gh6-30" value="&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;就是查 metadataSource 中当前请求URL对应的&lt;br&gt;ConfigAttrubute&lt;br&gt;比如 /oauth/token &lt;b&gt;访问权限要求&lt;/b&gt;&lt;br&gt;{SecurityConfig@8170} &quot;&lt;b&gt;fullyAuthenticated&lt;/b&gt;&quot;&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
+          <mxGeometry x="2543" y="5115" width="230" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="h3Jj5u51_VQ4Rpci0gh6-31" value="&lt;font style=&quot;font-size: 10px;&quot;&gt;&lt;font&gt;&lt;div&gt;&lt;/div&gt;&lt;/font&gt;&lt;div style=&quot;&quot;&gt;Authentication authentication = SecurityContextHolder.getContext()&lt;/div&gt;&lt;div style=&quot;&quot;&gt;.getAuthentication();&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;从安全上下文中读取认证信息&lt;/font&gt;&lt;/div&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="2581" y="5200" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="h3Jj5u51_VQ4Rpci0gh6-32" value="&lt;font style=&quot;font-size: 10px&quot;&gt;鉴权通过？&lt;/font&gt;" style="rhombus;whiteSpace=wrap;html=1;rounded=1;" parent="1" vertex="1">
+          <mxGeometry x="2400.5" y="5900" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="h3Jj5u51_VQ4Rpci0gh6-33" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" source="h3Jj5u51_VQ4Rpci0gh6-34" target="h3Jj5u51_VQ4Rpci0gh6-39" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="h3Jj5u51_VQ4Rpci0gh6-34" value="&lt;font style=&quot;font-size: 10px;&quot;&gt;for (AccessDecisionVoter voter : getDecisionVoters())&lt;br&gt;&lt;/font&gt;" style="whiteSpace=wrap;html=1;rounded=1;align=center;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
+          <mxGeometry x="2581" y="5305" width="200" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="h3Jj5u51_VQ4Rpci0gh6-35" value="AffirmativeBased" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
+          <mxGeometry x="2626" y="5275" width="110" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="h3Jj5u51_VQ4Rpci0gh6-36" value="&lt;font style=&quot;font-size: 10px;&quot;&gt;for end&lt;br&gt;&lt;/font&gt;" style="whiteSpace=wrap;html=1;rounded=1;align=center;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
+          <mxGeometry x="2581" y="5860" width="200" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="h3Jj5u51_VQ4Rpci0gh6-37" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" source="h3Jj5u51_VQ4Rpci0gh6-39" target="h3Jj5u51_VQ4Rpci0gh6-41" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="h3Jj5u51_VQ4Rpci0gh6-38" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="h3Jj5u51_VQ4Rpci0gh6-39" target="h3Jj5u51_VQ4Rpci0gh6-48" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="h3Jj5u51_VQ4Rpci0gh6-39" value="&lt;font style=&quot;font-size: 10px;&quot;&gt;int result = voter.vote(authentication, object, configAttributes);&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;投票3种结果：GRANTED(赞成)、ABSTAIN（弃权）、DENIED（拒绝）&lt;/font&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="2581" y="5360" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="h3Jj5u51_VQ4Rpci0gh6-40" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" source="h3Jj5u51_VQ4Rpci0gh6-41" target="h3Jj5u51_VQ4Rpci0gh6-43" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="h3Jj5u51_VQ4Rpci0gh6-41" value="&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font style=&quot;font-size: 9px;&quot;&gt;switch (result) {&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font style=&quot;font-size: 9px;&quot;&gt;case AccessDecisionVoter.ACCESS_GRANTED:&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font style=&quot;font-size: 9px;&quot;&gt;&amp;nbsp; &amp;nbsp; return;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font style=&quot;font-size: 9px;&quot;&gt;case AccessDecisionVoter.ACCESS_DENIED:&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font style=&quot;font-size: 9px;&quot;&gt;&amp;nbsp; &amp;nbsp; deny++;&amp;nbsp;&lt;/font&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;break;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font style=&quot;font-size: 9px;&quot;&gt;default:&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font style=&quot;font-size: 9px;&quot;&gt;&amp;nbsp; &amp;nbsp; break;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font style=&quot;font-size: 9px;&quot;&gt;}&lt;/font&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;arcSize=7;" parent="1" vertex="1">
+          <mxGeometry x="2581" y="5560" width="200" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="h3Jj5u51_VQ4Rpci0gh6-42" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" source="h3Jj5u51_VQ4Rpci0gh6-43" target="h3Jj5u51_VQ4Rpci0gh6-46" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="h3Jj5u51_VQ4Rpci0gh6-43" value="&lt;font style=&quot;font-size: 10px;&quot;&gt;if (deny &amp;gt; 0) {&lt;br&gt;&amp;nbsp; throw new &lt;b&gt;AccessDeniedException&lt;/b&gt;(...)&lt;br&gt;}&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;" parent="1" vertex="1">
+          <mxGeometry x="2581" y="5670" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="h3Jj5u51_VQ4Rpci0gh6-44" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" source="h3Jj5u51_VQ4Rpci0gh6-46" target="h3Jj5u51_VQ4Rpci0gh6-36" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="h3Jj5u51_VQ4Rpci0gh6-45" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="h3Jj5u51_VQ4Rpci0gh6-46" target="h3Jj5u51_VQ4Rpci0gh6-77" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="h3Jj5u51_VQ4Rpci0gh6-46" value="&lt;font style=&quot;font-size: 10px;&quot;&gt;checkAllowIfAllAbstainDecisions();&lt;br&gt;&lt;span style=&quot;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;&amp;nbsp;所有Voter都没有投ACCESS_GRANTED和ACCESS_DENIED，5.1.7版本暂时是&lt;/font&gt;&lt;/span&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=center;" parent="1" vertex="1">
+          <mxGeometry x="2581" y="5770" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="h3Jj5u51_VQ4Rpci0gh6-47" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" source="h3Jj5u51_VQ4Rpci0gh6-48" target="h3Jj5u51_VQ4Rpci0gh6-54" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2921" y="5430" />
+              <mxPoint x="2921" y="5430" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="h3Jj5u51_VQ4Rpci0gh6-48" value="&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;WebExpressionConfigAttribute weca = &lt;b&gt;findConfigAttribute&lt;/b&gt;(attributes);&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;if (weca == null) {&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp; &amp;nbsp; return &lt;b&gt;ACCESS_ABSTAIN&lt;/b&gt;;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;}&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;&lt;b&gt;访问权限要求为空就投弃权票&lt;/b&gt;&lt;/font&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;arcSize=9;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="2821" y="5350" width="200" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="h3Jj5u51_VQ4Rpci0gh6-49" value="&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;&lt;b&gt;认证信息：&lt;/b&gt;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;authentication = {UsernamePasswordAuthenticationToken@8757}&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;&amp;nbsp;&lt;b&gt;principal&lt;/b&gt; = {User@8760}&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;&amp;nbsp; password = null&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;&amp;nbsp; username = &quot;client-gateway&quot;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;&amp;nbsp; authorities = {Collections$UnmodifiableSet@8766}&amp;nbsp; size = 0&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;&amp;nbsp; accountNonExpired = true&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;&amp;nbsp; accountNonLocked = true&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;&amp;nbsp; credentialsNonExpired = true&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;&amp;nbsp; enabled = true&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;&amp;nbsp;&lt;b&gt;credentials&lt;/b&gt; = null&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;&amp;nbsp;&lt;b&gt;authorities&lt;/b&gt; = {Collections$UnmodifiableRandomAccessList@8761}&amp;nbsp; size = 0&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;&amp;nbsp;&lt;b&gt;details&lt;/b&gt; = {WebAuthenticationDetails@8762}&amp;nbsp;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;&amp;nbsp;&lt;b&gt;authenticated&lt;/b&gt; = true&lt;/font&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
+          <mxGeometry x="2221" y="5360" width="370" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="h3Jj5u51_VQ4Rpci0gh6-50" value="&lt;font style=&quot;font-size: 10px;&quot;&gt;WebExpressionVoter&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;测试案例中只注册了这个Voter&lt;/font&gt;&lt;br&gt;&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
+          <mxGeometry x="2846" y="5310" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="h3Jj5u51_VQ4Rpci0gh6-51" value="&lt;font style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;&lt;b&gt;权限判定规则：&lt;br&gt;&lt;/b&gt;1. 有任一一个Voter投ACCESS_GRANTED就认定是权限判定通过；&lt;br&gt;2. 若没有Voter投ACCESS_GRANTED, 有任一Voter投&lt;/font&gt;&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;ACCESS_DENIED就认定权限判定不通过，抛AccessDeniedException；&lt;br&gt;&lt;/font&gt;&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;3. 所有Voter都投ABSTAIN弃权，执行加持判定&amp;nbsp;&lt;/font&gt;&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;checkAllowIfAllAbstainDecisions()，默认全弃权是不通过&lt;/font&gt;&lt;br&gt;&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="2221" y="5620" width="330" height="105" as="geometry" />
+        </mxCell>
+        <mxCell id="h3Jj5u51_VQ4Rpci0gh6-52" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="h3Jj5u51_VQ4Rpci0gh6-54" target="h3Jj5u51_VQ4Rpci0gh6-57" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="h3Jj5u51_VQ4Rpci0gh6-53" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="h3Jj5u51_VQ4Rpci0gh6-54" target="h3Jj5u51_VQ4Rpci0gh6-63" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="h3Jj5u51_VQ4Rpci0gh6-54" value="&lt;font style=&quot;font-size: 10px;&quot;&gt;&lt;div style=&quot;&quot;&gt;EvaluationContext ctx = expressionHandler&lt;/div&gt;&lt;div style=&quot;&quot;&gt;.&lt;b&gt;createEvaluationContext&lt;/b&gt;(&lt;span style=&quot;background-color: initial;&quot;&gt;authentication,fi);&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;&quot;&gt;ctx = weca.postProcess(ctx, fi);&lt;/span&gt;&lt;/div&gt;&lt;font color=&quot;#007fff&quot;&gt;创建评估上下文,&amp;nbsp; 这里对SpEL做了封装&lt;/font&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxGeometry x="2821" y="5450" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="h3Jj5u51_VQ4Rpci0gh6-55" value="" style="shape=curlyBracket;whiteSpace=wrap;html=1;rounded=1;labelPosition=left;verticalLabelPosition=middle;align=right;verticalAlign=middle;" parent="1" vertex="1">
+          <mxGeometry x="2551" y="5560" width="20" height="270" as="geometry" />
+        </mxCell>
+        <mxCell id="h3Jj5u51_VQ4Rpci0gh6-56" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="h3Jj5u51_VQ4Rpci0gh6-57" target="h3Jj5u51_VQ4Rpci0gh6-60" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="h3Jj5u51_VQ4Rpci0gh6-57" value="&lt;font style=&quot;font-size: 10px;&quot;&gt;&lt;div style=&quot;&quot;&gt;&lt;/div&gt;&lt;div&gt;return ExpressionUtils.&lt;b&gt;evaluateAsBoolean&lt;/b&gt;(&lt;/div&gt;&lt;div&gt;weca.getAuthorizeExpression(), ctx) ? ACCESS_GRANTED&lt;/div&gt;&lt;div&gt;: ACCESS_DENIED;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;结合认证信息和权限要求评估结果&lt;/font&gt;&lt;/div&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxGeometry x="2821" y="5690" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="h3Jj5u51_VQ4Rpci0gh6-58" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="h3Jj5u51_VQ4Rpci0gh6-60" target="h3Jj5u51_VQ4Rpci0gh6-74" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="h3Jj5u51_VQ4Rpci0gh6-59" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="h3Jj5u51_VQ4Rpci0gh6-60" target="h3Jj5u51_VQ4Rpci0gh6-81" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="h3Jj5u51_VQ4Rpci0gh6-60" value="&lt;font style=&quot;&quot;&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;return ((Boolean) expr.&lt;b&gt;getValue&lt;/b&gt;(ctx, Boolean.class)).booleanValue();&lt;/font&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;font-size: 10px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;执行表达式获取结果&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+          <mxGeometry x="3061" y="5690" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="h3Jj5u51_VQ4Rpci0gh6-61" value="&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;&lt;b&gt;理解这部分需要对SpEL用法有所了解&lt;/b&gt;&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
+          <mxGeometry x="3066" y="5420" width="190" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="h3Jj5u51_VQ4Rpci0gh6-62" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="h3Jj5u51_VQ4Rpci0gh6-63" target="h3Jj5u51_VQ4Rpci0gh6-66" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="h3Jj5u51_VQ4Rpci0gh6-63" value="&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;SecurityExpressionOperations root = createSecurityExpressionRoot(&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;authentication,&amp;nbsp;&amp;nbsp;&lt;span style=&quot;background-color: initial;&quot;&gt;invocation);&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;这个作为SpEL上下文根对象，即表达式执行基于这个对象&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;&quot;&gt;&lt;/span&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="3061" y="5450" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="h3Jj5u51_VQ4Rpci0gh6-64" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="h3Jj5u51_VQ4Rpci0gh6-66" target="h3Jj5u51_VQ4Rpci0gh6-68" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="3301" y="5560" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="h3Jj5u51_VQ4Rpci0gh6-65" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="h3Jj5u51_VQ4Rpci0gh6-66" target="h3Jj5u51_VQ4Rpci0gh6-70" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="h3Jj5u51_VQ4Rpci0gh6-66" value="&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;div&gt;StandardEvaluationContext ctx = &lt;b&gt;createEvaluationContextInternal&lt;/b&gt;(&lt;/div&gt;&lt;div&gt;authentication,invocation);&lt;/div&gt;&lt;div&gt;ctx.&lt;b&gt;setBeanResolver&lt;/b&gt;(br);&lt;/div&gt;&lt;div&gt;ctx.&lt;b&gt;setRootObject&lt;/b&gt;(root);&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="3061" y="5530" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="h3Jj5u51_VQ4Rpci0gh6-67" value="&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;root = {&lt;b&gt;WebSecurityExpressionRoot&lt;/b&gt;@7659}&amp;nbsp;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;&amp;nbsp;request = {HttpServlet3RequestFactory$Servlet3SecurityContextHolderAwareRequestWrapper@7682}&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;&amp;nbsp;&lt;b&gt;authentication&lt;/b&gt; = {UsernamePasswordAuthenticationToken@7627}&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;&amp;nbsp;&lt;b&gt;trustResolver&lt;/b&gt; = {AuthenticationTrustResolverImpl@7044}&amp;nbsp;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;&amp;nbsp;&lt;b&gt;roleHierarchy&lt;/b&gt; = null&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;&amp;nbsp;&lt;b&gt;roles&lt;/b&gt; = null&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;&amp;nbsp;defaultRolePrefix = &quot;ROLE_&quot;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;&amp;nbsp;permitAll = true&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;&amp;nbsp;denyAll = false&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;&amp;nbsp;&lt;b&gt;permissionEvaluator&lt;/b&gt; = {DenyAllPermissionEvaluator@7049}&amp;nbsp;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;&amp;nbsp;read = &quot;read&quot;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;&amp;nbsp;write = &quot;write&quot;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;&amp;nbsp;create = &quot;create&quot;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;&amp;nbsp;delete = &quot;delete&quot;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;&amp;nbsp;admin = &quot;administration&quot;&lt;/font&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
+          <mxGeometry x="3271" y="5320" width="480" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="h3Jj5u51_VQ4Rpci0gh6-68" value="&lt;div style=&quot;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;return new &lt;b&gt;StandardEvaluationContext&lt;/b&gt;();&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+          <mxGeometry x="3301" y="5530" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="h3Jj5u51_VQ4Rpci0gh6-69" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="h3Jj5u51_VQ4Rpci0gh6-70" target="h3Jj5u51_VQ4Rpci0gh6-71" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="h3Jj5u51_VQ4Rpci0gh6-70" value="&lt;div style=&quot;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;ctx = weca.postProcess(ctx, fi);&lt;/font&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;装饰器模式给ctx拓展&lt;b&gt;查询请求变量&lt;/b&gt;的方法&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="3061" y="5610" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="h3Jj5u51_VQ4Rpci0gh6-71" value="&lt;div style=&quot;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;new DelegatingEvaluationContext(context) {&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;font-size: 10px; background-color: initial;&quot;&gt;...}&lt;/span&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="3301" y="5610" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="h3Jj5u51_VQ4Rpci0gh6-72" value="&lt;font style=&quot;font-size: 10px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;比如 /oauth/token 权限要求SpEL表达式是 &quot;fullyAuthenticated&quot;&lt;br&gt;这种写法看起来像是属性，但是在根对象中并没有这个属性，&lt;br&gt;但是有一个方法 boolean &lt;b&gt;isFullyAuthenticated&lt;/b&gt;(); 猜测是自动拼接getter方法并调用&lt;br&gt;经测试确实会调用此方法&lt;/font&gt;&lt;br&gt;&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
+          <mxGeometry x="3061" y="5750" width="390" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="h3Jj5u51_VQ4Rpci0gh6-73" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="h3Jj5u51_VQ4Rpci0gh6-74" target="h3Jj5u51_VQ4Rpci0gh6-75" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="h3Jj5u51_VQ4Rpci0gh6-74" value="&lt;font style=&quot;font-size: 10px;&quot;&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp;&lt;b&gt;WebSecurityExpressionRoot&lt;/b&gt;#&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;b&gt;isFullyAuthenticated&lt;/b&gt;()&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;以&amp;nbsp;/oauth/token 为例，SpEL表达式实际执行的是此方法&lt;/font&gt;&lt;/div&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="3301" y="5690" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="h3Jj5u51_VQ4Rpci0gh6-75" value="&lt;font style=&quot;font-size: 9px;&quot;&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;div&gt;return !trustResolver.isAnonymous(authentication)&lt;/div&gt;&lt;div&gt;&amp;amp;&amp;amp; !trustResolver.isRememberMe(authentication);&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;认证用户信息不是匿名用户信息也不是RememberMe信息&lt;/font&gt;&lt;/div&gt;&lt;/div&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="3541" y="5690" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="h3Jj5u51_VQ4Rpci0gh6-76" value="&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;此处可见 &lt;b&gt;fullyAuthenticated&lt;/b&gt; 表达&lt;br&gt;&lt;b&gt;除匿名或RememberMe外已经认证&lt;/b&gt;&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
+          <mxGeometry x="3741" y="5700" width="180" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="h3Jj5u51_VQ4Rpci0gh6-77" value="&lt;font style=&quot;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;if (!this.&lt;b&gt;isAllowIfAllAbstainDecisions&lt;/b&gt;())&lt;br&gt;&lt;/font&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;throw new AccessDeniedException(...);&lt;/font&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=center;" parent="1" vertex="1">
+          <mxGeometry x="2821" y="5770" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="h3Jj5u51_VQ4Rpci0gh6-78" value="&lt;font style=&quot;font-size: 10px;&quot;&gt;&lt;span style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;/div&gt;&lt;/font&gt;&lt;/span&gt;此DEMO默认走的NullRunAsManager&lt;br&gt;返回null&lt;br style=&quot;font-size: 10px;&quot;&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" parent="1" vertex="1">
+          <mxGeometry x="2581" y="6100" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="h3Jj5u51_VQ4Rpci0gh6-79" value="&lt;div style=&quot;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;return new &lt;b&gt;InterceptorStatusToken&lt;/b&gt;(origCtx, true, attributes, object);&lt;/font&gt;&lt;br&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;rounded=1;align=center;arcSize=12;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxGeometry x="2340" y="6380" width="201" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="h3Jj5u51_VQ4Rpci0gh6-80" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="h3Jj5u51_VQ4Rpci0gh6-81" target="h3Jj5u51_VQ4Rpci0gh6-82" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="h3Jj5u51_VQ4Rpci0gh6-81" value="&lt;font style=&quot;&quot;&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp;&lt;b&gt;WebSecurityExpressionRoot&lt;/b&gt;#&lt;/div&gt;&lt;b style=&quot;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;isAuthenticated&lt;/font&gt;&lt;span style=&quot;font-size: 11px;&quot;&gt;()&lt;br&gt;&lt;/span&gt;&lt;/b&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;以&amp;nbsp;/oauth/check_token 为例，SpEL表达式实际执行的是此方法&lt;/font&gt;&lt;/div&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="3301" y="5820" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="h3Jj5u51_VQ4Rpci0gh6-82" value="&lt;font style=&quot;&quot;&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;div style=&quot;&quot;&gt;&lt;font size=&quot;1&quot;&gt;return !isAnonymous();&lt;/font&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;认证用户信息不是匿名用户信息&lt;/font&gt;&lt;/div&gt;&lt;/div&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="3541" y="5820" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="h3Jj5u51_VQ4Rpci0gh6-83" value="&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;此处可见 a&lt;b&gt;uthenticated&lt;/b&gt; 表达&lt;br&gt;&lt;b&gt;除匿名外已经认证&lt;/b&gt;&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
+          <mxGeometry x="3756" y="5830" width="150" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="WQX65oTl6IUPl4StOvLZ-1" value="&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;&lt;b&gt;重新抛的异常会被ExceptionTranslationFilter 抓取&lt;br&gt;即可以在&amp;nbsp;ExceptionTranslationFilter 中实现鉴权失败的处理&lt;/b&gt;&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
+          <mxGeometry x="2790" y="5920" width="290" height="40" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

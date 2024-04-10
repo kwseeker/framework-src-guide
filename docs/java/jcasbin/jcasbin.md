@@ -130,7 +130,6 @@ policy.csv，定义 policy_definition 中的策略集合。
 
 ```csv
 p, alice, data1, read		# alice 可以读 data1, 对应 p = sub, obj, act，即 alice(sub) data1(obj) read(act)
-p, 
 p, bob, data2, write		# bob 可以写 data2
 ```
 
@@ -202,11 +201,15 @@ JCasbin的访问控制（权限校验）逻辑全在 `Enforcer#enforce()` 这个
 | [SyncedEnforcer](https://github.com/casbin/casbin/blob/master/enforcer_synced.go) | Casbin | `SyncedEnforcer`基于`Enforcer`，提供同步访问。 它是线程安全的。 |
 | [SyncedCachedEnforcer](https://github.com/casbin/casbin/blob/master/enforcer_cached_synced.go) | Casbin | `SyncedCachedEnforcer`包装了`Enforcer`，提供决策同步缓存。   |
 
-### 模型数据的存储策略
+### 策略数据的存储策略
 
-JCasbin 支持文件、JDBC、Hibernate、MyBatis、MongoDB、Redis等等的适配器。
+JCasbin 支持文件、JDBC、Hibernate、MyBatis、MongoDB、Redis等等的[适配器](https://casbin.org/zh/docs/adapters)。
 
-注意使用文件存储，分布式场景需要考虑多实例之间的一致性。
+注意：**JCasbin 的模型和策略数据会在 Enforcer 初始化时加载到内存，权限校验时并不会和数据库交互**，这样虽然性能很高但是需要在权限发生变动后提供额外的处理来保持内存中数据和数据源中的数据保持一致。
+
+比如在管理页面添加、删除、修改策略数据后需要调用相关的API将变更的数据提交到内存，然后调用savePolicy() 将数据保存到数据库。
+
+> 看有开源项目还额外建了一些表存储策略数据，可能嫌弃默认的表，不方便管理。
 
 ### Casbin执行器多实例之间的一致性
 
@@ -217,11 +220,99 @@ Casbin提供了两种方式：
 + Watchers: 借助分布式消息系统实现，比如 Etcd、Redis、Kafka。
 + Dispatchers: 调度器提供了一种同步策略增量更改的方式，约定基于一致性算法，如Raft，以确保所有执行器实例的一致性。 通过调度器，用户可以轻松建立分布式集群。
 
+#### Redis Watcher
+
+`casbin-spring-boot-starter` 默认内置了 [lettuce-redis-watcher](https://github.com/jcasbin/lettuce-redis-watcher)（仅仅400行代码），基于Lettuce客户端以及Redis的发布订阅实现，**所有执行器实例都订阅同一个主题，其中任意一个执行器实例上有修改策略数据就通过此主体发布事件，然后将数据同步到其他执行器实例**。
+
+`casbin-spring-boot-starter` 将 Redis Watcher 的功能都封装好了，基本不需要自己再额外修改，使用上是无感的，比如调用 addPolicy() 等方法，它会自动发布事件给其他执行器，其他执行器也会自动进行同步。
+
+不过貌似 addPolicy() 保存到数据库时是先清空数据库再保存，
+
+不过如果想修改策略主题，可以通过 `casbin.policyTopic`修改。
+
+> Lettuce是一个基于netty和Reactor的可扩展线程安全的Redis客户端。
+
+开启 Redis Watcher 需要添加下面依赖和配置
+
+依赖：
+
+```xml
+<-- 因为casbin-spring-boot-starter中这两个依赖的依赖范围是compileOnly，没有包含到starter的jar包中 -->
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-data-redis</artifactId>
+</dependency>
+<dependency>
+    <groupId>org.casbin</groupId>
+    <artifactId>jcasbin-redis-watcher</artifactId>
+    <version>1.4.1</version>
+</dependency>
+```
+
+配置：
+
+```yml
+spring:
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    password:
+    database: 0
+    timeout: 6000
+    lettuce:
+      pool:
+        enabled: true
+        max-idle: 10
+        max-wait: 3000
+        min-idle: 0
+        max-active: 8
+        time-between-eviction-runs: 2000
+```
+
 
 
 ## Spring Boot 整合
 
 看 JCasbin 已经提供了 Spring Boot Starter，参考：[casbin-spring-boot-starter](https://github.com/jcasbin/casbin-spring-boot-starter)。
+
+配置：
+
+```yaml
+casbin:
+    # 是否启用 Casbin，默认为启用。
+    enableCasbin: true
+	# 是否使用同步 Enforcer，默认为 false。
+    useSyncedEnforcer: false
+	# 是否启用自动策略保存，如果适配器支持此功能，则默认启用。
+    autoSave: true
+    # 存储类型 [file, jdbc]，目前支持的 jdbc 数据库有 [mysql (mariadb), h2, oracle, postgresql, db2]。
+    # 欢迎编写并提交您正在使用的 jdbc 适配器，参见：org.casbin.adapter.OracleAdapter
+    # jdbc 适配器将主动查找您在 spring.datasource 中配置的数据源信息。
+    # 默认使用 jdbc，并使用内置的 h2 数据库进行内存存储。
+    storeType: jdbc
+    # 当使用 jdbc 时自定义策略表名称，默认为 casbin_rule。
+    tableName: casbin_rule
+	# 数据源初始化策略 [create (自动创建数据表，如果已创建则不再初始化), never (始终不初始化)]
+    initializeSchema: create
+	# 本地模型配置文件地址，默认读取位置：classpath: casbin/model.conf
+    model: classpath:casbin/model.conf
+	# 如果在默认位置未找到模型配置文件并且 casbin.model 设置不正确，则使用内置的默认 rbac 模型，默认生效。
+    useDefaultModelIfModelNotSetting: true
+    # 本地策略配置文件地址，默认读取位置：classpath: casbin/policy.csv
+    #如果在默认位置未找到配置文件，则抛出异常。
+    #此配置项仅在 casbin.storeType 设置为 file 时生效。
+    policy: classpath:casbin/policy.csv
+    # 是否启用 CasbinWatcher 机制，默认不启用。
+    # 如果启用该机制，casbin.storeType 必须为 jdbc，否则配置无效。
+    enableWatcher: false
+  	# CasbinWatcher 通知模式，默认使用 Redis 进行通知同步，暂时仅支持 Redis。
+    # 在启用 Watcher 后，需要手动添加 spring-boot-starter-data-redis 依赖。
+    watcherType: redis
+    policyTopic: CASBIN_POLICY_TOPIC
+    exception: 
+    	# 当删除策略失败时抛出异常, 默认false
+    	removePolicyFailed: false
+```
 
 ### 结合官方案例分析
 
