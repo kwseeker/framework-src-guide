@@ -21,6 +21,15 @@ Sentinel 具有以下特征:
 
 原理篇讲。
 
+## 使用流程
+
+1. 引入依赖；
+2. 配置Sentinel的配置参数，主要是规则的数据源、DashBoard（主要用于开发环境）、拦截请求地址（SentinelWebInterceptor默认将请求路由作为资源）等；
+3. 在数据源中配置规则定义（像Nacos这些数据源可以自动将规则推送到各个节点的规则管理器，节点启动时也会主动去拉取一次）；
+4. SentinelWebInterceptor 执行过程中会按 ProcessorSlot 责任链执行各个 ProcessorSlot，进而筛选所有与资源匹配的规则，一一执行规则校验逻辑；
+5. 规则校验不通过会抛出对应的异常，这些异常都继承 BlockException; 
+6. 在MVC统一异常处理中对 BlockException类异常进行处理（当然也可以通过配置BaseWebMvcConfig blockExceptionHandler进行异常处理）。
+
 ## 流量控制
 
 流量控制（flow control），其原理是监控应用流量的 QPS 或并发线程数等指标，当达到指定的阈值时对流量进行控制，以避免被瞬时的流量高峰冲垮，从而保障应用的高可用性。

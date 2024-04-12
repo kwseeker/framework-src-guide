@@ -55,58 +55,52 @@
 + **想了解某一部分源码的逻辑可以结合相应的单元测试代码调试**
 + **检验对源码的熟悉度可以通过尝试从中提取Mini版的框架**
 
-> 下面目录编排参考Github `owesome-java` 和 `owesome-go`。
->
 > 后面列举的框架并非都分析过源码（心有余而力不足），有些只是计划，已经分析过源码的都有文档链接。
 >
 > 有些分析流程图之前记录在其他仓库后续会转移到这里，慢慢补充吧
 
 
 
-## Contents
+## 分类
 
-- [Languages](#languages)
-  - [Java](#java)
-    - [Bean Mapping](#bean-mapping)
-    - [Caching](#caching)
-    - [CLI](#cli)
-    - [Code Generators](#code-generators)
-    - [Configuration](#configuration)
-    - [Database](#database)
-    - [Dependency Injection](#dependency-injection)
-    - [Development](#development)
-    - [Distributed Applications](#distributed-applications)
-    - [Distributed Transactions](#distributed-transactions)
-    - [Geospatial](#geospatial)
-    - [GUI](#gui)
-    - [High Performance](#high-performance)
-    - [HTTP Clients](#http-clients)
-    - [Imagery](#imagery)
-    - [Job Scheduling](#job-scheduling)
-    - [JSON](#json)
-    - [JVM](#jvm)
-    - [Logging](#logging)
-    - [Messaging](#messaging)
-    - [Microservice](#microservice)
-    - [Miscellaneous](#miscellaneous)
-    - [Monitoring](#monitoring)
-    - [Networking](#networking)
-    - [ORM](#orm)
-    - [Reactive libraries](#reactive-libraries)
-    - [SDK](#sdk)
-    - [Search](#search)
-    - [Security](#security)
-    - [Serialization](#serialization)
-    - [Server](#server)
-    - [Template Engine](#template-engine)
-    - [Utility](#utility)
-    - [Version Managers](#version-managers)
-    - [Web Crawling](#web-crawling)
-    - [Web Frameworks](#web-frameworks)
-    - [Workflow Orchestration Engines](#workflow-orchestration-engines)
+- 语言
+  
+  - [Java](#Java)
+  
+    - SDK
+    - 网关
+    - 服务调用
+    - 消息队列
+    - 作业调度
+    - 服务器
+    - Web框架
+    - 微服务框架
+  
+    + 注册中心/配置中心
+    + 服务保障
+  
+    + 链路追踪
+  
+    + 安全框架
+    + ORM框架
+    + 数据库相关
+    + 分布式事务
+    + 搜索引擎
+    + 规则引擎
+    + 工作流引擎
+    + 缓存
+    + 分布式
+    + 命令行
+    + 日志
+    + 工具类
+    + 语法解析器
+  
   - [Go](#go)
-    - [Database]()
-    - [SDK]()
+    
+    - SDK
+    - 注册中心/配置中心
+    - 数据库相关
+  
 - [Resources](#resources)
   - [Books](#books)
 
@@ -114,74 +108,167 @@
 
 ## Java
 
-### Bean Mapping
-
-+ MapStruct
-
-### Caching
-
-+ Caffeine
-+ EhcacheDatabase
-
-### CLI
-
-+ JCommander
-
-### Code Generators
-### Configuration
-### Database
-### Dependency Injection
-### Development
-### Distributed Applications
-### Distributed Transactions
-### Geospatial
-### GUI
-### High Performance
-### HTTP Clients
-### Imagery
-### Job Scheduling
-### JSON
-### JVM
-### Logging
-### Messaging
-### Microservice
-### Miscellaneous
-### Monitoring
-### Networking
-### ORM
-### Reactive libraries
 ### SDK
 
-+ 并发
++ **JVM**
+
++ **并发**
+
   + [CompletableFuture](docs/java/jdk/concurrent/CompletableFuture.md)
+
   + [ForkJoinPool](docs/java/jdk/concurrent/ForkJoinPool.md)
 
+    源码流程图：
 
-### Search
-### Security
+    + [forkjoinpool-workflow.drawio](docs/java/jdk/concurrent/forkjoinpool-workflow.drawio)
 
-处理安全性、身份验证、授权或会话管理的库。
+### 网关
 
-+ [Apache Shiro](docs/java/shiro)
++ **Spring Cloud Gateway**
++ **Zuul**
 
-### Serialization
-### Server
-### Template Engine
-### Utility
-### Version Managers
-### Web Crawling
-### Web Frameworks
-### Workflow Orchestration Engines
+### 服务调用
+
++ **Dubbo**
++ **Feign**
++ **Grpc**
++ **Thift**
+
+### 消息队列
+
++ **Kafka**
++ **RocketMQ**
++ **RabbitMQ**
+
+### 作业调度
+
++ **Elastic-Job**
++ **XXL-Job**
+
+### 服务器
+
++ **Jetty**
++ **Netty**
++ **Tomcat**
+
+### Web框架
+
++ **Spring**
++ **Spring MVC**
++ **Spring Boot**
++ **Spring WebFlux**
+
+### 响应式
+
++ **Reactor**
++ **RxJava**
+
+### 微服务框架
+
++ **Spring Cloud**
+
+### 注册中心/配置中心
+
++ **Apollo**
++ **Nacos**
++ **Zookeeper**
+
+### 服务保障
+
++ [**Sentinel**](docs/java/sentinel/sentinel-workflow.md)
+
+  源码流程图：
+
+  + [sentinel.drawio](docs/java/sentinel/sentinel.drawio)
+  + [sentinel.drawio.png](docs/java/sentinel/sentinel.drawio.png)
+
+### 链路追踪
+
++ **Skywalking**
+
+### 安全框架
+
++ [**Apache Shiro**](docs/java/shiro)
++ **Spring Security**
++ **JCasbin**
+
+### ORM框架
+
++ **Mybatis**
++ **MybatisPlus**
+
+### 数据库相关
+
++ **Canal**
+
+### 分布式事务
+
+### 搜索引擎
+
++ **ElasticSearch**
+
+### 规则引擎
+
++ **Drools**
+
+### 工作流引擎
+
++ **Activiti**
++ **Spring Workflow**
+
+### 缓存
+
++ **Caffeine**
++ **Ehcache**
+
+### 分布式
+
++ **一致性协议**
+
+  + **BRaft**
+
+  + **Raft4J**
+
+  + **JRaft**
+
+### 命令行
+
++ **JCommander**
+
+### 日志
+
++ **Slf4j**
++ **Log4j2**
++ **Logback**
+
+### 工具类
+
++ **Arthas**
++ **EasyExcel**
++ **Fastjson**
++ **Guava**
++ **Hutool**
++ **jvm-sandbox**
++ **MapStruct**
+
+### 语法解析器
+
++ **Antlr**
 
 
 
 ## Go
 
-### Database
-
-+ [Godis](docs/go/godis)
-
 ### SDK
+
+### 注册中心/配置中心
+
++ **Consul**
++ **Etcd**
+
+### 数据库相关
+
++ [**Godis**](docs/go/godis)
 
 
 
