@@ -112,6 +112,30 @@
 
 + **JVM**
 
+  + **HotSpot**
+
+    已经搭建好了源码调试环境（参考：jvm-debug），但是看JVM源码需要很多操作系统系统编程、内核方面的知识，不是短时间就能看明白的，所以暂停了。
+
+    不过Github上有一些简单JVM开源实现，可以参考下以加深对JVM的理解，这里只分析星数最高的一个实现[mini-jvm](#mini-jvm)。
+
+    源码流程图：
+
+    + [jvm8-hotspot.drawio](docs/java/jvm/mini-jvm.drawio) (未完成)
+    + [java-exec-process.drawio](docs/java/jvm/java-exec-process.drawio) (流程概要)
+
+  + [**mini-jvm**](docs/java/jvm/mini-jvm.md)
+
+    代码量较小，很容易理解。不过也仅仅只包含一些很核心的功能实现（.class文件解析、类加载、实例化、Native方法、方法调用、异常处理），GC、多线程、双亲委托、JIT优化等等都没有。
+
+    Github Repo: 
+
+    + [guxingke/mini-jvm](https://github.com/guxingke/mini-jvm)
+
+    源码流程图：
+    
+    + [mini-jvm.drawio](docs/java/jvm/mini-jvm.drawio)
+    + [mini-jvm.drawio.png](docs/java/jvm/mini-jvm.drawio.png)
+
 + **并发**
 
   + **AbstractQueuedSynchronizer**
