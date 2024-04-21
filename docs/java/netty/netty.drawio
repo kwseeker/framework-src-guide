@@ -1,6 +1,6 @@
-<mxfile host="Electron" modified="2024-03-07T12:45:33.936Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.6.5 Chrome/114.0.5735.243 Electron/25.3.1 Safari/537.36" etag="Yi4oqSUJ2i_ILKs5JPY8" version="21.6.5" type="device" pages="2">
+<mxfile host="Electron" modified="2024-04-21T11:23:51.150Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.6.5 Chrome/114.0.5735.243 Electron/25.3.1 Safari/537.36" etag="PvSgW3SVoQYCMlzshowO" version="21.6.5" type="device" pages="2">
   <diagram id="imtYsyNTNiav8lWfhS-_" name="Netty工作流程">
-    <mxGraphModel dx="3533" dy="733" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="0" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+    <mxGraphModel dx="4025" dy="1034" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="0" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -1961,7 +1961,7 @@
         <mxCell id="PHfMGQpCaa9Q0VLSc77i-1" value="&lt;font style=&quot;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;if (isShuttingDown())&lt;br&gt;&lt;/font&gt;&lt;span style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp;closeAll();&lt;/span&gt;&lt;br&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 9px;&quot;&gt;遍历channels Map 执行close&lt;/font&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="2417.5" y="3040" width="125" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="zVjYL98j5o60fpObwo21-1" value="&lt;font style=&quot;font-size: 10px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;像数据分包是由操作系统底层实现的&lt;br style=&quot;font-size: 10px;&quot;&gt;而不是Netty实现的&lt;/font&gt;&lt;br style=&quot;font-size: 10px;&quot;&gt;&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;" vertex="1" parent="1">
+        <mxCell id="zVjYL98j5o60fpObwo21-1" value="&lt;font style=&quot;font-size: 10px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;像数据分包是由操作系统底层实现的&lt;br style=&quot;font-size: 10px;&quot;&gt;而不是Netty实现的&lt;/font&gt;&lt;br style=&quot;font-size: 10px;&quot;&gt;&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;" parent="1" vertex="1">
           <mxGeometry x="3736" y="2819.5" width="180" height="40" as="geometry" />
         </mxCell>
       </root>

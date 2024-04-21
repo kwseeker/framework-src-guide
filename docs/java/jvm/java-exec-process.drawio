@@ -1,6 +1,6 @@
-<mxfile host="Electron" modified="2024-04-19T12:11:34.586Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.6.5 Chrome/114.0.5735.243 Electron/25.3.1 Safari/537.36" etag="Rm6u7Lwg_UmKWHy0Z7wt" version="21.6.5" type="device">
+<mxfile host="Electron" modified="2024-04-20T16:04:23.569Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.6.5 Chrome/114.0.5735.243 Electron/25.3.1 Safari/537.36" etag="FSrNxnfeSJiX_kbaC5q2" version="21.6.5" type="device">
   <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
-    <mxGraphModel dx="1434" dy="879" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1687" dy="1034" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-0" />
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-1" parent="WIyWlLk6GJQsqaUBKTNV-0" />
@@ -446,8 +446,8 @@
         <mxCell id="htxMy5ntLQ7jBSYtlKdf-60" value="" style="swimlane;startSize=0;rounded=1;fontSize=8;fontColor=#3399FF;" parent="-ruLyQqvGVcUohYrsJ2N-5" vertex="1">
           <mxGeometry x="306" y="240" width="194.5" height="100" as="geometry" />
         </mxCell>
-        <mxCell id="htxMy5ntLQ7jBSYtlKdf-61" value="&lt;font color=&quot;#330000&quot; style=&quot;font-size: 12px&quot;&gt;方法区/元空间&lt;/font&gt;&lt;font color=&quot;#330000&quot; style=&quot;font-size: 9px&quot;&gt;（非堆）&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=12;fontColor=#3399FF;" parent="htxMy5ntLQ7jBSYtlKdf-60" vertex="1">
-          <mxGeometry x="10" width="130" height="20" as="geometry" />
+        <mxCell id="htxMy5ntLQ7jBSYtlKdf-61" value="&lt;font color=&quot;#330000&quot; style=&quot;font-size: 12px&quot;&gt;方法区/元空间&lt;/font&gt;&lt;font color=&quot;#330000&quot; style=&quot;font-size: 9px&quot;&gt;（也称非堆）&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=12;fontColor=#3399FF;" parent="htxMy5ntLQ7jBSYtlKdf-60" vertex="1">
+          <mxGeometry x="7.25" y="-5" width="150" height="30" as="geometry" />
         </mxCell>
         <mxCell id="-ruLyQqvGVcUohYrsJ2N-8" value="&lt;p style=&quot;line-height: 0.9&quot;&gt;&lt;font style=&quot;font-size: 10px&quot;&gt;运行时常量池&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size: 8px&quot; color=&quot;#3399ff&quot;&gt;JDK7之前：常量+静态变量+类信息&lt;br&gt;JDK8：将常量和静态变量移到了堆&lt;br&gt;&lt;/font&gt;&lt;/p&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontSize=10;align=center;spacingTop=-1;" parent="htxMy5ntLQ7jBSYtlKdf-60" vertex="1">
           <mxGeometry x="19.5" y="35.25" width="145" height="29.5" as="geometry" />
@@ -456,7 +456,7 @@
           <mxGeometry x="19.5" y="70" width="145" height="19.5" as="geometry" />
         </mxCell>
         <mxCell id="2bGhEhU24zmMQ1zcT7It-3" value="-XX:MetaspaceSize&amp;nbsp; -XX:MaxMetaspaceSize" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=8;fontColor=#3399FF;" parent="htxMy5ntLQ7jBSYtlKdf-60" vertex="1">
-          <mxGeometry y="15.25" width="180" height="20" as="geometry" />
+          <mxGeometry x="7.25" y="15.25" width="180" height="20" as="geometry" />
         </mxCell>
         <mxCell id="htxMy5ntLQ7jBSYtlKdf-69" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.25;entryDx=0;entryDy=0;fontSize=10;fontColor=#3399FF;" parent="-ruLyQqvGVcUohYrsJ2N-5" source="-ruLyQqvGVcUohYrsJ2N-7" target="htxMy5ntLQ7jBSYtlKdf-72" edge="1">
           <mxGeometry relative="1" as="geometry">
@@ -1283,7 +1283,7 @@
         <mxCell id="zOXg5c9DNep9YMhCy3cy-38" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;fontColor=#3399FF;" parent="pate8xdLjIF8RST5-Mpa-139" source="zOXg5c9DNep9YMhCy3cy-25" target="zOXg5c9DNep9YMhCy3cy-7" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="zOXg5c9DNep9YMhCy3cy-25" value="标记-复制算法" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;strokeColor=#ae4132;fillColor=#fad9d5;" parent="pate8xdLjIF8RST5-Mpa-139" vertex="1">
+        <mxCell id="zOXg5c9DNep9YMhCy3cy-25" value="复制算法" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;strokeColor=#ae4132;fillColor=#fad9d5;" parent="pate8xdLjIF8RST5-Mpa-139" vertex="1">
           <mxGeometry x="920" y="160" width="80" height="40" as="geometry" />
         </mxCell>
         <mxCell id="zOXg5c9DNep9YMhCy3cy-46" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;fontColor=#3399FF;" parent="pate8xdLjIF8RST5-Mpa-139" source="zOXg5c9DNep9YMhCy3cy-26" target="zOXg5c9DNep9YMhCy3cy-11" edge="1">
@@ -1346,6 +1346,9 @@
         </mxCell>
         <mxCell id="2Y9607jRNDiNzP6QfdsK-1" value="三色标记算法&lt;br&gt;&lt;font color=&quot;#3399ff&quot;&gt;（上面的标记算法的一种）&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;strokeColor=#ae4132;fillColor=#fad9d5;" parent="pate8xdLjIF8RST5-Mpa-139" vertex="1">
           <mxGeometry x="920" y="440" width="80" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="RjNU_kZA4v_iuPs4BtWb-0" value="&lt;font color=&quot;#007fff&quot;&gt;HotSpot 将垃圾回收拓展到了方法区，因此很多人愿意将方法区也称为&lt;b&gt;永久代&lt;/b&gt;（&amp;nbsp;Permanent Generation）&lt;br&gt;&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="1094" y="1365" width="580" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

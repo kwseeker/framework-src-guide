@@ -22,7 +22,7 @@
 
 + **更好更合理地使用框架**
 
-  几乎所有框架的文档都没法将框架所有功能都讲解清楚。
+  几乎所有框架的文档都没法将框架所有功能的细节都讲解清楚。
 
 + **满足对框架内部工作原理的好奇心，也便于后期出现BUG排查BUG**
 
@@ -83,7 +83,7 @@
   
     + 安全框架
     + ORM框架
-    + 数据库相关
+    + 数据库相关]
     + 分布式事务
     + 搜索引擎
     + 规则引擎
@@ -116,21 +116,24 @@
 
     已经搭建好了源码调试环境（参考：jvm-debug），但是看JVM源码需要很多操作系统系统编程、内核方面的知识，不是短时间就能看明白的，所以暂停了。
 
-    不过Github上有一些简单JVM开源实现，可以参考下以加深对JVM的理解，这里只分析星数最高的一个实现[mini-jvm](#mini-jvm)。
-
     源码流程图：
 
-    + [jvm8-hotspot.drawio](docs/java/jvm/mini-jvm.drawio) (未完成)
+    + [jvm8-hotspot.drawio](docs/java/jvm/jvm8-hotspot.drawio) (未完成)
     + [java-exec-process.drawio](docs/java/jvm/java-exec-process.drawio) (流程概要)
+    + [java-exec-process.drawio.png](docs/java/jvm/java-exec-process.drawio.png)
+
+    > 不过Github上有一些简单JVM开源实现，可以参考下以加深对JVM的理解，这里只分析星数最高的一个实现[mini-jvm](#mini-jvm)。
 
   + [**mini-jvm**](docs/java/jvm/mini-jvm.md)
 
     代码量较小，很容易理解。不过也仅仅只包含一些很核心的功能实现（.class文件解析、类加载、实例化、Native方法、方法调用、异常处理），GC、多线程、双亲委托、JIT优化等等都没有。
 
+    其实感觉对深入理解JVM帮助不是很大，但是比较适合初学者。
+
     Github Repo: 
 
     + [guxingke/mini-jvm](https://github.com/guxingke/mini-jvm)
-
+    
     源码流程图：
     
     + [mini-jvm.drawio](docs/java/jvm/mini-jvm.drawio)
@@ -169,6 +172,18 @@
 
 + **容器类**
 
++ **IO**
+
+  + **NIO**
+
+    源码流程图：
+
+    + [java-nio.drawio](docs/java/jdk/io/java-nio.drawio)
+    + [java-nio.drawio.png](docs/java/jdk/io/java-nio.drawio.png)
+    + [java-nio-overview.png](docs/java/jdk/io/java-nio-overview.png)
+
+    > NIO 使用的多路复用IO模型的逻辑实现其实是在 epoll 这个系统调用里。
+
 ### 网关
 
 + **Spring Cloud Gateway**
@@ -195,7 +210,14 @@
 ### 服务器
 
 + **Jetty**
+
 + **Netty**
+
+  源码流程图：
+
+  + [netty.drawio](docs/java/netty/netty.drawio)
+  + [netty.drawio.png](docs/java/netty/netty.drawio.png)
+
 + **Tomcat**
 
 ### Web框架
