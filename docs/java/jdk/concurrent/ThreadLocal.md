@@ -237,6 +237,10 @@ private void exit() {
 
 + FastThreadLocal (还改进了)
 
+### Spring Security 
+
+比如 SecurityContextHolder 中使用 ThreadLocal 保存以及传递认证信息。
+
 ### 日志
 
 + 链路追踪

@@ -77,13 +77,12 @@
     - 微服务框架
   
     + 注册中心/配置中心
+    + 分布式协调
     + 服务保障
-  
     + 链路追踪
-  
     + 安全框架
     + ORM框架
-    + 数据库相关]
+    + 数据库相关
     + 分布式事务
     + 搜索引擎
     + 规则引擎
@@ -94,7 +93,7 @@
     + 日志
     + 工具类
     + 语法解析器
-  
+    
   - [Go](#go)
     
     - SDK
@@ -126,9 +125,9 @@
 
   + [**mini-jvm**](docs/java/jvm/mini-jvm.md)
 
-    代码量较小，很容易理解。不过也仅仅只包含一些很核心的功能实现（.class文件解析、类加载、实例化、Native方法、方法调用、异常处理），GC、多线程、双亲委托、JIT优化等等都没有。
+    代码量较小，很容易理解。不过也仅仅只包含一些很核心的功能实现（.class文件解析、类加载、实例化、Native方法、方法调用、异常处理），像GC、多线程、双亲委托、JIT优化等等都没有。
 
-    其实感觉对深入理解JVM帮助不是很大，但是比较适合初学者。
+    其实感觉对深入理解JVM帮助不大，但是比较适合初学者，比啃几本干巴巴的JVM书籍好太多了。
 
     Github Repo: 
 
@@ -143,7 +142,7 @@
 
   + **AbstractQueuedSynchronizer**
 
-    源码流程图：
+    源码流程图：CLI
 
     + [AbstractQueuedSynchronizer.drawio](docs/java/jdk/concurrent/AbstractQueuedSynchronizer.drawio)
     + [AbstractQueuedSynchronizer.drawio.png](docs/java/jdk/concurrent/AbstractQueuedSynchronizer.drawio.png)
@@ -170,7 +169,7 @@
     + [ForkjoinPool.drawio](docs/java/jdk/concurrent/ForkjoinPool.drawio)
     + [ForkjoinPool.drawio.png](docs/java/jdk/concurrent/ForkjoinPool.drawio.png)
 
-  + [ThreadLocal](docs/java/jdk/concurrent/ThreadLocal.md)
+  + [**ThreadLocal**](docs/java/jdk/concurrent/ThreadLocal.md)
 
     源码流程图：
 
@@ -193,7 +192,17 @@
 
 ### 网关
 
-+ **Spring Cloud Gateway**
++ **[Spring Cloud Gateway](docs/java/gateway/SpringCloudGateway原理.md)**
+
+  源码流程图：
+
+  + [spring-cloud-gateway.drawio](docs/java/gateway/spring-cloud-gateway.drawio)
+  + [spring-cloud-gateway.drawio.png](docs/java/gateway/spring-cloud-gateway.drawio.png)
+
+  原理简述：
+
+  本质是一个 WebFlux 应用，内部处理逻辑和 Spring MVC 也有点类似，主要也是定义一组请求处理映射（用于定义路由处理，包括一组断言和过滤器），通过断言进行请求与路由的匹配，通过路由的过滤器对请求进行处理（比如：修改路径进行转发）。
+
 + **Zuul**
 
 ### 服务调用
@@ -212,7 +221,20 @@
 ### 作业调度
 
 + **Elastic-Job**
+
 + **XXL-Job**
+
+  源码流程图：
+
+  + [xxl-job.drawio](docs/java/job-schedule/xxl-job.drawio)
+
+  + [xxl-job-executor.drawio.png](docs/java/job-schedule/xxl-job-executor.drawio.png)
+
+    任务执行器工作流程。
+
+  + [xxl-job-admin.drawio.png](docs/java/job-schedule/xxl-job-admin.drawio.png)
+
+    任务管理器工作流程。
 
 ### 服务器
 
@@ -225,18 +247,112 @@
   + [netty.drawio](docs/java/netty/netty.drawio)
   + [netty.drawio.png](docs/java/netty/netty.drawio.png)
 
++ **Reactor-Netty**
+
+  基于 Reactor 对 Netty 的响应式封装。
+
 + **Tomcat**
+
+  原理简述：
+  1、创建一个 Acceptor 线程来接收用户连接，接收到之后扔到 events queue 队列里面，默认情况下只有一个线程来接收；
+  2、创建 Poller 线程，数量 <= 2；Poller 对象是 NIO 的核心，在Poller中，维护了一个 Selector 对象；当 Poller 从队列中取出 Socket 后，注册到该 Selector 中；然后通过遍历 Selector，找出其中可读的 Socket，然后扔到线程池中处理相应请求，这就是典型的NIO多路复用模型。
+  3、扔到线程池中的 SocketProcessorBase 处理请求。
+
+  > 不过 Tomcat 虽然使用了 NIO 模型，只是优化了请求处理流程中部分操作由阻塞转成了非阻塞，比如 “读请求头”、“等待下一个请求”、“SSL握手”；“读请求体”、“写响应头”、“写响应体”依然是阻塞的（有种说法是需要遵循传统的接口规范决定无法对所有操作进行非阻塞改写）。 
+  >
+  > 参考：[Connector Comparsion](https://tomcat.apache.org/tomcat-8.0-doc/config/http.html#/Connector_Comparison)
 
 ### Web框架
 
 + **Spring**
+
+  源码流程图：
+
+  + 基于注解的应用上下文
+
+    + [spring-context.drawio](docs/java/spring/spring-context.drawio)
+
+    + [spring-context.drawio.png](docs/java/spring/spring-context.drawio.png)
+
+  + 事务
+
+    + [spring-transaction.drawio](docs/java/spring/spring-transaction.drawio)
+
+    + [spring-transaction.drawio.png](docs/java/spring/spring-transaction.drawio.png)
+
+  + FactoryBean
+
+    + [spring-beans-factorybean.drawio](docs/java/spring/spring-beans-factorybean.drawio)
+    + [spring-beans-factorybean.drawio.png](docs/java/spring/spring-beans-factorybean.drawio.png)
+
+  + 循环依赖
+
+    + [spring-beans-circular-dependency.drawio](docs/java/spring/spring-beans-circular-dependency.drawio)
+    + [spring-beans-circular-dependency.drawio.png](docs/java/spring/spring-beans-circular-dependency.drawio.png)
+
 + **Spring MVC**
+
+  源码流程图：
+
+  + [spring-mvc.drawio](docs/java/spring/spring-mvc.drawio)
+  + [spring-mvc.drawio.png](docs/java/spring/spring-mvc.drawio.png)
+
+  原理简述：
+
+  本质是向Servlet容器（比如Tomcat）注册了一个名为 `DispatcherServlet` 的Servlet，通过这个类处理HTTP请求。
+
+  1. Tomcat 经过一系列处理  Connector -> Processor -> Valve -> Filter链 -> DispatcherServlet，即最终将请求交给`DispatcherServlet` 处理; 
+
+     > 在 Spring MVC中注册的过滤器在会添加到Filter链。
+
+  2. `DispatcherServlet`先从请求处理器映射中根据请求方法类型、参数、请求头、请求与响应类型等信息匹配请求处理器；
+
+  3. 然后装配上与请求匹配的拦截器链，生成 HandlerExecutionChain，然后根据请求处理器定义方式获取合适的请求处理适配器，常用的是 RequestMappingHandlerAdapter;
+
+     > 不同的Controller定义方式处理方式不同，现在常用的定义方式是通过 @RequestMapping， 对应的请求处理器适配器是 RequestMappingHandlerAdapter。
+
+  4. 处理请求前先遍历执行所有匹配的拦截器的 preHandle()；
+
+  5. 通过请求处理器适配器调用请求处理方法，处理流程主要包括：方法参数解析（包括请求消息转换成方法参数类型）、反射调用
+
+     Controller业务方法、方法返回数据类型转成响应消息类型，最终通过 HttpResponse 写响应状态、响应主体；
+
+  6. 遍历执行所有匹配的拦截器的 postHandle()；
+
+  > 像 Model View 在前后端分离的项目基本不会使用，暂略。
+
 + **Spring Boot**
+
 + **Spring WebFlux**
+
+  源码流程图：
+
+  + [spring-webflux.drawio](docs/java/web/spring-webflux.drawio)
+
+  + [spring-webflux.drawio.png](docs/java/web/spring-webflux.drawio.png)
+
+  原理简述：
+
+  和 SpringMVC 处理流程基本一致，只不过 WebFlux 默认使用 Reactor-Netty 作为Web容器，接口都基于 ProjectReactor 封装成了响应式接口，支持 HTTP 协议 和 自定义协议通信。
+
+  与 SpringMVC 的 `DispatcherServlet` 对应有一个 `DispatcherHandler` 类，这个类定义了请求处理的主要流程。
+
+  > 前面说 Tomcat NIO 模式下请求处理的部分操作依然是阻塞的，只要有操作是阻塞的就会白占线程，降低系统吞吐量；
+  >
+  > WebFlux 却可以将所有操作都设置为非阻塞的。
 
 ### 响应式
 
-+ **Reactor**
+响应式编程框架有点类似工具类框架没有主线或者说只有各个接口类的独立的主线。
+
++ **[Reactor](docs/java/reactive-streams/project-reactor.md)**
+
+  源码流程图：
+
+  + [project-reactor-core.drawio](docs/java/reactive-streams/project-reactor-core.drawio)
+
+  + [project-reactor-core.drawio.png](docs/java/reactive-streams/project-reactor-core.drawio.png)
+
 + **RxJava**
 
 ### 微服务框架
@@ -247,7 +363,10 @@
 
 + **Apollo**
 + **Nacos**
-+ **Zookeeper**
+
+### 分布式协调
+
++ **[Zookeeper]()**
 
 ### 服务保障
 
@@ -279,6 +398,8 @@
 
 ### 分布式事务
 
++ **Seata**
+
 ### 搜索引擎
 
 + **ElasticSearch**
@@ -290,7 +411,7 @@
 ### 工作流引擎
 
 + **Activiti**
-+ **Spring Workflow**
++ **Spring Flowable**
 
 ### 缓存
 
@@ -301,15 +422,26 @@
 
 + **一致性协议**
 
-  + **BRaft**
+  + **[Raft](docs/java/distributed/consistency/raft.md)**
 
-  + **Raft4J**
+    + **BRaft**
 
-  + **JRaft**
+    + **Raft4J**
+  
+    + **Raft-Java**
+  
+      这个只是DEMO性质的实现，主要是代码实现简单，适合快速学习Raft协议细节。
+  
+      源码流程图：
+  
+      + [raft-java.drawio](docs/java/distributed/consistency/raft-java.drawio)
+      + [raft-java.drawio.png](docs/java/distributed/consistency/raft-java.drawio.png)
+  
 
 ### 命令行
 
 + **JCommander**
++ **CLI**
 
 ### 日志
 
@@ -345,6 +477,10 @@
 ### 数据库相关
 
 + [**Godis**](docs/go/godis)
+
+### 微服务
+
++ **K8S**
 
 
 

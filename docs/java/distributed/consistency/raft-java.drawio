@@ -1,0 +1,1061 @@
+<mxfile host="Electron" modified="2024-01-30T17:20:13.104Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.6.5 Chrome/114.0.5735.243 Electron/25.3.1 Safari/537.36" etag="wpTWC8uj3mB21U-9H77w" version="21.6.5" type="device">
+  <diagram name="Raft实现" id="D0lXRkDRS7YjULPVTkGP">
+    <mxGraphModel dx="2796" dy="671" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="jrdKXmfmH3rlp7NtxQ88-81" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.25;entryDx=0;entryDy=0;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" source="jrdKXmfmH3rlp7NtxQ88-68" target="SMY1UsQMhVWDZvxuVclS-50" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2179" y="2530" />
+              <mxPoint x="2179" y="1290" />
+              <mxPoint x="750" y="1290" />
+              <mxPoint x="750" y="1265" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="hCxxSbGEtk1TdNpt0RpP-1" value="&lt;h1 style=&quot;font-size: 16px;&quot;&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;Raft协议实现&amp;nbsp;&lt;/font&gt;&lt;/h1&gt;&lt;p style=&quot;&quot;&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;源码：https://github.com/wenweihu86/raft-java。实现、案例代码加起来一共大概5K多行， 总体流程比较简单，适合Raft入门学习，不过里面还是有很多让人困惑的细节也没有给注释说明&lt;br&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;raft-java-examle 案例中启动了3节点的服务集群，使用 brpc 通信（百度RPC框架）&lt;/span&gt;&lt;br&gt;&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;&quot;&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="40" y="20" width="680" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="hCxxSbGEtk1TdNpt0RpP-4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;" parent="1" source="hCxxSbGEtk1TdNpt0RpP-2" target="hCxxSbGEtk1TdNpt0RpP-3" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="hCxxSbGEtk1TdNpt0RpP-2" value="ServerMain#main()&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;假设配置的raftDataDir=data&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;direction=west;fontSize=10;" parent="1" vertex="1">
+          <mxGeometry x="40" y="120" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="hCxxSbGEtk1TdNpt0RpP-6" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;" parent="1" source="hCxxSbGEtk1TdNpt0RpP-3" target="hCxxSbGEtk1TdNpt0RpP-5" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="hCxxSbGEtk1TdNpt0RpP-3" value="遍历3节点host:port配置创建&lt;br style=&quot;font-size: 10px;&quot;&gt;RaftProto.Server server = parseServer(serverString);" style="rounded=1;whiteSpace=wrap;html=1;direction=west;fontSize=10;" parent="1" vertex="1">
+          <mxGeometry x="280" y="120" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="hCxxSbGEtk1TdNpt0RpP-8" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="hCxxSbGEtk1TdNpt0RpP-5" target="hCxxSbGEtk1TdNpt0RpP-7" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="hCxxSbGEtk1TdNpt0RpP-5" value="RaftProto.Server localServer = parseServer(args[2]);&lt;br style=&quot;font-size: 10px;&quot;&gt;RpcServer server = new RpcServer(localServer.getEndpoint()&lt;br style=&quot;font-size: 10px;&quot;&gt;.getPort());" style="rounded=1;whiteSpace=wrap;html=1;direction=west;fontSize=10;" parent="1" vertex="1">
+          <mxGeometry x="280" y="200" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="hCxxSbGEtk1TdNpt0RpP-10" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="hCxxSbGEtk1TdNpt0RpP-7" target="hCxxSbGEtk1TdNpt0RpP-9" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="hCxxSbGEtk1TdNpt0RpP-7" value="RaftOptions raftOptions = new RaftOptions();&lt;br&gt;..." style="rounded=1;whiteSpace=wrap;html=1;direction=west;fontSize=10;" parent="1" vertex="1">
+          <mxGeometry x="280" y="280" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="hCxxSbGEtk1TdNpt0RpP-12" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="hCxxSbGEtk1TdNpt0RpP-9" target="hCxxSbGEtk1TdNpt0RpP-11" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="jrdKXmfmH3rlp7NtxQ88-51" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="hCxxSbGEtk1TdNpt0RpP-9" target="jrdKXmfmH3rlp7NtxQ88-50" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="hCxxSbGEtk1TdNpt0RpP-9" value="ExampleStateMachine stateMachine = new &lt;b&gt;ExampleStateMachine&lt;/b&gt;(&lt;br&gt;raftOptions.getDataDir());" style="rounded=1;whiteSpace=wrap;html=1;direction=west;fontSize=10;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="280" y="360" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="hCxxSbGEtk1TdNpt0RpP-14" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="hCxxSbGEtk1TdNpt0RpP-11" target="hCxxSbGEtk1TdNpt0RpP-13" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="jrdKXmfmH3rlp7NtxQ88-49" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="hCxxSbGEtk1TdNpt0RpP-11" target="jrdKXmfmH3rlp7NtxQ88-48" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="hCxxSbGEtk1TdNpt0RpP-11" value="RaftNode raftNode = new &lt;b&gt;RaftNode&lt;/b&gt;(raftOptions, serverList, localServer, stateMachine);" style="rounded=1;whiteSpace=wrap;html=1;direction=west;fontSize=10;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxGeometry x="280" y="440" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="hCxxSbGEtk1TdNpt0RpP-16" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="hCxxSbGEtk1TdNpt0RpP-13" target="hCxxSbGEtk1TdNpt0RpP-15" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SMY1UsQMhVWDZvxuVclS-44" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;" parent="1" source="hCxxSbGEtk1TdNpt0RpP-13" target="SMY1UsQMhVWDZvxuVclS-43" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="510.5" y="670" />
+              <mxPoint x="510.5" y="670" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="hCxxSbGEtk1TdNpt0RpP-13" value="RaftConsensusService raftConsensusService = new&amp;nbsp;&lt;b style=&quot;font-size: 10px;&quot;&gt;RaftConsensusServiceImpl&lt;/b&gt;(raftNode);&lt;br style=&quot;font-size: 10px;&quot;&gt;server.&lt;b style=&quot;font-size: 10px;&quot;&gt;registerService&lt;/b&gt;(raftConsensusService);&lt;br style=&quot;font-size: 10px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;Raft节点一致性服务，提供节点间通信的能力&lt;br style=&quot;font-size: 10px;&quot;&gt;给其他节点调用用于保持一致性&lt;br style=&quot;font-size: 10px;&quot;&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;direction=west;fontSize=10;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="270.5" y="640" width="220" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="hCxxSbGEtk1TdNpt0RpP-18" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="hCxxSbGEtk1TdNpt0RpP-15" target="hCxxSbGEtk1TdNpt0RpP-17" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="hCxxSbGEtk1TdNpt0RpP-15" value="RaftClientService raftClientService = new RaftClientServiceImpl(raftNode);&lt;br style=&quot;font-size: 10px;&quot;&gt;server.registerService(raftClientService);&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;用于节点管理，节点增减等&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;direction=west;fontSize=10;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="280" y="880" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="hCxxSbGEtk1TdNpt0RpP-20" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="hCxxSbGEtk1TdNpt0RpP-17" target="hCxxSbGEtk1TdNpt0RpP-19" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="jrdKXmfmH3rlp7NtxQ88-2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;" parent="1" source="hCxxSbGEtk1TdNpt0RpP-17" target="jrdKXmfmH3rlp7NtxQ88-1" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="hCxxSbGEtk1TdNpt0RpP-17" value="ExampleService exampleService = new ExampleServiceImpl(raftNode, stateMachine);&lt;br style=&quot;font-size: 10px;&quot;&gt;server.registerService(exampleService);&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;业务服务，这里是设置和读取数据&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;direction=west;fontSize=10;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="280" y="1680" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="hCxxSbGEtk1TdNpt0RpP-22" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="hCxxSbGEtk1TdNpt0RpP-19" target="hCxxSbGEtk1TdNpt0RpP-21" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="hCxxSbGEtk1TdNpt0RpP-19" value="server.start();" style="rounded=1;whiteSpace=wrap;html=1;direction=west;fontSize=10;" parent="1" vertex="1">
+          <mxGeometry x="280.5" y="2240" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="hCxxSbGEtk1TdNpt0RpP-28" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="hCxxSbGEtk1TdNpt0RpP-21" target="hCxxSbGEtk1TdNpt0RpP-27" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="hCxxSbGEtk1TdNpt0RpP-21" value="raftNode.init();&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;服务节点初始化，这里启动Leader选举、心跳、日志复制等任务&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;direction=west;fontSize=10;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxGeometry x="280.5" y="2320" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="hCxxSbGEtk1TdNpt0RpP-24" value="&lt;div style=&quot;text-align: center;&quot;&gt;&lt;b&gt;RaftNode&lt;/b&gt;&lt;br&gt;&lt;/div&gt;&lt;hr style=&quot;font-size: 10px;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;Raft服务节点&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//Raft协议配置&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private RaftOptions &lt;b&gt;raftOptions&lt;/b&gt;;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//集群所有节点配置信息，RaftProto.Server&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private RaftProto.Configuration &lt;b&gt;configuration&lt;/b&gt;;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//封装了连接其他节点的客户端、日志条目索引等信息&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private ConcurrentMap&amp;lt;Integer, Peer&amp;gt; &lt;b&gt;peerMap&lt;/b&gt; = new ConcurrentHashMap&amp;lt;&amp;gt;();&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//当前节点RPC服务器&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private RaftProto.Server &lt;b&gt;localServer&lt;/b&gt;;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//状态机，？&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private StateMachine &lt;b&gt;stateMachine&lt;/b&gt;;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//操作日志，记录系统中操作指令，用于&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private &lt;b&gt;SegmentedLog&lt;/b&gt; &lt;b&gt;raftLog&lt;/b&gt;;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//快照对象&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private &lt;b&gt;Snapshot&lt;/b&gt; &lt;b&gt;snapshot&lt;/b&gt;;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//节点状态，初始Follower&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private NodeState &lt;b&gt;state&lt;/b&gt; = NodeState.STATE_FOLLOWER;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//服务器最后一次知道的任期号（初始化为 0），&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//选举超时节点发起二阶段投票时会 + 1；&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//Follower节点收到二阶段投票请求时如果currentTerm小于请求中的Term值会更新&amp;nbsp;&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private long &lt;b&gt;currentTerm&lt;/b&gt;;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//票投给了哪个节点（保存节点ID）&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private int &lt;b&gt;votedFor&lt;/b&gt;;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//记录Leader节点ID&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private int &lt;b&gt;leaderId&lt;/b&gt;;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;// 已知的最大的已经被提交的日志条目的索引值&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private long &lt;b&gt;commitIndex&lt;/b&gt;;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;// 最后被应用到状态机的日志条目索引值（初始化为 0，持续递增）&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private volatile long &lt;b&gt;lastAppliedIndex&lt;/b&gt;;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private Lock lock = new ReentrantLock();&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private Condition commitIndexCondition = lock.newCondition();&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private Condition catchUpCondition = lock.newCondition();&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private ExecutorService &lt;b&gt;executorService&lt;/b&gt;;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private ScheduledExecutorService &lt;b&gt;scheduledExecutorService&lt;/b&gt;;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//通过Future接口可以实现取消任务，比如还未超时收到其他节点拉票请求，需要重置超时时间并取消之前设置的定时任务&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private ScheduledFuture &lt;b&gt;electionScheduledFuture&lt;/b&gt;;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private ScheduledFuture &lt;b&gt;heartbeatScheduledFuture&lt;/b&gt;;&lt;/p&gt;&lt;hr style=&quot;font-size: 10px;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 10px;&quot;&gt;&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=10;fontFamily=Helvetica;html=1;whiteSpace=wrap;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxGeometry x="-480" y="120" width="440" height="520" as="geometry" />
+        </mxCell>
+        <mxCell id="hCxxSbGEtk1TdNpt0RpP-25" value="&lt;div style=&quot;text-align: center;&quot;&gt;&lt;b&gt;RaftOptions&lt;/b&gt;&lt;br&gt;&lt;/div&gt;&lt;hr style=&quot;font-size: 10px;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;Raft协议配置&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;// 选举超时时间，超过这个时间如果没有接受到Leader的消息会变成Candidate&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private int &lt;b&gt;electionTimeoutMilliseconds&lt;/b&gt; = 5000;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;// 心跳周期，就是心跳超时时间，Leader为了证明自己还活着需要向其他节点定期发送心跳&lt;/font&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;private int &lt;b&gt;heartbeatPeriodMilliseconds&lt;/b&gt; = 500;&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;// snapshot定时器执行间隔，todo ?&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private int &lt;b&gt;snapshotPeriodSeconds&lt;/b&gt; = 3600;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;// log entry大小达到snapshotMinLogSize，才做snapshot&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private int &lt;b&gt;snapshotMinLogSize&lt;/b&gt; = 100 * 1024 * 1024;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private int &lt;b&gt;maxSnapshotBytesPerRequest&lt;/b&gt; = 500 * 1024; // 500k&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private int &lt;b&gt;maxLogEntriesPerRequest&lt;/b&gt; = 5000;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;// 单个segment文件大小，默认100m&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private int &lt;b&gt;maxSegmentFileSize&lt;/b&gt; = 100 * 1000 * 1000;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;// follower与leader差距在catchupMargin，才可以参与选举和提供服务&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private long &lt;b&gt;catchupMargin&lt;/b&gt; = 500;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;// replicate最大等待超时时间，单位ms&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private long &lt;b&gt;maxAwaitTimeout&lt;/b&gt; = 1000;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;// 与其他节点进行同步、选主等操作的线程池大小&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private int raftConsensusThreadNum = 20;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;// 是否异步写数据；true表示主节点保存后就返回，然后异步同步给从节点；&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;// false表示主节点同步给大多数从节点后才返回。&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private boolean asyncWrite = false;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;// raft的log和snapshot父目录，绝对路径&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private String dataDir = System.getProperty(&quot;com.github.wenweihu86.raft.data.dir&quot;);&lt;/p&gt;&lt;hr style=&quot;font-size: 10px;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 10px;&quot;&gt;&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=10;fontFamily=Helvetica;html=1;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="-960" y="120" width="440" height="360" as="geometry" />
+        </mxCell>
+        <mxCell id="hCxxSbGEtk1TdNpt0RpP-26" value="&lt;div style=&quot;text-align: center; font-size: 10px;&quot;&gt;&lt;b style=&quot;font-size: 10px;&quot;&gt;raft.proto&lt;/b&gt;&lt;/div&gt;&lt;hr style=&quot;font-size: 10px;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 10px;&quot;&gt;关键的定义：&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 10px;&quot;&gt;&lt;br style=&quot;font-size: 10px;&quot;&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 10px;&quot;&gt;message Endpoint {&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 10px;&quot;&gt;&amp;nbsp; &amp;nbsp; optional string host = 1;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 10px;&quot;&gt;&amp;nbsp; &amp;nbsp; optional uint32 port = 2;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 10px;&quot;&gt;}&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 10px;&quot;&gt;&lt;br style=&quot;font-size: 10px;&quot;&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 10px;&quot;&gt;message Server {&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 10px;&quot;&gt;&amp;nbsp; &amp;nbsp; &lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;//服务节点ID&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 10px;&quot;&gt;&amp;nbsp; &amp;nbsp; optional uint32 server_id = 1;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 10px;&quot;&gt;&amp;nbsp; &amp;nbsp; optional Endpoint endpoint = 2;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 10px;&quot;&gt;}&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 10px;&quot;&gt;&lt;br style=&quot;font-size: 10px;&quot;&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 10px;&quot;&gt;message Configuration {&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 10px;&quot;&gt;&amp;nbsp; &amp;nbsp; repeated Server servers = 1;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 10px;&quot;&gt;}&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 10px;&quot;&gt;&lt;br style=&quot;font-size: 10px;&quot;&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;message VoteRequest {&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&amp;nbsp; &amp;nbsp; optional uint32 server_id = 1; // 请求选票的候选人的 Id&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&amp;nbsp; &amp;nbsp; optional uint64 term = 2; // 候选人的任期号&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&amp;nbsp; &amp;nbsp; optional uint64 last_log_term = 3; // 候选人的最后日志条目的任期号&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&amp;nbsp; &amp;nbsp; optional uint64 last_log_index = 4; // 候选人最后日志条目的索引值&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;};&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 10px;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 10px;&quot;&gt;message VoteResponse {&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 10px;&quot;&gt;&amp;nbsp; &amp;nbsp; optional uint64 term = 1; // 当前任期号，以便于候选人去更新自己的任期号&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 10px;&quot;&gt;&amp;nbsp; &amp;nbsp; optional bool granted = 2; // 候选人赢得了此张选票时为真&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 10px;&quot;&gt;};&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 10px;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 10px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//对应 logDir下的 metadata 文件&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;message &lt;b&gt;LogMetaData&lt;/b&gt; {&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&amp;nbsp; &amp;nbsp; &lt;font color=&quot;#007fff&quot;&gt;//初始为0&lt;/font&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&amp;nbsp; &amp;nbsp; optional uint64 current_term = 1;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;&amp;nbsp; &amp;nbsp; //初始为0&lt;/font&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&amp;nbsp; &amp;nbsp; optional uint32 voted_for = 2;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&amp;nbsp; &amp;nbsp; &lt;font color=&quot;#007fff&quot;&gt;//第一条日志索引，初始为1&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&amp;nbsp; &amp;nbsp; optional uint64 first_log_index = 3;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;&amp;nbsp; &amp;nbsp; //最后提交的日志索引，初始为0&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&amp;nbsp; &amp;nbsp; optional uint64 commit_index = 4;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;}&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//快照(日志压缩) 元数据&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;message &lt;b&gt;SnapshotMetaData&lt;/b&gt; {&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;&amp;nbsp; &amp;nbsp; //被压缩的最后一条日志索引&lt;/font&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&amp;nbsp; &amp;nbsp; optional uint64 last_included_index = 1;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;&amp;nbsp; &amp;nbsp; //被压缩的最后一条日志的Term&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&amp;nbsp; &amp;nbsp; optional uint64 last_included_term = 2;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&amp;nbsp; &amp;nbsp; optional Configuration configuration = 3;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;}&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=10;fontFamily=Helvetica;html=1;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="-960" y="520" width="440" height="640" as="geometry" />
+        </mxCell>
+        <mxCell id="hCxxSbGEtk1TdNpt0RpP-31" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="hCxxSbGEtk1TdNpt0RpP-27" target="hCxxSbGEtk1TdNpt0RpP-30" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="hCxxSbGEtk1TdNpt0RpP-33" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="hCxxSbGEtk1TdNpt0RpP-27" target="hCxxSbGEtk1TdNpt0RpP-32" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="hCxxSbGEtk1TdNpt0RpP-27" value="遍历节点列表除当前节点外其他节点&lt;br&gt;Peer peer = new &lt;b&gt;Peer&lt;/b&gt;(server);&lt;br&gt;peer.setNextIndex(&lt;br&gt;raftLog.getLastLogIndex() + 1);&lt;br&gt;peerMap.put(server.getServerId(), peer);" style="rounded=1;whiteSpace=wrap;html=1;direction=west;fontSize=10;" parent="1" vertex="1">
+          <mxGeometry x="520.5" y="2320" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="hCxxSbGEtk1TdNpt0RpP-29" value="RaftNode" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
+          <mxGeometry x="585.5" y="2290" width="70" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="hCxxSbGEtk1TdNpt0RpP-30" value="this.server = server;&lt;br&gt;this.rpcClient = new &lt;b&gt;RpcClient&lt;/b&gt;(...);&lt;br&gt;raftConsensusServiceAsync = BrpcProxy.&lt;b&gt;getProxy&lt;/b&gt;(rpcClient, RaftConsensusServiceAsync.class);&lt;br&gt;isCatchUp = false;" style="rounded=1;whiteSpace=wrap;html=1;direction=west;fontSize=10;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="760.5" y="2310" width="200" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="hCxxSbGEtk1TdNpt0RpP-35" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="hCxxSbGEtk1TdNpt0RpP-32" target="hCxxSbGEtk1TdNpt0RpP-34" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="hCxxSbGEtk1TdNpt0RpP-32" value="executorService = new ThreadPoolExecutor();&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;初始化线程池，默认20个核心线程、空闲时间60s、LinkedBlockingQueue存储任务&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;direction=west;fontSize=10;" parent="1" vertex="1">
+          <mxGeometry x="520.5" y="2400" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="hCxxSbGEtk1TdNpt0RpP-37" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;" parent="1" source="hCxxSbGEtk1TdNpt0RpP-34" target="hCxxSbGEtk1TdNpt0RpP-36" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="hCxxSbGEtk1TdNpt0RpP-39" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="hCxxSbGEtk1TdNpt0RpP-34" target="hCxxSbGEtk1TdNpt0RpP-38" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="hCxxSbGEtk1TdNpt0RpP-34" value="scheduledExecutorService = Executors.newScheduledThreadPool(2);&lt;br&gt;&amp;nbsp;scheduledExecutorService&lt;br&gt;.scheduleWithFixedDelay(...)&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;提交一个日志压缩计划任务，每30s执行一次&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;direction=west;fontSize=10;" parent="1" vertex="1">
+          <mxGeometry x="520.5" y="2480" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="jrdKXmfmH3rlp7NtxQ88-56" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="hCxxSbGEtk1TdNpt0RpP-36" target="jrdKXmfmH3rlp7NtxQ88-55" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="hCxxSbGEtk1TdNpt0RpP-36" value="takeSnapshot();&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;日志压缩任务，raft-java 将日志压缩后存储到了 RocketsDB&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;direction=west;fontSize=10;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxGeometry x="760.5" y="2480" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="hCxxSbGEtk1TdNpt0RpP-41" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="hCxxSbGEtk1TdNpt0RpP-38" target="hCxxSbGEtk1TdNpt0RpP-40" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="hCxxSbGEtk1TdNpt0RpP-38" value="resetElectionTimer();&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;其实是提交选举超时后为自己拉票的任务&lt;br&gt;如果到期没有选出其他节点为Leader会执行这里提交的拉票任务&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;direction=west;fontSize=10;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxGeometry x="520" y="2920" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="hCxxSbGEtk1TdNpt0RpP-43" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;" parent="1" source="hCxxSbGEtk1TdNpt0RpP-40" target="hCxxSbGEtk1TdNpt0RpP-42" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="hCxxSbGEtk1TdNpt0RpP-40" value="electionScheduledFuture = scheduledExecutorService.schedule(...)&lt;br&gt;&lt;font style=&quot;font-size: 9px;&quot; color=&quot;#007fff&quot;&gt;节点启动后需要等待 Election Timeout,&amp;nbsp;然后转换成Candidate, Term++, 向其他节点拉票，如果等待期间收到其他节点拉票请求需取消这个任务&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;direction=west;fontSize=10;" parent="1" vertex="1">
+          <mxGeometry x="760" y="2920" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="hCxxSbGEtk1TdNpt0RpP-45" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="hCxxSbGEtk1TdNpt0RpP-42" target="hCxxSbGEtk1TdNpt0RpP-44" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="hCxxSbGEtk1TdNpt0RpP-42" value="startPreVote();" style="rounded=1;whiteSpace=wrap;html=1;direction=west;fontSize=10;" parent="1" vertex="1">
+          <mxGeometry x="1001" y="2920" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="hCxxSbGEtk1TdNpt0RpP-47" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="hCxxSbGEtk1TdNpt0RpP-44" target="hCxxSbGEtk1TdNpt0RpP-46" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="hCxxSbGEtk1TdNpt0RpP-44" value="加锁同步更新 state = NodeState.&lt;b&gt;STATE_PRE_CANDIDATE&lt;/b&gt;;" style="rounded=1;whiteSpace=wrap;html=1;direction=west;fontSize=10;" parent="1" vertex="1">
+          <mxGeometry x="1240" y="2920" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="hCxxSbGEtk1TdNpt0RpP-49" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="hCxxSbGEtk1TdNpt0RpP-46" target="hCxxSbGEtk1TdNpt0RpP-48" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1460" y="3030" />
+              <mxPoint x="1460" y="3180" />
+              <mxPoint x="510" y="3180" />
+              <mxPoint x="510" y="3230" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="hCxxSbGEtk1TdNpt0RpP-51" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="hCxxSbGEtk1TdNpt0RpP-46" target="hCxxSbGEtk1TdNpt0RpP-50" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="hCxxSbGEtk1TdNpt0RpP-46" value="遍历其他节点，异步发送拉票请求&lt;br&gt;executorService.submit(...)" style="rounded=1;whiteSpace=wrap;html=1;direction=west;fontSize=10;" parent="1" vertex="1">
+          <mxGeometry x="1240" y="3000" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="hCxxSbGEtk1TdNpt0RpP-55" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="hCxxSbGEtk1TdNpt0RpP-48" target="hCxxSbGEtk1TdNpt0RpP-54" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SMY1UsQMhVWDZvxuVclS-88" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" source="hCxxSbGEtk1TdNpt0RpP-48" target="SMY1UsQMhVWDZvxuVclS-87" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="hCxxSbGEtk1TdNpt0RpP-48" value="preVote(peer);&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;向其他节点发起拉票请求&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;direction=west;fontSize=10;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxGeometry x="520" y="3200" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="hCxxSbGEtk1TdNpt0RpP-52" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.25;entryDx=0;entryDy=0;" parent="1" source="hCxxSbGEtk1TdNpt0RpP-50" target="hCxxSbGEtk1TdNpt0RpP-40" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1450" y="3110" />
+              <mxPoint x="1450" y="3150" />
+              <mxPoint x="740" y="3150" />
+              <mxPoint x="740" y="2965" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="hCxxSbGEtk1TdNpt0RpP-50" value="resetElectionTimer();&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;再设置下一个超时任务，如果这段时间没有选举出Leader, 就相当于再次重试&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;direction=west;fontSize=10;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="1240" y="3080" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="hCxxSbGEtk1TdNpt0RpP-53" value="&lt;font style=&quot;font-size: 10px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;这里选举超时时间设置的是5-10s&lt;/font&gt;&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;官方不是推荐 150-300ms么?&lt;/font&gt;&lt;br&gt;&lt;font color=&quot;#ea6b66&quot;&gt;万一Leader崩溃重新选举可能导致有5-10s不可用时间，应该无法接受&lt;/font&gt;&lt;br&gt;&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
+          <mxGeometry x="695" y="2980" width="330" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="hCxxSbGEtk1TdNpt0RpP-57" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="hCxxSbGEtk1TdNpt0RpP-54" target="hCxxSbGEtk1TdNpt0RpP-56" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="hCxxSbGEtk1TdNpt0RpP-60" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="hCxxSbGEtk1TdNpt0RpP-54" target="hCxxSbGEtk1TdNpt0RpP-59" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SMY1UsQMhVWDZvxuVclS-55" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.75;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" source="hCxxSbGEtk1TdNpt0RpP-54" target="SMY1UsQMhVWDZvxuVclS-45" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="970" y="3215" />
+              <mxPoint x="970" y="685" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="SMY1UsQMhVWDZvxuVclS-56" value="&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 9px;&quot;&gt;RPC请求其他节点&lt;/font&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=9;" parent="SMY1UsQMhVWDZvxuVclS-55" vertex="1" connectable="0">
+          <mxGeometry x="-0.9376" y="-1" relative="1" as="geometry">
+            <mxPoint x="9" y="29" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="hCxxSbGEtk1TdNpt0RpP-54" value="&lt;div&gt;peer.&lt;b&gt;getRaftConsensusServiceAsync&lt;/b&gt;()&lt;/div&gt;&lt;div&gt;.&lt;b&gt;preVote&lt;/b&gt;(&lt;span style=&quot;background-color: initial;&quot;&gt;request, new &lt;b&gt;PreVoteResponseCallback&lt;/b&gt;(peer, request));&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;向其他节点发送 RaftProto.VoteRequest 请求&lt;/font&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;direction=west;fontSize=10;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+          <mxGeometry x="760" y="3200" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="SMY1UsQMhVWDZvxuVclS-2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="hCxxSbGEtk1TdNpt0RpP-56" target="SMY1UsQMhVWDZvxuVclS-1" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="hCxxSbGEtk1TdNpt0RpP-56" value="&lt;div&gt;PreVoteResponseCallback&lt;br&gt;&lt;/div&gt;&lt;div&gt;success&amp;nbsp;&lt;span style=&quot;background-color: initial;&quot;&gt;回调&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;即其他节点正常响应&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;direction=west;fontSize=10;" parent="1" vertex="1">
+          <mxGeometry x="1000.5" y="3200" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="SMY1UsQMhVWDZvxuVclS-33" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="hCxxSbGEtk1TdNpt0RpP-59" target="SMY1UsQMhVWDZvxuVclS-32" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="hCxxSbGEtk1TdNpt0RpP-59" value="PreVoteResponseCallback&lt;br&gt;fail 回调&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;即其他节点无响应或异常&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;direction=west;fontSize=10;" parent="1" vertex="1">
+          <mxGeometry x="1000" y="3680" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="SMY1UsQMhVWDZvxuVclS-4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="SMY1UsQMhVWDZvxuVclS-1" target="SMY1UsQMhVWDZvxuVclS-3" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SMY1UsQMhVWDZvxuVclS-1" value="peer.setVoteGranted(&lt;br&gt;response.getGranted());&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;记录这次拉票对方是否支持&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;direction=west;fontSize=10;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="1240" y="3200" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="SMY1UsQMhVWDZvxuVclS-11" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="SMY1UsQMhVWDZvxuVclS-3" target="SMY1UsQMhVWDZvxuVclS-10" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SMY1UsQMhVWDZvxuVclS-3" value="&lt;font color=&quot;#007fff&quot;&gt;校验VoteRequest和本轮拉票的任期是否相同，本地节点是否是 Pre Candidate 状态，&lt;br&gt;任意条件不满足直接退出&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;direction=west;fontSize=10;" parent="1" vertex="1">
+          <mxGeometry x="1240" y="3280" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="SMY1UsQMhVWDZvxuVclS-6" value="&lt;div style=&quot;text-align: center;&quot;&gt;&lt;b&gt;Peer&lt;/b&gt;&lt;br&gt;&lt;/div&gt;&lt;hr style=&quot;font-size: 10px;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;自身节点外其他节点的一些信息，因为Raft协议需要和其他节点进行通信，记录其他节点投票、任期Term等信息&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;// 节点的服务器信息，节点ID、host、port&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private RaftProto.Server &lt;b&gt;server&lt;/b&gt;;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;// 本地节点连接这个节点的RPC客户端&lt;/font&gt;&amp;nbsp;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private RpcClient &lt;b&gt;rpcClient&lt;/b&gt;;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;// 目标节点的服务代理&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private RaftConsensusServiceAsync &lt;b&gt;raftConsensusServiceAsync&lt;/b&gt;;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;// 需要发送给follower的下一个日志条目的索引值，只对leader有效&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private long &lt;b&gt;nextIndex&lt;/b&gt;;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;// 已复制日志的最高索引值&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private long &lt;b&gt;matchIndex&lt;/b&gt;;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;// 记录最近一次拉票，对方是否支持，每次发起新一轮的投票都需要先清空&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private volatile Boolean &lt;b&gt;voteGranted&lt;/b&gt;;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//&amp;nbsp;&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private volatile boolean &lt;b&gt;isCatchUp&lt;/b&gt;;&lt;/p&gt;&lt;hr style=&quot;font-size: 10px;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 10px;&quot;&gt;&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=10;fontFamily=Helvetica;html=1;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="-480" y="680" width="440" height="280" as="geometry" />
+        </mxCell>
+        <mxCell id="SMY1UsQMhVWDZvxuVclS-7" value="任期Term不同说明非本轮投票请求，所以投票无效，&lt;br style=&quot;font-size: 10px;&quot;&gt;状态非 Pre Candidate 则是有可能其他节点已经成为 Leader&lt;br&gt;并通知当前节点将状态修改为了Follower" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontColor=#007FFF;fontSize=10;" parent="1" vertex="1">
+          <mxGeometry x="1450" y="3285" width="290" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="SMY1UsQMhVWDZvxuVclS-13" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="SMY1UsQMhVWDZvxuVclS-10" target="SMY1UsQMhVWDZvxuVclS-12" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SMY1UsQMhVWDZvxuVclS-14" value="Y,拉票无效" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="SMY1UsQMhVWDZvxuVclS-13" vertex="1" connectable="0">
+          <mxGeometry x="0.5333" y="1" relative="1" as="geometry">
+            <mxPoint x="-12" y="21" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="SMY1UsQMhVWDZvxuVclS-16" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="SMY1UsQMhVWDZvxuVclS-10" target="SMY1UsQMhVWDZvxuVclS-15" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SMY1UsQMhVWDZvxuVclS-17" value="N" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="SMY1UsQMhVWDZvxuVclS-16" vertex="1" connectable="0">
+          <mxGeometry x="0.6" y="2" relative="1" as="geometry">
+            <mxPoint x="-2" y="-154" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="SMY1UsQMhVWDZvxuVclS-10" value="response.getTerm() &amp;gt; currentTerm ?" style="rhombus;whiteSpace=wrap;html=1;fontSize=10;rounded=1;" parent="1" vertex="1">
+          <mxGeometry x="1280" y="3390" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="SMY1UsQMhVWDZvxuVclS-20" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="SMY1UsQMhVWDZvxuVclS-12" target="SMY1UsQMhVWDZvxuVclS-19" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SMY1UsQMhVWDZvxuVclS-12" value="&lt;font&gt;stepDown(response.getTerm());&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;其他节点任期term &amp;gt; 当前节点的任期，说明当前拉票无效，然后stepDown是退回Follower状态&lt;/font&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;direction=west;fontSize=10;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxGeometry x="1480" y="3360" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="SMY1UsQMhVWDZvxuVclS-72" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="SMY1UsQMhVWDZvxuVclS-15" target="SMY1UsQMhVWDZvxuVclS-71" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1700" y="3630" />
+              <mxPoint x="1700" y="3790" />
+              <mxPoint x="500" y="3790" />
+              <mxPoint x="500" y="3830" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="SMY1UsQMhVWDZvxuVclS-15" value="if (response.getGranted())&lt;br&gt;for遍历统计 peerMap 中的投票记录，&lt;br&gt;统计得票数&lt;br&gt;如果得票数超过一半&lt;br&gt;startVote();&lt;br&gt;" style="rounded=1;whiteSpace=wrap;html=1;direction=west;fontSize=10;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxGeometry x="1480" y="3600" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="SMY1UsQMhVWDZvxuVclS-22" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="SMY1UsQMhVWDZvxuVclS-19" target="SMY1UsQMhVWDZvxuVclS-21" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SMY1UsQMhVWDZvxuVclS-27" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="SMY1UsQMhVWDZvxuVclS-19" target="SMY1UsQMhVWDZvxuVclS-26" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SMY1UsQMhVWDZvxuVclS-19" value="&lt;font style=&quot;font-size: 9px;&quot;&gt;if (currentTerm &amp;lt; newTerm) {&lt;br style=&quot;font-size: 9px;&quot;&gt;&lt;b style=&quot;font-size: 9px;&quot;&gt;&amp;nbsp; currentTerm&lt;/b&gt; = newTerm;&lt;br style=&quot;font-size: 9px;&quot;&gt;&lt;b style=&quot;font-size: 9px;&quot;&gt;&amp;nbsp; leaderId&lt;/b&gt; = 0;&amp;nbsp;&lt;b style=&quot;font-size: 9px;&quot;&gt;votedFor&lt;/b&gt; = 0;&lt;br style=&quot;font-size: 9px;&quot;&gt;&amp;nbsp; raftLog.&lt;b style=&quot;font-size: 9px;&quot;&gt;updateMetaData&lt;/b&gt;(currentTerm, votedFor, null, null);&lt;br style=&quot;font-size: 9px;&quot;&gt;}&lt;br style=&quot;font-size: 9px;&quot;&gt;&lt;b style=&quot;font-size: 9px;&quot;&gt;state&lt;/b&gt; = NodeState.&lt;b style=&quot;font-size: 9px;&quot;&gt;STATE_FOLLOWER&lt;/b&gt;;&lt;br style=&quot;font-size: 9px;&quot;&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;direction=east;fontSize=9;fillColor=#ffcd28;strokeColor=#d79b00;arcSize=9;gradientColor=#ffa500;align=left;" parent="1" vertex="1">
+          <mxGeometry x="1720.5" y="3350" width="200" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="SMY1UsQMhVWDZvxuVclS-24" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="SMY1UsQMhVWDZvxuVclS-21" target="SMY1UsQMhVWDZvxuVclS-23" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SMY1UsQMhVWDZvxuVclS-21" value="&lt;font&gt;检查一下心跳任务是否在执行，&lt;br&gt;是的话也关闭下&lt;br&gt;heartbeatScheduledFuture.&lt;b&gt;cancel&lt;/b&gt;(true);&lt;br&gt;因为Follower是不需要向其他节点发心跳的&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;direction=east;fontSize=10;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#000000;arcSize=9;" parent="1" vertex="1">
+          <mxGeometry x="1720" y="3450" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="SMY1UsQMhVWDZvxuVclS-25" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.25;entryDx=0;entryDy=0;" parent="1" source="SMY1UsQMhVWDZvxuVclS-23" target="hCxxSbGEtk1TdNpt0RpP-40" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1940" y="3560" />
+              <mxPoint x="1940" y="3150" />
+              <mxPoint x="740" y="3150" />
+              <mxPoint x="740" y="2965" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="SMY1UsQMhVWDZvxuVclS-23" value="&lt;font&gt;resetElectionTimer();&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;重置选举超时，Leader需要在这个时间之前发送心跳，否则follower节点会重新参与选举&lt;/font&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;direction=east;fontSize=10;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#000000;arcSize=9;" parent="1" vertex="1">
+          <mxGeometry x="1720.5" y="3530" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="SMY1UsQMhVWDZvxuVclS-29" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="SMY1UsQMhVWDZvxuVclS-26" target="SMY1UsQMhVWDZvxuVclS-28" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SMY1UsQMhVWDZvxuVclS-26" value="&lt;font style=&quot;font-size: 10px;&quot;&gt;&lt;span style=&quot;font-size: 10px;&quot;&gt;SegmentedLog#&lt;/span&gt;&lt;b style=&quot;font-size: 10px;&quot;&gt;updateMetaData&lt;/b&gt;(Long currentTerm, Integer votedFor, Long firstLogIndex, Long commitIndex)&lt;br style=&quot;font-size: 10px;&quot;&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;direction=east;fontSize=10;arcSize=9;" parent="1" vertex="1">
+          <mxGeometry x="1960" y="3360" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="SMY1UsQMhVWDZvxuVclS-31" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="SMY1UsQMhVWDZvxuVclS-28" target="SMY1UsQMhVWDZvxuVclS-30" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SMY1UsQMhVWDZvxuVclS-28" value="&lt;font style=&quot;font-size: 10px;&quot;&gt;创建LogMetaData对象记录拉票结果数据&lt;br style=&quot;font-size: 10px;&quot;&gt;存储到名为&amp;nbsp;String fileName = logDir + File.separator + &quot;metadata&quot;; 的文件&lt;br style=&quot;font-size: 10px;&quot;&gt;RandomAccessFile randomAccessFile = new &lt;b style=&quot;font-size: 10px;&quot;&gt;RandomAccessFile&lt;/b&gt;(file, &quot;rw&quot;)&lt;br style=&quot;font-size: 10px;&quot;&gt;RaftFileUtils.&lt;b style=&quot;font-size: 10px;&quot;&gt;writeProtoToFile&lt;/b&gt;(&lt;br style=&quot;font-size: 10px;&quot;&gt;randomAccessFile, metaData);&lt;br style=&quot;font-size: 10px;&quot;&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;direction=east;fontSize=10;arcSize=9;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxGeometry x="2200" y="3350" width="200" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="SMY1UsQMhVWDZvxuVclS-30" value="&lt;font style=&quot;&quot;&gt;byte[] messageBytes = message.toByteArray();&lt;br&gt;long crc32 = getCRC32(messageBytes);&lt;br&gt;&lt;div&gt;raf.writeLong(crc32);&lt;/div&gt;&lt;div&gt;raf.writeInt(messageBytes.length);&lt;/div&gt;&lt;div&gt;raf.write(messageBytes);&lt;/div&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;direction=east;fontSize=10;arcSize=9;align=left;" parent="1" vertex="1">
+          <mxGeometry x="2430" y="3350" width="219" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="SMY1UsQMhVWDZvxuVclS-32" value="peer.setVoteGranted(new Boolean(false));&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;默认对方不支持&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;direction=west;fontSize=10;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="1240" y="3680" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="SMY1UsQMhVWDZvxuVclS-36" value="&lt;div style=&quot;text-align: center;&quot;&gt;&lt;b&gt;RaftConsensusService （I）&lt;/b&gt;&lt;br&gt;&lt;/div&gt;&lt;hr style=&quot;font-size: 10px;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;&lt;b&gt;保持Raft集群节点数据一致性的服务接口，用于节点间相互调用&lt;/b&gt;&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//向对方节点发送预拉票请求&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;RaftProto.VoteResponse &lt;b&gt;preVote&lt;/b&gt;(RaftProto.VoteRequest request);&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//向对方节点发送正式拉票请求&lt;br&gt;&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;RaftProto.VoteResponse &lt;b&gt;requestVote&lt;/b&gt;(RaftProto.VoteRequest request);&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;RaftProto.AppendEntriesResponse &lt;b&gt;appendEntries&lt;/b&gt;(RaftProto.AppendEntriesRequest request);&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;RaftProto.InstallSnapshotResponse &lt;b&gt;installSnapshot&lt;/b&gt;(RaftProto.InstallSnapshotRequest request);&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=10;fontFamily=Helvetica;html=1;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="-480" y="1520" width="440" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="SMY1UsQMhVWDZvxuVclS-38" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;endArrow=block;endFill=0;dashed=1;" parent="1" source="SMY1UsQMhVWDZvxuVclS-37" target="SMY1UsQMhVWDZvxuVclS-36" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SMY1UsQMhVWDZvxuVclS-37" value="&lt;div style=&quot;text-align: center;&quot;&gt;&lt;b&gt;RaftConsensusServiceImpl&lt;/b&gt;&lt;br&gt;&lt;/div&gt;&lt;hr style=&quot;font-size: 10px;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;span style=&quot;color: rgb(0, 127, 255); background-color: initial;&quot;&gt;// 节点信息&lt;/span&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private RaftNode raftNode;&lt;br&gt;&lt;/p&gt;&lt;hr style=&quot;font-size: 10px;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 10px;&quot;&gt;&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=10;fontFamily=Helvetica;html=1;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="-480" y="1720" width="440" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="SMY1UsQMhVWDZvxuVclS-39" value="&lt;div style=&quot;text-align: center;&quot;&gt;&lt;b&gt;RaftClientService&lt;/b&gt;&lt;b style=&quot;background-color: initial;&quot;&gt;&amp;nbsp;（I）&lt;/b&gt;&lt;/div&gt;&lt;hr style=&quot;font-size: 10px;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;&lt;b&gt;Raft集群管理接口&lt;/b&gt;&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//获取raft集群leader节点信息&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;RaftProto.GetLeaderResponse getLeader(RaftProto.GetLeaderRequest request);&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//获取raft集群所有节点信息&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;RaftProto.GetConfigurationResponse getConfiguration(RaftProto.GetConfigurationRequest request);&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//向raft集群添加节点&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;RaftProto.AddPeersResponse addPeers(RaftProto.AddPeersRequest request);&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//从raft集群删除节点&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;RaftProto.RemovePeersResponse removePeers(RaftProto.RemovePeersRequest request);&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=10;fontFamily=Helvetica;html=1;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="-960" y="1520" width="440" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="SMY1UsQMhVWDZvxuVclS-40" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;endArrow=block;endFill=0;dashed=1;" parent="1" source="SMY1UsQMhVWDZvxuVclS-41" target="SMY1UsQMhVWDZvxuVclS-39" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SMY1UsQMhVWDZvxuVclS-41" value="&lt;div style=&quot;text-align: center;&quot;&gt;&lt;b&gt;RaftClientServiceImpl&lt;/b&gt;&lt;br&gt;&lt;/div&gt;&lt;hr style=&quot;font-size: 10px;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;span style=&quot;color: rgb(0, 127, 255); background-color: initial;&quot;&gt;// 节点信息&lt;/span&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private RaftNode raftNode;&lt;br&gt;&lt;/p&gt;&lt;hr style=&quot;font-size: 10px;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 10px;&quot;&gt;&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=10;fontFamily=Helvetica;html=1;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="-960" y="1720" width="440" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="SMY1UsQMhVWDZvxuVclS-46" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="SMY1UsQMhVWDZvxuVclS-43" target="SMY1UsQMhVWDZvxuVclS-45" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="770.5" y="670" />
+              <mxPoint x="770.5" y="670" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="SMY1UsQMhVWDZvxuVclS-49" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="SMY1UsQMhVWDZvxuVclS-43" target="SMY1UsQMhVWDZvxuVclS-47" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SMY1UsQMhVWDZvxuVclS-53" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="SMY1UsQMhVWDZvxuVclS-43" target="SMY1UsQMhVWDZvxuVclS-50" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SMY1UsQMhVWDZvxuVclS-54" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="SMY1UsQMhVWDZvxuVclS-43" target="SMY1UsQMhVWDZvxuVclS-52" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SMY1UsQMhVWDZvxuVclS-43" value="&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;&lt;b&gt;实际用到的4个接口&lt;br&gt;&lt;/b&gt;一共有8个接口，4个异步接口、4个同步接口，异步接口实现是Brpc自动封装的同步接口实现&lt;br style=&quot;font-size: 10px;&quot;&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;direction=west;fontSize=10;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="520.5" y="640" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="SMY1UsQMhVWDZvxuVclS-58" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="SMY1UsQMhVWDZvxuVclS-45" target="SMY1UsQMhVWDZvxuVclS-57" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SMY1UsQMhVWDZvxuVclS-45" value="&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;font-weight: normal;&quot;&gt;Future&amp;lt;RaftProto.VoteResponse&amp;gt; &lt;/span&gt;preVote&lt;span style=&quot;font-weight: normal;&quot;&gt;(&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;font-weight: normal;&quot;&gt;RaftProto.VoteRequest request,&lt;/div&gt;&lt;div style=&quot;font-weight: normal;&quot;&gt;RpcCallback&amp;lt;RaftProto.VoteResponse&amp;gt; callback);&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;direction=west;fontSize=10;fillColor=#d5e8d4;strokeColor=#82b366;align=left;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="761" y="640" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="SMY1UsQMhVWDZvxuVclS-81" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="SMY1UsQMhVWDZvxuVclS-47" target="SMY1UsQMhVWDZvxuVclS-80" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SMY1UsQMhVWDZvxuVclS-47" value="&lt;div style=&quot;&quot;&gt;&lt;div&gt;&lt;span style=&quot;font-weight: normal;&quot;&gt;Future&amp;lt;RaftProto.VoteResponse&amp;gt; &lt;/span&gt;requestVote&lt;span style=&quot;font-weight: normal;&quot;&gt;(&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;font-weight: normal;&quot;&gt;RaftProto.VoteRequest request,&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;font-weight: normal;&quot;&gt;RpcCallback&amp;lt;RaftProto.VoteResponse&amp;gt; callback);&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;direction=west;fontSize=10;fillColor=#d5e8d4;strokeColor=#82b366;align=left;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="761.5" y="980" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="jrdKXmfmH3rlp7NtxQ88-83" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="SMY1UsQMhVWDZvxuVclS-50" target="jrdKXmfmH3rlp7NtxQ88-82" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SMY1UsQMhVWDZvxuVclS-50" value="&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;font-weight: normal;&quot;&gt;RaftProto.AppendEntriesResponse &lt;/span&gt;appendEntries&lt;span style=&quot;font-weight: normal;&quot;&gt;(&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;font-weight: normal;&quot;&gt;RaftProto.AppendEntriesRequest request);&lt;/span&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;font style=&quot;&quot; color=&quot;#007fff&quot;&gt;&lt;span style=&quot;font-weight: normal;&quot;&gt;参考论文章节：&lt;/span&gt;追加条目（AppendEntries）RPC&lt;/font&gt;&lt;br&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;direction=west;fontSize=10;fillColor=#d5e8d4;strokeColor=#82b366;align=left;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="760.5" y="1220" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="SMY1UsQMhVWDZvxuVclS-52" value="&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;font-weight: normal;&quot;&gt;RaftProto.InstallSnapshotResponse &lt;/span&gt;installSnapshot&lt;span style=&quot;font-weight: normal;&quot;&gt;(&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;font-weight: normal;&quot;&gt;RaftProto.InstallSnapshotRequest request);&lt;/span&gt;&lt;br&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;direction=west;fontSize=10;fillColor=#d5e8d4;strokeColor=#82b366;align=left;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="760" y="1460" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="SMY1UsQMhVWDZvxuVclS-60" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="SMY1UsQMhVWDZvxuVclS-57" target="SMY1UsQMhVWDZvxuVclS-59" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SMY1UsQMhVWDZvxuVclS-57" value="&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;font-weight: normal;&quot;&gt;RaftProto.VoteResponse &lt;/span&gt;preVote&lt;span style=&quot;font-weight: normal;&quot;&gt;(RaftProto.VoteRequest request)&lt;/span&gt;&lt;br&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;direction=west;fontSize=10;align=left;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="1000" y="640" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="SMY1UsQMhVWDZvxuVclS-64" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" parent="1" source="SMY1UsQMhVWDZvxuVclS-59" target="SMY1UsQMhVWDZvxuVclS-63" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SMY1UsQMhVWDZvxuVclS-59" value="&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;font-weight: normal;&quot;&gt;raftNode.getLock().lock();&lt;/span&gt;&lt;br&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;direction=west;fontSize=10;align=center;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="1281" y="655" width="200" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="SMY1UsQMhVWDZvxuVclS-61" value="&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;font-weight: normal;&quot;&gt;raftNode.getLock().unlock();&lt;/span&gt;&lt;br&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;direction=west;fontSize=10;align=center;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="1281.5" y="930" width="200" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="SMY1UsQMhVWDZvxuVclS-62" value="&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;拉票请求里面携带的信息&lt;br style=&quot;font-size: 10px;&quot;&gt;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;requestBuilder.setServerId(localServer.getServerId())&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; .setTerm(currentTerm)&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; .setLastLogIndex(raftLog.getLastLogIndex())&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; .setLastLogTerm(getLastLogTerm());&lt;/font&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;" parent="1" vertex="1">
+          <mxGeometry x="760" y="3275" width="280" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="SMY1UsQMhVWDZvxuVclS-66" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" parent="1" source="SMY1UsQMhVWDZvxuVclS-63" target="SMY1UsQMhVWDZvxuVclS-65" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="KmqIpF15YOtQaE7IZBm3-14" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0;exitDx=0;exitDy=0;fillColor=#d5e8d4;strokeColor=#82b366;" edge="1" parent="1" source="SMY1UsQMhVWDZvxuVclS-63" target="SMY1UsQMhVWDZvxuVclS-69">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SMY1UsQMhVWDZvxuVclS-63" value="&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;font-weight: normal;&quot;&gt;经过几个检查：&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;font-weight: normal;&quot;&gt;1 请求来源节点ID是否存在&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;font-weight: normal;&quot;&gt;2 请求的任期Term是否不小于当前节点Term&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;font-weight: normal;&quot;&gt;3&amp;nbsp;request.getLastLogTerm() &amp;gt; raftNode.&lt;/span&gt;getLastLogTerm&lt;span style=&quot;font-weight: normal;&quot;&gt;()&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;font-weight: normal;&quot;&gt;|| (request.getLastLogTerm() == raftNode.getLastLogTerm()&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;font-weight: normal;&quot;&gt;&amp;amp;&amp;amp; request.getLastLogIndex() &amp;gt;= raftNode.&lt;/span&gt;getRaftLog&lt;span style=&quot;font-weight: normal;&quot;&gt;()&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;font-weight: normal;&quot;&gt;.&lt;/span&gt;getLastLogIndex&lt;span style=&quot;font-weight: normal;&quot;&gt;())&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;font-weight: 400;&quot;&gt;任意一条不满足直接返回不支持，并附带上当前节点Term&lt;/span&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;direction=west;fontSize=10;align=left;fontStyle=1;arcSize=7;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="1241.5" y="720" width="279" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="SMY1UsQMhVWDZvxuVclS-67" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" parent="1" source="SMY1UsQMhVWDZvxuVclS-65" target="SMY1UsQMhVWDZvxuVclS-61" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SMY1UsQMhVWDZvxuVclS-65" value="&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;font-weight: normal;&quot;&gt;responseBuilder.&lt;/span&gt;setGranted&lt;span style=&quot;font-weight: normal;&quot;&gt;(true);&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;font-weight: normal;&quot;&gt;responseBuilder.&lt;/span&gt;setTerm&lt;span style=&quot;font-weight: normal;&quot;&gt;(raftNode&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;font-weight: normal;&quot;&gt;.getCurrentTerm());&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;font-weight: normal;&quot;&gt;return responseBuilder.build();&lt;/span&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;font-weight: 400;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;检查通过返回支持票&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;direction=west;fontSize=10;align=left;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="1281.5" y="840" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="SMY1UsQMhVWDZvxuVclS-68" value="&lt;div style=&quot;text-align: center;&quot;&gt;&lt;b&gt;SegmentedLog&lt;/b&gt;&lt;br&gt;&lt;/div&gt;&lt;hr style=&quot;font-size: 10px;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;&lt;b&gt;以分段方式存储的操作日志。&lt;/b&gt;&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//raftDataDir+ &quot;/log/data&quot;&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private String &lt;b&gt;logDir&lt;/b&gt;;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//raftDataDir+ &quot;/log/data&quot;&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private String &lt;b&gt;logDataDir&lt;/b&gt;;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private int &lt;b&gt;maxSegmentFileSize&lt;/b&gt;;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private RaftProto.LogMetaData &lt;b&gt;metaData&lt;/b&gt;;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;&lt;b&gt;//对应logDataDir下的所有Segment文件, segment.startIndex -&amp;gt; segment&lt;/b&gt;&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private TreeMap&amp;lt;Long, Segment&amp;gt; &lt;b&gt;startLogIndexSegmentMap&lt;/b&gt; = new TreeMap&amp;lt;&amp;gt;();&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;// segment log占用的内存大小（所有Segment文件大小总和），用于判断是否需要做snapshot&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private volatile long &lt;b&gt;totalSize&lt;/b&gt;;&lt;/p&gt;&lt;hr style=&quot;font-size: 10px;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 10px;&quot;&gt;&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=10;fontFamily=Helvetica;html=1;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="-480" y="1240" width="440" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="SMY1UsQMhVWDZvxuVclS-69" value="1&amp;nbsp;request.getLastLogTerm() &amp;gt; raftNode.&lt;span style=&quot;font-size: 10px;&quot;&gt;getLastLogTerm&lt;/span&gt;&lt;span style=&quot;border-color: var(--border-color); font-size: 10px;&quot;&gt;()&lt;br style=&quot;font-size: 10px;&quot;&gt;2&amp;nbsp;request.getLastLogTerm() == raftNode.getLastLogTerm()&lt;span style=&quot;background-color: initial; border-color: var(--border-color); font-size: 10px;&quot;&gt;&lt;span style=&quot;background-color: initial; border-color: var(--border-color); font-size: 10px;&quot;&gt;&lt;br&gt;&lt;/span&gt;&amp;nbsp;&amp;nbsp;&lt;span style=&quot;&quot;&gt;&lt;span style=&quot;&quot;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;/span&gt;&amp;amp;&amp;amp; request.getLastLogIndex() &amp;gt;= raftNode.&lt;span style=&quot;background-color: initial;&quot;&gt;getRaftLog&lt;/span&gt;&lt;span style=&quot;background-color: initial; border-color: var(--border-color);&quot;&gt;()&lt;span style=&quot;background-color: initial; border-color: var(--border-color);&quot;&gt;.&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;getLastLogIndex&lt;/span&gt;&lt;span style=&quot;background-color: initial; border-color: var(--border-color);&quot;&gt;()&lt;/span&gt;&lt;br&gt;&lt;/span&gt;&lt;/span&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;span style=&quot;border-color: var(--border-color); font-weight: normal; font-size: 10px;&quot;&gt;Raft协议的&lt;/span&gt;&lt;span style=&quot;border-color: var(--border-color); font-size: 10px;&quot;&gt;&lt;b&gt;选举限制&lt;/b&gt;&lt;/span&gt;&lt;span style=&quot;border-color: var(--border-color); font-weight: normal; font-size: 10px;&quot;&gt;实现：Raft 通过比较两份日志中最后一条日志条目的索引值和任期号定义谁的日志比较新。&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;span style=&quot;border-color: var(--border-color); font-weight: normal; font-size: 10px;&quot;&gt;如果两份日志最后的条目的任期号不同，那么任期号大的日志更加新。&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;span style=&quot;border-color: var(--border-color); font-weight: normal; font-size: 10px;&quot;&gt;如果两份日志最后的条目任期号相同，那么日志比较长的那个就更加新。&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;span style=&quot;border-color: var(--border-color); font-size: 10px;&quot;&gt;&lt;b&gt;为了阻止未包含全部已提交日志条目的候选人赢得选举&lt;/b&gt;&lt;/span&gt;&lt;span style=&quot;border-color: var(--border-color); font-weight: normal; font-size: 10px;&quot;&gt;。&lt;/span&gt;&lt;/div&gt;&lt;/span&gt;" style="text;html=1;align=left;verticalAlign=top;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontColor=#007FFF;fontSize=10;" parent="1" vertex="1">
+          <mxGeometry x="1519.5" y="940" width="510" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="SMY1UsQMhVWDZvxuVclS-74" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="SMY1UsQMhVWDZvxuVclS-71" target="SMY1UsQMhVWDZvxuVclS-73" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SMY1UsQMhVWDZvxuVclS-89" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" source="SMY1UsQMhVWDZvxuVclS-71" target="SMY1UsQMhVWDZvxuVclS-87" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SMY1UsQMhVWDZvxuVclS-71" value="startVote();&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;更新本地Leader 记录，并异步向其他节点同步数据&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;direction=west;fontSize=10;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxGeometry x="520" y="3800" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="SMY1UsQMhVWDZvxuVclS-76" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="SMY1UsQMhVWDZvxuVclS-73" target="SMY1UsQMhVWDZvxuVclS-75" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SMY1UsQMhVWDZvxuVclS-73" value="锁同步下更新本地记录&lt;br&gt;&lt;b&gt;currentTerm&lt;/b&gt;++;&lt;br&gt;state = NodeState.&lt;b&gt;STATE_CANDIDATE&lt;/b&gt;;&lt;br&gt;leaderId = 0;&lt;br&gt;votedFor = localServer.getServerId();" style="rounded=1;whiteSpace=wrap;html=1;direction=west;fontSize=10;fillColor=#ffcd28;gradientColor=#ffa500;strokeColor=#d79b00;" parent="1" vertex="1">
+          <mxGeometry x="760" y="3800" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="SMY1UsQMhVWDZvxuVclS-78" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;" parent="1" source="SMY1UsQMhVWDZvxuVclS-75" target="SMY1UsQMhVWDZvxuVclS-77" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SMY1UsQMhVWDZvxuVclS-75" value="final Peer peer = peerMap.get(server.getServerId());&lt;br&gt;executorService.submit(&lt;br&gt;() -&amp;gt; requestVote(peer));" style="rounded=1;whiteSpace=wrap;html=1;direction=west;fontSize=10;" parent="1" vertex="1">
+          <mxGeometry x="760" y="3880" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="SMY1UsQMhVWDZvxuVclS-79" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.75;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;strokeColor=#6c8ebf;fillColor=#dae8fc;" parent="1" source="SMY1UsQMhVWDZvxuVclS-77" target="SMY1UsQMhVWDZvxuVclS-47" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1220" y="3895" />
+              <mxPoint x="1220" y="1050" />
+              <mxPoint x="980" y="1050" />
+              <mxPoint x="980" y="1025" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="SMY1UsQMhVWDZvxuVclS-108" value="&lt;font style=&quot;font-size: 9px;&quot; color=&quot;#007fff&quot;&gt;RPC请求其他节点&lt;/font&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="SMY1UsQMhVWDZvxuVclS-79" vertex="1" connectable="0">
+          <mxGeometry x="-0.9523" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="SMY1UsQMhVWDZvxuVclS-85" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="SMY1UsQMhVWDZvxuVclS-77" target="SMY1UsQMhVWDZvxuVclS-86" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1241" y="3910" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="SMY1UsQMhVWDZvxuVclS-92" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="SMY1UsQMhVWDZvxuVclS-77" target="SMY1UsQMhVWDZvxuVclS-90" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SMY1UsQMhVWDZvxuVclS-77" value="&lt;div&gt;peer.getRaftConsensusServiceAsync()&lt;/div&gt;&lt;div&gt;.requestVote(&lt;/div&gt;&lt;div&gt;request, new VoteResponseCallback(&lt;/div&gt;&lt;div&gt;peer, request));&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;direction=west;fontSize=10;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+          <mxGeometry x="1001" y="3880" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="SMY1UsQMhVWDZvxuVclS-83" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="SMY1UsQMhVWDZvxuVclS-80" target="SMY1UsQMhVWDZvxuVclS-98" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1281" y="1010" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="SMY1UsQMhVWDZvxuVclS-80" value="&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;font-weight: normal;&quot;&gt;RaftProto.VoteResponse &lt;/span&gt;requestVote&lt;span style=&quot;font-weight: normal;&quot;&gt;(RaftProto.VoteRequest request)&lt;/span&gt;&lt;/div&gt;&lt;font style=&quot;font-size: 9px;&quot; color=&quot;#007fff&quot;&gt;&lt;span style=&quot;font-weight: normal;&quot;&gt;参考论文章节：&lt;/span&gt;请求投票（RequestVote）RPC&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;direction=west;fontSize=10;align=left;fontStyle=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="1001.5" y="980" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="SMY1UsQMhVWDZvxuVclS-94" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="SMY1UsQMhVWDZvxuVclS-86" target="SMY1UsQMhVWDZvxuVclS-93" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SMY1UsQMhVWDZvxuVclS-86" value="&lt;div&gt;VoteResponseCallback&lt;br&gt;&lt;/div&gt;&lt;div&gt;success&amp;nbsp;&lt;span style=&quot;background-color: initial;&quot;&gt;回调&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;即其他节点正常响应&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;direction=west;fontSize=10;" parent="1" vertex="1">
+          <mxGeometry x="1241" y="3880" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="SMY1UsQMhVWDZvxuVclS-87" value="&lt;font color=&quot;#007fff&quot;&gt;像不像两阶段提交 2PC&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
+          <mxGeometry x="545" y="3520" width="150" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="SMY1UsQMhVWDZvxuVclS-96" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="SMY1UsQMhVWDZvxuVclS-90" target="SMY1UsQMhVWDZvxuVclS-95" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SMY1UsQMhVWDZvxuVclS-90" value="&lt;div&gt;VoteResponseCallback&lt;br&gt;&lt;/div&gt;&lt;div&gt;fail&amp;nbsp;&lt;span style=&quot;background-color: initial;&quot;&gt;回调&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;即其他节点无响应或异常&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;direction=west;fontSize=10;" parent="1" vertex="1">
+          <mxGeometry x="1241" y="3960" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="SMY1UsQMhVWDZvxuVclS-131" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="SMY1UsQMhVWDZvxuVclS-93" target="SMY1UsQMhVWDZvxuVclS-130" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SMY1UsQMhVWDZvxuVclS-93" value="&lt;b&gt;becomeLeader&lt;/b&gt;();&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;处理和 PreVoteResponseCallback 基本相同,&lt;br&gt;除了最后一步，preVote中是 startVote()&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;direction=west;fontSize=10;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxGeometry x="1480" y="3880" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="SMY1UsQMhVWDZvxuVclS-95" value="peer.setVoteGranted(new Boolean(false));&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;默认对方不支持&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;direction=west;fontSize=10;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="1480" y="3960" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="SMY1UsQMhVWDZvxuVclS-97" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" parent="1" source="SMY1UsQMhVWDZvxuVclS-98" target="SMY1UsQMhVWDZvxuVclS-101" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SMY1UsQMhVWDZvxuVclS-98" value="&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;font-weight: normal;&quot;&gt;raftNode.getLock().lock();&lt;/span&gt;&lt;br&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;direction=west;fontSize=10;align=center;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="1281.5" y="995" width="200" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="SMY1UsQMhVWDZvxuVclS-99" value="&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;font-weight: normal;&quot;&gt;raftNode.getLock().unlock();&lt;/span&gt;&lt;br&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;direction=west;fontSize=10;align=center;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="1279.75" y="1460.5" width="200" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="SMY1UsQMhVWDZvxuVclS-100" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" parent="1" source="SMY1UsQMhVWDZvxuVclS-101" target="SMY1UsQMhVWDZvxuVclS-103" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SMY1UsQMhVWDZvxuVclS-101" value="&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;font-weight: normal;&quot;&gt;先经过2个检查（和preVote()一样）：&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;font-weight: normal;&quot;&gt;1 请求来源节点ID是否存在&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;font-weight: normal;&quot;&gt;2 请求的任期Term是否不小于当前节点Term&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;font-weight: normal;&quot;&gt;任意一条不满足直接返回不支持，并附带上当前节点Term&lt;/span&gt;&lt;br&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;direction=west;fontSize=10;align=left;fontStyle=1;arcSize=7;" parent="1" vertex="1">
+          <mxGeometry x="1281.5" y="1040" width="200" height="60.5" as="geometry" />
+        </mxCell>
+        <mxCell id="SMY1UsQMhVWDZvxuVclS-110" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.25;entryDx=0;entryDy=0;" parent="1" source="SMY1UsQMhVWDZvxuVclS-103" target="SMY1UsQMhVWDZvxuVclS-19" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1520.5" y="930" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="1700" y="1151" />
+              <mxPoint x="1700" y="3370" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="SMY1UsQMhVWDZvxuVclS-103" value="&lt;div style=&quot;&quot;&gt;&lt;div&gt;&lt;span style=&quot;font-weight: normal;&quot;&gt;if (request.getTerm() &amp;gt; raftNode.getCurrentTerm()) {&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;font-weight: normal;&quot;&gt;raftNode.&lt;/span&gt;stepDown&lt;span style=&quot;font-weight: normal;&quot;&gt;(request.getTerm());&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;font-weight: normal;&quot;&gt;}&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;font-weight: normal;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;这里会更新currentTerm&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;direction=west;fontSize=10;align=left;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="1281.25" y="1120.5" width="199.5" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="SMY1UsQMhVWDZvxuVclS-112" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" parent="1" source="SMY1UsQMhVWDZvxuVclS-103" target="SMY1UsQMhVWDZvxuVclS-111" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1381.5" y="1180.5" as="sourcePoint" />
+            <mxPoint x="1381.5" y="1380.5" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="SMY1UsQMhVWDZvxuVclS-116" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="SMY1UsQMhVWDZvxuVclS-111" target="SMY1UsQMhVWDZvxuVclS-115" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="KmqIpF15YOtQaE7IZBm3-13" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=1;exitDx=0;exitDy=0;fillColor=#d5e8d4;strokeColor=#82b366;" edge="1" parent="1" source="SMY1UsQMhVWDZvxuVclS-111" target="SMY1UsQMhVWDZvxuVclS-69">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SMY1UsQMhVWDZvxuVclS-111" value="&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;boolean logIsOk = request.getLastLogTerm() &amp;gt; raftNode.getLastLogTerm()&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;span style=&quot;font-size: 9px;&quot;&gt;|| (request.getLastLogTerm() == raftNode.getLastLogTerm()&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;span style=&quot;font-size: 9px;&quot;&gt;&amp;nbsp; &amp;amp;&amp;amp; request.getLastLogIndex() &amp;gt;= &lt;br&gt;&amp;nbsp; raftNode.getRaftLog().getLastLogIndex());&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;和preVote() 中的相同&lt;/font&gt;&lt;/div&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;direction=west;fontSize=9;align=left;fontStyle=0;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="1241" y="1200.5" width="279" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="SMY1UsQMhVWDZvxuVclS-118" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="SMY1UsQMhVWDZvxuVclS-115" target="SMY1UsQMhVWDZvxuVclS-117" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SMY1UsQMhVWDZvxuVclS-119" value="Y" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="SMY1UsQMhVWDZvxuVclS-118" vertex="1" connectable="0">
+          <mxGeometry x="-0.1321" y="-3" relative="1" as="geometry">
+            <mxPoint x="4" y="-13" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="SMY1UsQMhVWDZvxuVclS-123" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" source="SMY1UsQMhVWDZvxuVclS-115" target="SMY1UsQMhVWDZvxuVclS-122" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SMY1UsQMhVWDZvxuVclS-115" value="raftNode.getVotedFor() == 0 &amp;amp;&amp;amp; logIsOk&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;voteFor == 0 说明是本轮第一次投票，这个判断是防止节点重复投票&lt;/font&gt;" style="rhombus;whiteSpace=wrap;html=1;fontSize=9;align=center;rounded=1;fontStyle=0;" parent="1" vertex="1">
+          <mxGeometry x="1320" y="1300.5" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="SMY1UsQMhVWDZvxuVclS-126" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="SMY1UsQMhVWDZvxuVclS-117" target="SMY1UsQMhVWDZvxuVclS-125" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SMY1UsQMhVWDZvxuVclS-117" value="&lt;div style=&quot;&quot;&gt;raftNode.stepDown(request.getTerm());&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;raftNode.setVotedFor(request.getServerId());&lt;br&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;direction=west;fontSize=10;align=left;fontStyle=0" parent="1" vertex="1">
+          <mxGeometry x="1522" y="1300.5" width="199.5" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="SMY1UsQMhVWDZvxuVclS-124" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="1" source="SMY1UsQMhVWDZvxuVclS-122" target="SMY1UsQMhVWDZvxuVclS-99" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SMY1UsQMhVWDZvxuVclS-122" value="&lt;div style=&quot;&quot;&gt;return responseBuilder.build();&lt;br&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;direction=west;fontSize=10;align=center;fontStyle=0" parent="1" vertex="1">
+          <mxGeometry x="1280.25" y="1380.5" width="199.5" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="SMY1UsQMhVWDZvxuVclS-128" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="SMY1UsQMhVWDZvxuVclS-125" target="SMY1UsQMhVWDZvxuVclS-127" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1621.250000000001" y="1460.5" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="SMY1UsQMhVWDZvxuVclS-129" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;" parent="1" source="SMY1UsQMhVWDZvxuVclS-125" target="SMY1UsQMhVWDZvxuVclS-26" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1950" y="1411" />
+              <mxPoint x="1950" y="3375" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="SMY1UsQMhVWDZvxuVclS-125" value="&lt;div style=&quot;&quot;&gt;raftNode.getRaftLog().&lt;b&gt;updateMetaData&lt;/b&gt;(&lt;/div&gt;&lt;div style=&quot;&quot;&gt;raftNode.getCurrentTerm(), raftNode.getVotedFor(), null, null);&lt;br&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;direction=west;fontSize=10;align=left;fontStyle=0" parent="1" vertex="1">
+          <mxGeometry x="1522" y="1380.5" width="199.5" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="SMY1UsQMhVWDZvxuVclS-127" value="&lt;div style=&quot;&quot;&gt;responseBuilder.setGranted(true);&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;responseBuilder.setTerm(&lt;/div&gt;&lt;div style=&quot;&quot;&gt;raftNode.getCurrentTerm());&lt;br&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;direction=west;fontSize=10;align=left;fontStyle=0" parent="1" vertex="1">
+          <mxGeometry x="1522" y="1460.5" width="199.5" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="SMY1UsQMhVWDZvxuVclS-133" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="SMY1UsQMhVWDZvxuVclS-130" target="SMY1UsQMhVWDZvxuVclS-132" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SMY1UsQMhVWDZvxuVclS-130" value="&lt;div&gt;state = NodeState.&lt;b&gt;STATE_LEADER&lt;/b&gt;;&lt;/div&gt;&lt;div&gt;leaderId = localServer.getServerId();&lt;/div&gt;&lt;div&gt;关闭还存在的选举定时任务&lt;/div&gt;&lt;div&gt;electionScheduledFuture.cancel(true);&lt;br&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;direction=west;fontSize=10;fillColor=#ffcd28;strokeColor=#d79b00;gradientColor=#ffa500;" parent="1" vertex="1">
+          <mxGeometry x="1719.5" y="3880" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="SMY1UsQMhVWDZvxuVclS-135" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="SMY1UsQMhVWDZvxuVclS-132" target="SMY1UsQMhVWDZvxuVclS-134" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SMY1UsQMhVWDZvxuVclS-132" value="&lt;div&gt;startNewHeartbeat();&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;开启心跳定时任务,　定期向peer发送&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;appendEntries请求&lt;/font&gt;&lt;br&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;direction=west;fontSize=10;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxGeometry x="1720" y="3960" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="SMY1UsQMhVWDZvxuVclS-137" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;" parent="1" source="SMY1UsQMhVWDZvxuVclS-134" target="SMY1UsQMhVWDZvxuVclS-136" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SMY1UsQMhVWDZvxuVclS-134" value="遍历&amp;nbsp;peerMap， 向所有其他节点异步发送&lt;br&gt;AppendEntries请求&lt;br&gt;executorService.&lt;b&gt;submit&lt;/b&gt;(...)&lt;br&gt;全部提交完再设置心跳定时任务 &lt;b&gt;resetHeartbeatTimer&lt;/b&gt;();" style="rounded=1;whiteSpace=wrap;html=1;direction=west;fontSize=10;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxGeometry x="1960" y="3960" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="KmqIpF15YOtQaE7IZBm3-2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.75;entryDx=0;entryDy=0;" edge="1" parent="1" source="SMY1UsQMhVWDZvxuVclS-136" target="jrdKXmfmH3rlp7NtxQ88-45">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="2439.5" y="3990.000000000001" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="2420" y="3990" />
+              <mxPoint x="2420" y="2290" />
+              <mxPoint x="1940" y="2290" />
+              <mxPoint x="1940" y="2265" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="SMY1UsQMhVWDZvxuVclS-136" value="&lt;div style=&quot;border-color: var(--border-color);&quot;&gt;RaftNode#&lt;b style=&quot;border-color: var(--border-color);&quot;&gt;appendEntries&lt;/b&gt;(Peer peer)&lt;br style=&quot;border-color: var(--border-color);&quot;&gt;&lt;/div&gt;&lt;div style=&quot;border-color: var(--border-color);&quot;&gt;&lt;font style=&quot;border-color: var(--border-color);&quot; color=&quot;#007fff&quot;&gt;Leader节点将自己的日志同步到Follower节点，同步 snapshot 、raftLog 两部分&lt;/font&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;direction=west;fontSize=10;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxGeometry x="2200" y="3960" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="jrdKXmfmH3rlp7NtxQ88-5" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="jrdKXmfmH3rlp7NtxQ88-1" target="jrdKXmfmH3rlp7NtxQ88-4" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="jrdKXmfmH3rlp7NtxQ88-8" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="jrdKXmfmH3rlp7NtxQ88-1" target="jrdKXmfmH3rlp7NtxQ88-6" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="jrdKXmfmH3rlp7NtxQ88-1" value="&lt;font color=&quot;#007fff&quot;&gt;2个接口&lt;br&gt;对标业务接口，展示Raft协议下对业务请求的处理&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;direction=west;fontSize=10;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="520" y="1680" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="jrdKXmfmH3rlp7NtxQ88-10" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="jrdKXmfmH3rlp7NtxQ88-4" target="jrdKXmfmH3rlp7NtxQ88-11" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1000.5000000000005" y="1710" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="jrdKXmfmH3rlp7NtxQ88-4" value="&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;font-weight: normal;&quot;&gt;ExampleProto.SetResponse &lt;/span&gt;set&lt;span style=&quot;font-weight: normal;&quot;&gt;(ExampleProto.SetRequest request);&lt;/span&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;font style=&quot;&quot; color=&quot;#007fff&quot;&gt;&lt;span style=&quot;font-weight: normal;&quot;&gt;赋值接口，客户端不需要先查找Leader再请求，可以发给任意节点，因为内部已经做了&lt;/span&gt;转发&lt;/font&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;direction=west;fontSize=10;fillColor=#d5e8d4;strokeColor=#82b366;align=left;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="760" y="1680" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="KmqIpF15YOtQaE7IZBm3-11" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="jrdKXmfmH3rlp7NtxQ88-6" target="KmqIpF15YOtQaE7IZBm3-10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="jrdKXmfmH3rlp7NtxQ88-6" value="&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;font-weight: normal;&quot;&gt;ExampleProto.GetResponse &lt;/span&gt;get&lt;span style=&quot;font-weight: normal;&quot;&gt;(ExampleProto.GetRequest request);&lt;/span&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;font-weight: normal;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;查询接口&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;direction=west;fontSize=10;fillColor=#d5e8d4;strokeColor=#82b366;align=left;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="760" y="2160" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="jrdKXmfmH3rlp7NtxQ88-13" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="jrdKXmfmH3rlp7NtxQ88-11" target="jrdKXmfmH3rlp7NtxQ88-12" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="jrdKXmfmH3rlp7NtxQ88-14" value="&lt;font style=&quot;&quot; color=&quot;#007fff&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;Y &lt;/font&gt;&lt;br style=&quot;font-size: 8px;&quot;&gt;说明当前节点不是Leader, &lt;br style=&quot;font-size: 8px;&quot;&gt;也不知道谁是Leader&lt;br style=&quot;font-size: 8px;&quot;&gt;一般是集群还没选举出Leader&lt;br&gt;或在重新选举&amp;nbsp;&lt;br style=&quot;font-size: 8px;&quot;&gt;&lt;/font&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=8;" parent="jrdKXmfmH3rlp7NtxQ88-13" vertex="1" connectable="0">
+          <mxGeometry x="-0.4937" y="-3" relative="1" as="geometry">
+            <mxPoint x="9" y="27" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="jrdKXmfmH3rlp7NtxQ88-16" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="jrdKXmfmH3rlp7NtxQ88-11" target="jrdKXmfmH3rlp7NtxQ88-15" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="jrdKXmfmH3rlp7NtxQ88-17" value="N" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontColor=#007FFF;" parent="jrdKXmfmH3rlp7NtxQ88-16" vertex="1" connectable="0">
+          <mxGeometry x="-0.0958" y="1" relative="1" as="geometry">
+            <mxPoint x="-1" y="-6" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="jrdKXmfmH3rlp7NtxQ88-11" value="raftNode.getLeaderId()&lt;br&gt;&amp;nbsp;&amp;lt;= 0" style="rhombus;whiteSpace=wrap;html=1;fontSize=9;align=center;rounded=1;fontStyle=0;" parent="1" vertex="1">
+          <mxGeometry x="1001.5" y="1680" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="jrdKXmfmH3rlp7NtxQ88-12" value="&lt;div style=&quot;&quot;&gt;responseBuilder.setSuccess(false);&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;直接返回失败&lt;/font&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;direction=west;fontSize=10;align=center;fontStyle=0" parent="1" vertex="1">
+          <mxGeometry x="1240.5" y="1680" width="199.5" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="jrdKXmfmH3rlp7NtxQ88-19" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="jrdKXmfmH3rlp7NtxQ88-15" target="jrdKXmfmH3rlp7NtxQ88-18" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="jrdKXmfmH3rlp7NtxQ88-20" value="&lt;font style=&quot;&quot; color=&quot;#007fff&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;Y&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size: 8px;&quot;&gt;已知Leader ID,&lt;br&gt;且不是当前节点ID&lt;br&gt;说明当前节点是Follower&lt;/font&gt;&lt;/font&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="jrdKXmfmH3rlp7NtxQ88-19" vertex="1" connectable="0">
+          <mxGeometry x="-0.1806" relative="1" as="geometry">
+            <mxPoint x="-9" y="30" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="jrdKXmfmH3rlp7NtxQ88-22" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="jrdKXmfmH3rlp7NtxQ88-15" target="jrdKXmfmH3rlp7NtxQ88-24" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1060.5" y="1880" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="1089.5" y="2010" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="jrdKXmfmH3rlp7NtxQ88-23" value="&lt;font color=&quot;#007fff&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;N&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size: 8px;&quot;&gt;说明当前节点是Leader&lt;/font&gt;&lt;br&gt;&lt;/font&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="jrdKXmfmH3rlp7NtxQ88-22" vertex="1" connectable="0">
+          <mxGeometry x="-0.2625" y="1" relative="1" as="geometry">
+            <mxPoint x="70" y="40" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="jrdKXmfmH3rlp7NtxQ88-25" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" source="jrdKXmfmH3rlp7NtxQ88-15" target="jrdKXmfmH3rlp7NtxQ88-26" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1061.5" y="1970" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="jrdKXmfmH3rlp7NtxQ88-15" value="raftNode.getLeaderId() != raftNode.getLocalServer()&lt;br&gt;.getServerId()" style="rhombus;whiteSpace=wrap;html=1;fontSize=9;align=center;rounded=1;fontStyle=0;" parent="1" vertex="1">
+          <mxGeometry x="1001.5" y="1780" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="jrdKXmfmH3rlp7NtxQ88-29" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.524;entryY=0.019;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="jrdKXmfmH3rlp7NtxQ88-18" target="jrdKXmfmH3rlp7NtxQ88-28" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1340" y="1850" />
+              <mxPoint x="1386" y="1850" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="jrdKXmfmH3rlp7NtxQ88-18" value="onLeaderChangeEvent();&lt;br&gt;&lt;font style=&quot;font-size: 9px;&quot; color=&quot;#007fff&quot;&gt;如果Leader有变更，加锁同步更新ExampleServiceImpl中 leaderId leaderRpcClient&lt;br&gt;加锁为了保持 leaderId leaderRpcClient 的一致&lt;br&gt;&lt;/font&gt;" style="whiteSpace=wrap;html=1;fontSize=10;rounded=1;fontStyle=0;" parent="1" vertex="1">
+          <mxGeometry x="1240.5" y="1780" width="199" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="jrdKXmfmH3rlp7NtxQ88-33" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="jrdKXmfmH3rlp7NtxQ88-24" target="jrdKXmfmH3rlp7NtxQ88-32" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="jrdKXmfmH3rlp7NtxQ88-24" value="byte[] data = request.toByteArray();&lt;br&gt;boolean success = &lt;b&gt;raftNode&lt;/b&gt;.&lt;b&gt;replicate&lt;/b&gt;(data, RaftProto.EntryType.ENTRY_TYPE_DATA);&lt;br&gt;responseBuilder.setSuccess(success);&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;日志复制&lt;/font&gt;" style="whiteSpace=wrap;html=1;fontSize=10;rounded=1;fontStyle=0;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxGeometry x="1240" y="1980" width="199" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="jrdKXmfmH3rlp7NtxQ88-26" value="&lt;font style=&quot;font-size: 10px;&quot;&gt;ExampleProto.SetResponse response = responseBuilder.build();&lt;br&gt;return response;&lt;/font&gt;" style="whiteSpace=wrap;html=1;fontSize=9;rounded=1;fontStyle=0;" parent="1" vertex="1">
+          <mxGeometry x="991.5" y="2040" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="jrdKXmfmH3rlp7NtxQ88-30" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" source="jrdKXmfmH3rlp7NtxQ88-28" target="jrdKXmfmH3rlp7NtxQ88-24" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1530" y="1905" />
+              <mxPoint x="1530" y="1970" />
+              <mxPoint x="1230" y="1970" />
+              <mxPoint x="1230" y="1995" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="jrdKXmfmH3rlp7NtxQ88-31" value="&lt;font color=&quot;#007fff&quot;&gt;转发调用Leader节点&lt;br&gt;set接口&lt;br&gt;&lt;/font&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="jrdKXmfmH3rlp7NtxQ88-30" vertex="1" connectable="0">
+          <mxGeometry x="-0.8505" y="-1" relative="1" as="geometry">
+            <mxPoint x="61" y="-21" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="jrdKXmfmH3rlp7NtxQ88-28" value="&lt;div&gt;ExampleService exampleService = BrpcProxy.&lt;b&gt;getProxy&lt;/b&gt;(leaderRpcClient, ExampleService.class);&lt;/div&gt;&lt;div&gt;ExampleProto.SetResponse responseFromLeader = exampleService.&lt;b&gt;set&lt;/b&gt;(request);&lt;/div&gt;&lt;div&gt;responseBuilder.&lt;b&gt;mergeFrom&lt;/b&gt;(responseFromLeader);&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;为何要请求Leader的set接口? 其实这里相当于&lt;b&gt;转发&lt;/b&gt;，修改等&lt;/font&gt;&lt;span style=&quot;color: rgb(0, 127, 255); background-color: initial;&quot;&gt;操作是需要发给Leader,再经由Leader日志复制同步到其他节点，但是代码实现&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;一般不会先查找Leader节点再请求，而是通过这种转发的方式&lt;/font&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontSize=9;rounded=1;fontStyle=0;align=left;arcSize=9;" parent="1" vertex="1">
+          <mxGeometry x="1239.5" y="1860" width="280" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="jrdKXmfmH3rlp7NtxQ88-36" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="jrdKXmfmH3rlp7NtxQ88-32" target="jrdKXmfmH3rlp7NtxQ88-35" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="jrdKXmfmH3rlp7NtxQ88-32" value="先校验Leader节点状态&lt;br&gt;state != NodeState.STATE_LEADER&lt;br&gt;不等直接返回false&lt;br&gt;" style="whiteSpace=wrap;html=1;fontSize=10;rounded=1;fontStyle=0;" parent="1" vertex="1">
+          <mxGeometry x="1479.75" y="1980" width="199" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="jrdKXmfmH3rlp7NtxQ88-38" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="jrdKXmfmH3rlp7NtxQ88-35" target="jrdKXmfmH3rlp7NtxQ88-37" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="jrdKXmfmH3rlp7NtxQ88-35" value="&lt;div&gt;RaftProto.LogEntry logEntry = RaftProto.&lt;b&gt;LogEntry&lt;/b&gt;.newBuilder()&lt;/div&gt;&lt;div&gt;.&lt;b&gt;setTerm&lt;/b&gt;(currentTerm)&lt;span style=&quot;background-color: initial;&quot;&gt;.&lt;b&gt;setType&lt;/b&gt;(entryType)&lt;/span&gt;&lt;/div&gt;&lt;div&gt;.&lt;b&gt;setData&lt;/b&gt;(ByteString.copyFrom(data)).build();&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontSize=10;rounded=1;fontStyle=0;align=left;" parent="1" vertex="1">
+          <mxGeometry x="1479.5" y="2060" width="199" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="jrdKXmfmH3rlp7NtxQ88-40" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="jrdKXmfmH3rlp7NtxQ88-37" target="jrdKXmfmH3rlp7NtxQ88-39" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="jrdKXmfmH3rlp7NtxQ88-37" value="&lt;div style=&quot;font-size: 9px;&quot;&gt;List&amp;lt;RaftProto.LogEntry&amp;gt; entries = new ArrayList&amp;lt;&amp;gt;();&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;entries.add(logEntry);&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;newLastLogIndex = &lt;b&gt;raftLog&lt;/b&gt;.&lt;b style=&quot;font-size: 9px;&quot;&gt;append&lt;/b&gt;(entries);&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;先写Leader节点本地的RaftLog&lt;/font&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontSize=9;rounded=1;fontStyle=0;align=left;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="1479.5" y="2140" width="199" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="jrdKXmfmH3rlp7NtxQ88-42" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;" parent="1" source="jrdKXmfmH3rlp7NtxQ88-39" target="jrdKXmfmH3rlp7NtxQ88-41" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="jrdKXmfmH3rlp7NtxQ88-46" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="jrdKXmfmH3rlp7NtxQ88-58" target="jrdKXmfmH3rlp7NtxQ88-45" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="jrdKXmfmH3rlp7NtxQ88-39" value="&lt;div style=&quot;text-align: center; font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;&lt;span style=&quot;background-color: initial; font-size: 10px;&quot;&gt;&lt;b&gt;for&lt;/b&gt;&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;background-color: initial; font-size: 10px;&quot;&gt;configuration.getServersList():&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;text-align: center; font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;&lt;span style=&quot;background-color: initial; font-size: 10px;&quot;&gt;executorService.submit(() -&amp;gt; &lt;/span&gt;&lt;b style=&quot;background-color: initial; font-size: 10px;&quot;&gt;appendEntries&lt;/b&gt;&lt;span style=&quot;background-color: initial; font-size: 10px;&quot;&gt;(peer));&lt;/span&gt;&lt;br style=&quot;font-size: 10px;&quot;&gt;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;text-align: center; font-size: 10px;&quot;&gt;&lt;span style=&quot;background-color: initial; font-size: 10px;&quot;&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;再遍历其他节点异步发送日志节点&lt;/font&gt;&lt;/div&gt;&lt;/span&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontSize=10;rounded=1;fontStyle=0;align=left;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="1479.5" y="2220" width="199" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="jrdKXmfmH3rlp7NtxQ88-44" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;" parent="1" source="jrdKXmfmH3rlp7NtxQ88-41" target="jrdKXmfmH3rlp7NtxQ88-43" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="jrdKXmfmH3rlp7NtxQ88-41" value="&lt;div style=&quot;text-align: center; font-size: 10px;&quot;&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;if (raftOptions.isAsyncWrite())&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp; return true;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;如果配置了异步写，主节点写成功后就返回&lt;/font&gt;&lt;/div&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontSize=10;rounded=1;fontStyle=0;align=left;" parent="1" vertex="1">
+          <mxGeometry x="1479.5" y="2300" width="199" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="jrdKXmfmH3rlp7NtxQ88-43" value="&lt;div style=&quot;font-size: 9px;&quot;&gt;同步写需要同步等待多数节点日志同步成功&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;while (&lt;b style=&quot;font-size: 9px;&quot;&gt;lastAppliedIndex &amp;lt; newLastLogIndex&lt;/b&gt;) {&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&amp;nbsp; ...&lt;br style=&quot;font-size: 9px;&quot;&gt;&lt;span style=&quot;background-color: initial; font-size: 9px;&quot;&gt;&amp;nbsp; &lt;b&gt;commitIndexCondition&lt;/b&gt;.await(&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;span style=&quot;background-color: initial; font-size: 9px;&quot;&gt;raftOptions.getMaxAwaitTimeout(), TimeUnit.MILLISECONDS);&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;}&lt;br style=&quot;font-size: 9px;&quot;&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontSize=9;rounded=1;fontStyle=0;align=left;arcSize=8;" parent="1" vertex="1">
+          <mxGeometry x="1479.5" y="2380" width="199" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="jrdKXmfmH3rlp7NtxQ88-62" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="jrdKXmfmH3rlp7NtxQ88-45" target="jrdKXmfmH3rlp7NtxQ88-61" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="jrdKXmfmH3rlp7NtxQ88-64" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="jrdKXmfmH3rlp7NtxQ88-45" target="jrdKXmfmH3rlp7NtxQ88-63" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="jrdKXmfmH3rlp7NtxQ88-45" value="&lt;div style=&quot;text-align: center; font-size: 10px;&quot;&gt;首先判断是否需要 install snapshot,&amp;nbsp;&lt;/div&gt;&lt;div style=&quot;text-align: center; font-size: 10px;&quot;&gt;peer.getNextIndex() &amp;lt; raftLog LogMetaData.first_log_index&lt;/div&gt;&lt;div style=&quot;text-align: center; font-size: 9px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 9px;&quot;&gt;即Follower节点中可能缺失Leader节点已经压缩了的日志（&lt;b&gt;snapshot&lt;/b&gt;), 比如新增的节点&lt;/font&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontSize=10;rounded=1;fontStyle=0;align=left;" parent="1" vertex="1">
+          <mxGeometry x="1960" y="2220" width="199" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="JQhlRMpWB4Idlw7NUIdd-15" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="jrdKXmfmH3rlp7NtxQ88-48" target="JQhlRMpWB4Idlw7NUIdd-14" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="JQhlRMpWB4Idlw7NUIdd-16" value="３" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="JQhlRMpWB4Idlw7NUIdd-15" vertex="1" connectable="0">
+          <mxGeometry x="0.3283" y="2" relative="1" as="geometry">
+            <mxPoint y="2" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="jrdKXmfmH3rlp7NtxQ88-48" value="主要做了下面几件事：&lt;br&gt;1 加载日志Segment文件数据以及元数据文件数据到内存&lt;b&gt;SegmentedLog&lt;/b&gt; raftLog对象&lt;br&gt;2 加载快照元数据到内存&lt;b&gt;SnapshotMetaData&lt;/b&gt; snapshot对象&lt;br&gt;3 拷贝snapshot数据并用RocksDB加载，将Segment文件中已经提交的日志应用到状态机" style="rounded=1;whiteSpace=wrap;html=1;direction=west;fontSize=10;fillColor=#dae8fc;strokeColor=#6c8ebf;align=left;arcSize=8;" parent="1" vertex="1">
+          <mxGeometry x="510" y="430" width="220" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="jrdKXmfmH3rlp7NtxQ88-50" value="RocksDB.loadLibrary();" style="rounded=1;whiteSpace=wrap;html=1;direction=west;fontSize=10;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="520" y="360" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="jrdKXmfmH3rlp7NtxQ88-52" value="&lt;div style=&quot;text-align: center;&quot;&gt;&lt;b&gt;Segment&lt;/b&gt;&lt;br&gt;&lt;/div&gt;&lt;hr style=&quot;font-size: 10px;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;&lt;b&gt;Segment对应logDataDir下的一个文件: [open]-&amp;lt;startIndex&amp;gt;-&amp;lt;endindex&amp;gt; ，保存一组操作日志。&lt;/b&gt;&lt;/font&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;private boolean canWrite;&lt;/span&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//开始日志索引&lt;/font&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private long &lt;b&gt;startIndex&lt;/b&gt;;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//结束日志索引&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private long &lt;b&gt;endIndex&lt;/b&gt;;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//文件的大小，bytes&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private long &lt;b&gt;fileSize&lt;/b&gt;;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//物理文件名&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private String fileName;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//文件对象&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private RandomAccessFile randomAccessFile;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//操作日志列表，Record 是操作日志的基本单元，服务节点初始化时会从Segment读取数据存入&lt;br&gt;entries&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private List&amp;lt;Record&amp;gt; entries = new ArrayList&amp;lt;&amp;gt;();&lt;/p&gt;&lt;hr style=&quot;font-size: 10px;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 10px;&quot;&gt;&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=10;fontFamily=Helvetica;html=1;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="-960" y="1240" width="440" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="jrdKXmfmH3rlp7NtxQ88-53" value="&lt;div style=&quot;text-align: center;&quot;&gt;&lt;b&gt;Snapshot&lt;/b&gt;&lt;br&gt;&lt;/div&gt;&lt;hr style=&quot;font-size: 10px;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;&lt;b&gt;快照，Raft论文中用快照实现日志压缩。&lt;/b&gt;&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//raftDataDir+ &quot;/snapshot&quot;&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private String &lt;b&gt;snapshotDir&lt;/b&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;;&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//快照元数据&lt;/font&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private RaftProto.SnapshotMetaData &lt;b&gt;metaData&lt;/b&gt;;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;// 表示是否正在安装snapshot，leader向follower安装（其实就是同步数据），leader和follower同时处于installSnapshot状态&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private AtomicBoolean &lt;b&gt;isInstallSnapshot&lt;/b&gt; = new AtomicBoolean(false);&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;// 表示节点自己是否在对状态机做snapshot&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private AtomicBoolean &lt;b&gt;isTakeSnapshot&lt;/b&gt; = new AtomicBoolean(false);&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private Lock lock = new ReentrantLock();&lt;/p&gt;&lt;hr style=&quot;font-size: 10px;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 10px;&quot;&gt;&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=10;fontFamily=Helvetica;html=1;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="-480" y="1000" width="440" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="jrdKXmfmH3rlp7NtxQ88-54" value="&lt;font color=&quot;#007fff&quot; style=&quot;&quot;&gt;snapshot 数据拷贝：./data/snapshot/data -&amp;gt;&amp;nbsp;./data/rocksdb_data&amp;nbsp; ? 为何要这么做？&lt;br&gt;Segment文件日志应用到状态机，即 db.put(request.getKey().getBytes(), request.getValue().getBytes());&lt;br&gt;&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;" parent="1" vertex="1">
+          <mxGeometry x="760" y="390" width="480" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="jrdKXmfmH3rlp7NtxQ88-106" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="jrdKXmfmH3rlp7NtxQ88-55" target="jrdKXmfmH3rlp7NtxQ88-105" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="jrdKXmfmH3rlp7NtxQ88-55" value="条件判断：&lt;br&gt;1 raftLog 不能小于 压缩规定的最小文件大小&lt;br&gt;2 lastAppliedIndex 不能&amp;lt;= 最后被压缩的日志索引&lt;br&gt;条件不满足直接返回" style="rounded=1;whiteSpace=wrap;html=1;direction=east;fontSize=10;align=left;arcSize=10;" parent="1" vertex="1">
+          <mxGeometry x="1000" y="2480" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="jrdKXmfmH3rlp7NtxQ88-59" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;" parent="1" source="jrdKXmfmH3rlp7NtxQ88-39" target="jrdKXmfmH3rlp7NtxQ88-58" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1679" y="2250" as="sourcePoint" />
+            <mxPoint x="1960" y="2250" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="jrdKXmfmH3rlp7NtxQ88-58" value="&lt;div style=&quot;font-size: 10px;&quot;&gt;RaftNode#&lt;b style=&quot;font-size: 10px;&quot;&gt;appendEntries&lt;/b&gt;(Peer peer)&lt;br style=&quot;font-size: 10px;&quot;&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;Leader节点将自己的日志同步到Follower节点，同步 snapshot 、raftLog 两部分&lt;/font&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontSize=10;rounded=1;fontStyle=0;align=center;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxGeometry x="1719.5" y="2220" width="199" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="jrdKXmfmH3rlp7NtxQ88-60" value="RaftNode (Leader)" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
+          <mxGeometry x="1530.5" y="1950" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="KmqIpF15YOtQaE7IZBm3-6" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="jrdKXmfmH3rlp7NtxQ88-61" target="KmqIpF15YOtQaE7IZBm3-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="jrdKXmfmH3rlp7NtxQ88-61" value="&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;b&gt;installSnapshot&lt;/b&gt;(peer)&lt;br style=&quot;font-size: 10px;&quot;&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;其实就是从主节点快照中将Follower节点缺失的已经被压缩的日志取出来应用到Follower状态机并更新相应元数据，如果正在压缩日志、或正在安装快照，返回false&lt;/font&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontSize=10;rounded=1;fontStyle=0;align=center;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxGeometry x="2200" y="2220" width="199" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="jrdKXmfmH3rlp7NtxQ88-66" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="jrdKXmfmH3rlp7NtxQ88-63" target="jrdKXmfmH3rlp7NtxQ88-65" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="jrdKXmfmH3rlp7NtxQ88-63" value="&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;div&gt;同步锁控制下获取：&lt;/div&gt;&lt;div&gt;lastSnapshotIndex = snapshot.getMetaData()&lt;span style=&quot;background-color: initial;&quot;&gt;.getLastIncludedIndex();&lt;/span&gt;&lt;/div&gt;&lt;div&gt;lastSnapshotTerm = snapshot.getMetaData().getLastIncludedTerm();&lt;/div&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontSize=9;rounded=1;fontStyle=0;align=left;" parent="1" vertex="1">
+          <mxGeometry x="1949.5" y="2300" width="220" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="jrdKXmfmH3rlp7NtxQ88-69" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="jrdKXmfmH3rlp7NtxQ88-65" target="jrdKXmfmH3rlp7NtxQ88-68" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="jrdKXmfmH3rlp7NtxQ88-65" value="&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;requestBuilder.setServerId(&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&amp;nbsp; localServer.getServerId());&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;requestBuilder.setTerm(currentTerm);&lt;span style=&quot;background-color: initial;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; requestBuilder.&lt;b&gt;setPrevLogTerm&lt;/b&gt;(prevLogTerm);&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;requestBuilder.&lt;b&gt;setPrevLogIndex&lt;/b&gt;(prevLogIndex);&lt;/div&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;numEntries = &lt;b style=&quot;font-size: 9px;&quot;&gt;packEntries&lt;/b&gt;(peer.getNextIndex(), requestBuilder);&lt;br style=&quot;font-size: 9px;&quot;&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 9px;&quot;&gt;从Leader &lt;b style=&quot;font-size: 9px;&quot;&gt;raftLog&lt;/b&gt;中截取需要同步的日志片段&lt;/font&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontSize=9;rounded=1;fontStyle=0;align=left;arcSize=7;" parent="1" vertex="1">
+          <mxGeometry x="1959.5" y="2380" width="199.5" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="jrdKXmfmH3rlp7NtxQ88-71" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="jrdKXmfmH3rlp7NtxQ88-68" target="jrdKXmfmH3rlp7NtxQ88-70" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="jrdKXmfmH3rlp7NtxQ88-68" value="&lt;div style=&quot;&quot;&gt;&lt;div style=&quot;&quot;&gt;RaftProto.AppendEntriesResponse response = peer.getRaftConsensusServiceAsync()&lt;/div&gt;&lt;div style=&quot;&quot;&gt;.&lt;b&gt;appendEntries&lt;/b&gt;(request);&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;调用Follower一致性服务同步上一步截取的日志&lt;/font&gt;&lt;/div&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontSize=9;rounded=1;fontStyle=0;align=center;arcSize=12;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+          <mxGeometry x="1959.5" y="2500" width="199.5" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="jrdKXmfmH3rlp7NtxQ88-75" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="jrdKXmfmH3rlp7NtxQ88-70" target="jrdKXmfmH3rlp7NtxQ88-74" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="jrdKXmfmH3rlp7NtxQ88-70" value="&lt;div style=&quot;&quot;&gt;&lt;div style=&quot;&quot;&gt;如果 response == null&amp;nbsp;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;检查配置文件中是否包含此peer节点，不包含则从 peerMap清除，并关闭对此peer的 RPC client&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;为了支持节点的增删&lt;/font&gt;&lt;/div&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontSize=9;rounded=1;fontStyle=0;align=center;arcSize=15;" parent="1" vertex="1">
+          <mxGeometry x="1959.5" y="2580" width="199.5" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="jrdKXmfmH3rlp7NtxQ88-72" value="&lt;div style=&quot;&quot;&gt;&lt;div style=&quot;&quot;&gt;&lt;b&gt;stepDown&lt;/b&gt;(response.getTerm());&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;Y 说明有了新的Leader, 而新旧Leader都可以与此peer通信，什么情况下会出现这种情况？与部分节点的网络连接出现抖动？&lt;/font&gt;&lt;/div&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontSize=9;rounded=1;fontStyle=0;align=center;arcSize=15;" parent="1" vertex="1">
+          <mxGeometry x="2199.5" y="2660" width="199.5" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="jrdKXmfmH3rlp7NtxQ88-76" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="jrdKXmfmH3rlp7NtxQ88-74" target="jrdKXmfmH3rlp7NtxQ88-72" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="jrdKXmfmH3rlp7NtxQ88-77" value="Y" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="jrdKXmfmH3rlp7NtxQ88-76" vertex="1" connectable="0">
+          <mxGeometry x="0.4271" y="-1" relative="1" as="geometry">
+            <mxPoint x="4" y="-1" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="jrdKXmfmH3rlp7NtxQ88-79" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="jrdKXmfmH3rlp7NtxQ88-74" target="jrdKXmfmH3rlp7NtxQ88-78" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="jrdKXmfmH3rlp7NtxQ88-80" value="N" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="jrdKXmfmH3rlp7NtxQ88-79" vertex="1" connectable="0">
+          <mxGeometry x="0.4695" y="-1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="jrdKXmfmH3rlp7NtxQ88-74" value="response.getTerm() &amp;gt; currentTerm" style="rhombus;whiteSpace=wrap;html=1;fontSize=9;rounded=1;fontStyle=0;arcSize=15;" parent="1" vertex="1">
+          <mxGeometry x="2000" y="2700" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="jrdKXmfmH3rlp7NtxQ88-89" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="jrdKXmfmH3rlp7NtxQ88-78" target="jrdKXmfmH3rlp7NtxQ88-88" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="jrdKXmfmH3rlp7NtxQ88-78" value="&lt;div style=&quot;&quot;&gt;&lt;div style=&quot;&quot;&gt;&lt;div&gt;if (response.getResCode() == RaftProto.ResCode.&lt;b&gt;RES_CODE_SUCCESS&lt;/b&gt;) { //同步成功&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; peer.&lt;b&gt;setMatchIndex&lt;/b&gt;(prevLogIndex + numEntries);&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; peer.&lt;b&gt;setNextIndex&lt;/b&gt;(peer.getMatchIndex() + 1);&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;&amp;nbsp; &amp;nbsp;&amp;nbsp;//判断 peer serverId 存在于配置的server列表中，可能通过节点管理接口删除节点&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; if (ConfigurationUtils.containsServer(configuration, peer.getServer().getServerId())) {&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &lt;b&gt;advanceCommitIndex&lt;/b&gt;();&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; } else { &lt;font color=&quot;#007fff&quot;&gt;//节点被删除&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; if (raftLog.getLastLogIndex() - peer.getMatchIndex() &amp;lt;= raftOptions.getCatchupMargin()) {&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; peer.setCatchUp(true);&lt;/span&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; // signal the caller thread&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &lt;b&gt;catchUpCondition&lt;/b&gt;.&lt;b&gt;signalAll&lt;/b&gt;();&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; }&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; }&lt;/div&gt;&lt;div&gt;} else {&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; peer.&lt;b&gt;setNextIndex&lt;/b&gt;(response.getLastLogIndex() + 1); &lt;font color=&quot;#007fff&quot;&gt;//在被跟随者拒绝之后，领导人就会减小 nextIndex 值并进行重试(重试则是靠心跳)。&lt;/font&gt;&lt;/div&gt;&lt;div&gt;}&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontSize=9;rounded=1;fontStyle=0;align=left;arcSize=3;" parent="1" vertex="1">
+          <mxGeometry x="2199.5" y="2740" width="380.5" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="jrdKXmfmH3rlp7NtxQ88-67" value="&lt;font color=&quot;#007fff&quot;&gt;packEntries() 即截取raftLog中索引从 peer.nextIndex 到 raftLog最后一条日志索引，&lt;br&gt;如果截取日志数量大于&amp;nbsp;raftOptions.getMaxLogEntriesPerRequest() &lt;br&gt;则截取固定长度，其他的在下一次 appendEntries 再同步&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;" parent="1" vertex="1">
+          <mxGeometry x="2169.5" y="2405" width="390" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="jrdKXmfmH3rlp7NtxQ88-85" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="jrdKXmfmH3rlp7NtxQ88-82" target="jrdKXmfmH3rlp7NtxQ88-84" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="jrdKXmfmH3rlp7NtxQ88-82" value="&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px; font-weight: normal;&quot;&gt;检查是否满足请求的term不小于当前节点的term，不满足返回失败，并附带上当前节点term及最后一条日志索引&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-weight: normal; font-size: 10px;&quot;&gt;raftNode.&lt;/font&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;stepDown&lt;/font&gt;&lt;font style=&quot;font-weight: normal; font-size: 10px;&quot;&gt;(request.getTerm());&lt;/font&gt;&lt;br style=&quot;font-size: 10px;&quot;&gt;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-weight: normal; font-size: 10px;&quot;&gt;后面还有几条检查，不列举了去看源码吧&lt;/font&gt;&lt;/font&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;direction=east;fontSize=10;align=left;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="1000" y="1219.5" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="jrdKXmfmH3rlp7NtxQ88-87" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="jrdKXmfmH3rlp7NtxQ88-84" target="jrdKXmfmH3rlp7NtxQ88-86" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="jrdKXmfmH3rlp7NtxQ88-84" value="&lt;div style=&quot;&quot;&gt;覆盖式追加日志&lt;/div&gt;&lt;div style=&quot;&quot;&gt;raftNode.getRaftLog().append(entries);&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;responseBuilder.setLastLogIndex(&lt;/div&gt;&lt;div style=&quot;&quot;&gt;raftNode.getRaftLog().getLastLogIndex());&lt;br&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;direction=east;fontSize=10;align=center;fontStyle=0" parent="1" vertex="1">
+          <mxGeometry x="1000" y="1300" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="jrdKXmfmH3rlp7NtxQ88-86" value="&lt;div style=&quot;&quot;&gt;&lt;b&gt;advanceCommitIndex&lt;/b&gt;(request);&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;return responseBuilder.build();&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;Follower节点直接更新commitIndex&lt;/font&gt;&lt;font color=&quot;#007fff&quot;&gt;、元数据文件，将日志应用到状态机，不需要像Leader节点那样要求多数节点日志复制成功&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;即Follower状态机保存Leader同步过来的最新的日志的状态&lt;/font&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;direction=east;fontSize=10;align=center;fontStyle=0;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxGeometry x="1000" y="1380" width="200" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="jrdKXmfmH3rlp7NtxQ88-95" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="jrdKXmfmH3rlp7NtxQ88-88" target="jrdKXmfmH3rlp7NtxQ88-94" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="jrdKXmfmH3rlp7NtxQ88-88" value="&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;RaftNode#&lt;b&gt;advanceCommitIndex&lt;/b&gt;()&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;判断是否是多半节点数据同步成功，是的话才更新Leader的commitIndex，并应用到状态机&lt;/font&gt;&lt;/div&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontSize=10;rounded=1;fontStyle=0;align=center;arcSize=15;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxGeometry x="2620" y="2800" width="199.5" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="jrdKXmfmH3rlp7NtxQ88-92" value="&lt;font color=&quot;#007fff&quot; style=&quot;&quot;&gt;注意这里更新到各个Follower的日志不一定都相同&lt;br style=&quot;font-size: 10px;&quot;&gt;原因看前面的 packEntries()&lt;br&gt;比如集群有３个节点，Leader中有abcdefghij十个日志，&lt;br&gt;节点Ａ滞后Leader９个日志，B滞后Leader ７个日志&lt;br&gt;每次appendEntries最多可以同步５个日志，那么经过这次&lt;br&gt;同步，B仍然滞后Leader 4个(abcdef)，&lt;br&gt;A仍然滞后Leader２个日志(abcdefgh)，&lt;br&gt;需要下次appendEntries才能实现AB和Leader保持一致&lt;br&gt;&lt;br&gt;此时，Leader 记录的　commitIndex&amp;nbsp;= 8，&lt;br&gt;即多数节点日志更新到日志h&lt;br&gt;&lt;br&gt;Leader节点和Follower节点的日志提交以及&lt;br&gt;应用到状态机的处理advanceCommitIndex()&lt;br&gt;也不一样&lt;br style=&quot;font-size: 10px;&quot;&gt;&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;" parent="1" vertex="1">
+          <mxGeometry x="2599.5" y="2860" width="280" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="jrdKXmfmH3rlp7NtxQ88-97" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="jrdKXmfmH3rlp7NtxQ88-94" target="jrdKXmfmH3rlp7NtxQ88-96" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="jrdKXmfmH3rlp7NtxQ88-94" value="&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;遍历所有节点 peer.matchIndex () 记录的日志复制的最后一条日志的索引值，存入数组，然后排序，获取中间值索引为[peerNum / 2]判断其matchIndex是否&amp;gt; Leader节点的commitIndex, 是说明多数节点数据同步成功&lt;/div&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontSize=10;rounded=1;fontStyle=0;align=center;arcSize=15;" parent="1" vertex="1">
+          <mxGeometry x="2860" y="2800" width="199.5" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="jrdKXmfmH3rlp7NtxQ88-99" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="jrdKXmfmH3rlp7NtxQ88-96" target="jrdKXmfmH3rlp7NtxQ88-98" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="jrdKXmfmH3rlp7NtxQ88-96" value="&lt;div style=&quot;&quot;&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;long newCommitIndex = matchIndexes[peerNum / 2];&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;b&gt;commitIndex&lt;/b&gt; = newCommitIndex;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;raftLog.&lt;b&gt;updateMetaData&lt;/b&gt;(currentTerm, null, raftLog.getFirstLogIndex(), commitIndex);&lt;br&gt;&lt;/div&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontSize=10;rounded=1;fontStyle=0;align=center;arcSize=15;fillColor=#e3c800;strokeColor=#B09500;fontColor=#000000;" parent="1" vertex="1">
+          <mxGeometry x="2860" y="2880" width="199.5" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="jrdKXmfmH3rlp7NtxQ88-101" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="jrdKXmfmH3rlp7NtxQ88-98" target="jrdKXmfmH3rlp7NtxQ88-100" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="jrdKXmfmH3rlp7NtxQ88-98" value="&lt;div style=&quot;&quot;&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;遍历所有日志（索引从同步前的 commitIndex+1 到 同步后的 newCommitIndex) 应用到状态机&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;font style=&quot;font-size: 9px;&quot; color=&quot;#007fff&quot;&gt;里面还有一种日志类型ENTRY_TYPE_CONFIGURATION，用于更新配置的，暂略&lt;/font&gt;&lt;/div&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontSize=10;rounded=1;fontStyle=0;align=center;arcSize=15;" parent="1" vertex="1">
+          <mxGeometry x="2860" y="2960" width="199.5" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="jrdKXmfmH3rlp7NtxQ88-102" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.999;entryY=0.435;entryDx=0;entryDy=0;entryPerimeter=0;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" source="jrdKXmfmH3rlp7NtxQ88-100" target="jrdKXmfmH3rlp7NtxQ88-43" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1720" y="3090" />
+              <mxPoint x="1720" y="2415" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="jrdKXmfmH3rlp7NtxQ88-103" value="&lt;font color=&quot;#007fff&quot;&gt;唤醒&lt;/font&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="jrdKXmfmH3rlp7NtxQ88-102" vertex="1" connectable="0">
+          <mxGeometry x="-0.9606" y="-1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="jrdKXmfmH3rlp7NtxQ88-104" value="&lt;font color=&quot;#007fff&quot;&gt;唤醒&lt;/font&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="jrdKXmfmH3rlp7NtxQ88-102" vertex="1" connectable="0">
+          <mxGeometry x="0.9512" y="-2" relative="1" as="geometry">
+            <mxPoint y="12" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="jrdKXmfmH3rlp7NtxQ88-100" value="&lt;div style=&quot;&quot;&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;lastAppliedIndex = commitIndex;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;b&gt;commitIndexCondition&lt;/b&gt;.signalAll();&lt;br&gt;&lt;/div&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontSize=10;rounded=1;fontStyle=0;align=center;arcSize=15;" parent="1" vertex="1">
+          <mxGeometry x="2860" y="3060" width="199.5" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="JQhlRMpWB4Idlw7NUIdd-2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="jrdKXmfmH3rlp7NtxQ88-105" target="JQhlRMpWB4Idlw7NUIdd-1" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="jrdKXmfmH3rlp7NtxQ88-105" value="开始做快照&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;前面知道了状态机本质是RocksDB, 这里则知道了&lt;b&gt;快照&lt;/b&gt;就是RocksDB &lt;b&gt;CheckPoint&lt;/b&gt;实现的&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;direction=east;fontSize=10;fillColor=#dae8fc;strokeColor=#6c8ebf;align=center;arcSize=10;" parent="1" vertex="1">
+          <mxGeometry x="1000" y="2560" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="JQhlRMpWB4Idlw7NUIdd-5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="JQhlRMpWB4Idlw7NUIdd-1" target="JQhlRMpWB4Idlw7NUIdd-4" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="JQhlRMpWB4Idlw7NUIdd-1" value="String tmpSnapshotDir = snapshot.getSnapshotDir() + &quot;.tmp&quot;;&lt;br&gt;&lt;div&gt;snapshot.&lt;b&gt;updateMetaData&lt;/b&gt;(tmpSnapshotDir, localLastAppliedIndex,&lt;/div&gt;&lt;div&gt;lastAppliedTerm, localConfiguration.build());&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;先更新快照元数据信息到文件&lt;/font&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;direction=east;fontSize=10;fillColor=#dae8fc;strokeColor=#6c8ebf;align=center;arcSize=10;" parent="1" vertex="1">
+          <mxGeometry x="1241.5" y="2550" width="200" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="JQhlRMpWB4Idlw7NUIdd-3" value="&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;快照元数据文件：data/snaptshot.tmp/metadata&lt;br&gt;&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
+          <mxGeometry x="1449.5" y="2575" width="230" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="JQhlRMpWB4Idlw7NUIdd-7" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="JQhlRMpWB4Idlw7NUIdd-4" target="JQhlRMpWB4Idlw7NUIdd-6" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="JQhlRMpWB4Idlw7NUIdd-9" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="JQhlRMpWB4Idlw7NUIdd-4" target="JQhlRMpWB4Idlw7NUIdd-8" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="JQhlRMpWB4Idlw7NUIdd-4" value="String tmpSnapshotDataDir = tmpSnapshotDir + File.separator + &quot;data&quot;;&lt;br&gt;stateMachine.&lt;b&gt;writeSnapshot&lt;/b&gt;(&lt;br&gt;tmpSnapshotDataDir);&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;对状态机中的数据进行快照&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;direction=east;fontSize=10;fillColor=#dae8fc;strokeColor=#6c8ebf;align=center;arcSize=10;" parent="1" vertex="1">
+          <mxGeometry x="1241.5" y="2650" width="200" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="JQhlRMpWB4Idlw7NUIdd-6" value="Checkpoint checkpoint = Checkpoint.&lt;b&gt;create&lt;/b&gt;(db);&lt;br&gt;checkpoint.&lt;b&gt;createCheckpoint&lt;/b&gt;(snapshotDir);&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;通过RocksDB生成数据库快照到snapshotDir，即data/snaptshot.tmp&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;direction=east;fontSize=10;align=left;arcSize=10;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+          <mxGeometry x="1481" y="2660" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="JQhlRMpWB4Idlw7NUIdd-12" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" source="JQhlRMpWB4Idlw7NUIdd-8" target="JQhlRMpWB4Idlw7NUIdd-11" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="JQhlRMpWB4Idlw7NUIdd-8" value="将原data/snaptshot目录清空，将data/snaptshot.tmp 改为 data/snaptshot&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;&lt;b&gt;CopyOnWrite&lt;/b&gt;的思想&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;direction=east;fontSize=10;align=center;arcSize=10;" parent="1" vertex="1">
+          <mxGeometry x="1241.5" y="2750" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="JQhlRMpWB4Idlw7NUIdd-11" value="snapshot.&lt;b&gt;reload&lt;/b&gt;();&lt;br&gt;lastSnapshotIndex = snapshot.&lt;b&gt;getMetaData&lt;/b&gt;()&lt;br&gt;.getLastIncludedIndex();&lt;br&gt;raftLog.&lt;b&gt;truncatePrefix&lt;/b&gt;(lastSnapshotIndex + 1);&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;快照之后就可以清除raftLog中的日志了&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;direction=east;fontSize=10;fillColor=#dae8fc;strokeColor=#6c8ebf;align=center;arcSize=10;" parent="1" vertex="1">
+          <mxGeometry x="1231.5" y="2830" width="220" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="JQhlRMpWB4Idlw7NUIdd-18" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="JQhlRMpWB4Idlw7NUIdd-14" target="JQhlRMpWB4Idlw7NUIdd-17" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="JQhlRMpWB4Idlw7NUIdd-22" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="JQhlRMpWB4Idlw7NUIdd-14" target="JQhlRMpWB4Idlw7NUIdd-21" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="JQhlRMpWB4Idlw7NUIdd-14" value="stateMachine.readSnapshot(&lt;br&gt;snapshotDataDir);&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;&amp;nbsp;先删除 data/rocksdb_data，再复制&lt;br&gt;data/snapshot/data 到 data/rocksdb_data&lt;br&gt;再打开数据库data/rocksdb_data&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;direction=west;fontSize=10;fillColor=#dae8fc;strokeColor=#6c8ebf;align=center;" parent="1" vertex="1">
+          <mxGeometry x="760" y="440" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="JQhlRMpWB4Idlw7NUIdd-17" value="&lt;div style=&quot;&quot;&gt;Options options = new Options();&lt;/div&gt;&lt;div style=&quot;&quot;&gt;options.setCreateIfMissing(true);&lt;/div&gt;&lt;div style=&quot;&quot;&gt;db = RocksDB.&lt;b&gt;open&lt;/b&gt;(options, dataDir);&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;data/rocksdb_data 即数据库目录&lt;/font&gt;&lt;br&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;direction=west;fontSize=10;align=center;" parent="1" vertex="1">
+          <mxGeometry x="1001.5" y="440" width="220" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="JQhlRMpWB4Idlw7NUIdd-20" value="&lt;font color=&quot;#007fff&quot;&gt;SegmentedLog:&lt;br style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp; logDir: ./data/log/&lt;br style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp; logDataDir: ./data/log/data/&lt;br&gt;&amp;nbsp; 日志元数据文件：./data/log/metadata&lt;br&gt;快照：&lt;br&gt;&amp;nbsp; snapshotDir: ./data/snapshot/&lt;br&gt;&amp;nbsp; snapshotDataDir: ./data/snapshot/data&lt;br&gt;&lt;/font&gt;&lt;font color=&quot;#007fff&quot; style=&quot;&quot;&gt;&amp;nbsp; 快照元数据文件：./data/snaptshot/metadata&lt;br&gt;&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=10;" parent="1" vertex="1">
+          <mxGeometry x="510" y="510" width="220" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="JQhlRMpWB4Idlw7NUIdd-24" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="JQhlRMpWB4Idlw7NUIdd-21" target="JQhlRMpWB4Idlw7NUIdd-23" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="JQhlRMpWB4Idlw7NUIdd-21" value="遍历从快照lastIncludedIndex+1到commitIndex的数据日志，应用到状态机&lt;br&gt;stateMachine.&lt;b&gt;apply&lt;/b&gt;(entry.getData()&lt;br&gt;.toByteArray());&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;这里可以看到状态机的本质是RocksDB&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;direction=west;fontSize=10;fillColor=#dae8fc;strokeColor=#6c8ebf;align=center;" parent="1" vertex="1">
+          <mxGeometry x="760" y="520" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="JQhlRMpWB4Idlw7NUIdd-23" value="db.&lt;b&gt;put&lt;/b&gt;(request.getKey().getBytes(), request.getValue().getBytes());" style="rounded=1;whiteSpace=wrap;html=1;direction=west;fontSize=10;fillColor=#d5e8d4;strokeColor=#82b366;align=center;" parent="1" vertex="1">
+          <mxGeometry x="1001.5" y="520" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="JQhlRMpWB4Idlw7NUIdd-27" value="Raft-Java中的概念本质：（理解这些能更容易地理解源码）&lt;br style=&quot;font-size: 10px;&quot;&gt;&lt;ul style=&quot;&quot;&gt;&lt;li style=&quot;&quot;&gt;&lt;b style=&quot;font-size: 10px;&quot;&gt;状态机&lt;/b&gt;：Raft状态机是存储需要保持一致性的数据的最终提交值，Raft-Java使用&lt;b style=&quot;font-size: 10px;&quot;&gt;RocksDB&lt;/b&gt;作为状态机&lt;br&gt;Leader状态机保存多数节点同步到的最新的日志的状态（看后面流程图中advanceCommitIndex()的例子），而Follower状态机保存Leader同步过来的最新的日志的状态。&lt;br&gt;&lt;/li&gt;&lt;li style=&quot;font-size: 10px;&quot;&gt;&lt;b&gt;快照&lt;/b&gt;：Raft快照用于防止操作日志文件过大定义的一种日志压缩方式，Raft-Java使用RocksDB的CheckPoint实现，&lt;br&gt;CheckPoint是数据库提供的一个一致的只读视图&lt;/li&gt;&lt;/ul&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=10;" parent="1" vertex="1">
+          <mxGeometry x="760" y="20" width="600" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="JQhlRMpWB4Idlw7NUIdd-28" value="&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;&lt;b&gt;数据库的CheckPoint和Raft快照还是挺契合的&lt;/b&gt;&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
+          <mxGeometry x="1001.5" y="2630" width="230" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="KmqIpF15YOtQaE7IZBm3-4" value="&lt;font color=&quot;#007fff&quot;&gt;这里心跳周期是500ms，&lt;br&gt;需要&amp;lt;=选举超时时间的最小可能值&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="1955" y="4025" width="210" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="KmqIpF15YOtQaE7IZBm3-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="KmqIpF15YOtQaE7IZBm3-5" target="KmqIpF15YOtQaE7IZBm3-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="KmqIpF15YOtQaE7IZBm3-5" value="&lt;div style=&quot;&quot;&gt;&amp;nbsp;./data/snapshot/data&lt;br&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontSize=10;rounded=1;fontStyle=0;align=center;" vertex="1" parent="1">
+          <mxGeometry x="2440" y="2220" width="199" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="KmqIpF15YOtQaE7IZBm3-9" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.25;entryDx=0;entryDy=0;fillColor=#dae8fc;strokeColor=#6c8ebf;" edge="1" parent="1" source="KmqIpF15YOtQaE7IZBm3-7" target="SMY1UsQMhVWDZvxuVclS-52">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2900" y="2250" />
+              <mxPoint x="2900" y="1530" />
+              <mxPoint x="740" y="1530" />
+              <mxPoint x="740" y="1505" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="KmqIpF15YOtQaE7IZBm3-7" value="&lt;div style=&quot;&quot;&gt;&lt;div style=&quot;&quot;&gt;RaftProto.InstallSnapshotResponse&amp;nbsp;= peer.getRaftConsensusServiceAsync()&lt;/div&gt;&lt;div style=&quot;&quot;&gt;.&lt;b&gt;installSnapshot&lt;/b&gt;(request);&lt;/div&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontSize=9;rounded=1;fontStyle=0;align=center;arcSize=12;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="2680" y="2220" width="199.5" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="KmqIpF15YOtQaE7IZBm3-10" value="&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;font-weight: normal;&quot;&gt;ExampleProto.GetResponse response = stateMachine.&lt;/span&gt;get&lt;span style=&quot;font-weight: normal;&quot;&gt;(request);&lt;/span&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;font-weight: normal;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;直接从任意节点状态机查询？？？这样应该无法保证读一致性&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;direction=east;fontSize=10;align=left;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="1000.5" y="2160" width="200" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
