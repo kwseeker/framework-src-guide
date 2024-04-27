@@ -258,7 +258,7 @@
   2、创建 Poller 线程，数量 <= 2；Poller 对象是 NIO 的核心，在Poller中，维护了一个 Selector 对象；当 Poller 从队列中取出 Socket 后，注册到该 Selector 中；然后通过遍历 Selector，找出其中可读的 Socket，然后扔到线程池中处理相应请求，这就是典型的NIO多路复用模型。
   3、扔到线程池中的 SocketProcessorBase 处理请求。
 
-  > 不过 Tomcat 虽然使用了 NIO 模型，只是优化了请求处理流程中部分操作由阻塞转成了非阻塞，比如 “读请求头”、“等待下一个请求”、“SSL握手”；“读请求体”、“写响应头”、“写响应体”依然是阻塞的（有种说法是需要遵循传统的接口规范决定无法对所有操作进行非阻塞改写）。 
+  > 不过 Tomcat 虽然使用了 NIO 模型，只是优化了请求处理流程中部分操作由阻塞转成了非阻塞，比如 “读请求头”、“等待下一个请求”、“SSL握手”；“读请求体”、“写响应头”、“写响应体”依然是阻塞的（有种说法是需要遵循传统的接口规范以致于无法对所有操作进行非阻塞改写）。 
   >
   > 参考：[Connector Comparsion](https://tomcat.apache.org/tomcat-8.0-doc/config/http.html#/Connector_Comparison)
 
@@ -338,12 +338,10 @@
   与 SpringMVC 的 `DispatcherServlet` 对应有一个 `DispatcherHandler` 类，这个类定义了请求处理的主要流程。
 
   > 前面说 Tomcat NIO 模式下请求处理的部分操作依然是阻塞的，只要有操作是阻塞的就会白占线程，降低系统吞吐量；
-  >
-  > WebFlux 却可以将所有操作都设置为非阻塞的。
 
 ### 响应式
 
-响应式编程框架有点类似工具类框架没有主线或者说只有各个接口类的独立的主线。
+响应式编程框架有点类似工具类框架没有主线或者说只有各个接口类实现的独立的主线。
 
 + **[Reactor](docs/java/reactive-streams/project-reactor.md)**
 
@@ -352,6 +350,20 @@
   + [project-reactor-core.drawio](docs/java/reactive-streams/project-reactor-core.drawio)
 
   + [project-reactor-core.drawio.png](docs/java/reactive-streams/project-reactor-core.drawio.png)
+
+  + [mono-delay.drawio](docs/java/reactive-streams/mono-delay.drawio)
+
+  + [mono-delay.drawio.png](docs/java/reactive-streams/mono-delay.drawio.png)
+
+    这个流程图分析 Mono.delay() 实现原理（可以看作是 Thread.sleep() 的异步非阻塞实现），研究如果实现对**阻塞操作**的**异步非阻塞**改造 。
+
+  思想：
+
+  **所有操作都不阻塞**，项目中要用响应式，需要将项目中所有组件的阻塞操作都进行**异步化改造**，这样才能实现更少的线程更大的吞吐量（同时更少的线程也能减少线程上下文切换）。
+
+  只要项目中混入了任何阻塞式操作的组件，都会让对应调用链的性能大打折扣，因此使用响应式不是引入Reactor 、WebFlux 这些响应式框架就行了，还需要整个项目生态的组件全部做异步化改造，这也是导致 WebFlux 久久无法火起来的原因。
+
+  > 说所有操作都不阻塞感觉有点不是很严谨，像 Mono.delay() 其实相当于将阻塞操作从本线程中移到了ScheduledThreadPoolExecutor的工作者线程，即工作者线程中为了实现延迟还是有阻塞的，不过多个 Mono.delay() 调用可以复用工作者线程统一处理阻塞操作；有点像 Reactor 模式线程复用的思想。
 
 + **RxJava**
 
