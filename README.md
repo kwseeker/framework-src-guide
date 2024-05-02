@@ -1,6 +1,6 @@
 # 后端技术栈框架源码分析
 
-这里主要分析Java和Go后端技术栈常用框架的源码，探究内部工作原理。
+这里主要分析Java和Go后端技术栈常用框架的源码，从整体到局部探究内部工作原理，并输出可视化流程图。
 
 源码分析输出主要为`drawio`流程图（`.drawio`文件）和 `Markdown`文本，以流程图为主（主要展示框架主流程），Markdown作为补充，详细内容参考[docs](./docs)。
 
@@ -10,7 +10,7 @@
 
 + **解决生产环境BUG**
 
-  不熟悉源码原理，可能即使定位到问题所在代码行也不知道应该怎么改。
+  不熟悉源码原理，可能即使定位到问题所在代码行也不知道是什么原因应该怎么改。
 
 + **从0到1构建项目时，定位导致产生不符合预期结果的原因**
 
@@ -22,7 +22,7 @@
 
 + **更好更合理地使用框架**
 
-  几乎所有框架的文档都没法将框架所有功能的细节都讲解清楚。
+  几乎所有框架的文档都没法将框架所有功能的细节都讲解清楚，熟悉原理可以帮助开发时避坑。
 
 + **满足对框架内部工作原理的好奇心，也便于后期出现BUG排查BUG**
 
@@ -70,12 +70,13 @@
     - SDK
     - 网关
     - 服务调用
+    - 负载均衡
     - 消息队列
     - 作业调度
     - 服务器
     - Web框架
     - 微服务框架
-  
+    
     + 注册中心/配置中心
     + 分布式协调
     + 服务保障
@@ -127,7 +128,7 @@
 
     代码量较小，很容易理解。不过也仅仅只包含一些很核心的功能实现（.class文件解析、类加载、实例化、Native方法、方法调用、异常处理），像GC、多线程、双亲委托、JIT优化等等都没有。
 
-    其实感觉对深入理解JVM帮助不大，但是比较适合初学者，比啃几本干巴巴的JVM书籍好太多了。
+    其实感觉对深入理解JVM帮助不大，但是比较适合初学者，比单纯啃几本干巴巴的JVM书籍好太多了。
 
     Github Repo: 
 
@@ -142,7 +143,7 @@
 
   + **AbstractQueuedSynchronizer**
 
-    源码流程图：CLI
+    源码流程图：
 
     + [AbstractQueuedSynchronizer.drawio](docs/java/jdk/concurrent/AbstractQueuedSynchronizer.drawio)
     + [AbstractQueuedSynchronizer.drawio.png](docs/java/jdk/concurrent/AbstractQueuedSynchronizer.drawio.png)
@@ -201,21 +202,58 @@
 
   原理简述：
 
-  本质是一个 WebFlux 应用，内部处理逻辑和 Spring MVC 也有点类似，主要也是定义一组请求处理映射（用于定义路由处理，包括一组断言和过滤器），通过断言进行请求与路由的匹配，通过路由的过滤器对请求进行处理（比如：修改路径进行转发）。
+  本质是一个 WebFlux 应用，内部处理逻辑和 Spring MVC 也有点类似，主要也是定义一组请求处理映射（用于定义路由处理，路由包括一组断言和过滤器），通过断言进行请求与路由的匹配，通过路由的过滤器对请求进行处理（比如：修改路径进行转发）。
 
 + **Zuul**
 
 ### 服务调用
 
 + **Dubbo**
+
+  源码代码量很高，部分组件拆开。
+
+  + **Dubbo主流程**
+
+    源码流程图：
+
+    + [dubbo3.drawio](docs/java/dubbo/dubbo3.drawio) (尚未完成)
+
+  + [Dubbo SPI](docs/java/dubbo/dubbo-spi.md)
+
+    源码流程图：
+
+    + [dubbo3-spi.drawio](docs/java/dubbo/dubbo3-spi.drawio)
+    + [dubbo3-spi.png](docs/java/dubbo/imgs/dubbo3-spi.png)
+
 + **Feign**
-+ **Grpc**
++ **GRPC**
 + **Thift**
+
+### 负载均衡
+
++ **Ribbon**
+
+  源码流程图：
+
+  + [ribbon.drawio](docs/java/ribbon/ribbon.drawio)
+
++ **Spring Cloud LoadBalancer**
+
+  源码流程图：
+
+  + [spring-cloud-loadbalancer.drawio](docs/java/spring-cloud-loadbalancer/spring-cloud-loadbalancer.drawio)
+  + [spring-cloud-loadbalancer.drawio.png](docs/java/spring-cloud-loadbalancer/spring-cloud-loadbalancer.drawio.png)
 
 ### 消息队列
 
 + **Kafka**
-+ **RocketMQ**
+
++ **[RocketMQ](docs/java/message-queue/rocketmq/rocketmq.md)**
+
+  源码流程图：
+
+  + [rocketmq.drawio](docs/java/message-queue/rocketmq/rocketmq.drawio)  (尚未完成)
+
 + **RabbitMQ**
 
 ### 作业调度
@@ -249,7 +287,12 @@
 
 + **Reactor-Netty**
 
-  基于 Reactor 对 Netty 的响应式封装。
+  基于 Project Reactor 对 Netty 的响应式封装。
+
+  源码流程图：
+
+  + [reactor-netty.drawio](docs/java/reactive-streams/reactor-netty.drawio)
+  + [reactor-netty.drawio.png](docs/java/reactive-streams/reactor-netty.drawio.png)
 
 + **Tomcat**
 
@@ -266,31 +309,59 @@
 
 + **Spring**
 
-  源码流程图：
+  + **基于注解的应用上下文**
 
-  + 基于注解的应用上下文
+    这里主要分析 IOC 和 Spring Bean 生命周期。
+
+    源码流程图：
 
     + [spring-context.drawio](docs/java/spring/spring-context.drawio)
-
     + [spring-context.drawio.png](docs/java/spring/spring-context.drawio.png)
 
-  + 事务
+  + **切面**
+
+  + **事务**
+
+    源码流程图：
 
     + [spring-transaction.drawio](docs/java/spring/spring-transaction.drawio)
-
     + [spring-transaction.drawio.png](docs/java/spring/spring-transaction.drawio.png)
 
-  + FactoryBean
+  + **测试**
 
-    + [spring-beans-factorybean.drawio](docs/java/spring/spring-beans-factorybean.drawio)
-    + [spring-beans-factorybean.drawio.png](docs/java/spring/spring-beans-factorybean.drawio.png)
+  + **其他**
 
-  + 循环依赖
+    分析IOC时会涉及但是不够详细。
 
-    + [spring-beans-circular-dependency.drawio](docs/java/spring/spring-beans-circular-dependency.drawio)
-    + [spring-beans-circular-dependency.drawio.png](docs/java/spring/spring-beans-circular-dependency.drawio.png)
+    + **FactoryBean**
+
+      包括FactoryBean和Bean生命周期的详细分析。
+
+      源码流程图：
+
+      + [spring-beans-factorybean.drawio](docs/java/spring/spring-beans-factorybean.drawio)
+      + [spring-beans-factorybean.drawio.png](docs/java/spring/spring-beans-factorybean.drawio.png)
+
+    + **循环依赖处理**
+
+      源码流程图：
+
+      + [spring-beans-circular-dependency.drawio](docs/java/spring/spring-beans-circular-dependency.drawio)
+      + [spring-beans-circular-dependency.drawio.png](docs/java/spring/spring-beans-circular-dependency.drawio.png)
+
+    + **Bean创建顺序控制**
+
+    + **四种依赖注入实现**
+
+      分析构造器注入、setter方法注入、工厂方法注入（分为静态工厂方法、实例工厂方法 [结合factory-bean使用]）。
+
+    + **五种不同方式的自动装配**
+
+      no、byName、byType、constructor、autodetect。
 
 + **Spring MVC**
+
+  这里只是分析请求处理流程，Servlet容器初始化流程看Spring Boot的部分（XML配置方式已经不流行了），初始化流程应该也可以参考WebFlux流程图估计差别不大。 
 
   源码流程图：
 
@@ -323,6 +394,8 @@
 
 + **Spring Boot**
 
+  之前看源码输出到了Markdown文件，但是内容多了Markdown可读性很差，待补充原理图。
+
 + **Spring WebFlux**
 
   源码流程图：
@@ -337,7 +410,7 @@
 
   与 SpringMVC 的 `DispatcherServlet` 对应有一个 `DispatcherHandler` 类，这个类定义了请求处理的主要流程。
 
-  > 前面说 Tomcat NIO 模式下请求处理的部分操作依然是阻塞的，只要有操作是阻塞的就会白占线程，降低系统吞吐量；
+  > 前面说 Tomcat NIO 模式下请求处理的部分操作依然是阻塞的，只要有操作是阻塞的就会白占线程，降低系统吞吐量，而通过多创建线程提升系统吞吐量则又会引入线程上下文切换的开销。
 
 ### 响应式
 
@@ -357,11 +430,13 @@
 
     这个流程图分析 Mono.delay() 实现原理（可以看作是 Thread.sleep() 的异步非阻塞实现），研究如果实现对**阻塞操作**的**异步非阻塞**改造 。
 
-  思想：
+  要求：
 
   **所有操作都不阻塞**，项目中要用响应式，需要将项目中所有组件的阻塞操作都进行**异步化改造**，这样才能实现更少的线程更大的吞吐量（同时更少的线程也能减少线程上下文切换）。
 
-  只要项目中混入了任何阻塞式操作的组件，都会让对应调用链的性能大打折扣，因此使用响应式不是引入Reactor 、WebFlux 这些响应式框架就行了，还需要整个项目生态的组件全部做异步化改造，这也是导致 WebFlux 久久无法火起来的原因。
+  只要项目中混入了任何阻塞式操作的组件，都会让对应调用链的性能大打折扣，因此使用响应式不是引入Reactor 、WebFlux 这些响应式框架就行了，还需要整个项目生态的组件全部做异步化改造，这也是主要导致 WebFlux 久久无法火起来的原因（其他原因响应式规范不符合人类思维习惯、调试困难[函数式接口、被拆散的流程]）。
+
+  不过现在JDK21也开始支持虚拟线程了，类似Go协程的概念，从语言层面作出了优化，感觉这东西在后端更难流行起来了。
 
   > 说所有操作都不阻塞感觉有点不是很严谨，像 Mono.delay() 其实相当于将阻塞操作从本线程中移到了ScheduledThreadPoolExecutor的工作者线程，即工作者线程中为了实现延迟还是有阻塞的，不过多个 Mono.delay() 调用可以复用工作者线程统一处理阻塞操作；有点像 Reactor 模式线程复用的思想。
 
@@ -369,16 +444,27 @@
 
 ### 微服务框架
 
++ **Istio**
+
 + **Spring Cloud**
 
 ### 注册中心/配置中心
 
 + **Apollo**
+
 + **Nacos**
+
+  源码流程图：
+
+  + [nacos.drawio](docs/java/nacos/nacos.drawio)
 
 ### 分布式协调
 
-+ **[Zookeeper]()**
++ **Zookeeper**
+  + 源码流程图：
+
+    + [zookeeper-server.drawio](docs/java/zookeeper/zookeeper-server.drawio)
+
 
 ### 服务保障
 
@@ -393,16 +479,51 @@
 
 + **Skywalking**
 
+  + **Agent**
+
+    源码流程图：
+
+    + [skywalking-agent.drawio](docs/java/skywalking/skywalking-agent.drawio)
+    + [skywalking-agent.drawio.png](docs/java/skywalking/skywalking-agent.drawio.png)
+
++ **Sleuth**
+
 ### 安全框架
 
-+ [**Apache Shiro**](docs/java/shiro)
-+ **Spring Security**
++ **Apache Shiro**
+
++ **[Spring Security](docs/java/spring-security/spring-security.md)**
+
+  + 主流程
+
+    源码流程图：
+
+    + [spring-security.drawio](docs/java/spring-security/spring-security.drawio)
+    + [spring-security.drawio.png](docs/java/spring-security/spring-security.drawio.png)
+
+  + OAuth2
+
+    源码流程图：
+
+    + [spring-security-oauth2.drawio](docs/java/spring-security/spring-security-oauth2.drawio)
+    + [spring-security-oauth2.drawio.png](docs/java/spring-security/spring-security-oauth2.drawio.png)
+
 + **JCasbin**
 
 ### ORM框架
 
 + **Mybatis**
-+ **MybatisPlus**
+
+  + 主流程
+
+    源码流程图：
+
+    + [mybatis.drawio](docs/java/mybatis/mybatis.drawio)
+    + [mybatis.drawio.png](docs/java/mybatis/mybatis.drawio.png)
+
+  + Mybatis-Spring
+
++ **Mybatis Plus**
 
 ### 数据库相关
 
@@ -411,6 +532,10 @@
 ### 分布式事务
 
 + **Seata**
+
+  源码流程图：
+
+  + [seata.drawio](docs/java/seata/seata.drawio)  (尚未完成)
 
 ### 搜索引擎
 
@@ -438,11 +563,17 @@
 
     + **BRaft**
 
+      Raft协议的C++实现。
+  
+    + **JRaft**
+  
+      看 Nacos 当前最新版本（2.3.2）中依赖的是 SOFAJRaft，简称JRaft，是参考 BRaft 的 Java 实现。
+  
     + **Raft4J**
   
     + **Raft-Java**
   
-      这个只是DEMO性质的实现，主要是代码实现简单，适合快速学习Raft协议细节。
+      这个只是DEMO性质的实现，主要是代码实现简单（5K多行，其他生产级别的实现都是几W行），适合快速学习Raft协议细节。
   
       源码流程图：
   
@@ -470,6 +601,9 @@
 + **Hutool**
 + **jvm-sandbox**
 + **MapStruct**
++ **Redisson**
+  + **分布式锁**
+
 
 ### 语法解析器
 
