@@ -1,6 +1,6 @@
-<mxfile host="Electron" modified="2024-04-21T11:23:51.150Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.6.5 Chrome/114.0.5735.243 Electron/25.3.1 Safari/537.36" etag="PvSgW3SVoQYCMlzshowO" version="21.6.5" type="device" pages="2">
+<mxfile host="Electron" modified="2024-05-06T18:07:36.664Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.6.5 Chrome/114.0.5735.243 Electron/25.3.1 Safari/537.36" etag="dKCXcrkt0zoUdkiePnLM" version="21.6.5" type="device" pages="2">
   <diagram id="imtYsyNTNiav8lWfhS-_" name="Netty工作流程">
-    <mxGraphModel dx="4025" dy="1034" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="0" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+    <mxGraphModel dx="3704" dy="837" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="0" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -989,7 +989,7 @@
         <mxCell id="n1ujcnIcw7S-2mcdyPi6-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=10;" parent="1" source="n0XTbSt1qkMDTzajxwat-123" target="n1ujcnIcw7S-2mcdyPi6-1" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="n0XTbSt1qkMDTzajxwat-123" value="&lt;font&gt;pipeline.fireChannelRegistered()&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+        <mxCell id="n0XTbSt1qkMDTzajxwat-123" value="&lt;font&gt;pipeline.fireChannelRegistered()&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
           <mxGeometry x="1900" y="2399.5" width="200" height="40" as="geometry" />
         </mxCell>
         <mxCell id="n0XTbSt1qkMDTzajxwat-127" value="&lt;font&gt;AbstractChannelHandlerContext&lt;br&gt;.&lt;b&gt;invokeChannelRegistered&lt;/b&gt;(head)&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
@@ -1316,7 +1316,7 @@
         <mxCell id="n1ujcnIcw7S-2mcdyPi6-5" value="&lt;font&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;bind成功之后，invokeLater(...)&amp;nbsp;&lt;br&gt;&lt;/span&gt;提交了一个新任务&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="1640" y="3210" width="180" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="n1ujcnIcw7S-2mcdyPi6-7" value="&lt;font style=&quot;font-size: 10px&quot;&gt;pipeline.&lt;b&gt;fireChannelActive&lt;/b&gt;()&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;从head开始依次执行每个节点的channelActive&lt;/font&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
+        <mxCell id="n1ujcnIcw7S-2mcdyPi6-7" value="&lt;font style=&quot;font-size: 10px&quot;&gt;pipeline.&lt;b&gt;fireChannelActive&lt;/b&gt;()&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;从head开始依次执行每个节点的channelActive&lt;/font&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
           <mxGeometry x="1860" y="3210" width="180" height="40" as="geometry" />
         </mxCell>
         <mxCell id="n1ujcnIcw7S-2mcdyPi6-9" value="线程名类似：nioEventLoopGroup-2-1" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;fontColor=#007FFF;" parent="1" vertex="1">
@@ -1643,7 +1643,7 @@
         <mxCell id="n1ujcnIcw7S-2mcdyPi6-109" value="&lt;font&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;promise.trySuccess()&lt;/span&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
           <mxGeometry x="4480" y="1680.25" width="180" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="n1ujcnIcw7S-2mcdyPi6-111" value="&lt;font&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;pipeline().fireChannelActive()&lt;/span&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
+        <mxCell id="n1ujcnIcw7S-2mcdyPi6-111" value="&lt;font&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;pipeline().fireChannelActive()&lt;/span&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
           <mxGeometry x="4480" y="1740" width="180" height="40" as="geometry" />
         </mxCell>
         <mxCell id="n1ujcnIcw7S-2mcdyPi6-116" value="&lt;font&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;return regFuture;&lt;/span&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
@@ -1794,7 +1794,7 @@
         <mxCell id="n1ujcnIcw7S-2mcdyPi6-172" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=8;fontColor=#007FFF;strokeColor=#330000;strokeWidth=1;" parent="1" source="n1ujcnIcw7S-2mcdyPi6-159" target="n1ujcnIcw7S-2mcdyPi6-171" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="n1ujcnIcw7S-2mcdyPi6-159" value="&lt;font&gt;&lt;span style=&quot;font-size: 8px&quot;&gt;for：&lt;br&gt;&lt;/span&gt;&lt;font style=&quot;font-size: 10px&quot;&gt;pipeline.&lt;b&gt;fireChannelRead&lt;/b&gt;(readBuf.get(i))&lt;br&gt;&lt;/font&gt;&lt;font style=&quot;font-size: 8px&quot; color=&quot;#007fff&quot;&gt;遍历请求连接的NioSocketChannel列表,&lt;br&gt;&lt;/font&gt;&lt;font style=&quot;font-size: 8px&quot; color=&quot;#007fff&quot;&gt;从服务端pipeline 头节点开始依次对客户端Channel执行ChannelRead()&lt;/font&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+        <mxCell id="n1ujcnIcw7S-2mcdyPi6-159" value="&lt;font&gt;&lt;span style=&quot;font-size: 8px&quot;&gt;for：&lt;br&gt;&lt;/span&gt;&lt;font style=&quot;font-size: 10px&quot;&gt;pipeline.&lt;b&gt;fireChannelRead&lt;/b&gt;(readBuf.get(i))&lt;br&gt;&lt;/font&gt;&lt;font style=&quot;font-size: 8px&quot; color=&quot;#007fff&quot;&gt;遍历请求连接的NioSocketChannel列表,&lt;br&gt;&lt;/font&gt;&lt;font style=&quot;font-size: 8px&quot; color=&quot;#007fff&quot;&gt;从服务端pipeline 头节点开始依次对客户端Channel执行ChannelRead()&lt;/font&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
           <mxGeometry x="3921" y="2930" width="200" height="70" as="geometry" />
         </mxCell>
         <mxCell id="n1ujcnIcw7S-2mcdyPi6-161" value="这里的pipeline是服务端pipeline" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=8;fontColor=#007FFF;" parent="1" vertex="1">
@@ -1803,7 +1803,7 @@
         <mxCell id="n1ujcnIcw7S-2mcdyPi6-165" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=10;fontColor=#007FFF;strokeColor=#330000;strokeWidth=1;" parent="1" source="n1ujcnIcw7S-2mcdyPi6-162" target="n1ujcnIcw7S-2mcdyPi6-164" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="n1ujcnIcw7S-2mcdyPi6-162" value="&lt;font&gt;&lt;font style=&quot;font-size: 10px&quot;&gt;pipeline.&lt;b&gt;fireChannelReadComplete&lt;/b&gt;()&lt;/font&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+        <mxCell id="n1ujcnIcw7S-2mcdyPi6-162" value="&lt;font&gt;&lt;font style=&quot;font-size: 10px&quot;&gt;pipeline.&lt;b&gt;fireChannelReadComplete&lt;/b&gt;()&lt;/font&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
           <mxGeometry x="3921" y="3140" width="200" height="40" as="geometry" />
         </mxCell>
         <mxCell id="n1ujcnIcw7S-2mcdyPi6-167" value="Y" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;fontSize=10;fontColor=#007FFF;strokeColor=#330000;strokeWidth=1;" parent="1" source="n1ujcnIcw7S-2mcdyPi6-164" target="n1ujcnIcw7S-2mcdyPi6-166" edge="1">
@@ -1818,7 +1818,7 @@
         <mxCell id="n1ujcnIcw7S-2mcdyPi6-170" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=9;fontColor=#007FFF;strokeColor=#330000;strokeWidth=1;" parent="1" source="n1ujcnIcw7S-2mcdyPi6-166" target="n1ujcnIcw7S-2mcdyPi6-168" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="n1ujcnIcw7S-2mcdyPi6-166" value="&lt;font&gt;&lt;font style=&quot;font-size: 9px&quot;&gt;pipeline.&lt;b&gt;fireExceptionCaught&lt;/b&gt;(exception)&lt;/font&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+        <mxCell id="n1ujcnIcw7S-2mcdyPi6-166" value="&lt;font&gt;&lt;font style=&quot;font-size: 9px&quot;&gt;pipeline.&lt;b&gt;fireExceptionCaught&lt;/b&gt;(exception)&lt;/font&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
           <mxGeometry x="4160" y="3200" width="180" height="40" as="geometry" />
         </mxCell>
         <mxCell id="n1ujcnIcw7S-2mcdyPi6-168" value="&lt;font&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;finally:&lt;br&gt;&lt;/span&gt;&lt;font style=&quot;font-size: 10px&quot;&gt;removeReadOp()&lt;/font&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
@@ -1931,7 +1931,7 @@
         <mxCell id="n1ujcnIcw7S-2mcdyPi6-211" value="&lt;font&gt;fulfillConnectPromise(&lt;br&gt;connectPromise, wasActive)&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="3920" y="2460.5" width="200" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="n1ujcnIcw7S-2mcdyPi6-213" value="&lt;font&gt;pipeline().fireChannelActive()&lt;br&gt;&lt;font style=&quot;font-size: 8px&quot; color=&quot;#007fff&quot;&gt;依次执行pipeline中的ChannnelHandler节点的channelActive()&lt;/font&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+        <mxCell id="n1ujcnIcw7S-2mcdyPi6-213" value="&lt;font&gt;pipeline().fireChannelActive()&lt;br&gt;&lt;font style=&quot;font-size: 8px&quot; color=&quot;#007fff&quot;&gt;依次执行pipeline中的ChannnelHandler节点的channelActive()&lt;/font&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
           <mxGeometry x="4160" y="2460" width="200" height="40" as="geometry" />
         </mxCell>
         <mxCell id="n1ujcnIcw7S-2mcdyPi6-215" value="&lt;font&gt;finally:&lt;br&gt;connectTimeoutFuture.cancel(false)&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">

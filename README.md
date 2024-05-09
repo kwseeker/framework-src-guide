@@ -597,16 +597,38 @@
 ### 工具类
 
 + **Arthas**
+
 + **EasyExcel**
+
 + **Fastjson**
+
 + **Guava**
+
 + **Hutool**
+
 + **jvm-sandbox**
+
 + **MapStruct**
+
 + **Redisson**
   + **分布式锁**
+  
   + **发布订阅**
+  
   + **Future、Promise模式**
+  
+  + **[misc](docs/java/redisson/redisson-misc.md)**
+  
+    + **AsyncSemaphore**
+  
+      借助 CompletableFuture 实现的异步非阻塞的 Semaphore，设计也挺巧妙的仅仅用了80行代码就实现了一个异步非阻塞的信号量。
+  
+      不过注意这个不是分布式的信号量，分布式信号量还是需要使用 RedissonSemaphore。
+  
+      源码流程图：
+  
+      + [redisson-AsyncSemaphore.drawio](docs/java/redisson/redisson-AsyncSemaphore.drawio)
+      + [redisson-AsyncSemaphore.drawio.png](docs/java/redisson/redisson-AsyncSemaphore.drawio.png)
 
 
 ### 语法解析器
