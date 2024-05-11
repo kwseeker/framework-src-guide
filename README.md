@@ -611,11 +611,24 @@
 + **MapStruct**
 
 + **Redisson**
-  + **分布式锁**
   
   + **发布订阅**
   
+    这里分析Redisson Netty连接管理、通信管道和发布订阅流程。
+  
+    源码流程图：
+  
+    + [redisson-pubsub.drawio.drawio](docs/java/redisson/redisson-pubsub.drawio.drawio)
+    + [redisson-pubsub.drawio.drawio.png](docs/java/redisson/redisson-pubsub.drawio.drawio.png)
+  
+  + **分布式锁**
+  
   + **Future、Promise模式**
+  
+    源码流程图：
+  
+    + [redisson-future-promise.drawio](docs/java/redisson/redisson-future-promise.drawio)
+    + [redisson-future-promise.drawio.png](docs/java/redisson/redisson-future-promise.drawio.png)
   
   + **[misc](docs/java/redisson/redisson-misc.md)**
   
