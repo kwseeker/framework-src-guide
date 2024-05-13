@@ -618,8 +618,8 @@
   
     源码流程图：
   
-    + [redisson-pubsub.drawio.drawio](docs/java/redisson/redisson-pubsub.drawio.drawio)
-    + [redisson-pubsub.drawio.drawio.png](docs/java/redisson/redisson-pubsub.drawio.drawio.png)
+    + [redisson-pubsub.drawio](docs/java/redisson/redisson-pubsub.drawio)
+    + [redisson-pubsub.drawio.png](docs/java/redisson/redisson-pubsub.drawio.png)
   
   + **分布式锁**
   
