@@ -1,9 +1,12 @@
-<mxfile host="Electron" modified="2024-05-13T12:43:31.215Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.6.5 Chrome/114.0.5735.243 Electron/25.3.1 Safari/537.36" etag="fyy5hws4vc_kQXEadvAJ" version="21.6.5" type="device">
+<mxfile host="Electron" modified="2024-05-14T08:12:04.778Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.6.5 Chrome/114.0.5735.243 Electron/25.3.1 Safari/537.36" etag="kl4o2CodVSaYhNNoUYJy" version="21.6.5" type="device">
   <diagram id="C5RBs43oDa-KdzZeNtuy" name="Redisson订阅发布">
     <mxGraphModel dx="5569" dy="879" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-0" />
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-1" parent="WIyWlLk6GJQsqaUBKTNV-0" />
+        <mxCell id="04FaCHAl2gqULPaclR8Y-149" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="04FaCHAl2gqULPaclR8Y-147" target="04FaCHAl2gqULPaclR8Y-96" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
         <mxCell id="04FaCHAl2gqULPaclR8Y-38" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="04FaCHAl2gqULPaclR8Y-34" target="04FaCHAl2gqULPaclR8Y-96" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="4200" y="2881.25" as="sourcePoint" />
@@ -742,7 +745,7 @@
         <mxCell id="04FaCHAl2gqULPaclR8Y-43" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="ydMWs6PtdbeCtb3DKnso-59" target="ydMWs6PtdbeCtb3DKnso-61" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="ydMWs6PtdbeCtb3DKnso-59" value="&lt;font style=&quot;&quot;&gt;&lt;b&gt;subscribeNoTimeout&lt;/b&gt;(codec, channelName, &lt;b&gt;entry&lt;/b&gt;, &lt;b&gt;clientEntry&lt;/b&gt;, &lt;b&gt;promise&lt;/b&gt;, type, lock, new AtomicInteger(), &lt;b&gt;listeners&lt;/b&gt;);&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;glass=0;strokeWidth=1;shadow=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+        <mxCell id="ydMWs6PtdbeCtb3DKnso-59" value="&lt;font style=&quot;&quot;&gt;&lt;b&gt;subscribeNoTimeout&lt;/b&gt;(codec, channelName, &lt;b&gt;entry&lt;/b&gt;, &lt;b&gt;clientEntry&lt;/b&gt;, &lt;b&gt;promise&lt;/b&gt;, type, lock, new AtomicInteger(), &lt;b&gt;listeners&lt;/b&gt;);&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;glass=0;strokeWidth=1;shadow=0;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
           <mxGeometry x="2080.5" y="2550" width="200" height="60" as="geometry" />
         </mxCell>
         <mxCell id="04FaCHAl2gqULPaclR8Y-3" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="ydMWs6PtdbeCtb3DKnso-61" target="04FaCHAl2gqULPaclR8Y-2" edge="1">
@@ -1170,9 +1173,6 @@
         </mxCell>
         <mxCell id="04FaCHAl2gqULPaclR8Y-144" value="&lt;div&gt;if (source.getRedirect() == Redirect.ASK) {&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; List&amp;lt;CommandData&amp;lt;?, ?&amp;gt;&amp;gt; list = new ArrayList&amp;lt;&amp;gt;(2);&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; CompletableFuture&amp;lt;Void&amp;gt; promise = new CompletableFuture&amp;lt;&amp;gt;();&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; list.add(new CommandData&amp;lt;&amp;gt;(promise, codec, RedisCommands.ASKING, new Object[]{}));&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; list.add(new CommandData&amp;lt;&amp;gt;(attemptPromise, codec, command, params));&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; CompletableFuture&amp;lt;Void&amp;gt; main = new CompletableFuture&amp;lt;&amp;gt;();&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; writeFuture = connection.&lt;b&gt;send&lt;/b&gt;(new CommandsData(main, list, false, false));&lt;/div&gt;&lt;div&gt;} else {&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; ...&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; writeFuture = connection.&lt;b&gt;send&lt;/b&gt;(new CommandData&amp;lt;&amp;gt;(attemptPromise, codec, command, params));&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; ...&lt;/div&gt;&lt;div&gt;}&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;glass=0;strokeWidth=1;shadow=0;align=left;arcSize=3;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
           <mxGeometry x="760" y="3320" width="440" height="240" as="geometry" />
-        </mxCell>
-        <mxCell id="04FaCHAl2gqULPaclR8Y-149" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="04FaCHAl2gqULPaclR8Y-147" target="04FaCHAl2gqULPaclR8Y-96" edge="1">
-          <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="04FaCHAl2gqULPaclR8Y-147" value="return channel.&lt;b&gt;writeAndFlush&lt;/b&gt;(data);" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;glass=0;strokeWidth=1;shadow=0;fillColor=#d5e8d4;strokeColor=#82b366;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
           <mxGeometry x="1241" y="3410" width="200" height="60" as="geometry" />
