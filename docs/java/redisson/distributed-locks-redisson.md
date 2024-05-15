@@ -8,6 +8,8 @@ Redisson 的锁都实现了**同步**、**异步**、**响应式**接口。
 
 ![](/home/arvin/mywork/framework-src-guide/docs/java/redisson/imgs/redisson-locks-uml.png)
 
+> Lock 接口是JUC中的接口。
+
 + RedissonLock
 + RedissonFairLock
 + RedissonReadLock
@@ -27,86 +29,13 @@ Redisson 的锁都实现了**同步**、**异步**、**响应式**接口。
 
 ### RedissonLock
 
-**类**:`RedissonLock`, 源码单元测试类：`RedissionLockTest`。
+基本的可重入分布式锁实现。
 
-+ `RLock`
+实现原理：
 
-  继承`JUC` `Lock`接口以及`RLockAsync`拓展的异步接口，拓展了可以自动释放锁的接口。
+加锁是借助Hash数据类型通过发送lua脚本执行 hincrby pexpire 实现，同时只有一个线程加锁成功（成功返回nil），未加锁成功的线程先订阅主题  `redisson_lock__channel:{<lockName>}`，再尝试获取信号量（RedissonLockEntry.latch，初始为0）只有成功获取信号量的才可以继续尝试获取锁，获取锁的线程执行完同步代码释放锁会发布释放锁的消息进而给latch++, 这样就可以推动其他等待的线程继续尝试获取锁，从而实现线程同步。
 
-+ `RExpirable(I)`
 
-  + `RObject`
-  + `RObjectAsync`
-  + `RExpirableAsync`
-
-  集成`RObject`以及`RExpireableAsync`接口，拓展了生存周期（过期时间）相关的控制接口。
-
-+ `CommandSyncService(C)`
-
-  + `CommandAsyncService(C)`
-  + `CommandExecutor (I, 客户端命令执行器)`
-
-+ `LockPubSub`
-
-**加锁流程**：
-
-![](/home/arvin/mywork/framework-src-guide/docs/java/redisson/imgs/Redisson可重入锁工作流程.png)
-
-上图没有解释命令执行流程。
-
-１）通过锁名(`key`名)计算出`Redis`槽点，进而获取所在`Redis`服务实例（这一步对多`Redis`节点才有用，单节点只有一个）。
-
-  ２）创建批处理操作服务(用于将操作同步到从库), 然后创建`CommandBatchService`（示例中创建的是`CommandSyncService`）。
-
-  ​		负责执行`Redis`命令`RedisCommand`(示例中创建的是`RedisStrictCommand`实例)。
-
-  ​		执行器`RedisBatchExecutor`，执行器execute()方法并不负责直接与`redis`服务端联系执行命令。只是给entry(某个`Redis Node`实例)的`LinkedBlockingDeque`中加入待执行命令，就像Java线程池一样，submit等方法只是给线程池任务队列中添加任务。
-
-  ３）通过`CommandBatchService`异步写`EVAL`命令(Future Promise channel写)。
-
-```java
-// 加锁逻辑就是函数中这段Lua代码
-// 因为Redis lua 脚本执行具有原子性，不需要担心下面使用了三个命令执行加锁操作会被打断
-<T> RFuture<T> tryLockInnerAsync(long waitTime, long leaseTime, TimeUnit unit, long threadId, RedisStrictCommand<T> command) {
-        internalLockLeaseTime = unit.toMillis(leaseTime);
-        return evalWriteAsync(getName(), 
-                              LongCodec.INSTANCE, 
-                              command,
-                              // 锁(key=lockName)不存在则添加，Hash key(lockName)  itemKey(threadId)加一并设置锁超时自动释放时间，返回nil
-                              "if (redis.call('exists', KEYS[1]) == 0) then " +
-                                      "redis.call('hincrby', KEYS[1], ARGV[2], 1); " +
-                                      "redis.call('pexpire', KEYS[1], ARGV[1]); " +
-                                      "return nil; " +
-                              "end; " +
-                              // 锁已经存在，则判断占有锁的是不是当前线程，是当前线程则重入计数加１，并重新设置超时时间, 返回nil
-                              "if (redis.call('hexists', KEYS[1], ARGV[2]) == 1) then " +
-                                      "redis.call('hincrby', KEYS[1], ARGV[2], 1); " +
-                                      "redis.call('pexpire', KEYS[1], ARGV[1]); " +
-                                     "return nil; " +
-                              "end; " +
-                              // 锁已存在并且被其他线程占用，则返回剩余超时时间
-                              "return redis.call('pttl', KEYS[1]);",
-                              // KEYS[1]
-                              Collections.singletonList(getName()), 
-                              // ARGV[1] 
-                              internalLockLeaseTime, 
-                              // ARGV[2]
-                              getLockName(threadId));
-}
-```
-
-  ​		从上面可以看到`Redission`实现可重入锁完全是通过`Lua`脚本实现的。用到了`Hash`存储结构(使用`Hash`是为了实现可重入,记录重入次数)，先判断锁是否存在不存在则创建并设置重入计数为１并设置超时时间，已存在则判断是不是当前线程持有锁，若当前线程持有锁则重入计数加１，不是当前线程持有锁则返回剩余超时时间（TTL）。
-
-> 超时时间默认是30s
-
-  ４）如果没有设置TTL时间就直接退出。有的话会同步等待超时之后执行释放。
-
-```java
-// 锁释放的逻辑
-
-```
-
-  
 
 ### RedissonFairLock
 
@@ -116,19 +45,49 @@ Redisson 的锁都实现了**同步**、**异步**、**响应式**接口。
 
 ### RedissonReadLock
 
-读锁。
+分布式读锁，实现了RLock接口，依赖 RedissonLock。
 
 
 
 ### RedissonWriteLock
 
-写锁。
+分布式写锁，实现了RLock接口，依赖 RedissonLock。
 
 
 
 ### RedissonReadWriteLock
 
-读写锁。
+可重入分布式读写锁实现，依赖 RedissonReadLock、RedissonWriteLock，而这两个类又依赖 RedissonLock。
+
+实现了 JDK ReadWriteLock 接口，依赖 RedissonReadLock 和 RedissonWriteLock，分布式读锁和分布式写锁都实现了RLock接口。
+
+Redisson读写锁实现很简单，基本完全依赖 RedissonLock，仅仅重写了少量方法。
+
+**读读不互斥，读写互斥、写写互斥怎么实现的？**
+
+看源码可以发现区别就是在被重写的方法的 Lua 脚本中。
+读写锁同样使用 **Hash** 数据类型实现，KEY是锁名，VALUE是2-3组KV；
+读锁额外需要 **String** 数据类型记录线程自己加的哪个重入计数的读锁, 以便解读锁时使用。
+
+第1组KV记录**锁的模式**（只有读锁时是 read 模式、有写锁时变为 write 模式）:
+
+> hset lock-rw mode read
+
+**读锁实现：**
+
+读锁之间不互斥，有线程加了读锁，且只有读锁的情况下，其他线程也可以继续加读锁，只需要增加重入计数
+
+> hset lock-rw <ServiceManager ID>:<threadId> <reentantCount>
+
+但是解读锁时只能解自己加的读锁，就需要额外记录下自己加的哪个重入计数的读锁（下面的 reentrantCount）
+
+>  set {lock-rw}:<ServiceManager ID>:<threadId>:rwlock_timeout:<reentrantCount> 1
+
+**写锁实现：**
+
+已经存在任意读锁或写锁，且加写锁的线程不是当前线程都不能加写锁
+
+> hset lock-rw <ServiceManager ID>:<threadId>:write <reentantCount>
 
 
 
