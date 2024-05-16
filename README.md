@@ -611,39 +611,53 @@
 + **MapStruct**
 
 + **Redisson**
-  
+
   + **发布订阅**
-  
+
     这里分析Redisson Netty连接管理、通信管道和发布订阅流程。
-  
+
     源码流程图：
-  
+
     + [redisson-pubsub.drawio](docs/java/redisson/redisson-pubsub.drawio)
     + [redisson-pubsub.drawio.png](docs/java/redisson/redisson-pubsub.drawio.png)
-  
-  + **分布式锁**
-  
-    
-  
-  + **Future、Promise模式**
-  
+
+  + **[分布式锁](docs/java/redisson/distributed-locks-redisson.md)**
+
     源码流程图：
-  
+
+    + [redisson-lock.drawio](docs/java/redisson/redisson-lock.drawio)
+
+    + [redisson-lock-RedissonLock.drawio.png](docs/java/redisson/redisson-lock-RedissonLock.drawio.png)
+
+      多数锁继承 RedissonLock，梳理清 RedissonLock 再看其他锁的实现会简单很多。
+
+    + [redisson-lock-RedissonReadWriteLock.drawio.png](docs/java/redisson/redisson-lock-RedissonReadWriteLock.drawio.png)
+
+    + [redisson-lock-RedissonFencedLock.drawio.png](docs/java/redisson/redisson-lock-RedissonFencedLock.drawio.png)
+
+  + **Future、Promise模式**
+
+    源码流程图：
+
     + [redisson-future-promise.drawio](docs/java/redisson/redisson-future-promise.drawio)
     + [redisson-future-promise.drawio.png](docs/java/redisson/redisson-future-promise.drawio.png)
-  
+
   + **[misc](docs/java/redisson/redisson-misc.md)**
-  
+
     + **AsyncSemaphore**
-  
-      借助 CompletableFuture 实现的异步非阻塞的 Semaphore，设计也挺巧妙的仅仅用了80行代码就实现了一个异步非阻塞的信号量。
-  
-      不过注意这个不是分布式的信号量，分布式信号量还是需要使用 RedissonSemaphore。
-  
+
+      借助 CompletableFuture 实现的异步非阻塞的 Semaphore，设计也挺巧妙的仅仅用了80行代码就实现了一个异步非阻塞的信号量。不过注意这个不是分布式的信号量，分布式信号量还是需要使用 RedissonSemaphore。
+
       源码流程图：
-  
+
       + [redisson-AsyncSemaphore.drawio](docs/java/redisson/redisson-AsyncSemaphore.drawio)
       + [redisson-AsyncSemaphore.drawio.png](docs/java/redisson/redisson-AsyncSemaphore.drawio.png)
+
++ **JETCD**
+
+  + **分布式锁**
+
+    对比Redisson实现（TODO）。
 
 
 ### 语法解析器
