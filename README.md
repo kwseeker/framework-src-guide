@@ -533,11 +533,33 @@
 
 ### 分布式事务
 
++ **Atomikos**
+
++ **ByteTCC**
+
++ **EasyTransaction**
+
++ Fescar
+
+  Seata的前身。
+
++ **Hmily**
+
+  源码流程图：
+
+  + [hmily.drawio](docs/java/seata/seata.drawio)  (尚未完成)
+
++ **LCN**
+
++ **RocketMQ事务消息**
+
 + **Seata**
 
   源码流程图：
 
   + [seata.drawio](docs/java/seata/seata.drawio)  (尚未完成)
+
++ **TCC-Transaction**
 
 ### 搜索引擎
 
@@ -684,6 +706,10 @@
 + **Istio**
 
 + **K8S**
+
+### 分布式事务
+
++ **DTM**
 
 
 
