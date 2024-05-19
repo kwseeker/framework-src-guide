@@ -245,6 +245,10 @@
 
 ### 消息队列
 
++ **Disruptor**
+
+  线程间高性能低延迟消息传递框架。
+
 + **Kafka**
 
 + **[RocketMQ](docs/java/message-queue/rocketmq/rocketmq.md)**
@@ -547,7 +551,11 @@
 
   源码流程图：
 
-  + [hmily.drawio](docs/java/seata/seata.drawio)  (尚未完成)
+  + [hmily.drawio](docs/java/distributed/transaction/hmily.drawio)  (尚未完成)
+
+  + [hmily-producer-consumer.drawio.png](docs/java/distributed/transaction/hmily-producer-consumer.drawio.png)
+
+    Hmily 基于 Disruptor 实现的事件发布订阅（生产者消费者模式）。
 
 + **LCN**
 
