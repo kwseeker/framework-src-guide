@@ -225,7 +225,9 @@
     + [dubbo3-spi.png](docs/java/dubbo/imgs/dubbo3-spi.png)
 
 + **Feign**
-+ **GRPC**
+
++ **Grpc**
+
 + **Thift**
 
 ### 负载均衡
@@ -334,7 +336,7 @@
 
   + **其他**
 
-    分析IOC时会涉及但是不够详细。
+    分析IOC时有涉及但是不够详细。
 
     + **FactoryBean**
 
@@ -543,15 +545,13 @@
 
 + **EasyTransaction**
 
-+ Fescar
-
-  Seata的前身。
-
 + **Hmily**
 
   源码流程图：
 
-  + [hmily.drawio](docs/java/distributed/transaction/hmily.drawio)  (尚未完成)
+  + [hmily.drawio](docs/java/distributed/transaction/hmily.drawio)
+
+  + [hmily.drawio.png](docs/java/distributed/transaction/hmily.drawio.png)
 
   + [hmily-producer-consumer.drawio.png](docs/java/distributed/transaction/hmily-producer-consumer.drawio.png)
 
@@ -562,6 +562,8 @@
 + **RocketMQ事务消息**
 
 + **Seata**
+
+  前身是Fescar。
 
   源码流程图：
 
