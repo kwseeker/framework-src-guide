@@ -92,6 +92,8 @@ fileReservedTime = 48
 brokerRole = ASYNC_MASTER
 # 异步刷盘
 flushDiskType = ASYNC_FLUSH
+# 默认是用户根目录下store文件夹
+storePathRootDir = /home/arvin/mywork/github/rocketmq/data/store
 ```
 
 源码启动成功后打印：
