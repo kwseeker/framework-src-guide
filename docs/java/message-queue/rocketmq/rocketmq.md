@@ -113,6 +113,15 @@ sh bin/tools.sh org.apache.rocketmq.example.quickstart.Producer
 sh bin/tools.sh org.apache.rocketmq.example.quickstart.Consumer
 ```
 
+**源码选择性修改**：
+
+```java
+#NettyClientConfig.java
+//private boolean disableNettyWorkerGroup = false;	
+//源码默认为false，执行每个ChannelHandler的事件处理方法时都会提交到线程池中执行，导致调试ChannelPipeline很不方便
+private boolean disableNettyWorkerGroup = true;
+```
+
 
 
 ## 源码包
