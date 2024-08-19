@@ -305,3 +305,39 @@ NameServer、Broker启动流程：
 ### 顺序消息原理
 
 ### 分布式事务实现原理
+
+
+
+## 从源码深入解析常见面试题
+
+### RocketMQ Broker 中的消息消费后会立即删除么
+
+不会立即删除，每条消息都会持久化到CommitLog中，每个Consumer连接到Broker后会维持消费进度信息，当有消息消费后只是当前Consumer的消费进度（CommitLog的offset）更新了。
+
+由于内存和磁盘空间限制的，为防止消息堆积，RocketMQ 会周期性地删除过期的 CommitLog 文件（默认保存72小时），以及对应的 ConsumeQueue IndexFile 中的过期数据；默认是在凌晨4点进行删除操作，但是也可以在磁盘空间不足时执行删除操作、或者手动执行删除操作。
+
+**源码入口**：
+
+```java
+// DefaultMessageStore$CleanCommitLogService
+public void run() {
+    ...
+    this.deleteExpiredFiles();
+    this.reDeleteHangedFile();
+    ...
+}
+// DefaultMessageStore$CleanConsumeQueueService
+public void run() {
+    ...
+    this.deleteExpiredFiles();
+    ...
+}
+// MessageStoreConfig
+private int fileReservedTime = 72;	//文件没有修改操作后72小时过期
+private String deleteWhen = "04";	//凌晨4点执行删除
+private int diskMaxUsedSpaceRatio = 75;	//磁盘使用超过75%
+// 手动删除过期 CommitLog, AdminBrokerProcessor, netty 请求命令码 RequestCode.DELETE_EXPIRED_COMMITLOG
+case RequestCode.DELETE_EXPIRED_COMMITLOG:
+	return this.deleteExpiredCommitLog();
+```
+
