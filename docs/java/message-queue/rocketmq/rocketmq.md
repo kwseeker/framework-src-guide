@@ -280,11 +280,11 @@ NameServer、Broker启动流程：
 
      线程会一直轮询以阻塞方式从messageRequestQueue中读取 MessageRequest 命令，命令读取成功后会向 Broker 发送PULL_MESSAGE等请求拉取消息，如果有消息被 Found 则拉取成功并回调处理。处理完成后会再调用 executePullRequestLater() 或 executePullRequestImmediately() 用于触发消息的下次消费，实现消费者可以对消息进行持续消费。
 
-     Broker 端和消费者端消费进度的管理：
+     Broker 端和消费者端**消费进度**的管理：
 
-     以默认的负载均衡策略来看，集群中一个分组的所有消费者会平均分担一个主题下所有的消息队列，一个消息队列最多由一个消费者进行消费，不会出现多线程并发消费同一个消息队列的情况。
+     以默认的负载均衡策略来看，集群中一个分组的所有消费者会平均分担一个主题下所有的消息队列，**一个消息队列最多由一个消费者进行消费，不会出现多线程并发消费同一个消息队列的情况，这样的话就可以实现在消费者端维护消费进度**。
 
-     
+     以 Cluster 消费模式的 RemoteBrokerOffsetStore 为例，每个消费者本地会通过 RemoteBrokerOffsetStore 存储消费位点，消费消息后（无论成功失败）会更新消费位点，并通过线程池定期或发现消费位点有错误时，和Broker OffsetManager 同步消费位点。
 
      > MessageRequest 定义对哪个主题的哪个队列进行消费，以及从哪个偏移位置开始消费。
      >
@@ -339,5 +339,60 @@ private int diskMaxUsedSpaceRatio = 75;	//磁盘使用超过75%
 // 手动删除过期 CommitLog, AdminBrokerProcessor, netty 请求命令码 RequestCode.DELETE_EXPIRED_COMMITLOG
 case RequestCode.DELETE_EXPIRED_COMMITLOG:
 	return this.deleteExpiredCommitLog();
+```
+
+### RocketMQ消费模式有几种
+
++ 集群消费
+
+  1.一条消息只会被同Group中的一个Consumer消费
+
+  2.多个Group同时消费一个Topic时，每个Group都会有一个Consumer消费到数据
+
++ 广播消费
+
+  消息将对一 个Consumer Group 下的各个 Consumer 实例都消费一遍。即使这些 Consumer 属于同一个Consumer Group ，消息也会被 Consumer Group 中的每个 Consumer 都消费一次。
+
+### 消费消息是 push 还是 pull？为什么要主动拉取消息而不使用事件监听方式？
+
+从 PushConcumer 实现类 DefaultMQPushConsumer 源码看，push 也是基于 pull 实现的；
+
+从启动流程可知会启动 PullMessageService 这个线程，这个线程会一直轮询以阻塞方式从 messageRequestQueue 中读取 MessageRequest 再向 Broker 发送 **PULL_MESSAGE** 等请求拉取消息，如果有消息则可以拉取成功并直接返回给消费者端，这就实现了拉模式；
+
+拉取成功后还会通过提交新的 MessageRequest 实现持续拉取；
+
+但是可能发请求时并没有可以消费的消息，这时Broker会将PullRequest（即消费者中的MessageRequest）存储到 PullRequestHoldService pullRequestTable，待有新消息到来会重放 pullRequestTable 中对应的 PullRequest 请求再次读取消息并通过netty长连接通道推送给消费者，这就实现了推模式。
+
+> MessageRequest 请求则是在消费者重新负载均衡时，每添加一个新的MessageQueue，就会提交一个PullRequest （MessageRequest 子类），启动对这个消息队列的消费流程。
+
+主动拉取方式是拉取一批消息缓存到消费者本地，如果缓存的未处理的消息超过可缓存的最大阈值就不会再继续拉取，直到消费者消费掉一部分消息，使缓存的未处理消息数量低于阈值，才会继续拉取。这样做的好处是可以根据消费者的消费能力动态负载均衡，避免消息在消费者端持续累积。
+
+**拉取阈值的源码**：
+
+```java
+// DefaultMQPushConsumerImpl
+public void pullMessage(final PullRequest pullRequest) {
+	...
+    // 从数量和大小两个维度设置阈值，超过阈值直接return, 不会执行后面拉取消息的方法
+	long cachedMessageCount = processQueue.getMsgCount().get();
+    long cachedMessageSizeInMiB = processQueue.getMsgSize().get() / (1024 * 1024);
+    if (cachedMessageCount > this.defaultMQPushConsumer.getPullThresholdForQueue()) {
+        this.executePullRequestLater(pullRequest, PULL_TIME_DELAY_MILLS_WHEN_CACHE_FLOW_CONTROL);
+        if ((queueFlowControlTimes++ % 1000) == 0) {
+            log.warn(...);
+        }
+        return;
+    }
+    if (cachedMessageSizeInMiB > this.defaultMQPushConsumer.getPullThresholdSizeForQueue()) {
+        this.executePullRequestLater(pullRequest, PULL_TIME_DELAY_MILLS_WHEN_CACHE_FLOW_CONTROL);
+        if ((queueFlowControlTimes++ % 1000) == 0) {
+            log.warn(...);
+        }
+        return;
+    }
+    
+    ...
+	this.pullAPIWrapper.pullKernelImpl(...);
+}
 ```
 
