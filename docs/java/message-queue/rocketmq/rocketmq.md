@@ -295,12 +295,53 @@ NameServer、Broker启动流程：
      重新负载均衡服务，用于根据当前节点当前主题的消息队列数量和消费者数量，进行负载均衡重新分配。
 
      默认的负载均衡策略是 AllocateMessageQueueAveragely，会平均分配，假设主题有6个MessageQueue（Q0 Q1 Q2 Q3 Q4 Q5），当前4个消费者(C0 C1 C2 C3)，按此策略各消费者会分得 C0(Q0 Q1) C1(Q2 Q3) C2(Q4) C3(Q5)。
+     
+     注意：如果消费者个数大于消费队列个数，会有部分消费者闲置，无法消费数据。
+     
+     > **其他负载均衡算法**：
+     >
+     > 所有负载均衡算法均实现 AllocateMessageQueueStrategy 接口，主要实现 allocate 方法：
+     >
+     > ```java
+     > List<MessageQueue> allocate(	//返回给当前消费者分配的消息队列列表
+     >         final String consumerGroup,	//消费者分组
+     >         final String currentCID,	//当前消费者ID
+     >         final List<MessageQueue> mqAll,	//当前主题所有的消息队列
+     >         final List<String> cidAll	//分组内所有的消费者ID
+     >     );
+     > ```
+     >
+     > + 环形分配策略 (AllocateMessageQueueAveragelyByCircle)
+     >
+     >   源码很简单，就是将消息队列依次分配给各个消费者，
+     >
+     >   假设主题有6个MessageQueue（Q0 Q1 Q2 Q3 Q4 Q5），当前4个消费者(C0 C1 C2 C3)，按此策略各消费者会分得 C0(Q0 Q4) C1(Q1 Q5) C2(Q2) C3(Q3)。
+     >
+     > + 手动配置分配策略 (AllocateMessageQueueByConfig)
+     >
+     >   直接通过配置指定哪个消费者消费哪些消息队列。
+     >
+     > + 机房分配策略 (AllocateMessageQueueByMachineRoom)
+     >
+     >   先过滤出mqAll中所有处于 `void setConsumeridcs(Set<String> consumeridcs)` 设置的机房中的Broker的消息队列，然后将过滤出的消息队列平均分配给所有消费者。
+     >
+     > + 一致性哈希分配策略 (AllocateMessageQueueConsistentHash)
+     >
+     >   是通过一致性哈希路由器分配的，参考 [ConsistentHashRouter](ConsistentHashRouter.md)。
+     >
+     > + 靠近机房策略 (AllocateMachineRoomNearby)
+     >
+     >   这个用于自行定制，需要自行实现 MachineRoomResolver 获取消息队列、消费者被部署的机房信息；allocate 时先将所有消息队列、消费者按机房分组，然后**将消息队列按上面某种策略分配给相同机房的消费者**；如果**消息队列没有同机房的消费者会被所有消费者按上面的某种策略分配**。
+     >
+     >   这里可以看到并非做到真正的靠近机房分配，没有同机房消费者的消息队列直接分配给了所有消费者，并没有地理位置远近的判断。
 
 ### 消息可靠性原理（如何防止丢失）
 
 ### 消息堆积能力
 
 ### 消息去重&避免重复消费原理
+
+
 
 ### 顺序消息原理
 
