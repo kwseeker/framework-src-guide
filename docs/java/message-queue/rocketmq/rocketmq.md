@@ -224,7 +224,7 @@ NameServer、Broker启动流程：
 
 ### 消息发布&订阅
 
-#### 同步发送&同步消费
+#### 同步发送&消费
 
 1. 生产者（DefaultMQProducer）实例创建并启动；由于每个生产者都是放到MQClientInstance中保存并维护的，如果MQClientInstance实例不存在会先创建并启动 MQClientInstance 实例，最核心的就是创建Netty客户端；然后将生产者实例注册到 MQClientInstance 的 produceTable 成员变量；
 
@@ -292,7 +292,7 @@ NameServer、Broker启动流程：
 
    + RebalanceService
 
-     重新负载均衡服务，用于根据当前节点当前主题的消息队列数量和消费者数量，进行负载均衡重新分配。
+     消费者重新负载均衡服务，用于根据当前节点当前主题的消息队列数量和消费者数量，进行负载均衡重新分配。
 
      默认的负载均衡策略是 AllocateMessageQueueAveragely，会平均分配，假设主题有6个MessageQueue（Q0 Q1 Q2 Q3 Q4 Q5），当前4个消费者(C0 C1 C2 C3)，按此策略各消费者会分得 C0(Q0 Q1) C1(Q2 Q3) C2(Q4) C3(Q5)。
      
@@ -337,13 +337,295 @@ NameServer、Broker启动流程：
 
 ### 消息可靠性原理（如何防止丢失）
 
+从源码看可能导致消息丢失的情况有两种：
+
++ 消息发送失败且编码不当没有检查发送结果
++ 消息还未持久化到磁盘服务器宕机
++ 消息消费失败且编码不当返回了消费成功（不太可能出现）
+
+针对第一种情况需要确认消息发送返回结果即是否发送成功，不能使用 OneWay 这种发送方式；
+
+针对第二种情况需要使用同步刷盘策略。
+
+```properties
+## 默认情况为 ASYNC_FLUSH 
+flushDiskType = SYNC_FLUSH 
+```
+
 ### 消息堆积能力
 
-### 消息去重&避免重复消费原理
+从源码看只有存储时间（5.x版本最多保存72小时）限制，并没有空间限制，所以取决于服务器可用的内存和磁盘空间。
 
+从源码看消息所在 CommitLog 文件一旦超时，**不会管里面到底还有没有未消费的消息**，都会将文件删除。
 
+### 避免消息重复消费的方案
+
+RocketMQ中可能引起消息被重复消费的原因：
+
+以集群消费模式（CLUSTERING）为例，比如消息拉取到 Consumer 后执行消费回调方法时，可能业务逻辑中会请求其他微服务接口，接口执行正常但是返回结果时出现网络抖动 Consumer 没有收到结果，这时后续处理就是当作消费失败处理，一般是在消费回调方法中返回 **RECONSUME_LATER**，后面 Consumer 会将此消息重新发回给 Broker 重试消费。
+
+RocketMQ 本身并不会避免重复消费，需要用户自行实现，一般都是通过保证**接口幂等**（即检测消息是否已经处理过[消息带有唯一ID]，已处理过直接返回上次处理结果）。实现幂等的方式比如：数据库唯一键约束、使用缓存记录已成功处理的消息ID。
+
+源码入口：
+
+```java
+// 这里展示消息消费返回 RECONSUME_LATER 的后续重试逻辑
+ConsumeMessageConcurrentlyService.this.processConsumeResult(status, context, this);
+```
 
 ### 顺序消息原理
+
+> 发现网上搜索到的方案说法大都不严谨，基本都是只强调写入同一个消息队列。
+
+即如何保证消息顺序发送和顺序消费，从RocketMQ工作流程看，严谨地实现顺序消息需要保证三点：
+
++ **顺序生产**
+
+  一组有序的消息需要使用同一个生产者生产，如果使用多个生产者，可能导致乱序写入消息队列；
+
++ **写入同一消息队列**
+
+  默认情况下一个主题下面会创建多个消息队列，一个消息队列中的消息消费是天然可以保证顺序写入就被顺序输出的，但是多个消息队列无法保证；
+
++ **顺序消费**
+
+  即使消息被顺序地从Broker拉取到消费者，也不能保证被顺序消费，比如消费者开启多个线程并发消费，却没有同步处理同样可能导致消息被乱序消费，需要使用 `MessageListenerOrderly`。
+
+  `MessageListenerOrderly` 通过 `ConsumeMessageOrderlyService`处理，同样使用了线程池进行消费，因为只需要保证同一个队列内的消息顺序消费即可，`ConsumeMessageOrderlyService`是使用消息队列锁实现的同队列消息顺序消费的，这样仍然可以保证不同队列的消息的并发消费，性能比单线程好的多。
+
+  另外`ConsumeMessageOrderlyService`对**消费失败的处理**也和 `ConsumeMessageConcurrentlyService`不一样，没有将消费失败的消息重新发回给 Broker, 而是**将它们直接重新加入处理队列重试消费，重试消费时不会消费后续的消息**。
+
+  将消息发回给Broker可能导致破坏消息顺序性，举个例子：一组顺序消息包含20个消息，假设消费者每次拉取10个，由于拉取和消费是异步的，可能第一次拉取的10个消息消费失败，发回给Broker只可能是排在第二批消息的后面，这就会破坏消息的顺序性。
+
+  > RocketMQ 一个消息队列只会被一个消费者消费，不用再强调单消费者消费了。
+
+#### 如何将顺序消息写入同一消息队列
+
+自然可以想到两种方式实现顺序消息：
+
++ **能否设置这个主题下只有一个消息队列？**（只有一个队列自然可以保证消息顺序消费）
+
+  总结：可以通过 `DefaultMQProducer#setDefaultTopicQueueNums()` 设置消息队列个数为1，不过这种方式不推荐，无法发挥多节点优势，可能会有性能问题。
+
+  ```java
+  DefaultMQProducer producer = new DefaultMQProducer("ordered_messages");
+  producer.setDefaultTopicQueueNums(1);
+  ```
+
++ **这组有顺序的消息如何实现都发给同一个消息队列？**（只用其中一个队列）
+
+  总结：通过在 `MQProducer#send()` 设置自定义 `MessageQueueSelector`。
+
+**先看：能否设置这个主题下只有一个消息队列？**
+
+先分析清楚主题下消息队列个数是哪里配置的？分析源码找到主题中消息队列的个数是在 `DefaultMQProducerImpl#sendKernelImpl(...)` 中通过 `requestHeader.setDefaultTopicQueueNums(this.defaultMQProducer.getDefaultTopicQueueNums());`设置的，而 defaultTopicQueueNums 可以通过 `DefaultMQProducer#setDefaultTopicQueueNums(int defaultTopicQueueNums)`设置。
+
+详细流程参考流程图。
+
+经测试这种方式是可行的。
+
+源码入口：
+
+```java
+//1 Broker SendMessageProcessor#sendMessage(...)
+// 消息存储目标消息队列ID
+int queueIdInt = requestHeader.getQueueId();
+// 这里用到的主题配置就是在第一次创建主题时创建的
+TopicConfig topicConfig = 
+	this.brokerController.getTopicConfigManager().selectTopicConfig(requestHeader.getTopic());
+if (queueIdInt < 0) {    //如果队列ID小于0,则随机选择一个队列存储消息
+    queueIdInt = randomQueueId(topicConfig.getWriteQueueNums());
+}
+
+//2 查找 requestHeader 来源，找到 DefaultMQProducerImpl#sendKernelImpl(...)
+SendMessageRequestHeader requestHeader = new SendMessageRequestHeader();
+requestHeader.setProducerGroup(this.defaultMQProducer.getProducerGroup());
+requestHeader.setTopic(msg.getTopic()); //实际主题，默认主题TBW102用于创建这个新主题
+requestHeader.setDefaultTopic(this.defaultMQProducer.getCreateTopicKey()); //默认主题，TBW102
+// >>>>>>> 突破点
+requestHeader.setDefaultTopicQueueNums(this.defaultMQProducer.getDefaultTopicQueueNums()); // 主题消息队列个数，实际用于设置新主题读写队列个数，默认是4
+requestHeader.setQueueId(mq.getQueueId()); //消息存储目标消息队列ID
+requestHeader.setSysFlag(sysFlag);
+requestHeader.setBornTimestamp(System.currentTimeMillis());
+requestHeader.setFlag(msg.getFlag());
+requestHeader.setProperties(MessageDecoder.messageProperties2String(msg.getProperties()));
+requestHeader.setReconsumeTimes(0);
+requestHeader.setUnitMode(this.isUnitMode());
+requestHeader.setBatch(msg instanceof MessageBatch);
+requestHeader.setBrokerName(brokerName);
+```
+
+**再看：这组有顺序的消息如何实现都发给同一个消息队列？**
+
+~~还是分析源码流程，从消息发送流程可以看到在 `DefaultMQProducerImpl$sendDefaultImpl(...)` 中实现了消息存储目标消息队列的选择（**队列ID递增轮询 + MQFaultStrategy 过滤**）；~~
+
+> 队列ID递增轮询，其实也体现了生产者端的负载均衡实现。
+
+~~不过这个不支持自定义拓展 QueueFilter，另外控制顺序消息发到同一消息队列也和 MQFaultStrategy 本意不符。~~
+
+```java
+//从 TopicPublishInfo 中选择一个 MessageQueue 实例存储当前消息，内部借助 MQFaultStrategy 实现对对消息队列的选择
+//其中 BrokerFilter 的作用是如果lastBrokerName不为null将一个主题的消息优先发送到不同的Broker节点, 也即重试发送时将消息尝试发送到其他Broker节点，只有重试发送时 BrokerFilter 才有效
+MessageQueue mqSelected = this.selectOneMessageQueue(topicPublishInfo, lastBrokerName, resetIndex);
+
+public MessageQueue selectOneMessageQueue(final TopicPublishInfo tpInfo, final String lastBrokerName, final boolean resetIndex) {
+    // 每个线程中都会创建一个 BrokerFilter，不过只是用于发送失败后重试
+    BrokerFilter brokerFilter = threadBrokerFilter.get();
+    brokerFilter.setLastBrokerName(lastBrokerName);
+    if (this.sendLatencyFaultEnable) { //如果开启延时容错
+        if (resetIndex) {
+            tpInfo.resetIndex();
+        }
+        // availableFilter 优先级高于 reachableFilter
+        MessageQueue mq = tpInfo.selectOneMessageQueue(availableFilter, brokerFilter);
+        if (mq != null) {
+            return mq;
+        }
+
+        mq = tpInfo.selectOneMessageQueue(reachableFilter, brokerFilter);
+        if (mq != null) {
+            return mq;
+        }
+        // 兜底，不使用过滤器过滤
+        return tpInfo.selectOneMessageQueue();
+    }
+    // 如果没有开启延迟容错
+    MessageQueue mq = tpInfo.selectOneMessageQueue(brokerFilter);
+    if (mq != null) {
+        return mq;
+    }
+    // 兜底，不使用过滤器过滤
+    return tpInfo.selectOneMessageQueue();
+}
+```
+
+另外发现生产者发送消息接口（MQProducer）中已经提供了一组方法可以指定 MessageQueueSelector（即选择存储消息的MessageQueue），可以自定义实现，将有顺序的消息发送到同一消息队列。
+
+```java
+// MQProducer
+public SendResult send(Message msg, MessageQueueSelector selector, Object arg)
+public SendResult send(Message msg, MessageQueueSelector selector, Object arg, long timeout)
+public void send(Message msg, MessageQueueSelector selector, Object arg, SendCallback sendCallback)
+public void send(Message msg, MessageQueueSelector selector, Object arg, SendCallback sendCallback, long timeout)
+
+// 官方已经提供了Demo: rocketmq-example/.../ordermessage/Producer.java
+SendResult sendResult = producer.send(msg, new MessageQueueSelector() {
+    @Override
+    public MessageQueue select(List<MessageQueue> mqs, Message msg, Object arg) {
+        Integer id = (Integer) arg;
+        int index = id % mqs.size();
+        return mqs.get(index);
+    }
+}, orderId);
+
+// 内部原理也很简单，就是先选择消息队列，然后将消息直接发送到这个消息队列
+// 先选择消息队列
+MessageQueue mq = this.defaultMQProducerImpl
+    .invokeMessageQueueSelector(msg, selector, arg, this.getSendMsgTimeout());
+mq = queueWithNamespace(mq);
+// 将消息直接发送到这个消息队列
+if (this.getAutoBatch() && !(msg instanceof MessageBatch)) {
+    return sendByAccumulator(msg, mq, null);
+} else {
+    return sendDirect(msg, mq, null);
+}
+```
+
+#### 消息顺序拉取到消费者端后如何保证顺序消费？
+
+消息消费回调接口 `MessageListener`，有两个子接口 `MessageListenerOrderly`、`MessageListenerConcurrently`，分别由 `ConsumeMessageOrderlyService` 和 `ConsumeMessageConcurrentlyService`处理。
+
+保证顺序消费需要使用 `MessageListenerOrderly`。
+
+看 `ConsumeMessageOrderlyService` 和 `ConsumeMessageConcurrentlyService`执行原理，可以看到两者实现类似，都使用了线程池消费拉取到的消息数据，区别是  `ConsumeMessageOrderlyService` 线程任务消费数据前会**先加消息队列同步锁**，从而实现同步消费。
+
+```java
+final Object objLock = messageQueueLock.fetchLockObject(this.messageQueue);
+// 通过消息队列同步锁实现对这个消息队列的消费总是顺序消费
+synchronized (objLock) {
+	...消费消息...
+    //消费可能失败，ConsumeMessageConcurrentlyService 会直接将消息重新发给Broker,
+    //但是 ConsumeMessageOrderlyService 不能这么做，因为可能会破坏消息的顺序性，ConsumeMessageOrderlyService 是直接将这批消息重新放到处理队列 ProcessQueue 重试消费
+    continueConsume = ConsumeMessageOrderlyService.this.processConsumeResult(msgs, status, context, this);
+}
+
+//ConsumeMessageOrderlyService#processConsumeResult(...)
+public boolean processConsumeResult(
+    final List<MessageExt> msgs,
+    final ConsumeOrderlyStatus status,
+    final ConsumeOrderlyContext context,
+    final ConsumeRequest consumeRequest
+) {
+    boolean continueConsume = true;
+    long commitOffset = -1L;
+    if (context.isAutoCommit()) {
+        switch (status) {
+            case COMMIT:
+            case ROLLBACK:
+                log.warn(...);
+            case SUCCESS:
+                commitOffset = consumeRequest.getProcessQueue().commit();
+                this.getConsumerStatsManager().incConsumeOKTPS(consumerGroup, consumeRequest.getMessageQueue().getTopic(), msgs.size());
+                break;
+            case SUSPEND_CURRENT_QUEUE_A_MOMENT:
+                this.getConsumerStatsManager().incConsumeFailedTPS(consumerGroup, consumeRequest.getMessageQueue().getTopic(), msgs.size());
+                if (checkReconsumeTimes(msgs)) {
+                    consumeRequest.getProcessQueue().makeMessageToConsumeAgain(msgs);
+                    this.submitConsumeRequestLater(
+                        consumeRequest.getProcessQueue(),
+                        consumeRequest.getMessageQueue(),
+                        context.getSuspendCurrentQueueTimeMillis());
+                    continueConsume = false;
+                } else {
+                    commitOffset = consumeRequest.getProcessQueue().commit();
+                }
+                break;
+            default:
+                break;
+        }
+    } else {
+        switch (status) {
+            case SUCCESS:
+                this.getConsumerStatsManager().incConsumeOKTPS(consumerGroup, consumeRequest.getMessageQueue().getTopic(), msgs.size());
+                break;
+            // 这两个用于事务消息
+            case COMMIT:
+                commitOffset = consumeRequest.getProcessQueue().commit();
+                break;
+            case ROLLBACK:
+                consumeRequest.getProcessQueue().rollback();
+                this.submitConsumeRequestLater(
+                    consumeRequest.getProcessQueue(),
+                    consumeRequest.getMessageQueue(),
+                    context.getSuspendCurrentQueueTimeMillis());
+                continueConsume = false;
+                break;
+            // 消费失败
+            case SUSPEND_CURRENT_QUEUE_A_MOMENT:
+                this.getConsumerStatsManager().incConsumeFailedTPS(consumerGroup, consumeRequest.getMessageQueue().getTopic(), msgs.size());
+                if (checkReconsumeTimes(msgs)) {
+                    //将 msgs 重新加入处理队列，直接进行重试，由于外部的消息队列同步锁还没有释放，也不会消费后续的消息
+                    //从而保证消息重试消费还是正确的熟顺序
+                    consumeRequest.getProcessQueue().makeMessageToConsumeAgain(msgs);
+                    this.submitConsumeRequestLater(
+                        consumeRequest.getProcessQueue(),
+                        consumeRequest.getMessageQueue(),
+                        context.getSuspendCurrentQueueTimeMillis());
+                    continueConsume = false;
+                }
+                break;
+            default:
+                break;
+        }
+    }
+
+    if (commitOffset >= 0 && !consumeRequest.getProcessQueue().isDropped()) {
+        this.defaultMQPushConsumerImpl.getOffsetStore().updateOffset(consumeRequest.getMessageQueue(), commitOffset, false);
+    }
+
+    return continueConsume;
+}
+```
 
 ### 分布式事务实现原理
 
