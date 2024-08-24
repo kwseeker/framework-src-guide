@@ -627,6 +627,17 @@ public boolean processConsumeResult(
 }
 ```
 
+### 消息消费失败重试队列与死信队列机制
+
+以 PushConsumer ConsumeMessageConcurrentlyService 为例，消息消费失败（比如返回 RECOSUME_LATER）在处理消费结果的方法 `ConsumeMessageConcurrentlyService#processConsumeResult(...)` 中会将消息发送回 Broker，通过请求码 `RequestCode
+.CONSUMER_SEND_MSG_BACK`发送；
+
+Broker 端在 SendMessageProcessor 中处理此请求码，如果消息重试次数没有超过最大重试次数（5.2版本默认是3次），就将消息以**延迟消息**的形式发送到当前消费者分组的**重试主题** `%RETRY%consumerGroup` ，如果重试次数超过最大重试次数，就将消息发送到**死信队列**`%DLQ%consumerGroup`；
+
+消费者启动时会额外订阅当前消费者分组的重试主题，参考 `copySubscription()` 方法。
+
+另外注意死信队列的消息同样是默认保存72消息，如果没有消费也会被删除，需要注意及时处理。
+
 ### 分布式事务实现原理
 
 
