@@ -640,7 +640,7 @@ Broker 端在 SendMessageProcessor 中处理此请求码，如果消息重试次
 
 ### 分布式事务实现原理
 
-
+参考 [transaction-message.md](transaction-message.md)。
 
 ## 从源码深入解析常见面试题
 
