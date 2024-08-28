@@ -1,0 +1,1170 @@
+<mxfile host="Electron" modified="2024-08-28T07:20:31.859Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.6.5 Chrome/114.0.5735.243 Electron/25.3.1 Safari/537.36" etag="E0lQ39F30zW0nQB0YhTN" version="21.6.5" type="device">
+  <diagram id="-nK9JvMHZn6Lz6oW_Ra4" name="第 1 页">
+    <mxGraphModel dx="3533" dy="733" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="IzYjYl6GN4_amZqirhNN-131" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=-2.7;entryDy=0;entryPerimeter=0;fontSize=10;fontColor=#3399FF;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" source="IzYjYl6GN4_amZqirhNN-129" target="yYM20b8fRTNlaGVTkvJs-174" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1380" y="1300" />
+              <mxPoint x="1380" y="800" />
+              <mxPoint x="140" y="800" />
+              <mxPoint x="140" y="750" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="IzYjYl6GN4_amZqirhNN-148" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;fontSize=12;fontColor=#3399FF;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" source="IzYjYl6GN4_amZqirhNN-146" target="yYM20b8fRTNlaGVTkvJs-148" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="IzYjYl6GN4_amZqirhNN-107" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;fontSize=10;fontColor=#3399FF;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" source="IzYjYl6GN4_amZqirhNN-105" target="IzYjYl6GN4_amZqirhNN-100" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-72" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;fontSize=10;fontColor=#3399FF;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" source="yYM20b8fRTNlaGVTkvJs-41" target="yYM20b8fRTNlaGVTkvJs-66" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-1" value="&lt;h1&gt;jd-hotkey 工作流程&lt;/h1&gt;&lt;p&gt;包括 etcd 、dashboard、worker、client 模块；&lt;br&gt;不仅仅可以做热key检测。&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" parent="1" vertex="1">
+          <mxGeometry y="20" width="360" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-9" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="yYM20b8fRTNlaGVTkvJs-4" target="yYM20b8fRTNlaGVTkvJs-8" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-4" value="Netty Server" style="whiteSpace=wrap;html=1;rounded=1;shadow=0;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+          <mxGeometry x="240" y="160" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-77" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=14;fontColor=#3399FF;dashed=1;" parent="1" source="yYM20b8fRTNlaGVTkvJs-6" target="yYM20b8fRTNlaGVTkvJs-76" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-85" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=14;fontColor=#3399FF;dashed=1;" parent="1" source="yYM20b8fRTNlaGVTkvJs-6" target="yYM20b8fRTNlaGVTkvJs-84" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-283" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=-2.7;entryDy=0;fontSize=10;fontColor=#3399FF;strokeColor=#6c8ebf;fillColor=#dae8fc;entryPerimeter=0;" parent="1" source="yYM20b8fRTNlaGVTkvJs-6" target="yYM20b8fRTNlaGVTkvJs-303" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="80.00000000000045" y="1110" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="160" y="1391" />
+              <mxPoint x="160" y="1231" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-6" value="EtcdStarter&lt;br&gt;&lt;font color=&quot;#3399ff&quot;&gt;借助etcd-java客户端实现后面的功能&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+          <mxGeometry x="240" y="1360.5" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-11" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="yYM20b8fRTNlaGVTkvJs-8" target="yYM20b8fRTNlaGVTkvJs-10" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-8" value="NodesServerHandler#&lt;br&gt;channelRead0()" style="whiteSpace=wrap;html=1;rounded=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxGeometry x="400" y="160" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-21" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=1;exitDx=0;exitDy=0;entryX=0.75;entryY=0;entryDx=0;entryDy=0;" parent="1" source="yYM20b8fRTNlaGVTkvJs-10" target="yYM20b8fRTNlaGVTkvJs-12" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-10" value="HeartBeatFilter&lt;br&gt;&lt;font color=&quot;#3399ff&quot; style=&quot;font-size: 10px&quot;&gt;处理 MessageType.&lt;b&gt;PING&lt;/b&gt;&lt;/font&gt;" style="whiteSpace=wrap;html=1;rounded=1;" parent="1" vertex="1">
+          <mxGeometry x="600" y="160" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-22" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=1;exitDx=0;exitDy=0;entryX=0.75;entryY=0;entryDx=0;entryDy=0;" parent="1" source="yYM20b8fRTNlaGVTkvJs-12" target="yYM20b8fRTNlaGVTkvJs-14" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-26" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.25;exitY=0;exitDx=0;exitDy=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;" parent="1" source="yYM20b8fRTNlaGVTkvJs-12" target="yYM20b8fRTNlaGVTkvJs-10" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-29" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontColor=#3399FF;" parent="1" source="yYM20b8fRTNlaGVTkvJs-12" target="yYM20b8fRTNlaGVTkvJs-28" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-12" value="AppNameFilter&lt;br&gt;&lt;font style=&quot;font-size: 10px&quot; color=&quot;#3399ff&quot;&gt;处理MessageType.&lt;b&gt;APP_NAME&lt;/b&gt;&lt;/font&gt;" style="whiteSpace=wrap;html=1;rounded=1;" parent="1" vertex="1">
+          <mxGeometry x="600" y="240" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-23" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=1;exitDx=0;exitDy=0;entryX=0.75;entryY=0;entryDx=0;entryDy=0;" parent="1" source="yYM20b8fRTNlaGVTkvJs-14" target="yYM20b8fRTNlaGVTkvJs-16" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-25" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.25;exitY=0;exitDx=0;exitDy=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;" parent="1" source="yYM20b8fRTNlaGVTkvJs-14" target="yYM20b8fRTNlaGVTkvJs-12" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-31" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;fontColor=#3399FF;" parent="1" source="yYM20b8fRTNlaGVTkvJs-14" target="yYM20b8fRTNlaGVTkvJs-30" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-14" value="HotKeyFilter&lt;br&gt;&lt;font style=&quot;font-size: 9px&quot; color=&quot;#3399ff&quot;&gt;处理MessageType.&lt;b&gt;REQUEST_NEW_KEY&lt;/b&gt;&lt;/font&gt;" style="whiteSpace=wrap;html=1;rounded=1;" parent="1" vertex="1">
+          <mxGeometry x="600" y="320" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-24" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.25;exitY=0;exitDx=0;exitDy=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;" parent="1" source="yYM20b8fRTNlaGVTkvJs-16" target="yYM20b8fRTNlaGVTkvJs-14" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-33" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;fontColor=#3399FF;" parent="1" source="yYM20b8fRTNlaGVTkvJs-16" target="yYM20b8fRTNlaGVTkvJs-32" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-16" value="KeyCounterFilter&lt;br&gt;&lt;font color=&quot;#3399ff&quot; style=&quot;font-size: 9px&quot;&gt;处理MessageType.&lt;b&gt;REQUEST_HIT_COUNT&lt;/b&gt;&lt;/font&gt;" style="whiteSpace=wrap;html=1;rounded=1;" parent="1" vertex="1">
+          <mxGeometry x="600" y="400" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-27" value="&lt;font color=&quot;#3399ff&quot;&gt;责任链模式串起来&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
+          <mxGeometry x="665" y="140" width="110" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-36" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=9;fontColor=#3399FF;" parent="1" source="yYM20b8fRTNlaGVTkvJs-28" target="yYM20b8fRTNlaGVTkvJs-35" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-28" value="&lt;font style=&quot;font-size: 10px&quot;&gt;clientEventListener.newClient(&lt;br&gt;appName, NettyIpUtil.clientIp(ctx), ctx)&lt;br&gt;&lt;font color=&quot;#3399ff&quot;&gt;注册jd-hotkey客户端&lt;/font&gt;&lt;br&gt;&lt;/font&gt;" style="whiteSpace=wrap;html=1;rounded=1;" parent="1" vertex="1">
+          <mxGeometry x="840" y="240" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-38" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=9;fontColor=#3399FF;" parent="1" source="yYM20b8fRTNlaGVTkvJs-30" target="yYM20b8fRTNlaGVTkvJs-37" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-30" value="&lt;font style=&quot;font-size: 10px&quot;&gt;publishMsg(HotKeyMsg message, ChannelHandlerContext ctx)&lt;/font&gt;" style="whiteSpace=wrap;html=1;rounded=1;" parent="1" vertex="1">
+          <mxGeometry x="840" y="320" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-42" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=9;fontColor=#3399FF;" parent="1" source="yYM20b8fRTNlaGVTkvJs-32" target="yYM20b8fRTNlaGVTkvJs-41" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-32" value="&lt;font style=&quot;font-size: 10px&quot;&gt;publishMsg(String appName, HotKeyMsg message, ChannelHandlerContext ctx)&lt;/font&gt;" style="whiteSpace=wrap;html=1;rounded=1;" parent="1" vertex="1">
+          <mxGeometry x="840" y="400" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-35" value="&lt;span style=&quot;font-size: 10px&quot;&gt;&lt;b&gt;ClientInfoHolder.apps&lt;/b&gt;.add(appInfo)&lt;/span&gt;&lt;br&gt;&lt;font color=&quot;#3399ff&quot;&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;比较一下appName是否存在，&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;不存在则添加到&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;&lt;b&gt;ClientInfoHolder.apps&lt;/b&gt;&lt;/span&gt;&lt;/font&gt;" style="whiteSpace=wrap;html=1;rounded=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxGeometry x="1080" y="240" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-40" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=9;fontColor=#3399FF;" parent="1" source="yYM20b8fRTNlaGVTkvJs-37" target="yYM20b8fRTNlaGVTkvJs-39" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-37" value="&lt;font style=&quot;font-size: 10px&quot;&gt;keyProducer.push(model, now)&lt;/font&gt;" style="whiteSpace=wrap;html=1;rounded=1;" parent="1" vertex="1">
+          <mxGeometry x="1080" y="320" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-55" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;fontSize=10;fontColor=#3399FF;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" source="yYM20b8fRTNlaGVTkvJs-39" target="yYM20b8fRTNlaGVTkvJs-46" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-39" value="&lt;font&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;&lt;b&gt;QUEUE&lt;/b&gt;.put(model)&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;&lt;font color=&quot;#3399ff&quot;&gt;加入待统计队列：DispatcherConfig.QUEUE&lt;/font&gt;&lt;/span&gt;&lt;br&gt;&lt;/font&gt;" style="whiteSpace=wrap;html=1;rounded=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxGeometry x="1320" y="320" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-41" value="&lt;font&gt;&lt;b style=&quot;font-size: 10px&quot;&gt;COUNTER_QUEUE&lt;/b&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;.put(new KeyCountItem(appName, models.get(0).getCreateTime(), models))&lt;/span&gt;&lt;br&gt;&lt;font color=&quot;#3399ff&quot;&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;加入待统计队列：CounterConfig.&lt;/span&gt;&lt;/font&gt;&lt;font color=&quot;#3399ff&quot;&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;COUNTER_QUEUE&lt;/span&gt;&lt;/font&gt;&lt;br&gt;&lt;/font&gt;" style="whiteSpace=wrap;html=1;rounded=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxGeometry x="1080" y="390" width="200" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-45" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=9;fontColor=#3399FF;dashed=1;" parent="1" source="yYM20b8fRTNlaGVTkvJs-43" target="yYM20b8fRTNlaGVTkvJs-44" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-63" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=10;fontColor=#3399FF;dashed=1;" parent="1" source="yYM20b8fRTNlaGVTkvJs-43" target="yYM20b8fRTNlaGVTkvJs-62" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="IzYjYl6GN4_amZqirhNN-99" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=11;fontColor=#3399FF;dashed=1;" parent="1" source="yYM20b8fRTNlaGVTkvJs-43" target="IzYjYl6GN4_amZqirhNN-98" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="IzYjYl6GN4_amZqirhNN-113" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=10;fontColor=#3399FF;dashed=1;" parent="1" source="yYM20b8fRTNlaGVTkvJs-43" target="IzYjYl6GN4_amZqirhNN-108" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-43" value="线程池" style="whiteSpace=wrap;html=1;rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+          <mxGeometry x="240" y="480" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-47" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;fontColor=#3399FF;" parent="1" source="yYM20b8fRTNlaGVTkvJs-44" target="yYM20b8fRTNlaGVTkvJs-46" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-44" value="&lt;font style=&quot;font-size: 10px&quot;&gt;keyConsumer::&lt;b&gt;beginConsume&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#3399ff&quot;&gt;线程数默认是可用核心数量，超过8就除以2&lt;/font&gt;&lt;br&gt;&lt;/font&gt;" style="whiteSpace=wrap;html=1;rounded=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="400" y="480" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-49" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;fontColor=#3399FF;" parent="1" source="yYM20b8fRTNlaGVTkvJs-46" target="yYM20b8fRTNlaGVTkvJs-48" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-46" value="&lt;span style=&quot;font-size: 10px&quot;&gt;HotKeyModel model = &lt;b&gt;QUEUE&lt;/b&gt;.take()&lt;/span&gt;" style="whiteSpace=wrap;html=1;rounded=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="640" y="480" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-51" value="Y" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;fontColor=#3399FF;" parent="1" source="yYM20b8fRTNlaGVTkvJs-48" target="yYM20b8fRTNlaGVTkvJs-50" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-53" value="N" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=10;fontColor=#3399FF;" parent="1" source="yYM20b8fRTNlaGVTkvJs-48" target="yYM20b8fRTNlaGVTkvJs-52" edge="1">
+          <mxGeometry x="-0.3333" y="20" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-48" value="model.isRemove()" style="rhombus;whiteSpace=wrap;html=1;rounded=1;" parent="1" vertex="1">
+          <mxGeometry x="660" y="560" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-57" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;fontColor=#3399FF;" parent="1" source="yYM20b8fRTNlaGVTkvJs-50" target="yYM20b8fRTNlaGVTkvJs-56" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-50" value="iKeyListener.&lt;b&gt;removeKey&lt;/b&gt;(model, KeyEventOriginal.CLIENT)&lt;br&gt;&lt;font color=&quot;#3399ff&quot;&gt;清除对key的监控&lt;/font&gt;" style="whiteSpace=wrap;html=1;rounded=1;" parent="1" vertex="1">
+          <mxGeometry x="840" y="570" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-297" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;fontColor=#3399FF;strokeColor=#330000;" parent="1" source="yYM20b8fRTNlaGVTkvJs-52" target="yYM20b8fRTNlaGVTkvJs-296" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-52" value="iKeyListener.&lt;b&gt;newKey&lt;/b&gt;(model, KeyEventOriginal.CLIENT)&lt;br&gt;&lt;font color=&quot;#3399ff&quot;&gt;添加对key的监控，&lt;br&gt;通过滑动窗口判断key是否是热key&lt;/font&gt;" style="whiteSpace=wrap;html=1;rounded=1;" parent="1" vertex="1">
+          <mxGeometry x="840" y="730" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-59" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;fontColor=#3399FF;" parent="1" source="yYM20b8fRTNlaGVTkvJs-56" target="yYM20b8fRTNlaGVTkvJs-58" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-56" value="&lt;font style=&quot;font-size: 10px&quot;&gt;hotCache.invalidate(key)&lt;br&gt;CaffeineCacheHolder.getCache(&lt;br&gt;hotKeyModel.getAppName()).invalidate(key)&lt;br&gt;&lt;font color=&quot;#3399ff&quot;&gt;清除本地统计数据&lt;/font&gt;&lt;br&gt;&lt;/font&gt;" style="whiteSpace=wrap;html=1;rounded=1;" parent="1" vertex="1">
+          <mxGeometry x="1080" y="570" width="240" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-58" value="&lt;span style=&quot;font-size: 10px&quot;&gt;for iPushers:&amp;nbsp;&lt;br&gt;&lt;/span&gt;&lt;b&gt;pusher&lt;/b&gt;.&lt;b&gt;remove&lt;/b&gt;(hotKeyModel)&lt;br&gt;&lt;font style=&quot;font-size: 10px&quot; color=&quot;#3399ff&quot;&gt;通过Netty连接推送到所有客户端&lt;/font&gt;" style="whiteSpace=wrap;html=1;rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+          <mxGeometry x="1080" y="650" width="240" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-67" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=12;fontColor=#3399FF;" parent="1" source="yYM20b8fRTNlaGVTkvJs-62" target="yYM20b8fRTNlaGVTkvJs-66" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-62" value="&lt;font&gt;&lt;font style=&quot;font-size: 12px&quot;&gt;CounterConsumer#&lt;br&gt;beginConsume()&lt;/font&gt;&lt;br&gt;&lt;/font&gt;" style="whiteSpace=wrap;html=1;rounded=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="400" y="820" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-195" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;dashed=1;fontSize=10;fontColor=#3399FF;fillColor=#f5f5f5;strokeColor=#666666;" parent="1" source="yYM20b8fRTNlaGVTkvJs-64" target="yYM20b8fRTNlaGVTkvJs-4" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-196" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;dashed=1;fontSize=10;fontColor=#3399FF;fillColor=#f5f5f5;strokeColor=#666666;" parent="1" source="yYM20b8fRTNlaGVTkvJs-64" target="yYM20b8fRTNlaGVTkvJs-43" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-197" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;dashed=1;fontSize=10;fontColor=#3399FF;fillColor=#f5f5f5;strokeColor=#666666;" parent="1" source="yYM20b8fRTNlaGVTkvJs-64" target="yYM20b8fRTNlaGVTkvJs-6" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-64" value="jd-hotkey&lt;br&gt;&amp;nbsp;worker&lt;br&gt;（key访问统计、判断是否是热key）" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0050ef;fontColor=#ffffff;strokeColor=#001DBC;" parent="1" vertex="1">
+          <mxGeometry x="80" y="160" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-69" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=12;fontColor=#3399FF;" parent="1" source="yYM20b8fRTNlaGVTkvJs-66" target="yYM20b8fRTNlaGVTkvJs-68" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-66" value="&lt;font&gt;&lt;font style=&quot;font-size: 10px&quot;&gt;KeyCountItem item = &lt;b&gt;COUNTER_QUEUE&lt;/b&gt;.take()&lt;/font&gt;&lt;br&gt;&lt;/font&gt;" style="whiteSpace=wrap;html=1;rounded=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="640" y="820" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-71" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;fontColor=#3399FF;" parent="1" source="yYM20b8fRTNlaGVTkvJs-68" target="yYM20b8fRTNlaGVTkvJs-70" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-68" value="&lt;font&gt;&lt;font style=&quot;font-size: 12px&quot;&gt;&lt;b&gt;map&lt;/b&gt;.put(mapKey, hotCount + &quot;-&quot; + totalCount)&lt;br&gt;&lt;/font&gt;&lt;font color=&quot;#3399ff&quot; style=&quot;font-size: 10px&quot;&gt;更新key访问次数统计，临时存放在HashMap&lt;/font&gt;&lt;br&gt;&lt;/font&gt;" style="whiteSpace=wrap;html=1;rounded=1;" parent="1" vertex="1">
+          <mxGeometry x="640" y="900" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-302" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=1;exitDx=0;exitDy=0;fontSize=12;fontColor=#3399FF;strokeColor=#6c8ebf;fillColor=#dae8fc;entryX=1;entryY=0.5;entryDx=-2.7;entryDy=0;entryPerimeter=0;" parent="1" source="yYM20b8fRTNlaGVTkvJs-70" target="yYM20b8fRTNlaGVTkvJs-303" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="70" y="1110" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="160" y="1040" />
+              <mxPoint x="160" y="1231" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-70" value="&lt;font style=&quot;font-size: 10px&quot;&gt;if&amp;nbsp;map.size() &amp;gt;= 300:&lt;br&gt;configCenter.&lt;b&gt;putAndGrant&lt;/b&gt;(...)&lt;br&gt;&lt;font color=&quot;#3399ff&quot;&gt;积累一批后再一起存到etcd（减少对etcd的写次数）&lt;/font&gt;&lt;br&gt;&lt;/font&gt;" style="whiteSpace=wrap;html=1;rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+          <mxGeometry x="640" y="980" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-73" value="&lt;font style=&quot;font-size: 14px&quot;&gt;&lt;b&gt;主要是3个任务&lt;/b&gt;：&lt;br&gt;1) 注册client APP_NAME&lt;br&gt;2) 上报符合rule规则但还不是热key的访问次数又dashboard服务统计并判断是否是热key；或删除对热key的监控并通知所有注册的client&lt;br&gt;3) 上报对热key的访问次数到etcd，用于统计命中率&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;shadow=0;fontSize=10;fontColor=#3399FF;" parent="1" vertex="1">
+          <mxGeometry x="290" y="300" width="300" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-79" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=14;fontColor=#3399FF;" parent="1" source="yYM20b8fRTNlaGVTkvJs-76" target="yYM20b8fRTNlaGVTkvJs-78" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-81" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=14;fontColor=#3399FF;" parent="1" source="yYM20b8fRTNlaGVTkvJs-76" target="yYM20b8fRTNlaGVTkvJs-80" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-83" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=14;fontColor=#3399FF;" parent="1" source="yYM20b8fRTNlaGVTkvJs-76" target="yYM20b8fRTNlaGVTkvJs-82" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-76" value="异步任务&lt;br&gt;&lt;font color=&quot;#3399ff&quot;&gt;和客户端的操作差不多&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxGeometry x="400" y="1360.5" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-78" value="日志监听" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="600" y="1360.5" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-80" value="监听热key规则变化" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="600" y="1441.5" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-82" value="监听白名单变化" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="600" y="1520.5" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-87" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;fontSize=14;fontColor=#3399FF;" parent="1" source="yYM20b8fRTNlaGVTkvJs-84" target="yYM20b8fRTNlaGVTkvJs-86" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-89" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=14;fontColor=#3399FF;" parent="1" source="yYM20b8fRTNlaGVTkvJs-84" target="yYM20b8fRTNlaGVTkvJs-88" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-91" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=14;fontColor=#3399FF;" parent="1" source="yYM20b8fRTNlaGVTkvJs-84" target="yYM20b8fRTNlaGVTkvJs-90" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-93" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=14;fontColor=#3399FF;" parent="1" source="yYM20b8fRTNlaGVTkvJs-84" target="yYM20b8fRTNlaGVTkvJs-92" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-84" value="定时任务&lt;br&gt;&lt;font style=&quot;font-size: 12px&quot; color=&quot;#3399ff&quot;&gt;和客户端的操作差不多&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxGeometry x="400" y="1600.5" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-86" value="每分钟拉取更新一次&lt;br&gt;所有app的rule规则" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="600" y="1600.5" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-88" value="每10s上报一次client的数量&lt;br&gt;并检查自己是否有新收到key（防止网络问题断连）" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="600" y="1680.5" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-90" value="每30s获取一下dashboard地址&lt;br&gt;&lt;font color=&quot;#3399ff&quot;&gt;属于服务注册与发现的功能&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="600" y="1760.5" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-92" value="如果前面定时任务检查到一直没收到新key,可能网络断连，&lt;br&gt;就每5s上报自己的节点信息到etcd&lt;br&gt;&lt;font color=&quot;#3399ff&quot;&gt;属于服务注册与发现的功能&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="600" y="1840.5" width="160" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-95" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=14;fontColor=#3399FF;dashed=1;dashPattern=1 1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" source="yYM20b8fRTNlaGVTkvJs-94" target="yYM20b8fRTNlaGVTkvJs-70" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-94" value="这里终于明白了之前客户端测试为何没有检测到热key了，因为测试次数太少，根本就没上报到etcd" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;shadow=0;fontSize=14;fontColor=#3399FF;" parent="1" vertex="1">
+          <mxGeometry x="400" y="980" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-192" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=10;fontColor=#3399FF;dashed=1;fillColor=#f5f5f5;strokeColor=#666666;" parent="1" source="yYM20b8fRTNlaGVTkvJs-104" target="yYM20b8fRTNlaGVTkvJs-105" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-193" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;dashed=1;fontSize=10;fontColor=#3399FF;fillColor=#f5f5f5;strokeColor=#666666;" parent="1" source="yYM20b8fRTNlaGVTkvJs-104" target="yYM20b8fRTNlaGVTkvJs-127" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-194" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;dashed=1;fontSize=10;fontColor=#3399FF;fillColor=#f5f5f5;strokeColor=#666666;" parent="1" source="yYM20b8fRTNlaGVTkvJs-104" target="yYM20b8fRTNlaGVTkvJs-163" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-220" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=12;fontColor=#3399FF;strokeColor=#666666;dashed=1;fillColor=#f5f5f5;" parent="1" source="yYM20b8fRTNlaGVTkvJs-104" target="yYM20b8fRTNlaGVTkvJs-210" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-104" value="jd-hotkey&lt;br&gt;&amp;nbsp;client&lt;br&gt;（业务服务）" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0050ef;fontColor=#ffffff;strokeColor=#001DBC;" parent="1" vertex="1">
+          <mxGeometry x="-1600" y="160" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-108" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=14;fontColor=#3399FF;dashed=1;" parent="1" source="yYM20b8fRTNlaGVTkvJs-105" target="yYM20b8fRTNlaGVTkvJs-107" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-294" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=10;fontColor=#3399FF;strokeColor=#330000;dashed=1;" parent="1" source="yYM20b8fRTNlaGVTkvJs-105" target="yYM20b8fRTNlaGVTkvJs-293" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-105" value="JdHotKeyStore接口&lt;br&gt;&lt;font color=&quot;#3399ff&quot; style=&quot;font-size: 10px&quot;&gt;对接业务的接口，有7个方法，这里只梳理最重要的两个&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+          <mxGeometry x="-1440" y="160" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-110" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=14;fontColor=#3399FF;" parent="1" source="yYM20b8fRTNlaGVTkvJs-107" target="yYM20b8fRTNlaGVTkvJs-109" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="IzYjYl6GN4_amZqirhNN-145" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.75;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=12;fontColor=#3399FF;" parent="1" source="yYM20b8fRTNlaGVTkvJs-107" target="IzYjYl6GN4_amZqirhNN-143" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-107" value="&lt;font&gt;getValue(String key)&lt;br&gt;&lt;font color=&quot;#3399ff&quot;&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;如果key已经是hot key, object不为空，符合hot key 规则但不是hot key 就上报进行统计&lt;/span&gt;&lt;/font&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
+          <mxGeometry x="-1280" y="160" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-112" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=14;fontColor=#3399FF;" parent="1" source="yYM20b8fRTNlaGVTkvJs-109" target="yYM20b8fRTNlaGVTkvJs-111" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-182" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;fontColor=#3399FF;" parent="1" source="yYM20b8fRTNlaGVTkvJs-109" target="yYM20b8fRTNlaGVTkvJs-181" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-109" value="ValueModel value = getValueSimple(key)&lt;br&gt;&lt;font color=&quot;#3399ff&quot;&gt;仅仅查询热key的value&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="-1040" y="160" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-114" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=14;fontColor=#3399FF;" parent="1" source="yYM20b8fRTNlaGVTkvJs-111" target="yYM20b8fRTNlaGVTkvJs-113" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-111" value="if value == null:&amp;nbsp;&lt;br&gt;HotKeyPusher.push(key, keyType)" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="-1040" y="240" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-116" value="Y" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=14;fontColor=#3399FF;" parent="1" source="yYM20b8fRTNlaGVTkvJs-113" target="yYM20b8fRTNlaGVTkvJs-115" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-118" value="N" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=14;fontColor=#3399FF;" parent="1" source="yYM20b8fRTNlaGVTkvJs-113" target="yYM20b8fRTNlaGVTkvJs-117" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-113" value="remove ?&lt;br&gt;&lt;font style=&quot;font-size: 10px&quot; color=&quot;#3399ff&quot;&gt;是否是要删除热key&lt;/font&gt;" style="rhombus;whiteSpace=wrap;html=1;rounded=1;" parent="1" vertex="1">
+          <mxGeometry x="-800" y="230" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-120" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=14;fontColor=#3399FF;" parent="1" source="yYM20b8fRTNlaGVTkvJs-115" target="yYM20b8fRTNlaGVTkvJs-119" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-115" value="删除key直接发到etcd" style="whiteSpace=wrap;html=1;rounded=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="-680" y="240" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-124" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;fontColor=#3399FF;" parent="1" source="yYM20b8fRTNlaGVTkvJs-117" target="yYM20b8fRTNlaGVTkvJs-123" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-117" value="积攒起来每0.5s往worker发一次" style="whiteSpace=wrap;html=1;rounded=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="-680" y="320" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-119" value="&lt;div style=&quot;font-size: 9px&quot;&gt;&lt;font style=&quot;font-size: 9px&quot;&gt;EtcdConfigFactory.configCenter().putAndGrant(HotKeyPathTool.keyPath(hotKeyModel), Constant.DEFAULT_DELETE_VALUE, 1);&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px&quot;&gt;&lt;font style=&quot;font-size: 9px&quot;&gt;EtcdConfigFactory.configCenter().delete(HotKeyPathTool.keyPath(hotKeyModel));&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px&quot;&gt;&lt;font style=&quot;font-size: 9px&quot;&gt;EtcdConfigFactory.configCenter().delete(HotKeyPathTool.keyRecordPath(hotKeyModel))&lt;/font&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;rounded=1;align=left;" parent="1" vertex="1">
+          <mxGeometry x="-480" y="240" width="400" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-122" value="&lt;div style=&quot;font-size: 10px&quot;&gt;&lt;font style=&quot;font-size: 10px&quot;&gt;&lt;b&gt;hotKeyModel&lt;/b&gt; = {HotKeyModel@8949} &quot;appName:sample-key=key0&quot;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px&quot;&gt;&lt;font style=&quot;font-size: 10px&quot;&gt;&amp;nbsp; &amp;nbsp; appName = &quot;sample&quot;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px&quot;&gt;&lt;font style=&quot;font-size: 10px&quot;&gt;&amp;nbsp; &amp;nbsp; keyType = {KeyType@8944} &quot;REDIS_KEY&quot;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px&quot;&gt;&lt;font style=&quot;font-size: 10px&quot;&gt;&amp;nbsp; &amp;nbsp; remove = false&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px&quot;&gt;&lt;font style=&quot;font-size: 10px&quot;&gt;&amp;nbsp; &amp;nbsp; id = &quot;4d0f53eea3274be693675dd5029458f6&quot;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px&quot;&gt;&lt;font style=&quot;font-size: 10px&quot;&gt;&amp;nbsp; &amp;nbsp; createTime = 0&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px&quot;&gt;&lt;font style=&quot;font-size: 10px&quot;&gt;&amp;nbsp; &amp;nbsp; key = &quot;key0&quot;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px&quot;&gt;&lt;font style=&quot;font-size: 10px&quot;&gt;&amp;nbsp; &amp;nbsp; count = {LongAdder@8946} &quot;1&quot;&lt;/font&gt;&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;shadow=0;fontSize=9;fontColor=#3399FF;" parent="1" vertex="1">
+          <mxGeometry x="-480" y="110" width="400" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-126" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;fontColor=#3399FF;" parent="1" source="yYM20b8fRTNlaGVTkvJs-123" target="yYM20b8fRTNlaGVTkvJs-125" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-123" value="KeyHandlerFactory.getCollector()&lt;br&gt;.collect(hotKeyModel)&lt;br&gt;&lt;font color=&quot;#3399ff&quot;&gt;HotKeyModel&lt;/font&gt;" style="whiteSpace=wrap;html=1;rounded=1;" parent="1" vertex="1">
+          <mxGeometry x="-480" y="320" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-134" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;fontSize=11;fontColor=#3399FF;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" source="yYM20b8fRTNlaGVTkvJs-125" target="yYM20b8fRTNlaGVTkvJs-130" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="-140" y="480" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-125" value="&lt;font style=&quot;font-size: 11px&quot;&gt;TurnKeyCollector&lt;br&gt;ConcurrentHashMap&amp;nbsp;&lt;b&gt;map0&lt;/b&gt;， &lt;b&gt;map1&lt;/b&gt;&lt;/font&gt;" style="whiteSpace=wrap;html=1;rounded=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxGeometry x="-240" y="320" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-129" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=11;fontColor=#3399FF;dashed=1;" parent="1" source="yYM20b8fRTNlaGVTkvJs-127" target="yYM20b8fRTNlaGVTkvJs-128" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-162" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=9;fontColor=#3399FF;dashed=1;" parent="1" source="yYM20b8fRTNlaGVTkvJs-127" target="yYM20b8fRTNlaGVTkvJs-146" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-201" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=10;fontColor=#3399FF;strokeColor=#330000;dashed=1;" parent="1" source="yYM20b8fRTNlaGVTkvJs-127" target="yYM20b8fRTNlaGVTkvJs-199" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-270" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=10;fontColor=#3399FF;strokeColor=#330000;dashed=1;" parent="1" source="yYM20b8fRTNlaGVTkvJs-127" target="yYM20b8fRTNlaGVTkvJs-268" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-271" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=10;fontColor=#3399FF;strokeColor=#330000;dashed=1;" parent="1" source="yYM20b8fRTNlaGVTkvJs-127" target="yYM20b8fRTNlaGVTkvJs-269" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-127" value="线程池定时任务" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+          <mxGeometry x="-1440" y="500" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-131" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=11;fontColor=#3399FF;" parent="1" source="yYM20b8fRTNlaGVTkvJs-128" target="yYM20b8fRTNlaGVTkvJs-130" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-128" value="hotkey-pusher-service-executor&lt;br&gt;&lt;font color=&quot;#3399ff&quot;&gt;默认每0.5s, 通过NettyKeyPusher&lt;br&gt;往worker推送一次&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="-1280" y="500" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-133" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=11;fontColor=#3399FF;" parent="1" source="yYM20b8fRTNlaGVTkvJs-130" target="yYM20b8fRTNlaGVTkvJs-132" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-130" value="&lt;font style=&quot;font-size: 10px&quot;&gt;IKeyCollector&amp;lt;HotKeyModel, HotKeyModel&amp;gt; collectHK = KeyHandlerFactory.&lt;b&gt;getCollector&lt;/b&gt;();&lt;br&gt;collectHK.lockAndGetResult();&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="-1060" y="500" width="240" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-136" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=11;fontColor=#3399FF;" parent="1" source="yYM20b8fRTNlaGVTkvJs-132" target="yYM20b8fRTNlaGVTkvJs-135" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-132" value="&lt;font style=&quot;font-size: 10px&quot;&gt;KeyHandlerFactory.getPusher()&lt;br&gt;.&lt;b&gt;send&lt;/b&gt;(Context.APP_NAME, hotKeyModels)&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="-1040" y="580" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-139" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;fontColor=#3399FF;" parent="1" source="yYM20b8fRTNlaGVTkvJs-135" target="yYM20b8fRTNlaGVTkvJs-138" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-135" value="&lt;font style=&quot;font-size: 10px&quot;&gt;for hotKeyModels&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="-730" y="600" width="200" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-137" value="NettyKeyPusher" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=11;fontColor=#3399FF;" parent="1" vertex="1">
+          <mxGeometry x="-680" y="580" width="100" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-141" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;fontColor=#3399FF;" parent="1" source="yYM20b8fRTNlaGVTkvJs-138" target="yYM20b8fRTNlaGVTkvJs-140" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-138" value="&lt;font style=&quot;font-size: 10px&quot;&gt;Channel channel = WorkerInfoHolder&lt;br&gt;.chooseChannel(model.getKey())&lt;br&gt;&lt;font color=&quot;#3399ff&quot;&gt;选择接收此key的worker的连接&lt;/font&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="-730" y="640" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-143" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=10;fontColor=#3399FF;" parent="1" source="yYM20b8fRTNlaGVTkvJs-140" target="yYM20b8fRTNlaGVTkvJs-142" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-176" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;fontSize=10;fontColor=#3399FF;fillColor=#dae8fc;strokeColor=#6c8ebf;entryX=0;entryY=0.5;entryDx=2.7;entryDy=0;entryPerimeter=0;" parent="1" source="yYM20b8fRTNlaGVTkvJs-140" edge="1" target="yYM20b8fRTNlaGVTkvJs-174">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="-200" y="750" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-140" value="&lt;font style=&quot;font-size: 10px&quot;&gt;hotKeyMsg = new HotKeyMsg(&lt;br&gt;MessageType.&lt;b&gt;REQUEST_NEW_KEY&lt;/b&gt;,Context.APP_NAME)&lt;br&gt;channel.&lt;b style=&quot;font-size: 10px&quot;&gt;writeAndFlush&lt;/b&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;(hotKeyMsg).sync()&lt;/span&gt;&lt;br&gt;&lt;font color=&quot;#3399ff&quot; style=&quot;font-size: 10px&quot;&gt;选择接收此key的worker的连接&lt;/font&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+          <mxGeometry x="-760" y="720" width="260" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-142" value="&lt;font style=&quot;font-size: 10px&quot;&gt;for end&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="-730" y="800" width="200" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-159" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=10;fontColor=#3399FF;" parent="1" source="yYM20b8fRTNlaGVTkvJs-146" target="yYM20b8fRTNlaGVTkvJs-148" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-146" value="hotkey-count-pusher-service-executor&lt;br&gt;&lt;font color=&quot;#3399ff&quot;&gt;默认每10s, 通过NettyKeyPusher&lt;/font&gt;&lt;br&gt;&lt;font color=&quot;#3399ff&quot;&gt;往worker推送一次&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="-1280" y="840" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-147" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=11;fontColor=#3399FF;" parent="1" source="yYM20b8fRTNlaGVTkvJs-148" target="yYM20b8fRTNlaGVTkvJs-150" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-148" value="&lt;font style=&quot;font-size: 10px&quot;&gt;IKeyCollector&amp;lt;KeyHotModel, KeyCountModel&amp;gt; collectHK = KeyHandlerFactory.&lt;b&gt;getCounter&lt;/b&gt;();&lt;br&gt;collectHK.lockAndGetResult();&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="-1060" y="840" width="240" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-149" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=11;fontColor=#3399FF;" parent="1" source="yYM20b8fRTNlaGVTkvJs-150" target="yYM20b8fRTNlaGVTkvJs-152" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-150" value="&lt;span style=&quot;font-size: 10px&quot;&gt;KeyHandlerFactory.getPusher()&lt;br&gt;.&lt;b&gt;sendCount&lt;/b&gt;(Context.APP_NAME, keyCountModels)&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="-1040" y="920" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-151" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;fontColor=#3399FF;" parent="1" source="yYM20b8fRTNlaGVTkvJs-152" target="yYM20b8fRTNlaGVTkvJs-155" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-152" value="&lt;font style=&quot;font-size: 10px&quot;&gt;for keyCountModels&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="-730" y="940" width="200" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-153" value="NettyKeyPusher" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=11;fontColor=#3399FF;" parent="1" vertex="1">
+          <mxGeometry x="-680" y="920" width="100" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-154" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;fontColor=#3399FF;" parent="1" source="yYM20b8fRTNlaGVTkvJs-155" target="yYM20b8fRTNlaGVTkvJs-157" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-155" value="&lt;font&gt;&lt;font&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;Channel channel = WorkerInfoHolder&lt;br&gt;.chooseChannel(model.getRuleKey())&lt;br&gt;&lt;/span&gt;&lt;font color=&quot;#3399ff&quot;&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;选择接收此key的worker的连接&lt;/span&gt;&lt;/font&gt;&lt;/font&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="-730" y="980" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-156" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=10;fontColor=#3399FF;" parent="1" source="yYM20b8fRTNlaGVTkvJs-157" target="yYM20b8fRTNlaGVTkvJs-158" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-178" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=2.7;entryDy=0;entryPerimeter=0;fontSize=10;fontColor=#3399FF;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" source="yYM20b8fRTNlaGVTkvJs-157" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="-400" y="1090" />
+              <mxPoint x="-400" y="750" />
+            </Array>
+            <mxPoint x="-197.30000000000018" y="750" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-157" value="&lt;font style=&quot;font-size: 9px&quot;&gt;&lt;span&gt;hotKeyMsg = new HotKeyMsg(&lt;/span&gt;&lt;br&gt;&lt;span&gt;MessageType.&lt;b&gt;REQUEST_HIT_COUNT&lt;/b&gt;,Context.APP_NAME)&lt;/span&gt;&lt;br&gt;&lt;span&gt;channel.&lt;/span&gt;&lt;b&gt;writeAndFlush&lt;/b&gt;&lt;span&gt;(hotKeyMsg).sync()&lt;/span&gt;&lt;br&gt;&lt;font color=&quot;#3399ff&quot; style=&quot;font-size: 9px&quot;&gt;选择接收此key的worker的连接&lt;/font&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+          <mxGeometry x="-760" y="1060" width="260" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-158" value="&lt;font style=&quot;font-size: 10px&quot;&gt;for end&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="-730" y="1140" width="200" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-160" value="PushSchedulerStarter" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;fontColor=#3399FF;" parent="1" vertex="1">
+          <mxGeometry x="-1440" y="480" width="120" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-165" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=9;fontColor=#3399FF;dashed=1;" parent="1" source="yYM20b8fRTNlaGVTkvJs-163" target="yYM20b8fRTNlaGVTkvJs-164" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-256" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=10;fontColor=#3399FF;strokeColor=#330000;dashed=1;" parent="1" source="yYM20b8fRTNlaGVTkvJs-163" target="yYM20b8fRTNlaGVTkvJs-169" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-257" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=10;fontColor=#3399FF;strokeColor=#330000;dashed=1;" parent="1" source="yYM20b8fRTNlaGVTkvJs-163" target="yYM20b8fRTNlaGVTkvJs-255" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-264" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=10;fontColor=#3399FF;strokeColor=#330000;dashed=1;" parent="1" source="yYM20b8fRTNlaGVTkvJs-163" target="yYM20b8fRTNlaGVTkvJs-262" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-163" value="Netty Client&lt;br&gt;&lt;font color=&quot;#3399ff&quot; style=&quot;font-size: 10px&quot;&gt;用于与worker通信&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+          <mxGeometry x="-1440" y="1480" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-168" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;fontColor=#3399FF;" parent="1" source="yYM20b8fRTNlaGVTkvJs-164" target="yYM20b8fRTNlaGVTkvJs-167" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-164" value="userEventTriggered(...)&lt;br&gt;&lt;font style=&quot;font-size: 10px&quot; color=&quot;#3399ff&quot;&gt;连接超时触发ALL_IDLE后向服务端发&lt;br&gt;PING 消息&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="-1280" y="1480" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-166" value="NettyClientHandler" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;fontColor=#3399FF;" parent="1" vertex="1">
+          <mxGeometry x="-1235" y="1460" width="110" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-179" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;fontSize=10;fontColor=#3399FF;fillColor=#dae8fc;strokeColor=#6c8ebf;entryX=0;entryY=0.5;entryDx=2.7;entryDy=0;entryPerimeter=0;" parent="1" source="yYM20b8fRTNlaGVTkvJs-167" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="-197.30000000000018" y="750" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="-400" y="1510" />
+              <mxPoint x="-400" y="750" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-167" value="&lt;font style=&quot;font-size: 10px&quot;&gt;&lt;font style=&quot;font-size: 10px&quot;&gt;if idleStateEvent.state() == IdleState.ALL_IDLE:&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size: 10px&quot;&gt;ctx.&lt;b&gt;writeAndFlush&lt;/b&gt;(new HotKeyMsg(MessageType.&lt;b&gt;PING&lt;/b&gt;, Context.APP_NAME))&lt;/font&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+          <mxGeometry x="-760" y="1480" width="260" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-172" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;fontColor=#3399FF;" parent="1" source="yYM20b8fRTNlaGVTkvJs-169" target="yYM20b8fRTNlaGVTkvJs-171" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-169" value="&lt;font&gt;channelActive(...)&lt;br&gt;&lt;font color=&quot;#3399ff&quot;&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;建立连接后立即发送 APP_NAME 消息&lt;/span&gt;&lt;/font&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="-1280" y="1560.5" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-180" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=2.7;entryDy=0;entryPerimeter=0;fontSize=10;fontColor=#3399FF;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" source="yYM20b8fRTNlaGVTkvJs-171" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="-400" y="1591" />
+              <mxPoint x="-400" y="750" />
+            </Array>
+            <mxPoint x="-197.30000000000018" y="750" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-171" value="&lt;font&gt;&lt;font style=&quot;font-size: 10px&quot;&gt;ctx.&lt;b&gt;writeAndFlush&lt;/b&gt;(new HotKeyMsg(MessageType.&lt;b&gt;APP_NAME&lt;/b&gt;, Context.APP_NAME))&lt;/font&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+          <mxGeometry x="-760" y="1560.5" width="260" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-177" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.75;entryDx=0;entryDy=0;fontSize=10;fontColor=#3399FF;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" source="yYM20b8fRTNlaGVTkvJs-174" target="yYM20b8fRTNlaGVTkvJs-8" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="140" y="750" />
+              <mxPoint x="140" y="320" />
+              <mxPoint x="380" y="320" />
+              <mxPoint x="380" y="205" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-174" value="" style="strokeWidth=1;outlineConnect=0;dashed=0;align=center;html=1;fontSize=8;shape=mxgraph.eip.messageChannel;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;verticalAlign=top;shadow=0;fontColor=#3399FF;" parent="1" vertex="1">
+          <mxGeometry x="-200" y="700" width="160" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-175" value="&lt;font style=&quot;font-size: 12px&quot;&gt;Netty Channel&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;fontColor=#3399FF;" parent="1" vertex="1">
+          <mxGeometry x="-165" y="720" width="90" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-183" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.75;exitDx=0;exitDy=0;entryX=1;entryY=0.75;entryDx=0;entryDy=0;fontSize=10;fontColor=#3399FF;" parent="1" source="yYM20b8fRTNlaGVTkvJs-181" target="yYM20b8fRTNlaGVTkvJs-109" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-181" value="LocalCache&lt;br&gt;&lt;font color=&quot;#3399ff&quot; style=&quot;font-size: 10px&quot;&gt;默认是 Caffeine 实现，缓存热键的K-V&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxGeometry x="-800" y="160" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-186" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;fontSize=10;fontColor=#3399FF;fillColor=#dae8fc;strokeColor=#6c8ebf;entryX=0;entryY=0;entryDx=80;entryDy=0;entryPerimeter=0;" parent="1" source="yYM20b8fRTNlaGVTkvJs-184" target="yYM20b8fRTNlaGVTkvJs-303" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="20" y="1090" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-184" value="Etcd&lt;br&gt;(注册中心、配置中心、KV数据库)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0050ef;fontColor=#ffffff;strokeColor=#001DBC;" parent="1" vertex="1">
+          <mxGeometry x="-60" y="940" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-187" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=10;fontColor=#3399FF;fillColor=#dae8fc;strokeColor=#6c8ebf;exitX=1;exitY=0.5;exitDx=-2.7;exitDy=0;exitPerimeter=0;" parent="1" source="yYM20b8fRTNlaGVTkvJs-303" target="yYM20b8fRTNlaGVTkvJs-6" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="80.00000000000045" y="1110" as="sourcePoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-190" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;fontSize=10;fontColor=#3399FF;fillColor=#dae8fc;strokeColor=#6c8ebf;exitX=0;exitY=0;exitDx=80;exitDy=0;exitPerimeter=0;" parent="1" source="yYM20b8fRTNlaGVTkvJs-303" target="yYM20b8fRTNlaGVTkvJs-184" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="4.547473508864641e-13" y="1080" as="sourcePoint" />
+            <Array as="points">
+              <mxPoint y="1050" />
+              <mxPoint y="1050" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-191" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=1;exitDx=80;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=10;fontColor=#3399FF;fillColor=#dae8fc;strokeColor=#6c8ebf;exitPerimeter=0;" parent="1" source="yYM20b8fRTNlaGVTkvJs-303" target="yYM20b8fRTNlaGVTkvJs-188" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="4.547473508864641e-13" y="1140" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-189" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0;entryY=1;entryDx=80;entryDy=0;fontSize=10;fontColor=#3399FF;fillColor=#dae8fc;strokeColor=#6c8ebf;entryPerimeter=0;" parent="1" source="yYM20b8fRTNlaGVTkvJs-188" target="yYM20b8fRTNlaGVTkvJs-303" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="4.547473508864641e-13" y="1140" as="targetPoint" />
+            <Array as="points">
+              <mxPoint y="1220" />
+              <mxPoint y="1220" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="IzYjYl6GN4_amZqirhNN-9" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=10;fontColor=#3399FF;dashed=1;fillColor=#f5f5f5;strokeColor=#666666;" parent="1" source="yYM20b8fRTNlaGVTkvJs-188" target="IzYjYl6GN4_amZqirhNN-8" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="IzYjYl6GN4_amZqirhNN-16" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=10;fontColor=#3399FF;dashed=1;fillColor=#f5f5f5;strokeColor=#666666;" parent="1" source="yYM20b8fRTNlaGVTkvJs-188" target="IzYjYl6GN4_amZqirhNN-12" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="IzYjYl6GN4_amZqirhNN-97" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=11;fontColor=#3399FF;fillColor=#f5f5f5;strokeColor=#666666;dashed=1;" parent="1" source="yYM20b8fRTNlaGVTkvJs-188" target="IzYjYl6GN4_amZqirhNN-96" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-188" value="Dashboard&lt;br&gt;(配置UI、热key管理、监控、持久化、...)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0050ef;fontColor=#ffffff;strokeColor=#001DBC;" parent="1" vertex="1">
+          <mxGeometry x="-60" y="1960" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-203" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;fontColor=#3399FF;strokeColor=#330000;" parent="1" source="yYM20b8fRTNlaGVTkvJs-199" target="yYM20b8fRTNlaGVTkvJs-202" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-199" value="worker-retry-connector-service-executor&lt;br&gt;&lt;font color=&quot;#3399ff&quot;&gt;每30s, 检查一下是否有连接异常的，&lt;br&gt;对异常的连接进行重连&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="-1280" y="1120" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-205" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;fontColor=#3399FF;strokeColor=#330000;" parent="1" source="yYM20b8fRTNlaGVTkvJs-202" target="yYM20b8fRTNlaGVTkvJs-204" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-202" value="&lt;font style=&quot;font-size: 10px&quot;&gt;List&amp;lt;String&amp;gt; nonList = &lt;b&gt;WorkerInfoHolder&lt;/b&gt;&lt;br&gt;.getNonConnectedWorkers()&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="-1040" y="1120" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-208" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;fontSize=10;fontColor=#3399FF;strokeColor=#330000;" parent="1" source="yYM20b8fRTNlaGVTkvJs-204" target="yYM20b8fRTNlaGVTkvJs-207" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-204" value="&lt;span style=&quot;font-size: 10px&quot;&gt;NettyClient.getInstance().connect(nonList)&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="-1040" y="1199.5" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-207" value="&lt;font style=&quot;font-size: 10px&quot;&gt;&lt;font style=&quot;font-size: 10px&quot;&gt;ChannelFuture channelFuture = bootstrap.&lt;b&gt;connect&lt;/b&gt;(ss[0], Integer.parseInt(ss[1])).sync();&lt;/font&gt;&lt;br&gt;&lt;b&gt;WorkerInfoHolder&lt;/b&gt;.put(address, channel)&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+          <mxGeometry x="-760" y="1199.5" width="260" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-209" value="&lt;font style=&quot;font-size: 12px&quot;&gt;核心启动方法是 &lt;br&gt;ClientStarter startPipeline()&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;fontColor=#3399FF;" parent="1" vertex="1">
+          <mxGeometry x="-1625" y="240" width="170" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-213" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=12;fontColor=#3399FF;strokeColor=#330000;dashed=1;" parent="1" source="yYM20b8fRTNlaGVTkvJs-210" target="yYM20b8fRTNlaGVTkvJs-212" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-218" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=12;fontColor=#3399FF;strokeColor=#330000;dashed=1;" parent="1" source="yYM20b8fRTNlaGVTkvJs-210" target="yYM20b8fRTNlaGVTkvJs-214" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-219" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=12;fontColor=#3399FF;strokeColor=#330000;dashed=1;" parent="1" source="yYM20b8fRTNlaGVTkvJs-210" target="yYM20b8fRTNlaGVTkvJs-216" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-210" value="Guava EventBus&lt;br&gt;&lt;font color=&quot;#3399ff&quot; style=&quot;font-size: 10px&quot;&gt;观察者模式，用于rule规则同步、worker信息与连接同步，热key信息同步&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+          <mxGeometry x="-1440" y="1800.5" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-226" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0;entryDx=17.5;entryDy=17.5;entryPerimeter=0;fontSize=10;fontColor=#330000;strokeColor=#330000;dashed=1;" parent="1" source="yYM20b8fRTNlaGVTkvJs-212" target="yYM20b8fRTNlaGVTkvJs-224" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-229" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0;entryDx=17.5;entryDy=17.5;entryPerimeter=0;dashed=1;fontSize=10;fontColor=#3399FF;strokeColor=#330000;" parent="1" source="yYM20b8fRTNlaGVTkvJs-212" target="yYM20b8fRTNlaGVTkvJs-225" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="-1030" y="1830.5" />
+              <mxPoint x="-1030" y="1910.5" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-212" value="WorkerChangeSubscriber" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="-1280" y="1800.5" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-241" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0;entryDx=17.5;entryDy=17.5;entryPerimeter=0;dashed=1;fontSize=10;fontColor=#3399FF;strokeColor=#330000;" parent="1" source="yYM20b8fRTNlaGVTkvJs-214" target="yYM20b8fRTNlaGVTkvJs-238" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-214" value="ReceiveNewKeySubscribe" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="-1280" y="1960.5" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-240" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0;entryDx=17.5;entryDy=17.5;entryPerimeter=0;dashed=1;fontSize=10;fontColor=#3399FF;strokeColor=#330000;" parent="1" source="yYM20b8fRTNlaGVTkvJs-216" target="yYM20b8fRTNlaGVTkvJs-239" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-216" value="KeyRuleHolder" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="-1280" y="2040.5" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-233" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;fontColor=#3399FF;strokeColor=#330000;" parent="1" source="yYM20b8fRTNlaGVTkvJs-221" target="yYM20b8fRTNlaGVTkvJs-232" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-221" value="connectAll(&lt;br&gt;WorkerInfoChangeEvent event)&lt;br&gt;&lt;font color=&quot;#3399ff&quot; style=&quot;font-size: 10px&quot;&gt;执行与所有变动的worker的重连&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="-760" y="1800.5" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-227" value="&lt;font color=&quot;#3399ff&quot;&gt;回调&lt;/font&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=10;fontColor=#330000;strokeColor=#330000;" parent="1" source="yYM20b8fRTNlaGVTkvJs-224" target="yYM20b8fRTNlaGVTkvJs-221" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-224" value="&lt;font style=&quot;font-size: 10px&quot;&gt;&lt;font color=&quot;#330000&quot;&gt;WorkerInfoChangeEvent&lt;/font&gt;&lt;br&gt;监听worker变动事件&lt;br&gt;&lt;/font&gt;" style="html=1;outlineConnect=0;whiteSpace=wrap;fillColor=#99ffff;shape=mxgraph.archimate3.event;shadow=0;fontSize=12;fontColor=#3399FF;" parent="1" vertex="1">
+          <mxGeometry x="-1000" y="1813" width="160" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-231" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;fontSize=10;fontColor=#3399FF;strokeColor=#330000;" parent="1" source="yYM20b8fRTNlaGVTkvJs-225" target="yYM20b8fRTNlaGVTkvJs-230" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-248" value="回调" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;fontColor=#3399FF;" parent="yYM20b8fRTNlaGVTkvJs-231" vertex="1" connectable="0">
+          <mxGeometry x="-0.25" y="-1" relative="1" as="geometry">
+            <mxPoint x="10" y="-1" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-225" value="&lt;span style=&quot;font-size: 10px&quot;&gt;&lt;font color=&quot;#330000&quot;&gt;ChannelInactiveEvent&lt;/font&gt;&lt;br&gt;监听与worker连接主动断开事件&lt;br&gt;&lt;/span&gt;" style="html=1;outlineConnect=0;whiteSpace=wrap;fillColor=#99ffff;shape=mxgraph.archimate3.event;shadow=0;fontSize=12;fontColor=#3399FF;" parent="1" vertex="1">
+          <mxGeometry x="-1000" y="1893" width="160" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-237" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;fontSize=10;fontColor=#3399FF;strokeColor=#330000;" parent="1" source="yYM20b8fRTNlaGVTkvJs-230" target="yYM20b8fRTNlaGVTkvJs-236" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-230" value="&lt;font style=&quot;font-size: 10px&quot;&gt;channelInactive(&lt;br&gt;ChannelInactiveEvent inactiveEvent)&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size: 10px&quot; color=&quot;#3399ff&quot;&gt;从worker列表WorkInfoHolder中删除worker&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="-760" y="1880.5" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-232" value="&lt;font style=&quot;font-size: 10px&quot;&gt;WorkerInfoHolder&lt;br&gt;.&lt;b&gt;mergeAndConnectNew&lt;/b&gt;(addresses)&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="-520" y="1800.5" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-236" value="&lt;font style=&quot;font-size: 10px&quot;&gt;&lt;b&gt;WORKER_HOLDER&lt;/b&gt;.removeIf(server -&amp;gt; address.equals(server.address))&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="-520" y="1880.5" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-247" value="回调" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;fontSize=10;fontColor=#3399FF;strokeColor=#330000;" parent="1" source="yYM20b8fRTNlaGVTkvJs-238" target="yYM20b8fRTNlaGVTkvJs-246" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-238" value="&lt;font color=&quot;#330000&quot;&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;ReceiveNewKeyEvent&lt;/span&gt;&lt;/font&gt;&lt;br&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;监听热key事件&lt;br&gt;&lt;/span&gt;" style="html=1;outlineConnect=0;whiteSpace=wrap;fillColor=#99ffff;shape=mxgraph.archimate3.event;shadow=0;fontSize=12;fontColor=#3399FF;" parent="1" vertex="1">
+          <mxGeometry x="-1000" y="1973" width="160" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-243" value="回调" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;fontSize=10;fontColor=#3399FF;strokeColor=#330000;" parent="1" source="yYM20b8fRTNlaGVTkvJs-239" target="yYM20b8fRTNlaGVTkvJs-242" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-239" value="&lt;font color=&quot;#330000&quot;&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;KeyRuleInfoChangeEvent&lt;/span&gt;&lt;/font&gt;&lt;br&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;监听规则变更事件&lt;/span&gt;" style="html=1;outlineConnect=0;whiteSpace=wrap;fillColor=#99ffff;shape=mxgraph.archimate3.event;shadow=0;fontSize=12;fontColor=#3399FF;" parent="1" vertex="1">
+          <mxGeometry x="-1000" y="2053" width="160" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-245" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;fontColor=#3399FF;strokeColor=#330000;" parent="1" source="yYM20b8fRTNlaGVTkvJs-242" target="yYM20b8fRTNlaGVTkvJs-244" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-242" value="ruleChange(&lt;br&gt;KeyRuleInfoChangeEvent event)&lt;br&gt;&lt;font color=&quot;#3399ff&quot; style=&quot;font-size: 10px&quot;&gt;更新本地缓存的规则列表&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="-760" y="2040.5" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-244" value="&lt;font style=&quot;font-size: 10px&quot;&gt;List&amp;lt;KeyRule&amp;gt; ruleList = &lt;b&gt;event&lt;/b&gt;.getKeyRules();&lt;br&gt;&lt;b&gt;putRules&lt;/b&gt;(ruleList);&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="-520" y="2040.5" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-250" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;fontColor=#3399FF;strokeColor=#330000;" parent="1" source="yYM20b8fRTNlaGVTkvJs-246" target="yYM20b8fRTNlaGVTkvJs-249" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-246" value="&amp;nbsp;newKeyComing(&lt;br&gt;ReceiveNewKeyEvent event)&lt;br&gt;&lt;font color=&quot;#3399ff&quot; style=&quot;font-size: 10px&quot;&gt;更新本地缓存的规则列币&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="-760" y="1960.5" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-254" value="增/删" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=10;fontColor=#3399FF;strokeColor=#330000;" parent="1" source="yYM20b8fRTNlaGVTkvJs-249" target="yYM20b8fRTNlaGVTkvJs-252" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-249" value="&lt;font style=&quot;font-size: 10px&quot;&gt;&lt;b&gt;DefaultNewKeyListener&lt;/b&gt;#&lt;br&gt;&lt;b&gt;newKey&lt;/b&gt;(HotKeyModel hotKeyModel)&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="-520" y="1960.5" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-251" value="(包括检测出来的以及手动添加的热key，&lt;br&gt;还有删除的热key)" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;fontColor=#3399FF;" parent="1" vertex="1">
+          <mxGeometry x="-1020" y="2008" width="200" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-252" value="LocalCache&lt;br&gt;&lt;font color=&quot;#3399ff&quot; style=&quot;font-size: 10px&quot;&gt;默认是 Caffeine 实现，&lt;br&gt;缓存热键的K-V&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxGeometry x="-240" y="1960.5" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-259" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;fontColor=#3399FF;strokeColor=#330000;" parent="1" source="yYM20b8fRTNlaGVTkvJs-255" target="yYM20b8fRTNlaGVTkvJs-258" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-255" value="&lt;font&gt;channelInactive(...)&lt;br&gt;&lt;font color=&quot;#3399ff&quot;&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;连接断开后发布&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;ChannelInactiveEvent 事件&lt;/span&gt;&lt;/font&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="-1280" y="1640.5" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-263" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0;entryDx=142.5;entryDy=0;entryPerimeter=0;fontSize=10;fontColor=#3399FF;strokeColor=#6c8ebf;fillColor=#dae8fc;" parent="1" source="yYM20b8fRTNlaGVTkvJs-258" target="yYM20b8fRTNlaGVTkvJs-225" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="-790" y="1670" />
+              <mxPoint x="-790" y="1893" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-258" value="&lt;font&gt;&lt;font style=&quot;font-size: 10px&quot;&gt;EventBusCenter.getInstance().post(new &lt;b&gt;ChannelInactiveEvent&lt;/b&gt;(channel))&lt;/font&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="-1020" y="1640.5" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-266" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;fontColor=#3399FF;strokeColor=#330000;" parent="1" source="yYM20b8fRTNlaGVTkvJs-262" target="yYM20b8fRTNlaGVTkvJs-265" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-262" value="&lt;font&gt;channelRead0(...)&lt;br&gt;&lt;font color=&quot;#3399ff&quot;&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;建立连接后立即发送 APP_NAME 消息&lt;/span&gt;&lt;/font&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="-1280" y="1720.5" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-267" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0;entryDx=142.5;entryDy=0;entryPerimeter=0;fontSize=10;fontColor=#3399FF;strokeColor=#6c8ebf;fillColor=#dae8fc;" parent="1" source="yYM20b8fRTNlaGVTkvJs-265" target="yYM20b8fRTNlaGVTkvJs-238" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="-810" y="1750" />
+              <mxPoint x="-810" y="1973" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-265" value="&lt;font style=&quot;font-size: 10px&quot;&gt;&lt;font style=&quot;font-size: 10px&quot;&gt;if&amp;nbsp;MessageType.&lt;b&gt;RESPONSE_NEW_KEY&lt;/b&gt;:&lt;br&gt;&lt;/font&gt;&lt;b&gt;EventBusCenter&lt;/b&gt;.getInstance().post(new &lt;b&gt;ReceiveNewKeyEvent&lt;/b&gt;(model))&lt;br&gt;&lt;font color=&quot;#3399ff&quot;&gt;消息来自worker&lt;/font&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="-1020" y="1720.5" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-275" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=12;fontColor=#3399FF;strokeColor=#330000;" parent="1" source="yYM20b8fRTNlaGVTkvJs-268" target="yYM20b8fRTNlaGVTkvJs-274" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-268" value="&lt;font style=&quot;font-size: 10px&quot;&gt;newSingleThreadScheduledExecutor&lt;br&gt;&lt;/font&gt;&lt;font color=&quot;#3399ff&quot;&gt;每30s, 拉取一下worker信息&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="-1280" y="1281" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-273" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;fontColor=#3399FF;strokeColor=#330000;" parent="1" source="yYM20b8fRTNlaGVTkvJs-269" target="yYM20b8fRTNlaGVTkvJs-272" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-269" value="&lt;font style=&quot;font-size: 10px&quot;&gt;newSingleThreadScheduledExecutor&lt;br&gt;&lt;/font&gt;&lt;font color=&quot;#3399ff&quot;&gt;每5s, 拉取一下rule规则信息&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="-1280" y="1360" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-288" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;fontColor=#3399FF;strokeColor=#330000;" parent="1" source="yYM20b8fRTNlaGVTkvJs-272" target="yYM20b8fRTNlaGVTkvJs-287" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-272" value="&lt;font style=&quot;font-size: 12px&quot;&gt;fetchRuleFromEtcd()&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="-1040" y="1360" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-277" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=12;fontColor=#3399FF;strokeColor=#330000;" parent="1" source="yYM20b8fRTNlaGVTkvJs-274" target="yYM20b8fRTNlaGVTkvJs-276" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-274" value="&lt;font style=&quot;font-size: 12px&quot;&gt;fetchWorkerInfo()&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="-1040" y="1281" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-286" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=2.7;entryDy=0;fontSize=10;fontColor=#3399FF;strokeColor=#6c8ebf;fillColor=#dae8fc;entryPerimeter=0;" parent="1" source="yYM20b8fRTNlaGVTkvJs-276" target="yYM20b8fRTNlaGVTkvJs-303" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="-77.30000000000018" y="1330.5" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="-360" y="1311" />
+              <mxPoint x="-360" y="1231" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-289" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0;entryDx=142.5;entryDy=0;entryPerimeter=0;fontSize=10;fontColor=#3399FF;strokeColor=#6c8ebf;fillColor=#dae8fc;" parent="1" source="yYM20b8fRTNlaGVTkvJs-276" target="yYM20b8fRTNlaGVTkvJs-224" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="-800" y="1340" />
+              <mxPoint x="-800" y="1813" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-276" value="&lt;font&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;keyValues = configCenter.getPrefix(&quot;/jd/workers/&quot; + Context.APP_NAME);&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;&lt;b&gt;notifyWorkerChange&lt;/b&gt;(addresses)&lt;/span&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="-760" y="1281" width="260" height="59" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-290" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0;entryDx=142.5;entryDy=0;entryPerimeter=0;fontSize=10;fontColor=#3399FF;strokeColor=#6c8ebf;fillColor=#dae8fc;" parent="1" source="yYM20b8fRTNlaGVTkvJs-287" target="yYM20b8fRTNlaGVTkvJs-239" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="-780" y="1420" />
+              <mxPoint x="-780" y="2053" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-300" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=2.7;entryDy=0;fontSize=12;fontColor=#3399FF;strokeColor=#6c8ebf;fillColor=#dae8fc;entryPerimeter=0;" parent="1" source="yYM20b8fRTNlaGVTkvJs-287" target="yYM20b8fRTNlaGVTkvJs-303" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="-77.30000000000018" y="1330.5" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="-360" y="1390" />
+              <mxPoint x="-360" y="1231" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-287" value="&lt;font style=&quot;font-size: 10px&quot;&gt;rules = configCenter.getPrefix(&quot;/jd/rules/&quot; + Context.APP_NAME);&lt;br&gt;&lt;b&gt;notifyRuleChange&lt;/b&gt;(ruleList)&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="-760" y="1360" width="260" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="IzYjYl6GN4_amZqirhNN-144" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;fontSize=12;fontColor=#3399FF;" parent="1" source="yYM20b8fRTNlaGVTkvJs-293" target="IzYjYl6GN4_amZqirhNN-143" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-293" value="isHotKey(String key)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
+          <mxGeometry x="-1280" y="400" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="IzYjYl6GN4_amZqirhNN-41" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;fontColor=#3399FF;" parent="1" source="yYM20b8fRTNlaGVTkvJs-296" target="IzYjYl6GN4_amZqirhNN-40" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-296" value="String key = buildKey(hotKeyModel)&lt;br&gt;&lt;font style=&quot;font-size: 10px&quot; color=&quot;#3399ff&quot;&gt;格式：appName-keyType-key&lt;/font&gt;" style="whiteSpace=wrap;html=1;rounded=1;" parent="1" vertex="1">
+          <mxGeometry x="1360" y="730" width="240" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-303" value="" style="strokeWidth=1;outlineConnect=0;dashed=0;align=center;html=1;fontSize=8;shape=mxgraph.eip.messageChannel;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;verticalAlign=top;shadow=0;fontColor=#3399FF;" parent="1" vertex="1">
+          <mxGeometry x="-80" y="1215" width="160" height="31" as="geometry" />
+        </mxCell>
+        <mxCell id="yYM20b8fRTNlaGVTkvJs-304" value="&lt;div&gt;&lt;b&gt;JdEtcdClient configCenter&lt;/b&gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;Etcd客户端&lt;/b&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=12;fontColor=#3399FF;" parent="1" vertex="1">
+          <mxGeometry x="-85" y="1189.5" width="170" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="IzYjYl6GN4_amZqirhNN-3" value="&lt;font color=&quot;#3399ff&quot;&gt;基本都是些增删改查&lt;br&gt;热key判断也是在这里&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="-60" y="2020" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="IzYjYl6GN4_amZqirhNN-5" value="&lt;div&gt;configCenter.putAndGrant(ConfigConstant.&lt;b&gt;keyHitCountPath&lt;/b&gt; + &lt;b&gt;appName&lt;/b&gt; + &quot;/&quot; + IpUtils.&lt;b&gt;getIp&lt;/b&gt;()&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; + &quot;-&quot; + System.&lt;b&gt;currentTimeMillis&lt;/b&gt;(),&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; FastJsonUtils.convertObjectToJSON(&lt;b&gt;map&lt;/b&gt;), 30)&lt;br&gt;String keyHitCountPath = &quot;/jd/keyHitCount/&quot;;&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontColor=#3399FF;" parent="1" vertex="1">
+          <mxGeometry x="810" y="980" width="550" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="IzYjYl6GN4_amZqirhNN-69" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=10;fontColor=#3399FF;dashed=1;" parent="1" source="IzYjYl6GN4_amZqirhNN-8" target="IzYjYl6GN4_amZqirhNN-10" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="IzYjYl6GN4_amZqirhNN-71" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=10;fontColor=#3399FF;dashed=1;" parent="1" source="IzYjYl6GN4_amZqirhNN-8" target="IzYjYl6GN4_amZqirhNN-68" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="IzYjYl6GN4_amZqirhNN-82" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=11;fontColor=#330000;dashed=1;" parent="1" source="IzYjYl6GN4_amZqirhNN-8" target="IzYjYl6GN4_amZqirhNN-78" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="IzYjYl6GN4_amZqirhNN-83" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=11;fontColor=#330000;dashed=1;" parent="1" source="IzYjYl6GN4_amZqirhNN-8" target="IzYjYl6GN4_amZqirhNN-79" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="IzYjYl6GN4_amZqirhNN-84" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=11;fontColor=#330000;dashed=1;" parent="1" source="IzYjYl6GN4_amZqirhNN-8" target="IzYjYl6GN4_amZqirhNN-80" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="IzYjYl6GN4_amZqirhNN-86" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=11;fontColor=#330000;dashed=1;" parent="1" source="IzYjYl6GN4_amZqirhNN-8" target="IzYjYl6GN4_amZqirhNN-81" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="IzYjYl6GN4_amZqirhNN-8" value="EtcdMonitor" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+          <mxGeometry x="120" y="1960" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="IzYjYl6GN4_amZqirhNN-37" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=11;fontColor=#3399FF;" parent="1" source="IzYjYl6GN4_amZqirhNN-10" target="IzYjYl6GN4_amZqirhNN-36" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="IzYjYl6GN4_amZqirhNN-10" value="watchHitCount()&lt;br&gt;&lt;font color=&quot;#3399ff&quot;&gt;&lt;font style=&quot;font-size: 10px&quot;&gt;线程池中异步执行，key命中计数入库（不管key是否是热key都会统计这个）&lt;/font&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="280" y="2120" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="IzYjYl6GN4_amZqirhNN-15" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;fontColor=#3399FF;dashed=1;" parent="1" source="IzYjYl6GN4_amZqirhNN-12" target="IzYjYl6GN4_amZqirhNN-14" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="IzYjYl6GN4_amZqirhNN-12" value="Netty Server" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+          <mxGeometry x="120" y="2397" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="IzYjYl6GN4_amZqirhNN-59" value="MessageType.PING" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;fontColor=#3399FF;" parent="1" source="IzYjYl6GN4_amZqirhNN-14" target="IzYjYl6GN4_amZqirhNN-58" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="IzYjYl6GN4_amZqirhNN-61" value="MessageType.&lt;br&gt;REQUEST_HOT_KEY" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=10;fontColor=#3399FF;" parent="1" source="IzYjYl6GN4_amZqirhNN-14" target="IzYjYl6GN4_amZqirhNN-60" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="IzYjYl6GN4_amZqirhNN-14" value="NodesServerHandler#&lt;br&gt;channelRead0" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxGeometry x="280" y="2397" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="IzYjYl6GN4_amZqirhNN-39" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;fontColor=#3399FF;" parent="1" source="IzYjYl6GN4_amZqirhNN-36" target="IzYjYl6GN4_amZqirhNN-38" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="IzYjYl6GN4_amZqirhNN-36" value="&lt;font style=&quot;font-size: 10px&quot;&gt;watchIterator = configCenter.watchPrefix(&lt;br&gt;ConfigConstant.&lt;b&gt;keyHitCountPath&lt;/b&gt;)&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="480" y="2120" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="IzYjYl6GN4_amZqirhNN-38" value="&lt;span style=&quot;font-size: 10px&quot;&gt;&amp;nbsp;&lt;/span&gt;&lt;b style=&quot;font-size: 10px&quot;&gt;summaryMapper&lt;/b&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;.saveOrUpdate(&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;CommonUtil.buildSummary(key, map))&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;&lt;font color=&quot;#3399ff&quot;&gt;非EventType.DELETE类型就存储到mysql&lt;br&gt;hk_summary表&lt;br&gt;&lt;/font&gt;&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="480" y="2200" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="IzYjYl6GN4_amZqirhNN-44" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=10;fontColor=#3399FF;" parent="1" source="IzYjYl6GN4_amZqirhNN-40" target="IzYjYl6GN4_amZqirhNN-43" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="IzYjYl6GN4_amZqirhNN-40" value="slidingWindow = checkWindow(hotKeyModel, key)&lt;br&gt;&lt;font color=&quot;#3399ff&quot;&gt;从Caffeine中获取此key的滑动窗口（记录一段时间内的访问次数）&lt;/font&gt;" style="whiteSpace=wrap;html=1;rounded=1;" parent="1" vertex="1">
+          <mxGeometry x="1360" y="810" width="240" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="IzYjYl6GN4_amZqirhNN-46" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;fontColor=#3399FF;" parent="1" source="IzYjYl6GN4_amZqirhNN-43" target="IzYjYl6GN4_amZqirhNN-45" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="IzYjYl6GN4_amZqirhNN-43" value="hot = slidingWindow.addCount(&lt;br&gt;hotKeyModel.getCount())&lt;br&gt;&lt;font color=&quot;#3399ff&quot;&gt;统计滑动窗口内总访问次数与rule规则对比判断是否是热key&lt;/font&gt;" style="whiteSpace=wrap;html=1;rounded=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="1360" y="890" width="240" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="IzYjYl6GN4_amZqirhNN-50" value="N" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;fontSize=10;fontColor=#3399FF;" parent="1" source="IzYjYl6GN4_amZqirhNN-45" target="IzYjYl6GN4_amZqirhNN-49" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="IzYjYl6GN4_amZqirhNN-52" value="Y" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=10;fontColor=#3399FF;" parent="1" source="IzYjYl6GN4_amZqirhNN-45" target="IzYjYl6GN4_amZqirhNN-51" edge="1">
+          <mxGeometry x="0.25" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="IzYjYl6GN4_amZqirhNN-45" value="hot?" style="rhombus;whiteSpace=wrap;html=1;rounded=1;" parent="1" vertex="1">
+          <mxGeometry x="1440" y="970" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="IzYjYl6GN4_amZqirhNN-49" value="&lt;font style=&quot;font-size: 10px&quot;&gt;CaffeineCacheHolder.getCache(&lt;br&gt;hotKeyModel.getAppName())&lt;br&gt;.&lt;b&gt;put&lt;/b&gt;(key, slidingWindow)&lt;br&gt;&lt;font color=&quot;#3399ff&quot;&gt;继续往窗口中累加数据&lt;/font&gt;&lt;br&gt;&lt;/font&gt;" style="whiteSpace=wrap;html=1;rounded=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="1600" y="980" width="240" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="IzYjYl6GN4_amZqirhNN-54" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=10;fontColor=#3399FF;" parent="1" source="IzYjYl6GN4_amZqirhNN-51" target="IzYjYl6GN4_amZqirhNN-53" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="IzYjYl6GN4_amZqirhNN-51" value="hotCache.put(key, 1)&lt;br&gt;&lt;font color=&quot;#3399ff&quot;&gt;是热key, 缓存到hotCache中&lt;/font&gt;" style="whiteSpace=wrap;html=1;rounded=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="1600" y="1060" width="240" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="IzYjYl6GN4_amZqirhNN-56" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;fontColor=#3399FF;" parent="1" source="IzYjYl6GN4_amZqirhNN-53" target="IzYjYl6GN4_amZqirhNN-55" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="IzYjYl6GN4_amZqirhNN-53" value="&lt;font style=&quot;font-size: 10px&quot;&gt;CaffeineCacheHolder.getCache(&lt;br&gt;hotKeyModel.getAppName()).invalidate(key)&lt;br&gt;&lt;font color=&quot;#3399ff&quot;&gt;清除滑动窗口，不需要了&lt;/font&gt;&lt;br&gt;&lt;/font&gt;" style="whiteSpace=wrap;html=1;rounded=1;" parent="1" vertex="1">
+          <mxGeometry x="1600" y="1119.5" width="240" height="50.5" as="geometry" />
+        </mxCell>
+        <mxCell id="IzYjYl6GN4_amZqirhNN-106" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;fontColor=#3399FF;" parent="1" source="IzYjYl6GN4_amZqirhNN-55" target="IzYjYl6GN4_amZqirhNN-105" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="IzYjYl6GN4_amZqirhNN-55" value="&lt;font style=&quot;font-size: 10px&quot;&gt;&lt;div&gt;for (IPusher pusher : iPushers) {&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; pusher.&lt;b&gt;push&lt;/b&gt;(hotKeyModel);&lt;/div&gt;&lt;div&gt;}&lt;br&gt;&lt;font color=&quot;#3399ff&quot; style=&quot;font-size: 10px&quot;&gt;通过Netty推送给此key所有来源客户端&lt;/font&gt;&lt;/div&gt;&lt;/font&gt;" style="whiteSpace=wrap;html=1;rounded=1;align=left;arcSize=9;" parent="1" vertex="1">
+          <mxGeometry x="1600" y="1189.5" width="240" height="50.5" as="geometry" />
+        </mxCell>
+        <mxCell id="IzYjYl6GN4_amZqirhNN-58" value="响应心跳 Pong" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="560" y="2359.5" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="IzYjYl6GN4_amZqirhNN-63" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;fontColor=#3399FF;" parent="1" source="IzYjYl6GN4_amZqirhNN-60" target="IzYjYl6GN4_amZqirhNN-62" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="IzYjYl6GN4_amZqirhNN-60" value="&lt;font style=&quot;font-size: 10px&quot;&gt;List&amp;lt;&lt;b&gt;HotKeyModel&lt;/b&gt;&amp;gt; list = FastJsonUtils.toList(msg.getBody(), HotKeyModel.class)&lt;br&gt;&lt;font color=&quot;#3399ff&quot;&gt;解析HotKeyModel列表&lt;/font&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="560" y="2439.25" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="IzYjYl6GN4_amZqirhNN-65" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;fontColor=#3399FF;" parent="1" source="IzYjYl6GN4_amZqirhNN-62" target="IzYjYl6GN4_amZqirhNN-64" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="IzYjYl6GN4_amZqirhNN-62" value="&lt;font&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;for list:&amp;nbsp;&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;&lt;b&gt;HotKeyReceiver&lt;/b&gt;.push(hotKeyModel)&lt;/span&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="560" y="2519" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="IzYjYl6GN4_amZqirhNN-75" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=1;entryY=0.75;entryDx=0;entryDy=0;fontSize=10;fontColor=#330000;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" source="IzYjYl6GN4_amZqirhNN-64" target="IzYjYl6GN4_amZqirhNN-72" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="900" y="2030" />
+              <mxPoint x="740" y="2030" />
+              <mxPoint x="740" y="2005" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="IzYjYl6GN4_amZqirhNN-64" value="&lt;font&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;&lt;b&gt;hotKeyStoreQueue&lt;/b&gt;.offer(model)&lt;br&gt;&lt;/span&gt;&lt;font color=&quot;#3399ff&quot; style=&quot;font-size: 10px&quot;&gt;暂存到&amp;nbsp;hotKeyStoreQueue，是LinkedBlockingQueue&lt;/font&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxGeometry x="800" y="2519.5" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="IzYjYl6GN4_amZqirhNN-73" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;fontColor=#3399FF;" parent="1" source="IzYjYl6GN4_amZqirhNN-68" target="IzYjYl6GN4_amZqirhNN-72" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="IzYjYl6GN4_amZqirhNN-68" value="dealHotKey()()&lt;br&gt;&lt;font color=&quot;#3399ff&quot;&gt;&lt;font style=&quot;font-size: 10px&quot;&gt;线程池中异步执行，从hotKeyStoreQueue读取热key信息缓存到Caffeine&lt;/font&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="280" y="1960" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="IzYjYl6GN4_amZqirhNN-77" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=12;fontColor=#330000;" parent="1" source="IzYjYl6GN4_amZqirhNN-72" target="IzYjYl6GN4_amZqirhNN-76" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="IzYjYl6GN4_amZqirhNN-94" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=11;fontColor=#3399FF;" parent="1" source="IzYjYl6GN4_amZqirhNN-72" target="IzYjYl6GN4_amZqirhNN-91" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="IzYjYl6GN4_amZqirhNN-72" value="&lt;font color=&quot;#330000&quot; style=&quot;font-size: 11px&quot;&gt;HotKeyModel model = &lt;b&gt;HotKeyReceiver&lt;/b&gt;.&lt;b&gt;take&lt;/b&gt;();&lt;br&gt;HotKeyReceiver.&lt;b&gt;writeToLocalCaffeine&lt;/b&gt;(model);&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="480" y="1960" width="240" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="IzYjYl6GN4_amZqirhNN-76" value="&lt;font color=&quot;#330000&quot;&gt;&lt;font style=&quot;font-size: 12px&quot;&gt;dataHandler.offer(...)&lt;/font&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="480" y="2040" width="240" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="IzYjYl6GN4_amZqirhNN-78" value="&lt;font style=&quot;font-size: 11px&quot;&gt;fetchRuleFromEtcd()&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="280" y="2200" width="160" height="19.5" as="geometry" />
+        </mxCell>
+        <mxCell id="IzYjYl6GN4_amZqirhNN-79" value="&lt;font style=&quot;font-size: 11px&quot;&gt;insertRecords()&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="280" y="2240" width="160" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="IzYjYl6GN4_amZqirhNN-80" value="&lt;font style=&quot;font-size: 11px&quot;&gt;watchHandOperationHotKey()&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="280" y="2280" width="160" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="IzYjYl6GN4_amZqirhNN-81" value="&lt;font style=&quot;font-size: 11px&quot;&gt;watchRule()&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="280" y="2319.5" width="160" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="IzYjYl6GN4_amZqirhNN-140" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;fontSize=12;fontColor=#3399FF;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" source="IzYjYl6GN4_amZqirhNN-87" target="IzYjYl6GN4_amZqirhNN-137" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1040" y="2630" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="IzYjYl6GN4_amZqirhNN-87" value="Map&amp;lt;Integer, Cache&amp;lt;String, Object&amp;gt;&amp;gt; aliveKeyStore&lt;br&gt;&lt;font color=&quot;#3399ff&quot; style=&quot;font-size: 10px&quot;&gt;默认是 Caffeine 实现，&lt;br&gt;缓存活跃的hot key&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxGeometry x="960" y="1960" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="IzYjYl6GN4_amZqirhNN-90" value="&lt;font color=&quot;#3399ff&quot;&gt;HotKeyModel属性：&lt;br&gt;&lt;/font&gt;&lt;div&gt;&lt;font color=&quot;#3399ff&quot;&gt;&amp;nbsp; &amp;nbsp; String appName;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#3399ff&quot;&gt;&amp;nbsp; &amp;nbsp; KeyType keyType;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#3399ff&quot;&gt;&amp;nbsp; &amp;nbsp; boolean remove;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#3399ff&quot;&gt;&amp;nbsp; &amp;nbsp; String id = IdGenerater.generateId();&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#3399ff&quot;&gt;&amp;nbsp; &amp;nbsp; long createTime;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#3399ff&quot;&gt;&amp;nbsp; &amp;nbsp; String key;&lt;/font&gt;&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontColor=#330000;" parent="1" vertex="1">
+          <mxGeometry x="1120" y="1961" width="220" height="99" as="geometry" />
+        </mxCell>
+        <mxCell id="IzYjYl6GN4_amZqirhNN-95" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;fontSize=11;fontColor=#3399FF;" parent="1" source="IzYjYl6GN4_amZqirhNN-91" target="IzYjYl6GN4_amZqirhNN-87" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="IzYjYl6GN4_amZqirhNN-91" value="&lt;font color=&quot;#330000&quot;&gt;cache.put(appNameKey, &lt;b&gt;hotKeyModel&lt;/b&gt;)&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="760" y="1960.5" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="IzYjYl6GN4_amZqirhNN-134" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=12;fontColor=#3399FF;" parent="1" source="IzYjYl6GN4_amZqirhNN-96" target="IzYjYl6GN4_amZqirhNN-133" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="IzYjYl6GN4_amZqirhNN-136" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=12;fontColor=#3399FF;" parent="1" source="IzYjYl6GN4_amZqirhNN-96" target="IzYjYl6GN4_amZqirhNN-135" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="IzYjYl6GN4_amZqirhNN-96" value="Controller" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+          <mxGeometry x="120" y="2599.5" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="IzYjYl6GN4_amZqirhNN-110" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;fontColor=#3399FF;dashed=1;" parent="1" source="IzYjYl6GN4_amZqirhNN-98" target="IzYjYl6GN4_amZqirhNN-109" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="IzYjYl6GN4_amZqirhNN-98" value="&lt;font&gt;&lt;font style=&quot;font-size: 12px&quot;&gt;DashboardPusher&lt;/font&gt;&lt;br&gt;&lt;/font&gt;" style="whiteSpace=wrap;html=1;rounded=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="400" y="1059.5" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="IzYjYl6GN4_amZqirhNN-104" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;fontSize=10;fontColor=#3399FF;" parent="1" source="IzYjYl6GN4_amZqirhNN-100" target="IzYjYl6GN4_amZqirhNN-103" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1010" y="1140" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="IzYjYl6GN4_amZqirhNN-100" value="&lt;font&gt;&lt;font style=&quot;font-size: 10px&quot;&gt;Queues.drain(&lt;b&gt;hotKeyStoreQueue&lt;/b&gt;, tempModels, 1000, 1, TimeUnit.SECONDS)&lt;/font&gt;&lt;br&gt;&lt;/font&gt;" style="whiteSpace=wrap;html=1;rounded=1;" parent="1" vertex="1">
+          <mxGeometry x="920" y="1069.25" width="180" height="40.5" as="geometry" />
+        </mxCell>
+        <mxCell id="IzYjYl6GN4_amZqirhNN-121" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;fontColor=#3399FF;" parent="1" source="IzYjYl6GN4_amZqirhNN-103" target="IzYjYl6GN4_amZqirhNN-120" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="IzYjYl6GN4_amZqirhNN-103" value="&lt;font&gt;&lt;font style=&quot;font-size: 10px&quot;&gt;DashboardHolder.&lt;b&gt;flushToDashboard&lt;/b&gt;(&lt;br&gt;FastJsonUtils.convertObjectToJSON(tempModels))&lt;/font&gt;&lt;br&gt;&lt;/font&gt;" style="whiteSpace=wrap;html=1;rounded=1;" parent="1" vertex="1">
+          <mxGeometry x="890" y="1130.5" width="240" height="39.5" as="geometry" />
+        </mxCell>
+        <mxCell id="IzYjYl6GN4_amZqirhNN-126" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;fontSize=10;fontColor=#3399FF;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" source="IzYjYl6GN4_amZqirhNN-105" target="IzYjYl6GN4_amZqirhNN-124" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1980" y="1180" />
+              <mxPoint x="1480" y="1180" />
+              <mxPoint x="1480" y="1230" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="IzYjYl6GN4_amZqirhNN-105" value="&lt;font&gt;hotKeyStoreQueue.offer(model)&lt;br&gt;&lt;/font&gt;" style="whiteSpace=wrap;html=1;rounded=1;align=center;arcSize=9;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxGeometry x="1880" y="1189.5" width="200" height="50.5" as="geometry" />
+        </mxCell>
+        <mxCell id="IzYjYl6GN4_amZqirhNN-115" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;fontColor=#3399FF;dashed=1;" parent="1" source="IzYjYl6GN4_amZqirhNN-108" target="IzYjYl6GN4_amZqirhNN-114" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="IzYjYl6GN4_amZqirhNN-117" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=10;fontColor=#3399FF;dashed=1;" parent="1" source="IzYjYl6GN4_amZqirhNN-108" target="IzYjYl6GN4_amZqirhNN-116" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="IzYjYl6GN4_amZqirhNN-108" value="&lt;font&gt;AppServerPusher&lt;br&gt;&lt;/font&gt;" style="whiteSpace=wrap;html=1;rounded=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="400" y="1200" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="IzYjYl6GN4_amZqirhNN-111" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=10;fontColor=#3399FF;" parent="1" source="IzYjYl6GN4_amZqirhNN-109" target="IzYjYl6GN4_amZqirhNN-100" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="IzYjYl6GN4_amZqirhNN-109" value="&lt;font&gt;&lt;div&gt;uploadToDashboard()&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#3399ff&quot;&gt;异步任务：每当新hot key积累1千或时间跨度达到1s就往dashboard上报一次&lt;/font&gt;&lt;/div&gt;&lt;/font&gt;" style="whiteSpace=wrap;html=1;rounded=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="640" y="1058.75" width="160" height="60.75" as="geometry" />
+        </mxCell>
+        <mxCell id="IzYjYl6GN4_amZqirhNN-125" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;fontColor=#3399FF;" parent="1" source="IzYjYl6GN4_amZqirhNN-114" target="IzYjYl6GN4_amZqirhNN-124" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="IzYjYl6GN4_amZqirhNN-114" value="&lt;font&gt;batchPushToClient()&lt;br&gt;&lt;font style=&quot;font-size: 12px&quot; color=&quot;#3399ff&quot;&gt;异步任务：每当新hot key积累10个或时间跨度达到10ms就往 client 发一次&lt;/font&gt;&lt;br&gt;&lt;/font&gt;" style="whiteSpace=wrap;html=1;rounded=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="640" y="1200" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="IzYjYl6GN4_amZqirhNN-116" value="&lt;font&gt;remove()&lt;br&gt;&lt;/font&gt;" style="whiteSpace=wrap;html=1;rounded=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="640" y="1280" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="IzYjYl6GN4_amZqirhNN-120" value="&lt;font style=&quot;font-size: 10px&quot;&gt;HotKeyMsg hotKeyMsg = new HotKeyMsg(MessageType.REQUEST_HOT_KEY);&lt;br&gt;&lt;b&gt;channel.writeAndFlush&lt;/b&gt;(&lt;br&gt;MsgBuilder.buildByteBuf(hotKeyMsg));&lt;br&gt;&lt;/font&gt;" style="whiteSpace=wrap;html=1;rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+          <mxGeometry x="1150" y="1119.5" width="220" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="IzYjYl6GN4_amZqirhNN-123" value="这个是发给dashboard的，&lt;br&gt;这里的channel是在NettyClient中创建的" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;fontColor=#3399FF;" parent="1" vertex="1">
+          <mxGeometry x="1160" y="1181" width="200" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="IzYjYl6GN4_amZqirhNN-128" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;fontColor=#3399FF;" parent="1" source="IzYjYl6GN4_amZqirhNN-124" target="IzYjYl6GN4_amZqirhNN-127" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="IzYjYl6GN4_amZqirhNN-124" value="&lt;font&gt;&lt;font style=&quot;font-size: 10px&quot;&gt;Queues.drain(&lt;b&gt;hotKeyStoreQueue&lt;/b&gt;, tempModels, 10, 10, TimeUnit.MILLISECONDS)&lt;/font&gt;&lt;br&gt;&lt;/font&gt;" style="whiteSpace=wrap;html=1;rounded=1;" parent="1" vertex="1">
+          <mxGeometry x="920" y="1210.5" width="180" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="IzYjYl6GN4_amZqirhNN-130" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;fontColor=#3399FF;" parent="1" source="IzYjYl6GN4_amZqirhNN-127" target="IzYjYl6GN4_amZqirhNN-129" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="IzYjYl6GN4_amZqirhNN-127" value="&lt;font style=&quot;font-size: 10px&quot;&gt;&lt;span&gt;for ClientInfoHolder.apps：&lt;br&gt;&lt;/span&gt;HotKeyMsg hotKeyMsg = new HotKeyMsg(MessageType.&lt;b&gt;RESPONSE_NEW_KEY&lt;/b&gt;);&lt;br&gt;appInfo.groupPush(hotKeyMsg);&lt;br&gt;&lt;/font&gt;" style="whiteSpace=wrap;html=1;rounded=1;" parent="1" vertex="1">
+          <mxGeometry x="880" y="1270" width="260" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="IzYjYl6GN4_amZqirhNN-129" value="&lt;font&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;channelGroup.writeAndFlush(object);&lt;/span&gt;&lt;br&gt;&lt;/font&gt;" style="whiteSpace=wrap;html=1;rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+          <mxGeometry x="1160" y="1280" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="IzYjYl6GN4_amZqirhNN-132" value="这个是发给client的" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;fontColor=#3399FF;" parent="1" vertex="1">
+          <mxGeometry x="1210" y="1320" width="100" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="IzYjYl6GN4_amZqirhNN-138" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=12;fontColor=#3399FF;" parent="1" source="IzYjYl6GN4_amZqirhNN-133" target="IzYjYl6GN4_amZqirhNN-137" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="IzYjYl6GN4_amZqirhNN-133" value="/listTimely" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="280" y="2599.5" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="IzYjYl6GN4_amZqirhNN-135" value=",,,,,," style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="280" y="2680" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="IzYjYl6GN4_amZqirhNN-137" value="HotKeyReceiver.list(param)&lt;br&gt;&lt;font color=&quot;#3399ff&quot;&gt;从aliveKeyStore中查询&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="480" y="2599.5" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="IzYjYl6GN4_amZqirhNN-147" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;fontSize=12;fontColor=#3399FF;" parent="1" source="IzYjYl6GN4_amZqirhNN-143" target="IzYjYl6GN4_amZqirhNN-146" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="IzYjYl6GN4_amZqirhNN-143" value="KeyHandlerFactory.getCounter()&lt;br&gt;.collect(new &lt;b&gt;KeyHotModel&lt;/b&gt;(key, isHot))&lt;br&gt;&lt;font color=&quot;#3399ff&quot;&gt;不管是不是hot key 都会上报这个&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="-1040" y="400" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="IzYjYl6GN4_amZqirhNN-146" value="&lt;font&gt;&lt;span style=&quot;font-size: 11px&quot;&gt;TurnCountCollector&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size: 11px&quot;&gt;ConcurrentHashMap &lt;b&gt;HIT_MAP_0&lt;/b&gt;，&amp;nbsp;&lt;/span&gt;&lt;/font&gt;&lt;span style=&quot;font-size: 11px&quot;&gt;&lt;b&gt;HIT_MAP_1&lt;/b&gt;&lt;/span&gt;" style="whiteSpace=wrap;html=1;rounded=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxGeometry x="-800" y="400" width="200" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
