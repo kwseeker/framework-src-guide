@@ -81,6 +81,7 @@
     + 分布式协调
     + 服务保障
     + 链路追踪
+    + 监控系统
     + 安全框架
     + ORM框架
     + 数据库相关
@@ -102,6 +103,7 @@
     - 数据库相关
   
 - [Resources](#resources)
+  
   - [Books](#books)
 
 
@@ -257,7 +259,21 @@
 
   源码流程图：
 
-  + [rocketmq.drawio](docs/java/message-queue/rocketmq/rocketmq.drawio)  (尚未完成)
+  + [rocketmq.drawio](docs/java/message-queue/rocketmq/rocketmq.drawio)
+
+    + NameServer: [rocketmq-NameServer.drawio.png](docs/java/message-queue/imgs/rocketmq-NameServer.drawio.png)
+
+    + Broker:  [rocketmq-Broker.drawio.png](docs/java/message-queue/imgs/rocketmq-Broker.drawio.png)
+    + Producer: [rocketmq-Producer.drawio.png](docs/java/message-queue/imgs/rocketmq-Producer.drawio.png)
+    + Consumer: [rocketmq-Consumer.drawio.png](docs/java/message-queue/imgs/rocketmq-Consumer.drawio.png)
+
+  + [rocketmq-messagestore.drawio](docs/java/message-queue/rocketmq/rocketmq-messagestore.drawio) (消息存储服务原理)
+
+    + MessageStore: [rocketmq-messagestore.drawio.png](docs/java/message-queue/imgs/rocketmq-messagestore.drawio.png)
+
+  + [transaction-message.drawio](docs/java/message-queue/rocketmq/transaction-message.drawio) (事务消息原理)
+
+    + [rocketmq-message.drawio.png](docs/java/message-queue/imgs/rocketmq-message.drawio.png)
 
 + **RabbitMQ**
 
@@ -476,6 +492,18 @@
 
 ### 服务保障
 
++ [**jd-hotkey**](docs/java/jd-hotkey/jd-hotkey.md)
+
+  源码流程图：
+
+  + [jd-hotkey.drawio](docs/java/jd-hotkey/jd-hotkey.drawio)
+
+  + [jd-hotkey.drawio.png](docs/java/jd-hotkey/imgs/jd-hotkey.drawio.png)
+
+  业务使用：
+
+  + [jd-hotkey-usage.png](docs/java/jd-hotkey/imgs/jd-hotkey-usage.png)
+
 + [**Sentinel**](docs/java/sentinel/sentinel-workflow.md)
 
   源码流程图：
@@ -495,6 +523,29 @@
     + [skywalking-agent.drawio.png](docs/java/skywalking/skywalking-agent.drawio.png)
 
 + **Sleuth**
+
+### 监控系统
+
++ **Prometheus**
+
+  + **client_java**
+
+    和 Skywalking Agent 库感觉有点像也有一堆根据服务实例中各种组件定制的**数据采集组件**，可以按需引入。
+
+    源码流程图：
+
+    + [prometheus-client-java.drawio](docs/java/prometheus/prometheus-client-java.drawio)
+    + [prometheus-client-java.drawio.png](docs/java/prometheus/imgs/prometheus-client-java.drawio.png)
+  
+    拓展：
+  
+    + [目标分位数问题与CKMS算法](docs/java/prometheus/target-quantile-problem-and-CKMS.md)
+  
+  + **micrometer-registry-prometheus**
+  
+    Micrometer 适配 Prometheus 的数据采集器组件。
+  
+    
 
 ### 安全框架
 
@@ -560,6 +611,8 @@
 + **LCN**
 
 + **RocketMQ事务消息**
+
+  参考 RocketMQ 部分。
 
 + **Seata**
 
