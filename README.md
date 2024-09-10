@@ -528,12 +528,14 @@
 
 + **Prometheus**
 
+  暂只关注数据采集和上报的原理，业务定制也主要是这部分。
+
   + **client_java**
 
-    和 Skywalking Agent 库感觉有点像也有一堆根据服务实例中各种组件定制的**数据采集组件**，可以按需引入。
+    感觉和 Skywalking Agent 库的代码组织有点像也有一堆根据服务实例中各种组件定制的**数据采集组件**，可以按需引入。
 
     源码流程图：
-
+  
     + [prometheus-client-java.drawio](docs/java/prometheus/prometheus-client-java.drawio)
     + [prometheus-client-java.drawio.png](docs/java/prometheus/imgs/prometheus-client-java.drawio.png)
   
@@ -543,9 +545,12 @@
   
   + **micrometer-registry-prometheus**
   
-    Micrometer 适配 Prometheus 的数据采集器组件。
+    Micrometer 适配 Prometheus上报接口的数据采集器组件。
   
+    源码流程图：
     
+    + [micrometer-registry-prometheus.drawio](docs/java/prometheus/micrometer-registry-prometheus.drawio)
+    + [micrometer-registry-prometheus.drawio.png](docs/java/prometheus/imgs/micrometer-registry-prometheus.drawio.png)
 
 ### 安全框架
 
