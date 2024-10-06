@@ -1,0 +1,248 @@
+<mxfile host="Electron" modified="2024-10-06T15:59:23.398Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.6.5 Chrome/114.0.5735.243 Electron/25.3.1 Safari/537.36" etag="OZQ0KGNZSkX2s3XOCilc" version="21.6.5" type="device">
+  <diagram name="第 1 页" id="JqhDmuX6L9YFi_Qx25rx">
+    <mxGraphModel dx="3405" dy="1034" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="jevOpthSYDo48ZPv_LFc-1" value="&lt;h1&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;Logback 工作原理（1.5.6）&lt;/font&gt;&lt;/h1&gt;&lt;div style=&quot;font-size: 11px;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;font style=&quot;font-size: 11px;&quot;&gt;测试代码: logging/logback。&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 11px;&quot;&gt;从源码梳理 Logback 工作原理，理解清楚内部各种组件的工作职责和关系。&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="40" y="10" width="420" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="jevOpthSYDo48ZPv_LFc-2" value="初始化&lt;br&gt;（配置加载）" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="40" y="120" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="jevOpthSYDo48ZPv_LFc-7" value="" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=auto;html=1;rounded=1;" edge="1" parent="1" source="jevOpthSYDo48ZPv_LFc-4" target="jevOpthSYDo48ZPv_LFc-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="jevOpthSYDo48ZPv_LFc-9" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;rounded=1;" edge="1" parent="1" source="jevOpthSYDo48ZPv_LFc-4" target="jevOpthSYDo48ZPv_LFc-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="jevOpthSYDo48ZPv_LFc-4" value="获取 Logger 实例" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="40" y="280" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="jevOpthSYDo48ZPv_LFc-11" value="" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=auto;html=1;rounded=1;" edge="1" parent="1" source="jevOpthSYDo48ZPv_LFc-5" target="jevOpthSYDo48ZPv_LFc-10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="jevOpthSYDo48ZPv_LFc-5" value="日志输出" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="40" y="1040" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="jevOpthSYDo48ZPv_LFc-15" value="" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=auto;html=1;rounded=1;" edge="1" parent="1" source="jevOpthSYDo48ZPv_LFc-6" target="jevOpthSYDo48ZPv_LFc-14">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="jevOpthSYDo48ZPv_LFc-6" value="通过 LoggerFactory 获取" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="280" y="280" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="jevOpthSYDo48ZPv_LFc-8" value="通过 Lombok @Slf4j 注解获取&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;TODO&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="280" y="400" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="jevOpthSYDo48ZPv_LFc-13" value="" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=auto;html=1;rounded=1;" edge="1" parent="1" source="jevOpthSYDo48ZPv_LFc-10" target="jevOpthSYDo48ZPv_LFc-12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="jevOpthSYDo48ZPv_LFc-10" value="log.trace(...);&lt;br&gt;log.debug(...);&lt;br&gt;log.info(...);&lt;br&gt;log.error(...);&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;以 info 为例&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="280" y="1030" width="200" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="jevOpthSYDo48ZPv_LFc-58" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="jevOpthSYDo48ZPv_LFc-12" target="jevOpthSYDo48ZPv_LFc-57">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="jevOpthSYDo48ZPv_LFc-12" value="&lt;b&gt;filterAndLog_0_Or3Plus&lt;/b&gt;(FQCN, null, Level.INFO, msg, null, null);&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;FQCN 是 Logback Logger 类的全限定名&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="520" y="1040" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="jevOpthSYDo48ZPv_LFc-17" value="" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=auto;html=1;rounded=1;" edge="1" parent="1" source="jevOpthSYDo48ZPv_LFc-14" target="jevOpthSYDo48ZPv_LFc-16">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="jevOpthSYDo48ZPv_LFc-14" value="Logger log = LoggerFactory.getLogger(&lt;br&gt;LogbackExample.class);" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="520" y="280" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="jevOpthSYDo48ZPv_LFc-20" value="" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=auto;html=1;rounded=1;" edge="1" parent="1" source="jevOpthSYDo48ZPv_LFc-16" target="jevOpthSYDo48ZPv_LFc-19">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="jevOpthSYDo48ZPv_LFc-16" value="Logger logger = getLogger(clazz.getName());&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;以类名作为Logger名&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="760" y="280" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="jevOpthSYDo48ZPv_LFc-18" value="LoggerFactory" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="820" y="250" width="100" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="jevOpthSYDo48ZPv_LFc-22" value="" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=auto;html=1;rounded=1;" edge="1" parent="1" source="jevOpthSYDo48ZPv_LFc-19" target="jevOpthSYDo48ZPv_LFc-21">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="jevOpthSYDo48ZPv_LFc-46" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="jevOpthSYDo48ZPv_LFc-22">
+          <mxGeometry x="0.3929" y="3" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="jevOpthSYDo48ZPv_LFc-26" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;rounded=1;" edge="1" parent="1" source="jevOpthSYDo48ZPv_LFc-19" target="jevOpthSYDo48ZPv_LFc-25">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="jevOpthSYDo48ZPv_LFc-47" value="2" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="jevOpthSYDo48ZPv_LFc-26">
+          <mxGeometry x="0.905" y="2" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="jevOpthSYDo48ZPv_LFc-19" value="&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;// 1 此测试中返回的是 &lt;b&gt;LoggerContext &lt;/b&gt;实例&lt;/font&gt;&lt;/div&gt;&lt;div&gt;ILoggerFactory iLoggerFactory = &lt;b&gt;getILoggerFactory&lt;/b&gt;();&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;// 2 name是类的全限定名的话会按每一层创建一个 Logger, 最后返回的以完整限定名为名的 Logger&lt;/font&gt;&lt;/div&gt;&lt;div&gt;return iLoggerFactory.&lt;b&gt;getLogger&lt;/b&gt;(name);&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;先获取 LoggerFactory 实例，从后面看首次执行时才会执行初始化&lt;/font&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="280" width="440" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="jevOpthSYDo48ZPv_LFc-24" value="" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=auto;html=1;rounded=1;" edge="1" parent="1" source="jevOpthSYDo48ZPv_LFc-21" target="jevOpthSYDo48ZPv_LFc-23">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="jevOpthSYDo48ZPv_LFc-45" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;rounded=1;" edge="1" parent="1" source="jevOpthSYDo48ZPv_LFc-21" target="jevOpthSYDo48ZPv_LFc-44">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="jevOpthSYDo48ZPv_LFc-21" value="return &lt;b&gt;getProvider&lt;/b&gt;()&lt;br&gt;.&lt;b&gt;getLoggerFactory&lt;/b&gt;();" style="rounded=1;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="1480" y="280" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="jevOpthSYDo48ZPv_LFc-28" value="" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=auto;html=1;rounded=1;" edge="1" parent="1" source="jevOpthSYDo48ZPv_LFc-23" target="jevOpthSYDo48ZPv_LFc-27">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="jevOpthSYDo48ZPv_LFc-29" value="..." style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="jevOpthSYDo48ZPv_LFc-28">
+          <mxGeometry x="-0.0559" y="-1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="jevOpthSYDo48ZPv_LFc-23" value="&lt;b&gt;performInitialization&lt;/b&gt;();&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;首次执行会执行LoggerFactory 的初始化&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="1720" y="280" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="jevOpthSYDo48ZPv_LFc-52" value="" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=auto;html=1;rounded=1;" edge="1" parent="1" source="jevOpthSYDo48ZPv_LFc-25" target="jevOpthSYDo48ZPv_LFc-51">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="jevOpthSYDo48ZPv_LFc-25" value="获取Logger的逻辑是先看是不是 ROOT, 是 ROOT 直接返回根 Logger,&lt;br&gt;否则从 &lt;b&gt;loggerCache&lt;/b&gt; 中查，存在则直接返回否则创建一个新的Logger 并缓存到 loggerCache" style="rounded=1;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="1480" y="730" width="200" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="jevOpthSYDo48ZPv_LFc-31" value="" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=auto;html=1;rounded=1;" edge="1" parent="1" source="jevOpthSYDo48ZPv_LFc-27" target="jevOpthSYDo48ZPv_LFc-30">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="jevOpthSYDo48ZPv_LFc-32" value="..." style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="jevOpthSYDo48ZPv_LFc-31">
+          <mxGeometry x="-0.1147" y="-1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="jevOpthSYDo48ZPv_LFc-36" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="jevOpthSYDo48ZPv_LFc-31">
+          <mxGeometry x="0.7659" y="-4" relative="1" as="geometry">
+            <mxPoint y="-14" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="jevOpthSYDo48ZPv_LFc-38" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;rounded=1;" edge="1" parent="1" source="jevOpthSYDo48ZPv_LFc-27" target="jevOpthSYDo48ZPv_LFc-37">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="jevOpthSYDo48ZPv_LFc-39" value="2" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="jevOpthSYDo48ZPv_LFc-38">
+          <mxGeometry x="0.9322" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="jevOpthSYDo48ZPv_LFc-27" value="&lt;font color=&quot;#007fff&quot;&gt;&lt;b&gt;//1 SPI 加载 SLF4JServiceProvider&amp;nbsp;实现, 因为引入的 Logback, 这里实际加载到的是&amp;nbsp;LogbackServiceProvider&lt;/b&gt;&lt;br&gt;&lt;/font&gt;List&amp;lt;SLF4JServiceProvider&amp;gt; providersList = &lt;b&gt;findServiceProviders&lt;/b&gt;();&lt;br&gt;...&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;// provider 如果有多个，使用第一个&lt;/font&gt;&lt;br&gt;&lt;div&gt;PROVIDER = (SLF4JServiceProvider)providersList.get(0);&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;&lt;b&gt;// 2&lt;/b&gt;&amp;nbsp;初始化选中的 Provider&amp;nbsp;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;PROVIDER.&lt;b&gt;initialize&lt;/b&gt;();&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;arcSize=4;" vertex="1" parent="1">
+          <mxGeometry x="1960" y="280" width="440" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="jevOpthSYDo48ZPv_LFc-35" value="" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=auto;html=1;rounded=1;" edge="1" parent="1" source="jevOpthSYDo48ZPv_LFc-30" target="jevOpthSYDo48ZPv_LFc-34">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="jevOpthSYDo48ZPv_LFc-30" value="&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;//从这部分代码看到可以通过 “slf4j.provider” 手动指定我们要使用&lt;/font&gt;&lt;/div&gt;&lt;font color=&quot;#007fff&quot;&gt;SLF4JServiceProvider 实现，没有指定才会通过 SPI 加载&lt;br&gt;&lt;/font&gt;&lt;div&gt;SLF4JServiceProvider explicitProvider = &lt;b&gt;loadExplicitlySpecified&lt;/b&gt;(classLoaderOfLoggerFactory);&lt;/div&gt;&lt;div&gt;if (explicitProvider != null) {&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; providerList.add(explicitProvider);&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; return providerList;&lt;/div&gt;&lt;div&gt;} else {&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; ServiceLoader&amp;lt;SLF4JServiceProvider&amp;gt; serviceLoader = &lt;b&gt;getServiceLoader&lt;/b&gt;(classLoaderOfLoggerFactory);&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; Iterator&amp;lt;SLF4JServiceProvider&amp;gt; iterator = serviceLoader.iterator();&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; while(iterator.hasNext()) {&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; safelyInstantiate(providerList, iterator);&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; }&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; return providerList;&lt;/div&gt;&lt;div&gt;}&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;arcSize=2;" vertex="1" parent="1">
+          <mxGeometry x="2440" y="280" width="440" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="jevOpthSYDo48ZPv_LFc-34" value="serviceLoader = ServiceLoader.&lt;b&gt;load&lt;/b&gt;(&lt;br&gt;&lt;b&gt;SLF4JServiceProvider&lt;/b&gt;.class, classLoaderOfLoggerFactory);&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;SPI 加载 SLF4JServiceProvider 实现，这里是&amp;nbsp;LogbackServiceProvider&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="2920" y="370" width="440" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="jevOpthSYDo48ZPv_LFc-37" value="&lt;div&gt;&lt;/div&gt;&lt;div&gt;&lt;div&gt;&lt;div&gt;public void initialize() {&lt;/div&gt;&lt;div&gt;&lt;b&gt;&lt;font color=&quot;#007fff&quot;&gt;&amp;nbsp; &amp;nbsp; // 这个就是 Logger 工厂&lt;/font&gt;&lt;/b&gt;&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; this.&lt;b&gt;defaultLoggerContext&lt;/b&gt; = new &lt;b&gt;LoggerContext&lt;/b&gt;();&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; this.defaultLoggerContext.setName(&quot;default&quot;);&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; this.initializeLoggerContext();&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; this.defaultLoggerContext.start();&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; this.&lt;b&gt;markerFactory&lt;/b&gt; = new BasicMarkerFactory();&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; this.&lt;b&gt;mdcAdapter&lt;/b&gt; = new LogbackMDCAdapter();&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; this.defaultLoggerContext.setMDCAdapter(this.mdcAdapter);&lt;/div&gt;&lt;div&gt;}&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;arcSize=2;" vertex="1" parent="1">
+          <mxGeometry x="2440" y="560" width="440" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="jevOpthSYDo48ZPv_LFc-40" value="LogbackServiceProvider" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="2585" y="530" width="150" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="jevOpthSYDo48ZPv_LFc-50" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;endArrow=open;endFill=0;rounded=1;" edge="1" parent="1" source="jevOpthSYDo48ZPv_LFc-42" target="jevOpthSYDo48ZPv_LFc-49">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="jevOpthSYDo48ZPv_LFc-42" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;LogbackServiceProvider&lt;/b&gt;&lt;br&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;private LoggerContext &lt;b&gt;defaultLoggerContext&lt;/b&gt;;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;private IMarkerFactory &lt;b&gt;markerFactory&lt;/b&gt;;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;private LogbackMDCAdapter &lt;b&gt;mdcAdapter&lt;/b&gt;;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="-440" y="120" width="400" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="jevOpthSYDo48ZPv_LFc-44" value="return this.&lt;b&gt;defaultLoggerContext&lt;/b&gt;;" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="1720" y="440" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="jevOpthSYDo48ZPv_LFc-48" value="从源码中提取出来的重要信息：&lt;br&gt;&lt;ul&gt;&lt;li&gt;每个Logger实例都有且仅有一个唯一的名字，根 Logger 的名字是 ROOT&lt;/li&gt;&lt;li&gt;Logger 之间是一种树型关系，树的根是 ROOT Logger&lt;/li&gt;&lt;li&gt;&lt;br&gt;&lt;/li&gt;&lt;/ul&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="480" y="10" width="450" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="jevOpthSYDo48ZPv_LFc-49" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;LoggerContext&amp;nbsp;&lt;/b&gt;&lt;br&gt;&lt;/p&gt;&lt;div style=&quot;text-align: center;&quot;&gt;extends ContextBase implements &lt;b&gt;ILoggerFactory&lt;/b&gt;, LifeCycle&lt;/div&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;b&gt;&lt;font color=&quot;#007fff&quot;&gt;Logger 上下文（Logger容器），且是 Logger 工厂&lt;/font&gt;&lt;/b&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;b&gt;&lt;font color=&quot;#007fff&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/b&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;font style=&quot;&quot; color=&quot;#007fff&quot;&gt;// 根 Logger, Logger 之间组成了一颗树，ROOT Logger 是这颗树的根节点&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;final Logger &lt;b&gt;root&lt;/b&gt; = new Logger(&quot;ROOT&quot;, (Logger)null, this);&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;private int size;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;private int noAppenderWarning = 0;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;private final List&amp;lt;LoggerContextListener&amp;gt; loggerContextListenerList = new ArrayList();&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;b&gt;&lt;font color=&quot;#007fff&quot;&gt;// Logger Name -&amp;gt; Logger 实例&lt;/font&gt;&lt;/b&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;private Map&amp;lt;String, Logger&amp;gt; &lt;b&gt;loggerCache&lt;/b&gt; = new ConcurrentHashMap();&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;private LoggerContextVO loggerContextRemoteView = new LoggerContextVO(this);&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;private final TurboFilterList &lt;b&gt;turboFilterList&lt;/b&gt; = new TurboFilterList();&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;private boolean packagingDataEnabled = false;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;SequenceNumberGenerator sequenceNumberGenerator = null;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;MDCAdapter mdcAdapter;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;private int maxCallerDataDepth = 8;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;int resetCount = 0;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;private List&amp;lt;String&amp;gt; frameworkPackages;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="-1080" y="120" width="600" height="320" as="geometry" />
+        </mxCell>
+        <mxCell id="jevOpthSYDo48ZPv_LFc-56" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="jevOpthSYDo48ZPv_LFc-51" target="jevOpthSYDo48ZPv_LFc-55">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="jevOpthSYDo48ZPv_LFc-51" value="&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;Logger 新建的逻辑，这段代码也挺重要，&lt;b&gt;对于理解Logger间的配置继承很重要&lt;/b&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;Logger logger = root;&lt;br&gt;&lt;/div&gt;&lt;div&gt;...&lt;/div&gt;&lt;div&gt;String childName;&lt;/div&gt;&lt;div&gt;while (true) {&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; int h = LoggerNameUtil.getSeparatorIndexOf(name, i);&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; if (h == -1) {&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; childName = name;&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; } else {&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; childName = name.substring(0, h);&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; }&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&amp;nbsp; &amp;nbsp; i = h + 1;&lt;/span&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; synchronized (logger) {&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;// 这里初始 logger 是 root logger, 这里先查下是否已创建，防止重复创建&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; childLogger = logger.&lt;b&gt;getChildByName&lt;/b&gt;(childName);&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; if (childLogger == null) {&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; // 为 logger 创建一个子 Logger&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; childLogger = logger.&lt;b&gt;createChildByName&lt;/b&gt;(childName);&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; loggerCache.put(childName, childLogger);&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; incSize();&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; }&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; }&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; logger = childLogger;&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; if (h == -1) {&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; return childLogger;&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; }&lt;/div&gt;&lt;div&gt;}&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;arcSize=3;" vertex="1" parent="1">
+          <mxGeometry x="1720" y="560" width="440" height="420" as="geometry" />
+        </mxCell>
+        <mxCell id="jevOpthSYDo48ZPv_LFc-53" value="&lt;font color=&quot;#007fff&quot;&gt;&lt;b&gt;比如这里创建名为&amp;nbsp;top.kwseeker.labs.logging.LogbackExample 的 Logger, 实际上会创建 5个 Logger 实例&lt;br&gt;和 ROOT logger 共同组成一颗树： ROOT -&amp;gt; top -&amp;gt; top.kwseeker -&amp;gt; ...&lt;br&gt;&lt;/b&gt;&lt;/font&gt;&lt;div style=&quot;&quot;&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;&lt;b&gt;&quot;top&quot; -&amp;gt; {Logger@2085} &quot;Logger[top]&quot;&lt;/b&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;&lt;b&gt;&quot;top.kwseeker&quot; -&amp;gt; {Logger@2113} &quot;Logger[top.kwseeker]&quot;&lt;/b&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;&lt;b&gt;&quot;top.kwseeker.labs&quot; -&amp;gt; {Logger@2143} &quot;Logger[top.kwseeker.labs]&quot;&lt;/b&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;&lt;b&gt;&quot;top.kwseeker.labs.logging&quot; -&amp;gt; {Logger@2173} &quot;Logger[top.kwseeker.labs.logging]&quot;&lt;/b&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;&lt;b&gt;&quot;top.kwseeker.labs.logging.LogbackExample&quot; -&amp;gt; {Logger@2202} &quot;Logger[top.kwseeker.labs.logging.LogbackExample]&quot;&lt;/b&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="820" width="710" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="jevOpthSYDo48ZPv_LFc-75" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;endArrow=open;endFill=0;" edge="1" parent="1" source="jevOpthSYDo48ZPv_LFc-54" target="jevOpthSYDo48ZPv_LFc-74">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="jevOpthSYDo48ZPv_LFc-54" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Logger&lt;/b&gt;&lt;br&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;&lt;b&gt;Logger 实现，Logger 之间组成一颗树&lt;/b&gt;&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;private String name;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;// Logger 日志级别&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;transient private Level &lt;b&gt;level&lt;/b&gt;;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;// 继承的日志级别&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;transient private int &lt;b&gt;effectiveLevelInt&lt;/b&gt;;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;// 指向父节点&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;transient private Logger &lt;b&gt;parent&lt;/b&gt;;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;// 指向子节点&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;transient private List&amp;lt;Logger&amp;gt; &lt;b&gt;childrenList&lt;/b&gt;;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;&lt;b&gt;// 最重要的一个成员，记录与 Logger 绑定的 Appender 信息&lt;/b&gt;&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;transient private AppenderAttachableImpl&amp;lt;ILoggingEvent&amp;gt; &lt;b&gt;aai&lt;/b&gt;;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;// 是否将日志输出到父Logger的 Appender&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;transient private boolean &lt;b&gt;additive&lt;/b&gt; = true;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;final transient LoggerContext &lt;b&gt;loggerContext&lt;/b&gt;;&lt;br&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="-440" y="480" width="400" height="280" as="geometry" />
+        </mxCell>
+        <mxCell id="jevOpthSYDo48ZPv_LFc-55" value="childLogger = new &lt;b&gt;Logger&lt;/b&gt;(childName, this, this.loggerContext);&lt;br&gt;childrenList.add(childLogger);" style="rounded=1;whiteSpace=wrap;html=1;align=left;arcSize=17;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="2200" y="740" width="440" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="jevOpthSYDo48ZPv_LFc-60" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="jevOpthSYDo48ZPv_LFc-57" target="jevOpthSYDo48ZPv_LFc-59">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="jevOpthSYDo48ZPv_LFc-61" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="jevOpthSYDo48ZPv_LFc-60">
+          <mxGeometry x="0.1853" y="1" relative="1" as="geometry">
+            <mxPoint x="11" y="-35" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="jevOpthSYDo48ZPv_LFc-63" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="jevOpthSYDo48ZPv_LFc-57" target="jevOpthSYDo48ZPv_LFc-62">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="jevOpthSYDo48ZPv_LFc-64" value="2" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="jevOpthSYDo48ZPv_LFc-63">
+          <mxGeometry x="0.7163" y="3" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="jevOpthSYDo48ZPv_LFc-57" value="&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;&lt;b&gt;// 1 TurboFilter 过滤校验&lt;/b&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;final FilterReply decision = &lt;b&gt;loggerContext&lt;/b&gt;&lt;br&gt;&amp;nbsp; &amp;nbsp; .&lt;b&gt;getTurboFilterChainDecision_0_3OrMore&lt;/b&gt;(&lt;span style=&quot;background-color: initial;&quot;&gt;marker, this, level, msg,&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;params, t);&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;if (decision == FilterReply.NEUTRAL) {&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; if (effectiveLevelInt &amp;gt; level.levelInt) { &lt;font color=&quot;#007fff&quot;&gt;//经过过滤器后结果中立的话再判断下继承的可输出日志级别&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; return;&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; }&lt;/div&gt;&lt;div&gt;} else if (decision == FilterReply.DENY) {&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; return;&lt;/div&gt;&lt;div&gt;}&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;&lt;b&gt;// 2 输出日志&lt;/b&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;buildLoggingEventAndAppend&lt;/b&gt;(localFQCN, marker, level, msg, params, t);&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=4;align=left;" vertex="1" parent="1">
+          <mxGeometry x="760" y="1040" width="440" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="jevOpthSYDo48ZPv_LFc-59" value="&lt;div&gt;if (turboFilterList.size() == 0) {&amp;nbsp;&lt;font color=&quot;#007fff&quot;&gt;// 如果没有设置过滤器，则过滤结果：中立&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; return FilterReply.NEUTRAL;&amp;nbsp;&lt;/div&gt;&lt;div&gt;}&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;// 查找调用栈，发现只有 LogbackMetrics 有使用，暂略&lt;/font&gt;&lt;/div&gt;&lt;div&gt;return &lt;b&gt;turboFilterList&lt;/b&gt;.getTurboFilterChainDecision(marker, logger, level, format, params, t);&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;align=left;" vertex="1" parent="1">
+          <mxGeometry x="1240" y="1040" width="440" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="jevOpthSYDo48ZPv_LFc-68" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="jevOpthSYDo48ZPv_LFc-62" target="jevOpthSYDo48ZPv_LFc-67">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="jevOpthSYDo48ZPv_LFc-62" value="&lt;div&gt;LoggingEvent le = new &lt;b&gt;LoggingEvent&lt;/b&gt;(localFQCN, this, level, msg, t, params);&lt;/div&gt;&lt;div&gt;le.addMarker(marker);&lt;/div&gt;&lt;div&gt;&lt;b&gt;callAppenders&lt;/b&gt;(le);&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;align=left;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="1240" y="1220" width="440" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="jevOpthSYDo48ZPv_LFc-65" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;LoggingEvent&lt;/b&gt;&lt;br&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;&lt;b&gt;Logger 事件，就是定义的某次日志输出行为&lt;/b&gt;&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;// Logger 实现类的全限定名&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;transient String fqnOfLoggerClass;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;private String threadName;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;private String &lt;b&gt;loggerName&lt;/b&gt;;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;// Logger 所属的 LoggerContext&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;private LoggerContext &lt;b&gt;loggerContext&lt;/b&gt;;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;private LoggerContextVO loggerContextVO;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;// 日志级别&lt;/font&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;private transient Level &lt;b&gt;level&lt;/b&gt;;&lt;/span&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//日志消息体&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;private String &lt;b&gt;message&lt;/b&gt;;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;// 格式话之后的消息体，就是最终打印出来的消息体&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;transient String formattedMessage;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;// 消息体后面的参数数组&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;private transient Object[] &lt;b&gt;argumentArray&lt;/b&gt;;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;// 用于记录异常信息&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;private ThrowableProxy &lt;b&gt;throwableProxy&lt;/b&gt;;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;// 异常调用栈信息&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;private StackTraceElement[] &lt;b&gt;callerDataArray&lt;/b&gt;;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//&amp;nbsp;&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;private List&amp;lt;Marker&amp;gt; &lt;b&gt;markerList&lt;/b&gt;;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;private Map&amp;lt;String, String&amp;gt; &lt;b&gt;mdcPropertyMap&lt;/b&gt;;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;List&amp;lt;KeyValuePair&amp;gt; &lt;b&gt;keyValuePairs&lt;/b&gt;;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;// 时间信息 java.time.Instant&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;private Instant &lt;b&gt;instant&lt;/b&gt;;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;// 时间戳&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;private long &lt;b&gt;timeStamp&lt;/b&gt;;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;private int &lt;b&gt;nanoseconds&lt;/b&gt;;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;// 序列号，需要配置&amp;nbsp;SequenceNumberGenerator&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;private long &lt;b&gt;sequenceNumber&lt;/b&gt;;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="-440" y="800" width="400" height="520" as="geometry" />
+        </mxCell>
+        <mxCell id="jevOpthSYDo48ZPv_LFc-66" value="Logger" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="590" y="1010" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="jevOpthSYDo48ZPv_LFc-70" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="jevOpthSYDo48ZPv_LFc-67" target="jevOpthSYDo48ZPv_LFc-69">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="jevOpthSYDo48ZPv_LFc-67" value="&lt;div&gt;int writes = 0;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;&lt;b&gt;// 这里可以看到 Logback 先将日志输出到 Logger 对应的Appender, 然后如果设置了 additive == true 还会一级一级遍历父 logger 输出到对应的 Appender&lt;/b&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;for (Logger l = this; l != null; l = l.parent) {&lt;/b&gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;&amp;nbsp; &amp;nbsp; &lt;font color=&quot;#007fff&quot;&gt;// 1&lt;/font&gt;&lt;/b&gt;&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; writes += l.&lt;b&gt;appendLoopOnAppenders&lt;/b&gt;(event);&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; if (!l.additive) { &lt;font color=&quot;#007fff&quot;&gt;//对应配置中 logger 标签的 additivity 属性&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; break;&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; }&lt;/div&gt;&lt;div&gt;}&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;// 说明没有 Appender 接收日志输出&lt;/font&gt;&lt;/div&gt;&lt;div&gt;if (writes == 0) {&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; loggerContext.noAppenderDefinedWarning(this);&lt;/div&gt;&lt;div&gt;}&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=5;align=left;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="1720" y="1160" width="440" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="jevOpthSYDo48ZPv_LFc-73" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="jevOpthSYDo48ZPv_LFc-69" target="jevOpthSYDo48ZPv_LFc-72">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="jevOpthSYDo48ZPv_LFc-69" value="&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;//将日志信息打印到当前 Logger 的 Appender, 如果没有 Appender的话是不会打印的，而是一级一级往上遍历交给父 Logger 打印&lt;/font&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;if (aai != null) {&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; return &lt;b&gt;aai&lt;/b&gt;.&lt;b&gt;appendLoopOnAppenders&lt;/b&gt;(event);&lt;/div&gt;&lt;div&gt;} else {&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; return 0;&lt;/div&gt;&lt;div&gt;}&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=5;align=left;" vertex="1" parent="1">
+          <mxGeometry x="2200" y="1200" width="440" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="jevOpthSYDo48ZPv_LFc-71" value="&lt;font color=&quot;#007fff&quot;&gt;&lt;b&gt;这样实现的好处是可以复用父 Logger 的配置，比如测试中明明没有给名为 top.kwseeker.labs.logging.LogbackExample 的 Logger 配置 Appender, 为何还是可以打印出日志？&lt;/b&gt;&lt;br&gt;&lt;b&gt;就是因为最终是通过 ROOT Logger 将日志打印出来的, Root Logger 的 Appender 信息是一定要配置的&lt;/b&gt;&lt;br&gt;&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="1720" y="1120" width="970" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="jevOpthSYDo48ZPv_LFc-72" value="&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;//将日志信息打印到当前 Logger 的 Appender, 如果没有 Appender的话是不会打印的，而是一级一级往上遍历交给父 Logger 打印&lt;/font&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=5;align=left;" vertex="1" parent="1">
+          <mxGeometry x="2680" y="1200" width="440" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="jevOpthSYDo48ZPv_LFc-77" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;endArrow=open;endFill=0;" edge="1" parent="1" source="jevOpthSYDo48ZPv_LFc-74" target="jevOpthSYDo48ZPv_LFc-76">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="jevOpthSYDo48ZPv_LFc-74" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;AppenderAttachableImpl&lt;/b&gt;&lt;br&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;&lt;b&gt;记录与 Logger 绑定的 Appender 容器&lt;/b&gt;&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;&lt;b&gt;&lt;br&gt;&lt;/b&gt;&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;// COWArrayList 是 Logback 重新封装的一个 COW 列表&lt;/font&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;private final COWArrayList&amp;lt;Appender&amp;lt;E&amp;gt;&amp;gt; &lt;b&gt;appenderList&lt;/b&gt; = new COWArrayList(new Appender[0]);&lt;br&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="-880" y="560" width="400" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="jevOpthSYDo48ZPv_LFc-76" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Appender （I）&lt;/b&gt;&lt;br&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;&lt;b&gt;日志输出目的地，可以理解为是一个 Writer, 有好几种实现&lt;/b&gt;&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;&lt;b&gt;比如：&lt;/b&gt;&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;&lt;b&gt;ConsoleAppender、A&lt;/b&gt;&lt;/font&gt;&lt;b style=&quot;color: rgb(0, 127, 255); background-color: initial;&quot;&gt;syncAppender、&lt;/b&gt;&lt;b style=&quot;color: rgb(0, 127, 255); background-color: initial;&quot;&gt;CyclicBufferAppender、OutputStreamAppender、FileAppender、RollingFileAppender、SMTPAppender、SyslogAppender 等等&lt;/b&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="-1320" y="560" width="400" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="jevOpthSYDo48ZPv_LFc-78" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;ConsoleAppender&lt;/b&gt;&lt;br&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;&lt;b&gt;记录与 Logger 绑定的 Appender 容器&lt;/b&gt;&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;// COWArrayList 是 Logback 重新封装的一个 COW 列表&lt;/font&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;private final COWArrayList&amp;lt;Appender&amp;lt;E&amp;gt;&amp;gt; &lt;b&gt;appenderList&lt;/b&gt; = new COWArrayList(new Appender[0]);&lt;br&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="-1320" y="800" width="400" height="120" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
