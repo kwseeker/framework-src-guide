@@ -1,14 +1,11 @@
-<mxfile host="Electron" modified="2024-10-08T04:29:56.319Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.6.5 Chrome/114.0.5735.243 Electron/25.3.1 Safari/537.36" etag="Wi2KUTT_xtgdp8EexBTF" version="21.6.5" type="device">
+<mxfile host="Electron" modified="2024-10-08T10:35:40.546Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.6.5 Chrome/114.0.5735.243 Electron/25.3.1 Safari/537.36" etag="mLa9jjj_M31NzUeGRceR" version="21.6.5" type="device">
   <diagram name="第 1 页" id="JqhDmuX6L9YFi_Qx25rx">
-    <mxGraphModel dx="4871" dy="1465" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="4074" dy="977" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="jevOpthSYDo48ZPv_LFc-1" value="&lt;h1&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;Logback 工作原理（1.5.6）&lt;/font&gt;&lt;/h1&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;测试代码: logging/logback。&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;从源码梳理 Logback 工作原理，理解清楚内部各种组件的工作职责和关系。&lt;/font&gt;&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" parent="1" vertex="1">
+        <mxCell id="jevOpthSYDo48ZPv_LFc-1" value="&lt;h1&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;Logback 工作原理（1.5.6）&lt;/font&gt;&lt;/h1&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;测试代码: SpringBoot-Labs/logging/logback。&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;从源码梳理 Logback 工作原理，理解清楚内部各种组件的工作职责和关系。&lt;/font&gt;&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="40" y="10" width="420" height="90" as="geometry" />
-        </mxCell>
-        <mxCell id="jevOpthSYDo48ZPv_LFc-2" value="初始化&lt;br&gt;（配置加载）" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
-          <mxGeometry x="40" y="120" width="200" height="60" as="geometry" />
         </mxCell>
         <mxCell id="jevOpthSYDo48ZPv_LFc-7" value="" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=auto;html=1;rounded=1;" parent="1" source="jevOpthSYDo48ZPv_LFc-4" target="jevOpthSYDo48ZPv_LFc-6" edge="1">
           <mxGeometry relative="1" as="geometry" />
@@ -16,8 +13,8 @@
         <mxCell id="jevOpthSYDo48ZPv_LFc-9" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;rounded=1;" parent="1" source="jevOpthSYDo48ZPv_LFc-4" target="jevOpthSYDo48ZPv_LFc-8" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="jevOpthSYDo48ZPv_LFc-4" value="获取 Logger 实例" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
-          <mxGeometry x="40" y="280" width="200" height="60" as="geometry" />
+        <mxCell id="jevOpthSYDo48ZPv_LFc-4" value="&lt;b&gt;获取 Logger 实例&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1ba1e2;strokeColor=#006EAF;fontColor=#ffffff;" parent="1" vertex="1">
+          <mxGeometry x="40" y="240" width="200" height="60" as="geometry" />
         </mxCell>
         <mxCell id="jevOpthSYDo48ZPv_LFc-11" value="" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=auto;html=1;rounded=1;" parent="1" source="jevOpthSYDo48ZPv_LFc-5" target="jevOpthSYDo48ZPv_LFc-10" edge="1">
           <mxGeometry relative="1" as="geometry" />
@@ -31,44 +28,44 @@
         <mxCell id="xc-GYIRrwOv2HIxgL6Iq-8" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="jevOpthSYDo48ZPv_LFc-5" target="xc-GYIRrwOv2HIxgL6Iq-7">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="jevOpthSYDo48ZPv_LFc-5" value="日志输出" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
-          <mxGeometry x="40" y="1040" width="200" height="60" as="geometry" />
+        <mxCell id="jevOpthSYDo48ZPv_LFc-5" value="&lt;b&gt;日志输出&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1ba1e2;strokeColor=#006EAF;fontColor=#ffffff;" parent="1" vertex="1">
+          <mxGeometry x="40" y="1000" width="200" height="60" as="geometry" />
         </mxCell>
         <mxCell id="jevOpthSYDo48ZPv_LFc-15" value="" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=auto;html=1;rounded=1;" parent="1" source="jevOpthSYDo48ZPv_LFc-6" target="jevOpthSYDo48ZPv_LFc-14" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="jevOpthSYDo48ZPv_LFc-6" value="通过 LoggerFactory 获取" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
-          <mxGeometry x="280" y="280" width="200" height="60" as="geometry" />
+          <mxGeometry x="280" y="240" width="200" height="60" as="geometry" />
         </mxCell>
         <mxCell id="jevOpthSYDo48ZPv_LFc-8" value="通过 Lombok @Slf4j 注解获取&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;TODO&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
-          <mxGeometry x="280" y="400" width="200" height="60" as="geometry" />
+          <mxGeometry x="280" y="360" width="200" height="60" as="geometry" />
         </mxCell>
         <mxCell id="jevOpthSYDo48ZPv_LFc-13" value="" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=auto;html=1;rounded=1;" parent="1" source="jevOpthSYDo48ZPv_LFc-10" target="jevOpthSYDo48ZPv_LFc-12" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="jevOpthSYDo48ZPv_LFc-10" value="log.trace(...);&lt;br&gt;log.debug(...);&lt;br&gt;log.info(...);&lt;br&gt;log.error(...);&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;以 info 为例&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
-          <mxGeometry x="280" y="1030" width="200" height="80" as="geometry" />
+          <mxGeometry x="280" y="990" width="200" height="80" as="geometry" />
         </mxCell>
         <mxCell id="jevOpthSYDo48ZPv_LFc-58" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="jevOpthSYDo48ZPv_LFc-12" target="jevOpthSYDo48ZPv_LFc-57" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="jevOpthSYDo48ZPv_LFc-12" value="&lt;b&gt;filterAndLog_0_Or3Plus&lt;/b&gt;(FQCN, null, Level.INFO, msg, null, null);&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;FQCN 是 Logback Logger 类的全限定名&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="520" y="1040" width="200" height="60" as="geometry" />
+          <mxGeometry x="520" y="1000" width="200" height="60" as="geometry" />
         </mxCell>
         <mxCell id="jevOpthSYDo48ZPv_LFc-17" value="" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=auto;html=1;rounded=1;" parent="1" source="jevOpthSYDo48ZPv_LFc-14" target="jevOpthSYDo48ZPv_LFc-16" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="jevOpthSYDo48ZPv_LFc-14" value="Logger log = LoggerFactory.getLogger(&lt;br&gt;LogbackExample.class);" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
-          <mxGeometry x="520" y="280" width="200" height="60" as="geometry" />
+          <mxGeometry x="520" y="240" width="200" height="60" as="geometry" />
         </mxCell>
         <mxCell id="jevOpthSYDo48ZPv_LFc-20" value="" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=auto;html=1;rounded=1;" parent="1" source="jevOpthSYDo48ZPv_LFc-16" target="jevOpthSYDo48ZPv_LFc-19" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="jevOpthSYDo48ZPv_LFc-16" value="Logger logger = getLogger(clazz.getName());&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;以类名作为Logger名&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="760" y="280" width="200" height="60" as="geometry" />
+          <mxGeometry x="760" y="240" width="200" height="60" as="geometry" />
         </mxCell>
         <mxCell id="jevOpthSYDo48ZPv_LFc-18" value="LoggerFactory" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
-          <mxGeometry x="820" y="250" width="100" height="30" as="geometry" />
+          <mxGeometry x="820" y="210" width="100" height="30" as="geometry" />
         </mxCell>
         <mxCell id="jevOpthSYDo48ZPv_LFc-22" value="" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=auto;html=1;rounded=1;" parent="1" source="jevOpthSYDo48ZPv_LFc-19" target="jevOpthSYDo48ZPv_LFc-21" edge="1">
           <mxGeometry relative="1" as="geometry" />
@@ -87,7 +84,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="jevOpthSYDo48ZPv_LFc-19" value="&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;// 1 此测试中返回的是 &lt;b&gt;LoggerContext &lt;/b&gt;实例&lt;/font&gt;&lt;/div&gt;&lt;div&gt;ILoggerFactory iLoggerFactory = &lt;b&gt;getILoggerFactory&lt;/b&gt;();&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;// 2 name是类的全限定名的话会按每一层创建一个 Logger, 最后返回的以完整限定名为名的 Logger&lt;/font&gt;&lt;/div&gt;&lt;div&gt;return iLoggerFactory.&lt;b&gt;getLogger&lt;/b&gt;(name);&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;先获取 LoggerFactory 实例，从后面看首次执行时才会执行初始化&lt;/font&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
-          <mxGeometry x="1000" y="280" width="440" height="100" as="geometry" />
+          <mxGeometry x="1000" y="240" width="440" height="100" as="geometry" />
         </mxCell>
         <mxCell id="jevOpthSYDo48ZPv_LFc-24" value="" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=auto;html=1;rounded=1;" parent="1" source="jevOpthSYDo48ZPv_LFc-21" target="jevOpthSYDo48ZPv_LFc-23" edge="1">
           <mxGeometry relative="1" as="geometry" />
@@ -96,7 +93,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="jevOpthSYDo48ZPv_LFc-21" value="return &lt;b&gt;getProvider&lt;/b&gt;()&lt;br&gt;.&lt;b&gt;getLoggerFactory&lt;/b&gt;();" style="rounded=1;whiteSpace=wrap;html=1;align=center;" parent="1" vertex="1">
-          <mxGeometry x="1480" y="280" width="200" height="60" as="geometry" />
+          <mxGeometry x="1480" y="240" width="200" height="60" as="geometry" />
         </mxCell>
         <mxCell id="jevOpthSYDo48ZPv_LFc-28" value="" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=auto;html=1;rounded=1;" parent="1" source="jevOpthSYDo48ZPv_LFc-23" target="jevOpthSYDo48ZPv_LFc-27" edge="1">
           <mxGeometry relative="1" as="geometry" />
@@ -107,13 +104,13 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="jevOpthSYDo48ZPv_LFc-23" value="&lt;b&gt;performInitialization&lt;/b&gt;();&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;首次执行会执行LoggerFactory 的初始化&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
-          <mxGeometry x="1720" y="280" width="200" height="60" as="geometry" />
+          <mxGeometry x="1720" y="240" width="200" height="60" as="geometry" />
         </mxCell>
         <mxCell id="jevOpthSYDo48ZPv_LFc-52" value="" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=auto;html=1;rounded=1;" parent="1" source="jevOpthSYDo48ZPv_LFc-25" target="jevOpthSYDo48ZPv_LFc-51" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="jevOpthSYDo48ZPv_LFc-25" value="获取Logger的逻辑是先看是不是 ROOT, 是 ROOT 直接返回根 Logger,&lt;br&gt;否则从 &lt;b&gt;loggerCache&lt;/b&gt; 中查，存在则直接返回否则创建一个新的Logger 并缓存到 loggerCache" style="rounded=1;whiteSpace=wrap;html=1;align=left;" parent="1" vertex="1">
-          <mxGeometry x="1480" y="730" width="200" height="80" as="geometry" />
+          <mxGeometry x="1480" y="690" width="200" height="80" as="geometry" />
         </mxCell>
         <mxCell id="jevOpthSYDo48ZPv_LFc-31" value="" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=auto;html=1;rounded=1;" parent="1" source="jevOpthSYDo48ZPv_LFc-27" target="jevOpthSYDo48ZPv_LFc-30" edge="1">
           <mxGeometry relative="1" as="geometry" />
@@ -137,22 +134,30 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="jevOpthSYDo48ZPv_LFc-27" value="&lt;font color=&quot;#007fff&quot;&gt;&lt;b&gt;//1 SPI 加载 SLF4JServiceProvider&amp;nbsp;实现, 因为引入的 Logback, 这里实际加载到的是&amp;nbsp;LogbackServiceProvider&lt;/b&gt;&lt;br&gt;&lt;/font&gt;List&amp;lt;SLF4JServiceProvider&amp;gt; providersList = &lt;b&gt;findServiceProviders&lt;/b&gt;();&lt;br&gt;...&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;// provider 如果有多个，使用第一个&lt;/font&gt;&lt;br&gt;&lt;div&gt;PROVIDER = (SLF4JServiceProvider)providersList.get(0);&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;&lt;b&gt;// 2&lt;/b&gt;&amp;nbsp;初始化选中的 Provider&amp;nbsp;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;PROVIDER.&lt;b&gt;initialize&lt;/b&gt;();&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;arcSize=4;" parent="1" vertex="1">
-          <mxGeometry x="1960" y="280" width="440" height="120" as="geometry" />
+          <mxGeometry x="1960" y="240" width="440" height="120" as="geometry" />
         </mxCell>
         <mxCell id="jevOpthSYDo48ZPv_LFc-35" value="" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=auto;html=1;rounded=1;" parent="1" source="jevOpthSYDo48ZPv_LFc-30" target="jevOpthSYDo48ZPv_LFc-34" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="jevOpthSYDo48ZPv_LFc-30" value="&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;//从这部分代码看到可以通过 “slf4j.provider” 手动指定我们要使用&lt;/font&gt;&lt;/div&gt;&lt;font color=&quot;#007fff&quot;&gt;SLF4JServiceProvider 实现，没有指定才会通过 SPI 加载&lt;br&gt;&lt;/font&gt;&lt;div&gt;SLF4JServiceProvider explicitProvider = &lt;b&gt;loadExplicitlySpecified&lt;/b&gt;(classLoaderOfLoggerFactory);&lt;/div&gt;&lt;div&gt;if (explicitProvider != null) {&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; providerList.add(explicitProvider);&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; return providerList;&lt;/div&gt;&lt;div&gt;} else {&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; ServiceLoader&amp;lt;SLF4JServiceProvider&amp;gt; serviceLoader = &lt;b&gt;getServiceLoader&lt;/b&gt;(classLoaderOfLoggerFactory);&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; Iterator&amp;lt;SLF4JServiceProvider&amp;gt; iterator = serviceLoader.iterator();&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; while(iterator.hasNext()) {&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; safelyInstantiate(providerList, iterator);&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; }&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; return providerList;&lt;/div&gt;&lt;div&gt;}&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;arcSize=2;" parent="1" vertex="1">
-          <mxGeometry x="2440" y="280" width="440" height="240" as="geometry" />
+          <mxGeometry x="2440" y="240" width="440" height="240" as="geometry" />
         </mxCell>
         <mxCell id="jevOpthSYDo48ZPv_LFc-34" value="serviceLoader = ServiceLoader.&lt;b&gt;load&lt;/b&gt;(&lt;br&gt;&lt;b&gt;SLF4JServiceProvider&lt;/b&gt;.class, classLoaderOfLoggerFactory);&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;SPI 加载 SLF4JServiceProvider 实现，这里是&amp;nbsp;LogbackServiceProvider&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
-          <mxGeometry x="2920" y="370" width="440" height="60" as="geometry" />
+          <mxGeometry x="2920" y="330" width="440" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="jevOpthSYDo48ZPv_LFc-37" value="&lt;div&gt;&lt;/div&gt;&lt;div&gt;&lt;div&gt;&lt;div&gt;public void initialize() {&lt;/div&gt;&lt;div&gt;&lt;b&gt;&lt;font color=&quot;#007fff&quot;&gt;&amp;nbsp; &amp;nbsp; // 这个就是 Logger 工厂&lt;/font&gt;&lt;/b&gt;&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; this.&lt;b&gt;defaultLoggerContext&lt;/b&gt; = new &lt;b&gt;LoggerContext&lt;/b&gt;();&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; this.defaultLoggerContext.setName(&quot;default&quot;);&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; this.initializeLoggerContext();&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; this.defaultLoggerContext.start();&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; this.&lt;b&gt;markerFactory&lt;/b&gt; = new BasicMarkerFactory();&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; this.&lt;b&gt;mdcAdapter&lt;/b&gt; = new LogbackMDCAdapter();&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; this.defaultLoggerContext.setMDCAdapter(this.mdcAdapter);&lt;/div&gt;&lt;div&gt;}&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;arcSize=2;" parent="1" vertex="1">
-          <mxGeometry x="2440" y="560" width="440" height="160" as="geometry" />
+        <mxCell id="xc-GYIRrwOv2HIxgL6Iq-35" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="jevOpthSYDo48ZPv_LFc-37" target="xc-GYIRrwOv2HIxgL6Iq-34">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="xc-GYIRrwOv2HIxgL6Iq-36" value="..." style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="xc-GYIRrwOv2HIxgL6Iq-35">
+          <mxGeometry x="-0.25" y="-5" relative="1" as="geometry">
+            <mxPoint x="5" y="-5" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="jevOpthSYDo48ZPv_LFc-37" value="&lt;div&gt;&lt;/div&gt;&lt;div&gt;&lt;div&gt;&lt;div&gt;public void initialize() {&lt;/div&gt;&lt;div&gt;&lt;b&gt;&lt;font color=&quot;#007fff&quot;&gt;&amp;nbsp; &amp;nbsp; // 这个就是 Logger 工厂&lt;/font&gt;&lt;/b&gt;&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; this.&lt;b&gt;defaultLoggerContext&lt;/b&gt; = new &lt;b&gt;LoggerContext&lt;/b&gt;();&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; this.defaultLoggerContext.setName(&quot;default&quot;);&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;&lt;b&gt;&amp;nbsp; &amp;nbsp; // 1 这里面做了一些初始化工作，包括解析 xml 配置文件，初始化组件&lt;/b&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; this.&lt;b&gt;initializeLoggerContext&lt;/b&gt;();&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; this.defaultLoggerContext.start();&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; this.&lt;b&gt;markerFactory&lt;/b&gt; = new BasicMarkerFactory();&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; this.&lt;b&gt;mdcAdapter&lt;/b&gt; = new LogbackMDCAdapter();&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; this.defaultLoggerContext.setMDCAdapter(this.mdcAdapter);&lt;/div&gt;&lt;div&gt;}&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;arcSize=2;" parent="1" vertex="1">
+          <mxGeometry x="2440" y="520" width="440" height="160" as="geometry" />
         </mxCell>
         <mxCell id="jevOpthSYDo48ZPv_LFc-40" value="LogbackServiceProvider" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
-          <mxGeometry x="2585" y="530" width="150" height="30" as="geometry" />
+          <mxGeometry x="2585" y="490" width="150" height="30" as="geometry" />
         </mxCell>
         <mxCell id="jevOpthSYDo48ZPv_LFc-50" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;endArrow=open;endFill=0;rounded=1;" parent="1" source="jevOpthSYDo48ZPv_LFc-42" target="jevOpthSYDo48ZPv_LFc-49" edge="1">
           <mxGeometry relative="1" as="geometry" />
@@ -161,10 +166,10 @@
           <mxGeometry x="-440" y="120" width="400" height="120" as="geometry" />
         </mxCell>
         <mxCell id="jevOpthSYDo48ZPv_LFc-44" value="return this.&lt;b&gt;defaultLoggerContext&lt;/b&gt;;" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
-          <mxGeometry x="1720" y="440" width="200" height="60" as="geometry" />
+          <mxGeometry x="1720" y="400" width="200" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="jevOpthSYDo48ZPv_LFc-48" value="&lt;font style=&quot;font-size: 12px;&quot;&gt;从源码中提取出来的重要信息：&lt;br style=&quot;&quot;&gt;&lt;/font&gt;&lt;ul style=&quot;font-size: 12px;&quot;&gt;&lt;li style=&quot;&quot;&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;每个Logger实例都有且仅有一个唯一的名字，根 Logger 的名字是 ROOT&lt;/font&gt;&lt;/li&gt;&lt;li style=&quot;&quot;&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;Logger 之间是一种树型关系，树的根是 ROOT Logger&lt;/font&gt;&lt;/li&gt;&lt;li style=&quot;&quot;&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;各组件的关系：&lt;br&gt;&lt;/font&gt;&lt;b&gt;Logger&lt;/b&gt; 通过 &lt;b&gt;Appender&lt;/b&gt; 输出日志；&lt;b&gt;Appender&lt;/b&gt; 可以绑定多个 &lt;b&gt;Filter&lt;/b&gt; 对日志事件（LoggingEvent）进行过滤（比如按日志级别选择输出）；&lt;br&gt;日志如果有参数输出前需要借助 MessageFormatter 格式化，还需要借助 &lt;b&gt;Encoder&lt;/b&gt; 进行序列化；&lt;br&gt;&lt;b&gt;Encoder&lt;/b&gt; 中通过布局 &lt;b&gt;Layout&lt;/b&gt; 控制日志序列化的格式 ；&lt;br&gt;&lt;b&gt;Layout&lt;/b&gt; 则是由一组 &lt;b&gt;Converter&lt;/b&gt; 组成，用于将格式中每一个片段替换成具体的值 ( Logback 支持的所有 Pattern 片段及对应的 Converter 可以在 PatternLayout &lt;b&gt;DEFAULT_CONVERTER_MAP&lt;/b&gt; 中查看 )。&lt;/li&gt;&lt;li style=&quot;&quot;&gt;&lt;br&gt;&lt;/li&gt;&lt;/ul&gt;" style="text;html=1;align=left;verticalAlign=top;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;" parent="1" vertex="1">
-          <mxGeometry x="480" y="10" width="1120" height="170" as="geometry" />
+        <mxCell id="jevOpthSYDo48ZPv_LFc-48" value="&lt;font style=&quot;font-size: 12px;&quot;&gt;从源码中提取出来的重要信息：&lt;br style=&quot;&quot;&gt;&lt;/font&gt;&lt;ul style=&quot;font-size: 12px;&quot;&gt;&lt;li style=&quot;&quot;&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;每个Logger实例都有且仅有一个唯一的名字，根 Logger 的名字是 ROOT&lt;/font&gt;&lt;/li&gt;&lt;li style=&quot;&quot;&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;Logger 之间是一种树型关系，树的根是 ROOT Logger&lt;/font&gt;&lt;/li&gt;&lt;li style=&quot;&quot;&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;各组件的关系：&lt;br&gt;&lt;/font&gt;&lt;b&gt;Logger&lt;/b&gt; 通过 &lt;b&gt;Appender&lt;/b&gt; 输出日志；&lt;b&gt;Appender&lt;/b&gt; 可以绑定多个 &lt;b&gt;Filter&lt;/b&gt; 对日志事件（LoggingEvent）进行过滤（比如按日志级别选择输出）；&lt;br&gt;日志如果有参数输出前需要借助 MessageFormatter 格式化，还需要借助 &lt;b&gt;Encoder&lt;/b&gt; 进行序列化；&lt;br&gt;&lt;b&gt;Encoder&lt;/b&gt; 中通过布局 &lt;b&gt;Layout&lt;/b&gt; 控制日志序列化的格式 ；&lt;br&gt;&lt;b&gt;Layout&lt;/b&gt; 则是由一组 &lt;b&gt;Converter&lt;/b&gt; 组成，用于将格式中每一个片段替换成具体的值 ( Logback 支持的所有 Pattern 片段及对应的 Converter 可以在 PatternLayout &lt;b&gt;DEFAULT_CONVERTER_MAP&lt;/b&gt; 中查看 )。&lt;/li&gt;&lt;/ul&gt;" style="text;html=1;align=left;verticalAlign=top;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;" parent="1" vertex="1">
+          <mxGeometry x="480" y="10" width="1120" height="150" as="geometry" />
         </mxCell>
         <mxCell id="jevOpthSYDo48ZPv_LFc-49" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;LoggerContext&amp;nbsp;&lt;/b&gt;&lt;br&gt;&lt;/p&gt;&lt;div style=&quot;text-align: center;&quot;&gt;extends ContextBase implements &lt;b&gt;ILoggerFactory&lt;/b&gt;, LifeCycle&lt;/div&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;b&gt;&lt;font color=&quot;#007fff&quot;&gt;Logger 上下文（Logger容器），且是 Logger 工厂&lt;/font&gt;&lt;/b&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;b&gt;&lt;font color=&quot;#007fff&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/b&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;font style=&quot;&quot; color=&quot;#007fff&quot;&gt;// 根 Logger, Logger 之间组成了一颗树，ROOT Logger 是这颗树的根节点&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;final Logger &lt;b&gt;root&lt;/b&gt; = new Logger(&quot;ROOT&quot;, (Logger)null, this);&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;private int size;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;private int noAppenderWarning = 0;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;private final List&amp;lt;LoggerContextListener&amp;gt; loggerContextListenerList = new ArrayList();&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;b&gt;&lt;font color=&quot;#007fff&quot;&gt;// Logger Name -&amp;gt; Logger 实例&lt;/font&gt;&lt;/b&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;private Map&amp;lt;String, Logger&amp;gt; &lt;b&gt;loggerCache&lt;/b&gt; = new ConcurrentHashMap();&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;private LoggerContextVO loggerContextRemoteView = new LoggerContextVO(this);&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;private final TurboFilterList &lt;b&gt;turboFilterList&lt;/b&gt; = new TurboFilterList();&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;private boolean packagingDataEnabled = false;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;SequenceNumberGenerator sequenceNumberGenerator = null;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;MDCAdapter mdcAdapter;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;private int maxCallerDataDepth = 8;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;int resetCount = 0;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;private List&amp;lt;String&amp;gt; frameworkPackages;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
           <mxGeometry x="-1080" y="120" width="600" height="320" as="geometry" />
@@ -173,10 +178,10 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="jevOpthSYDo48ZPv_LFc-51" value="&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;Logger 新建的逻辑，这段代码也挺重要，&lt;b&gt;对于理解Logger间的配置继承很重要&lt;/b&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;Logger logger = root;&lt;br&gt;&lt;/div&gt;&lt;div&gt;...&lt;/div&gt;&lt;div&gt;String childName;&lt;/div&gt;&lt;div&gt;while (true) {&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; int h = LoggerNameUtil.getSeparatorIndexOf(name, i);&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; if (h == -1) {&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; childName = name;&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; } else {&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; childName = name.substring(0, h);&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; }&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&amp;nbsp; &amp;nbsp; i = h + 1;&lt;/span&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; synchronized (logger) {&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;// 这里初始 logger 是 root logger, 这里先查下是否已创建，防止重复创建&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; childLogger = logger.&lt;b&gt;getChildByName&lt;/b&gt;(childName);&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; if (childLogger == null) {&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; // 为 logger 创建一个子 Logger&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; childLogger = logger.&lt;b&gt;createChildByName&lt;/b&gt;(childName);&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; loggerCache.put(childName, childLogger);&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; incSize();&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; }&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; }&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; logger = childLogger;&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; if (h == -1) {&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; return childLogger;&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; }&lt;/div&gt;&lt;div&gt;}&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;arcSize=3;" parent="1" vertex="1">
-          <mxGeometry x="1720" y="560" width="440" height="420" as="geometry" />
+          <mxGeometry x="1720" y="520" width="440" height="420" as="geometry" />
         </mxCell>
         <mxCell id="jevOpthSYDo48ZPv_LFc-53" value="&lt;font color=&quot;#007fff&quot;&gt;&lt;b&gt;比如这里创建名为&amp;nbsp;top.kwseeker.labs.logging.LogbackExample 的 Logger, 实际上会创建 5个 Logger 实例&lt;br&gt;和 ROOT logger 共同组成一颗树： ROOT -&amp;gt; top -&amp;gt; top.kwseeker -&amp;gt; ...&lt;br&gt;&lt;/b&gt;&lt;/font&gt;&lt;div style=&quot;&quot;&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;&lt;b&gt;&quot;top&quot; -&amp;gt; {Logger@2085} &quot;Logger[top]&quot;&lt;/b&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;&lt;b&gt;&quot;top.kwseeker&quot; -&amp;gt; {Logger@2113} &quot;Logger[top.kwseeker]&quot;&lt;/b&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;&lt;b&gt;&quot;top.kwseeker.labs&quot; -&amp;gt; {Logger@2143} &quot;Logger[top.kwseeker.labs]&quot;&lt;/b&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;&lt;b&gt;&quot;top.kwseeker.labs.logging&quot; -&amp;gt; {Logger@2173} &quot;Logger[top.kwseeker.labs.logging]&quot;&lt;/b&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;&lt;b&gt;&quot;top.kwseeker.labs.logging.LogbackExample&quot; -&amp;gt; {Logger@2202} &quot;Logger[top.kwseeker.labs.logging.LogbackExample]&quot;&lt;/b&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
-          <mxGeometry x="1000" y="820" width="710" height="130" as="geometry" />
+          <mxGeometry x="1000" y="780" width="710" height="130" as="geometry" />
         </mxCell>
         <mxCell id="jevOpthSYDo48ZPv_LFc-75" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;endArrow=open;endFill=0;" parent="1" source="jevOpthSYDo48ZPv_LFc-54" target="jevOpthSYDo48ZPv_LFc-74" edge="1">
           <mxGeometry relative="1" as="geometry" />
@@ -185,7 +190,7 @@
           <mxGeometry x="-440" y="480" width="400" height="280" as="geometry" />
         </mxCell>
         <mxCell id="jevOpthSYDo48ZPv_LFc-55" value="childLogger = new &lt;b&gt;Logger&lt;/b&gt;(childName, this, this.loggerContext);&lt;br&gt;childrenList.add(childLogger);" style="rounded=1;whiteSpace=wrap;html=1;align=left;arcSize=17;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
-          <mxGeometry x="2200" y="740" width="440" height="60" as="geometry" />
+          <mxGeometry x="2200" y="700" width="440" height="60" as="geometry" />
         </mxCell>
         <mxCell id="jevOpthSYDo48ZPv_LFc-60" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="jevOpthSYDo48ZPv_LFc-57" target="jevOpthSYDo48ZPv_LFc-59" edge="1">
           <mxGeometry relative="1" as="geometry" />
@@ -204,50 +209,50 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="jevOpthSYDo48ZPv_LFc-57" value="&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;&lt;b&gt;// 1 TurboFilter 过滤校验&lt;/b&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;final FilterReply decision = &lt;b&gt;loggerContext&lt;/b&gt;&lt;br&gt;&amp;nbsp; &amp;nbsp; .&lt;b&gt;getTurboFilterChainDecision_0_3OrMore&lt;/b&gt;(&lt;span style=&quot;background-color: initial;&quot;&gt;marker, this, level, msg,&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;params, t);&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;if (decision == FilterReply.NEUTRAL) {&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; if (effectiveLevelInt &amp;gt; level.levelInt) { &lt;font color=&quot;#007fff&quot;&gt;//经过过滤器后结果中立的话再判断下继承的可输出日志级别&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; return;&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; }&lt;/div&gt;&lt;div&gt;} else if (decision == FilterReply.DENY) {&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; return;&lt;/div&gt;&lt;div&gt;}&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;&lt;b&gt;// 2 输出日志&lt;/b&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;buildLoggingEventAndAppend&lt;/b&gt;(localFQCN, marker, level, msg, params, t);&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=4;align=left;" parent="1" vertex="1">
-          <mxGeometry x="760" y="1040" width="440" height="240" as="geometry" />
+          <mxGeometry x="760" y="1000" width="440" height="240" as="geometry" />
         </mxCell>
         <mxCell id="jevOpthSYDo48ZPv_LFc-59" value="&lt;div&gt;if (turboFilterList.size() == 0) {&amp;nbsp;&lt;font color=&quot;#007fff&quot;&gt;// 如果没有设置过滤器，则过滤结果：中立&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; return FilterReply.NEUTRAL;&amp;nbsp;&lt;/div&gt;&lt;div&gt;}&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;// 查找调用栈，发现只有 LogbackMetrics 有使用，暂略&lt;/font&gt;&lt;/div&gt;&lt;div&gt;return &lt;b&gt;turboFilterList&lt;/b&gt;.getTurboFilterChainDecision(marker, logger, level, format, params, t);&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;align=left;" parent="1" vertex="1">
-          <mxGeometry x="1240" y="1040" width="440" height="100" as="geometry" />
+          <mxGeometry x="1240" y="1000" width="440" height="100" as="geometry" />
         </mxCell>
         <mxCell id="jevOpthSYDo48ZPv_LFc-68" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="jevOpthSYDo48ZPv_LFc-62" target="jevOpthSYDo48ZPv_LFc-67" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="jevOpthSYDo48ZPv_LFc-62" value="&lt;div&gt;LoggingEvent le = new &lt;b&gt;LoggingEvent&lt;/b&gt;(localFQCN, this, level, msg, t, params);&lt;/div&gt;&lt;div&gt;le.addMarker(marker);&lt;/div&gt;&lt;div&gt;&lt;b&gt;callAppenders&lt;/b&gt;(le);&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;align=left;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
-          <mxGeometry x="1240" y="1220" width="440" height="80" as="geometry" />
+          <mxGeometry x="1240" y="1180" width="440" height="80" as="geometry" />
         </mxCell>
         <mxCell id="jevOpthSYDo48ZPv_LFc-65" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;LoggingEvent&lt;/b&gt;&lt;br&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;&lt;b&gt;Logger 事件，就是定义的某次日志输出行为&lt;/b&gt;&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;// Logger 实现类的全限定名&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;transient String fqnOfLoggerClass;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;private String threadName;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;private String &lt;b&gt;loggerName&lt;/b&gt;;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;// Logger 所属的 LoggerContext&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;private LoggerContext &lt;b&gt;loggerContext&lt;/b&gt;;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;private LoggerContextVO loggerContextVO;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;// 日志级别&lt;/font&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;private transient Level &lt;b&gt;level&lt;/b&gt;;&lt;/span&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//日志消息体&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;private String &lt;b&gt;message&lt;/b&gt;;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;// 格式话之后的消息体，就是最终打印出来的消息体&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;transient String formattedMessage;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;// 消息体后面的参数数组&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;private transient Object[] &lt;b&gt;argumentArray&lt;/b&gt;;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;// 用于记录异常信息&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;private ThrowableProxy &lt;b&gt;throwableProxy&lt;/b&gt;;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;// 异常调用栈信息&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;private StackTraceElement[] &lt;b&gt;callerDataArray&lt;/b&gt;;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//&amp;nbsp;&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;private List&amp;lt;Marker&amp;gt; &lt;b&gt;markerList&lt;/b&gt;;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;private Map&amp;lt;String, String&amp;gt; &lt;b&gt;mdcPropertyMap&lt;/b&gt;;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;List&amp;lt;KeyValuePair&amp;gt; &lt;b&gt;keyValuePairs&lt;/b&gt;;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;// 时间信息 java.time.Instant&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;private Instant &lt;b&gt;instant&lt;/b&gt;;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;// 时间戳&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;private long &lt;b&gt;timeStamp&lt;/b&gt;;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;private int &lt;b&gt;nanoseconds&lt;/b&gt;;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;// 序列号，需要配置&amp;nbsp;SequenceNumberGenerator&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;private long &lt;b&gt;sequenceNumber&lt;/b&gt;;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
           <mxGeometry x="-440" y="800" width="400" height="520" as="geometry" />
         </mxCell>
         <mxCell id="jevOpthSYDo48ZPv_LFc-66" value="Logger" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
-          <mxGeometry x="590" y="1010" width="60" height="30" as="geometry" />
+          <mxGeometry x="590" y="970" width="60" height="30" as="geometry" />
         </mxCell>
         <mxCell id="jevOpthSYDo48ZPv_LFc-70" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="jevOpthSYDo48ZPv_LFc-67" target="jevOpthSYDo48ZPv_LFc-69" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="jevOpthSYDo48ZPv_LFc-67" value="&lt;div&gt;int writes = 0;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;&lt;b&gt;// 这里可以看到 Logback 先将日志输出到 Logger 对应的Appender, 然后如果设置了 additive == true 还会一级一级遍历父 logger 输出到对应的 Appender&lt;/b&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;for (Logger l = this; l != null; l = l.parent) {&lt;/b&gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;&amp;nbsp; &amp;nbsp; &lt;font color=&quot;#007fff&quot;&gt;// 1&lt;/font&gt;&lt;/b&gt;&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; writes += l.&lt;b&gt;appendLoopOnAppenders&lt;/b&gt;(event);&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; if (!l.additive) { &lt;font color=&quot;#007fff&quot;&gt;//对应配置中 logger 标签的 additivity 属性&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; break;&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; }&lt;/div&gt;&lt;div&gt;}&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;// 说明没有 Appender 接收日志输出&lt;/font&gt;&lt;/div&gt;&lt;div&gt;if (writes == 0) {&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; loggerContext.noAppenderDefinedWarning(this);&lt;/div&gt;&lt;div&gt;}&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=5;align=left;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
-          <mxGeometry x="1720" y="1160" width="440" height="200" as="geometry" />
+          <mxGeometry x="1720" y="1120" width="440" height="200" as="geometry" />
         </mxCell>
         <mxCell id="jevOpthSYDo48ZPv_LFc-73" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="jevOpthSYDo48ZPv_LFc-69" target="jevOpthSYDo48ZPv_LFc-72" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="jevOpthSYDo48ZPv_LFc-69" value="&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;//将日志信息打印到当前 Logger 的 Appender, 如果没有 Appender的话当前Logger是不会打印的，而是一级一级往上遍历交给父 Logger 打印&lt;/font&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;if (aai != null) {&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; return &lt;b&gt;aai&lt;/b&gt;.&lt;b&gt;appendLoopOnAppenders&lt;/b&gt;(event);&lt;/div&gt;&lt;div&gt;} else {&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; return 0;&lt;/div&gt;&lt;div&gt;}&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=5;align=left;" parent="1" vertex="1">
-          <mxGeometry x="2200" y="1200" width="440" height="120" as="geometry" />
+          <mxGeometry x="2200" y="1160" width="440" height="120" as="geometry" />
         </mxCell>
         <mxCell id="jevOpthSYDo48ZPv_LFc-71" value="&lt;font color=&quot;#007fff&quot;&gt;&lt;b&gt;这样实现的好处是可以复用父 Logger 的配置，比如测试中明明没有给名为 top.kwseeker.labs.logging.LogbackExample 的 Logger 配置 Appender, 为何还是可以打印出日志？&lt;/b&gt;&lt;br&gt;&lt;b&gt;就是因为最终是通过 ROOT Logger 将日志打印出来的, Root Logger 的 Appender 信息是一定要配置的&lt;/b&gt;&lt;br&gt;&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
-          <mxGeometry x="1720" y="1120" width="970" height="40" as="geometry" />
+          <mxGeometry x="1720" y="1080" width="970" height="40" as="geometry" />
         </mxCell>
         <mxCell id="jevOpthSYDo48ZPv_LFc-93" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="jevOpthSYDo48ZPv_LFc-72" target="jevOpthSYDo48ZPv_LFc-92" edge="1">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="3140" y="1260" />
-              <mxPoint x="3140" y="1380" />
-              <mxPoint x="500" y="1380" />
-              <mxPoint x="500" y="1730" />
+              <mxPoint x="3140" y="1220" />
+              <mxPoint x="3140" y="1340" />
+              <mxPoint x="500" y="1340" />
+              <mxPoint x="500" y="1690" />
             </Array>
           </mxGeometry>
         </mxCell>
         <mxCell id="jevOpthSYDo48ZPv_LFc-72" value="&lt;div&gt;&lt;div&gt;int size = 0;&lt;/div&gt;&lt;div&gt;Appender&amp;lt;E&amp;gt;[] appenderArray = (Appender[])this.appenderList.asTypedArray();&lt;/div&gt;&lt;div&gt;int len = appenderArray.length;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;// 一个 Logger 可能绑定多个 Appender&lt;/font&gt;&lt;/div&gt;&lt;div&gt;for(int i = 0; i &amp;lt; len; ++i) {&lt;/div&gt;&lt;div&gt;&lt;b&gt;&amp;nbsp; &amp;nbsp; appenderArray[i].doAppend(e);&lt;/b&gt;&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; ++size;&lt;/div&gt;&lt;div&gt;}&lt;/div&gt;&lt;div&gt;return size;&lt;/div&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=5;align=left;" parent="1" vertex="1">
-          <mxGeometry x="2680" y="1190" width="440" height="140" as="geometry" />
+          <mxGeometry x="2680" y="1150" width="440" height="140" as="geometry" />
         </mxCell>
         <mxCell id="jevOpthSYDo48ZPv_LFc-77" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;endArrow=open;endFill=0;" parent="1" source="jevOpthSYDo48ZPv_LFc-74" target="jevOpthSYDo48ZPv_LFc-76" edge="1">
           <mxGeometry relative="1" as="geometry" />
@@ -314,8 +319,8 @@
         <mxCell id="jevOpthSYDo48ZPv_LFc-95" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="jevOpthSYDo48ZPv_LFc-92" target="jevOpthSYDo48ZPv_LFc-94" edge="1">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="740" y="1730" />
-              <mxPoint x="740" y="1550" />
+              <mxPoint x="740" y="1690" />
+              <mxPoint x="740" y="1510" />
             </Array>
           </mxGeometry>
         </mxCell>
@@ -329,26 +334,26 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="jevOpthSYDo48ZPv_LFc-92" value="&lt;b&gt;这里列举4种最常用的 Appender 实现的 doAppend() 方法实现&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
-          <mxGeometry x="520" y="1700" width="200" height="60" as="geometry" />
+          <mxGeometry x="520" y="1660" width="200" height="60" as="geometry" />
         </mxCell>
         <mxCell id="jevOpthSYDo48ZPv_LFc-103" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="jevOpthSYDo48ZPv_LFc-94" target="jevOpthSYDo48ZPv_LFc-102" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="jevOpthSYDo48ZPv_LFc-94" value="&lt;b&gt;ConsoleAppender#doAppend(...)&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
-          <mxGeometry x="760" y="1520" width="200" height="60" as="geometry" />
+          <mxGeometry x="760" y="1480" width="200" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="jevOpthSYDo48ZPv_LFc-96" value="&lt;b&gt;FileAppender#doAppend(...)&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
-          <mxGeometry x="760" y="1700" width="200" height="60" as="geometry" />
+        <mxCell id="jevOpthSYDo48ZPv_LFc-96" value="&lt;b&gt;FileAppender#doAppend(...)&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;TODO&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxGeometry x="760" y="1660" width="200" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="jevOpthSYDo48ZPv_LFc-97" value="&lt;b&gt;RollingFileAppender#doAppend(...)&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
-          <mxGeometry x="760" y="1780" width="200" height="60" as="geometry" />
+        <mxCell id="jevOpthSYDo48ZPv_LFc-97" value="&lt;b&gt;RollingFileAppender#doAppend(...)&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;&quot; color=&quot;#007fff&quot;&gt;TODO&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxGeometry x="760" y="1740" width="200" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="jevOpthSYDo48ZPv_LFc-100" value="&lt;b&gt;AsyncAppender#doAppend(...)&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
-          <mxGeometry x="760" y="1860" width="200" height="60" as="geometry" />
+        <mxCell id="jevOpthSYDo48ZPv_LFc-100" value="&lt;b&gt;AsyncAppender#doAppend(...)&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;TODO&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxGeometry x="760" y="1820" width="200" height="60" as="geometry" />
         </mxCell>
         <mxCell id="I5ocxiANe00BZeKkWwZh-10" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=0.996;exitY=0.319;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="jevOpthSYDo48ZPv_LFc-102" target="I5ocxiANe00BZeKkWwZh-11" edge="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="1480" y="1550" as="targetPoint" />
+            <mxPoint x="1480" y="1510" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="I5ocxiANe00BZeKkWwZh-19" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="jevOpthSYDo48ZPv_LFc-102" target="I5ocxiANe00BZeKkWwZh-18" edge="1">
@@ -360,10 +365,10 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="jevOpthSYDo48ZPv_LFc-102" value="&lt;div style=&quot;font-size: 11px;&quot;&gt;if (!Boolean.TRUE.equals(this.guard.get())) {&lt;/div&gt;&lt;div style=&quot;font-size: 11px;&quot;&gt;&amp;nbsp; &amp;nbsp; try {&lt;/div&gt;&lt;div style=&quot;font-size: 11px;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; this.guard.set(Boolean.TRUE);&lt;/div&gt;&lt;div style=&quot;font-size: 11px;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; ...&lt;/div&gt;&lt;div style=&quot;font-size: 11px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 11px;&quot;&gt;&lt;b style=&quot;font-size: 11px;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; // 1 遍历 fai (FilterAttachableImpl) 中的 Filter 列表依次执行各个过滤器的过滤检查&lt;/b&gt;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 11px;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; if (this.&lt;b&gt;getFilterChainDecision&lt;/b&gt;(eventObject) == FilterReply.DENY) {&lt;/div&gt;&lt;div style=&quot;font-size: 11px;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; return;&lt;/div&gt;&lt;div style=&quot;font-size: 11px;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; }&lt;/div&gt;&lt;div style=&quot;font-size: 11px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 11px;&quot;&gt;&lt;b&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; // 2 没有被拒绝就调用 Appender 的 append() 方法输出日志&lt;/b&gt;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 11px;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; this.&lt;b&gt;append&lt;/b&gt;(eventObject);&lt;/div&gt;&lt;div style=&quot;font-size: 11px;&quot;&gt;&amp;nbsp; &amp;nbsp; } catch (Exception var6) {&lt;/div&gt;&lt;div style=&quot;font-size: 11px;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; if (this.exceptionCount++ &amp;lt; 3) {&lt;/div&gt;&lt;div style=&quot;font-size: 11px;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; this.addError(&quot;Appender [&quot; + this.name + &quot;] failed to append.&quot;, var6);&lt;/div&gt;&lt;div style=&quot;font-size: 11px;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; }&lt;/div&gt;&lt;div style=&quot;font-size: 11px;&quot;&gt;&amp;nbsp; &amp;nbsp; } finally {&lt;/div&gt;&lt;div style=&quot;font-size: 11px;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; this.guard.set(Boolean.FALSE);&lt;/div&gt;&lt;div style=&quot;font-size: 11px;&quot;&gt;&amp;nbsp; &amp;nbsp; }&lt;/div&gt;&lt;div style=&quot;font-size: 11px;&quot;&gt;}&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;arcSize=3;fontSize=11;" parent="1" vertex="1">
-          <mxGeometry x="1000" y="1420" width="440" height="260" as="geometry" />
+          <mxGeometry x="1000" y="1380" width="440" height="260" as="geometry" />
         </mxCell>
         <mxCell id="I5ocxiANe00BZeKkWwZh-1" value="UnsynchronizedAppenderBase" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
-          <mxGeometry x="1125" y="1390" width="190" height="30" as="geometry" />
+          <mxGeometry x="1125" y="1350" width="190" height="30" as="geometry" />
         </mxCell>
         <mxCell id="I5ocxiANe00BZeKkWwZh-5" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;endArrow=open;endFill=0;" parent="1" source="I5ocxiANe00BZeKkWwZh-2" target="I5ocxiANe00BZeKkWwZh-6" edge="1">
           <mxGeometry relative="1" as="geometry">
@@ -386,22 +391,22 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="I5ocxiANe00BZeKkWwZh-11" value="&lt;div&gt;Filter&amp;lt;E&amp;gt;[] filterArrray = (Filter[])this.filterList.asTypedArray();&lt;/div&gt;&lt;div&gt;int len = filterArrray.length;&lt;/div&gt;&lt;div&gt;for(int i = 0; i &amp;lt; len; ++i) {&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; FilterReply r = filterArrray[i].&lt;b&gt;decide&lt;/b&gt;(event);&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; if (r == FilterReply.DENY || r == FilterReply.ACCEPT) {&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; return r;&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; }&lt;/div&gt;&lt;div&gt;}&lt;/div&gt;&lt;div&gt;return FilterReply.NEUTRAL;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;arcSize=6;" parent="1" vertex="1">
-          <mxGeometry x="1480" y="1420" width="440" height="140" as="geometry" />
+          <mxGeometry x="1480" y="1380" width="440" height="140" as="geometry" />
         </mxCell>
         <mxCell id="I5ocxiANe00BZeKkWwZh-15" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="I5ocxiANe00BZeKkWwZh-12" target="I5ocxiANe00BZeKkWwZh-14" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="I5ocxiANe00BZeKkWwZh-12" value="&lt;b&gt;一个 Appender 可能通过 FilterAttachableImpl 绑定多个 Filter,&amp;nbsp;这里列举种最常用的 Filter 实现的 decide() 方法&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
-          <mxGeometry x="1960" y="1460" width="200" height="60" as="geometry" />
+          <mxGeometry x="1960" y="1420" width="200" height="60" as="geometry" />
         </mxCell>
         <mxCell id="I5ocxiANe00BZeKkWwZh-17" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="I5ocxiANe00BZeKkWwZh-14" target="I5ocxiANe00BZeKkWwZh-16" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="I5ocxiANe00BZeKkWwZh-14" value="&lt;b&gt;ThresholdFilter#decide(...)&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
-          <mxGeometry x="2200" y="1460" width="200" height="60" as="geometry" />
+          <mxGeometry x="2200" y="1420" width="200" height="60" as="geometry" />
         </mxCell>
         <mxCell id="I5ocxiANe00BZeKkWwZh-16" value="&lt;div style=&quot;font-size: 11px;&quot;&gt;if (!isStarted()) {&lt;/div&gt;&lt;div style=&quot;font-size: 11px;&quot;&gt;&amp;nbsp; &amp;nbsp; return FilterReply.NEUTRAL;&lt;/div&gt;&lt;div style=&quot;font-size: 11px;&quot;&gt;}&lt;/div&gt;&lt;div style=&quot;font-size: 11px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 11px;&quot;&gt;// 仅仅是比较一下过滤器的日志级别和日志的级别&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 11px;&quot;&gt;if (event.getLevel().&lt;b style=&quot;font-size: 11px;&quot;&gt;isGreaterOrEqual&lt;/b&gt;(level)) {&lt;/div&gt;&lt;div style=&quot;font-size: 11px;&quot;&gt;&amp;nbsp; &amp;nbsp; return FilterReply.NEUTRAL;&lt;/div&gt;&lt;div style=&quot;font-size: 11px;&quot;&gt;} else {&lt;/div&gt;&lt;div style=&quot;font-size: 11px;&quot;&gt;&amp;nbsp; &amp;nbsp; return FilterReply.DENY;&lt;/div&gt;&lt;div style=&quot;font-size: 11px;&quot;&gt;}&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;fontSize=11;arcSize=6;" parent="1" vertex="1">
-          <mxGeometry x="2440" y="1430" width="440" height="120" as="geometry" />
+          <mxGeometry x="2440" y="1390" width="440" height="120" as="geometry" />
         </mxCell>
         <mxCell id="I5ocxiANe00BZeKkWwZh-22" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1.002;exitY=0.593;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="I5ocxiANe00BZeKkWwZh-18" target="I5ocxiANe00BZeKkWwZh-21" edge="1">
           <mxGeometry relative="1" as="geometry" />
@@ -410,31 +415,31 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="I5ocxiANe00BZeKkWwZh-18" value="&lt;div&gt;if (event instanceof &lt;b&gt;DeferredProcessingAware&lt;/b&gt;) {&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;&lt;b&gt;&amp;nbsp; &amp;nbsp; // 执行 LoggingEvent 的延迟处理（前面可以看到 LoggingEvent 到这里还是不完整的，有些字段为空），包括格式化日志消息、获取当前线程名、获取 MDC属性Map&lt;/b&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; ((DeferredProcessingAware)event).&lt;b&gt;prepareForDeferredProcessing&lt;/b&gt;();&lt;/div&gt;&lt;div&gt;}&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;this.&lt;b&gt;writeOut&lt;/b&gt;(event);&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;arcSize=6;" parent="1" vertex="1">
-          <mxGeometry x="1480" y="1600" width="440" height="120" as="geometry" />
+          <mxGeometry x="1480" y="1560" width="440" height="120" as="geometry" />
         </mxCell>
         <mxCell id="I5ocxiANe00BZeKkWwZh-21" value="&lt;div&gt;this.getFormattedMessage();&lt;/div&gt;&lt;div&gt;this.getThreadName();&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;this.getMDCPropertyMap();&lt;/span&gt;&lt;br&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;arcSize=10;" parent="1" vertex="1">
-          <mxGeometry x="1960" y="1600" width="200" height="60" as="geometry" />
+          <mxGeometry x="1960" y="1560" width="200" height="60" as="geometry" />
         </mxCell>
         <mxCell id="I5ocxiANe00BZeKkWwZh-23" value="LoggingEvent" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
-          <mxGeometry x="2010" y="1570" width="100" height="30" as="geometry" />
+          <mxGeometry x="2010" y="1530" width="100" height="30" as="geometry" />
         </mxCell>
         <mxCell id="I5ocxiANe00BZeKkWwZh-27" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="I5ocxiANe00BZeKkWwZh-24" target="I5ocxiANe00BZeKkWwZh-26" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="I5ocxiANe00BZeKkWwZh-24" value="&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;// LoggingEvent 序列化&lt;/font&gt;&lt;/div&gt;&lt;div&gt;byte[] byteArray = this.&lt;b&gt;encoder&lt;/b&gt;.&lt;b&gt;encode&lt;/b&gt;(event);&lt;br&gt;&lt;/div&gt;&lt;div&gt;this.&lt;b&gt;writeBytes&lt;/b&gt;(byteArray);&lt;br&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;arcSize=10;" parent="1" vertex="1">
-          <mxGeometry x="1960" y="1680" width="200" height="60" as="geometry" />
+          <mxGeometry x="1960" y="1640" width="200" height="60" as="geometry" />
         </mxCell>
         <mxCell id="I5ocxiANe00BZeKkWwZh-29" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="I5ocxiANe00BZeKkWwZh-26" target="I5ocxiANe00BZeKkWwZh-28" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="I5ocxiANe00BZeKkWwZh-26" value="&lt;div&gt;一个 Appender 最多只有一个 Encoder, Encoder 有多种实现，这里列举种最常用的实现&lt;br&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;arcSize=10;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
-          <mxGeometry x="2200" y="1680" width="200" height="60" as="geometry" />
+          <mxGeometry x="2200" y="1640" width="200" height="60" as="geometry" />
         </mxCell>
         <mxCell id="I5ocxiANe00BZeKkWwZh-41" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="I5ocxiANe00BZeKkWwZh-28" target="I5ocxiANe00BZeKkWwZh-40" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="I5ocxiANe00BZeKkWwZh-28" value="&lt;div&gt;&lt;b&gt;PatternLayoutEncoder&lt;/b&gt;#encode(...)&lt;br&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=center;arcSize=10;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
-          <mxGeometry x="2440" y="1680" width="200" height="60" as="geometry" />
+          <mxGeometry x="2440" y="1640" width="200" height="60" as="geometry" />
         </mxCell>
         <mxCell id="I5ocxiANe00BZeKkWwZh-31" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Encoder (I)&lt;/b&gt;&lt;br&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;&lt;b&gt;用于将日志序列化的编码器&lt;/b&gt;&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;&lt;b&gt;&lt;br&gt;&lt;/b&gt;&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;byte[] headerBytes();&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;byte[] encode(E var1);&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;byte[] footerBytes();&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
           <mxGeometry x="-1320" y="1680" width="400" height="120" as="geometry" />
@@ -476,7 +481,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="I5ocxiANe00BZeKkWwZh-40" value="&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;&lt;b style=&quot;font-size: 10px;&quot;&gt;// 遍历执行 Converter 链表中的 Converter 按照 Pattern 格式生成&lt;/b&gt;&lt;/font&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;&lt;b style=&quot;font-size: 10px;&quot;&gt;日志消息&lt;/b&gt;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;String txt = this.&lt;b style=&quot;font-size: 10px;&quot;&gt;layout&lt;/b&gt;.&lt;b style=&quot;font-size: 10px;&quot;&gt;doLayout&lt;/b&gt;(event);&lt;br style=&quot;font-size: 10px;&quot;&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;// 字符串转成字节数组&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;return this.&lt;b style=&quot;font-size: 10px;&quot;&gt;convertToBytes&lt;/b&gt;(txt);&lt;br style=&quot;font-size: 10px;&quot;&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;arcSize=10;fontSize=10;" parent="1" vertex="1">
-          <mxGeometry x="2680" y="1670" width="200" height="80" as="geometry" />
+          <mxGeometry x="2680" y="1630" width="200" height="80" as="geometry" />
         </mxCell>
         <mxCell id="I5ocxiANe00BZeKkWwZh-42" value="&lt;div style=&quot;text-align: center;&quot;&gt;&lt;b&gt;Layout&lt;/b&gt;&lt;b style=&quot;background-color: initial;&quot;&gt;&amp;nbsp;(I)&lt;/b&gt;&lt;/div&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;&lt;b&gt;布局, 用于控制日志输出的组成&lt;/b&gt;&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;&lt;b&gt;&lt;br&gt;&lt;/b&gt;&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;String doLayout(E var1);&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;String getFileHeader();&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;String getPresentationHeader();&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;String getPresentationFooter();&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;String getFileFooter();&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;String getContentType();&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
           <mxGeometry x="-1800" y="1680" width="400" height="160" as="geometry" />
@@ -503,25 +508,25 @@
           <mxGeometry x="-1800" y="2320" width="400" height="200" as="geometry" />
         </mxCell>
         <mxCell id="I5ocxiANe00BZeKkWwZh-51" value="LayoutWrappingEncoder" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
-          <mxGeometry x="2700" y="1640" width="160" height="30" as="geometry" />
+          <mxGeometry x="2700" y="1600" width="160" height="30" as="geometry" />
         </mxCell>
         <mxCell id="I5ocxiANe00BZeKkWwZh-56" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="I5ocxiANe00BZeKkWwZh-52" target="I5ocxiANe00BZeKkWwZh-55" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="I5ocxiANe00BZeKkWwZh-52" value="&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;if (!isStarted()) {&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp; &amp;nbsp; return CoreConstants.EMPTY_STRING;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;}&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;return &lt;b&gt;writeLoopOnConverters&lt;/b&gt;(event);&lt;/div&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;arcSize=10;fontSize=10;" parent="1" vertex="1">
-          <mxGeometry x="2920" y="1680" width="200" height="60" as="geometry" />
+          <mxGeometry x="2920" y="1640" width="200" height="60" as="geometry" />
         </mxCell>
         <mxCell id="I5ocxiANe00BZeKkWwZh-54" value="PatternLayout" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
-          <mxGeometry x="2970" y="1650" width="100" height="30" as="geometry" />
+          <mxGeometry x="2970" y="1610" width="100" height="30" as="geometry" />
         </mxCell>
         <mxCell id="xc-GYIRrwOv2HIxgL6Iq-1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="I5ocxiANe00BZeKkWwZh-55" target="I5ocxiANe00BZeKkWwZh-73">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="I5ocxiANe00BZeKkWwZh-55" value="&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;div&gt;StringBuilder strBuilder = new StringBuilder(256);&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;&lt;b&gt;// PatternLayout 中包含了一组 Converter， head 指向 Converter链表中第一个 Converter&lt;/b&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;for(Converter&amp;lt;E&amp;gt; c = this.&lt;b&gt;head&lt;/b&gt;; c != null; c = c.getNext()) {&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; c.&lt;b&gt;write&lt;/b&gt;(strBuilder, event); &lt;font color=&quot;#007fff&quot;&gt;//转换Pattern中每一部分值附加到StringBuilder&lt;/font&gt;&lt;/div&gt;&lt;div&gt;}&lt;/div&gt;&lt;div&gt;return strBuilder.toString();&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;arcSize=10;fontSize=10;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
-          <mxGeometry x="3160" y="1660" width="280" height="100" as="geometry" />
+          <mxGeometry x="3160" y="1620" width="280" height="100" as="geometry" />
         </mxCell>
         <mxCell id="I5ocxiANe00BZeKkWwZh-57" value="PatternLayoutBase" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
-          <mxGeometry x="3235" y="1630" width="130" height="30" as="geometry" />
+          <mxGeometry x="3235" y="1590" width="130" height="30" as="geometry" />
         </mxCell>
         <mxCell id="I5ocxiANe00BZeKkWwZh-59" value="&lt;div style=&quot;text-align: center;&quot;&gt;&lt;b&gt;Converter (A)&lt;/b&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;b&gt;&lt;font color=&quot;#007fff&quot;&gt;转换器，用于将布局中%开头的字段替换为具体的值，有几十种实现&lt;/font&gt;&lt;/b&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;// 单向链表的形式&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;Converter&amp;lt;E&amp;gt; next;&lt;br&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;// 过滤逻辑的实现方法&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;public abstract FilterReply &lt;b&gt;decide&lt;/b&gt;(E var1);&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
           <mxGeometry x="-2240" y="1680" width="400" height="160" as="geometry" />
@@ -551,7 +556,7 @@
           <mxGeometry x="-2240" y="2360" width="400" height="160" as="geometry" />
         </mxCell>
         <mxCell id="I5ocxiANe00BZeKkWwZh-71" value="&lt;font color=&quot;#007fff&quot;&gt;&lt;b&gt;比如&amp;nbsp;&amp;lt;pattern&amp;gt;%d{yy-MM-dd.HH:mm:ss.SSS} [%-16t] %-5p %-22c{0}%X{ServiceId} -%X{trace-id} %m%n&amp;lt;/pattern&amp;gt; 配置会被解析为一组 Converter 链表&lt;br&gt;链表从头到尾依次是：&lt;br&gt;DateConverter -&amp;gt; LiteralConverter -&amp;gt; ThreadConverter -&amp;gt; LiteralConverter -&amp;gt; LevelConverter -&amp;gt; LiteralConverter -&amp;gt; LoggerConverter -&amp;gt; MDCConverter -&amp;gt;&amp;nbsp;&lt;br&gt;LiteralConverter -&amp;gt;&amp;nbsp;MDCConverter -&amp;gt;&amp;nbsp;LiteralConverter -&amp;gt; MessageConverter -&amp;gt; LineSeparatorConverter -&amp;gt; ThrowableProxyConverter&lt;/b&gt;&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
-          <mxGeometry x="3470" y="1660" width="890" height="70" as="geometry" />
+          <mxGeometry x="3470" y="1620" width="890" height="70" as="geometry" />
         </mxCell>
         <mxCell id="I5ocxiANe00BZeKkWwZh-72" value="&lt;font color=&quot;#007fff&quot;&gt;&lt;b&gt;比如&amp;nbsp;&amp;lt;pattern&amp;gt;%d{yy-MM-dd.HH:mm:ss.SSS} [%-16t] %-5p %-22c{0}%X{ServiceId} -%X{trace-id} %m%n&amp;lt;/pattern&amp;gt; 配置会被解析为一组 Converter 链表&lt;br&gt;链表从头到尾依次是：&lt;br&gt;DateConverter -&amp;gt; LiteralConverter -&amp;gt; ThreadConverter -&amp;gt; LiteralConverter -&amp;gt; LevelConverter -&amp;gt; LiteralConverter -&amp;gt; LoggerConverter -&amp;gt; MDCConverter -&amp;gt;&amp;nbsp;&lt;br&gt;LiteralConverter -&amp;gt;&amp;nbsp;MDCConverter -&amp;gt;&amp;nbsp;LiteralConverter -&amp;gt; MessageConverter -&amp;gt; LineSeparatorConverter -&amp;gt; ThrowableProxyConverter&lt;/b&gt;&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
           <mxGeometry x="-2240" y="1595" width="890" height="70" as="geometry" />
@@ -578,64 +583,64 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="I5ocxiANe00BZeKkWwZh-73" value="&lt;div&gt;一个 Layout Pattern 被解析为 Converter 链表后，通常会包含多种Converter 实现，这里展示几种较为重要的实现&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;arcSize=10;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
-          <mxGeometry x="2200" y="1800" width="200" height="60" as="geometry" />
+          <mxGeometry x="2200" y="1760" width="200" height="60" as="geometry" />
         </mxCell>
         <mxCell id="I5ocxiANe00BZeKkWwZh-89" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="I5ocxiANe00BZeKkWwZh-74" target="I5ocxiANe00BZeKkWwZh-88" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="I5ocxiANe00BZeKkWwZh-74" value="&lt;div&gt;&lt;b&gt;DateConverter&lt;/b&gt;#write(...)&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=center;arcSize=10;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
-          <mxGeometry x="2440" y="1800" width="200" height="60" as="geometry" />
+          <mxGeometry x="2440" y="1760" width="200" height="60" as="geometry" />
         </mxCell>
         <mxCell id="I5ocxiANe00BZeKkWwZh-76" value="&lt;b&gt;ThreadConverter&lt;/b&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;#write(...)&lt;/span&gt;&lt;b&gt;&lt;br&gt;&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=center;arcSize=10;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
-          <mxGeometry x="2440" y="1880" width="200" height="60" as="geometry" />
+          <mxGeometry x="2440" y="1840" width="200" height="60" as="geometry" />
         </mxCell>
         <mxCell id="I5ocxiANe00BZeKkWwZh-78" value="&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;b&gt;LevelConverter&lt;/b&gt;#write(...)&lt;/span&gt;&lt;b&gt;&lt;br&gt;&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=center;arcSize=10;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
-          <mxGeometry x="2440" y="1960" width="200" height="60" as="geometry" />
+          <mxGeometry x="2440" y="1920" width="200" height="60" as="geometry" />
         </mxCell>
         <mxCell id="I5ocxiANe00BZeKkWwZh-80" value="&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;b&gt;LoggerConverter&lt;/b&gt;#write(...)&lt;br&gt;&lt;/span&gt;&lt;b&gt;&lt;font color=&quot;#007fff&quot;&gt;用于打印FQN(Logger类全限定名)中&lt;br&gt;的类名&lt;/font&gt;&lt;br&gt;&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=center;arcSize=10;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
-          <mxGeometry x="2440" y="2040" width="200" height="60" as="geometry" />
+          <mxGeometry x="2440" y="2000" width="200" height="60" as="geometry" />
         </mxCell>
         <mxCell id="I5ocxiANe00BZeKkWwZh-81" value="&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;b&gt;MDCConverter&lt;/b&gt;#write(...)&lt;br&gt;&lt;/span&gt;&lt;b&gt;&lt;font color=&quot;#007fff&quot;&gt;转换MDC属性占位符&lt;/font&gt;&lt;br&gt;&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=center;arcSize=10;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
-          <mxGeometry x="2440" y="2120" width="200" height="60" as="geometry" />
+          <mxGeometry x="2440" y="2080" width="200" height="60" as="geometry" />
         </mxCell>
         <mxCell id="I5ocxiANe00BZeKkWwZh-82" value="&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;b&gt;MessageConverter&lt;/b&gt;#write(...)&lt;/span&gt;&lt;b&gt;&lt;br&gt;&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=center;arcSize=10;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
-          <mxGeometry x="2440" y="2200" width="200" height="60" as="geometry" />
+          <mxGeometry x="2440" y="2160" width="200" height="60" as="geometry" />
         </mxCell>
         <mxCell id="I5ocxiANe00BZeKkWwZh-83" value="&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;b&gt;ThrowableProxyConverter&lt;/b&gt;#write(...)&lt;br&gt;&lt;/span&gt;&lt;b&gt;&lt;font color=&quot;#007fff&quot;&gt;处理异常信息，递归遍历异常栈转成String, 然后格式化追加到 StringBuilder&lt;/font&gt;&lt;br&gt;&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=center;arcSize=10;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
-          <mxGeometry x="2440" y="2278" width="200" height="60" as="geometry" />
+          <mxGeometry x="2440" y="2238" width="200" height="60" as="geometry" />
         </mxCell>
         <mxCell id="I5ocxiANe00BZeKkWwZh-88" value="long timestamp = le.&lt;b&gt;getTimeStamp&lt;/b&gt;();&lt;br&gt;return cachingDateFormatter&lt;br&gt;.format(timestamp);" style="rounded=1;whiteSpace=wrap;html=1;align=center;arcSize=10;" parent="1" vertex="1">
-          <mxGeometry x="2680" y="1800" width="200" height="60" as="geometry" />
+          <mxGeometry x="2680" y="1760" width="200" height="60" as="geometry" />
         </mxCell>
         <mxCell id="I5ocxiANe00BZeKkWwZh-90" value="&lt;font color=&quot;#007fff&quot;&gt;用于转换 %d, 比如测试中的 %d{yy-MM-dd.HH:mm:ss.SSS}，&lt;br&gt;从 LoggingEvent 获取日志时间戳使用 CachingDateFormatter 转换成&amp;nbsp;yy-MM-dd.HH:mm:ss.SSS 格式&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
-          <mxGeometry x="2890" y="1810" width="560" height="40" as="geometry" />
+          <mxGeometry x="2890" y="1770" width="560" height="40" as="geometry" />
         </mxCell>
         <mxCell id="I5ocxiANe00BZeKkWwZh-91" value="&lt;font color=&quot;#007fff&quot;&gt;用于转换 %t, 比如测试中的 %-16t，&lt;br&gt;从 LoggingEvent 获取线程名，然后经过最小宽度16左对齐处理后，追加到 StringBuilder&lt;br&gt;比如线程名 “main” 格式化处理后是 “main&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; ”, 后边12位填充空格&lt;br&gt;&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
-          <mxGeometry x="2650" y="1880" width="490" height="60" as="geometry" />
+          <mxGeometry x="2650" y="1840" width="490" height="60" as="geometry" />
         </mxCell>
         <mxCell id="I5ocxiANe00BZeKkWwZh-92" value="&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;关于格式信息，比如 %-16t&amp;nbsp;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;this.formattingInfo = {FormatInfo@2284}&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;&amp;nbsp;min = 16 //最小宽度&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;&amp;nbsp;max = 2147483647 //最大宽度&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;&amp;nbsp;leftPad = false&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;//是否左边填充空格&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;&amp;nbsp;leftTruncate = true&amp;nbsp; //是否删除左边溢出的字符&lt;/font&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
           <mxGeometry x="-2480" y="1945" width="270" height="100" as="geometry" />
         </mxCell>
         <mxCell id="I5ocxiANe00BZeKkWwZh-93" value="&lt;font color=&quot;#007fff&quot;&gt;用于转换 %p, 比如测试中的 %-5p，&lt;br&gt;从 LoggingEvent 获取日志级别名，然后经过最小宽度5左对齐处理后，追加到 StringBuilder&lt;br&gt;比如日志事件级别 “INFO” 格式化处理后是 “INFO ”&lt;br&gt;&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
-          <mxGeometry x="2650" y="1960" width="510" height="60" as="geometry" />
+          <mxGeometry x="2650" y="1920" width="510" height="60" as="geometry" />
         </mxCell>
         <mxCell id="I5ocxiANe00BZeKkWwZh-94" value="&lt;font color=&quot;#007fff&quot;&gt;用于转换 %c, 比如测试中的 %-22c{0}，&lt;br&gt;从 LoggingEvent 获取Logger 名，截取类名，然后经过最小宽度22左对齐处理后，追加到 StringBuilder&lt;br&gt;&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
-          <mxGeometry x="2650" y="2050" width="570" height="40" as="geometry" />
+          <mxGeometry x="2650" y="2010" width="570" height="40" as="geometry" />
         </mxCell>
         <mxCell id="I5ocxiANe00BZeKkWwZh-95" value="&lt;font color=&quot;#007fff&quot;&gt;用于转换 %X, 比如测试中的 %X{ServiceId} %X{trace-id}，&lt;br&gt;从 LoggingEvent 获取mdcPropertyMap，根据占位符key读取值替换占位符，关键是看 mdcPropertyMap 中的值是怎么写进去的，TODO&lt;br&gt;&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
-          <mxGeometry x="2650" y="2130" width="740" height="40" as="geometry" />
+          <mxGeometry x="2650" y="2090" width="740" height="40" as="geometry" />
         </mxCell>
         <mxCell id="I5ocxiANe00BZeKkWwZh-96" value="&lt;font color=&quot;#007fff&quot;&gt;用于转换 %m,&amp;nbsp;&lt;br&gt;从 LoggingEvent 获取 formattedMessage (这个值是前面prepareForDeferredProcessing中转换完成的)，追加到 StringBuilder&lt;br&gt;&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
-          <mxGeometry x="2650" y="2210" width="680" height="40" as="geometry" />
+          <mxGeometry x="2650" y="2170" width="680" height="40" as="geometry" />
         </mxCell>
         <mxCell id="xc-GYIRrwOv2HIxgL6Iq-2" value="&lt;font style=&quot;&quot; color=&quot;#007fff&quot;&gt;用于转换异常信息,&amp;nbsp;&lt;/font&gt;&lt;span style=&quot;border-color: var(--border-color); text-align: center;&quot;&gt;&lt;font style=&quot;border-color: var(--border-color);&quot; color=&quot;#007fff&quot;&gt;，&lt;br&gt;异常并不会被 MessageConverter 处理直接加入 formattedMessage, 而是由此转换器递归遍历异常栈生成异常信息(String)&lt;/font&gt;&lt;/span&gt;&lt;font color=&quot;#007fff&quot;&gt;，然后格式化追加到 StringBuilder&lt;br&gt;&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
-          <mxGeometry x="2650" y="2288" width="840" height="40" as="geometry" />
+          <mxGeometry x="2650" y="2248" width="840" height="40" as="geometry" />
         </mxCell>
         <mxCell id="xc-GYIRrwOv2HIxgL6Iq-3" value="log.error(..., e);&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;&lt;b&gt;带有异常的日志输出流程&lt;/b&gt;，异常会被保存到 LoggingEvent 最终由&amp;nbsp;&lt;b&gt;ThrowableProxyConverter &lt;/b&gt;处理&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
-          <mxGeometry x="280" y="1140" width="200" height="60" as="geometry" />
+          <mxGeometry x="280" y="1100" width="200" height="60" as="geometry" />
         </mxCell>
         <mxCell id="xc-GYIRrwOv2HIxgL6Iq-5" value="log.info(&quot;info message: {}&quot;, &quot;hello&quot;);&lt;br style=&quot;font-size: 11px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;&quot;&gt;&lt;b&gt;带有参数的日志输出流程&lt;/b&gt;，参数同样保存到 LoggingEvent, 最终在&amp;nbsp;&lt;b&gt;DeferredProcessingAware&lt;/b&gt;#&lt;br&gt;&lt;b&gt;prepareForDeferredProcessing&lt;/b&gt;() 处理&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
-          <mxGeometry x="280" y="1220" width="200" height="60" as="geometry" />
+          <mxGeometry x="280" y="1180" width="200" height="60" as="geometry" />
         </mxCell>
         <mxCell id="xc-GYIRrwOv2HIxgL6Iq-10" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="xc-GYIRrwOv2HIxgL6Iq-7" target="xc-GYIRrwOv2HIxgL6Iq-9">
           <mxGeometry relative="1" as="geometry" />
@@ -646,13 +651,13 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="xc-GYIRrwOv2HIxgL6Iq-7" value="&lt;font color=&quot;#007fff&quot;&gt;// 1&lt;/font&gt;&lt;br&gt;MDC.put(&quot;trace-id&quot;, &quot;10001&quot;);&lt;br&gt;log.info(&quot;info message with mdc ...&quot;);&lt;br&gt;&lt;b style=&quot;color: rgb(0, 127, 255);&quot;&gt;带有MDC参数的日志输出流程&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;fillColor=#dae8fc;strokeColor=#6c8ebf;align=left;" vertex="1" parent="1">
-          <mxGeometry x="280" y="1960" width="200" height="80" as="geometry" />
+          <mxGeometry x="280" y="1920" width="200" height="80" as="geometry" />
         </mxCell>
         <mxCell id="xc-GYIRrwOv2HIxgL6Iq-13" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="xc-GYIRrwOv2HIxgL6Iq-9" target="xc-GYIRrwOv2HIxgL6Iq-12">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="xc-GYIRrwOv2HIxgL6Iq-9" value="mdcAdapter.put(key, val);&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;从后面可以看到本质就是&lt;b&gt;通过 ThreadLocal 传参&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;" vertex="1" parent="1">
-          <mxGeometry x="520" y="1970" width="200" height="60" as="geometry" />
+          <mxGeometry x="520" y="1930" width="200" height="60" as="geometry" />
         </mxCell>
         <mxCell id="xc-GYIRrwOv2HIxgL6Iq-15" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;endArrow=open;endFill=0;" edge="1" parent="1" source="xc-GYIRrwOv2HIxgL6Iq-11" target="xc-GYIRrwOv2HIxgL6Iq-14">
           <mxGeometry relative="1" as="geometry" />
@@ -661,13 +666,59 @@
           <mxGeometry x="-440" y="1480" width="400" height="120" as="geometry" />
         </mxCell>
         <mxCell id="xc-GYIRrwOv2HIxgL6Iq-12" value="&lt;div&gt;Map&amp;lt;String, String&amp;gt; current = &lt;b&gt;readWriteThreadLocalMap&lt;/b&gt;.get();&lt;/div&gt;&lt;div&gt;if (current == null) {&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; current = new HashMap&amp;lt;String, String&amp;gt;();&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; readWriteThreadLocalMap.set(current);&lt;/div&gt;&lt;div&gt;}&lt;/div&gt;&lt;div&gt;current.&lt;b&gt;put&lt;/b&gt;(key, val);&lt;/div&gt;&lt;div&gt;nullifyReadOnlyThreadLocalMap();&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;align=left;arcSize=6;" vertex="1" parent="1">
-          <mxGeometry x="760" y="1960" width="440" height="110" as="geometry" />
+          <mxGeometry x="760" y="1920" width="440" height="110" as="geometry" />
         </mxCell>
         <mxCell id="xc-GYIRrwOv2HIxgL6Iq-14" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;LogbackMDCAdapter&lt;/b&gt;&lt;br&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;&lt;b&gt;MDCAdapter 的 Logback 实现，从下面可以看到，本质就是通过 ThreadLocal 传参&lt;/b&gt;&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;color: rgb(0, 127, 255); background-color: initial;&quot;&gt;&amp;nbsp;&lt;/span&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;final &lt;b&gt;ThreadLocal&lt;/b&gt;&amp;lt;Map&amp;lt;String, String&amp;gt;&amp;gt; readWriteThreadLocalMap = new ThreadLocal&amp;lt;Map&amp;lt;String, String&amp;gt;&amp;gt;();&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;final &lt;b&gt;ThreadLocal&lt;/b&gt;&amp;lt;Map&amp;lt;String, String&amp;gt;&amp;gt; readOnlyThreadLocalMap = new ThreadLocal&amp;lt;Map&amp;lt;String, String&amp;gt;&amp;gt;();&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;private final &lt;b&gt;ThreadLocalMapOfStacks&lt;/b&gt; threadLocalMapOfDeques = new ThreadLocalMapOfStacks();&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
           <mxGeometry x="-880" y="1480" width="400" height="200" as="geometry" />
         </mxCell>
         <mxCell id="xc-GYIRrwOv2HIxgL6Iq-17" value="&lt;font color=&quot;#007fff&quot;&gt;&lt;b&gt;Logback 实现 MDC 的原理很简单：&lt;br&gt;就是通过 ThreadLocal 传递自定义信息，&lt;br&gt;后面进行序列化编码时由 MDCConverter 从&amp;nbsp; ThreadLocal 将值取出来&lt;br&gt;追加到 StringBuilder 后面&lt;/b&gt;&lt;br&gt;&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
-          <mxGeometry x="280" y="2045" width="400" height="70" as="geometry" />
+          <mxGeometry x="280" y="2005" width="400" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="xc-GYIRrwOv2HIxgL6Iq-20" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="xc-GYIRrwOv2HIxgL6Iq-18" target="xc-GYIRrwOv2HIxgL6Iq-19">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="xc-GYIRrwOv2HIxgL6Iq-18" value="&lt;b&gt;Skywalking TraceId Layout 实现&lt;/b&gt;&lt;br&gt;&lt;b&gt;TraceIdPatternLogbackLayout&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1ba1e2;strokeColor=#006EAF;fontColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="40" y="2160" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="xc-GYIRrwOv2HIxgL6Iq-22" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;" edge="1" parent="1" source="xc-GYIRrwOv2HIxgL6Iq-19" target="xc-GYIRrwOv2HIxgL6Iq-21">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="xc-GYIRrwOv2HIxgL6Iq-19" value="&lt;div&gt;&lt;div&gt;public class TraceIdPatternLogbackLayout extends PatternLayout {&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; static {&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; defaultConverterMap.put(&quot;tid&quot;, LogbackPatternConverter.class.getName());&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; defaultConverterMap.put(&quot;sw_ctx&quot;, LogbackSkyWalkingContextPatternConverter.class.getName());&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; }&lt;/div&gt;&lt;div&gt;}&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;实现挺简单仅仅是在 Logback PatternLayout 基础上额外添加了两个Converter， 这里只关注 LogbackPatternConverter，用于转换 %tid 占位符&lt;/font&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;arcSize=4;" vertex="1" parent="1">
+          <mxGeometry x="280" y="2120" width="440" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="xc-GYIRrwOv2HIxgL6Iq-28" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="xc-GYIRrwOv2HIxgL6Iq-21" target="xc-GYIRrwOv2HIxgL6Iq-27">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="980" y="2190" />
+              <mxPoint x="980" y="2360" />
+              <mxPoint x="740" y="2360" />
+              <mxPoint x="740" y="2400" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="xc-GYIRrwOv2HIxgL6Iq-21" value="&lt;b&gt;LogbackPatternConverter&lt;/b&gt;#write(...)&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;LogbackPatternConverter继承 ClassicConverter, 仅仅重写了 convert() 方法&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="760" y="2160" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="xc-GYIRrwOv2HIxgL6Iq-23" value="&lt;font color=&quot;#007fff&quot;&gt;通过这个类在日志中插入 Skywalking &lt;br&gt;TraceId类位于 skywalking-java&amp;nbsp;&lt;br&gt;&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="40" y="2220" width="220" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="xc-GYIRrwOv2HIxgL6Iq-26" value="&lt;font color=&quot;#007fff&quot;&gt;&lt;b&gt;但是 convert() 方法实现只是返回 &quot;TID: N/A&quot; ？&lt;/b&gt;&lt;b&gt;那么实际使用时替换占位符 %tid 的值哪里来的？&lt;/b&gt;&lt;br&gt;&lt;b&gt;推测业务实际使用时可能 Skywalking JavaAgent 将这个 LogbackPatternConverter 类增强了，&lt;/b&gt;&lt;b&gt;修改了 convert() 方法的实现&lt;/b&gt;&lt;br&gt;从 Skywalking JavaAgent 原理可知是通过加载 plugins 中的 XxxInstrumentation 实现修改服务中的类的，&lt;br&gt;如果上面猜想不错，应该也有一个对应的 Instrumentation 类修改 LogbackPatternConverter, 搜索源码找到了 &lt;b&gt;LogbackPatternConverterActivation&lt;/b&gt; （虽然不是 Imstrumentation 结尾的，但确实是这个）&lt;br&gt;包路径是 apm-sniffer/apm-toolkit-activation/apm-toolkit-logback-1.x-activation/src/main/java/org/apache/skywalking/apm/toolkit/activation/log/logback/v1/x/LogbackPatternConverterActivation.java&lt;br&gt;&lt;b&gt;看了下实现和猜想一致&lt;br&gt;&lt;/b&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; public static final String &lt;b&gt;INTERCEPT_CLASS&lt;/b&gt; = &quot;org.apache.skywalking.apm.toolkit.activation.log.logback.v1.x.&lt;b&gt;PrintTraceIdInterceptor&lt;/b&gt;&quot;; &lt;b&gt;//增强逻辑所在的类&lt;/b&gt;&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; public static final String &lt;b&gt;ENHANCE_CLASS&lt;/b&gt; = &quot;org.apache.skywalking.apm.toolkit.log.logback.v1.x.&lt;b&gt;LogbackPatternConverter&lt;/b&gt;&quot;;&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; public static final String &lt;b&gt;ENHANCE_METHOD&lt;/b&gt; = &quot;&lt;b&gt;convert&lt;/b&gt;&quot;;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=top;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="990" y="2160" width="1090" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="xc-GYIRrwOv2HIxgL6Iq-32" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="xc-GYIRrwOv2HIxgL6Iq-27" target="xc-GYIRrwOv2HIxgL6Iq-31">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="xc-GYIRrwOv2HIxgL6Iq-27" value="&lt;b&gt;PrintTraceIdInterceptor#afterMethod()&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;实际引入 JavaAgent 后 convert() 被重写，调用此拦截器&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="760" y="2370" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="xc-GYIRrwOv2HIxgL6Iq-31" value="&lt;div&gt;if (!ContextManager.isActive()) {&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; if (allArguments[0] instanceof EnhancedInstance) {&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; SkyWalkingContext skyWalkingContext = (SkyWalkingContext) ((EnhancedInstance) allArguments[0]).getSkyWalkingDynamicField();&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; if (skyWalkingContext != null) {&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; return &quot;TID:&quot; + skyWalkingContext.getTraceId();&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; }&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; }&lt;/div&gt;&lt;div&gt;}&lt;/div&gt;&lt;div&gt;&lt;b&gt;&lt;font color=&quot;#007fff&quot;&gt;// ContextManager 中存储的是链路追踪上下文，也包括TraceId&lt;/font&gt;&lt;/b&gt;&lt;/div&gt;&lt;div&gt;return &quot;TID:&quot; + &lt;b&gt;ContextManager&lt;/b&gt;.&lt;b&gt;getGlobalTraceId&lt;/b&gt;();&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;align=left;arcSize=5;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="2320" width="440" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="xc-GYIRrwOv2HIxgL6Iq-34" value="&lt;div style=&quot;font-size: 12px;&quot;&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 12px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 12px;&quot;&gt;// xml配置初始化默认是通过 DefaultJoranConfigurator 实现&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 12px;&quot;&gt;&lt;b style=&quot;font-size: 12px;&quot;&gt;DefaultJoranConfigurator&lt;/b&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 12px;&quot;&gt;#configure(...)&lt;br style=&quot;font-size: 12px;&quot;&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;arcSize=10;fontSize=12;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="2920" y="570" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="xc-GYIRrwOv2HIxgL6Iq-39" value="&lt;font color=&quot;#007fff&quot;&gt;&lt;b&gt;XML 配置解析为LoggerContext中的组件在这里面完成&lt;br&gt;这里面的代码还是有点复杂的，也比较杂&lt;br&gt;&lt;div style=&quot;&quot;&gt;&lt;b style=&quot;background-color: initial;&quot;&gt;但是不妨碍理解 Logback 工作原理，暂略&lt;/b&gt;&lt;/div&gt;&lt;/b&gt;&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=top;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="2920" y="640" width="320" height="60" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

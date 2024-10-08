@@ -317,11 +317,13 @@
 
 + **Tomcat**
 
+  > 之前看过源码但是没有画图时间久了就细节全忘记了，TODO 有空重看下并画下图。
+  
   原理简述：
   1、创建一个 Acceptor 线程来接收用户连接，接收到之后扔到 events queue 队列里面，默认情况下只有一个线程来接收；
   2、创建 Poller 线程，数量 <= 2；Poller 对象是 NIO 的核心，在Poller中，维护了一个 Selector 对象；当 Poller 从队列中取出 Socket 后，注册到该 Selector 中；然后通过遍历 Selector，找出其中可读的 Socket，然后扔到线程池中处理相应请求，这就是典型的NIO多路复用模型。
   3、扔到线程池中的 SocketProcessorBase 处理请求。
-
+  
   > 不过 Tomcat 虽然使用了 NIO 模型，只是优化了请求处理流程中部分操作由阻塞转成了非阻塞，比如 “读请求头”、“等待下一个请求”、“SSL握手”；“读请求体”、“写响应头”、“写响应体”依然是阻塞的（有种说法是需要遵循传统的接口规范以致于无法对所有操作进行非阻塞改写）。 
   >
   > 参考：[Connector Comparsion](https://tomcat.apache.org/tomcat-8.0-doc/config/http.html#/Connector_Comparison)
@@ -352,7 +354,7 @@
 
   + **其他**
 
-    分析IOC时有涉及但是不够详细。
+    分析IOC时有涉及但是不够详细，所以这里重新绘制单独的流程图。
 
     + **FactoryBean**
 
@@ -488,6 +490,8 @@
   + 源码流程图：
 
     + [zookeeper-server.drawio](docs/java/zookeeper/zookeeper-server.drawio)
+    
+      > 很久之前画的没有UML，而且图太过罗嗦，TODO 重画。
 
 
 ### 服务保障
@@ -510,6 +514,8 @@
 
   + [sentinel.drawio](docs/java/sentinel/sentinel.drawio)
   + [sentinel.drawio.png](docs/java/sentinel/sentinel.drawio.png)
+
++ Hystrix
 
 ### 链路追踪
 
@@ -545,7 +551,7 @@
   
   + **micrometer-registry-prometheus**
   
-    Micrometer 适配 Prometheus上报接口的数据采集器组件。
+    Micrometer 适配 Prometheus上报接口的数据采集器组件，代码感觉有点乱，还有一堆函数式编程，代码可读性较差。
   
     源码流程图：
     
@@ -585,6 +591,8 @@
     + [mybatis.drawio](docs/java/mybatis/mybatis.drawio)
     + [mybatis.drawio.png](docs/java/mybatis/mybatis.drawio.png)
 
+    > 也是好久之前画的图，UML不详细，SQL前后置处理以及连接池部分还有细节逻辑没有梳理，TODO 重画。
+
   + Mybatis-Spring
 
 + **Mybatis Plus**
@@ -592,6 +600,16 @@
 ### 数据库相关
 
 + **Canal**
+
+  > 之前梳理了个半成品，TODO 重画。
+
++ **Sharding-JDBC**
+
+  > TODO 流程图迁移。
+
++ **连接池**
+  + **Druid**
+  + **HikariCP**
 
 ### 分布式事务
 
@@ -653,8 +671,10 @@
 
   + **[Raft](docs/java/distributed/consistency/raft.md)**
 
-    + **BRaft**
+    说实话想自己按 Raft 论文写一个实现也不是个简单的事，关键是需要将论文中的所有细节理解清楚，里面有一些证明能否理解透彻，即便写出来，怎么测试实现的没有漏洞也是个问题。
 
+    + **BRaft**
+  
       Raft协议的C++实现。
   
     + **JRaft**
@@ -668,7 +688,7 @@
       这个只是DEMO性质的实现，主要是代码实现简单（5K多行，其他生产级别的实现都是几W行），适合快速学习Raft协议细节。
   
       源码流程图：
-  
+    
       + [raft-java.drawio](docs/java/distributed/consistency/raft-java.drawio)
       + [raft-java.drawio.png](docs/java/distributed/consistency/raft-java.drawio.png)
   
@@ -681,8 +701,17 @@
 ### 日志
 
 + **Slf4j**
+
 + **Log4j2**
+
 + **Logback**
+
+  虽然 logback-core、logback-classic 代码量加起来有 6W 行，但是核心流程比较简单，且数据结构很清晰，直接看源码可能比看官方文档和书能更快地理解 Logback 的工作原理和使用细节。
+
+  源码流程图：
+
+  + [logback.drawio](docs/java/logging/logback.drawio)
+  + [logback.drawio.png](docs/java/logging/imgs/logback.drawio.png)
 
 ### 工具类
 
@@ -754,6 +783,8 @@
 
 + **Antlr**
 
+  Sharding-JDBC 中 借助 Antlr 实现对 SQL 语句的重构（原SQL -> AST -> 新SQL），将 SQL 转换成针对某个分表的 SQL。
+
 
 
 ## Go
@@ -778,6 +809,10 @@
 ### 分布式事务
 
 + **DTM**
+
+
+
+## Rust
 
 
 
