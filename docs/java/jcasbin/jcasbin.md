@@ -35,7 +35,7 @@ JCasbin 是其 Java 语言实现。
   + **带有域/租户的RBAC**：用户可以为不同的域/租户拥有不同的角色集。
 + **[ABAC (基于属性的访问控制)](https://en.wikipedia.org/wiki/Attribute-Based_Access_Control)**：可以使用类似"resource.Owner"的语法糖来获取资源的属性。
 
-
+ 
 
 ## 基本概念
 
@@ -94,6 +94,35 @@ JCasbin 是其 Java 语言实现。
 + **[模型语法](https://casbin.org/zh/docs/syntax-for-models)**
 
   上面模型的详细定义。
+
++ **注意事项**
+
+  如果模型中定义多组request_definition、policy_definition、policy_effect、matchers， 在某次权限校验时多组定义并不会被同时使用，可以通过 EnforceContext() 指定使用哪一组。
+
+  ```ini
+  [request_definition]
+  r = sub, obj, act
+  r2 = sub, obj, act
+  [policy_definition]
+  # 为何定义的两条策略定义只有第一条生效？
+  p = sub, obj, act
+  p2 = sub, sub2, obj, act
+  [role_definition]
+  g = _, _
+  [policy_effect]
+  e = some(where (p.eft == allow)) && !some(where (p.eft == deny))
+  e2 = some(where (p.eft == allow)) && !some(where (p.eft == deny))
+  [matchers]
+  m = g(r.sub, p.sub) && r.obj == p.obj && r.act == p.act
+  m2 = g(r2.sub, p2.sub) && g(r2.sub, p2.sub2) && r2.obj == p2.obj && r2.act == p2.act
+  ```
+
+  比如下面定义了两组 r p e m， 如果想使用 r2 p2 e2 m2 执行权限校验可以：
+
+  ```java
+  EnforceContext context = new EnforceContext("2");
+  boolean ret4 = enforcer.enforce(context, "10005", "/sysA/config/bz1", "POST");
+  ```
 
 ### ACL模型案例
 
@@ -181,7 +210,7 @@ g, admin, ROLE_ADMIN
 admin, /data/users/*，*
 ```
 
-
+**向 Enforcer 提交请求后，会先通过 matchers 中的匹配器查找与请求匹配的策略规则（p），可能查找到的规则有多条且结果可能不同，最终由 policy_effect 综合多个规则的授权结果返回最终结果**。
 
 ## 工作原理简述
 

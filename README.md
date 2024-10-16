@@ -580,6 +580,11 @@
 
 + **JCasbin**
 
+  源码流程图：
+
+  + [jcasbin.drawio](docs/java/jcasbin/jcasbin.drawio)
+  + [jcasbin.drawio.png](docs/java/jcasbin/imgs/jcasbin.drawio.png)
+
 ### ORM框架
 
 + **Mybatis**
