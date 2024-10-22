@@ -15,8 +15,6 @@ Sentinel 具有以下特征:
 
 这里只是经过源码深入理解后对官方文档的补充。
 
-
-
 ## 工作原理
 
 原理篇讲。
@@ -29,6 +27,18 @@ Sentinel 具有以下特征:
 4. SentinelWebInterceptor 执行过程中会按 ProcessorSlot 责任链执行各个 ProcessorSlot，进而筛选所有与资源匹配的规则，一一执行规则校验逻辑；
 5. 规则校验不通过会抛出对应的异常，这些异常都继承 BlockException; 
 6. 在MVC统一异常处理中对 BlockException类异常进行处理（当然也可以通过配置BaseWebMvcConfig blockExceptionHandler进行异常处理）。
+
+## 资源定义
+
+Sentinel 资源是规则的作用目标（比如接口路由、服务方法）。
+
+项目中引入 `spring-cloud-starter-alibaba-sentinel` 之后会自动引入 `sentinel-spring-webmvc-adapter` 这里面实现了将接口路由封装成资源并注册的逻辑，所以不需要额外操作，就可以直接获取这些资源。
+
+另外还提供了一些组件支持将 Feign接口、RPC接口、WebFlux接口等等定义为资源。
+
+最后 Sentinel 还提供了 `@SentinelResource` 注解可以将任何东西定义为资源，另外`@SentinelResource` 可以为资源定制 BlockException 处理器 和 Fallback 实现。
+
+注意不要在引入 `sentinel-spring-webmvc-adapter`  之后在接口上使用 `@SentinelResource`，这会导致**SentinelWebInterceptor** 和 **SentinelResourceAspect 生成的动态代理实例** 同时存在， 接口资源一次调用会被拦截统计两次。
 
 ## 流量控制
 
