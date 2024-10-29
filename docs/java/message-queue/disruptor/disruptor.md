@@ -394,7 +394,9 @@ Disruptor 支持3种编码风格（Lambda、Lagacy、MethodRef）。
 
 ### 批量倒带
 
-即处理失败后需要回滚，
+如果在处理可恢复的事件时出现错误，用户可以抛出`RewindableException`。这将调用`BatchRewindStrategy`而不是通常的`ExceptionStrategy`来决定是否应该将序列号倒回到要重试的批处理的开头，或者重新抛出并委托给`ExceptionStrategy`处理。
+
+批处理的开头即事件消费者这次被唤醒后处理的第一个事件的索引。
 
 ## 参考
 
