@@ -1,0 +1,354 @@
+<mxfile host="Electron" modified="2024-11-18T12:30:03.030Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.6.5 Chrome/114.0.5735.243 Electron/25.3.1 Safari/537.36" etag="bhlHsChysUF7gBzl9K0Y" version="21.6.5" type="device">
+  <diagram name="第 1 页" id="dGBytibN6w0eaGbTy-ad">
+    <mxGraphModel dx="2871" dy="764" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="RRvPjsy73d2A_iiVXvRi-102" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.25;exitDx=0;exitDy=0;dashed=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" edge="1" parent="1" source="RRvPjsy73d2A_iiVXvRi-16">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="290" y="1060" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="RRvPjsy73d2A_iiVXvRi-70" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=0;entryY=0.75;entryDx=0;entryDy=0;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=2;" edge="1" parent="1" source="RRvPjsy73d2A_iiVXvRi-65" target="RRvPjsy73d2A_iiVXvRi-22">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="980" y="1455" />
+              <mxPoint x="980" y="1160" />
+              <mxPoint x="180" y="1160" />
+              <mxPoint x="180" y="1050" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="RRvPjsy73d2A_iiVXvRi-1" value="&lt;h1&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;Java Reference 工作原理 &lt;/font&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;（JDK17）&lt;/font&gt;&lt;/h1&gt;&lt;p&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;Reference 工作原理一部分代码在JVM中实现，这里展示的并不完整；但是源码注释中解释了完整工作流程的大概原理（即状态变更图）&lt;br&gt;这里展示的 Reference 源码是位于java.lang.ref 中的源码，如果想研究JVM中的细节实现需要看JVM中的代码。&lt;/span&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;测试代码：java-base/jvm-principle。&lt;/span&gt;&lt;br&gt;&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="40" y="10" width="760" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="RRvPjsy73d2A_iiVXvRi-2" value="软引用&lt;br&gt;ReferenceBaseTest" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="40" y="1520" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="RRvPjsy73d2A_iiVXvRi-63" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="RRvPjsy73d2A_iiVXvRi-5" target="RRvPjsy73d2A_iiVXvRi-61">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="RRvPjsy73d2A_iiVXvRi-5" value="弱引用&lt;br&gt;ReferenceBaseTest" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="40" y="1360" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="RRvPjsy73d2A_iiVXvRi-11" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="RRvPjsy73d2A_iiVXvRi-9" target="RRvPjsy73d2A_iiVXvRi-10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="RRvPjsy73d2A_iiVXvRi-87" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="RRvPjsy73d2A_iiVXvRi-9" target="RRvPjsy73d2A_iiVXvRi-86">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="RRvPjsy73d2A_iiVXvRi-9" value="JVM启动的相关核心线程&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;具体JVM哪里启动的先不管&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="40" y="160" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="RRvPjsy73d2A_iiVXvRi-13" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;" edge="1" parent="1" source="RRvPjsy73d2A_iiVXvRi-10" target="RRvPjsy73d2A_iiVXvRi-12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="RRvPjsy73d2A_iiVXvRi-10" value="&lt;b style=&quot;font-size: 10px;&quot;&gt;Reference Handler&lt;/b&gt; 线程&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;线程名 “Reference Handler”&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="280" y="160" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="RRvPjsy73d2A_iiVXvRi-15" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="RRvPjsy73d2A_iiVXvRi-12" target="RRvPjsy73d2A_iiVXvRi-14">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="RRvPjsy73d2A_iiVXvRi-12" value="&lt;b style=&quot;font-size: 10px;&quot;&gt;Reference$ReferenceHandler#&lt;br style=&quot;font-size: 10px;&quot;&gt;run()&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="520" y="160" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="RRvPjsy73d2A_iiVXvRi-17" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="RRvPjsy73d2A_iiVXvRi-14" target="RRvPjsy73d2A_iiVXvRi-16">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="RRvPjsy73d2A_iiVXvRi-14" value="&lt;div style=&quot;font-size: 10px;&quot;&gt;while (true) {&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp; &amp;nbsp; processPendingReferences();&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;}&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="760" y="160" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="RRvPjsy73d2A_iiVXvRi-82" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1.003;exitY=0.937;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitPerimeter=0;" edge="1" parent="1" source="RRvPjsy73d2A_iiVXvRi-16" target="RRvPjsy73d2A_iiVXvRi-81">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="RRvPjsy73d2A_iiVXvRi-85" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.75;exitDx=0;exitDy=0;" edge="1" parent="1" source="RRvPjsy73d2A_iiVXvRi-16" target="RRvPjsy73d2A_iiVXvRi-84">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="RRvPjsy73d2A_iiVXvRi-16" value="&lt;div style=&quot;font-size: 10px;&quot;&gt;private static void processPendingReferences() {&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;&amp;nbsp; &lt;b&gt;&amp;nbsp; //1 native 方法，等待虚拟机 pendingList 列表不为空&lt;/b&gt;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;b style=&quot;&quot;&gt;&lt;font color=&quot;#cc0000&quot;&gt;&amp;nbsp; &amp;nbsp; // pendingList 中存储的一队引用到底哪里来的？&lt;/font&gt;&lt;/b&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;&amp;nbsp; &amp;nbsp; // ReferenceHandler 线程是唯一调用 waitForReferencePendingList() 和&amp;nbsp; &lt;br&gt;&amp;nbsp; &amp;nbsp; // getAndClearReferencePendingList() 方法的线程&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp; &amp;nbsp; &lt;b&gt;waitForReferencePendingList&lt;/b&gt;();&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp; &amp;nbsp; Reference&amp;lt;?&amp;gt; pendingList;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp; &amp;nbsp; synchronized (processPendingLock) {&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;&lt;b&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;//2 native 方法，读取并清理 pendingList&lt;br&gt;&lt;/b&gt;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; pendingList = &lt;b&gt;getAndClearReferencePendingList&lt;/b&gt;();&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; processPendingActive = true;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp; &amp;nbsp; }&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;b&gt;&lt;font color=&quot;#007fff&quot;&gt;&amp;nbsp; &amp;nbsp; //3 遍历 pendingList discovered 直到遇到 Cleaner 或者遍历到 discovered 最后一个节点&lt;/font&gt;&lt;/b&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp; &amp;nbsp; &lt;b&gt;while&lt;/b&gt; (pendingList != null) {&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; Reference&amp;lt;?&amp;gt; ref = &lt;b&gt;pendingList&lt;/b&gt;;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; pendingList = ref.&lt;b&gt;discovered&lt;/b&gt;;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; ref.discovered = null;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;br style=&quot;font-size: 10px;&quot;&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; if (ref instanceof &lt;b&gt;Cleaner&lt;/b&gt;) {&amp;nbsp; &lt;font color=&quot;#007fff&quot;&gt;//TODO&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; ((Cleaner)ref).&lt;b&gt;clean&lt;/b&gt;();&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; // Notify any waiters that progress has been made.&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; // This improves latency for nio.Bits waiters, which&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; // are the only important ones.&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; synchronized (processPendingLock) {&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; processPendingLock.notifyAll();&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; }&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; } else {&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;&lt;b&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&amp;nbsp; &amp;nbsp; // 将 discovered 每一层的引用对象都入队到引用自己的 Reference.queue&amp;nbsp;&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;&lt;b&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; // 测试DEMO中我们要释放引用实际类型是 Finalizer 并不是想象中的 WeakReference 或 SoftReference&lt;/b&gt;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; ref.&lt;b&gt;enqueueFromPending&lt;/b&gt;();&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; }&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp; &amp;nbsp; }&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;&amp;nbsp; &amp;nbsp; // Notify any waiters of completion of current round.&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp; &amp;nbsp; synchronized (processPendingLock) {&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; processPendingActive = false;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;&lt;b&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; //4 唤醒其他线程做进一步处理&lt;/b&gt;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &lt;b&gt;processPendingLock&lt;/b&gt;.notifyAll();&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp; &amp;nbsp; }&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;}&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;arcSize=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="160" width="440" height="480" as="geometry" />
+        </mxCell>
+        <mxCell id="RRvPjsy73d2A_iiVXvRi-78" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;endArrow=open;endFill=0;" edge="1" parent="1" source="RRvPjsy73d2A_iiVXvRi-18" target="RRvPjsy73d2A_iiVXvRi-77">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="RRvPjsy73d2A_iiVXvRi-18" value="&lt;div style=&quot;text-align: center; font-size: 11px;&quot;&gt;&lt;b style=&quot;font-size: 11px;&quot;&gt;Reference&amp;lt;T&amp;gt;&lt;/b&gt;&lt;span style=&quot;background-color: initial; font-size: 11px;&quot;&gt;&amp;nbsp;(A)&lt;/span&gt;&lt;/div&gt;&lt;hr style=&quot;font-size: 11px;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 11px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 11px;&quot;&gt;// Java是值传递，通过构造方法传参，referent其实是一个副本引用对象&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 11px;&quot;&gt;private T referent;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 11px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 11px;&quot;&gt;&lt;b&gt;// referent 的关联队列，即引用队列，数据来自 pendingList discovered&amp;nbsp;&lt;/b&gt;&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 11px;&quot;&gt;volatile ReferenceQueue&amp;lt;? super T&amp;gt; &lt;b style=&quot;font-size: 11px;&quot;&gt;queue&lt;/b&gt;;&lt;br style=&quot;font-size: 11px;&quot;&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 11px;&quot;&gt;volatile Reference next;&lt;br style=&quot;font-size: 11px;&quot;&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 11px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;&lt;b&gt;//&amp;nbsp;pendingList 待处理引用列表的下一个元素，测试DEMO中发现最后一层才是我们要释放的引用，将每个待处理的引用入队到引用自己的&lt;/b&gt;&lt;/font&gt;&lt;font color=&quot;#007fff&quot;&gt;&lt;b&gt;&amp;nbsp;ReferenceQueue queue&lt;/b&gt;&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 11px;&quot;&gt;private transient Reference&amp;lt;?&amp;gt; &lt;b&gt;discovered&lt;/b&gt;;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 11px;&quot;&gt;private static final Object processPendingLock = new Object();&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 11px;&quot;&gt;private static boolean processPendingActive = false;&lt;/p&gt;&lt;hr style=&quot;font-size: 11px;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 11px;&quot;&gt;&lt;br style=&quot;font-size: 11px;&quot;&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=11;fontFamily=Helvetica;html=1;whiteSpace=wrap;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="-480" y="160" width="440" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="RRvPjsy73d2A_iiVXvRi-19" value="&lt;b&gt;引用对象的两组状态集合与状态变更：&lt;br style=&quot;font-size: 10px;&quot;&gt;&lt;/b&gt;&lt;br&gt;第一组状态：&quot;active&quot;, &quot;pending&quot;, or &quot;inactive&quot;&lt;br style=&quot;font-size: 10px;&quot;&gt;第二组状态：&quot;registered&quot;, &quot;enqueued&quot;, &quot;dequeued&quot;, or &quot;unregistered&quot;&lt;br&gt;&lt;br&gt;&lt;div&gt;&lt;b&gt;Active&lt;/b&gt;: 受垃圾收集器特殊处理。在收集器检测到引用对象的可达性状态发生变化后的一段时间内，收集器会“通知”该引用，将其状态更改为 &quot;pending&quot; 或 &quot;inactive&quot;。&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;满足此状态的条件：referent != null; discovered = null，或者在 GC 发现列表中。&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;Pending&lt;/b&gt;: 待处理引用列表中的一个元素，等待被 ReferenceHandler 线程处理。待处理引用列表通过引用对象的 &lt;b&gt;discovered&lt;/b&gt; 字段链接。&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;referent = null; discovered = 待处理引用列表中的下一个元素。&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;Inactive&lt;/b&gt;: 既不是 Active 也不是 Pending。&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;referent = null。&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;Registered&lt;/b&gt;: 创建时与队列关联，但尚未添加到队列中。&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;queue = 关联的队列。&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;Enqueued&lt;/b&gt;: 已添加到关联队列中，但尚未移除。&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;queue = ReferenceQueue.ENQUEUE; next = 列表中的下一个条目，或者 this 表示列表的末尾。&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;Dequeued&lt;/b&gt;: 已添加到关联队列中并已移除。&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;queue = ReferenceQueue.NULL; next = this。&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;Unregistered&lt;/b&gt;: 创建时未与队列关联。&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;queue = ReferenceQueue.NULL。&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;每个引用对象 referent 的状态都要经历从&lt;b&gt;初始状态&lt;/b&gt;到&lt;b&gt;终止状态&lt;/b&gt;的变更&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=top;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="40" y="740" width="750" height="270" as="geometry" />
+        </mxCell>
+        <mxCell id="RRvPjsy73d2A_iiVXvRi-23" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="RRvPjsy73d2A_iiVXvRi-20" target="RRvPjsy73d2A_iiVXvRi-22">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="RRvPjsy73d2A_iiVXvRi-24" value="GC" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;fontStyle=1" vertex="1" connectable="0" parent="RRvPjsy73d2A_iiVXvRi-23">
+          <mxGeometry x="-0.0207" y="1" relative="1" as="geometry">
+            <mxPoint x="11" y="1" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="RRvPjsy73d2A_iiVXvRi-36" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="RRvPjsy73d2A_iiVXvRi-20" target="RRvPjsy73d2A_iiVXvRi-35">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="140" y="1040" />
+              <mxPoint x="140" y="1120" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="RRvPjsy73d2A_iiVXvRi-37" value="&lt;font style=&quot;font-size: 10px;&quot;&gt;clear&lt;/font&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="RRvPjsy73d2A_iiVXvRi-36">
+          <mxGeometry x="0.5448" y="-2" relative="1" as="geometry">
+            <mxPoint x="7" y="-2" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="RRvPjsy73d2A_iiVXvRi-59" style="rounded=1;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.25;entryDx=0;entryDy=0;dashed=1;" edge="1" parent="1" target="RRvPjsy73d2A_iiVXvRi-38">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="190" y="1070" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="RRvPjsy73d2A_iiVXvRi-20" value="active/&lt;br&gt;registered" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="40" y="1020" width="80" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="RRvPjsy73d2A_iiVXvRi-46" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="RRvPjsy73d2A_iiVXvRi-21" target="RRvPjsy73d2A_iiVXvRi-45">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="RRvPjsy73d2A_iiVXvRi-47" value="clear/enqueue/GC" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;" vertex="1" connectable="0" parent="RRvPjsy73d2A_iiVXvRi-46">
+          <mxGeometry x="-0.0701" y="-2" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="RRvPjsy73d2A_iiVXvRi-49" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="RRvPjsy73d2A_iiVXvRi-21" target="RRvPjsy73d2A_iiVXvRi-48">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="140" y="1200" />
+              <mxPoint x="140" y="1280" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="RRvPjsy73d2A_iiVXvRi-50" value="GC" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;" vertex="1" connectable="0" parent="RRvPjsy73d2A_iiVXvRi-49">
+          <mxGeometry x="0.5155" relative="1" as="geometry">
+            <mxPoint x="9" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="RRvPjsy73d2A_iiVXvRi-21" value="active/&lt;br&gt;unregistered" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="40" y="1180" width="80" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="RRvPjsy73d2A_iiVXvRi-27" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="RRvPjsy73d2A_iiVXvRi-22" target="RRvPjsy73d2A_iiVXvRi-26">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="RRvPjsy73d2A_iiVXvRi-32" value="enqueue" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;" vertex="1" connectable="0" parent="RRvPjsy73d2A_iiVXvRi-27">
+          <mxGeometry x="-0.0207" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="RRvPjsy73d2A_iiVXvRi-56" style="rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=2;" edge="1" parent="1" source="RRvPjsy73d2A_iiVXvRi-22" target="RRvPjsy73d2A_iiVXvRi-38">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="RRvPjsy73d2A_iiVXvRi-58" value="ReferenceHandler" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=9;fontStyle=1" vertex="1" connectable="0" parent="RRvPjsy73d2A_iiVXvRi-56">
+          <mxGeometry x="-0.0678" y="-1" relative="1" as="geometry">
+            <mxPoint x="-2" y="-4" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="RRvPjsy73d2A_iiVXvRi-22" value="pending/&lt;br&gt;registered" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="200" y="1020" width="80" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="RRvPjsy73d2A_iiVXvRi-29" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="RRvPjsy73d2A_iiVXvRi-26" target="RRvPjsy73d2A_iiVXvRi-28">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="RRvPjsy73d2A_iiVXvRi-33" value="&lt;font style=&quot;font-size: 10px;&quot;&gt;poll/remove&lt;/font&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="RRvPjsy73d2A_iiVXvRi-29">
+          <mxGeometry x="-0.0724" y="-3" relative="1" as="geometry">
+            <mxPoint x="3" y="-3" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="RRvPjsy73d2A_iiVXvRi-55" style="rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;" edge="1" parent="1" source="RRvPjsy73d2A_iiVXvRi-26" target="RRvPjsy73d2A_iiVXvRi-38">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="RRvPjsy73d2A_iiVXvRi-57" value="&lt;font style=&quot;font-size: 9px;&quot;&gt;ReferenceHandler&lt;/font&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=9;fontStyle=1" vertex="1" connectable="0" parent="RRvPjsy73d2A_iiVXvRi-55">
+          <mxGeometry x="-0.1648" relative="1" as="geometry">
+            <mxPoint y="-1" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="RRvPjsy73d2A_iiVXvRi-26" value="pending/&lt;br&gt;enqueued" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="360" y="1020" width="80" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="RRvPjsy73d2A_iiVXvRi-31" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="RRvPjsy73d2A_iiVXvRi-28" target="RRvPjsy73d2A_iiVXvRi-30">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="RRvPjsy73d2A_iiVXvRi-34" value="&lt;font style=&quot;font-size: 9px;&quot;&gt;Reference&lt;br style=&quot;font-size: 9px;&quot;&gt;Handler&lt;/font&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=9;fontStyle=1" vertex="1" connectable="0" parent="RRvPjsy73d2A_iiVXvRi-31">
+          <mxGeometry x="0.031" relative="1" as="geometry">
+            <mxPoint x="-11" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="RRvPjsy73d2A_iiVXvRi-28" value="pending/&lt;br&gt;dequeued" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="520" y="1020" width="80" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="RRvPjsy73d2A_iiVXvRi-30" value="inactive/&lt;br&gt;dequeued" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="680" y="1020" width="80" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="RRvPjsy73d2A_iiVXvRi-39" value="&lt;font style=&quot;font-size: 10px;&quot;&gt;enqueue&lt;/font&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="RRvPjsy73d2A_iiVXvRi-35" target="RRvPjsy73d2A_iiVXvRi-38">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="RRvPjsy73d2A_iiVXvRi-35" value="inactive/&lt;br&gt;registered" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="200" y="1100" width="80" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="RRvPjsy73d2A_iiVXvRi-38" value="inactive/&lt;br&gt;enqueued" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="520" y="1100" width="80" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="RRvPjsy73d2A_iiVXvRi-43" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=2;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="RRvPjsy73d2A_iiVXvRi-38" target="RRvPjsy73d2A_iiVXvRi-30">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="600" y="1120" as="sourcePoint" />
+            <mxPoint x="680" y="1040" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="660" y="1120" />
+              <mxPoint x="660" y="1040" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="RRvPjsy73d2A_iiVXvRi-44" value="poll/&lt;br style=&quot;font-size: 10px;&quot;&gt;remove" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;" vertex="1" connectable="0" parent="RRvPjsy73d2A_iiVXvRi-43">
+          <mxGeometry x="-0.598" y="2" relative="1" as="geometry">
+            <mxPoint x="-2" y="2" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="RRvPjsy73d2A_iiVXvRi-45" value="inactive/&lt;br&gt;unregistered" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="360" y="1180" width="80" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="RRvPjsy73d2A_iiVXvRi-51" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="RRvPjsy73d2A_iiVXvRi-48" target="RRvPjsy73d2A_iiVXvRi-45">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="340" y="1280" />
+              <mxPoint x="340" y="1200" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="RRvPjsy73d2A_iiVXvRi-52" value="&lt;font style=&quot;font-size: 9px;&quot;&gt;&lt;b&gt;Reference&lt;br style=&quot;font-size: 9px;&quot;&gt;Handler&lt;/b&gt;&lt;/font&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=9;" vertex="1" connectable="0" parent="RRvPjsy73d2A_iiVXvRi-51">
+          <mxGeometry x="-0.5966" y="2" relative="1" as="geometry">
+            <mxPoint x="-2" y="2" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="RRvPjsy73d2A_iiVXvRi-48" value="pending/&lt;br&gt;unregistered" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="200" y="1260" width="80" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="RRvPjsy73d2A_iiVXvRi-60" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="RRvPjsy73d2A_iiVXvRi-61" target="RRvPjsy73d2A_iiVXvRi-62">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="RRvPjsy73d2A_iiVXvRi-64" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="RRvPjsy73d2A_iiVXvRi-60">
+          <mxGeometry x="0.6095" y="-1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="RRvPjsy73d2A_iiVXvRi-66" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.75;exitDx=0;exitDy=0;" edge="1" parent="1" source="RRvPjsy73d2A_iiVXvRi-61" target="RRvPjsy73d2A_iiVXvRi-65">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="RRvPjsy73d2A_iiVXvRi-67" value="2" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="RRvPjsy73d2A_iiVXvRi-66">
+          <mxGeometry x="0.5167" y="-1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="RRvPjsy73d2A_iiVXvRi-61" value="&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//object3是指向object3引用的对象的强引用&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;MyObject object3 = new MyObject();&lt;/div&gt;&lt;font color=&quot;#007fff&quot;&gt;&lt;b&gt;//1 创建指向object3指向对象的弱引用，这行执行完毕后实际存在一个强引用一个弱引用&lt;/b&gt;&lt;/font&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;WeakReference&amp;lt;MyObject&amp;gt; wrReference = new &lt;b&gt;WeakReference&lt;/b&gt;&amp;lt;&amp;gt;(object3);&amp;nbsp;&amp;nbsp;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;object3 = null; &lt;font color=&quot;#007fff&quot;&gt;//释放强引用&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;System.out.println(wrReference.get());&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;&lt;b&gt;//2&amp;nbsp;&lt;/b&gt;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;System.&lt;b&gt;gc&lt;/b&gt;();&amp;nbsp; &lt;font color=&quot;#007fff&quot;&gt;//没有强引用存在只有弱引用会被回收&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;System.out.println(wrReference.get());&amp;nbsp; &lt;font color=&quot;#007fff&quot;&gt;//这里将打印null&lt;/font&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;align=left;arcSize=5;" vertex="1" parent="1">
+          <mxGeometry x="280" y="1360" width="440" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="RRvPjsy73d2A_iiVXvRi-62" value="&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;div&gt;Reference(T referent, ReferenceQueue&amp;lt;? super T&amp;gt; queue) {&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; this.&lt;b&gt;referent&lt;/b&gt; = &lt;b&gt;referent&lt;/b&gt;;&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; this.queue = (queue == null) ? ReferenceQueue.NULL : queue;&amp;nbsp; &lt;font color=&quot;#007fff&quot;&gt;//默认是 NULL 队列&lt;/font&gt;&lt;/div&gt;&lt;div&gt;}&lt;/div&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;align=left;arcSize=10;" vertex="1" parent="1">
+          <mxGeometry x="760" y="1360" width="440" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="RRvPjsy73d2A_iiVXvRi-69" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;" edge="1" parent="1" source="RRvPjsy73d2A_iiVXvRi-65" target="RRvPjsy73d2A_iiVXvRi-68">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="RRvPjsy73d2A_iiVXvRi-65" value="&lt;div style=&quot;&quot;&gt;Runtime.getRuntime().&lt;b&gt;gc&lt;/b&gt;();&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;触发GC之后，只存在弱引用的对象，会被JVM加入到pendingList&lt;/font&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;align=center;arcSize=10;" vertex="1" parent="1">
+          <mxGeometry x="760" y="1440" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="RRvPjsy73d2A_iiVXvRi-68" value="&lt;div style=&quot;&quot;&gt;Runtime.getRuntime().gc();&lt;br&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;align=center;arcSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="1440" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="RRvPjsy73d2A_iiVXvRi-71" value="测试中发现 discovered 叠了30多层，最后一层才是我们要释放的引用&lt;br style=&quot;font-size: 10px;&quot;&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;&lt;b style=&quot;font-size: 10px;&quot;&gt;pendingList&lt;/b&gt; = {CleanerImpl$&lt;b&gt;PhantomCleanableRef&lt;/b&gt;@1107}&amp;nbsp;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp;&lt;b style=&quot;font-size: 10px;&quot;&gt;discovered&lt;/b&gt; = {CleanerImpl$&lt;b&gt;PhantomCleanableRef&lt;/b&gt;@1109}&amp;nbsp;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp; ...&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp; &amp;nbsp;&lt;b style=&quot;font-size: 10px;&quot;&gt;discovered&lt;/b&gt; = {CleanerImpl$&lt;b&gt;PhantomCleanableRef&lt;/b&gt;@1192}&amp;nbsp;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp; &amp;nbsp; &lt;b style=&quot;font-size: 10px;&quot;&gt;discovered&lt;/b&gt; = {&lt;b&gt;Finalizer&lt;/b&gt;@1194}&amp;nbsp;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp;next = null&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp;prev = null&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp; &amp;nbsp; &lt;b style=&quot;font-size: 10px;&quot;&gt;referent&lt;/b&gt; = {ReferenceBaseTest$MyObject@1092} &quot;ReferenceBaseTest.&lt;b&gt;MyObject&lt;/b&gt;(name=&lt;b&gt;WeakReferenceTest&lt;/b&gt;)&quot;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp; &amp;nbsp; queue = {ReferenceQueue@1195}&amp;nbsp;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp; &amp;nbsp; Reference.next = {Finalizer@1194}&amp;nbsp;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp; &amp;nbsp; discovered = {MethodType$ConcurrentWeakInternSet$WeakEntry@1196}&amp;nbsp;&lt;/font&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="-1040" y="160" width="530" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="RRvPjsy73d2A_iiVXvRi-72" value="测试中发现 discovered 叠了30多层，最后一层才是我们要释放的引用&lt;br style=&quot;font-size: 10px;&quot;&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;&lt;b style=&quot;font-size: 10px;&quot;&gt;pendingList&lt;/b&gt; = {CleanerImpl$&lt;b&gt;PhantomCleanableRef&lt;/b&gt;@1107}&amp;nbsp;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp;&lt;b style=&quot;font-size: 10px;&quot;&gt;discovered&lt;/b&gt; = {CleanerImpl$&lt;b&gt;PhantomCleanableRef&lt;/b&gt;@1109}&amp;nbsp;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp; ...&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp; &amp;nbsp;&lt;b style=&quot;font-size: 10px;&quot;&gt;discovered&lt;/b&gt; = {CleanerImpl$&lt;b&gt;PhantomCleanableRef&lt;/b&gt;@1192}&amp;nbsp;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp; &amp;nbsp; &lt;b style=&quot;font-size: 10px;&quot;&gt;discovered&lt;/b&gt; = {&lt;b&gt;Finalizer&lt;/b&gt;@1194}&amp;nbsp;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp;next = null&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp;prev = null&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp; &amp;nbsp; &lt;b style=&quot;font-size: 10px;&quot;&gt;referent&lt;/b&gt; = {ReferenceBaseTest$MyObject@1092} &quot;ReferenceBaseTest.&lt;b&gt;MyObject&lt;/b&gt;(name=&lt;b&gt;WeakReferenceTest&lt;/b&gt;)&quot;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp; &amp;nbsp; queue = {ReferenceQueue@1195}&amp;nbsp;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp; &amp;nbsp; Reference.next = {Finalizer@1194}&amp;nbsp;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp; &amp;nbsp; discovered = {MethodType$ConcurrentWeakInternSet$WeakEntry@1196}&amp;nbsp;&lt;/font&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1450" y="250" width="530" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="RRvPjsy73d2A_iiVXvRi-74" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;endArrow=block;endFill=1;" edge="1" parent="1" source="RRvPjsy73d2A_iiVXvRi-73" target="RRvPjsy73d2A_iiVXvRi-18">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="RRvPjsy73d2A_iiVXvRi-73" value="&lt;div style=&quot;text-align: center;&quot;&gt;&lt;b&gt;FinalReference&amp;lt;T&amp;gt;&lt;/b&gt;&lt;br&gt;&lt;/div&gt;&lt;hr style=&quot;font-size: 11px;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 11px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;重写了 get() clear() 方法&lt;/font&gt;&lt;/p&gt;&lt;hr style=&quot;font-size: 11px;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 11px;&quot;&gt;&lt;br style=&quot;font-size: 11px;&quot;&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=11;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="-480" y="440" width="440" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="RRvPjsy73d2A_iiVXvRi-76" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;endArrow=block;endFill=1;" edge="1" parent="1" source="RRvPjsy73d2A_iiVXvRi-75" target="RRvPjsy73d2A_iiVXvRi-73">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="RRvPjsy73d2A_iiVXvRi-75" value="&lt;div style=&quot;text-align: center;&quot;&gt;&lt;b&gt;Finalizer&lt;/b&gt;&lt;br&gt;&lt;/div&gt;&lt;hr style=&quot;font-size: 11px;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 11px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;&lt;b&gt;从继承关系看它本质也是个引用类型&lt;/b&gt;&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 11px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;&lt;b&gt;&lt;br&gt;&lt;/b&gt;&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private static ReferenceQueue&amp;lt;Object&amp;gt; &lt;b&gt;queue&lt;/b&gt; = new ReferenceQueue&amp;lt;&amp;gt;();&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;// 等待回收的 Finalizer 双向链表的头节点&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;private static Finalizer &lt;b&gt;unfinalized&lt;/b&gt; = null;&lt;/span&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;//&amp;nbsp;保护对 unfinalized 列表访问的锁&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;private static final Object lock = new Object();&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private Finalizer &lt;b&gt;next&lt;/b&gt;, &lt;b&gt;prev&lt;/b&gt;;&lt;/p&gt;&lt;hr style=&quot;font-size: 11px;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 11px;&quot;&gt;&lt;br style=&quot;font-size: 11px;&quot;&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=11;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="-480" y="560" width="440" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="RRvPjsy73d2A_iiVXvRi-77" value="&lt;div style=&quot;text-align: center;&quot;&gt;&lt;b&gt;ReferenceQueue&lt;/b&gt;&lt;br&gt;&lt;/div&gt;&lt;hr style=&quot;font-size: 11px;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;b&gt;&lt;font color=&quot;#007fff&quot;&gt;仅包含Reference队列的头节点，需要借助 Reference next 构成完整的链表&lt;/font&gt;&lt;/b&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;b&gt;&lt;font color=&quot;#007fff&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/b&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;static final ReferenceQueue&amp;lt;Object&amp;gt; NULL = new Null();&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;static final ReferenceQueue&amp;lt;Object&amp;gt; ENQUEUED = new Null();&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private static class Lock { };&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private final Lock lock = new Lock();&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private volatile Reference&amp;lt;? extends T&amp;gt; &lt;b&gt;head&lt;/b&gt;;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;private long &lt;b&gt;queueLength&lt;/b&gt; = 0;&lt;/p&gt;&lt;hr style=&quot;font-size: 11px;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 11px;&quot;&gt;&lt;br style=&quot;font-size: 11px;&quot;&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=11;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="-960" y="440" width="440" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="RRvPjsy73d2A_iiVXvRi-80" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.996;entryY=0.134;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="RRvPjsy73d2A_iiVXvRi-79" target="RRvPjsy73d2A_iiVXvRi-16">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="RRvPjsy73d2A_iiVXvRi-79" value="&lt;div style=&quot;font-size: 10px;&quot;&gt;pending Reference 数据怎么来的, ???&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=center;fontSize=10;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="1480" y="160" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="RRvPjsy73d2A_iiVXvRi-81" value="&lt;div style=&quot;font-size: 10px;&quot;&gt;JVM后续处理，???&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=center;fontSize=10;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="1480" y="580" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="RRvPjsy73d2A_iiVXvRi-96" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1.006;exitY=0.874;exitDx=0;exitDy=0;entryX=0.999;entryY=0.397;entryDx=0;entryDy=0;entryPerimeter=0;exitPerimeter=0;fillColor=#dae8fc;strokeColor=#6c8ebf;" edge="1" parent="1" source="RRvPjsy73d2A_iiVXvRi-84" target="RRvPjsy73d2A_iiVXvRi-94">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1940" y="550" />
+              <mxPoint x="1940" y="747" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="RRvPjsy73d2A_iiVXvRi-97" value="&lt;font color=&quot;#007fff&quot;&gt;&lt;b&gt;唤醒&lt;/b&gt;&lt;/font&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="RRvPjsy73d2A_iiVXvRi-96">
+          <mxGeometry x="0.3269" y="-1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="RRvPjsy73d2A_iiVXvRi-84" value="&lt;div style=&quot;font-size: 10px;&quot;&gt;queue头部插入节点&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;...&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;div&gt;if (r instanceof FinalReference) {&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; VM.&lt;b&gt;addFinalRefCount&lt;/b&gt;(1);&lt;/div&gt;&lt;div&gt;}&lt;/div&gt;&lt;div&gt;lock.&lt;b&gt;notifyAll&lt;/b&gt;();&lt;/div&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;fontSize=10;arcSize=6;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="1480" y="480" width="200" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="RRvPjsy73d2A_iiVXvRi-89" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="RRvPjsy73d2A_iiVXvRi-86" target="RRvPjsy73d2A_iiVXvRi-88">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="RRvPjsy73d2A_iiVXvRi-86" value="&lt;b&gt;FinallizerThread&lt;/b&gt;&amp;nbsp;线程&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;线程名 “Finalizer”&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="280" y="660" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="RRvPjsy73d2A_iiVXvRi-91" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="RRvPjsy73d2A_iiVXvRi-88" target="RRvPjsy73d2A_iiVXvRi-90">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="RRvPjsy73d2A_iiVXvRi-88" value="&lt;b style=&quot;border-color: var(--border-color);&quot;&gt;Finallizer&lt;/b&gt;&lt;b style=&quot;font-size: 10px;&quot;&gt;$&lt;/b&gt;&lt;b&gt;FinallizerThread&lt;/b&gt;&lt;b style=&quot;font-size: 10px;&quot;&gt;#&lt;/b&gt;&lt;br style=&quot;font-size: 10px;&quot;&gt;&lt;b style=&quot;font-size: 10px;&quot;&gt;run()&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="520" y="660" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="RRvPjsy73d2A_iiVXvRi-93" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="RRvPjsy73d2A_iiVXvRi-90" target="RRvPjsy73d2A_iiVXvRi-92">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="RRvPjsy73d2A_iiVXvRi-90" value="&lt;b style=&quot;border-color: var(--border-color);&quot;&gt;Finallizer&lt;/b&gt;&lt;b style=&quot;font-size: 10px;&quot;&gt;$&lt;/b&gt;&lt;b&gt;FinallizerThread&lt;/b&gt;&lt;b style=&quot;font-size: 10px;&quot;&gt;#&lt;/b&gt;&lt;br style=&quot;font-size: 10px;&quot;&gt;&lt;b style=&quot;font-size: 10px;&quot;&gt;run()&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="760" y="660" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="RRvPjsy73d2A_iiVXvRi-95" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1.003;exitY=0.584;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="RRvPjsy73d2A_iiVXvRi-92" target="RRvPjsy73d2A_iiVXvRi-94">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="RRvPjsy73d2A_iiVXvRi-99" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.75;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="RRvPjsy73d2A_iiVXvRi-92" target="RRvPjsy73d2A_iiVXvRi-98">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="RRvPjsy73d2A_iiVXvRi-103" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.75;exitDx=0;exitDy=0;dashed=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" edge="1" parent="1" source="RRvPjsy73d2A_iiVXvRi-92">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="660" y="1110" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="RRvPjsy73d2A_iiVXvRi-92" value="等待虚拟机启动完成&lt;br&gt;...&lt;br&gt;&lt;div&gt;final JavaLangAccess jla = SharedSecrets.getJavaLangAccess();&lt;/div&gt;&lt;div&gt;running = true;&lt;/div&gt;&lt;div&gt;for (;;) {&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; try {&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;&lt;b&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; // 1 等待 ReferenceQueue 中有引用入队被唤醒，对应状态变更流程图中的 poll/remove&lt;/b&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; Finalizer f = (Finalizer)queue.&lt;b&gt;remove&lt;/b&gt;();&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;&lt;b&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; // 2 二次标记以及 referent = null&lt;/b&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; f.&lt;b&gt;runFinalizer&lt;/b&gt;(jla);&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; } catch (InterruptedException x) {&amp;nbsp;&lt;span style=&quot;background-color: initial;&quot;&gt;// ignore and continue&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; }&lt;/div&gt;&lt;div&gt;}&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;align=left;arcSize=4;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="660" width="440" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="RRvPjsy73d2A_iiVXvRi-94" value="&lt;div style=&quot;font-size: 10px;&quot;&gt;...&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;synchronized (lock) {&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp; &amp;nbsp; Reference&amp;lt;? extends T&amp;gt; r = &lt;b style=&quot;font-size: 10px;&quot;&gt;reallyPoll&lt;/b&gt;();&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp; &amp;nbsp; if (r != null) return r;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp; &amp;nbsp; long start = (timeout == 0) ? 0 : System.nanoTime();&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp; &amp;nbsp; for (;;) {&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; lock.&lt;b style=&quot;font-size: 10px;&quot;&gt;wait&lt;/b&gt;(timeout);&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; r = &lt;b style=&quot;font-size: 10px;&quot;&gt;reallyPoll&lt;/b&gt;();&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; if (r != null) return r;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; if (timeout != 0) {&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; long end = System.nanoTime();&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; timeout -= (end - start) / 1000_000;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; if (timeout &amp;lt;= 0) return null;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; start = end;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; }&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp; &amp;nbsp; }&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;}&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;align=left;arcSize=4;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="1480" y="660" width="440" height="220" as="geometry" />
+        </mxCell>
+        <mxCell id="RRvPjsy73d2A_iiVXvRi-98" value="&lt;div style=&quot;font-size: 10px;&quot;&gt;...&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;b&gt;&lt;font color=&quot;#007fff&quot;&gt;// 返回基类 Reference referent 字段&lt;/font&gt;&lt;/b&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;bject finalizee = this.&lt;b&gt;get&lt;/b&gt;();&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;div&gt;if (!(finalizee instanceof java.lang.&lt;b&gt;Enum&lt;/b&gt;)) {&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;&lt;b&gt;&amp;nbsp; &amp;nbsp; // 调用对象 finalize() 方法（参考System.java中&lt;/b&gt;&lt;/font&gt;&lt;font color=&quot;#007fff&quot;&gt;&lt;b&gt;JavaLangAccess匿名内部类实现&lt;/b&gt;&lt;/font&gt;&lt;b style=&quot;color: rgb(0, 127, 255); background-color: initial;&quot;&gt;），&lt;/b&gt;&lt;/div&gt;&lt;div&gt;&lt;b style=&quot;color: rgb(0, 127, 255); background-color: initial;&quot;&gt;&amp;nbsp; &amp;nbsp; // 进行二次标记&lt;/b&gt;&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; jla.&lt;b&gt;invokeFinalize&lt;/b&gt;(finalizee);&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&amp;nbsp; &amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;b style=&quot;background-color: initial;&quot;&gt;finalizee&lt;/b&gt;&lt;span style=&quot;background-color: initial;&quot;&gt; = null;&lt;/span&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;}&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;&lt;b&gt;// 内部将Reference引用的 referent 设置为 null ，通过调用 Reference#clearInactiveFinalReference 实现&lt;/b&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;super.&lt;b&gt;clear&lt;/b&gt;();&lt;br&gt;&lt;/div&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;align=left;arcSize=4;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="1480" y="920" width="440" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="RRvPjsy73d2A_iiVXvRi-100" value="&lt;font color=&quot;#007fff&quot;&gt;测试Demo的引用状态流程变更体现为图中蓝色流程；&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="680" y="1080" width="310" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="RRvPjsy73d2A_iiVXvRi-104" value="&lt;font color=&quot;#007fff&quot;&gt;注意：&lt;br&gt;Finalizer 中 清理引用清理的是 Finalizer &lt;b&gt;referent&lt;/b&gt;;&amp;nbsp;&lt;br&gt;而左边&amp;nbsp; &quot;active&quot;, &quot;pending&quot;, or &quot;inactive&quot; 中的 referent 貌似说的是 WeakReference 等类型的 &lt;b&gt;referent&lt;/b&gt;;&amp;nbsp;&lt;br&gt;&lt;br&gt;代码中创建的是 &lt;b&gt;WeakReference&lt;/b&gt; 引用类型，但是清理时从 pendingList 取出来的是 &lt;b&gt;Finalizer&lt;/b&gt; 类型&lt;br&gt;因为目标对象实现了 finalize() 方法，生成的是 Finalizer 引用类型，不实现这个方法&lt;br&gt;&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="840" y="915" width="560" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="RRvPjsy73d2A_iiVXvRi-105" value="TODO:&amp;nbsp;还缺少两部分逻辑，需要进入JVM源码寻找答案。&lt;br&gt;&lt;b&gt;1. peding Reference 数据怎么来的？对软、弱、虚引用都是怎么处理的&lt;br&gt;2.&amp;nbsp;processPendingLock.notifyAll() 唤醒的是什么线程？后续怎么处理的？（推测是回收被引用对象）&lt;/b&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="800" y="15" width="570" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

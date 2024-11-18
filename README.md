@@ -6,7 +6,7 @@
 
 这里的流程图不是常规流程图，实际是借鉴的时序图的编排方式，另外还添加了简单的`UML`图。
 
-> 后面列举的框架并非都分析过源码（心有余而力不足），有些只是计划，已经分析过源码的都有文档链接。
+> 后面列举的框架并非都分析过源码（心有余而力不足），有些只是计划，已经分析过源码的都有流程图链接。
 >
 > 有些分析流程图之前记录在其他仓库后续会转移到这里，慢慢补充吧
 
@@ -60,11 +60,13 @@
 
 ### SDK
 
+> JDK 一些类的源码少于2000行的一般没必要画流程图，数据结构和逻辑不画图也能梳理清楚，时间久了忘记了重新看也花不了多长时间。
+
 + **JVM**
 
   + **HotSpot**
 
-    已经搭建好了源码调试环境（参考：jvm-debug），但是看JVM源码需要很多操作系统系统编程、内核方面的知识，不是短时间就能看明白的，所以暂停了。
+    已经搭建好了源码调试环境（参考：jvm-debug），但是看JVM源码需要很多操作系统系统编程、内核方面的知识，不是短时间就能把整个流程看明白的，所以暂停了。还是碰到问题先针对性地看对应的代码块吧，更简单些。
 
     源码流程图：
 
@@ -109,6 +111,7 @@
     源码流程图：
 
     + [CompletableFuture.drawio](docs/java/jdk/concurrent/CompletableFuture.drawio)
+    + [CompletableFuture.drawio.png](docs/java/jdk/concurrent/CompletableFuture.drawio.png)
 
   + **ThreadPoolExecutor**
 
@@ -138,9 +141,16 @@
 
     + [java-nio.drawio](docs/java/jdk/io/java-nio.drawio)
     + [java-nio.drawio.png](docs/java/jdk/io/java-nio.drawio.png)
-    + [java-nio-overview.png](docs/java/jdk/io/java-nio-overview.png)
+    + [java-nio-overview.png](docs/java/jdk/io/java-nio-overview.png)（详细缩略图）
 
-    > NIO 使用的多路复用IO模型的逻辑实现其实是在 epoll 这个系统调用里。
+    > NIO 使用的多路复用IO模型的逻辑实现其实是在 epoll 这个系统调用里（仅分析Linux环境）。
+
++ **Reference**
+
+  源码流程图：
+
+  + [java-reference.drawio](docs/java/jdk/reference/java-reference.drawio)
+  + [java-reference.drawio.png](docs/java/jdk/reference/java-reference.drawio.png)
 
 ### 网关
 
@@ -153,7 +163,7 @@
 
   原理简述：
 
-  本质是一个 WebFlux 应用，内部处理逻辑和 Spring MVC 也有点类似，主要也是定义一组请求处理映射（用于定义路由处理，路由包括一组断言和过滤器），通过断言进行请求与路由的匹配，通过路由的过滤器对请求进行处理（比如：修改路径进行转发）。
+  本质是一个 WebFlux 应用，内部处理逻辑和 Spring MVC 也有点类似，主要也是定义一组请求处理映射（用于定义路由处理，路由包括一组断言和过滤器），通过断言进行请求与路由的匹配，通过路由的过滤器对请求进行处理（比如：修改路径、进行转发等）。
 
 + **Zuul**
 
@@ -328,14 +338,14 @@
       源码流程图：
 
       + [spring-beans-factorybean.drawio](docs/java/spring/spring-beans-factorybean.drawio)
-      + [spring-beans-factorybean.drawio.png](docs/java/spring/spring-beans-factorybean.drawio.png)
+      + [spring-beans-factorybean.drawio.png](docs/java/spring/imgs/spring-beans-factorybean.png)
 
     + **循环依赖处理**
 
       源码流程图：
 
       + [spring-beans-circular-dependency.drawio](docs/java/spring/spring-beans-circular-dependency.drawio)
-      + [spring-beans-circular-dependency.drawio.png](docs/java/spring/spring-beans-circular-dependency.drawio.png)
+      + [spring-beans-circular-dependency.drawio.png](docs/java/spring/imgs/spring-beans-circular-dependency.png)
 
     + **Bean创建顺序控制**
 
@@ -354,7 +364,7 @@
   源码流程图：
 
   + [spring-mvc.drawio](docs/java/spring/spring-mvc.drawio)
-  + [spring-mvc.drawio.png](docs/java/spring/spring-mvc.drawio.png)
+  + [spring-mvc.drawio.png](docs/java/spring/imgs/spring-mvc.drawio.png)
 
   原理简述：
 
