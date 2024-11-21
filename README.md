@@ -322,8 +322,25 @@
 
     源码流程图：
 
-    + [spring-transaction.drawio](docs/java/spring/spring-transaction.drawio)
-    + [spring-transaction.drawio.png](docs/java/spring/spring-transaction.drawio.png)
+    + [spring-transaction-5.3.27.drawio](docs/java/spring/spring-transaction-5.3.27.drawio) （编程式事务源码分析）
+
+    + [spring-transaction-5.3.27.drawio.png](docs/java/spring/imgs/spring-transaction-5.3.27.drawio.png) 
+
+    + [spring-transaction.drawio](docs/java/spring/spring-transaction.drawio) (声明式事务源码分析，sheet2)
+
+      不完整（事务处理部分逻辑没画），声明式事务处理实现和编程式有点小区别但差别也不是很大，知道事务操作入口是 `TransactionInterceptor` 就行了，懒得再画一遍了。
+
+    + [spring-transaction-declarative.drawio.png](docs/java/spring/imgs/spring-transaction-declarative.drawio.png)
+
+    注意：
+
+    如果有两个操作 a()，b()，a() 调用 b()，a() 在事务中执行，**b() 方法无论是新建事务执行还是普通执行，如果产生异常没有被捕获，都会被 a() 所在事务捕获到，进而导致 a() 所在事务也回滚**。
+
+    **正确的处理方式**：b() 中应该捕获异常，然后通过是否设置 rollbackOnly 标志决定是否让 a() 所在事务也回滚。
+
+    **事务传播个人认为只是强调多个操作是纳入一个事务管理还是多个事务分开管理，而不是说互不干扰**。
+
+    >  初学者容易认为 `REQUIRED_NEW ` 新建事务后，即使抛出异常也不会影响之前的事务，这是不对的（对可能存在外部事务的传播类型都做了测试无一例外）；原因无论新建事务执行还是普通执行，抛出的异常只要不处理都会最终抛到外部事务中（Spring事务源码发现异常即使捕获也会再次抛出）。
 
   + **测试**
 
@@ -842,6 +859,10 @@
 + **满足对框架内部工作原理的好奇心，也便于后期出现BUG排查BUG**
 
 + **学习代码架构设计、代码风格规范、对依赖框架的封装和使用、提取轮子等**
+
++ **以不变应万变**
+
+  对框架源码有清晰认识之后，很多问题没必要死记硬背（不是天天用肯定会忘），用到再看下对应模块源码即可，有什么坑怎么解决源码会告诉我们一切。
 
 **对框架源码的认识**：
 
