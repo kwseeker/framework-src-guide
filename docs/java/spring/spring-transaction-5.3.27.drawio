@@ -1,4 +1,4 @@
-<mxfile host="Electron" modified="2024-11-21T08:39:34.986Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.6.5 Chrome/114.0.5735.243 Electron/25.3.1 Safari/537.36" etag="Z0vf-jwq-xBhIoRPAEuC" version="21.6.5" type="device">
+<mxfile host="Electron" modified="2024-11-21T09:07:47.555Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.6.5 Chrome/114.0.5735.243 Electron/25.3.1 Safari/537.36" etag="vjlJm7q3n__PZ_-uNIYd" version="21.6.5" type="device">
   <diagram name="第 1 页" id="EUVRpC5VqprH-hu82ChB">
     <mxGraphModel dx="3847" dy="837" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -472,8 +472,8 @@
         <mxCell id="7g7w9DKIwCULyIwxDFRv-118" value="conHolder.getConnection()&lt;br&gt;.&lt;b&gt;releaseSavepoint&lt;/b&gt;((Savepoint) savepoint);&lt;div style=&quot;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;调用JDBC releaseSavepoint() 方法释放保存点&lt;/font&gt;&lt;br&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;align=left;arcSize=9;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
           <mxGeometry x="2200" y="2720" width="200" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="7g7w9DKIwCULyIwxDFRv-127" value="&lt;div&gt;&lt;b&gt;注意事项&lt;/b&gt;：&lt;/div&gt;&lt;div&gt;&lt;ol&gt;&lt;li&gt;内部事务或普通运行抛出的异常不处理，都会被外部事务捕获到，从而导致外部事务也回滚；&lt;br&gt;正确的方式是应该捕获异常，至于是否应该让外部事务也回滚通过设置 rollbackOnly 标志实现。&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;编程式事务可以通过&amp;nbsp;TransactionStatus.setRollbackOnly()设置，声明式事务可借助&amp;nbsp;TransactionAspectSupport.currentTransactionStatus().setRollbackOnly() 设置。&lt;/font&gt;&lt;/li&gt;&lt;/ol&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
-          <mxGeometry x="760" width="930" height="100" as="geometry" />
+        <mxCell id="7g7w9DKIwCULyIwxDFRv-127" value="&lt;div&gt;&lt;b&gt;注意事项&lt;/b&gt;：&lt;/div&gt;&lt;div&gt;&lt;ol&gt;&lt;li&gt;内部事务或普通运行抛出的异常不处理，都会被外部事务捕获到，从而导致外部事务也回滚；&lt;br&gt;正确的方式是应该捕获异常，至于是否应该让外部事务也回滚通过设置 rollbackOnly 标志实现。&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;编程式事务可以通过&amp;nbsp;TransactionStatus.setRollbackOnly()设置，声明式事务可借助&amp;nbsp;TransactionAspectSupport.currentTransactionStatus().setRollbackOnly() 设置。&lt;/font&gt;&lt;/li&gt;&lt;li&gt;挂起外部事务开新事务的原理：线程本地存的属性打包到 SuspendResource 对象，然后新建连接并设置新事务属性到线程本地；&lt;br&gt;恢复事务就是将 SuspendResource 对象（内部包括之前的连接）重新设置到线程本地。&lt;br&gt;&lt;br&gt;&lt;/li&gt;&lt;/ol&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="760" y="10" width="930" height="140" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
