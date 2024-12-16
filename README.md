@@ -1,14 +1,14 @@
 # 后端技术栈框架源码分析
 
-这里主要分析Java和Go后端技术栈常用框架的源码，从整体到局部探究内部工作原理，并输出可视化流程图。
+这里主要分析Java后端技术栈常用框架的源码，从整体到局部探究内部工作原理，并输出可视化流程图。
 
-源码分析输出主要为`drawio`流程图（`.drawio`文件）和 `Markdown`文本，以流程图为主（主要展示框架主流程），Markdown作为补充，详细内容参考[docs](./docs)。
+源码分析输出主要为`drawio`流程图（`.drawio`文件）和 `Markdown`文本，以流程图为主（主要展示框架数据结构和主流程），Markdown作为补充，详细内容参考[docs](./docs)。
 
 这里的流程图不是常规流程图，实际是借鉴的时序图的编排方式，另外还添加了简单的`UML`图。
 
 > 后面列举的框架并非都分析过源码（心有余而力不足），有些只是计划，已经分析过源码的都有流程图链接。
 >
-> 有些分析流程图之前记录在其他仓库后续会转移到这里，慢慢补充吧
+> 有些分析流程图之前记录在其他仓库后续会转移到这里，慢慢补充吧。
 
 ## 分类
 
@@ -25,7 +25,7 @@
     - 服务器
     - Web框架
     - 微服务框架
-    
+  
     + 注册中心/配置中心
     + 分布式协调
     + 服务保障
@@ -45,16 +45,24 @@
     + 序列化
     + 工具类
     + 语法解析器
-    
+  
   - [Go](#go)
-    
+  
     - SDK
     - 注册中心/配置中心
     - 数据库相关
   
+  - [Rust](#Rust)
+  
+    - 异步框架
+    - 工具类
+    - 其他
+  
 - [Resources](#resources)
   
   - [Books](#books)
+
+
 
 ## Java
 
@@ -143,7 +151,11 @@
     + [java-nio.drawio.png](docs/java/jdk/io/java-nio.drawio.png)
     + [java-nio-overview.png](docs/java/jdk/io/java-nio-overview.png)（详细缩略图）
 
-    > NIO 使用的多路复用IO模型的逻辑实现其实是在 epoll 这个系统调用里（仅分析Linux环境）。
+    > 注意即使是使用NIO这种非阻塞模型，也不意味着你的服务一定是非阻塞的。因为NIO模型仅仅是为了支持使用较少的线程处理大量并发请求，它说的非阻塞是说借助select线程避免当通道没有数据时阻塞**Channel读写线程**执行（这个Channel没有数据可以去处理其他Channel就绪的数据）；业务服务是否阻塞还取决于**业务线程**读取Channel读线程返回的值的方式，比如Channel线程读取到请求数据后还需要交给业务线程处理，如果业务线程还是使用 FutureTask 这种方式读取返回值那就是阻塞的，如果使用 Callback Promise 这些方式读取返回值就是非阻塞的。
+    >
+    > 总之 **NIO 非阻塞是说的是不会阻塞 Channel 读写线程，响应式Web框架中服务非阻塞则是说服务中所有线程读写都不会阻塞，包括 Channel读写线程**。看响应式框架（比如Reactor ）
+    >
+    > Tomcat 8.x 默认使用 NIO 处理请求但是不妨碍它 “读请求体”、“写响应头”、“写响应体” 依然是阻塞的。
 
 + **Reference**
 
@@ -190,7 +202,7 @@
 
 + **Grpc**
 
-+ **Thift**
++ **Thrift**
 
 ### 负载均衡
 
@@ -232,12 +244,10 @@
     + Consumer: [rocketmq-Consumer.drawio.png](docs/java/message-queue/imgs/rocketmq-Consumer.drawio.png)
     
   + [rocketmq-messagestore.drawio](docs/java/message-queue/rocketmq/rocketmq-messagestore.drawio) (消息存储服务原理)
-  
-    + MessageStore: [rocketmq-messagestore.drawio.png](docs/java/message-queue/imgs/rocketmq-messagestore.drawio.png)
-  
+    + MessageStore: [rocketmq-messagestore.drawio.png](docs/java/message-queue/imgs/rocketmq-messgestore.drawio.png)
+    
   + [transaction-message.drawio](docs/java/message-queue/rocketmq/transaction-message.drawio) (事务消息原理)
-  
-    + [rocketmq-message.drawio.png](docs/java/message-queue/imgs/rocketmq-message.drawio.png)
+  + [transaction-message.drawio.png](docs/java/message-queue/imgs/transaction-message.drawio.png)
   
 + **RabbitMQ**
 
@@ -268,7 +278,38 @@
   源码流程图：
 
   + [netty.drawio](docs/java/netty/netty.drawio)
+
   + [netty.drawio.png](docs/java/netty/netty.drawio.png)
+
+    关于 Netty Pipeline 中各种 ChannelHandler 的调用顺序、触发方式解析参考后面 RocketMQ 流程图。
+    
+    > 好久之前画的图，UML部分数据结构依赖关系不清晰，流程部分一次完整的请求流程处理过程也不是很清晰，需要重画。
+
+  细节问题分析：
+
+  + [Netty如何通过参数配置支持三种Reactor模型](docs/java/netty/netty-reactor.md)
+
+    实际多用Reactor主从多线程模型，RocketMQ 中 NettyRemotingServer 就是Reactor主从多线程模型。
+
+  + Netty的串行无锁化设计体现在哪里
+
+  + [Netty解码器中处理TCP粘包、拆包的实现原理以及反序列化处理流程](docs/java/netty/netty-codec.md)
+
+    + RocketMQ 自定义解码器粘包、拆包处理及反序列化处理流程
+
+      RocketMQ 自定义解码器 NettyDecoder 基于 LengthFieldBaseFrameDecoder 实现，根据报文长度提取消息主体。
+
+    + 基于 WebSocket 协议的粘包、拆包处理及反序列化处理流程
+
+      使用Netty不一定需要自己定义通信协议和实现编解码器，Netty默认支持通过 HTTP协议、WebSocket协议通信，本人接触到的公司项目就是用的 WebSocket 协议。
+
+  **开源框架是怎么用Netty的**：
+
+  + RocketMQ
+
+    已将 RocketMQ 中通过 Netty 通信的代码抽离到了仓库 SpringBoot-Labs/netty/**netty-rocketmq** 模块，去除了业务处理，共2K行代码，可以作为模板用在自己的项目中；
+
+    实现的功能包括：Reactor主从多线程模型、同步或异步传输、连接空闲超时断线、针对连接的请求信号量限流、断线重连、消息重发，另外还有Socks代理、TLS支持、监控告警（写缓存水位线监控告警）不过这些暂时没有提取出来，还有可以借鉴《Netty权威指南》支持 Protobuf 编解码、HTTP协议、WebSocket协议。
 
 + **Reactor-Netty**
 
@@ -298,18 +339,21 @@
 
   + **基于注解的应用上下文**
 
-    这里主要分析 IOC 和 Spring Bean 生命周期。
+    这里主要分析 IOC 和 Spring Bean 生命周期（包括优雅关闭）。
 
     源码流程图：
 
     + [spring-context.drawio](docs/java/spring/spring-context.drawio)
+
+      很久之前画的，图有点丑，关于Spring Bean 实例化和初始化流程，参考后面的 [spring-beans-factorybean.drawio](docs/java/spring/spring-beans-factorybean.drawio)，更详细。
+
     + [spring-context.drawio.png](docs/java/spring/imgs/spring-context.drawio.png)
 
   + **切面**
 
     + **Spring CgLib and ASM**
 
-      Spring 没有直接引入CgLib和ASM的依赖，而是将部分源码直接迁移到了Spring核心，细节还是挺多的，比较枯燥，流程图省略了很多细节。
+      Spring 代理实现基础，Spring 没有直接引入CgLib和ASM的依赖，而是将它们的部分源码直接迁移到了Spring核心，细节还是挺多的，比较枯燥，流程图省略了很多细节。
 
       + [spring-cglib-and-asm.drawio](docs/java/spring/spring-cglib-and-asm.drawio)
       + [spring-cglib-and-asm.drawio.png](docs/java/spring/imgs/spring-cglib-and-asm.drawio.png)
@@ -324,13 +368,13 @@
 
     + [spring-transaction-5.3.27.drawio](docs/java/spring/spring-transaction-5.3.27.drawio) （编程式事务源码分析）
 
-    + [spring-transaction-5.3.27.drawio.png](docs/java/spring/imgs/spring-transaction-5.3.27.drawio.png) 
+    + [spring-transaction-5.3.27.drawio.png](docs/java/spring/imgs/spring-transaction-5.3.27.drawio.png)（编程式事务流程图）
 
     + [spring-transaction.drawio](docs/java/spring/spring-transaction.drawio) (声明式事务源码分析，sheet2)
 
       不完整（事务处理部分逻辑没画），声明式事务处理实现和编程式有点小区别但差别也不是很大，知道事务操作入口是 `TransactionInterceptor` 就行了，懒得再画一遍了。
 
-    + [spring-transaction-declarative.drawio.png](docs/java/spring/imgs/spring-transaction-declarative.drawio.png)
+    + [spring-transaction-declarative.drawio.png](docs/java/spring/imgs/spring-transaction-declarative.drawio.png) （声明式事务流程图）
 
     注意：
 
@@ -372,7 +416,7 @@
 
     + **五种不同方式的自动装配**
 
-      no、byName、byType、constructor、autodetect。
+      依赖no、byName、byType、constructor、autodetect。
 
 + **Spring MVC**
 
@@ -484,11 +528,17 @@
     + [zookeeper-server.drawio](docs/java/zookeeper/zookeeper-server.drawio)
     
       > 很久之前画的没有UML，而且图太过罗嗦，TODO 重画。
+  
+  + Curator
+  
+    + 分布式锁 InterProcessMutex
+  
+      TODO。
 
 
 ### 服务保障
 
-+ [**jd-hotkey**](docs/java/jd-hotkey/jd-hotkey.md)
++ [**Jd-Hotkey**](docs/java/jd-hotkey/jd-hotkey.md)
 
   源码流程图：
 
@@ -521,6 +571,8 @@
     + [skywalking-agent.drawio.png](docs/java/skywalking/skywalking-agent.drawio.png)
 
 + **Sleuth**
+
++ OpenTelemetry
 
 ### 监控系统
 
@@ -572,8 +624,10 @@
 
 + **JCasbin**
 
-  源码流程图：
+  JCasbin 提供了简单易用、灵活、强大的权限校验模型，可以替换 Spring Security、Shiro 中的权限校验模块。
 
+  源码流程图：
+  
   + [jcasbin.drawio](docs/java/jcasbin/jcasbin.drawio)
   + [jcasbin.drawio.png](docs/java/jcasbin/imgs/jcasbin.drawio.png)
 
@@ -586,9 +640,33 @@
     源码流程图：
 
     + [mybatis.drawio](docs/java/mybatis/mybatis.drawio)
-    + [mybatis.drawio.png](docs/java/mybatis/mybatis.drawio.png)
+    + [mybatis.drawio.png](docs/java/mybatis/imgs/mybatis.drawio.png)
 
-    > 也是好久之前画的图，UML不详细，SQL前后置处理以及连接池部分还有细节逻辑没有梳理，TODO 重画。
+    > 也是好久之前画的图，UML不详细，导致回看不好理解，SQL前后置处理以及连接池部分还有细节逻辑没有梳理，TODO 重画。
+
+
+  + 重要组件分析：
+
+    + [mybatis-cache.drawio](docs/java/mybatis/mybatis-cache.drawio) (Mybatis 两级缓存工作原理)
+
+    + [mybatis-cache.drawio.png](docs/java/mybatis/imgs/mybatis-cache.drawio.png) 
+
+      + 两个事务中同时执行同一条查询语句使用二级缓存是怎么保证不会出现脏读的
+      + 二级缓存联表查询数据不一致问题产生的原因
+      + SpringBoot 集成 Mybatis 非事务方式连续两次执行同一条查询，为何第二次不会命中一级缓存
+
+      > 综上：SpringBoot Mybatis 项目默认配置下其实根本不会用到 Mybatis的缓存。
+
+    + [mybatis-plugin.drawio](docs/java/mybatis/mybatis-plugin.drawio) (Mybatis 插件工作原理)
+
+    + [mybatis-plugin.drawio.png](docs/java/mybatis/imgs/mybatis-plugin.drawio.png)
+
+      插件原理：通过 JDK 动态代理将插件通过 Interceptor 接口定义的拓展逻辑封装到 Mybatis SQL执行组件中，可以
+      拦截 Exuecutor StatementHandler ParameterHandler ResultSetHandler 的方法，对SQL语句、参数、返回值进行额外处理；
+      
+      这里以 PageHelper 为例分析插件的XML配置解析、实例化、初始化、注册原理，插件都可以增强数据库访问中哪些过程和组件（Executor、StatementHandler、ParamterHandler、ResultSetHandler），以及插件增强原理（JDK动态代理层层封装）。
+      
+      > 由于 PageHelper 分页基于 LIMIT ?, ? 实现，这种分页方式有深度分页问题，只适合小数据量的表，所以 PageHelper 平时使用的并不多。
 
   + Mybatis-Spring
 
@@ -600,13 +678,44 @@
 
   > 之前梳理了个半成品，TODO 重画。
 
++ **DataX**
+
+  数据库迁移工具，阿里云DataWorks的开源版本。
+
+
++ **Redis**
+
+  Redis的源码看起来并不难理解，但是感觉平时使用基本用不着看源码（业务中基本不太可能需要对Redis Server源码进行拓展、修改）；只在需要理解某些重要问题底层原理时看对应部分源码就行了（也可以看《Redis源码剖析与实战》了解大概流程，碰到具体问题能快速找到对应处理代码即可）。
+
+  源码流程图：
+
+  + [redis-client-server.drawio](docs/java/redis/redis-client-server.drawio) (Redis Client/Server 流程，sheet1: 客户端、sheet2: 服务端)
+
+    + [redis-server.drawio.png](docs/java/redis/imgs/redis-server.drawio.png)
+
+      这里主要关注 Redis Server 基于 epoll 多路复用模型对请求的处理流程，以及 Redis 命令解析分发和执行流程（需要知道客户端输入一个命令，命令最终是由 Server 中哪个方法执行的）。
+
+  + [redis-cmd-set.drawio](docs/java/redis/redis-cmd-set.drawio) (Redis Server set命令处理流程)
+
+  + [redis-cmd-rpush.drawio](docs/java/redis/redis-cmd-rpush.drawio) (Redis Server rpush命令处理流程)
+
+  + [redis-cmd-zadd.drawio](docs/java/redis/redis-cmd-zadd.drawio) (Redis Server zadd命令处理流程)
+
+  + [redis-inner-ds.drawio](docs/java/redis/redis-inner-ds.drawio) (Redis Server 内部基础数据结构)
+
 + **Sharding-JDBC**
 
   > TODO 流程图迁移。
 
 + **连接池**
+
+  这些连接池可以对比着看源码，比较下各自优缺点。
+  
+  
+  + Mybatis PooledDataSource
   + **Druid**
   + **HikariCP**
+  
 
 ### 分布式事务
 
@@ -660,7 +769,10 @@
 ### 缓存
 
 + **Caffeine**
+
 + **Ehcache**
+
+  TODO。
 
 ### 分布式
 
@@ -716,7 +828,7 @@
 
   基于FastJson2源码分析，从源码实现上看主体逻辑其实比较简单，之所以源码代码量很高更多地是因为编程语言语法的复杂性（需要适配各种各样的类型和语法，而且要用ASM定义ObectWriter动态类，调试时可以发现有很多if判断，还有一些对特定类型的定制实现，但是实际的类型可能只会用到其中少部分处理逻辑）。
 
-  序列化主体逻辑可以分为3部分（以 ObjectWriterCreatorASM 为例）：
+  序列化主体逻辑可以分为3部分（以  ObjectWriterCreatorASM 为例）：
   1）通过Class解析一个类型需要序列化的部分（比如公共基本类型字段、有实现 Getter 方法的私有基本类型字段、对象类型字段、继承的字段等等），针对每个字段会创建一个 FieldWriter 实现对这个字段的序列化；
 
   2）为此类型通过 ASM 字节码动态生成一个专属的 ObjectWriter 类进而加载并实例化，用于专门实现对这个类型对象的序列化写操作，通过这种方式避免了反射的低效性，而且 Fastjson 会缓存这些动态生成的 ObjectWriter 类，后续再序列化会很快；
@@ -731,6 +843,8 @@
 + **Hessian**
 
 + **Jackson**
+
+  TODO。
 
 + **Kryo**
 
@@ -777,6 +891,10 @@
 
     + [redisson-lock-RedissonFencedLock.drawio.png](docs/java/redisson/redisson-lock-RedissonFencedLock.drawio.png)
 
+    注意：
+
+    红锁（RedLock）在新版本已经废弃。
+
   + **Future、Promise模式**
 
     源码流程图：
@@ -808,6 +926,8 @@
 
   Sharding-JDBC 中 借助 Antlr 实现对 SQL 语句的重构（原SQL -> AST -> 新SQL），将 SQL 转换成针对某个分表的 SQL。
 
+
+
 ## Go
 
 ### SDK
@@ -831,12 +951,27 @@
 
 + **DTM**
 
+
+
 ## Rust
 
-+ **异步**
-  + **Tokio**
+### 异步框架
 
-## 说明
++ **Tokio**
+
+### 其他
+
++ **音乐**
+
+  + [netease-cloud-music-gtk](https://github.com/gmg137/netease-cloud-music-gtk)
+
+    网易云音乐 Linux 版已经不支持下载了，而且网上版本很老，然后发现了这个项目，基于 GTK + 网易云音乐API 实现。
+
+    TODO：可以研究下源码（当前2.5.0版本，代码量大概8K行），打包自用，也可以了解下 Rust + GTK Linux 桌面程序开发和打包。
+
+
+
+## 为何读源码
 
 **读框架源码的初衷**：
 
@@ -852,11 +987,17 @@
 
   拓展方式比如接口、SPI、插件、JVMTI Agent什么的。
 
-+ **更好更合理地使用框架**
++ **更好更合理地使用技术和框架**
+
+  通过源码可以更透彻地理解某个技术的实现原理和细节，因为文档很难描述某些代码逻辑，也很难透漏所有细节，这也导致有些文档难以理解，甚至根据文档理解的是片面的或错误的。
 
   几乎所有框架的文档都没法将框架所有功能的细节都讲解清楚，熟悉原理可以帮助开发时避坑。
 
 + **满足对框架内部工作原理的好奇心，也便于后期出现BUG排查BUG**
+
++ **借鉴设计**
+
+  对一陌生的场景进行方案设计时，一定要先多参考已有的设计，梳理设计要点，不同方案的优缺点，不要闭门造车，否则很容易设计出存在很多漏洞的方案；
 
 + **学习代码架构设计、代码风格规范、对依赖框架的封装和使用、提取轮子等**
 
@@ -864,7 +1005,9 @@
 
   对框架源码有清晰认识之后，很多问题没必要死记硬背（不是天天用肯定会忘），用到再看下对应模块源码即可，有什么坑怎么解决源码会告诉我们一切。
 
-**对框架源码的认识**：
+> 做企业级的方案设计的时候，如果不是对业务很熟悉（熟知需要关注哪些点、会存在什么坑）；首先需要多参考开源的方案设计，对比优缺点，总结都需要注意哪些坑，在此基础上再设计符合自己业务的方案。
+
+**对读框架源码的心得**：
 
 + **读源码需要画图辅助记忆和理解**
 
@@ -876,7 +1019,9 @@
 
 + **大部分框架源码是复杂但不是难，只是梳理过程比较费时间**
 
-+ **大部分框架都有一个主流程逻辑，主流程逻辑占全体代码量一般并不高，也是主要要看的**；除了一些工具类框架，比如`Hutool`、`Redisson`
+  研究清楚某个逻辑的完整实现流程，可能会涉及几十个源码文件，很多层调用。
+
++ **大部分框架都有一个主流程逻辑，主流程逻辑占全体代码量一般并不高，也是主要要看的**；除了一些工具类框架，比如`Hutool`、`Redisson`没有主流程
 
   面向生产的框架，里面很多功能点，一般都会为功能点提供较全的实现方案，它们的接口和功能类似，通常只需要梳理一种方案实现即可。
 
@@ -886,7 +1031,9 @@
 
   框架里面可能依赖其他框架，不熟悉被依赖的框架，不要立即跳转进去看源码，先通过被依赖框架官方文档了解接口功能即可，以当前框架为主。
 
-+ **很多框架在代码架构上有用一些相同的架构、模式**
++ **很多框架在代码架构上有用一些相同的架构思想、设计模式、技术实现方法**
+
+  多总结这些内容，可以加速对新框架源码的理解。
 
 + **想了解某一部分源码的逻辑可以结合相应的单元测试代码调试**
 
@@ -900,6 +1047,8 @@
 
 4W2H：What (是什么)、When/Where(什么时候使用或者用在哪里)、Why(为什么选择这个)、How(怎么实现的)、How(怎么使用)，
 即 **介绍**（包括功能）、**场景**、**优劣**、**原理**、**应用**。
+
+
 
 ## 资源
 
