@@ -25,6 +25,7 @@
     - 服务器
     - Web框架
     - 微服务框架
+    - 服务网格
   
     + 注册中心/配置中心
     + 分布式协调
@@ -504,11 +505,15 @@
 ### 微服务框架
 
 + **Helidon**
-
 + **Micronaut**
-
 + **Quarkus**
 + **Spring Cloud**
+
+### 服务网格
+
++ **Istio**
+
+  服务都会启动SideCar代理，可以拦截和处理来自其他服务实例的网络流量并提供各种功能，包括负载均衡、故障转移、熔断、限流、安全、监控等等。
 
 ### 注册中心/配置中心
 
@@ -687,13 +692,15 @@
 
   Redis的源码看起来并不难理解，但是感觉平时使用基本用不着看源码（业务中基本不太可能需要对Redis Server源码进行拓展、修改）；只在需要理解某些重要问题底层原理时看对应部分源码就行了（也可以看《Redis源码剖析与实战》了解大概流程，碰到具体问题能快速找到对应处理代码即可）。
 
-  源码流程图：
+  源码流程图（6.2.6）：
 
   + [redis-client-server.drawio](docs/java/redis/redis-client-server.drawio) (Redis Client/Server 流程，sheet1: 客户端、sheet2: 服务端)
 
-    + [redis-server.drawio.png](docs/java/redis/imgs/redis-server.drawio.png)
+    + [redis-server.drawio.png](docs/java/redis/imgs/redis-server.drawio.png) （服务端对请求处理流程）
 
-      这里主要关注 Redis Server 基于 epoll 多路复用模型对请求的处理流程，以及 Redis 命令解析分发和执行流程（需要知道客户端输入一个命令，命令最终是由 Server 中哪个方法执行的）。
+      这里主要关注 Redis Server 基于 epoll IO多路复用模型对请求的处理流程，以及 Redis 命令解析分发和执行流程（需要知道客户端输入一个命令，命令最终是由 Server 中哪个方法执行的）。
+      
+      最好先参考《Linux系统编程》等书籍回顾下 epoll 是怎么使用的，不然可能看不懂上面的流程图；或者参考这个 epoll 示例：[epoll_server.c](https://github.com/kwseeker/netty/blob/master/epoll/epoll_server.c) 。
 
   + [redis-cmd-set.drawio](docs/java/redis/redis-cmd-set.drawio) (Redis Server set命令处理流程)
 
@@ -703,6 +710,38 @@
 
   + [redis-inner-ds.drawio](docs/java/redis/redis-inner-ds.drawio) (Redis Server 内部基础数据结构)
 
+    + [obj_encoding_skiplist2.png](docs/java/redis/imgs/obj_encoding_skiplist2.png) (跳表的数据结构)
+
+      发现技术圈很喜欢讨论跳表，这里单独列出来之前画的一张ZSet跳表的结构图以及参考Redis源码使用Java重新实现的跳表[ZSkipList.java](https://github.com/kwseeker/redis-model/blob/master/redis-theory/src/main/java/top/kwseeker/redis/theory/datastructure/ZSkipList.java)，此跳表实现原理说明参考 [redis-data-structure.md](docs/java/redis/redis-data-structure.md) 。
+
+
+  重要问题分析：
+
+  + Redis 6.0 开始到底哪里支持了多线程
+
+    看上面 [redis-server.drawio.png](docs/java/redis/imgs/redis-server.drawio.png) 会发现没有用到多线程啊？这是因为**IO多线程默认是关闭的**需要修改服务端配置（redis.conf），然后 redis-server redis.conf 启动，启动后 `ps -T -p <pid>` 可以看到多线程模式相对于单线程模式多出来几个线程 `io_thd_<n>`，暂时没时间看这部分源码，可以先参考[Redis 6.0的多线程](https://cloud.tencent.com/developer/article/1940123) 这篇文章，后面会添加流程图（TODO）。
+
+    ```ini
+    # 开启网络IO多线程
+    io-threads-do-reads yes
+    # 设置IO线程数量为8
+    io-threads 8
+    # 查看 redis-server 进程下的所有线程，上面io-threads 8 包括main线程
+    ~ ps -T -p 96007
+        PID    SPID TTY          TIME CMD
+      96007   96007 pts/4    00:00:00 redis-server
+      96007   96028 pts/4    00:00:00 bio_close_file
+      96007   96029 pts/4    00:00:00 bio_aof_fsync
+      96007   96030 pts/4    00:00:00 bio_lazy_free
+      96007   96031 pts/4    00:00:00 io_thd_1
+      96007   96032 pts/4    00:00:00 io_thd_2
+      96007   96033 pts/4    00:00:00 io_thd_3
+      96007   96034 pts/4    00:00:00 io_thd_4
+      96007   96035 pts/4    00:00:00 io_thd_5
+      96007   96036 pts/4    00:00:00 io_thd_6
+      96007   96037 pts/4    00:00:00 io_thd_7
+    ```
+
 + **Sharding-JDBC**
 
   > TODO 流程图迁移。
@@ -710,12 +749,12 @@
 + **连接池**
 
   这些连接池可以对比着看源码，比较下各自优缺点。
-  
-  
+
+
   + Mybatis PooledDataSource
   + **Druid**
   + **HikariCP**
-  
+
 
 ### 分布式事务
 
