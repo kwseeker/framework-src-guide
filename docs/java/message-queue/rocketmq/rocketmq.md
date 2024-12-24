@@ -377,7 +377,7 @@ ConsumeMessageConcurrentlyService.this.processConsumeResult(status, context, thi
 
 > 发现网上搜索到的方案说法大都不严谨，基本都是只强调写入同一个消息队列。
 
-即如何保证消息顺序发送和顺序消费，从RocketMQ工作流程看，严谨地实现顺序消息需要保证三点：
+即如何保证消息顺序发送和顺序消费，从RocketMQ工作流程看，严谨地实现顺序消息需要保证四点：
 
 + **顺序生产**
 
@@ -386,6 +386,10 @@ ConsumeMessageConcurrentlyService.this.processConsumeResult(status, context, thi
 + **写入同一消息队列**
 
   默认情况下一个主题下面会创建多个消息队列，一个消息队列中的消息消费是天然可以保证顺序写入就被顺序输出的，但是多个消息队列无法保证；
+
++ **同一消息队列的消息总是发给同一个消费者实例**
+
+  由消费者负载均衡策略保证的，可以参考 **AllocateMessageQueueAveragely** 实现；
 
 + **顺序消费**
 
@@ -636,7 +640,7 @@ Broker 端在 SendMessageProcessor 中处理此请求码，如果消息重试次
 
 消费者启动时会额外订阅当前消费者分组的重试主题，参考 `copySubscription()` 方法。
 
-另外注意死信队列的消息同样是默认保存72消息，如果没有消费也会被删除，需要注意及时处理。
+另外注意死信队列的消息同样是默认保存72小时，如果没有消费也会被删除，需要注意及时处理。
 
 ### 分布式事务实现原理
 
@@ -730,3 +734,8 @@ public void pullMessage(final PullRequest pullRequest) {
 }
 ```
 
+总结：
+
+其实是**推拉结合**的方式，流程简述就是：消费者向Broker发送拉取请求（Netty请求），Broker收到消息后会判断队列中是否有消息，有则批量推送给消费者，没有则将请求缓存起来，待有消息后再推送给被缓存的请求来源消费者，并清除缓存的请求； Netty客户端监听到 Broker 响应后消费消息，消费完成后再发出新的拉取请求。
+
+这样既可以避免拉模式的无间隔轮询空转或有间隔轮询的处理延迟问题，也能避免推模式推送速度大于消费者消费速度导致消息在客户端堆积的问题。

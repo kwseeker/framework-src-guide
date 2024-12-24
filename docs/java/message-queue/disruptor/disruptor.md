@@ -401,3 +401,6 @@ Disruptor 支持3种编码风格（Lambda、Lagacy、MethodRef）。
 ## 参考
 
 + [ Disruptor 原理、架构、源码 一文穿透](https://blog.csdn.net/crazymakercircle/article/details/128264803)
+
+  内存伪共享等问题可以参考。
+

@@ -2,9 +2,9 @@
 
 这里主要分析Java后端技术栈常用框架的源码，从整体到局部探究内部工作原理，并输出可视化流程图。
 
-源码分析输出主要为`drawio`流程图（`.drawio`文件）和 `Markdown`文本，以流程图为主（主要展示框架数据结构和主流程），Markdown作为补充，详细内容参考[docs](./docs)。
+源码分析输出主要为`Drawio`流程图（`.drawio`文件）和 `Markdown`文档，以流程图为主（主要展示框架数据结构和主流程），`Markdown`文档作为补充，详细内容参考[docs](./docs)。
 
-这里的流程图不是常规流程图，实际是借鉴的时序图的编排方式，另外还添加了简单的`UML`图。
+这里的流程图不是常规流程图，实际是借鉴的时序图的编排方式，另外还添加了重要类的`UML`图（UML：体现数据结构 ，流程：体现算法）。
 
 > 后面列举的框架并非都分析过源码（心有余而力不足），有些只是计划，已经分析过源码的都有流程图链接。
 >
@@ -80,8 +80,12 @@
     源码流程图：
 
     + [jvm8-hotspot.drawio](docs/java/jvm/jvm8-hotspot.drawio) (未完成)
+
     + [java-exec-process.drawio](docs/java/jvm/java-exec-process.drawio) (流程概要)
+
     + [java-exec-process.drawio.png](docs/java/jvm/java-exec-process.drawio.png)
+
+      里面有些错误，TODO 修改。
 
     > 不过Github上有一些简单JVM开源实现，可以参考下以加深对JVM的理解，这里只分析星数最高的一个实现[mini-jvm](#mini-jvm)。
 
@@ -239,17 +243,32 @@
 
   + [rocketmq.drawio](docs/java/message-queue/rocketmq/rocketmq.drawio)
     + NameServer: [rocketmq-NameServer.drawio.png](docs/java/message-queue/imgs/rocketmq-NameServer.drawio.png)
-    
     + Broker:  [rocketmq-Broker.drawio.png](docs/java/message-queue/imgs/rocketmq-Broker.drawio.png)
     + Producer: [rocketmq-Producer.drawio.png](docs/java/message-queue/imgs/rocketmq-Producer.drawio.png)
     + Consumer: [rocketmq-Consumer.drawio.png](docs/java/message-queue/imgs/rocketmq-Consumer.drawio.png)
-    
   + [rocketmq-messagestore.drawio](docs/java/message-queue/rocketmq/rocketmq-messagestore.drawio) (消息存储服务原理)
     + MessageStore: [rocketmq-messagestore.drawio.png](docs/java/message-queue/imgs/rocketmq-messgestore.drawio.png)
-    
   + [transaction-message.drawio](docs/java/message-queue/rocketmq/transaction-message.drawio) (事务消息原理)
   + [transaction-message.drawio.png](docs/java/message-queue/imgs/transaction-message.drawio.png)
-  
+
+  关键问题（下面问题详细参考文档 [rocketmq.md](docs/java/message-queue/rocketmq/rocketmq.md)）：
+
+  + 同步发送&消费原理
+
+  + 顺序消息原理
+
+    这个问题实现原理其实挺复杂的（整个流程涉及的源码很多），网上基本没有找到能解释清楚且全面的，个人调试源码很久得出下面结论：
+
+    需要满足四点：**顺序生产**（一组顺序消息需要使用一个生产者实例生产，以避免乱序写入消息队列）、**写入同一消息队列**、**同一消息队列的消息总是发给同一个消费者实例**（由消费者负载均衡策略保证）、**顺序消费**（顺序消息支持单消费者多线程并发消费，通过锁保证消费顺序性），简单几句话说不清，参考文档。
+
+  + 消息消费失败重试&死信队列机制
+
+  + RocketMQ 消息消费到底是推还是拉
+
+    其实是**推拉结合**的方式，流程简述就是：消费者向Broker发送拉取请求（Netty请求），Broker收到消息后会判断队列中是否有消息，有则批量推送给消费者，没有则将请求缓存起来，待有消息后再推送给被缓存的请求来源消费者，并清除缓存的请求； Netty客户端监听到 Broker 响应后消费消息，消费完成后再发出新的拉取请求。
+
+    这样既可以避免拉模式的**无间隔轮询空转**或**有间隔轮询的处理延迟**问题，也能避免推模式推送速度大于消费者消费速度导致消息在客户端**堆积**的问题。
+
 + **RabbitMQ**
 
 ### 作业调度
@@ -683,7 +702,7 @@
 
   > 之前梳理了个半成品，TODO 重画。
 
-+ **DataX**
++ DataX
 
   数据库迁移工具，阿里云DataWorks的开源版本。
 
@@ -714,12 +733,34 @@
 
       发现技术圈很喜欢讨论跳表，这里单独列出来之前画的一张ZSet跳表的结构图以及参考Redis源码使用Java重新实现的跳表[ZSkipList.java](https://github.com/kwseeker/redis-model/blob/master/redis-theory/src/main/java/top/kwseeker/redis/theory/datastructure/ZSkipList.java)，此跳表实现原理说明参考 [redis-data-structure.md](docs/java/redis/redis-data-structure.md) 。
 
+  + redis-pubsub (Redis发布订阅)
+
+    后面 Redisson 发布订阅源码分析中仅仅是展示Redisson对发布订阅的封装，不包含Redis服务端内部对发布订阅的实现。
+
+    >  TODO： Redis发布订阅命令源码流程图补充。
+
+  + redis-stream (Redis Stream)
+
+    > TODO： 源码流程图补充。
+
+  + redis-transaction (Redis事务)
+
+    Redis事务其实说的只是并发的原子性，保证事务中的多个命令执行时中间不会插入其他客户端的命令。没有事务控制时为何可能插入其他客户端的命令？看上面**IO多路复用模型**就明白了：**多个客户端同时发送命令，先获取到哪个客户端的命令就绪事件无法确定**，所以高并发场景下一个客户端先后发送两个命令，中间很可能插入其他客户端的命令；
+    要实现Redis事务其实就是要么将多个命令合并成一个命令一起发送；要么就是先缓存到服务端的队列，当提交EXEC后，再将这批命令一起取出来一起执行；根据一些资料看实现原理是第二种方案。
+    
+    > TODO： 源码流程图补充。
+
+  + [Redis 过期key定期删除（主动删除）原理](docs/java/redis/redis-expired-keys-clear.md)
+
+    定期删除任务由 `bio_lazy_free` 线程执行，但是此线程只是负责扫描过期key并加入异步队列，**过期的key最终是还是由时间事件循环交由主线程执行删除命令进行删除**，所以定期删除扫描任务中的思想是**少量多次有间隔地删除**，而不是扫描全部的过期key一起删除以防止阻塞客户端命令的执行。
+
+    如果有一批key同时过期，定期删除策略也只能缓解对其他key读写效率的影响。
 
   重要问题分析：
 
   + Redis 6.0 开始到底哪里支持了多线程
 
-    看上面 [redis-server.drawio.png](docs/java/redis/imgs/redis-server.drawio.png) 会发现没有用到多线程啊？这是因为**IO多线程默认是关闭的**需要修改服务端配置（redis.conf），然后 redis-server redis.conf 启动，启动后 `ps -T -p <pid>` 可以看到多线程模式相对于单线程模式多出来几个线程 `io_thd_<n>`，暂时没时间看这部分源码，可以先参考[Redis 6.0的多线程](https://cloud.tencent.com/developer/article/1940123) 这篇文章，后面会添加流程图（TODO）。
+    看上面 [redis-server.drawio.png](docs/java/redis/imgs/redis-server.drawio.png) 会发现没有用到多线程啊？这是因为**IO多线程默认是关闭的**需要修改服务端配置（redis.conf），然后 `redis-server redis.conf` 启动，启动后 `ps -T -p <pid>` 可以看到多线程模式相对于单线程模式多出来几个线程 `io_thd_<n>`，暂时没时间看这部分源码，可以先参考[Redis 6.0的多线程](https://cloud.tencent.com/developer/article/1940123) 这篇文章，后面会添加流程图（TODO）。
 
     ```ini
     # 开启网络IO多线程
@@ -729,10 +770,10 @@
     # 查看 redis-server 进程下的所有线程，上面io-threads 8 包括main线程
     ~ ps -T -p 96007
         PID    SPID TTY          TIME CMD
-      96007   96007 pts/4    00:00:00 redis-server
+      96007   96007 pts/4    00:00:00 redis-server		# 主线程，即处理客户端命令的线程
       96007   96028 pts/4    00:00:00 bio_close_file
       96007   96029 pts/4    00:00:00 bio_aof_fsync
-      96007   96030 pts/4    00:00:00 bio_lazy_free
+      96007   96030 pts/4    00:00:00 bio_lazy_free		# 这个线程是过期key定期删除的扫描线程
       96007   96031 pts/4    00:00:00 io_thd_1
       96007   96032 pts/4    00:00:00 io_thd_2
       96007   96033 pts/4    00:00:00 io_thd_3
@@ -922,17 +963,25 @@
 
     + [redisson-lock.drawio](docs/java/redisson/redisson-lock.drawio)
 
-    + [redisson-lock-RedissonLock.drawio.png](docs/java/redisson/redisson-lock-RedissonLock.drawio.png)
+      + [redisson-lock-RedissonLock.drawio.png](docs/java/redisson/redisson-lock-RedissonLock.drawio.png)
 
-      多数锁继承 RedissonLock，梳理清 RedissonLock 再看其他锁的实现会简单很多。
+        多数锁继承 RedissonLock，梳理清 RedissonLock 再看其他锁的实现会简单很多，可以看到Lua脚本才是核心；
+        包括**加锁解锁流程**以及**看门狗**实现原理。
 
-    + [redisson-lock-RedissonReadWriteLock.drawio.png](docs/java/redisson/redisson-lock-RedissonReadWriteLock.drawio.png)
+      + [redisson-lock-RedissonReadWriteLock.drawio.png](docs/java/redisson/redisson-lock-RedissonReadWriteLock.drawio.png)
 
-    + [redisson-lock-RedissonFencedLock.drawio.png](docs/java/redisson/redisson-lock-RedissonFencedLock.drawio.png)
-
+      + [redisson-lock-RedissonFencedLock.drawio.png](docs/java/redisson/redisson-lock-RedissonFencedLock.drawio.png)
+    
     注意：
-
+    
     红锁（RedLock）在新版本已经废弃。
+
+  + **分布式延迟队列**
+
+    + RDelayedQueue (TODO)
+
+      基于ZSet数据结构实现，延迟时间作为分值，定时任务扫描，取出到期的延迟消息给业务线程处理。
+      扫描延迟消息的定时任务可以用计划任务线程池或Timer实现（看其他框架实现时见到好多次了），Redisson 用的哪种后面有空再看。
 
   + **Future、Promise模式**
 
@@ -1024,7 +1073,7 @@
 
 + **拓展框架功能**（很多框架都有预留一些扩展点）
 
-  拓展方式比如接口、SPI、插件、JVMTI Agent什么的。
+  拓展方式比如扩展钩子、SPI、插件、JVMTI Agent什么的。
 
 + **更好更合理地使用技术和框架**
 
@@ -1034,9 +1083,9 @@
 
 + **满足对框架内部工作原理的好奇心，也便于后期出现BUG排查BUG**
 
-+ **借鉴设计**
++ **借鉴方案设计**
 
-  对一陌生的场景进行方案设计时，一定要先多参考已有的设计，梳理设计要点，不同方案的优缺点，不要闭门造车，否则很容易设计出存在很多漏洞的方案；
+  对一陌生的场景进行方案设计时，一定要先多参考已有的设计，梳理设计要点，比较不同方案的优缺点，不要闭门造车，否则很容易设计出存在很多漏洞的方案；
 
 + **学习代码架构设计、代码风格规范、对依赖框架的封装和使用、提取轮子等**
 
