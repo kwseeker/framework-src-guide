@@ -1,10 +1,12 @@
 # 后端技术栈框架源码分析
 
-这里主要分析Java后端技术栈常用框架的源码，从整体到局部探究内部工作原理，并输出可视化流程图。
+这里主要分析Java后端技术栈常用框架的源码（后面也会考虑加入Go、Rust技术栈），从整体到局部探究内部工作原理，并输出可视化流程图。
 
 源码分析输出主要为`Drawio`流程图（`.drawio`文件）和 `Markdown`文档，以流程图为主（主要展示框架数据结构和主流程），`Markdown`文档作为补充，详细内容参考[docs](./docs)。
 
-这里的流程图不是常规流程图，实际是借鉴的时序图的编排方式，另外还添加了重要类的`UML`图（UML：体现数据结构 ，流程：体现算法）。
+这里的流程图不是常规流程图，实际是借鉴的时序图的编排方式，另外还添加了重要类的`UML`图（UML：体现数据结构 ，流程：体现算法， UML比流程更重要）。
+
+个人认为读源码（不一定是框架源码）是每个程序员都应该养成的习惯，尤其是在做架构设计或方案设计时，如果对某个业务不是很熟悉，第一步应该做的是检索一些开源实现，快速过一遍源码，梳理业务开发中需要考虑哪些设计要点、有哪些实现方式、不同实现方式的优缺点等等，见到很多优秀的程序员都是这么做的，兼顾效率与质量，包括一些框架也会互相借鉴优点。
 
 > 后面列举的框架并非都分析过源码（心有余而力不足），有些只是计划，已经分析过源码的都有流程图链接。
 >
@@ -75,7 +77,7 @@
 
   + **HotSpot**
 
-    已经搭建好了源码调试环境（参考：jvm-debug），但是看JVM源码需要很多操作系统系统编程、内核方面的知识，不是短时间就能把整个流程看明白的，所以暂停了。还是碰到问题先针对性地看对应的代码块吧，更简单些。
+    已经搭建好了源码调试环境（参考仓库：jvm-debug），但是看JVM源码需要很多操作系统系统编程、内核方面的知识，不是短时间就能把整个流程看明白的，所以暂停了。还是碰到问题先针对性地看对应的代码块吧，更简单些。
 
     源码流程图：
 
@@ -263,6 +265,8 @@
 
   + 消息消费失败重试&死信队列机制
 
+    直接参考流程图，这两个问题不算复杂。
+
   + RocketMQ 消息消费到底是推还是拉
 
     其实是**推拉结合**的方式，流程简述就是：消费者向Broker发送拉取请求（Netty请求），Broker收到消息后会判断队列中是否有消息，有则批量推送给消费者，没有则将请求缓存起来，待有消息后再推送给被缓存的请求来源消费者，并清除缓存的请求； Netty客户端监听到 Broker 响应后消费消息，消费完成后再发出新的拉取请求。
@@ -380,7 +384,9 @@
 
     + **AOP**
 
-      参考声明式事务源码分析。
+      关键是生成代理对象，像Spring声明式事务以及Seata数据源代理都注册了一个继承`AbstractAutoProxyCreator`的Bean，即代理构造器，其本质是一个BeanPostProcessor，作用是在其他Bean初始化后判断是否需要为Bean生成代理对象，是的话查找所有对应的 Advice、Advisor创建代理对象。  
+      
+      参考声明式事务源码分析或者Seata数据源代理源码分析（Seata这部分工作流程图单独提出来了）。
 
   + **事务**
 
@@ -473,7 +479,7 @@
 
 + **Spring Boot**
 
-  之前看源码输出到了Markdown文件，但是内容多了Markdown可读性很差，待补充原理图。
+  很久之前看源码输出到了Markdown文件，但是内容多了Markdown可读性很差，待补充原理图。
 
 + **Spring WebFlux**
 
@@ -709,7 +715,7 @@
 
 + **Redis**
 
-  Redis的源码看起来并不难理解，但是感觉平时使用基本用不着看源码（业务中基本不太可能需要对Redis Server源码进行拓展、修改）；只在需要理解某些重要问题底层原理时看对应部分源码就行了（也可以看《Redis源码剖析与实战》了解大概流程，碰到具体问题能快速找到对应处理代码即可）。
+  Redis的源码看起来并不难理解，平时使用基本用不着看源码；只在需要理解某些重要问题（比如某个命令是否有性能问题）底层原理时看对应部分源码就行了（也可以看《Redis源码剖析与实战》了解大概流程，碰到具体问题能快速找到对应处理代码即可）。
 
   源码流程图（6.2.6）：
 
@@ -783,6 +789,10 @@
       96007   96037 pts/4    00:00:00 io_thd_7
     ```
 
+  + Redis ZSet 中最多只存储20W热点数据，每次新增热点数据时使用 zcard 查看数量，超过 20W 使用 zremrangeByRank 删除最早添加的数据，这个数据量 zcard zremrangeByRank 有没有性能问题
+
+    这两个命令肯定没有性能问题，插入操作和检索操作需要评估下，这数据量一定是跳表，使用跳表读写时间复杂度是 O(Log(N))，20W 数据属于大key，一般规定 Set 类型不要超过1W数据，20W数据量相对于 1W 数据估计大概多5次循环，内存中5次循环还是可以接受的，不过建议还是做拆分，比如按地域、按用户尾号拆分到不同的key中，主要是避免大key导致在集群中出现数据倾斜。
+
 + **Sharding-JDBC**
 
   > TODO 流程图迁移。
@@ -790,11 +800,16 @@
 + **连接池**
 
   这些连接池可以对比着看源码，比较下各自优缺点。
-
-
-  + Mybatis PooledDataSource
-  + **Druid**
-  + **HikariCP**
+  
+  
+    + Mybatis PooledDataSource
+  
+  
+    + **Druid**
+  
+  
+    + **HikariCP**
+  
 
 
 ### 分布式事务
@@ -825,11 +840,53 @@
 
 + **Seata**
 
-  前身是Fescar。
+  包含一套分布式事务方案适用于不同要求的一致性场景，总代码量很大，但是核心代码量没有那么吓人，只需要关注**seata-server**、**seata-core**、一种配置中心的支持(如seata-config-nacos)、一种服务发现的支持（如seata-discovery-nacos）、一种通信方式支持（如 RestTemplate、Feign、GRPC、Dubbo）、**三大组件（RM TM TC）**、各种**事务实现模式（AT、TCC、Saga、XA）**。
 
   源码流程图：
 
-  + [seata.drawio](docs/java/seata/seata.drawio)  (尚未完成)
+  + [seata-server.drawio](docs/java/seata/seata-server.drawio) (Seata服务器，作为TC)
+
+    这里主要分析 AT 模式。TC 、TM 、RM 组件之间通过 Netty 通信，Netty 通信端口默认是 HTTP 通信端口 + 1000，Netty 通信组件封装和 RocketMQ 中 Netty 组件的封装大致相同。
+
+  + [seata-client.drawio](docs/java/seata/seata-client.drawio) (Seata客户端，作为TM 和 RM)
+
+    这里主要分析 AT 模式。每个客户端启动时都会启动 TM RM 的 Netty 客户端，但是只有全局事务发起者才会使用 TM 客户端，如果一个服务仅仅作为事务参与者只会用到 RM 客户端。
+
+  + [seata-at-overview.drawio](docs/java/seata/seata-at-overview.drawio)
+
+    感觉官方文档中[原理图](https://seata.apache.org/zh-cn/assets/images/solution-1bdadb80e54074aa3088372c17f0244b.png)太过简略了，无法体现很多重要信息，重新绘制了AT模式工作原理概图。
+    
+    AT模式也是基于**业务补偿**的**两阶段提交**；业务补偿方面类似TCC，但是AT模式可以自行生成用于补偿的 UndoLog，而不是像 TCC 模式需要自行实现补偿逻辑，即**没有业务侵入**；AT模式的两阶段提交，**第一阶段**：实现各分支事务的注册、执行、提交（**注意第一阶段分支事务就会提交**），**第二阶段**：如果是提交的话其实主要是执行事务数据的清理，比如删除 UndoLog（可以异步执行），如果是回滚的话，主要是查询各分支事务 UndoLog 并执行进行补偿。
+
+  + [seata-datasourceproxy.drawio](docs/java/seata/seata-datasourceproxy.drawio) (数据源代理)
+
+    Seata @GlobalTransactional 增强的逻辑中并不包含事务操作，事务操作是通过 DataSourceProxy 实现，分支事务执行可能会同时经过 @Transactional 和 DataSourceProxy 事务操作，但是两者并不冲突，DataSourceProxy 中会先判断当前是否已经开启事务，如果已经开启不会重复开启。
+
+    DataSourceProxy 基于 Spring AOP 实现，详细参考 `SeataAutoDataSourceProxyCreator` ，它继承 `AbstractAutoProxyCreator`，本质是一个`BeanPostProcessor`。
+
+  + 适配器支持多种注册中心、配置中心实现
+
+    基于 SPI 和 适配器模式，这种功能很常用，可以将代码抽成一个范式。
+
+  + @GlobalLock
+
+    用在不需要全局事务而又需要检查全局锁避免脏读脏写的场景，这种场景使用`@GlobalLock`注解更加轻量。
+
+  关键问题分析（部分节选自官方FAQ）：
+
+  + [@GlobalTransactional 注释的方法明明没有像 @Transactional 拓展事务操作为何这个方法中执行的SQL还是可以在出现异常后被回滚](docs/java/seata/seata-global-transactional-rollback.md)
+
+  + [全局事务ID是怎么传递给事务参与者服务的](docs/java/seata/seata-xid-propagation.md)
+
+    TransactionPropagationInterceptor 中的事务传播只是说 XID 的传递，和 Spring 事务传播不是一个概念。
+
+  + 怎么使用Seata框架来保证事务的隔离性
+
+  + 脏数据回滚失败如何处理
+
+  + 抛出异常后事务未回滚
+
+    官方文档直接列举了一些可能原因，但是感觉这种回答方式不太好，应该结合抛出异常到事务回滚的流程一步步排查，清除内部流程的话应该怎么排查很清楚。
 
 + **TCC-Transaction**
 
@@ -870,12 +927,14 @@
   
       看 Nacos 当前最新版本（2.3.2）中依赖的是 SOFAJRaft，简称JRaft，是参考 BRaft 的 Java 实现。
   
+      可以参考 Seata RaftServer 了解如何使用 JRaft 实现一个分布式一致性文件系统。
+  
     + **Raft4J**
   
     + **Raft-Java**
   
       这个只是DEMO性质的实现，主要是代码实现简单（5K多行，其他生产级别的实现都是几W行），适合快速学习Raft协议细节。
-  
+    
       源码流程图：
     
       + [raft-java.drawio](docs/java/distributed/consistency/raft-java.drawio)
@@ -940,6 +999,12 @@
 
 + **Hutool**
 
++ **JETCD**
+
+  + **分布式锁**
+
+    对比Redisson实现（TODO）。
+
 + **jvm-sandbox**
 
   > TODO 流程图迁移
@@ -1001,11 +1066,19 @@
       + [redisson-AsyncSemaphore.drawio](docs/java/redisson/redisson-AsyncSemaphore.drawio)
       + [redisson-AsyncSemaphore.drawio.png](docs/java/redisson/redisson-AsyncSemaphore.drawio.png)
 
-+ **JETCD**
++ [**sensitive-word**](https://github.com/houbb/sensitive-word)
 
-  + **分布式锁**
+  基于 DFA （Deterministic Finite Automaton，确定有穷自动机）算法的敏感词工具（基于**前缀树**数据结构，此工具借助 HashMap 存储下一级字符节点），支持很多细节控制（比如格式转换、全角半角、大小写、邮箱检测、网址检测、白名单等等）。
 
-    对比Redisson实现（TODO）。
+  有些关于DFA算法的介绍（参考维基百科[确定有限状态自动机](https://zh.wikipedia.org/wiki/%E7%A1%AE%E5%AE%9A%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E8%87%AA%E5%8A%A8%E6%9C%BA)）还有什么事件、状态转换，但是从一些实现看并没有涉及这些东西，感觉是概念将问题描述的复杂化了，实现其实很简单。
+
+  源码流程图：
+
+  + [sensitive-word.drawio](docs/java/sensitive-word/sensitive-word.drawio)
+
+  + [sensitive-word.drawio.png](docs/java/sensitive-word/imgs/sensitive-word.drawio.png)
+
+    源码量不高，作者加了很多注释，代码很容易理解，这里不详细画流程图了，只看数据结构的 UML就能推导出逻辑 。
 
 
 ### 语法解析器
