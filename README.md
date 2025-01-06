@@ -846,31 +846,41 @@
 
   + [seata-server.drawio](docs/java/seata/seata-server.drawio) (Seata服务器，作为TC)
 
+  + [seata-server.drawio.png](docs/java/seata/imgs/seata-server.drawio.png)
+
     这里主要分析 AT 模式。TC 、TM 、RM 组件之间通过 Netty 通信，Netty 通信端口默认是 HTTP 通信端口 + 1000，Netty 通信组件封装和 RocketMQ 中 Netty 组件的封装大致相同。
 
   + [seata-client.drawio](docs/java/seata/seata-client.drawio) (Seata客户端，作为TM 和 RM)
 
+  + [seata-client.drawio.png](docs/java/seata/imgs/seata-client.drawio.png)
+
     这里主要分析 AT 模式。每个客户端启动时都会启动 TM RM 的 Netty 客户端，但是只有全局事务发起者才会使用 TM 客户端，如果一个服务仅仅作为事务参与者只会用到 RM 客户端。
 
-  + [seata-at-overview.drawio](docs/java/seata/seata-at-overview.drawio)
+  + [seata-at-overview.drawio](docs/java/seata/seata-at-overview.drawio) （Seata AT模式流程概图）
+
+  + [seata-at-overview.drawio.png](docs/java/seata/seata-at-overview.drawio.png)
 
     感觉官方文档中[原理图](https://seata.apache.org/zh-cn/assets/images/solution-1bdadb80e54074aa3088372c17f0244b.png)太过简略了，无法体现很多重要信息，重新绘制了AT模式工作原理概图。
-    
-    AT模式也是基于**业务补偿**的**两阶段提交**；业务补偿方面类似TCC，但是AT模式可以自行生成用于补偿的 UndoLog，而不是像 TCC 模式需要自行实现补偿逻辑，即**没有业务侵入**；AT模式的两阶段提交，**第一阶段**：实现各分支事务的注册、执行、提交（**注意第一阶段分支事务就会提交**），**第二阶段**：如果是提交的话其实主要是执行事务数据的清理，比如删除 UndoLog（可以异步执行），如果是回滚的话，主要是查询各分支事务 UndoLog 并执行进行补偿。
+
+    AT模式也是基于**业务补偿**的**两阶段提交**；业务补偿方面类似TCC，但是AT模式可以自行生成用于补偿的 UndoLog，而不是像 TCC 模式需要手动编码实现补偿逻辑，也即**没有业务侵入**；AT模式的两阶段提交，**第一阶段**：实现各分支事务的注册、执行、提交（**注意第一阶段分支事务就会提交**），**第二阶段**：如果是提交的话其实主要是执行事务数据的清理，比如删除 UndoLog（可以异步执行），如果是回滚的话，主要是查询各分支事务 UndoLog 并执行进行补偿。
 
   + [seata-datasourceproxy.drawio](docs/java/seata/seata-datasourceproxy.drawio) (数据源代理)
 
+  + [seata-datasourceproxy.drawio.png](docs/java/seata/imgs/seata-datasourceproxy.drawio.png)
+
     Seata @GlobalTransactional 增强的逻辑中并不包含事务操作，事务操作是通过 DataSourceProxy 实现，分支事务执行可能会同时经过 @Transactional 和 DataSourceProxy 事务操作，但是两者并不冲突，DataSourceProxy 中会先判断当前是否已经开启事务，如果已经开启不会重复开启。
 
-    DataSourceProxy 基于 Spring AOP 实现，详细参考 `SeataAutoDataSourceProxyCreator` ，它继承 `AbstractAutoProxyCreator`，本质是一个`BeanPostProcessor`。
+    DataSourceProxy 本身**不是基于 Spring AOP 实现**，调用数据源接口时切换到 DataSourceProxy 的流程是基于 Spring AOP 实现的，详细参考 `SeataAutoDataSourceProxyCreator` 流程，它继承 `AbstractAutoProxyCreator`，本质是一个`BeanPostProcessor`。
 
-  + 适配器支持多种注册中心、配置中心实现
-
-    基于 SPI 和 适配器模式，这种功能很常用，可以将代码抽成一个范式。
+    DataSourceProxy 通过**装饰器模式**对数据源操作扩展事务处理逻辑，比如通过 ConnectionProxy 为连接操作拓展事务处理包括向TC注册分支事务信息、记录UndoLog等等。
 
   + @GlobalLock
 
     用在不需要全局事务而又需要检查全局锁避免脏读脏写的场景，这种场景使用`@GlobalLock`注解更加轻量。
+
+  + 适配器支持多种注册中心、配置中心实现
+
+    基于 SPI 和 适配器模式，这种适配功能很常用，可以将代码抽离成一个范式（TODO）。
 
   关键问题分析（部分节选自官方FAQ）：
 

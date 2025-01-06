@@ -1,4 +1,4 @@
-<mxfile host="Electron" modified="2025-01-04T18:02:21.802Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.6.5 Chrome/114.0.5735.243 Electron/25.3.1 Safari/537.36" etag="kv_wK-slwG9KaX-KC6Hh" version="21.6.5" type="device">
+<mxfile host="Electron" modified="2025-01-06T10:51:25.220Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.6.5 Chrome/114.0.5735.243 Electron/25.3.1 Safari/537.36" etag="uCvzbDHhAAFWhZS-A7z5" version="21.6.5" type="device">
   <diagram name="第 1 页" id="fcQhUc8sDfnLVn2LQNiu">
     <mxGraphModel dx="1434" dy="879" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -10,7 +10,7 @@
         <mxCell id="5K5Wjn24KYveSR4iWbam-16" value="" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;arcSize=3;fontSize=11;" parent="1" vertex="1">
           <mxGeometry x="800" y="160" width="640" height="320" as="geometry" />
         </mxCell>
-        <mxCell id="5K5Wjn24KYveSR4iWbam-1" value="&lt;font style=&quot;&quot;&gt;&lt;b style=&quot;font-size: 16px;&quot;&gt;Seata AT模式工作原理概图 (v2.2.0)&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;&lt;br&gt;Seata 官方文档工作原理流程图太过简陋，这里绘制一个更详细的概图。&lt;br&gt;这里主要展示全局事务正常执行的流程，导致异常的可能原因太多，全画出来绝对会很乱。&lt;br&gt;&lt;/font&gt;案例：订单场景，涉及订单服务、商品库存服务、账户服务。&lt;br&gt;&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=top;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
+        <mxCell id="5K5Wjn24KYveSR4iWbam-1" value="&lt;font style=&quot;&quot;&gt;&lt;b style=&quot;font-size: 16px;&quot;&gt;Seata AT模式工作原理概图 (v2.0.0)&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;&lt;br&gt;Seata 官方文档工作原理流程图太过简陋，这里绘制一个更详细的概图。&lt;br&gt;这里主要展示全局事务正常执行的流程，导致异常的可能原因太多，全画出来绝对会很乱。&lt;br&gt;&lt;/font&gt;案例：订单场景，涉及订单服务、商品库存服务、账户服务。&lt;br&gt;&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=top;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
           <mxGeometry x="40" y="10" width="500" height="90" as="geometry" />
         </mxCell>
         <mxCell id="5K5Wjn24KYveSR4iWbam-3" value="&lt;b&gt;Seata 服务端 (角色： TC)&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
@@ -443,7 +443,7 @@
         <mxCell id="5K5Wjn24KYveSR4iWbam-154" value="&lt;font style=&quot;font-size: 11px;&quot; color=&quot;#007fff&quot;&gt;分支事务异常状态也会导致回滚&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
           <mxGeometry x="650" y="1245" width="180" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="g7Wxtb_a9kpYRrw0NU63-1" value="&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;XA模式的状态，先忽略&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;" vertex="1" parent="1">
+        <mxCell id="g7Wxtb_a9kpYRrw0NU63-1" value="&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;XA模式的状态，先忽略&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;" parent="1" vertex="1">
           <mxGeometry x="490" y="1925" width="130" height="30" as="geometry" />
         </mxCell>
       </root>

@@ -1,6 +1,6 @@
-<mxfile host="Electron" modified="2025-01-05T11:58:36.938Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.6.5 Chrome/114.0.5735.243 Electron/25.3.1 Safari/537.36" etag="S9rWzzwGEZvOfbGxRgGK" version="21.6.5" type="device">
+<mxfile host="Electron" modified="2025-01-06T10:50:02.366Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.6.5 Chrome/114.0.5735.243 Electron/25.3.1 Safari/537.36" etag="7qfYG00Hm4DszxAnqa6i" version="21.6.5" type="device">
   <diagram name="第 1 页" id="ECAK8obHmiqlfb0R2ePZ">
-    <mxGraphModel dx="4127" dy="502" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="4817" dy="925" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -82,7 +82,7 @@
         <mxCell id="B-ogbO4VTmOX_G0U6ick-52" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="B-ogbO4VTmOX_G0U6ick-16" target="B-ogbO4VTmOX_G0U6ick-51" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="B-ogbO4VTmOX_G0U6ick-16" value="seata-spring-autoconfigure-&lt;b&gt;core&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;由seata-spring-autoconfigure-server引入&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+        <mxCell id="B-ogbO4VTmOX_G0U6ick-16" value="seata-spring-autoconfigure-&lt;b&gt;core&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;由seata-spring-autoconfigure-client引入&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
           <mxGeometry x="280" y="680" width="200" height="60" as="geometry" />
         </mxCell>
         <mxCell id="B-ogbO4VTmOX_G0U6ick-17" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="B-ogbO4VTmOX_G0U6ick-21" target="B-ogbO4VTmOX_G0U6ick-22" edge="1">
@@ -162,6 +162,9 @@
         </mxCell>
         <mxCell id="B-ogbO4VTmOX_G0U6ick-42" value="SeataSagaAutoConfiguration" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;" parent="1" vertex="1">
           <mxGeometry x="520" y="360" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="wC2xZ4anNi33C-H_c2z2-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="B-ogbO4VTmOX_G0U6ick-43" target="wC2xZ4anNi33C-H_c2z2-3">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="B-ogbO4VTmOX_G0U6ick-43" value="SeataHttpAutoConfiguration" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;" parent="1" vertex="1">
           <mxGeometry x="520" y="280" width="200" height="60" as="geometry" />
@@ -1203,7 +1206,7 @@
         <mxCell id="kNiJTSY86d62wiCeH5WG-8" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="kNiJTSY86d62wiCeH5WG-5" target="kNiJTSY86d62wiCeH5WG-7" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="hr4mIVcNEapKpzL8UYvz-1" value="..." style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="kNiJTSY86d62wiCeH5WG-8">
+        <mxCell id="hr4mIVcNEapKpzL8UYvz-1" value="..." style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="kNiJTSY86d62wiCeH5WG-8" vertex="1" connectable="0">
           <mxGeometry x="-0.0357" y="-1" relative="1" as="geometry">
             <mxPoint x="1" y="-1" as="offset" />
           </mxGeometry>
@@ -1246,8 +1249,17 @@
         <mxCell id="kNiJTSY86d62wiCeH5WG-28" value="&lt;div style=&quot;&quot;&gt;&lt;div style=&quot;&quot;&gt;&lt;div&gt;&lt;b&gt;&lt;font color=&quot;#007fff&quot;&gt;// 以 HTTP 请求为例，需要借助 Seata 定义的&amp;nbsp;DefaultHttpExecutor 发送 HTTP 请求&lt;/font&gt;&lt;/b&gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;&lt;font color=&quot;#007fff&quot;&gt;// 此类可以在发送请求前为请求自动添加事务必要的信息，比如XID&lt;/font&gt;&lt;/b&gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;&lt;font color=&quot;#007fff&quot;&gt;//&amp;nbsp;&lt;/font&gt;&lt;/b&gt;&lt;font color=&quot;#007fff&quot;&gt;&lt;b&gt;headers.put(RootContext.KEY_XID, xid); 分支事务全靠这个参数判断自己属于哪个全局事务&lt;/b&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;&lt;b&gt;// 参与者服务通过&amp;nbsp;&lt;/b&gt;&lt;/font&gt;&lt;font color=&quot;#007fff&quot;&gt;&lt;b&gt;TransactionPropagationInterceptor 解析XID并保存到线程上下文&lt;/b&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;DefaultHttpExecutor.getInstance()&lt;br&gt;&amp;nbsp; &amp;nbsp; .executePost(&quot;http://127.0.0.1:8082&quot;, &quot;/product/reduce-stock&quot;,&lt;span style=&quot;background-color: initial;&quot;&gt;params, HttpResponse.class);&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;align=left;arcSize=10;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
           <mxGeometry x="2680" y="1880" width="440" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="hr4mIVcNEapKpzL8UYvz-2" value="&lt;b&gt;&lt;font color=&quot;#007fff&quot;&gt;数据源代理这部分逻辑单独出一个流程图分析&lt;/font&gt;&lt;/b&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+        <mxCell id="hr4mIVcNEapKpzL8UYvz-2" value="&lt;b&gt;&lt;font color=&quot;#007fff&quot;&gt;数据源代理这部分逻辑单独出一个流程图分析&lt;/font&gt;&lt;/b&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
           <mxGeometry x="760" y="260" width="260" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="wC2xZ4anNi33C-H_c2z2-6" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="wC2xZ4anNi33C-H_c2z2-3" target="wC2xZ4anNi33C-H_c2z2-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="wC2xZ4anNi33C-H_c2z2-3" value="WebMvcConfigurerAdapter&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;就是注册一个WebMvc配置器Bean, 通过这个配置器注册请求拦截器&lt;b&gt;TransactionPropagationInterceptor&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="760" y="280" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="wC2xZ4anNi33C-H_c2z2-5" value="TransactionPropagationInterceptor&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;此请求拦截器用于事务发起者向事务参与者传递 XID&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="1001" y="280" width="200" height="60" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
