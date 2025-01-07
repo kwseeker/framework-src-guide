@@ -31,8 +31,8 @@ public Integer createOrder(Long userId, Long productId, Integer price) throws Ex
 
 其实是借助 ConnectionProxy 执行事务操作的；详细参考 `AbstractDMLBaseExecutor#executeAutoCommitFalse(Object[] args)` 方法；
 
-saveOrder() 最终是需要借助连接执行 SQL语句的，Seata 对连接进行了增强（ConnectionProxy），会经过 executeAutoCommitFalse() 这个方法，在这个方法里面会先开启事务（关闭自动提交），然后执行SQL语句，如果执行有异常就回滚没异常就提交，最后恢复自动提交；
+saveOrder() 最终是需要借助连接执行 SQL语句的，Seata 对连接进行了增强（ConnectionProxy，通过装饰器模式增强的不是AOP），会经过 executeAutoCommitFalse() 这个方法，在这个方法里面会先开启本地事务（关闭自动提交），然后执行SQL语句，如果执行有异常就回滚（通过 ConnectionProxy 回滚）没异常就提交（通过 ConnectionProxy 提交），最后恢复自动提交；
 
-注意**这里提交的时候借助 ConnectionProxy#commit() 提交，而 ConnectionProxy#commit() 中会先判断当前线程上下文是否包含全局事务，是的话会先向 TC 注册一个分支事务，记录 UndoLog，然后执行本地事务的提交**；
+注意**这里提交的时候借助 ConnectionProxy#commit() 提交，而 ConnectionProxy#commit() 中会先判断当前线程上下文是否包含全局事务，是的话会先向 TC 注册一个分支事务，持久化 UndoLog，然后执行本地事务的提交**；
 
-**异常发生后上面保存的订单同样是TC通知订单服务RM进行分支事务回滚的（订单服务TM先请求TC回滚所有分支事务，TC向所有服务RM（包括订单服务）发送分支事务回滚通知，订单服务RM接收到分支事务回滚通知，查询并执行UndoLog回滚保存的订单）**。
+**异常发生后上面保存的订单同样是 TC 通知订单服务 RM 进行分支事务回滚的（订单服务 TM 先请求 TC 回滚所有分支事务，TC 向所有服务 RM（包括订单服务）发送分支事务回滚通知，订单服务 RM 接收到分支事务回滚通知，查询并执行UndoLog回滚保存的订单）**。

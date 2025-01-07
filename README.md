@@ -864,19 +864,27 @@
 
     AT模式也是基于**业务补偿**的**两阶段提交**；业务补偿方面类似TCC，但是AT模式可以自行生成用于补偿的 UndoLog，而不是像 TCC 模式需要手动编码实现补偿逻辑，也即**没有业务侵入**；AT模式的两阶段提交，**第一阶段**：实现各分支事务的注册、执行、提交（**注意第一阶段分支事务就会提交**），**第二阶段**：如果是提交的话其实主要是执行事务数据的清理，比如删除 UndoLog（可以异步执行），如果是回滚的话，主要是查询各分支事务 UndoLog 并执行进行补偿。
 
-  + [seata-datasourceproxy.drawio](docs/java/seata/seata-datasourceproxy.drawio) (数据源代理)
+  + [seata-datasourceproxy.drawio](docs/java/seata/seata-datasourceproxy.drawio) (数据源代理 DataSourceProxy)
 
   + [seata-datasourceproxy.drawio.png](docs/java/seata/imgs/seata-datasourceproxy.drawio.png)
 
-    Seata @GlobalTransactional 增强的逻辑中并不包含事务操作，事务操作是通过 DataSourceProxy 实现，分支事务执行可能会同时经过 @Transactional 和 DataSourceProxy 事务操作，但是两者并不冲突，DataSourceProxy 中会先判断当前是否已经开启事务，如果已经开启不会重复开启。
+    Seata @GlobalTransactional 增强的逻辑中并不包含事务操作，事务操作是通过 **DataSourceProxy** 实现，分支事务执行可能会同时经过 @Transactional 和 DataSourceProxy 事务操作，但是两者并不冲突，DataSourceProxy 中会先判断当前是否已经开启事务，如果已经开启不会重复开启。
 
     DataSourceProxy 本身**不是基于 Spring AOP 实现**，调用数据源接口时切换到 DataSourceProxy 的流程是基于 Spring AOP 实现的，详细参考 `SeataAutoDataSourceProxyCreator` 流程，它继承 `AbstractAutoProxyCreator`，本质是一个`BeanPostProcessor`。
 
     DataSourceProxy 通过**装饰器模式**对数据源操作扩展事务处理逻辑，比如通过 ConnectionProxy 为连接操作拓展事务处理包括向TC注册分支事务信息、记录UndoLog等等。
 
-  + @GlobalLock
+  + [seata-at-globallock.drawio](docs/java/seata/seata-at-globallock.drawio)
 
-    用在不需要全局事务而又需要检查全局锁避免脏读脏写的场景，这种场景使用`@GlobalLock`注解更加轻量。
+  + [seata-at-globallock.drawio.png](docs/java/seata/imgs/seata-at-globallock.drawio.png)
+
+    Seata 全局锁用于保证不同分布式事务的**写隔离**和**读隔离**，本质就是通过锁进行同步执行（排队），详细参考：[seata-at-globallock.md](docs/java/seata/seata-at-globallock.md)。
+
+    全局锁在 TC 中实现，实现原理其实很简单就是**基于主键唯一索引进行插入，插入成功获取锁成功，插入失败获取锁失败**，和Redis set nx 原理一样。
+
+    `@GlobalLock` 用在不需要全局事务而又需要检查全局锁避免脏读脏写的场景（比如某个纯粹的本地事务查询全局事务可能会修改的某行数据，这种场景应该还是挺常见的），这种场景使用`@GlobalLock`注解更加轻量。
+
+    > 这里纯粹的本地事务指不属于任何全局事务的本地事务。
 
   + 适配器支持多种注册中心、配置中心实现
 
@@ -886,17 +894,23 @@
 
   + [@GlobalTransactional 注释的方法明明没有像 @Transactional 拓展事务操作为何这个方法中执行的SQL还是可以在出现异常后被回滚](docs/java/seata/seata-global-transactional-rollback.md)
 
+  + [事务发起者和参与者服务方法上到底需不需要加 @Transactional 注解](docs/java/seata/seata-biz-method-transactional.md)
+
   + [全局事务ID是怎么传递给事务参与者服务的](docs/java/seata/seata-xid-propagation.md)
 
-    TransactionPropagationInterceptor 中的事务传播只是说 XID 的传递，和 Spring 事务传播不是一个概念。
+    > 注意 TransactionPropagationInterceptor 中的事务传播只是说 XID 的传递，和 Spring 事务传播不是一个概念。
 
   + 怎么使用Seata框架来保证事务的隔离性
 
+    即上面的全局锁。
+
   + 脏数据回滚失败如何处理
+
+    结合告警、 UndoLog 手动处理。
 
   + 抛出异常后事务未回滚
 
-    官方文档直接列举了一些可能原因，但是感觉这种回答方式不太好，应该结合抛出异常到事务回滚的流程一步步排查，清除内部流程的话应该怎么排查很清楚。
+    官方文档直接列举了一些可能原因，但是感觉这种回答方式不太好，应该结合抛出异常到事务回滚的流程一步步排查，清楚内部流程的话应该怎么排查很清楚。
 
 + **TCC-Transaction**
 

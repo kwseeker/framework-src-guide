@@ -1,80 +1,81 @@
-<mxfile host="Electron" modified="2025-01-06T10:51:25.220Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.6.5 Chrome/114.0.5735.243 Electron/25.3.1 Safari/537.36" etag="uCvzbDHhAAFWhZS-A7z5" version="21.6.5" type="device">
+<mxfile host="Electron" modified="2025-01-07T08:26:17.892Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.6.5 Chrome/114.0.5735.243 Electron/25.3.1 Safari/537.36" etag="3tfGJONql9GlejiJmkrM" version="21.6.5" type="device">
   <diagram name="第 1 页" id="fcQhUc8sDfnLVn2LQNiu">
-    <mxGraphModel dx="1434" dy="879" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1247" dy="764" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         <mxCell id="5K5Wjn24KYveSR4iWbam-34" value="库存服务(分布式事务参与者)" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;arcSize=3;fontSize=11;" parent="1" vertex="1">
-          <mxGeometry x="40" y="520" width="640" height="320" as="geometry" />
+          <mxGeometry x="40" y="520" width="840" height="320" as="geometry" />
         </mxCell>
         <mxCell id="5K5Wjn24KYveSR4iWbam-16" value="" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;arcSize=3;fontSize=11;" parent="1" vertex="1">
-          <mxGeometry x="800" y="160" width="640" height="320" as="geometry" />
+          <mxGeometry x="1040" y="160" width="640" height="320" as="geometry" />
         </mxCell>
         <mxCell id="5K5Wjn24KYveSR4iWbam-1" value="&lt;font style=&quot;&quot;&gt;&lt;b style=&quot;font-size: 16px;&quot;&gt;Seata AT模式工作原理概图 (v2.0.0)&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;&lt;br&gt;Seata 官方文档工作原理流程图太过简陋，这里绘制一个更详细的概图。&lt;br&gt;这里主要展示全局事务正常执行的流程，导致异常的可能原因太多，全画出来绝对会很乱。&lt;br&gt;&lt;/font&gt;案例：订单场景，涉及订单服务、商品库存服务、账户服务。&lt;br&gt;&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=top;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
           <mxGeometry x="40" y="10" width="500" height="90" as="geometry" />
         </mxCell>
         <mxCell id="5K5Wjn24KYveSR4iWbam-3" value="&lt;b&gt;Seata 服务端 (角色： TC)&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-          <mxGeometry x="840" y="100" width="240" height="30" as="geometry" />
+          <mxGeometry x="1080" y="100" width="240" height="30" as="geometry" />
         </mxCell>
         <mxCell id="5K5Wjn24KYveSR4iWbam-4" value="&lt;b&gt;Seata客户端 （角色：TM、RM）&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="40" y="100" width="240" height="30" as="geometry" />
         </mxCell>
         <mxCell id="5K5Wjn24KYveSR4iWbam-5" value="订单服务(分布式事务发起者)" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;arcSize=3;fontSize=11;" parent="1" vertex="1">
-          <mxGeometry x="40" y="160" width="640" height="320" as="geometry" />
+          <mxGeometry x="40" y="160" width="840" height="320" as="geometry" />
         </mxCell>
         <mxCell id="5K5Wjn24KYveSR4iWbam-28" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endArrow=classicThin;endFill=1;" parent="1" source="5K5Wjn24KYveSR4iWbam-6" target="5K5Wjn24KYveSR4iWbam-17" edge="1">
-          <mxGeometry relative="1" as="geometry" />
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="960" y="230" />
+              <mxPoint x="960" y="330" />
+            </Array>
+          </mxGeometry>
         </mxCell>
         <mxCell id="5K5Wjn24KYveSR4iWbam-6" value="TM&lt;br&gt;NettyClient" style="rounded=0;whiteSpace=wrap;html=1;fontSize=11;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
-          <mxGeometry x="560" y="200" width="100" height="60" as="geometry" />
+          <mxGeometry x="760.05" y="200" width="100" height="60" as="geometry" />
         </mxCell>
         <mxCell id="5K5Wjn24KYveSR4iWbam-31" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;endArrow=classicThin;endFill=1;" parent="1" source="5K5Wjn24KYveSR4iWbam-7" target="5K5Wjn24KYveSR4iWbam-17" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="5K5Wjn24KYveSR4iWbam-7" value="RM&lt;br&gt;NettyClient" style="rounded=0;whiteSpace=wrap;html=1;fontSize=11;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
-          <mxGeometry x="560" y="300" width="100" height="60" as="geometry" />
+          <mxGeometry x="760.05" y="300" width="100" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="5K5Wjn24KYveSR4iWbam-15" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endArrow=classicThin;endFill=1;" parent="1" source="5K5Wjn24KYveSR4iWbam-8" target="5K5Wjn24KYveSR4iWbam-6" edge="1">
+        <mxCell id="5K5Wjn24KYveSR4iWbam-15" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endArrow=classicThin;endFill=1;" parent="1" source="5K5Wjn24KYveSR4iWbam-8" target="5K5Wjn24KYveSR4iWbam-6" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="480" y="210" as="sourcePoint" />
             <mxPoint x="520" y="270" as="targetPoint" />
             <Array as="points">
-              <mxPoint x="520" y="330" />
-              <mxPoint x="520" y="230" />
+              <mxPoint x="730" y="265" />
+              <mxPoint x="730" y="230" />
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="5K5Wjn24KYveSR4iWbam-18" value="1/5/21" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="5K5Wjn24KYveSR4iWbam-15" vertex="1" connectable="0">
+        <mxCell id="5K5Wjn24KYveSR4iWbam-18" value="1/5/26" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="5K5Wjn24KYveSR4iWbam-15" vertex="1" connectable="0">
           <mxGeometry x="0.525" y="-2" relative="1" as="geometry">
-            <mxPoint x="8" y="-3" as="offset" />
+            <mxPoint x="10" y="-27" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="5K5Wjn24KYveSR4iWbam-30" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;endArrow=classicThin;endFill=1;" parent="1" source="5K5Wjn24KYveSR4iWbam-8" target="5K5Wjn24KYveSR4iWbam-7" edge="1">
-          <mxGeometry relative="1" as="geometry">
+        <mxCell id="Va2aDv6qeypGLSADWSkX-4" value="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.25;exitDx=0;exitDy=0;" edge="1" parent="1" source="5K5Wjn24KYveSR4iWbam-8" target="5K5Wjn24KYveSR4iWbam-7">
+          <mxGeometry x="0.8838" relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="500" y="330" />
-              <mxPoint x="500" y="330" />
+              <mxPoint x="730" y="265" />
+              <mxPoint x="730" y="330" />
             </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="5K5Wjn24KYveSR4iWbam-59" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="5K5Wjn24KYveSR4iWbam-30" vertex="1" connectable="0">
-          <mxGeometry x="0.325" y="-2" relative="1" as="geometry">
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="5K5Wjn24KYveSR4iWbam-8" value="&amp;nbsp; 1. 服务初始化阶段，从注册中心获取Seata服务器所有节点地址信息，向所有节点发 &lt;br&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; 送 &lt;b&gt;RegisterTMRequest&lt;/b&gt; &lt;b&gt;RegisterRMRequest&lt;/b&gt; 请求；&lt;br&gt;&amp;nbsp; 3. 创建&lt;b&gt;GlobaTransaction&lt;/b&gt;对象;&amp;nbsp;&lt;br&gt;&amp;nbsp; 4. 根据事务服务分组从&lt;b&gt;注册中心&lt;/b&gt;获取对应Seata服务器节点信息，并根据&lt;b&gt;负载均衡&lt;/b&gt;算&lt;br&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; 法选择一个服务器节点;&amp;nbsp;&lt;br&gt;&amp;nbsp; 5. 根据服务器节点地址获取Netty Channel, 向TC发送&lt;b&gt;GlobalBeginRequest&lt;/b&gt;请求；&lt;br&gt;&amp;nbsp; 7. 步骤6执行正常情况下，会返回xid, 更新本地事务对象状态（存储在线程本地）；&lt;br&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; 异常的话如果是不可忽略的异常会发送 &lt;b&gt;GlobalRollbackRequest&lt;/b&gt; 请求；&lt;br&gt;&amp;nbsp;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&amp;nbsp;21. 如果前面的流程都没有异常，则提交全局事务，发送 &lt;b&gt;GlobalCommitRequest&lt;/b&gt;;&lt;br&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;如果前面流程抛出异常，则回滚全局事务，发送&amp;nbsp;&lt;b&gt;GlobalRollbackRequest&lt;/b&gt;。" style="rounded=0;whiteSpace=wrap;html=1;align=left;fontSize=11;verticalAlign=top;" parent="1" vertex="1">
+        <mxCell id="5K5Wjn24KYveSR4iWbam-8" value="&amp;nbsp; 1. 服务初始化阶段，从注册中心获取Seata服务器所有节点地址信息，向所有节点发 &lt;br style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; 送 &lt;b style=&quot;font-size: 10px;&quot;&gt;RegisterTMRequest&lt;/b&gt; &lt;b style=&quot;font-size: 10px;&quot;&gt;RegisterRMRequest&lt;/b&gt; 请求；&lt;br style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp; 3. 创建&lt;b style=&quot;font-size: 10px;&quot;&gt;GlobaTransaction&lt;/b&gt;对象;&amp;nbsp;&lt;br style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp; 4. 根据事务服务分组从&lt;b style=&quot;font-size: 10px;&quot;&gt;注册中心&lt;/b&gt;获取对应Seata服务器节点信息，并根据&lt;b style=&quot;font-size: 10px;&quot;&gt;负载均衡&lt;/b&gt;算&lt;br style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; 法选择一个服务器节点;&amp;nbsp;&lt;br style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp; 5. 根据服务器节点地址获取Netty Channel, 向TC发送&lt;b style=&quot;font-size: 10px;&quot;&gt;GlobalBeginRequest&lt;/b&gt;请求；&lt;br style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp; 7. 步骤6执行正常情况下，会返回xid, 更新本地事务对象状态（存储在线程本地）；&lt;br style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; 异常的话如果是不可忽略的异常会发送 &lt;b style=&quot;font-size: 10px;&quot;&gt;GlobalRollbackRequest&lt;/b&gt; 请求；&lt;br style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp;&lt;br style=&quot;font-size: 10px;&quot;&gt;&lt;br style=&quot;font-size: 10px;&quot;&gt;&lt;br style=&quot;font-size: 10px;&quot;&gt;&lt;br style=&quot;font-size: 10px;&quot;&gt;&lt;br style=&quot;font-size: 10px;&quot;&gt;&lt;br style=&quot;font-size: 10px;&quot;&gt;&lt;br&gt;&lt;br style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp;26. 如果前面的流程都没有异常，则提交全局事务，发送 &lt;b style=&quot;font-size: 10px;&quot;&gt;GlobalCommitRequest&lt;/b&gt;;&lt;br style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;如果前面流程抛出异常，则回滚全局事务，发送&amp;nbsp;&lt;b style=&quot;font-size: 10px;&quot;&gt;GlobalRollbackRequest&lt;/b&gt;。&lt;br&gt;&lt;div&gt;&amp;nbsp;28. 如果收到 BranchCommitRequest, 说明整个分布式事务执行正常，删除UndoLog;&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;如果收到 BranchRollbackRequest, 说明分布式事务执行异常，读取UndoLog并执行&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;恢复数据；&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;fontSize=10;verticalAlign=top;" parent="1" vertex="1">
           <mxGeometry x="60" y="200" width="420" height="260" as="geometry" />
         </mxCell>
-        <mxCell id="5K5Wjn24KYveSR4iWbam-48" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endArrow=classicThin;endFill=1;" parent="1" source="5K5Wjn24KYveSR4iWbam-8" target="5K5Wjn24KYveSR4iWbam-47" edge="1">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="5K5Wjn24KYveSR4iWbam-50" value="8/19" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="5K5Wjn24KYveSR4iWbam-48" vertex="1" connectable="0">
-          <mxGeometry x="-0.7126" y="-1" relative="1" as="geometry">
-            <mxPoint x="24" y="99" as="offset" />
+        <mxCell id="5K5Wjn24KYveSR4iWbam-48" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endArrow=classicThin;endFill=1;" parent="1" source="5K5Wjn24KYveSR4iWbam-8" target="5K5Wjn24KYveSR4iWbam-47" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="730" y="265" />
+              <mxPoint x="730" y="430" />
+            </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="5K5Wjn24KYveSR4iWbam-9" value="&amp;nbsp; 8. 调用库存服务接口（比如 HTTP、RPC）扣减库存；&lt;br&gt;19. 调用账户服务接口扣减余额；&lt;br&gt;20. 创建订单（&lt;font color=&quot;#007fff&quot;&gt;TODO: 是否需要创建本地事务&lt;/font&gt;）" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontSize=11;" parent="1" vertex="1">
-          <mxGeometry x="70" y="330" width="400" height="50" as="geometry" />
+        <mxCell id="5K5Wjn24KYveSR4iWbam-9" value="&amp;nbsp; 8. 调用库存服务接口（比如 HTTP、RPC）扣减库存；&lt;br style=&quot;font-size: 10px;&quot;&gt;19. 调用账户服务接口（比如 HTTP、RPC）扣减余额；&lt;br style=&quot;font-size: 10px;&quot;&gt;21. 创建订单（没有添加本地事务控制），直接调用本地DAO层接口，在连接&lt;br style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; 代理中会为每条SQL开启本地事务、执行并记录UndoLog；" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontSize=10;" parent="1" vertex="1">
+          <mxGeometry x="70" y="330" width="400" height="60" as="geometry" />
         </mxCell>
         <mxCell id="5K5Wjn24KYveSR4iWbam-10" value="&lt;font color=&quot;#007fff&quot;&gt;创建订单代理方法(@GlobalTransactional)&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;" parent="1" vertex="1">
           <mxGeometry x="170" y="180" width="220" height="20" as="geometry" />
@@ -85,13 +86,13 @@
         <mxCell id="5K5Wjn24KYveSR4iWbam-67" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.75;exitDx=0;exitDy=0;entryX=1;entryY=0.75;entryDx=0;entryDy=0;endArrow=classicThin;endFill=1;" parent="1" source="5K5Wjn24KYveSR4iWbam-17" target="5K5Wjn24KYveSR4iWbam-51" edge="1">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="760" y="395" />
-              <mxPoint x="760" y="940" />
+              <mxPoint x="1000" y="395" />
+              <mxPoint x="1000" y="940" />
             </Array>
           </mxGeometry>
         </mxCell>
         <mxCell id="5K5Wjn24KYveSR4iWbam-17" value="Netty Server" style="rounded=0;whiteSpace=wrap;html=1;fontSize=11;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
-          <mxGeometry x="820" y="200" width="100" height="260" as="geometry" />
+          <mxGeometry x="1060" y="200" width="100" height="260" as="geometry" />
         </mxCell>
         <mxCell id="5K5Wjn24KYveSR4iWbam-63" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.75;exitDx=0;exitDy=0;entryX=1;entryY=0.75;entryDx=0;entryDy=0;endArrow=classicThin;endFill=1;" parent="1" source="5K5Wjn24KYveSR4iWbam-20" target="5K5Wjn24KYveSR4iWbam-17" edge="1">
           <mxGeometry relative="1" as="geometry" />
@@ -101,55 +102,68 @@
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="5K5Wjn24KYveSR4iWbam-20" value="2. 服务端接收到 RegisterTMRequest RegisterRMRequest 会保存连接和RPC上下文信 &lt;br&gt;&amp;nbsp; &amp;nbsp; 息到 &lt;b&gt;ChannelManager &lt;/b&gt;(每个Seata客户端都会创建至少3个连接，如果某个服务中&lt;br&gt;&amp;nbsp; &amp;nbsp; 有多个数据源连接会更多);&amp;nbsp;&lt;br&gt;6. 创建全局会话 &lt;b&gt;GlobalSession, &lt;/b&gt;并存储在 SessionManger 实现对象，比如&lt;br&gt;&amp;nbsp; &amp;nbsp; &lt;b&gt;DataBaseSessionManager&lt;/b&gt;；事务协调依赖于全局会话的状态；&lt;br&gt;&lt;br&gt;15. 创建分支事务会话 &lt;b&gt;BranchSession&lt;/b&gt;, 并加入 GlobalSession 分支事务列表；&lt;br&gt;18. 更新分支事务会话状态；&lt;br&gt;&lt;br&gt;22. 如果分布式事务全部执行正常，提交全局事务，向所有RM客户端发送&amp;nbsp;&lt;br&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &lt;b&gt;BranchCommitRequest&lt;/b&gt;；&lt;br&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; 如果执行过程中有异常，回滚全局事务，向所有 RM 客户端发送&lt;br&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &lt;b&gt;BranchRollbackRequest&lt;/b&gt;；&lt;br&gt;24. 分支事务提交请求处理正常的话，服务端删除&lt;b&gt;分支会话&lt;/b&gt;；&lt;br&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; 如果异常且多次重试还是异常，更新全局会话状态（失败状态）；&lt;br&gt;25. 如果全部分支事务提交执行正常的话且分支会话已经全部删除，则删除全局会话。" style="rounded=0;whiteSpace=wrap;html=1;align=left;fontSize=11;verticalAlign=top;" parent="1" vertex="1">
-          <mxGeometry x="1000" y="200" width="420" height="260" as="geometry" />
+        <mxCell id="5K5Wjn24KYveSR4iWbam-20" value="2. 服务端接收到 RegisterTMRequest RegisterRMRequest 会保存连接和RPC上下文信 &lt;br style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp; &amp;nbsp; 息到 &lt;b style=&quot;font-size: 10px;&quot;&gt;ChannelManager&lt;/b&gt;;&amp;nbsp;&lt;br style=&quot;font-size: 10px;&quot;&gt;6. 创建全局会话 &lt;b style=&quot;font-size: 10px;&quot;&gt;GlobalSession, &lt;/b&gt;并存储在 SessionManger 实现对象，比如&lt;br style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp; &amp;nbsp; &lt;b style=&quot;font-size: 10px;&quot;&gt;DataBaseSessionManager&lt;/b&gt;；&lt;br style=&quot;font-size: 10px;&quot;&gt;&lt;br style=&quot;font-size: 10px;&quot;&gt;15. 创建分支事务会话 &lt;b style=&quot;font-size: 10px;&quot;&gt;BranchSession&lt;/b&gt;, 并加入 &lt;b style=&quot;font-size: 10px;&quot;&gt;GlobalSession&lt;/b&gt;&amp;nbsp;的分支事务列表；&lt;br style=&quot;font-size: 10px;&quot;&gt;17. 更新分支事务会话状态；&lt;br style=&quot;font-size: 10px;&quot;&gt;&lt;br style=&quot;font-size: 10px;&quot;&gt;23. 同上面15, 创建另一个分支事务会话；&lt;br style=&quot;font-size: 10px;&quot;&gt;25. 更新分支事务会话状态；&lt;br style=&quot;font-size: 10px;&quot;&gt;&lt;br style=&quot;font-size: 10px;&quot;&gt;27. 如果分布式事务全部执行正常，提交全局事务，向所有RM客户端发送&amp;nbsp;&lt;br style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &lt;b style=&quot;font-size: 10px;&quot;&gt;BranchCommitRequest&lt;/b&gt;；&lt;br style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; 如果执行过程中有异常，回滚全局事务，向所有 RM 客户端发送&lt;br style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &lt;b style=&quot;font-size: 10px;&quot;&gt;BranchRollbackRequest&lt;/b&gt;；&lt;br style=&quot;font-size: 10px;&quot;&gt;29. 收到所有分支事务提交请求正常响应的话，服务端删除&lt;b style=&quot;font-size: 10px;&quot;&gt;分支会话&lt;/b&gt;；&lt;br style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; 收到异常响应，如果异常且多次重试还是异常，更新全局会话状态（失败状态）；&lt;br style=&quot;font-size: 10px;&quot;&gt;30. 定时任务中判断如果全部分支事务提交执行正常的话且分支会话已经全部删除，则删除&lt;b&gt;全局&lt;br&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; 会话&lt;/b&gt;。" style="rounded=0;whiteSpace=wrap;html=1;align=left;fontSize=10;verticalAlign=top;" parent="1" vertex="1">
+          <mxGeometry x="1240" y="200" width="420" height="260" as="geometry" />
         </mxCell>
         <mxCell id="5K5Wjn24KYveSR4iWbam-21" value="&lt;font color=&quot;#007fff&quot;&gt;创建订单原始方法&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;" parent="1" vertex="1">
           <mxGeometry x="220" y="310" width="100" height="20" as="geometry" />
         </mxCell>
         <mxCell id="5K5Wjn24KYveSR4iWbam-32" value="&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 8px;&quot;&gt;&lt;b style=&quot;font-size: 8px;&quot;&gt;步骤2：当注册订单服务后，ChannelManager中的连接数据：&lt;br style=&quot;font-size: 8px;&quot;&gt;&lt;br style=&quot;font-size: 8px;&quot;&gt;IDENTIFIED_CHANNELS:&lt;br style=&quot;font-size: 8px;&quot;&gt;&lt;/b&gt;&lt;/font&gt;&lt;div style=&quot;font-size: 8px;&quot;&gt;&lt;div style=&quot;font-size: 8px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 8px;&quot;&gt;result = {ConcurrentHashMap@12466}&amp;nbsp; size = 7&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 8px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 8px;&quot;&gt;&lt;b&gt;&amp;nbsp;{NioSocketChannel@12480} &quot;[id: 0x74e0fa3a, L:/127.0.0.1:8091 - R:/127.0.0.1:48310]&quot; -&amp;gt; {RpcContext@9904}&amp;nbsp;&lt;/b&gt;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 8px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 8px;&quot;&gt;&amp;nbsp; key = {NioSocketChannel@12480} &quot;[id: 0x74e0fa3a, L:/127.0.0.1:8091 - R:/127.0.0.1:48310]&quot;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 8px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 8px;&quot;&gt;&amp;nbsp; value = {RpcContext@&lt;b style=&quot;font-size: 8px;&quot;&gt;9904&lt;/b&gt;}&amp;nbsp;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 8px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 8px;&quot;&gt;&amp;nbsp; &amp;nbsp;clientRole = {NettyPoolKey$TransactionRole@12498} &quot;&lt;b style=&quot;font-size: 8px;&quot;&gt;TMROLE&lt;/b&gt;&quot;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 8px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 8px;&quot;&gt;&amp;nbsp; &amp;nbsp;version = &quot;2.0.0&quot;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 8px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 8px;&quot;&gt;&amp;nbsp; &amp;nbsp;applicationId = &quot;order-service&quot;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 8px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 8px;&quot;&gt;&amp;nbsp; &amp;nbsp;transactionServiceGroup = &quot;order-service-group&quot;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 8px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 8px;&quot;&gt;&amp;nbsp; &amp;nbsp;clientId = &quot;order-service:127.0.0.1:48310&quot;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 8px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 8px;&quot;&gt;&amp;nbsp; &amp;nbsp;channel = {NioSocketChannel@12480} &quot;[id: 0x74e0fa3a, L:/127.0.0.1:8091 - R:/127.0.0.1:48310]&quot;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 8px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 8px;&quot;&gt;&amp;nbsp; &amp;nbsp;resourceSets = null&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 8px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 8px;&quot;&gt;&amp;nbsp; &amp;nbsp;clientIDHolderMap = {ConcurrentHashMap@12466}&amp;nbsp; size = 7&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 8px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 8px;&quot;&gt;&amp;nbsp; &amp;nbsp;clientTMHolderMap = {ConcurrentHashMap@12503}&amp;nbsp; size = 1&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 8px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 8px;&quot;&gt;&amp;nbsp; &amp;nbsp;clientRMHolderMap = null&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 8px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 8px;&quot;&gt;&lt;b&gt;&amp;nbsp;{NioSocketChannel@12483} &quot;[id: 0x273e4561, L:/127.0.0.1:8091 ! R:/127.0.0.1:47182]&quot; -&amp;gt; {RpcContext@12484}&lt;/b&gt;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 8px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 8px;&quot;&gt;&amp;nbsp; key = {NioSocketChannel@12483} &quot;[id: 0x273e4561, L:/127.0.0.1:8091 ! R:/127.0.0.1:47182]&quot;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 8px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 8px;&quot;&gt;&amp;nbsp; value = {RpcContext@12484}&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 8px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 8px;&quot;&gt;&amp;nbsp; &amp;nbsp;clientRole = {NettyPoolKey$TransactionRole@12506} &quot;&lt;b style=&quot;font-size: 8px;&quot;&gt;RMROLE&lt;/b&gt;&quot;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 8px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 8px;&quot;&gt;&amp;nbsp; &amp;nbsp;version = &quot;2.0.0&quot;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 8px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 8px;&quot;&gt;&amp;nbsp; &amp;nbsp;applicationId = &quot;order-service&quot;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 8px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 8px;&quot;&gt;&amp;nbsp; &amp;nbsp;transactionServiceGroup = &quot;order-service-group&quot;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 8px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 8px;&quot;&gt;&amp;nbsp; &amp;nbsp;clientId = &quot;order-service:127.0.0.1:47182&quot;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 8px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 8px;&quot;&gt;&amp;nbsp; &amp;nbsp;channel = {NioSocketChannel@12483} &quot;[id: 0x273e4561, L:/127.0.0.1:8091 ! R:/127.0.0.1:47182]&quot;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 8px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 8px;&quot;&gt;&amp;nbsp; &amp;nbsp;resourceSets = {HashSet@12510}&amp;nbsp; size = 0&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 8px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 8px;&quot;&gt;&amp;nbsp; &amp;nbsp;clientIDHolderMap = null&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 8px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 8px;&quot;&gt;&amp;nbsp; &amp;nbsp;clientTMHolderMap = null&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 8px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 8px;&quot;&gt;&amp;nbsp; &amp;nbsp;clientRMHolderMap = null&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 8px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 8px;&quot;&gt;&lt;b&gt;&amp;nbsp;{NioSocketChannel@12485} &quot;[id: 0x272ec135, L:/127.0.0.1:8091 - R:/127.0.0.1:43908]&quot; -&amp;gt; {RpcContext@12460}&lt;/b&gt;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 8px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 8px;&quot;&gt;&amp;nbsp; key = {NioSocketChannel@12485} &quot;[id: 0x272ec135, L:/127.0.0.1:8091 - R:/127.0.0.1:43908]&quot;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 8px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 8px;&quot;&gt;&amp;nbsp; value = {RpcContext@&lt;b style=&quot;font-size: 8px;&quot;&gt;12460&lt;/b&gt;}&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 8px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 8px;&quot;&gt;&amp;nbsp; &amp;nbsp;clientRole = {NettyPoolKey$TransactionRole@12506} &quot;&lt;b style=&quot;font-size: 8px;&quot;&gt;RMROLE&lt;/b&gt;&quot;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 8px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 8px;&quot;&gt;&amp;nbsp; &amp;nbsp;version = &quot;2.0.0&quot;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 8px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 8px;&quot;&gt;&amp;nbsp; &amp;nbsp;applicationId = &quot;order-service&quot;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 8px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 8px;&quot;&gt;&amp;nbsp; &amp;nbsp;transactionServiceGroup = &quot;order-service-group&quot;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 8px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 8px;&quot;&gt;&amp;nbsp; &amp;nbsp;clientId = &quot;order-service:127.0.0.1:43908&quot;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 8px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 8px;&quot;&gt;&amp;nbsp; &amp;nbsp;channel = {NioSocketChannel@12485} &quot;[id: 0x272ec135, L:/127.0.0.1:8091 - R:/127.0.0.1:43908]&quot;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 8px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 8px;&quot;&gt;&amp;nbsp; &amp;nbsp;&lt;b style=&quot;font-size: 8px;&quot;&gt;resourceSets&lt;/b&gt; = {HashSet@12517}&amp;nbsp; size = 1&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 8px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 8px;&quot;&gt;&amp;nbsp; &amp;nbsp; 0 = &quot;jdbc:mysql://127.0.0.1:13306/seata_order&quot;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 8px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 8px;&quot;&gt;&amp;nbsp; &amp;nbsp;clientIDHolderMap = {ConcurrentHashMap@12466}&amp;nbsp; size = 7&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 8px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 8px;&quot;&gt;&amp;nbsp; &amp;nbsp;clientTMHolderMap = null&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 8px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 8px;&quot;&gt;&amp;nbsp; &amp;nbsp;clientRMHolderMap = {ConcurrentHashMap@12518}&amp;nbsp; size = 1&lt;/font&gt;&lt;/div&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 8px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 8px;&quot;&gt;&lt;br style=&quot;font-size: 8px;&quot;&gt;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 8px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 8px;&quot;&gt;&lt;b style=&quot;font-size: 8px;&quot;&gt;RM_CHANNELS:&lt;/b&gt;&lt;br style=&quot;font-size: 8px;&quot;&gt;&lt;div style=&quot;font-size: 8px;&quot;&gt;&lt;div style=&quot;font-size: 8px;&quot;&gt;result = {ConcurrentHashMap@12432}&amp;nbsp; size = 3&lt;/div&gt;&lt;div style=&quot;font-size: 8px;&quot;&gt;&amp;nbsp;&quot;jdbc:mysql://127.0.0.1:13306/seata_order&quot; -&amp;gt; {ConcurrentHashMap@12441}&amp;nbsp; size = 1&lt;/div&gt;&lt;div style=&quot;font-size: 8px;&quot;&gt;&amp;nbsp; key = &quot;jdbc:mysql://127.0.0.1:13306/seata_order&quot;&lt;/div&gt;&lt;div style=&quot;font-size: 8px;&quot;&gt;&amp;nbsp; value = {ConcurrentHashMap@12441}&amp;nbsp; size = 1&lt;/div&gt;&lt;div style=&quot;font-size: 8px;&quot;&gt;&amp;nbsp; &amp;nbsp;&quot;order-service&quot; -&amp;gt; {ConcurrentHashMap@12450}&amp;nbsp; size = 1&lt;/div&gt;&lt;div style=&quot;font-size: 8px;&quot;&gt;&amp;nbsp; &amp;nbsp; key = &quot;order-service&quot;&lt;/div&gt;&lt;div style=&quot;font-size: 8px;&quot;&gt;&amp;nbsp; &amp;nbsp; value = {ConcurrentHashMap@12450}&amp;nbsp; size = 1&lt;/div&gt;&lt;div style=&quot;font-size: 8px;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp;&quot;127.0.0.1&quot; -&amp;gt; {ConcurrentHashMap@12455}&amp;nbsp; size = 1&lt;/div&gt;&lt;div style=&quot;font-size: 8px;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; key = &quot;127.0.0.1&quot;&lt;/div&gt;&lt;div style=&quot;font-size: 8px;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; value = {ConcurrentHashMap@12455}&amp;nbsp; size = 1&lt;/div&gt;&lt;div style=&quot;font-size: 8px;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;{Integer@12459} 43908 -&amp;gt; {RpcContext@&lt;b style=&quot;font-size: 8px;&quot;&gt;12460&lt;/b&gt;}&lt;/div&gt;&lt;/div&gt;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 8px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 8px;&quot;&gt;&lt;b style=&quot;font-size: 8px;&quot;&gt;&lt;br style=&quot;font-size: 8px;&quot;&gt;&lt;/b&gt;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 8px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 8px;&quot;&gt;&lt;div style=&quot;font-size: 8px;&quot;&gt;&lt;b style=&quot;font-size: 8px;&quot;&gt;TM_CHANNELS:&lt;/b&gt;&lt;br style=&quot;font-size: 8px;&quot;&gt;&lt;div style=&quot;font-size: 8px;&quot;&gt;&lt;div style=&quot;font-size: 8px;&quot;&gt;&lt;div style=&quot;font-size: 8px;&quot;&gt;result = {ConcurrentHashMap@12546}&amp;nbsp; size = 3&lt;/div&gt;&lt;div style=&quot;font-size: 8px;&quot;&gt;&amp;nbsp;&quot;account-service:127.0.0.1&quot; -&amp;gt; {ConcurrentHashMap@12555}&amp;nbsp; size = 1&lt;/div&gt;&lt;div style=&quot;font-size: 8px;&quot;&gt;&amp;nbsp;&quot;order-service:127.0.0.1&quot; -&amp;gt; {ConcurrentHashMap@12503}&amp;nbsp; size = 1&lt;/div&gt;&lt;div style=&quot;font-size: 8px;&quot;&gt;&amp;nbsp; key = &quot;order-service:127.0.0.1&quot;&lt;/div&gt;&lt;div style=&quot;font-size: 8px;&quot;&gt;&amp;nbsp; value = {ConcurrentHashMap@12503}&amp;nbsp; size = 1&lt;/div&gt;&lt;div style=&quot;font-size: 8px;&quot;&gt;&amp;nbsp; &amp;nbsp;{Integer@12562} 48310 -&amp;gt; {RpcContext@&lt;b style=&quot;font-size: 8px;&quot;&gt;9904&lt;/b&gt;}&amp;nbsp;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/font&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=top;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=8;" parent="1" vertex="1">
-          <mxGeometry x="1480" y="160" width="440" height="640" as="geometry" />
+          <mxGeometry x="1720" y="160" width="440" height="640" as="geometry" />
         </mxCell>
-        <mxCell id="5K5Wjn24KYveSR4iWbam-33" value="&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;&lt;b&gt;步骤6：创建并存储全局会话&lt;br&gt;&lt;/b&gt;&lt;/font&gt;&lt;div style=&quot;&quot;&gt;session = {GlobalSession@12608}&amp;nbsp;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp;&lt;b&gt;xid&lt;/b&gt; = &quot;172.17.0.1:8091:7260406644107100161&quot;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp;&lt;b&gt;transactionId&lt;/b&gt; = 7260406644107100161&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp;&lt;b&gt;status&lt;/b&gt; = {GlobalStatus@12612} &quot;Begin&quot;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp;&lt;b&gt;applicationId&lt;/b&gt; = &quot;order-service&quot;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp;&lt;b&gt;transactionServiceGroup&lt;/b&gt; = &quot;order-service-group&quot;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp;&lt;b&gt;transactionName&lt;/b&gt; = &quot;createOrder(java.lang.Long, java.lang.Long, java.lang.Integer)&quot;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp;&lt;b&gt;timeout&lt;/b&gt; = 60000000&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp;&lt;b&gt;beginTime&lt;/b&gt; =&amp;nbsp;1735910736624&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp;applicationData = null&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp;lazyLoadBranch = false&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp;active = true&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp;branchSessions = {ArrayList@12613}&amp;nbsp; size = 0&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp;globalSessionLock = {GlobalSession$GlobalSessionLock@12614}&amp;nbsp;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp;lifecycleListeners = {HashSet@12615}&amp;nbsp; size = 0&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;b&gt;步骤14：撤销日志记录的究竟是什么&lt;/b&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;b&gt;步骤15： 添加分支会话 &lt;/b&gt;（这里面的事务ID本应和上面一样，因为不好调试这里实际是从不同的事务取的值所以和上面的值不一样）&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;div style=&quot;&quot;&gt;branchSession = {BranchSession@12850}&amp;nbsp;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp;&lt;b&gt;xid&lt;/b&gt; = &quot;172.17.0.1:8091:7260406644107115521&quot;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp;&lt;b&gt;transactionId&lt;/b&gt; = 7260406644107115521&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp;&lt;b&gt;branchId&lt;/b&gt; = 7260406644107126398&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp;resourceGroupId = null&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp;&lt;b&gt;resourceId&lt;/b&gt; = &quot;jdbc:mysql://127.0.0.1:13306/seata_product&quot;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp;lockKey = &quot;product:1&quot;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp;&lt;b&gt;branchType&lt;/b&gt; = {BranchType@12824} &quot;AT&quot;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp;&lt;b&gt;status&lt;/b&gt; = {BranchStatus@12855} &quot;Registered&quot;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp;clientId = &quot;product-service:127.0.0.1:49386&quot;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp;applicationData = &quot;{&quot;autoCommit&quot;:false}&quot;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp;lockStatus = {LockStatus@12856} &quot;Locked&quot;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp;lockHolder = {ConcurrentHashMap@12857}&amp;nbsp; size = 0&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp;lockManager = {DataBaseLockManager@12834}&amp;nbsp;&lt;/div&gt;&lt;/div&gt;&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=11;" parent="1" vertex="1">
-          <mxGeometry x="820" y="489" width="580" height="451" as="geometry" />
+        <mxCell id="5K5Wjn24KYveSR4iWbam-33" value="&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;&lt;b&gt;步骤6：创建并存储全局会话&lt;br&gt;&lt;/b&gt;&lt;/font&gt;&lt;div style=&quot;&quot;&gt;session = {GlobalSession@12608}&amp;nbsp;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp;&lt;b&gt;xid&lt;/b&gt; = &quot;172.17.0.1:8091:7260406644107100161&quot;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp;&lt;b&gt;transactionId&lt;/b&gt; = 7260406644107100161&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp;&lt;b&gt;status&lt;/b&gt; = {GlobalStatus@12612} &quot;Begin&quot;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp;&lt;b&gt;applicationId&lt;/b&gt; = &quot;order-service&quot;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp;&lt;b&gt;transactionServiceGroup&lt;/b&gt; = &quot;order-service-group&quot;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp;&lt;b&gt;transactionName&lt;/b&gt; = &quot;createOrder(java.lang.Long, java.lang.Long, java.lang.Integer)&quot;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp;&lt;b&gt;timeout&lt;/b&gt; = 60000000&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp;&lt;b&gt;beginTime&lt;/b&gt; =&amp;nbsp;1735910736624&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp;applicationData = null&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp;lazyLoadBranch = false&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp;active = true&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp;branchSessions = {ArrayList@12613}&amp;nbsp; size = 0&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp;globalSessionLock = {GlobalSession$GlobalSessionLock@12614}&amp;nbsp;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp;lifecycleListeners = {HashSet@12615}&amp;nbsp; size = 0&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;b&gt;步骤14/20：撤销日志记录的究竟是什么，记录数据表执行SQL前的数据和执行后的数据&lt;/b&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;div&gt;sqlUndoLog = {SQLUndoLog@9841}&amp;nbsp;&lt;/div&gt;&lt;div&gt;&amp;nbsp;&lt;b&gt;sqlType&lt;/b&gt; = {SQLType@9842} &quot;UPDATE&quot;&lt;/div&gt;&lt;div&gt;&amp;nbsp;&lt;b&gt;tableName&lt;/b&gt; = &quot;product&quot;&lt;/div&gt;&lt;div&gt;&amp;nbsp;&lt;b&gt;beforeImage&lt;/b&gt; = {TableRecords@9812}&amp;nbsp;&lt;/div&gt;&lt;div&gt;&amp;nbsp; tableMeta = {TableMeta@9816}&amp;nbsp;&lt;/div&gt;&lt;div&gt;&amp;nbsp; &lt;b&gt;tableName&lt;/b&gt; = &quot;product&quot;&lt;/div&gt;&lt;div&gt;&amp;nbsp; &lt;b&gt;rows&lt;/b&gt; = {ArrayList@9830}&amp;nbsp; size = 1&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp;0 = {Row@9832}&amp;nbsp;&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; fields = {ArrayList@9833}&amp;nbsp; size = 3&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp;0 = {Field@9835} &quot;[id,1]&quot;&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp;1 = {Field@9836} &quot;[stock,998]&quot;&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp;2 = {Field@9837} &quot;[last_update_time,2025-01-04T22:32:39]&quot;&lt;/div&gt;&lt;div&gt;&amp;nbsp;&lt;b&gt;afterImage&lt;/b&gt; = {TableRecords@9818}&amp;nbsp;&lt;/div&gt;&lt;div&gt;&amp;nbsp; tableMeta = {TableMeta@9816}&amp;nbsp;&lt;/div&gt;&lt;div&gt;&amp;nbsp; &lt;b&gt;tableName&lt;/b&gt; = &quot;product&quot;&lt;/div&gt;&lt;div&gt;&amp;nbsp; &lt;b&gt;rows&lt;/b&gt; = {ArrayList@9820}&amp;nbsp; size = 1&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp;0 = {Row@9822}&amp;nbsp;&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; fields = {ArrayList@9823}&amp;nbsp; size = 3&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp;0 = {Field@9825} &quot;[id,1]&quot;&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp;1 = {Field@9826} &quot;[stock,997]&quot;&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp;2 = {Field@9827} &quot;[last_update_time,2025-01-07T16:22:48]&quot;&lt;/div&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;b&gt;步骤15： 添加分支会话 &lt;/b&gt;（这里面的事务ID本应和上面一样，因为不好调试这里实际是从不同的分布式事务取的值所以和上面的值不一样）&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;div style=&quot;&quot;&gt;branchSession = {BranchSession@12850}&amp;nbsp;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp;&lt;b&gt;xid&lt;/b&gt; = &quot;172.17.0.1:8091:7260406644107115521&quot;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp;&lt;b&gt;transactionId&lt;/b&gt; = 7260406644107115521&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp;&lt;b&gt;branchId&lt;/b&gt; = 7260406644107126398&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp;resourceGroupId = null&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp;&lt;b&gt;resourceId&lt;/b&gt; = &quot;jdbc:mysql://127.0.0.1:13306/seata_product&quot;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp;lockKey = &quot;product:1&quot;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp;&lt;b&gt;branchType&lt;/b&gt; = {BranchType@12824} &quot;AT&quot;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp;&lt;b&gt;status&lt;/b&gt; = {BranchStatus@12855} &quot;Registered&quot;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp;clientId = &quot;product-service:127.0.0.1:49386&quot;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp;applicationData = &quot;{&quot;autoCommit&quot;:false}&quot;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp;lockStatus = {LockStatus@12856} &quot;Locked&quot;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp;lockHolder = {ConcurrentHashMap@12857}&amp;nbsp; size = 0&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp;lockManager = {DataBaseLockManager@12834}&amp;nbsp;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;/div&gt;&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=11;" parent="1" vertex="1">
+          <mxGeometry x="1060" y="489" width="580" height="641" as="geometry" />
         </mxCell>
         <mxCell id="5K5Wjn24KYveSR4iWbam-56" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endArrow=classicThin;endFill=1;" parent="1" source="5K5Wjn24KYveSR4iWbam-35" target="5K5Wjn24KYveSR4iWbam-17" edge="1">
-          <mxGeometry relative="1" as="geometry" />
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="960" y="690" />
+              <mxPoint x="960" y="330" />
+            </Array>
+          </mxGeometry>
         </mxCell>
         <mxCell id="5K5Wjn24KYveSR4iWbam-35" value="RM&lt;br&gt;NettyClient" style="rounded=0;whiteSpace=wrap;html=1;fontSize=11;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
-          <mxGeometry x="560" y="660" width="100" height="60" as="geometry" />
+          <mxGeometry x="760.05" y="660" width="100" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="5K5Wjn24KYveSR4iWbam-36" value="HTTP / RPC" style="rounded=0;whiteSpace=wrap;html=1;fontSize=11;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
-          <mxGeometry x="560" y="760" width="100" height="60" as="geometry" />
+        <mxCell id="Va2aDv6qeypGLSADWSkX-12" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.998;entryY=0.884;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="5K5Wjn24KYveSR4iWbam-36" target="5K5Wjn24KYveSR4iWbam-42">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Va2aDv6qeypGLSADWSkX-14" value="&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;请求传参 XID&lt;/font&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="Va2aDv6qeypGLSADWSkX-12">
+          <mxGeometry x="0.1503" y="-1" relative="1" as="geometry">
+            <mxPoint x="22" y="1" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="5K5Wjn24KYveSR4iWbam-36" value="HTTP / RPC&lt;br&gt;Server" style="rounded=0;whiteSpace=wrap;html=1;fontSize=11;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+          <mxGeometry x="760.05" y="760" width="100" height="60" as="geometry" />
         </mxCell>
         <mxCell id="5K5Wjn24KYveSR4iWbam-54" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endArrow=classicThin;endFill=1;" parent="1" source="5K5Wjn24KYveSR4iWbam-42" target="5K5Wjn24KYveSR4iWbam-52" edge="1">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="310" y="690" />
-              <mxPoint x="310" y="740" />
+              <mxPoint x="410" y="690" />
+              <mxPoint x="410" y="690" />
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="5K5Wjn24KYveSR4iWbam-42" value="&amp;nbsp; 9. 开启本地事务（作为分支事务）；&amp;nbsp;&lt;br&gt;&amp;nbsp;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&amp;nbsp; &lt;br&gt;&amp;nbsp;11. 如果扣减库存本地事务执行异常，&lt;br&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 向DB发送回滚请求；&lt;br&gt;&amp;nbsp;12. 如果扣减库存本地事务执行正常，&lt;br&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 向DB发送提交请求；&lt;br&gt;&amp;nbsp;23. 如果收到 BranchCommitRequest, 说明整个&lt;br&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;分布式事务执行正常，删除UndoLog;&lt;br&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;如果收到 BranchRollbackRequest, 说明&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;分布式事务执行异常，读取UndoLog并执行 &lt;br&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;恢复数据；&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;fontSize=11;verticalAlign=top;" parent="1" vertex="1">
-          <mxGeometry x="60" y="560" width="240" height="260" as="geometry" />
+        <mxCell id="5K5Wjn24KYveSR4iWbam-42" value="&lt;font style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp; 9. 开启本地事务（作为分支事务）；&amp;nbsp;&lt;br&gt;&amp;nbsp;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&amp;nbsp; &lt;br&gt;&amp;nbsp;12. 如果扣减库存SQL执行异常，本地事务回滚（回滚也是会被Seata拦截的）；&lt;br&gt;&amp;nbsp;13. 如果扣减库存SQL执行正常，本地事务提交；&lt;br&gt;&amp;nbsp;28. 如果收到 BranchCommitRequest, 说明整个分布式事务执行正常，删除UndoLog;&lt;br&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;如果收到 BranchRollbackRequest, 说明&lt;span style=&quot;background-color: initial;&quot;&gt;分布式事务执行异常，读取UndoLog并执行&lt;/span&gt;&lt;br&gt;&lt;/font&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;恢复数据；&lt;/font&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;fontSize=11;verticalAlign=top;" parent="1" vertex="1">
+          <mxGeometry x="60" y="560" width="420" height="260" as="geometry" />
         </mxCell>
-        <mxCell id="5K5Wjn24KYveSR4iWbam-43" value="10. 扣减库存；" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontSize=11;" parent="1" vertex="1">
-          <mxGeometry x="70" y="605" width="220" height="25" as="geometry" />
+        <mxCell id="5K5Wjn24KYveSR4iWbam-43" value="11. 扣减库存；" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontSize=10;" parent="1" vertex="1">
+          <mxGeometry x="70" y="605" width="400" height="25" as="geometry" />
         </mxCell>
-        <mxCell id="5K5Wjn24KYveSR4iWbam-44" value="&lt;font color=&quot;#007fff&quot;&gt;扣减库存代理方法(@Transactional)&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;" parent="1" vertex="1">
-          <mxGeometry x="65" y="540" width="230" height="20" as="geometry" />
+        <mxCell id="5K5Wjn24KYveSR4iWbam-44" value="&lt;font color=&quot;#007fff&quot;&gt;扣减库存代理方法(@Transactional)， 这个注解其实没必要加&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;" parent="1" vertex="1">
+          <mxGeometry x="112.5" y="540" width="315" height="20" as="geometry" />
         </mxCell>
         <mxCell id="5K5Wjn24KYveSR4iWbam-45" value="&lt;font color=&quot;#007fff&quot;&gt;扣减库存原始方法&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;" parent="1" vertex="1">
-          <mxGeometry x="125" y="585" width="100" height="20" as="geometry" />
+          <mxGeometry x="220" y="585" width="100" height="20" as="geometry" />
         </mxCell>
         <mxCell id="5K5Wjn24KYveSR4iWbam-46" value="TM&lt;br&gt;NettyClient&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;作为参与者不会使用此客户端&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontSize=11;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
-          <mxGeometry x="560" y="560" width="100" height="60" as="geometry" />
+          <mxGeometry x="760.05" y="560" width="100" height="60" as="geometry" />
         </mxCell>
         <mxCell id="5K5Wjn24KYveSR4iWbam-49" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;endArrow=classicThin;endFill=1;" parent="1" source="5K5Wjn24KYveSR4iWbam-47" target="5K5Wjn24KYveSR4iWbam-36" edge="1">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="700" y="430" />
-              <mxPoint x="700" y="790" />
+              <mxPoint x="920" y="430" />
+              <mxPoint x="920" y="790" />
             </Array>
           </mxGeometry>
         </mxCell>
@@ -161,8 +175,8 @@
         <mxCell id="5K5Wjn24KYveSR4iWbam-60" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;endArrow=classicThin;endFill=1;" parent="1" source="5K5Wjn24KYveSR4iWbam-47" target="5K5Wjn24KYveSR4iWbam-51" edge="1">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="700" y="430" />
-              <mxPoint x="700" y="920" />
+              <mxPoint x="920" y="430" />
+              <mxPoint x="920" y="920" />
             </Array>
           </mxGeometry>
         </mxCell>
@@ -171,49 +185,43 @@
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="5K5Wjn24KYveSR4iWbam-47" value="HTTP / RPC" style="rounded=0;whiteSpace=wrap;html=1;fontSize=11;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
-          <mxGeometry x="560" y="400" width="100" height="60" as="geometry" />
+        <mxCell id="5K5Wjn24KYveSR4iWbam-47" value="HTTP / RPC&lt;br&gt;Client" style="rounded=0;whiteSpace=wrap;html=1;fontSize=11;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+          <mxGeometry x="760.05" y="400" width="100" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="5K5Wjn24KYveSR4iWbam-51" value="账户服务(分布式事务参与者)&lt;br&gt;&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;处理逻辑和库存服务一样&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;arcSize=9;fontSize=11;" parent="1" vertex="1">
-          <mxGeometry x="40" y="880" width="640" height="80" as="geometry" />
+        <mxCell id="5K5Wjn24KYveSR4iWbam-51" value="账户服务(分布式事务参与者)&lt;br&gt;&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;处理逻辑和库存服务一样, 省略&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;arcSize=9;fontSize=11;" parent="1" vertex="1">
+          <mxGeometry x="40" y="880" width="840" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="5K5Wjn24KYveSR4iWbam-55" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;endArrow=classicThin;endFill=1;" parent="1" source="5K5Wjn24KYveSR4iWbam-52" target="5K5Wjn24KYveSR4iWbam-35" edge="1">
+        <mxCell id="5K5Wjn24KYveSR4iWbam-55" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classicThin;endFill=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="5K5Wjn24KYveSR4iWbam-52" target="5K5Wjn24KYveSR4iWbam-35" edge="1">
           <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="530" y="740" />
-              <mxPoint x="530" y="690" />
-            </Array>
+            <Array as="points" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="5K5Wjn24KYveSR4iWbam-57" value="14/&lt;br&gt;17" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="5K5Wjn24KYveSR4iWbam-55" vertex="1" connectable="0">
+        <mxCell id="5K5Wjn24KYveSR4iWbam-57" value="14/15" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="5K5Wjn24KYveSR4iWbam-55" vertex="1" connectable="0">
           <mxGeometry x="0.6222" y="-2" relative="1" as="geometry">
-            <mxPoint x="-3" y="-2" as="offset" />
+            <mxPoint x="-25" y="-2" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="5K5Wjn24KYveSR4iWbam-52" value="13. 拦截本地事务提交请求，先向 &lt;br style=&quot;font-size: 11px;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; TC发送分支事务注册请求&lt;br&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &lt;b&gt;BranchRegisterRequest&lt;/b&gt;；&lt;br&gt;14. 服务本地记录&lt;b&gt;撤销日志&lt;/b&gt;；&lt;br&gt;16. &lt;b&gt;本地事务提交&lt;/b&gt;（注意这里不会等所有&lt;br&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; 事务都执行完成最后一起提交）；&lt;br&gt;17. 向TC上报分支事务状态，发送 &lt;br&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &lt;b&gt;BranchReportRequest&lt;/b&gt;；" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontSize=11;" parent="1" vertex="1">
-          <mxGeometry x="320" y="660" width="200" height="160" as="geometry" />
-        </mxCell>
-        <mxCell id="5K5Wjn24KYveSR4iWbam-53" value="&lt;font color=&quot;#007fff&quot;&gt;连接代理 ConnectionProxy&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;" parent="1" vertex="1">
-          <mxGeometry x="350" y="640" width="140" height="20" as="geometry" />
+        <mxCell id="5K5Wjn24KYveSR4iWbam-52" value="10. PreparedStatementProxy 中拦截SQL执&lt;br&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; 行，生成UndoLog并保存到连接上下文；&lt;br&gt;14. 拦截本地事务提交，先向TC发送分支事&lt;br&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; 务注册请求&amp;nbsp;&lt;b style=&quot;font-size: 10px;&quot;&gt;BranchRegisterRequest&lt;/b&gt;；&lt;br style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; 服务本地持久化&lt;b style=&quot;font-size: 10px;&quot;&gt;撤销日志&lt;/b&gt;；&lt;br style=&quot;font-size: 10px;&quot;&gt;&lt;b style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; 本地事务提交&lt;/b&gt;（注意这里不会等所有&lt;br style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; 事务都执行完成最后一起提交）；&lt;br style=&quot;font-size: 10px;&quot;&gt;16. 向TC上报分支事务状态，发送 &lt;br style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &lt;b style=&quot;font-size: 10px;&quot;&gt;BranchReportRequest&lt;/b&gt;；&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;由于这里已经借助 @Trasnactional 开启了本地事务，Seata 会直接使用这个事务作为分支事务&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontSize=10;" parent="1" vertex="1">
+          <mxGeometry x="500" y="610" width="200" height="160" as="geometry" />
         </mxCell>
         <mxCell id="5K5Wjn24KYveSR4iWbam-66" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.75;exitDx=0;exitDy=0;entryX=1;entryY=0.75;entryDx=0;entryDy=0;endArrow=classicThin;endFill=1;" parent="1" source="5K5Wjn24KYveSR4iWbam-17" target="5K5Wjn24KYveSR4iWbam-35" edge="1">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="760" y="395" />
-              <mxPoint x="760" y="705" />
+              <mxPoint x="1000" y="395" />
+              <mxPoint x="1000" y="705" />
             </Array>
           </mxGeometry>
         </mxCell>
         <mxCell id="5K5Wjn24KYveSR4iWbam-68" value="&lt;b&gt;全局会话状态转换&lt;br&gt;&lt;/b&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
           <mxGeometry x="40" y="1000" width="120" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="5K5Wjn24KYveSR4iWbam-87" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;endArrow=classicThin;endFill=1;" parent="1" source="5K5Wjn24KYveSR4iWbam-69" target="5K5Wjn24KYveSR4iWbam-70" edge="1">
+        <mxCell id="5K5Wjn24KYveSR4iWbam-87" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;endArrow=classicThin;endFill=1;" parent="1" source="5K5Wjn24KYveSR4iWbam-69" target="5K5Wjn24KYveSR4iWbam-70" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="5K5Wjn24KYveSR4iWbam-69" value="UnKnown(0)" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;" parent="1" vertex="1">
           <mxGeometry x="200" y="1040" width="120" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="5K5Wjn24KYveSR4iWbam-88" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=classicThin;endFill=1;" parent="1" source="5K5Wjn24KYveSR4iWbam-70" target="5K5Wjn24KYveSR4iWbam-71" edge="1">
+        <mxCell id="5K5Wjn24KYveSR4iWbam-88" style="rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=classicThin;endFill=1;" parent="1" source="5K5Wjn24KYveSR4iWbam-70" target="5K5Wjn24KYveSR4iWbam-71" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="5K5Wjn24KYveSR4iWbam-95" value="&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;TM全局会话提交请求&lt;br style=&quot;font-size: 10px;&quot;&gt;同步提交&lt;br style=&quot;font-size: 10px;&quot;&gt;&lt;/font&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;" parent="5K5Wjn24KYveSR4iWbam-88" vertex="1" connectable="0">
@@ -221,13 +229,13 @@
             <mxPoint x="-24" y="7" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="5K5Wjn24KYveSR4iWbam-98" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;endArrow=classicThin;endFill=1;" parent="1" source="5K5Wjn24KYveSR4iWbam-70" target="5K5Wjn24KYveSR4iWbam-77" edge="1">
+        <mxCell id="5K5Wjn24KYveSR4iWbam-98" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;endArrow=classicThin;endFill=1;" parent="1" source="5K5Wjn24KYveSR4iWbam-70" target="5K5Wjn24KYveSR4iWbam-77" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="5K5Wjn24KYveSR4iWbam-101" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=classicThin;endFill=1;" parent="1" source="5K5Wjn24KYveSR4iWbam-70" target="5K5Wjn24KYveSR4iWbam-73" edge="1">
+        <mxCell id="5K5Wjn24KYveSR4iWbam-101" style="rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=classicThin;endFill=1;" parent="1" source="5K5Wjn24KYveSR4iWbam-70" target="5K5Wjn24KYveSR4iWbam-73" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="5K5Wjn24KYveSR4iWbam-124" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=classicThin;endFill=1;" parent="1" source="5K5Wjn24KYveSR4iWbam-70" target="5K5Wjn24KYveSR4iWbam-75" edge="1">
+        <mxCell id="5K5Wjn24KYveSR4iWbam-124" style="rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=classicThin;endFill=1;" parent="1" source="5K5Wjn24KYveSR4iWbam-70" target="5K5Wjn24KYveSR4iWbam-75" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="5K5Wjn24KYveSR4iWbam-125" value="&lt;font color=&quot;#007fff&quot;&gt;TC定时进行超时检查&lt;/font&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="5K5Wjn24KYveSR4iWbam-124" vertex="1" connectable="0">
@@ -238,49 +246,49 @@
         <mxCell id="5K5Wjn24KYveSR4iWbam-70" value="Begin(1)" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
           <mxGeometry x="200" y="1120" width="120" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="5K5Wjn24KYveSR4iWbam-90" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=classicThin;endFill=1;" parent="1" source="5K5Wjn24KYveSR4iWbam-72" target="5K5Wjn24KYveSR4iWbam-78" edge="1">
+        <mxCell id="5K5Wjn24KYveSR4iWbam-90" style="rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=classicThin;endFill=1;" parent="1" source="5K5Wjn24KYveSR4iWbam-72" target="5K5Wjn24KYveSR4iWbam-78" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="5K5Wjn24KYveSR4iWbam-100" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;endArrow=classicThin;endFill=1;" parent="1" source="5K5Wjn24KYveSR4iWbam-71" target="5K5Wjn24KYveSR4iWbam-78" edge="1">
+        <mxCell id="5K5Wjn24KYveSR4iWbam-100" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;endArrow=classicThin;endFill=1;" parent="1" source="5K5Wjn24KYveSR4iWbam-71" target="5K5Wjn24KYveSR4iWbam-78" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="5K5Wjn24KYveSR4iWbam-71" value="Committing(2)" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;" parent="1" vertex="1">
           <mxGeometry x="40" y="1240" width="120" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="5K5Wjn24KYveSR4iWbam-106" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;endArrow=classicThin;endFill=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="5K5Wjn24KYveSR4iWbam-73" target="5K5Wjn24KYveSR4iWbam-74" edge="1">
+        <mxCell id="5K5Wjn24KYveSR4iWbam-106" style="rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;endArrow=classicThin;endFill=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="5K5Wjn24KYveSR4iWbam-73" target="5K5Wjn24KYveSR4iWbam-74" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="5K5Wjn24KYveSR4iWbam-108" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0.05;entryDx=0;entryDy=0;endArrow=classicThin;endFill=1;entryPerimeter=0;" parent="1" source="5K5Wjn24KYveSR4iWbam-73" target="5K5Wjn24KYveSR4iWbam-80" edge="1">
+        <mxCell id="5K5Wjn24KYveSR4iWbam-108" style="rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0.05;entryDx=0;entryDy=0;endArrow=classicThin;endFill=1;entryPerimeter=0;" parent="1" source="5K5Wjn24KYveSR4iWbam-73" target="5K5Wjn24KYveSR4iWbam-80" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="5K5Wjn24KYveSR4iWbam-73" value="Rollbacking(4)&lt;br&gt;&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;注意很多情况都可能导致回滚，这里列举的并不全&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
           <mxGeometry x="520" y="1240" width="120" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="5K5Wjn24KYveSR4iWbam-107" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=classicThin;endFill=1;" parent="1" source="5K5Wjn24KYveSR4iWbam-74" target="5K5Wjn24KYveSR4iWbam-81" edge="1">
+        <mxCell id="5K5Wjn24KYveSR4iWbam-107" style="rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=classicThin;endFill=1;" parent="1" source="5K5Wjn24KYveSR4iWbam-74" target="5K5Wjn24KYveSR4iWbam-81" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="5K5Wjn24KYveSR4iWbam-122" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=classicThin;endFill=1;" parent="1" source="5K5Wjn24KYveSR4iWbam-74" target="5K5Wjn24KYveSR4iWbam-86" edge="1">
+        <mxCell id="5K5Wjn24KYveSR4iWbam-122" style="rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=classicThin;endFill=1;" parent="1" source="5K5Wjn24KYveSR4iWbam-74" target="5K5Wjn24KYveSR4iWbam-86" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="5K5Wjn24KYveSR4iWbam-123" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=classicThin;endFill=1;" parent="1" source="5K5Wjn24KYveSR4iWbam-74" target="5K5Wjn24KYveSR4iWbam-80" edge="1">
+        <mxCell id="5K5Wjn24KYveSR4iWbam-123" style="rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=classicThin;endFill=1;" parent="1" source="5K5Wjn24KYveSR4iWbam-74" target="5K5Wjn24KYveSR4iWbam-80" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="5K5Wjn24KYveSR4iWbam-74" value="RollbackRetrying(5)" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;" parent="1" vertex="1">
           <mxGeometry x="600" y="1360" width="120" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="5K5Wjn24KYveSR4iWbam-105" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;endArrow=classicThin;endFill=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="5K5Wjn24KYveSR4iWbam-75" target="5K5Wjn24KYveSR4iWbam-76" edge="1">
+        <mxCell id="5K5Wjn24KYveSR4iWbam-105" style="rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;endArrow=classicThin;endFill=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="5K5Wjn24KYveSR4iWbam-75" target="5K5Wjn24KYveSR4iWbam-76" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="5K5Wjn24KYveSR4iWbam-119" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;endArrow=classicThin;endFill=1;" parent="1" source="5K5Wjn24KYveSR4iWbam-75" target="5K5Wjn24KYveSR4iWbam-82" edge="1">
+        <mxCell id="5K5Wjn24KYveSR4iWbam-119" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;endArrow=classicThin;endFill=1;" parent="1" source="5K5Wjn24KYveSR4iWbam-75" target="5K5Wjn24KYveSR4iWbam-82" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="5K5Wjn24KYveSR4iWbam-75" value="TimeoutRollbacking(6)" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
           <mxGeometry x="1000" y="1240" width="120" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="5K5Wjn24KYveSR4iWbam-110" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;endArrow=classicThin;endFill=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="5K5Wjn24KYveSR4iWbam-76" target="5K5Wjn24KYveSR4iWbam-82" edge="1">
+        <mxCell id="5K5Wjn24KYveSR4iWbam-110" style="rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;endArrow=classicThin;endFill=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="5K5Wjn24KYveSR4iWbam-76" target="5K5Wjn24KYveSR4iWbam-82" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="5K5Wjn24KYveSR4iWbam-120" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=classicThin;endFill=1;" parent="1" source="5K5Wjn24KYveSR4iWbam-76" target="5K5Wjn24KYveSR4iWbam-83" edge="1">
+        <mxCell id="5K5Wjn24KYveSR4iWbam-120" style="rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=classicThin;endFill=1;" parent="1" source="5K5Wjn24KYveSR4iWbam-76" target="5K5Wjn24KYveSR4iWbam-83" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="5K5Wjn24KYveSR4iWbam-121" style="rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=classicThin;endFill=1;" parent="1" source="5K5Wjn24KYveSR4iWbam-76" target="5K5Wjn24KYveSR4iWbam-86" edge="1">
@@ -295,7 +303,7 @@
         <mxCell id="5K5Wjn24KYveSR4iWbam-78" value="Committed(9)" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
           <mxGeometry x="40" y="1480" width="120" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="5K5Wjn24KYveSR4iWbam-127" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=0;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;dashed=1;endArrow=classicThin;endFill=1;" parent="1" source="5K5Wjn24KYveSR4iWbam-79" target="5K5Wjn24KYveSR4iWbam-73" edge="1">
+        <mxCell id="5K5Wjn24KYveSR4iWbam-127" style="rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=0;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;dashed=1;endArrow=classicThin;endFill=1;" parent="1" source="5K5Wjn24KYveSR4iWbam-79" target="5K5Wjn24KYveSR4iWbam-73" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="5K5Wjn24KYveSR4iWbam-79" value="CommitFailed(10)" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;" parent="1" vertex="1">
@@ -313,7 +321,7 @@
         <mxCell id="5K5Wjn24KYveSR4iWbam-84" value="Finished(15)&lt;br&gt;&lt;font style=&quot;font-size: 8px;&quot; color=&quot;#007fff&quot;&gt;Saga模式中会使用，以及在全局会话不存在时会返回此状态&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;" parent="1" vertex="1">
           <mxGeometry x="200" y="1560" width="120" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="5K5Wjn24KYveSR4iWbam-126" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=0;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;dashed=1;endArrow=classicThin;endFill=1;" parent="1" source="5K5Wjn24KYveSR4iWbam-85" target="5K5Wjn24KYveSR4iWbam-73" edge="1">
+        <mxCell id="5K5Wjn24KYveSR4iWbam-126" style="rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=0;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;dashed=1;endArrow=classicThin;endFill=1;" parent="1" source="5K5Wjn24KYveSR4iWbam-85" target="5K5Wjn24KYveSR4iWbam-73" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="5K5Wjn24KYveSR4iWbam-129" value="&lt;font color=&quot;#007fff&quot;&gt;间接通过TM发送回滚请求转换&lt;/font&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="5K5Wjn24KYveSR4iWbam-126" vertex="1" connectable="0">
@@ -333,7 +341,7 @@
         <mxCell id="5K5Wjn24KYveSR4iWbam-80" value="Rollbacked(11)" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;" parent="1" vertex="1">
           <mxGeometry x="520" y="1480" width="120" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="5K5Wjn24KYveSR4iWbam-96" value="" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=classicThin;endFill=1;" parent="1" source="5K5Wjn24KYveSR4iWbam-71" target="5K5Wjn24KYveSR4iWbam-72" edge="1">
+        <mxCell id="5K5Wjn24KYveSR4iWbam-96" value="" style="rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=classicThin;endFill=1;" parent="1" source="5K5Wjn24KYveSR4iWbam-71" target="5K5Wjn24KYveSR4iWbam-72" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="100" y="1240" as="sourcePoint" />
             <mxPoint x="100" y="1520" as="targetPoint" />
@@ -344,10 +352,10 @@
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="5K5Wjn24KYveSR4iWbam-102" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=classicThin;endFill=1;" parent="1" source="5K5Wjn24KYveSR4iWbam-72" target="5K5Wjn24KYveSR4iWbam-85" edge="1">
+        <mxCell id="5K5Wjn24KYveSR4iWbam-102" style="rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=classicThin;endFill=1;" parent="1" source="5K5Wjn24KYveSR4iWbam-72" target="5K5Wjn24KYveSR4iWbam-85" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="5K5Wjn24KYveSR4iWbam-118" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=classicThin;endFill=1;" parent="1" source="5K5Wjn24KYveSR4iWbam-72" target="5K5Wjn24KYveSR4iWbam-79" edge="1">
+        <mxCell id="5K5Wjn24KYveSR4iWbam-118" style="rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=classicThin;endFill=1;" parent="1" source="5K5Wjn24KYveSR4iWbam-72" target="5K5Wjn24KYveSR4iWbam-79" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="5K5Wjn24KYveSR4iWbam-72" value="CommitRetrying(3)" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;" parent="1" vertex="1">
@@ -369,28 +377,28 @@
         <mxCell id="5K5Wjn24KYveSR4iWbam-130" value="&lt;b&gt;分支会话状态转换&lt;br&gt;&lt;/b&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
           <mxGeometry x="40" y="1640" width="120" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="5K5Wjn24KYveSR4iWbam-144" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;endArrow=classicThin;endFill=1;" parent="1" source="5K5Wjn24KYveSR4iWbam-131" target="5K5Wjn24KYveSR4iWbam-132" edge="1">
+        <mxCell id="5K5Wjn24KYveSR4iWbam-144" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;endArrow=classicThin;endFill=1;" parent="1" source="5K5Wjn24KYveSR4iWbam-131" target="5K5Wjn24KYveSR4iWbam-132" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="5K5Wjn24KYveSR4iWbam-131" value="UnKnown(0)" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;" parent="1" vertex="1">
           <mxGeometry x="200" y="1680" width="120" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="5K5Wjn24KYveSR4iWbam-145" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;endArrow=classicThin;endFill=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="5K5Wjn24KYveSR4iWbam-132" target="5K5Wjn24KYveSR4iWbam-133" edge="1">
+        <mxCell id="5K5Wjn24KYveSR4iWbam-145" style="rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;endArrow=classicThin;endFill=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="5K5Wjn24KYveSR4iWbam-132" target="5K5Wjn24KYveSR4iWbam-133" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="5K5Wjn24KYveSR4iWbam-147" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;endArrow=classicThin;endFill=1;" parent="1" source="5K5Wjn24KYveSR4iWbam-132" target="5K5Wjn24KYveSR4iWbam-134" edge="1">
+        <mxCell id="5K5Wjn24KYveSR4iWbam-147" style="rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;endArrow=classicThin;endFill=1;" parent="1" source="5K5Wjn24KYveSR4iWbam-132" target="5K5Wjn24KYveSR4iWbam-134" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="5K5Wjn24KYveSR4iWbam-148" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;endArrow=classicThin;endFill=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="5K5Wjn24KYveSR4iWbam-132" target="5K5Wjn24KYveSR4iWbam-135" edge="1">
+        <mxCell id="5K5Wjn24KYveSR4iWbam-148" style="rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;endArrow=classicThin;endFill=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="5K5Wjn24KYveSR4iWbam-132" target="5K5Wjn24KYveSR4iWbam-135" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="5K5Wjn24KYveSR4iWbam-132" value="Registered(1)" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;" parent="1" vertex="1">
           <mxGeometry x="200" y="1760" width="120" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="5K5Wjn24KYveSR4iWbam-146" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;endArrow=classicThin;endFill=1;" parent="1" source="5K5Wjn24KYveSR4iWbam-133" target="5K5Wjn24KYveSR4iWbam-136" edge="1">
+        <mxCell id="5K5Wjn24KYveSR4iWbam-146" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;endArrow=classicThin;endFill=1;" parent="1" source="5K5Wjn24KYveSR4iWbam-133" target="5K5Wjn24KYveSR4iWbam-136" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="5K5Wjn24KYveSR4iWbam-149" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=classicThin;endFill=1;" parent="1" source="5K5Wjn24KYveSR4iWbam-133" target="5K5Wjn24KYveSR4iWbam-137" edge="1">
+        <mxCell id="5K5Wjn24KYveSR4iWbam-149" style="rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=classicThin;endFill=1;" parent="1" source="5K5Wjn24KYveSR4iWbam-133" target="5K5Wjn24KYveSR4iWbam-137" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="5K5Wjn24KYveSR4iWbam-133" value="PhaseOne_Done(2)" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;" parent="1" vertex="1">
@@ -405,10 +413,10 @@
         <mxCell id="5K5Wjn24KYveSR4iWbam-136" value="PhaseTwo_&lt;br&gt;Committed(5)" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
           <mxGeometry x="40" y="1920" width="120" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="5K5Wjn24KYveSR4iWbam-150" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;endArrow=classicThin;endFill=1;" parent="1" source="5K5Wjn24KYveSR4iWbam-137" target="5K5Wjn24KYveSR4iWbam-138" edge="1">
+        <mxCell id="5K5Wjn24KYveSR4iWbam-150" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;endArrow=classicThin;endFill=1;" parent="1" source="5K5Wjn24KYveSR4iWbam-137" target="5K5Wjn24KYveSR4iWbam-138" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="5K5Wjn24KYveSR4iWbam-152" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;endArrow=classicThin;endFill=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="5K5Wjn24KYveSR4iWbam-138" target="5K5Wjn24KYveSR4iWbam-139" edge="1">
+        <mxCell id="5K5Wjn24KYveSR4iWbam-152" style="rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;endArrow=classicThin;endFill=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="5K5Wjn24KYveSR4iWbam-138" target="5K5Wjn24KYveSR4iWbam-139" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="260" y="1960" as="sourcePoint" />
           </mxGeometry>
@@ -416,7 +424,7 @@
         <mxCell id="5K5Wjn24KYveSR4iWbam-137" value="PhaseTwo_&lt;br&gt;CommitFailed_&lt;br&gt;Retryable(6)" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;" parent="1" vertex="1">
           <mxGeometry x="200" y="1920" width="120" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="5K5Wjn24KYveSR4iWbam-151" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;endArrow=classicThin;endFill=1;" parent="1" source="5K5Wjn24KYveSR4iWbam-138" target="5K5Wjn24KYveSR4iWbam-140" edge="1">
+        <mxCell id="5K5Wjn24KYveSR4iWbam-151" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;endArrow=classicThin;endFill=1;" parent="1" source="5K5Wjn24KYveSR4iWbam-138" target="5K5Wjn24KYveSR4iWbam-140" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="5K5Wjn24KYveSR4iWbam-138" value="PhaseTwo_&lt;br&gt;CommitFailed_&lt;br&gt;Unretryable(7)" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;" parent="1" vertex="1">
@@ -425,7 +433,7 @@
         <mxCell id="5K5Wjn24KYveSR4iWbam-139" value="PhaseTwo_&lt;br&gt;Rollbacked(8)" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
           <mxGeometry x="40" y="2080" width="120" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="5K5Wjn24KYveSR4iWbam-153" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;endArrow=classicThin;endFill=1;" parent="1" source="5K5Wjn24KYveSR4iWbam-140" target="5K5Wjn24KYveSR4iWbam-141" edge="1">
+        <mxCell id="5K5Wjn24KYveSR4iWbam-153" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;endArrow=classicThin;endFill=1;" parent="1" source="5K5Wjn24KYveSR4iWbam-140" target="5K5Wjn24KYveSR4iWbam-141" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="5K5Wjn24KYveSR4iWbam-140" value="PhaseTwo_&lt;br&gt;RollbackFailed_&lt;br&gt;Retryable(9)" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;" parent="1" vertex="1">
@@ -445,6 +453,45 @@
         </mxCell>
         <mxCell id="g7Wxtb_a9kpYRrw0NU63-1" value="&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;XA模式的状态，先忽略&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;" parent="1" vertex="1">
           <mxGeometry x="490" y="1925" width="130" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Va2aDv6qeypGLSADWSkX-5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.692;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endArrow=classicThin;endFill=1;exitPerimeter=0;" edge="1" parent="1" source="5K5Wjn24KYveSR4iWbam-8" target="Va2aDv6qeypGLSADWSkX-3">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="480" y="330" as="sourcePoint" />
+            <mxPoint x="760" y="430" as="targetPoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Va2aDv6qeypGLSADWSkX-6" value="8/19" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="Va2aDv6qeypGLSADWSkX-5">
+          <mxGeometry x="-0.7126" y="-1" relative="1" as="geometry">
+            <mxPoint x="247" y="39" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Va2aDv6qeypGLSADWSkX-7" value="21" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="Va2aDv6qeypGLSADWSkX-5">
+          <mxGeometry x="-0.1408" relative="1" as="geometry">
+            <mxPoint y="-10" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Va2aDv6qeypGLSADWSkX-10" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="Va2aDv6qeypGLSADWSkX-3" target="5K5Wjn24KYveSR4iWbam-7">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="720" y="380" />
+              <mxPoint x="720" y="330" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Va2aDv6qeypGLSADWSkX-11" value="22/24" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="Va2aDv6qeypGLSADWSkX-10">
+          <mxGeometry x="-0.8428" y="2" relative="1" as="geometry">
+            <mxPoint x="11" y="-8" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Va2aDv6qeypGLSADWSkX-3" value="20. &lt;font style=&quot;font-size: 9px;&quot;&gt;PreparedStatementProxy中先&lt;b style=&quot;font-size: 9px;&quot;&gt;开启事务&lt;/b&gt;，&lt;/font&gt;&lt;br style=&quot;font-size: 9px;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp;后执行创建订单SQL、并生成 UndoLog &lt;br style=&quot;font-size: 9px;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; 保存到 ConnectionProxy 连接上下文；&lt;br style=&quot;font-size: 9px;&quot;&gt;22. ConnectionProxy中根据连接上下文信息&lt;br style=&quot;font-size: 9px;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp;判断当强是否处于全局事务或全局锁范围&lt;br style=&quot;font-size: 9px;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp;内，是则向TC发送分支事务注册&amp;nbsp;&lt;br style=&quot;font-size: 9px;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp;&lt;b style=&quot;font-size: 9px;&quot;&gt;BranchRegisterRequest&lt;/b&gt;、&lt;br style=&quot;font-size: 9px;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; 持久化 UndoLog、&lt;b style=&quot;font-size: 9px;&quot;&gt;本地事务提交；&lt;br style=&quot;font-size: 9px;&quot;&gt;&lt;/b&gt;24. 上报本地事务状态 &lt;br style=&quot;font-size: 9px;&quot;&gt;&lt;b style=&quot;font-size: 9px;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; BranchReportRequest&lt;/b&gt;；&lt;br style=&quot;font-size: 9px;&quot;&gt;&lt;font style=&quot;font-size: 9px;&quot; color=&quot;#007fff&quot;&gt;创建订单操作没有本地事务控制，由于处理全局事务范围内 DataSourceProxy 会&lt;b style=&quot;font-size: 9px;&quot;&gt;自动为每个SQL创建开启本地事务&lt;/b&gt;，主要是保证“执行创建订单SQL和记录UndoLog“的原子性&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="500" y="300" width="200" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="Va2aDv6qeypGLSADWSkX-8" value="&lt;font color=&quot;#007fff&quot;&gt;DataSourceProxy&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="530" y="590" width="140" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="Va2aDv6qeypGLSADWSkX-9" value="&lt;font color=&quot;#007fff&quot;&gt;DataSourceProxy&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="530" y="280" width="140" height="20" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
