@@ -858,7 +858,7 @@
 
   + [seata-at-overview.drawio](docs/java/seata/seata-at-overview.drawio) （Seata AT模式流程概图）
 
-  + [seata-at-overview.drawio.png](docs/java/seata/seata-at-overview.drawio.png)
+  + [seata-at-overview.drawio.png](docs/java/seata/imgs/seata-at-overview.drawio.png)
 
     感觉官方文档中[原理图](https://seata.apache.org/zh-cn/assets/images/solution-1bdadb80e54074aa3088372c17f0244b.png)太过简略了，无法体现很多重要信息，重新绘制了AT模式工作原理概图。
 
@@ -878,7 +878,7 @@
 
   + [seata-at-globallock.drawio.png](docs/java/seata/imgs/seata-at-globallock.drawio.png)
 
-    Seata 全局锁用于保证不同分布式事务的**写隔离**和**读隔离**，本质就是通过锁进行同步执行（排队），详细参考：[seata-at-globallock.md](docs/java/seata/seata-at-globallock.md)。
+    Seata 全局锁用于保证不同分布式事务的**写隔离**和**读隔离**，本质就是通过**一组分布式行锁**保证同步执行（排队），详细参考：[seata-at-globallock.md](docs/java/seata/seata-at-globallock.md)。
 
     全局锁在 TC 中实现，实现原理其实很简单就是**基于主键唯一索引进行插入，插入成功获取锁成功，插入失败获取锁失败**，和Redis set nx 原理一样。
 
@@ -886,9 +886,11 @@
 
     > 这里纯粹的本地事务指不属于任何全局事务的本地事务。
 
-  + 适配器支持多种注册中心、配置中心实现
+  + [seata-configurationfactory.drawio.png](docs/java/seata/imgs/seata-configurationfactory.drawio.png)
 
-    基于 SPI 和 适配器模式，这种适配功能很常用，可以将代码抽离成一个范式（TODO）。
+    Seata 支持多种注册中心、配置中心的**适配器**实现；
+    
+    这种适配功能很常用，初学者不清楚怎么实现可以参考下，其实很简单就是定义一组通用接口方法，使用各个不同的注册中心、配置中心重新实现这些接口。
 
   关键问题分析（部分节选自官方FAQ）：
 
@@ -899,6 +901,8 @@
   + [全局事务ID是怎么传递给事务参与者服务的](docs/java/seata/seata-xid-propagation.md)
 
     > 注意 TransactionPropagationInterceptor 中的事务传播只是说 XID 的传递，和 Spring 事务传播不是一个概念。
+
+  + [TCC AT XA 性能为何依次降低](docs/java/seata/seata-transaction-mode.md)
 
   + 怎么使用Seata框架来保证事务的隔离性
 
