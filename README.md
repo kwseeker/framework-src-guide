@@ -6,7 +6,7 @@
 
 这里的流程图不是常规流程图，实际是借鉴的时序图的编排方式，另外还添加了重要类的`UML`图（UML：体现数据结构 ，流程：体现算法， UML比流程更重要）。
 
-个人认为读源码（不一定是框架源码）是每个程序员都应该养成的习惯，尤其是在做架构设计或方案设计时，如果对某个业务不是很熟悉，第一步应该做的是检索一些开源实现，快速过一遍源码，梳理业务开发中需要考虑哪些设计要点、有哪些实现方式、不同实现方式的优缺点等等，见到很多优秀的程序员都是这么做的，兼顾效率与质量，包括一些框架也会互相借鉴优点。
+个人认为读源码（不一定是框架源码）是每个程序员都应该养成的习惯，尤其是在做架构设计或方案设计时，如果对某个业务不是很熟悉，第一步应该做的是检索一些开源实现，快速过一遍源码，梳理业务开发中需要考虑哪些设计要点、有哪些实现方式、不同实现方式的优缺点等等，见到很多优秀的程序员都是这么做的，兼顾效率与质量，一些框架也会互相借鉴优点。
 
 > 后面列举的框架并非都分析过源码（心有余而力不足），有些只是计划，已经分析过源码的都有流程图链接。
 >
@@ -636,6 +636,12 @@
 
 + **Apache Shiro**
 
++ **pac4j**
+
++ **Sa-Token**
+
+  参考后面分析的 Sa-Token OAuth2 工作流程。
+
 + **[Spring Security](docs/java/spring-security/spring-security.md)**
 
   + 主流程
@@ -645,21 +651,46 @@
     + [spring-security.drawio](docs/java/spring-security/spring-security.drawio)
     + [spring-security.drawio.png](docs/java/spring-security/spring-security.drawio.png)
 
-  + OAuth2
-
-    源码流程图：
-
-    + [spring-security-oauth2.drawio](docs/java/spring-security/spring-security-oauth2.drawio)
-    + [spring-security-oauth2.drawio.png](docs/java/spring-security/spring-security-oauth2.drawio.png)
-
 + **JCasbin**
 
   JCasbin 提供了简单易用、灵活、强大的权限校验模型，可以替换 Spring Security、Shiro 中的权限校验模块。
 
   源码流程图：
-  
+
   + [jcasbin.drawio](docs/java/jcasbin/jcasbin.drawio)
   + [jcasbin.drawio.png](docs/java/jcasbin/imgs/jcasbin.drawio.png)
+
++ **认证协议**
+
+  系统多个服务（包括外部服务）整合统一的认证授权服务时会用到。
+
+  + **OAuth2**
+
+    包括**四种角色**（资源所有者、客户端[APP、Web服务等等]、认证服务器、资源服务器，认证服务器和资源服务器可以是一个服务）、**四种模式**，认证服务器包含**一组固定的HTTP接口**处理客户端的认证请求。
+
+    不只是可以用在第三方授权，企业内部系统也是可以的，还可以用于实现单点登录。
+
+    > 学习 OAuth2 工作原理和细节看再多的资料不如看一遍源码理解的清晰，推荐看 Sa-Token 的源码比较简单，一天即可看完主流程实现包括内部细节。
+
+    + Spring Security OAuth2
+  
+      源码流程图：
+  
+      + [spring-security-oauth2.drawio](docs/java/spring-security/spring-security-oauth2.drawio)
+  
+    + Sa-Token OAuth2
+  
+      源码流程图：
+      
+      + [satoken-oauth2.drawio](docs/java/authentication-protocols/oauth2/satoken-oauth2.drawio)
+      + [satoken-oauth2.drawio.png](docs/java/authentication-protocols/imgs/satoken-oauth2.drawio.png)
+  
+  + SAML
+  
+  + OIDC (OpenId Connect)
+  
+  + JWT
+
 
 ### ORM框架
 
