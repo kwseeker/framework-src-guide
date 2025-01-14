@@ -662,13 +662,13 @@
 
 + **认证协议**
 
-  系统多个服务（包括外部服务）整合统一的认证授权服务时会用到。
+  系统多个服务（包括外部服务）整合统一的认证授权服务时会用到，使用最多的是 OIDC 和 OAuth2。
 
   + **OAuth2**
 
     包括**四种角色**（资源所有者、客户端[APP、Web服务等等]、认证服务器、资源服务器，认证服务器和资源服务器可以是一个服务）、**四种模式**，认证服务器包含**一组固定的HTTP接口**处理客户端的认证请求。
 
-    不只是可以用在第三方授权，企业内部系统也是可以的，还可以用于实现单点登录。
+    不只是可以用在第三方授权，企业内部系统也是可以的，还可以用于实现**单点登录**，之前公司内部系统就是用 OAuth2 对接 GitLab、YAPI、Kibana、自己的管理后台、监控后台等等服务。
 
     > 学习 OAuth2 工作原理和细节看再多的资料不如看一遍源码理解的清晰，推荐看 Sa-Token 的源码比较简单，一天即可看完主流程实现包括内部细节。
 
@@ -685,11 +685,16 @@
       + [satoken-oauth2.drawio](docs/java/authentication-protocols/oauth2/satoken-oauth2.drawio)
       + [satoken-oauth2.drawio.png](docs/java/authentication-protocols/imgs/satoken-oauth2.drawio.png)
   
-  + SAML
+  + **OIDC** (OpenId Connect)
   
-  + OIDC (OpenId Connect)
+    从 Sa-Token 的源码实现看就是**基于 OAuth2 认证流程、使用 JWT 形式包装用户信息**；看文档定义（[OIDC 是什么](https://auth.wiki/zh/openid-connect)）的话可能感觉OIDC不好理解，但是从源码上理解其实超级简单，以SaToken为例，OAuth2 和 OIDC 就是 UserIdScopeHandler 和 OidcScopeHandler 这两个类的区别。
+  
+  + SAML
+  + CAS
   
   + JWT
+  
+    比较简单不详述了。
 
 
 ### ORM框架
