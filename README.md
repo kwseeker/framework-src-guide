@@ -25,7 +25,7 @@
     - 消息队列
     - 作业调度
     - 服务器
-    - Web框架
+    - Web相关
     - 微服务框架
     - 服务网格
   
@@ -48,6 +48,10 @@
     + 序列化
     + 工具类
     + 语法解析器
+    + 表达式引擎
+    + AI接入
+  
+    + 自动化测试
   
   - [Go](#go)
   
@@ -357,7 +361,11 @@
   >
   > 参考：[Connector Comparsion](https://tomcat.apache.org/tomcat-8.0-doc/config/http.html#/Connector_Comparison)
 
-### Web框架
++ **Vertx**
+
+  基于 Netty 实现的事件驱动服务器。
+
+### Web相关
 
 + **Spring**
 
@@ -497,6 +505,58 @@
 
   > 前面说 Tomcat NIO 模式下请求处理的部分操作依然是阻塞的，只要有操作是阻塞的就会白占线程，降低系统吞吐量，而通过多创建线程提升系统吞吐量则又会引入线程上下文切换的开销。
 
++ **Vertx Web**
+
+  基于 Vertx Core 实现的 Web 服务器。
+
++ Helidon
+
++ Micronaut
+
++ **[Quarkus](docs/quarkus)**
+
+  Quarkus是一个为GraalVM和HotSpot定制的Kubernetes原生Java框架，Quarkus HTTP服务器基于 Vertx-Web 实现。Quarkus 为了**支持本地化编译**将启动流程分为了**引导阶段**和**应用启动阶段**，引导阶段主要是**执行 BuildStep 生成一套应用代码**（应用代码里面很多类是在**增强**阶段用自己封装的字节码工具Gizmo（基于ASM）**动态生成**的），这也导致源码**不容易理解**（相当于从元编程的角度编写应用代码），另外还有很多动态类加载、函数式代码、事件驱动代码提升了读码难度。
+
+  > Quarkus 引导阶段才是核心，理解Quarkus的工作原理本质就是理解 BuildStep 的原理。
+  >
+  > 看源码必备：
+  >
+  > 官方提供的 Maven 插件 quarkus-maven-plugin 有提供输出增强类字节码的工具（goal） generate-code、generate-code-tests,  执行 generate-code 可以在 target/quarkus-app/quarkus/ 下生成 **generated-bytecode.jar**，解压可以看到生成的所有字节码文件，看源码是一定需要这些文件辅助的，可以在IDEA中关联此 jar 包调试生成的代码。
+  >
+  > 另外可以通过设置下面配置打印源码中的 TRACE 日志，辅助理解内部流程。
+  >
+  > ```xml
+  > quarkus.log.category."io.quarkus".level=TRACE
+  > # 默认只允许打印 DEBUG 及以上级别日志，如果要打印低于 DEBUG 级别的日志，需要额外设置 min-level
+  > quarkus.log.category."io.quarkus".min-level=TRACE
+  > ```
+  
+  看 Quarkus 源码最核心的需要梳理清对 **CDI**（相当于 Spring Boot 的 IoC）的支持原理、**拓展机制**（相当于 Spring Boot 的自动配置，集成其他框架时需要）的实现，Quarkus **Web**部分需要先熟悉下 Vertx Web 的接口和使用方法。
+  
+  > 有 Spring Boot 开发经验使用 Quarkus 还是比较容易的很多概念都是相通的，有资料说几天完全可以上手；个人感觉主要难在拓展组件的开发，需要清晰地理解 Quarkus 内部机制。
+  
+  + **CDI**
+  
+    并没有找到适合用于理解Quarkus CDI工作原理的单元测试供调试，建了一个Quarkus最小应用，清除了一些不必要的依赖，用来调试CDI流程，参考 quarkus-lab/quarkus-010-smallest-system。
+  
+    源码流程图：
+  
+    + [quarkus-core.drawio](docs/java/quarkus/quarkus-core.drawio)
+  
+    + [quarkus-core.drawio.png](docs/java/quarkus/imgs/quarkus-core.drawio.png)
+  
+      仅仅梳理了增强阶段启动流程、ApplicationImpl 类生成、Bean 创建和存储、依赖注入等大概原理，另外它们的原理还涉及到增强阶段 BuildStep 的执行，但是由于流程过于繁琐，短时间没法梳理清楚先暂停。
+  
+  + **拓展机制**
+  
+    Quarkus 做应用开发还是比较好上手的，但是做组件拓展开发就没有那么容易了，仅框架内置就有上百个 BuildStep 和 几百个 BuildItem 它们共同配合才生成应用代码。
+  
+    相当于SpringBoot自动配置（Starter开发），需要理解其工作原理才能清楚在集成第三方工具时应该怎么引入已有的 BuildItem 实现自己的拓展组件。
+  
+    + [从 redisson-qurakus 源码看集成 Redisson 时如何修改编解码器](docs/java/quarkus/quarkus-extension-redisson.md)
+  
+  + **Web**
+
 ### 响应式
 
 响应式编程框架有点类似工具类框架没有主线或者说只有各个接口类实现的独立的主线。
@@ -529,10 +589,13 @@
 
 ### 微服务框架
 
-+ **Helidon**
-+ **Micronaut**
-+ **Quarkus**
 + **Spring Cloud**
+
+  其实就是将一堆微服务组件通过自动配置集成到 SpringBoot，从这点看其他框架如 Quarkus 其社区也提供了一堆微服务组件集成拓展，说 Quarkus 也是微服务框架貌似也可以。
+
++ **K8S**
+
+  K8S 通过自身容器管理功能以及集成微服务组件容器实现微服务支持。
 
 ### 服务网格
 
@@ -1150,6 +1213,21 @@
 + **Antlr**
 
   Sharding-JDBC 中 借助 Antlr 实现对 SQL 语句的重构（原SQL -> AST -> 新SQL），将 SQL 转换成针对某个分表的 SQL。
+
+### 表达式引擎
+
++ **Aviator**
+
+### AI接入
+
++ [**langchain4j**](https://github.com/langchain4j/langchain4j)
+
+  用于集成大语言模型到Java应用。
+
+### 自动化测试
+
++ [goreply](https://github.com/buger/goreplay)
++ [JSONassert](https://github.com/skyscreamer/JSONassert)
 
 
 
