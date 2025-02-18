@@ -533,7 +533,7 @@
   
   看 Quarkus 源码最核心的需要梳理清对 **CDI**（相当于 Spring Boot 的 IoC）的支持原理、**拓展机制**（相当于 Spring Boot 的自动配置，集成其他框架时需要）的实现，Quarkus **Web**部分需要先熟悉下 Vertx Web 的接口和使用方法。
   
-  > 有 Spring Boot 开发经验使用 Quarkus 还是比较容易的很多概念都是相通的，有资料说几天完全可以上手；个人感觉主要难在拓展组件的开发，需要清晰地理解 Quarkus 内部机制。
+  > 有 Spring Boot 开发经验使用 **Quarkus 开发应用还是比较容易的**很多概念都是相通的，有资料说几天完全可以上手；个人感觉主要**难在拓展组件的开发**，需要清晰地理解 Quarkus 内部机制；另外实战时将一个项目改造成 Quarkus 项目后，打包 Jar 包很容易，但是**打包本地可执行文件时暴露出一堆坑**（很多代码不经意就引入了动态特性就导致构建失败）。
   
   + **CDI**
   
@@ -549,11 +549,12 @@
   
   + **拓展机制**
   
-    Quarkus 做应用开发还是比较好上手的，但是做组件拓展开发就没有那么容易了，仅框架内置就有上百个 BuildStep 和 几百个 BuildItem 它们共同配合才生成应用代码。
+    相当于SpringBoot自动配置（Starter开发），Quarkus 做应用开发还是比较好上手的，但是做组件拓展开发就没有那么容易了，仅框架内置就有上百个 BuildStep 和 几百个 BuildItem 它们共同配合才生成应用代码，需要理解其工作原理才能清楚在集成第三方工具时应该怎么引入已有的 BuildItem 实现自己的拓展组件，拓展组件原理解析和开发资料基本没有，只能参考开源的拓展组件慢慢摸索。
   
-    相当于SpringBoot自动配置（Starter开发），需要理解其工作原理才能清楚在集成第三方工具时应该怎么引入已有的 BuildItem 实现自己的拓展组件。
+    常用拓展组件:
   
-    + [从 redisson-qurakus 源码看集成 Redisson 时如何修改编解码器](docs/java/quarkus/quarkus-extension-redisson.md)
+    + [quarkus-mybatis](docs/java/quarkus/quarkus-mybatis.md)
+    + [redisson-quarkus](docs/java/quarkus/quarkus-mybatis.md)
   
   + **Web**
 
@@ -616,8 +617,9 @@
 ### 分布式协调
 
 + **Zookeeper**
+  
   + 源码流程图：
-
+  
     + [zookeeper-server.drawio](docs/java/zookeeper/zookeeper-server.drawio)
     
       > 很久之前画的没有UML，而且图太过罗嗦，TODO 重画。
