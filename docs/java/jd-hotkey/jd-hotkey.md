@@ -4,7 +4,7 @@
 
 [京东零售](https://gitee.com/jd-platform-opensource) / [hotkey](https://gitee.com/jd-platform-opensource/hotkey)
 
-代码轻量（Java源码共9K多行），部署简单。不过文档（只有README.md）很简陋，不过代码简单，很多使用细节可以看源码推导。
+代码轻量（Java源码共9K多行），部署简单。不过文档（只有README.md）很简陋，但是代码简单，很多使用细节可以看源码推导。
 
 **服务模块**：
 
@@ -31,7 +31,7 @@
 + 黑名单用户本地缓存
 + 爬虫用户限流
 + 接口、用户维度限流
-+ 单机接口、用户维度限流限流
++ 单机接口、用户维度限流
 + 集群用户维度限流
 + 集群接口维度限流
 
@@ -72,6 +72,17 @@ ${INSTALL_DIR}/etcd-download-test/etcdctl version
 ./etcd
 ```
 
+**etcd docker 部署**：
+
+```shell
+docker run -d --name etcd-server \
+    --publish 2379:2379 \
+    --publish 2380:2380 \
+    --env ALLOW_NONE_AUTHENTICATION=yes \
+    --env ETCD_ADVERTISE_CLIENT_URLS=http://etcd-server:2379 \
+    bitnami/etcd:3.5.18
+```
+
 为方便查看装下etcdv3-browser（Web应用），图方便直接用docker镜像安装：
 
 ```shell
@@ -85,7 +96,7 @@ docker run -d --name=etcdv3-browser -p 9980:80 joinsunsoft/etcdv3-browser:1.0.0
 worker是spring boot web应用，内部启动了Tomcat（port:8080）和Netty服务器（port:11111），暂时先启动一个节点。
 
 ```shell
-# jar包启动
+# jar包启动, etcd.server 表示 etcd 服务器地址和端口，不指定的话默认值是 http://127.0.0.1:2379
 java -jar $JAVA_OPTS worker-0.0.1-SNAPSHOT.jar --etcd.server=${etcdServer}
 # IDE启动
 # 命令行参数：默认 http://127.0.0.1:2379
@@ -125,7 +136,7 @@ dashboard是spring boot web应用，页面使用模板引擎实现，端口8081�
 
 看源码总结的核心流程。
 
-![](imgs/jd-hotkey.png)
+![](imgs/jd-hotkey-v0.0.4.drawio.png)
 
 
 
