@@ -4,13 +4,17 @@
 
 源码分析输出主要为`Drawio`流程图（`.drawio`文件）和 `Markdown`文档，以流程图为主（主要展示框架数据结构和主流程），`Markdown`文档作为补充，详细内容参考[docs](./docs)。
 
-这里的流程图不是常规流程图，实际是借鉴的时序图的编排方式，另外还添加了重要类的`UML`图（UML：体现数据结构 ，流程：体现算法， UML比流程更重要）。
+这里的流程图不是常规流程图，实际是借鉴的时序图的编排方式，另外还添加了重要类的`UML`图（UML：体现数据结构 ，流程：体现算法， **UML比流程更重要**，早期画的一些流程图没配UML图，后面有空的话会加上）。
 
 个人认为读源码（不一定是框架源码）是每个程序员都应该养成的习惯，尤其是在做架构设计或方案设计时，如果对某个业务不是很熟悉，第一步应该做的是检索一些开源实现，快速过一遍源码，梳理业务开发中需要考虑哪些设计要点、有哪些实现方式、不同实现方式的优缺点等等，见到很多优秀的程序员都是这么做的，兼顾效率与质量，一些框架也会互相借鉴优点。
+
+读完源码后练手：有些东西自己不写一遍总会感觉手生或会忽略一些设计细节，抄别人的源码感觉又比较无聊，个人感觉有3种方式可以练手：1. 提取公共组件（比如配置文件解析、线程池管理、Netty通信组件、生产者消费者模式等）；2. 开发异构框架（可能Java有的框架，Go、Rust中没有，可以使用Go、Rust技术栈参考既有流程重新开发）；3. 参与开源项目（有什么好的拓展想法都可以提issue并实现、或者取已有的issue修复）
 
 > 后面列举的框架并非都分析过源码（心有余而力不足），有些只是计划，已经分析过源码的都有流程图链接。
 >
 > 有些分析流程图之前记录在其他仓库后续会转移到这里，慢慢补充吧。
+
+
 
 ## 分类
 
@@ -635,11 +639,26 @@
 
 + [**Jd-Hotkey**](docs/java/jd-hotkey/jd-hotkey.md)
 
+  热Key指的是频繁访问的数据；Hotkey 依赖的关键组件：Netty、Etcd、Caffeine、Guava。
+
   源码流程图：
 
-  + [jd-hotkey.drawio](docs/java/jd-hotkey/jd-hotkey.drawio)
+  + [jd-hotkey-v0.0.4.drawio](docs/java/jd-hotkey/jd-hotkey-v0.0.4.drawio)
 
-  + [jd-hotkey.drawio.png](docs/java/jd-hotkey/imgs/jd-hotkey.drawio.png)
+  + [jd-hotkey-v0.0.4.drawio.png](docs/java/jd-hotkey/imgs/jd-hotkey-v0.0.4.drawio.png)
+
+    关键问题：
+
+    + 为何引入本地缓存 Caffeine
+    + 热key探测实现流程
+    + 规则命中率统计流程？CounterConsumer 中规定 map.size() >= 300 才会向 Etcd 推送规则命中率数据，这里300的含义到底是什么
+    + 热key探测规则发布原理
+    + jd-hotkey 使用本地缓存存储热key的值，如何保证一致性
+    + 官方列举的一些应用场景应该怎么实现
+
+  + [jd-hotkey.drawio](docs/java/jd-hotkey/jd-hotkey.drawio)（旧流程图）
+
+  + [jd-hotkey.drawio.png](docs/java/jd-hotkey/imgs/jd-hotkey.drawio.png)（旧流程图）
 
   业务使用：
 
@@ -776,30 +795,30 @@
     > 也是好久之前画的图，UML不详细，导致回看不好理解，SQL前后置处理以及连接池部分还有细节逻辑没有梳理，TODO 重画。
 
 
-  + 重要组件分析：
+    + 重要组件分析：
 
-    + [mybatis-cache.drawio](docs/java/mybatis/mybatis-cache.drawio) (Mybatis 两级缓存工作原理)
+      + [mybatis-cache.drawio](docs/java/mybatis/mybatis-cache.drawio) (Mybatis 两级缓存工作原理)
 
-    + [mybatis-cache.drawio.png](docs/java/mybatis/imgs/mybatis-cache.drawio.png) 
+      + [mybatis-cache.drawio.png](docs/java/mybatis/imgs/mybatis-cache.drawio.png) 
 
-      + 两个事务中同时执行同一条查询语句使用二级缓存是怎么保证不会出现脏读的
-      + 二级缓存联表查询数据不一致问题产生的原因
-      + SpringBoot 集成 Mybatis 非事务方式连续两次执行同一条查询，为何第二次不会命中一级缓存
+        + 两个事务中同时执行同一条查询语句使用二级缓存是怎么保证不会出现脏读的
+        + 二级缓存联表查询数据不一致问题产生的原因
+        + SpringBoot 集成 Mybatis 非事务方式连续两次执行同一条查询，为何第二次不会命中一级缓存
 
-      > 综上：SpringBoot Mybatis 项目默认配置下其实根本不会用到 Mybatis的缓存。
+        > 综上：SpringBoot Mybatis 项目默认配置下其实根本不会用到 Mybatis的缓存。
 
-    + [mybatis-plugin.drawio](docs/java/mybatis/mybatis-plugin.drawio) (Mybatis 插件工作原理)
+      + [mybatis-plugin.drawio](docs/java/mybatis/mybatis-plugin.drawio) (Mybatis 插件工作原理)
 
-    + [mybatis-plugin.drawio.png](docs/java/mybatis/imgs/mybatis-plugin.drawio.png)
+      + [mybatis-plugin.drawio.png](docs/java/mybatis/imgs/mybatis-plugin.drawio.png)
 
-      插件原理：通过 JDK 动态代理将插件通过 Interceptor 接口定义的拓展逻辑封装到 Mybatis SQL执行组件中，可以
-      拦截 Exuecutor StatementHandler ParameterHandler ResultSetHandler 的方法，对SQL语句、参数、返回值进行额外处理；
-      
-      这里以 PageHelper 为例分析插件的XML配置解析、实例化、初始化、注册原理，插件都可以增强数据库访问中哪些过程和组件（Executor、StatementHandler、ParamterHandler、ResultSetHandler），以及插件增强原理（JDK动态代理层层封装）。
-      
-      > 由于 PageHelper 分页基于 LIMIT ?, ? 实现，这种分页方式有深度分页问题，只适合小数据量的表，所以 PageHelper 平时使用的并不多。
+        插件原理：通过 JDK 动态代理将插件通过 Interceptor 接口定义的拓展逻辑封装到 Mybatis SQL执行组件中，可以
+        拦截 Exuecutor StatementHandler ParameterHandler ResultSetHandler 的方法，对SQL语句、参数、返回值进行额外处理；
+        
+        这里以 PageHelper 为例分析插件的XML配置解析、实例化、初始化、注册原理，插件都可以增强数据库访问中哪些过程和组件（Executor、StatementHandler、ParamterHandler、ResultSetHandler），以及插件增强原理（JDK动态代理层层封装）。
+        
+        > 由于 PageHelper 分页基于 LIMIT ?, ? 实现，这种分页方式有深度分页问题，只适合小数据量的表，所以 PageHelper 平时使用的并不多。
 
-  + Mybatis-Spring
++ Mybatis-Spring
 
 + **Mybatis Plus**
 
