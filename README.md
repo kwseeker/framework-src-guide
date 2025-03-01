@@ -650,7 +650,7 @@
     关键问题：
 
     + 为何引入本地缓存 Caffeine
-    + 热key探测实现流程
+    + 热key探测实现流程（上报到同一Worker进行滑动窗口统计）
     + 规则命中率统计流程？CounterConsumer 中规定 map.size() >= 300 才会向 Etcd 推送规则命中率数据，这里300的含义到底是什么
     + 热key探测规则发布原理
     + jd-hotkey 使用本地缓存存储热key的值，如何保证一致性
@@ -671,7 +671,35 @@
   + [sentinel.drawio](docs/java/sentinel/sentinel.drawio)
   + [sentinel.drawio.png](docs/java/sentinel/sentinel.drawio.png)
 
+  Sentinel 中系统自适应保护规则的 QPS \ RT 检测基于**滑动窗口**，热点参数限流规则和流量控制规则内部有多种规则，以流控规则中的校验规则为例 DefaultController基于**滑动窗口**、RateLimiterController、WarmUpRateLimiterController 基于**漏桶**算法，有资料说 WarmUpController 基于**令牌桶**算法（不过还没确认）。
+
+  > 上面的漏桶算法说是漏桶算法只是看到官方文档称是漏桶算法，严格从定义上看，感觉是漏桶和令牌桶算法的混合算法，如果非要说是哪种算法，个人感觉偏向于**令牌桶**算法，其实不必纠结于这种概念，能符合业务需要随便怎么实现。
+
+  注意令牌桶算法使用不当也可能无法应对**突发流量**（只是说可能，需要看令牌发放方式），比如1s限制1000次访问，令牌桶算法如果是1s内匀速发放1000个令牌（比如每10ms发放10个令牌），面对前100ms内有1000次请求后面900ms没有请求的情况会被限流（不一定直接拒绝请求「**非阻塞式**」，也可能是阻塞等待直到有可用令牌「**阻塞式**，强行整流会拉长响应时间RT」，看具体使用的方法），这种聚集但少量的请求不被限流更适合。
+
+  > 上面阻塞式的令牌桶和漏桶算法的效果已经很像了，感觉**令牌桶和漏桶算法的边界并没有那么清晰**。
+  >
+  > 令牌桶令牌发放看实现基本都是隔一段时间发一批，并不一定是每隔一段时间发一个令牌，这种发放方式可以解决突发流量问题。
+
 + Hystrix
+
+  已经不维护了，Spring 官方推荐使用  Resilience4j 替代 Hystrix。
+
++ Resilience4j
+
+  提供限流、熔断等功能，限流基于令牌桶算法。
+
++ Guava RateLimiter
+
+  单纯的限流组件，基于令牌桶算法。
+
++ **Redisson RateLimiter**
+
+  单纯的限流组件，基于令牌桶算法。参考 Redisson 章节。
+
++ Bucket4j
+
+  单纯的限流组件，基于令牌桶算法。
 
 ### 链路追踪
 
@@ -796,21 +824,21 @@
 
 
     + 重要组件分析：
-
+    
       + [mybatis-cache.drawio](docs/java/mybatis/mybatis-cache.drawio) (Mybatis 两级缓存工作原理)
-
+    
       + [mybatis-cache.drawio.png](docs/java/mybatis/imgs/mybatis-cache.drawio.png) 
-
+    
         + 两个事务中同时执行同一条查询语句使用二级缓存是怎么保证不会出现脏读的
         + 二级缓存联表查询数据不一致问题产生的原因
         + SpringBoot 集成 Mybatis 非事务方式连续两次执行同一条查询，为何第二次不会命中一级缓存
-
+    
         > 综上：SpringBoot Mybatis 项目默认配置下其实根本不会用到 Mybatis的缓存。
-
+    
       + [mybatis-plugin.drawio](docs/java/mybatis/mybatis-plugin.drawio) (Mybatis 插件工作原理)
-
+    
       + [mybatis-plugin.drawio.png](docs/java/mybatis/imgs/mybatis-plugin.drawio.png)
-
+    
         插件原理：通过 JDK 动态代理将插件通过 Interceptor 接口定义的拓展逻辑封装到 Mybatis SQL执行组件中，可以
         拦截 Exuecutor StatementHandler ParameterHandler ResultSetHandler 的方法，对SQL语句、参数、返回值进行额外处理；
         
@@ -1195,6 +1223,9 @@
 
       基于ZSet数据结构实现，延迟时间作为分值，定时任务扫描，取出到期的延迟消息给业务线程处理。
       扫描延迟消息的定时任务可以用计划任务线程池或Timer实现（看其他框架实现时见到好多次了），Redisson 用的哪种后面有空再看。
+
+
+  + **RateLimiter**
 
   + **Future、Promise模式**
 
