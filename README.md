@@ -933,7 +933,7 @@
 
   源码流程图（5.4.1）：
 
-  + [shardingsphere-jdbc.drawio](docs/java/sharding-jdbc/sharding-jdbc.drawio) (未完待续)
+  + [ShardingSphere-JDBC.drawio](docs/java/sharding-jdbc/Sharding-JDBC.drawio) (未完待续)
   + [ShardingSphere-JDBC.drawio.png](docs/java/sharding-jdbc/ShardingSphere-JDBC.drawio.png)
 
 + **连接池**
