@@ -1,0 +1,863 @@
+<mxfile host="Electron" modified="2025-03-04T10:49:58.751Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.6.5 Chrome/114.0.5735.243 Electron/25.3.1 Safari/537.36" etag="khwKsWykqF3KORJJ6N_U" version="21.6.5" type="device">
+  <diagram id="DXR9cpZWrymeietXP4Ik" name="第 1 页">
+    <mxGraphModel dx="3327" dy="606" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="zc8bMzdUZFDcH8a9lfG6-0" />
+        <mxCell id="zc8bMzdUZFDcH8a9lfG6-1" parent="zc8bMzdUZFDcH8a9lfG6-0" />
+        <mxCell id="7x9lKS5BqQXzzixyZIlG-0" value="&lt;p style=&quot;line-height: 1&quot;&gt;&lt;/p&gt;&lt;h1&gt;&lt;font style=&quot;&quot;&gt;ShardingSphere-JDBC工作原理&lt;/font&gt;&lt;font style=&quot;font-size: 16px&quot;&gt;&amp;nbsp;&lt;/font&gt;&lt;font style=&quot;font-size: 10px&quot;&gt;(5.4.1)&amp;nbsp;&lt;/font&gt;&lt;/h1&gt;&lt;p style=&quot;font-size: 10px&quot;&gt;&lt;font style=&quot;font-size: 10px&quot;&gt;之前因为sql-parser部分没时间研究，暂时搁置了，这里重新读下最新版源码，sharding-sphere 代码量很大，这里主要关注 Sharding-JDBC和相关模块的原理。通过单元测试调试源码（不依赖其他框架），代码位于sharding-jdbc模块，最好放到源码中调试。&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;font-size: 10px&quot;&gt;&lt;font style=&quot;font-size: 10px&quot;&gt;前提：&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;font-size: 10px&quot;&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;font style=&quot;font-size: 10px&quot;&gt;Antlr4工作原理&lt;/font&gt;&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;/p&gt;&lt;div&gt;说明：&lt;/div&gt;&lt;div&gt;&lt;ul&gt;&lt;li&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;ShardingSphere-JDBC 在调用链路中所处的位置：Application -&amp;gt; ORM -&amp;gt; &lt;/span&gt;&lt;b style=&quot;background-color: initial;&quot;&gt;ShadingSphere-JDBC&lt;/b&gt;&lt;span style=&quot;background-color: initial;&quot;&gt; -&amp;gt; ConnectionPool -&amp;gt; JDBC -&amp;gt; DatabaseServer&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;ShardingSphere 数据结构还是挺清晰的&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;方言数据库：因为不同数据库在sql语法上有细微差别，就像方言一样，所以将不同数据库统称为方言数据库&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;p style=&quot;font-size: 10px&quot;&gt;&lt;/p&gt;&lt;p&gt;&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;fontSize=10;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="40" y="20" width="660" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="7x9lKS5BqQXzzixyZIlG-4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="7x9lKS5BqQXzzixyZIlG-1" target="7x9lKS5BqQXzzixyZIlG-3" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="7x9lKS5BqQXzzixyZIlG-70" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="7x9lKS5BqQXzzixyZIlG-1" target="7x9lKS5BqQXzzixyZIlG-68" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="7x9lKS5BqQXzzixyZIlG-1" value="&lt;font style=&quot;font-size: 10px;&quot;&gt;数据源加载&lt;br style=&quot;font-size: 10px;&quot;&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="40" y="240" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="7x9lKS5BqQXzzixyZIlG-2" value="&lt;font style=&quot;font-size: 10px;&quot;&gt;源码中的一些可复用模块、模式（后面可以用于快速开发自己的项目）：&lt;br&gt;&lt;/font&gt;&lt;ul style=&quot;font-size: 10px;&quot;&gt;&lt;li style=&quot;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;YamlEngine&lt;/font&gt;&lt;/li&gt;&lt;li style=&quot;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;SPI机制（其实就是&lt;b&gt;拓展点&lt;/b&gt;）：TypedSPILoader&amp;nbsp;&lt;/font&gt;OrderedSPILoader&amp;nbsp;DatabaseTypedSPILoader 等&lt;/li&gt;&lt;li style=&quot;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;什么是微内核架构？ShardingSphere是怎么体现微内核的&lt;/font&gt;&lt;/li&gt;&lt;li style=&quot;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;Antlr4 改写逻辑sql为真实sql的原理&lt;br&gt;&lt;/font&gt;&lt;font color=&quot;#007fff&quot;&gt;从源码中可以看到只是用到了Antlr4解析语法树的功能，主要就是获取 TableToken, 分库分表组件也只是需要改写 tableName ，通过AST对象的TableToken 定位 tableName 的位置并替换为真实的数据表名，并不是修改AST对象再将AST对象转成SQL)&lt;/font&gt;&lt;/li&gt;&lt;/ul&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="720" y="20" width="720" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="7x9lKS5BqQXzzixyZIlG-7" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="7x9lKS5BqQXzzixyZIlG-3" target="7x9lKS5BqQXzzixyZIlG-6" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="7x9lKS5BqQXzzixyZIlG-3" value="&lt;font style=&quot;font-size: 10px;&quot;&gt;File yamlFile = new File(classpath + &quot;config/shardingsphere-jdbc-config-test.yml&quot;);&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="240" y="240" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="7x9lKS5BqQXzzixyZIlG-5" value="&lt;p style=&quot;margin: 4px 0px 0px; text-align: center;&quot;&gt;YamlJDBCConfiguration&lt;br&gt;&lt;/p&gt;&lt;hr style=&quot;font-size: 10px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;&amp;nbsp;ShardingSphere JDBC 总的配置类&amp;nbsp;&lt;br&gt;&lt;/font&gt;&lt;br&gt;&lt;div&gt;&lt;div&gt;private String databaseName;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;//数据源配置&lt;/font&gt;&lt;/div&gt;&lt;div&gt;private Map&amp;lt;String, Map&amp;lt;String, Object&amp;gt;&amp;gt; &lt;b&gt;dataSources&lt;/b&gt; = new HashMap&amp;lt;&amp;gt;();&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;//规则配置&lt;/font&gt;&lt;/div&gt;&lt;div&gt;private Collection&amp;lt;YamlRuleConfiguration&amp;gt; &lt;b&gt;rules&lt;/b&gt; = new LinkedList&amp;lt;&amp;gt;();&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;//模式配置：单机、集群&lt;/font&gt;&lt;/div&gt;&lt;div&gt;private YamlModeConfiguration &lt;b&gt;mode&lt;/b&gt;;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;//通用配置属性，比如 props:sql.show: true&lt;/font&gt;&lt;/div&gt;&lt;div&gt;private Properties &lt;b&gt;props&lt;/b&gt; = new Properties();&lt;/div&gt;&lt;div&gt;private YamlAuthorityRuleConfiguration authority;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;//事务配置&lt;/font&gt;&lt;/div&gt;&lt;div&gt;private YamlTransactionRuleConfiguration &lt;b&gt;transaction&lt;/b&gt;;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;//SQL解析器&lt;/font&gt;&lt;/div&gt;&lt;div&gt;private YamlSQLParserRuleConfiguration sqlParser;&lt;/div&gt;&lt;div&gt;private YamlSQLTranslatorRuleConfiguration sqlTranslator;&lt;/div&gt;&lt;div&gt;private YamlTrafficRuleConfiguration traffic;&lt;/div&gt;&lt;div&gt;private YamlLoggingRuleConfiguration logging;&lt;/div&gt;&lt;div&gt;private YamlGlobalClockRuleConfiguration globalClock;&lt;/div&gt;&lt;div&gt;private YamlSQLFederationRuleConfiguration sqlFederation;&lt;/div&gt;&lt;/div&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=10;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="-480" y="200" width="439" height="300" as="geometry" />
+        </mxCell>
+        <mxCell id="7x9lKS5BqQXzzixyZIlG-9" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="7x9lKS5BqQXzzixyZIlG-6" target="7x9lKS5BqQXzzixyZIlG-8" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="7x9lKS5BqQXzzixyZIlG-6" value="&lt;font style=&quot;font-size: 10px;&quot;&gt;DataSource dataSource = &lt;b style=&quot;font-size: 10px;&quot;&gt;YamlShardingSphereDataSourceFactory&lt;/b&gt;&lt;br style=&quot;font-size: 10px;&quot;&gt;.createDataSource(yamlFile);&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="240" y="320" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="7x9lKS5BqQXzzixyZIlG-12" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="7x9lKS5BqQXzzixyZIlG-8" target="7x9lKS5BqQXzzixyZIlG-11" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="7x9lKS5BqQXzzixyZIlG-14" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="7x9lKS5BqQXzzixyZIlG-8" target="7x9lKS5BqQXzzixyZIlG-13" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="7x9lKS5BqQXzzixyZIlG-8" value="&lt;font style=&quot;font-size: 10px;&quot;&gt;YamlJDBCConfiguration &lt;b&gt;rootConfig&lt;/b&gt; = &lt;b style=&quot;font-size: 10px;&quot;&gt;YamlEngine&lt;/b&gt;.unmarshal(yamlFile, &lt;b style=&quot;font-size: 10px;&quot;&gt;YamlJDBCConfiguration&lt;/b&gt;.class);&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="480" y="320" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="7x9lKS5BqQXzzixyZIlG-10" value="&lt;font style=&quot;font-size: 10px;&quot;&gt;YamlShardingSphereDataSourceFactory&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="480" y="290" width="200" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="7x9lKS5BqQXzzixyZIlG-11" value="&lt;font style=&quot;font-size: 10px;&quot;&gt;用的 infra/util 模块，借助 &lt;b style=&quot;font-size: 10px;&quot;&gt;snakeyaml&lt;/b&gt; 框架将yaml 配置解析到总配置类&amp;nbsp;&lt;br style=&quot;font-size: 10px;&quot;&gt;YamlJDBCConfiguration&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="720" y="320" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="7x9lKS5BqQXzzixyZIlG-18" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="7x9lKS5BqQXzzixyZIlG-13" target="7x9lKS5BqQXzzixyZIlG-17" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="7x9lKS5BqQXzzixyZIlG-30" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="7x9lKS5BqQXzzixyZIlG-13" target="7x9lKS5BqQXzzixyZIlG-28" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="7x9lKS5BqQXzzixyZIlG-13" value="&lt;font style=&quot;font-size: 10px;&quot;&gt;return &lt;b&gt;createDataSource&lt;/b&gt;(&lt;br&gt;DATA_SOURCE_SWAPPER&lt;br&gt;.swapToDataSources(&lt;br&gt;rootConfig.&lt;b&gt;getDataSources&lt;/b&gt;()), &lt;b&gt;rootConfig&lt;/b&gt;);&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="480" y="400" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="7x9lKS5BqQXzzixyZIlG-15" value="&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;1 yaml配置解析到YamlJDBCConfiguration&amp;nbsp;&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="40" y="335" width="160" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="7x9lKS5BqQXzzixyZIlG-16" value="&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;2 创建数据源&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="40" y="415" width="160" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="7x9lKS5BqQXzzixyZIlG-20" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="7x9lKS5BqQXzzixyZIlG-17" target="7x9lKS5BqQXzzixyZIlG-19" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="7x9lKS5BqQXzzixyZIlG-17" value="YamlDataSourceConfigurationSwapper$&lt;br&gt;&lt;b&gt;swapToDataSources&lt;/b&gt;(final Map&amp;lt;String, Map&amp;lt;String, Object&amp;gt;&amp;gt; yamlDataSources)" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="720" y="400" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="7x9lKS5BqQXzzixyZIlG-22" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="7x9lKS5BqQXzzixyZIlG-19" target="7x9lKS5BqQXzzixyZIlG-21" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="7x9lKS5BqQXzzixyZIlG-36" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="7x9lKS5BqQXzzixyZIlG-19" target="7x9lKS5BqQXzzixyZIlG-32" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="7x9lKS5BqQXzzixyZIlG-37" value="&lt;font color=&quot;#007fff&quot;&gt;create()&lt;/font&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="7x9lKS5BqQXzzixyZIlG-36" vertex="1" connectable="0">
+          <mxGeometry x="0.15" y="1" relative="1" as="geometry">
+            <mxPoint x="3" y="-9" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="7x9lKS5BqQXzzixyZIlG-19" value="&lt;font style=&quot;font-size: 9px;&quot;&gt;return &lt;b&gt;DataSourcePoolCreator&lt;/b&gt;.create(&lt;br&gt;yamlDataSources.entrySet().stream().collect(&lt;br&gt;Collectors.toMap(Entry::getKey, entry -&amp;gt; &lt;b&gt;swapToDataSourcePoolProperties&lt;/b&gt;(&lt;br&gt;entry.getValue()))), cacheEnabled);&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;就是遍历每一组数据源配置创建连接池属性对象&lt;br&gt;然后根据连接池属性创建数据源&lt;/font&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="960" y="390" width="200" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="7x9lKS5BqQXzzixyZIlG-26" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="7x9lKS5BqQXzzixyZIlG-21" target="7x9lKS5BqQXzzixyZIlG-25" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="7x9lKS5BqQXzzixyZIlG-21" value="&lt;font style=&quot;&quot;&gt;&lt;span style=&quot;font-size: 9px;&quot;&gt;return new &lt;/span&gt;&lt;b style=&quot;font-size: 9px;&quot;&gt;DataSourcePoolProperties&lt;/b&gt;&lt;span style=&quot;font-size: 9px;&quot;&gt;(&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size: 9px;&quot;&gt;yamlConfig.get(&lt;/span&gt;&lt;font style=&quot;font-size: 8px;&quot;&gt;DATA_SOURCE_CLASS_NAME_KEY&lt;/font&gt;&lt;span style=&quot;font-size: 9px;&quot;&gt;)&lt;br&gt;.toString(), getProperties(yamlConfig));&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;yamlConfig 即某一组数据源配置的Map&lt;/font&gt;&lt;br&gt;&lt;/span&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="1200" y="400" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="7x9lKS5BqQXzzixyZIlG-23" value="&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;yamlDataSources = {LinkedHashMap@2282}&amp;nbsp; size = 2&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp;&quot;ds0&quot; -&amp;gt; {LinkedHashMap@2288}&amp;nbsp; size = 5&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp; key = &quot;ds0&quot;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp; value = {LinkedHashMap@2288}&amp;nbsp; size = 5&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp; &amp;nbsp;&quot;dataSourceClassName&quot; -&amp;gt; &quot;org.apache.commons.dbcp2.BasicDataSource&quot;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp; &amp;nbsp;&quot;driverClassName&quot; -&amp;gt; &quot;com.mysql.jdbc.Driver&quot;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp; &amp;nbsp;&quot;url&quot; -&amp;gt; &quot;jdbc:mysql://localhost:3306/ds0&quot;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp; &amp;nbsp;&quot;username&quot; -&amp;gt; &quot;root&quot;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp; &amp;nbsp;&quot;password&quot; -&amp;gt; {Integer@2307} 123456&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp;&quot;ds1&quot; -&amp;gt; {LinkedHashMap@2290}&amp;nbsp; size = 5&lt;/font&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontColor=#007FFF;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="960" y="260" width="370" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="7x9lKS5BqQXzzixyZIlG-24" value="infra/data-source-pool:&amp;nbsp;&lt;br&gt;DataSourcePoolProperties" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="1215" y="360" width="170" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="7x9lKS5BqQXzzixyZIlG-25" value="&lt;font style=&quot;&quot;&gt;&lt;font size=&quot;1&quot;&gt;Optional&amp;lt;DataSourcePoolMetaData&amp;gt; &lt;br&gt;metaData = &lt;b&gt;TypedSPILoader&lt;/b&gt;&lt;br&gt;.findService(&lt;b&gt;DataSourcePoolMetaData&lt;/b&gt;.class, &lt;b&gt;poolClassName&lt;/b&gt;);&lt;br&gt;&lt;/font&gt;&lt;font color=&quot;#007fff&quot;&gt;SPI加载数据源类名，默认提供了Hikari连接池作为数据源&lt;/font&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="1440" y="395" width="200" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="7x9lKS5BqQXzzixyZIlG-27" value="&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;font-size: 10px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;默认依赖中 META-INF/services 中只有 Hikari, 如果要使用其他的实现需要在SPI文件中添加&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;org.apache.shardingsphere.infra.datasource.pool.hikari.metadata.HikariDataSourcePoolMetaData&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="1640" y="410" width="460" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="7x9lKS5BqQXzzixyZIlG-39" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="7x9lKS5BqQXzzixyZIlG-28" target="7x9lKS5BqQXzzixyZIlG-38" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="7x9lKS5BqQXzzixyZIlG-28" value="rebuildGlobalRuleConfiguration(jdbcConfig);&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;将 Yaml 根节点配置的 autority、transaction、globalClock、sqlParser 等添加到 rules 这个根节点中&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="720" y="520" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="7x9lKS5BqQXzzixyZIlG-31" value="&lt;p style=&quot;margin: 4px 0px 0px; text-align: center;&quot;&gt;DataSourcePoolProperties&lt;br&gt;&lt;/p&gt;&lt;hr style=&quot;font-size: 10px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;&amp;nbsp;连接池属性&lt;br&gt;&lt;/font&gt;&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;//连接池类名&lt;/font&gt;&lt;br&gt;&lt;div&gt;&lt;div&gt;private final String poolClassName;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;//连接属性 数据源类名、连接url、数据库用户名、密码&lt;/font&gt;&lt;/div&gt;&lt;div&gt;private final ConnectionPropertySynonyms connectionPropertySynonyms;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;//连接池配置属性&lt;/font&gt;&lt;/div&gt;&lt;div&gt;private final PoolPropertySynonyms poolPropertySynonyms;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;//客户端驱动类属性&lt;/font&gt;&lt;/div&gt;&lt;div&gt;private final CustomDataSourcePoolProperties customProperties;&lt;/div&gt;&lt;/div&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=10;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="-960" y="200" width="439" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="7x9lKS5BqQXzzixyZIlG-35" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="7x9lKS5BqQXzzixyZIlG-32" target="7x9lKS5BqQXzzixyZIlG-34" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="7x9lKS5BqQXzzixyZIlG-32" value="&lt;font style=&quot;&quot;&gt;&lt;font size=&quot;1&quot;&gt;DataSource result = create(props);&lt;br&gt;&lt;/font&gt;&lt;font color=&quot;#007fff&quot;&gt;根据配置的poolClassName创建数据源，如果有配置开启缓存，则将数据源注册到缓存&lt;b&gt;GlobalDataSourceRegistry&lt;/b&gt;中&lt;/font&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="1200" y="480" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="7x9lKS5BqQXzzixyZIlG-33" value="DataSourcePoolCreator" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="1225" y="460" width="150" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="7x9lKS5BqQXzzixyZIlG-34" value="&lt;font style=&quot;&quot;&gt;&lt;font size=&quot;1&quot;&gt;todo&lt;/font&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="1440" y="480" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="7x9lKS5BqQXzzixyZIlG-42" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="7x9lKS5BqQXzzixyZIlG-38" target="7x9lKS5BqQXzzixyZIlG-41" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="7x9lKS5BqQXzzixyZIlG-38" value="ModeConfiguration modeConfig = null == jdbcConfig.getMode() ? null : new YamlModeConfigurationSwapper()&lt;br&gt;.swapToObject(jdbcConfig.getMode());" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="720" y="600" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="7x9lKS5BqQXzzixyZIlG-48" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="7x9lKS5BqQXzzixyZIlG-41" target="7x9lKS5BqQXzzixyZIlG-47" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="7x9lKS5BqQXzzixyZIlG-50" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="7x9lKS5BqQXzzixyZIlG-41" target="7x9lKS5BqQXzzixyZIlG-49" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="7x9lKS5BqQXzzixyZIlG-41" value="Collection&amp;lt;RuleConfiguration&amp;gt; ruleConfigs = SWAPPER_ENGINE&lt;br&gt;.swapToRuleConfigurations(&lt;br&gt;jdbcConfig.getRules());&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;就是进一步初始化规则配置类&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="720" y="680" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="7x9lKS5BqQXzzixyZIlG-47" value="todo" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="960" y="680" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="7x9lKS5BqQXzzixyZIlG-53" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="7x9lKS5BqQXzzixyZIlG-49" target="7x9lKS5BqQXzzixyZIlG-52" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="7x9lKS5BqQXzzixyZIlG-49" value="return ShardingSphereDataSourceFactory&lt;br&gt;.&lt;b&gt;createDataSource&lt;/b&gt;(jdbcConfig&lt;br&gt;.getDatabaseName(), modeConfig, &lt;b&gt;dataSourceMap&lt;/b&gt;, ruleConfigs, jdbcConfig.getProps());" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="720" y="760" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="7x9lKS5BqQXzzixyZIlG-51" value="&lt;div style=&quot;&quot;&gt;&lt;/div&gt;&lt;div style=&quot;border-color: var(--border-color); font-size: 10px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;SPI加载mode:type指定的&amp;nbsp;&lt;/font&gt;&lt;/div&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;YamlPersistRepositoryConfigurationSwapper&lt;br&gt;实现，然后 todo&lt;br&gt;&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="930" y="605" width="220" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="7x9lKS5BqQXzzixyZIlG-55" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="7x9lKS5BqQXzzixyZIlG-52" target="7x9lKS5BqQXzzixyZIlG-54" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="7x9lKS5BqQXzzixyZIlG-52" value="&lt;div&gt;return new &lt;b&gt;ShardingSphereDataSource&lt;/b&gt;(...&lt;span style=&quot;background-color: initial;&quot;&gt;);&lt;/span&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="960" y="760" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="7x9lKS5BqQXzzixyZIlG-57" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="7x9lKS5BqQXzzixyZIlG-54" target="7x9lKS5BqQXzzixyZIlG-56" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="7x9lKS5BqQXzzixyZIlG-59" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="7x9lKS5BqQXzzixyZIlG-54" target="7x9lKS5BqQXzzixyZIlG-58" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="7x9lKS5BqQXzzixyZIlG-54" value="contextManager = &lt;b&gt;createContextManager&lt;/b&gt;(databaseName, modeConfig, dataSourceMap, ruleConfigs, null == props ? new Properties() : props);" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="1200" y="760" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="7x9lKS5BqQXzzixyZIlG-56" value="contextManagerInitializedCallback(&lt;br&gt;databaseName, contextManager);" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="1200" y="840" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="9dBcJZHVnKRbIBQjwENH-5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="7x9lKS5BqQXzzixyZIlG-58" target="9dBcJZHVnKRbIBQjwENH-4" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="7x9lKS5BqQXzzixyZIlG-58" value="return TypedSPILoader.getService(&lt;br&gt;&lt;b&gt;ContextManagerBuilder&lt;/b&gt;.class, null == modeConfig ? null : modeConfig.getType()).&lt;b&gt;build&lt;/b&gt;(param);" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="1440" y="760" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="7x9lKS5BqQXzzixyZIlG-63" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="7x9lKS5BqQXzzixyZIlG-60" target="7x9lKS5BqQXzzixyZIlG-62" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="7x9lKS5BqQXzzixyZIlG-60" value="Connection conn = dataSource.getConnection()" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="240" y="920" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="7x9lKS5BqQXzzixyZIlG-75" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="7x9lKS5BqQXzzixyZIlG-62" target="7x9lKS5BqQXzzixyZIlG-74" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="7x9lKS5BqQXzzixyZIlG-62" value="&lt;div&gt;return TypedSPILoader.getService(&lt;/div&gt;&lt;div&gt;&lt;b&gt;DriverState&lt;/b&gt;.class,&amp;nbsp;&lt;span style=&quot;background-color: initial;&quot;&gt;contextManager&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;.getInstanceContext().getInstance()&lt;/span&gt;&lt;/div&gt;&lt;div&gt;.getState().getCurrentState().name())&lt;/div&gt;&lt;div&gt;.&lt;b&gt;getConnection&lt;/b&gt;(databaseName, contextManager);&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;此测试中实际加载的&amp;nbsp;OkDriverState&lt;/font&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;arcSize=11;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="465" y="910" width="235" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="7x9lKS5BqQXzzixyZIlG-67" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="7x9lKS5BqQXzzixyZIlG-64" target="7x9lKS5BqQXzzixyZIlG-66" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="9dBcJZHVnKRbIBQjwENH-9" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="7x9lKS5BqQXzzixyZIlG-64" target="9dBcJZHVnKRbIBQjwENH-8" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="7x9lKS5BqQXzzixyZIlG-64" value="PreparedStatement preparedStatement = conn.prepareStatement(sql)" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="240" y="1150" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="7x9lKS5BqQXzzixyZIlG-72" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="7x9lKS5BqQXzzixyZIlG-66" target="7x9lKS5BqQXzzixyZIlG-71" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="7x9lKS5BqQXzzixyZIlG-66" value="ResultSet rs = &lt;b&gt;preparedStatement&lt;/b&gt;.&lt;b&gt;executeQuery&lt;/b&gt;()" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="240" y="1360" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="7x9lKS5BqQXzzixyZIlG-69" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="7x9lKS5BqQXzzixyZIlG-68" target="7x9lKS5BqQXzzixyZIlG-60" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="9dBcJZHVnKRbIBQjwENH-1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="7x9lKS5BqQXzzixyZIlG-68" target="9dBcJZHVnKRbIBQjwENH-0" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="120" y="1000" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="7x9lKS5BqQXzzixyZIlG-68" value="&lt;font style=&quot;font-size: 10px;&quot;&gt;获取连接&lt;br style=&quot;font-size: 10px;&quot;&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="40" y="920" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="9dBcJZHVnKRbIBQjwENH-16" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="7x9lKS5BqQXzzixyZIlG-71" target="9dBcJZHVnKRbIBQjwENH-15" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="9dBcJZHVnKRbIBQjwENH-18" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="7x9lKS5BqQXzzixyZIlG-71" target="9dBcJZHVnKRbIBQjwENH-17" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="7x9lKS5BqQXzzixyZIlG-71" value="clearPrevious();&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;好像是清除上次执行缓存，todo 验证&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="480" y="1360" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="7x9lKS5BqQXzzixyZIlG-73" value="&lt;p style=&quot;margin: 4px 0px 0px; text-align: center;&quot;&gt;&lt;b&gt;ContextManager&lt;/b&gt;&lt;br&gt;&lt;/p&gt;&lt;hr style=&quot;font-size: 10px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;ShardingSphere&amp;nbsp;&lt;br&gt;&lt;/font&gt;&lt;br&gt;&lt;br&gt;&lt;div&gt;&lt;div&gt;private final AtomicReference&amp;lt;MetaDataContexts&amp;gt; metaDataContexts;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;//主要就是数据库服务器节点上下文信息，另外还包含workerId生成器、服务器模式配置管理器、&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;//lockContext eventbusContext 等等&lt;/font&gt;&lt;/div&gt;&lt;div&gt;private final &lt;b&gt;InstanceContext&lt;/b&gt; &lt;b&gt;instanceContext&lt;/b&gt;;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;private final ShardingSphereDatabaseContextManager shardingSphereDatabaseContextManager;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;private final ConfigurationContextManager configurationContextManager;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;private final ResourceMetaDataContextManager resourceMetaDataContextManager;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;private final &lt;b&gt;ExecutorEngine&lt;/b&gt; executorEngine;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;private final ClusterStateContext clusterStateContext = new ClusterStateContext();&lt;/div&gt;&lt;/div&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=10;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="-480" y="540" width="439" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="7x9lKS5BqQXzzixyZIlG-78" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="7x9lKS5BqQXzzixyZIlG-74" target="7x9lKS5BqQXzzixyZIlG-77" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="7x9lKS5BqQXzzixyZIlG-74" value="&lt;div&gt;return new &lt;b&gt;ShardingSphereConnection&lt;/b&gt;(&lt;/div&gt;&lt;div&gt;databaseName, contextManager);&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;arcSize=11;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="720" y="920" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="7x9lKS5BqQXzzixyZIlG-76" value="&lt;p style=&quot;margin: 4px 0px 0px; text-align: center;&quot;&gt;ShardingSphereConnection&lt;br&gt;&lt;/p&gt;&lt;hr style=&quot;font-size: 10px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;ShardingSphere&amp;nbsp;&lt;br&gt;&lt;/font&gt;&lt;br&gt;&lt;br&gt;&lt;div&gt;&lt;div&gt;private final String databaseName;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;private final &lt;b&gt;ContextManager&lt;/b&gt; &lt;b&gt;contextManager&lt;/b&gt;;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;private final &lt;b&gt;DriverDatabaseConnectionManager&lt;/b&gt; &lt;b&gt;databaseConnectionManager&lt;/b&gt;;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;private boolean autoCommit = true;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;private int transactionIsolation = TRANSACTION_READ_UNCOMMITTED;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;private boolean readOnly;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;private volatile boolean closed;&lt;/div&gt;&lt;/div&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=10;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="-480" y="820" width="439" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="7x9lKS5BqQXzzixyZIlG-82" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="7x9lKS5BqQXzzixyZIlG-77" target="7x9lKS5BqQXzzixyZIlG-81" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="7x9lKS5BqQXzzixyZIlG-77" value="databaseConnectionManager = new DriverDatabaseConnectionManager(&lt;br&gt;databaseName, contextManager);" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;arcSize=11;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="960" y="920" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="7x9lKS5BqQXzzixyZIlG-81" value="todo" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;arcSize=11;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="1200" y="920" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="7x9lKS5BqQXzzixyZIlG-83" value="&lt;p style=&quot;margin: 4px 0px 0px; text-align: center;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;hr style=&quot;font-size: 10px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;ShardingSphere&amp;nbsp;&lt;br&gt;&lt;/font&gt;&lt;br&gt;&lt;br&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=10;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="-960" y="820" width="439" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="9dBcJZHVnKRbIBQjwENH-2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="9dBcJZHVnKRbIBQjwENH-0" target="7x9lKS5BqQXzzixyZIlG-64" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="9dBcJZHVnKRbIBQjwENH-0" value="&lt;font style=&quot;font-size: 10px;&quot;&gt;SQL执行&lt;br style=&quot;font-size: 10px;&quot;&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="40" y="1150" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="9dBcJZHVnKRbIBQjwENH-3" value="&lt;p style=&quot;margin: 4px 0px 0px; text-align: center;&quot;&gt;ShardingSphereDataSource&lt;br&gt;&lt;/p&gt;&lt;hr style=&quot;font-size: 10px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;ShardingSphere&amp;nbsp;&lt;br&gt;&lt;/font&gt;&lt;br&gt;&lt;br&gt;&lt;div&gt;&lt;div&gt;private final String databaseName;&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp;&amp;nbsp;&lt;/div&gt;&lt;div&gt;private final &lt;b&gt;ContextManager&lt;/b&gt; &lt;b&gt;contextManager&lt;/b&gt;;&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;private PrintWriter logWriter = new PrintWriter(System.out);&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;private final MethodInvocationRecorder&amp;lt;Statement&amp;gt; methodInvocationRecorder&amp;nbsp;&lt;/div&gt;&lt;div&gt;&amp;nbsp; = new MethodInvocationRecorder&amp;lt;&amp;gt;();&lt;br&gt;&lt;/div&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=10;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="-960" y="540" width="439" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="9dBcJZHVnKRbIBQjwENH-4" value="return TypedSPILoader.getService(&lt;br&gt;&lt;b&gt;ContextManagerBuilder&lt;/b&gt;.class, null == modeConfig ? null : modeConfig.getType()).&lt;b&gt;build&lt;/b&gt;(param);" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="1680" y="760" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="9dBcJZHVnKRbIBQjwENH-6" value="&lt;font style=&quot;font-size: 10px;&quot;&gt;NewStandaloneContextManagerBuilder&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="1675" y="730" width="200" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="9dBcJZHVnKRbIBQjwENH-7" value="&lt;p style=&quot;margin: 4px 0px 0px; text-align: center;&quot;&gt;&lt;b&gt;ShardingSpherePreparedStatement&lt;/b&gt;&lt;br&gt;&lt;/p&gt;&lt;hr style=&quot;font-size: 10px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;可以理解为是SQL执行环境，包含SQL解析后的语法树对象、SQL执行器、一些配置选项&lt;br&gt;&lt;/font&gt;&lt;br&gt;&lt;div&gt;&lt;div&gt;private final ShardingSphereConnection connection;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;//元数据上下文，里面主要就是之前创建的元数据持久化服务&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;//支持JDBC、Zookeeper、ETCD、Consul&lt;/font&gt;&lt;/div&gt;&lt;div&gt;private final &lt;b&gt;MetaDataContexts&lt;/b&gt; &lt;b&gt;metaDataContexts&lt;/b&gt;;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;//原sql语句&lt;/font&gt;&lt;/div&gt;&lt;div&gt;private final String sql;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;//好像是执行缓存: sql语句、参数、返回值 todo&lt;/font&gt;&lt;/div&gt;&lt;div&gt;private final List&amp;lt;PreparedStatement&amp;gt; &lt;b&gt;statements&lt;/b&gt;;&lt;/div&gt;&lt;div&gt;private final List&amp;lt;List&amp;lt;Object&amp;gt;&amp;gt; &lt;b&gt;parameterSets&lt;/b&gt;;&lt;/div&gt;&lt;div&gt;private final Collection&amp;lt;Comparable&amp;lt;?&amp;gt;&amp;gt; &lt;b&gt;generatedValues&lt;/b&gt; = new LinkedList&amp;lt;&amp;gt;();&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;//sql语句经过 SQLParserEngine 解析后生成的SQL语法树对象&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;//&lt;/font&gt;&lt;font color=&quot;#007fff&quot;&gt;SQLStatement extends &lt;b&gt;ASTNode&lt;/b&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;private final SQLStatement &lt;b&gt;sqlStatement&lt;/b&gt;;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;//从内部字段看和sqlStatement有点像，也包含SQL语法树信息&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;//作为SQL查询上下文的一部分&lt;/font&gt;&lt;/div&gt;&lt;div&gt;private final SQLStatementContext &lt;b&gt;sqlStatementContext&lt;/b&gt;;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;//逻辑数据库的名称，不设置默认就是 logic_db&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;//通过此名称可以查询到在配置文件中配置的业务数据库的信息&lt;/font&gt;&lt;/div&gt;&lt;div&gt;private final String &lt;b&gt;databaseName&lt;/b&gt;;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;private final StatementOption statementOption;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;private final ParameterMetaData parameterMetaData;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;private final DriverExecutor &lt;b&gt;executor&lt;/b&gt;;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;private final BatchPreparedStatementExecutor batchPreparedStatementExecutor;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;private final KernelProcessor kernelProcessor;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;private final boolean statementsCacheable;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;//用于选择数据库服务器实例的规则&lt;/font&gt;&lt;/div&gt;&lt;div&gt;private final TrafficRule trafficRule;&lt;/div&gt;&lt;div&gt;//&lt;/div&gt;&lt;div&gt;private String trafficInstanceId;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;private final StatementManager statementManager;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;private final boolean selectContainsEnhancedTable;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;private ExecutionContext executionContext;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;private Map&amp;lt;String, Integer&amp;gt; columnLabelAndIndexMap;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;//当前查询结果集，ShardingSphereResultSet&lt;/font&gt;&lt;/div&gt;&lt;div&gt;private ResultSet currentResultSet;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;private boolean useFederation;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;private final HintValueContext hintValueContext;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;private ResultSet currentBatchGeneratedKeysResultSet;&lt;/div&gt;&lt;/div&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=10;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="-480" y="1100" width="439" height="660" as="geometry" />
+        </mxCell>
+        <mxCell id="9dBcJZHVnKRbIBQjwENH-11" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="9dBcJZHVnKRbIBQjwENH-8" target="9dBcJZHVnKRbIBQjwENH-10" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="9dBcJZHVnKRbIBQjwENH-8" value="return new &lt;b&gt;ShardingSpherePreparedStatement&lt;/b&gt;(this, sql);&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;看类的成员，这其实是SQL执行环境&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="480" y="1150" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="9dBcJZHVnKRbIBQjwENH-60" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="9dBcJZHVnKRbIBQjwENH-10" target="9dBcJZHVnKRbIBQjwENH-59" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="45BSm1O7VdkWARTOZIum-23" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="9dBcJZHVnKRbIBQjwENH-10" target="45BSm1O7VdkWARTOZIum-22" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Bpu915Tbay1XUohn53v4-38" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="9dBcJZHVnKRbIBQjwENH-10" target="Bpu915Tbay1XUohn53v4-37" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="9dBcJZHVnKRbIBQjwENH-10" value="&lt;div style=&quot;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;this.connection = connection;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;&lt;b&gt;metaDataContexts&lt;/b&gt; = connection.getContextManager().getMetaDataContexts();&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;SQLParserRule sqlParserRule = metaDataContexts.getMetaData().getGlobalRuleMetaData().getSingleRule(SQLParserRule.class);&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;hintValueContext = sqlParserRule.isSqlCommentParseEnabled() ? new HintValueContext() : SQLHintUtils.extractHint(sql).orElseGet(HintValueContext::new);&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;this.sql = sqlParserRule.isSqlCommentParseEnabled() ? sql : SQLHintUtils.removeHint(sql);&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;statements = new ArrayList&amp;lt;&amp;gt;();&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;parameterSets = new ArrayList&amp;lt;&amp;gt;();&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;SQLParserEngine &lt;b&gt;sqlParserEngine&lt;/b&gt; = sqlParserRule.getSQLParserEngine(getDatabaseType(connection));&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;&lt;b&gt;sqlStatement&lt;/b&gt; = sqlParserEngine.&lt;b&gt;parse&lt;/b&gt;(this.sql, true);&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;sqlStatementContext = new SQLBindEngine(metaDataContexts.getMetaData(), connection.getDatabaseName(), hintValueContext).bind(sqlStatement, Collections.emptyList());&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;databaseName = sqlStatementContext.getTablesContext().getDatabaseName().orElse(connection.getDatabaseName());&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;connection.getDatabaseConnectionManager().getConnectionContext().setCurrentDatabase(databaseName);&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;parameterMetaData = new ShardingSphereParameterMetaData(sqlStatement);&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;statementOption = returnGeneratedKeys ? new StatementOption(true, columns) : new StatementOption(resultSetType, resultSetConcurrency, resultSetHoldability);&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;&lt;b&gt;executor&lt;/b&gt; = new &lt;b&gt;DriverExecutor&lt;/b&gt;(connection);&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;JDBCExecutor jdbcExecutor = new &lt;b&gt;JDBCExecutor&lt;/b&gt;(connection.getContextManager().getExecutorEngine(), connection.getDatabaseConnectionManager().getConnectionContext());&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;batchPreparedStatementExecutor = new &lt;b&gt;BatchPreparedStatementExecutor&lt;/b&gt;(metaDataContexts, jdbcExecutor, databaseName);&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;kernelProcessor = new KernelProcessor();&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;statementsCacheable = isStatementsCacheable(metaDataContexts.getMetaData().getDatabase(databaseName).getRuleMetaData());&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;trafficRule = metaDataContexts.getMetaData().getGlobalRuleMetaData().getSingleRule(TrafficRule.class);&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;selectContainsEnhancedTable = sqlStatementContext instanceof SelectStatementContext &amp;amp;&amp;amp; ((SelectStatementContext) sqlStatementContext).isContainsEnhancedTable();&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;statementManager = new StatementManager();&lt;/font&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;align=left;arcSize=2;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="720" y="1020" width="720" height="320" as="geometry" />
+        </mxCell>
+        <mxCell id="9dBcJZHVnKRbIBQjwENH-12" value="&lt;font style=&quot;font-size: 9px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;&lt;font style=&quot;font-size: 9px;&quot;&gt;前面的流程先简略过一遍，这一步用到哪个组件，&lt;br&gt;如果比较重要再回头看（&lt;/font&gt;组件功能都是体现在业&lt;br&gt;务流中的，脱离业务流是看不懂其功能的）&lt;/font&gt;&lt;br&gt;&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="20" y="1360" width="220" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="9dBcJZHVnKRbIBQjwENH-14" value="&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 9px;&quot;&gt;this = {ShardingSpherePreparedStatement@6669}&amp;nbsp;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 9px;&quot;&gt;&amp;nbsp;sqlStatementContext = {SelectStatementContext@7204}&amp;nbsp;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 9px;&quot;&gt;&amp;nbsp;connection = {ShardingSphereConnection@6657}&amp;nbsp;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 9px;&quot;&gt;&amp;nbsp;metaDataContexts = {MetaDataContexts@6686}&amp;nbsp;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 9px;&quot;&gt;&amp;nbsp; persistService = {NewMetaDataPersistService@6687}&amp;nbsp;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 9px;&quot;&gt;&amp;nbsp; metaData = {ShardingSphereMetaData@6688}&amp;nbsp;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 9px;&quot;&gt;&amp;nbsp; statistics = {ShardingSphereStatistics@6689}&amp;nbsp;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 9px;&quot;&gt;&amp;nbsp;sql = &quot;SELECT i.* FROM t_order o JOIN t_order_item i ON o.order_id=i.order_id WHERE o.user_id=? AND o.order_id=?&quot;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 9px;&quot;&gt;&amp;nbsp;statements = {ArrayList@6767}&amp;nbsp; size = 0&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 9px;&quot;&gt;&amp;nbsp;parameterSets = {ArrayList@6769}&amp;nbsp; size = 0&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 9px;&quot;&gt;&amp;nbsp;sqlStatement = {MySQLSelectStatement@7081}&amp;nbsp;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 9px;&quot;&gt;&amp;nbsp; table = null&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 9px;&quot;&gt;&amp;nbsp; limit = null&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 9px;&quot;&gt;&amp;nbsp; lock = null&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 9px;&quot;&gt;&amp;nbsp; window = null&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 9px;&quot;&gt;&amp;nbsp; projections = {ProjectionsSegment@7084}&amp;nbsp;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 9px;&quot;&gt;&amp;nbsp; from = {JoinTableSegment@7085}&amp;nbsp;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 9px;&quot;&gt;&amp;nbsp; where = {WhereSegment@7086}&amp;nbsp;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 9px;&quot;&gt;&amp;nbsp; groupBy = null&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 9px;&quot;&gt;&amp;nbsp; having = null&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 9px;&quot;&gt;&amp;nbsp; orderBy = null&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 9px;&quot;&gt;&amp;nbsp; combine = null&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 9px;&quot;&gt;&amp;nbsp; parameterMarkerSegments = {LinkedList@7087}&amp;nbsp; size = 2&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 9px;&quot;&gt;&amp;nbsp; uniqueParameterIndexes = {HashSet@7088}&amp;nbsp; size = 2&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 9px;&quot;&gt;&amp;nbsp; commentSegments = {LinkedList@7089}&amp;nbsp; size = 0&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 9px;&quot;&gt;&amp;nbsp; variableNames = {HashSet@7090}&amp;nbsp; size = 0&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 9px;&quot;&gt;&amp;nbsp;databaseName = &quot;logic_db&quot;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 9px;&quot;&gt;&amp;nbsp;statementOption = {StatementOption@7219}&amp;nbsp;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 9px;&quot;&gt;&amp;nbsp; resultSetType = 1003&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 9px;&quot;&gt;&amp;nbsp; resultSetConcurrency = 1007&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 9px;&quot;&gt;&amp;nbsp; resultSetHoldability = 1&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 9px;&quot;&gt;&amp;nbsp; returnGeneratedKeys = false&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 9px;&quot;&gt;&amp;nbsp; columns = null&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 9px;&quot;&gt;&amp;nbsp;parameterMetaData = {ShardingSphereParameterMetaData@7215}&amp;nbsp;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 9px;&quot;&gt;&amp;nbsp; sqlStatement = {MySQLSelectStatement@7081}&amp;nbsp;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 9px;&quot;&gt;&amp;nbsp; methodInvocationRecorder = {MethodInvocationRecorder@7271}&amp;nbsp;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 9px;&quot;&gt;&amp;nbsp;executor = {DriverExecutor@7231}&amp;nbsp;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 9px;&quot;&gt;&amp;nbsp; regularExecutor = {DriverJDBCExecutor@7272}&amp;nbsp;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 9px;&quot;&gt;&amp;nbsp; rawExecutor = {RawExecutor@7273}&amp;nbsp;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 9px;&quot;&gt;&amp;nbsp; sqlFederationEngine = {SQLFederationEngine@7274}&amp;nbsp;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 9px;&quot;&gt;&amp;nbsp; trafficExecutor = {TrafficExecutor@7275}&amp;nbsp;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 9px;&quot;&gt;&amp;nbsp;batchPreparedStatementExecutor = {BatchPreparedStatementExecutor@7238}&amp;nbsp;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 9px;&quot;&gt;&amp;nbsp;generatedValues = {LinkedList@6674}&amp;nbsp; size = 0&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 9px;&quot;&gt;&amp;nbsp;kernelProcessor = {KernelProcessor@7241}&amp;nbsp;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 9px;&quot;&gt;&amp;nbsp;statementsCacheable = false&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 9px;&quot;&gt;&amp;nbsp;trafficRule = {TrafficRule@7244}&amp;nbsp;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 9px;&quot;&gt;&amp;nbsp;statementManager = {StatementManager@7250}&amp;nbsp;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 9px;&quot;&gt;&amp;nbsp;selectContainsEnhancedTable = true&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 9px;&quot;&gt;&amp;nbsp;executionContext = null&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 9px;&quot;&gt;&amp;nbsp;columnLabelAndIndexMap = null&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 9px;&quot;&gt;&amp;nbsp;currentResultSet = null&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 9px;&quot;&gt;&amp;nbsp;trafficInstanceId = null&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 9px;&quot;&gt;&amp;nbsp;useFederation = false&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 9px;&quot;&gt;&amp;nbsp;hintValueContext = {HintValueContext@6758}&amp;nbsp;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 9px;&quot;&gt;&amp;nbsp;currentBatchGeneratedKeysResultSet = null&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 9px;&quot;&gt;&amp;nbsp;setParameterMethodInvocations = {LinkedList@6670}&amp;nbsp; size = 0&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 9px;&quot;&gt;&amp;nbsp;parameters = {ArrayList@6671}&amp;nbsp; size = 0&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 9px;&quot;&gt;&amp;nbsp;forceExecuteTemplate = {ForceExecuteTemplate@6672}&amp;nbsp;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 9px;&quot;&gt;&amp;nbsp;poolable = false&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 9px;&quot;&gt;&amp;nbsp;fetchSize = 0&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 9px;&quot;&gt;&amp;nbsp;fetchDirection = 0&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 9px;&quot;&gt;&amp;nbsp;closed = false&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 9px;&quot;&gt;&amp;nbsp;methodInvocationRecorder = {MethodInvocationRecorder@6673}&amp;nbsp;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 9px;&quot;&gt;connection = {ShardingSphereConnection@6657}&amp;nbsp;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 9px;&quot;&gt;sql = &quot;SELECT i.* FROM t_order o JOIN t_order_item i ON o.order_id=i.order_id WHERE o.user_id=? AND o.order_id=?&quot;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 9px;&quot;&gt;resultSetType = 1003&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 9px;&quot;&gt;resultSetConcurrency = 1007&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 9px;&quot;&gt;resultSetHoldability = 1&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 9px;&quot;&gt;returnGeneratedKeys = false&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 9px;&quot;&gt;columns = null&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 9px;&quot;&gt;sqlParserRule = {SQLParserRule@6727}&amp;nbsp;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 9px;&quot;&gt;&amp;nbsp;configuration = {SQLParserRuleConfiguration@6742}&amp;nbsp;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 9px;&quot;&gt;&amp;nbsp;sqlCommentParseEnabled = false&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 9px;&quot;&gt;&amp;nbsp;sqlStatementCache = {CacheOption@6743} &quot;initialCapacity: 2000, maximumSize: 65535&quot;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 9px;&quot;&gt;&amp;nbsp;parseTreeCache = {CacheOption@6744} &quot;initialCapacity: 128, maximumSize: 1024&quot;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 9px;&quot;&gt;&amp;nbsp;engineType = &quot;Standard&quot;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 9px;&quot;&gt;sqlParserEngine = {ShardingSphereSQLParserEngine@6840}&amp;nbsp;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 9px;&quot;&gt;&amp;nbsp;sqlStatementParserEngine = {SQLStatementParserEngine@7279}&amp;nbsp;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 9px;&quot;&gt;&amp;nbsp;distSQLStatementParserEngine = {DistSQLStatementParserEngine@7280}&amp;nbsp;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 9px;&quot;&gt;jdbcExecutor = {JDBCExecutor@7233}&amp;nbsp;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 9px;&quot;&gt;&amp;nbsp;executorEngine = {ExecutorEngine@6681}&amp;nbsp;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 9px;&quot;&gt;&amp;nbsp;connectionContext = {ConnectionContext@7283}&amp;nbsp;&lt;/font&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="-1960" y="1100" width="510" height="900" as="geometry" />
+        </mxCell>
+        <mxCell id="9dBcJZHVnKRbIBQjwENH-15" value="&lt;div&gt;&lt;b&gt;statements&lt;/b&gt;.clear();&lt;/div&gt;&lt;div&gt;&lt;b&gt;parameterSets&lt;/b&gt;.clear();&lt;/div&gt;&lt;div&gt;&lt;b&gt;generatedValues&lt;/b&gt;.clear();&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="720" y="1360" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="9dBcJZHVnKRbIBQjwENH-24" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="9dBcJZHVnKRbIBQjwENH-17" target="9dBcJZHVnKRbIBQjwENH-23" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="9dBcJZHVnKRbIBQjwENH-28" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="9dBcJZHVnKRbIBQjwENH-17" target="9dBcJZHVnKRbIBQjwENH-27" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="9dBcJZHVnKRbIBQjwENH-17" value="QueryContext queryContext = createQueryContext();" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="480" y="1440" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="9dBcJZHVnKRbIBQjwENH-22" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;endArrow=block;endFill=0;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="9dBcJZHVnKRbIBQjwENH-19" target="9dBcJZHVnKRbIBQjwENH-7" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="9dBcJZHVnKRbIBQjwENH-19" value="&lt;p style=&quot;margin: 4px 0px 0px; text-align: center;&quot;&gt;AbstractPreparedStatementAdapter&lt;br&gt;&lt;/p&gt;&lt;hr style=&quot;font-size: 10px;&quot;&gt;&lt;div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;private final List&amp;lt;PreparedStatementInvocationReplayer&amp;gt; setParameterMethodInvocations&amp;nbsp;&lt;/div&gt;&lt;div&gt;&amp;nbsp; = new LinkedList&amp;lt;&amp;gt;();&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;//sql执行传参&lt;/font&gt;&lt;/div&gt;&lt;div&gt;private final List&amp;lt;Object&amp;gt; &lt;b&gt;parameters&lt;/b&gt; = new ArrayList&amp;lt;&amp;gt;();&lt;/div&gt;&lt;/div&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=10;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="-480" y="1800" width="439" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="9dBcJZHVnKRbIBQjwENH-21" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;endArrow=block;endFill=0;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="9dBcJZHVnKRbIBQjwENH-20" target="9dBcJZHVnKRbIBQjwENH-19" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="9dBcJZHVnKRbIBQjwENH-20" value="&lt;p style=&quot;margin: 4px 0px 0px; text-align: center;&quot;&gt;AbstractStatementAdapter&lt;br&gt;&lt;/p&gt;&lt;hr style=&quot;font-size: 10px;&quot;&gt;&lt;br&gt;&lt;div&gt;&lt;div&gt;private final ForceExecuteTemplate&amp;lt;Statement&amp;gt; forceExecuteTemplate&amp;nbsp;&lt;/div&gt;&lt;div&gt;&amp;nbsp; = new ForceExecuteTemplate&amp;lt;&amp;gt;();&lt;/div&gt;&lt;div&gt;private boolean poolable;&lt;/div&gt;&lt;div&gt;private int fetchSize;&lt;/div&gt;&lt;div&gt;private int fetchDirection;&lt;/div&gt;&lt;div&gt;private boolean closed;&lt;/div&gt;&lt;/div&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=10;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="-480" y="1960" width="439" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="9dBcJZHVnKRbIBQjwENH-26" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="9dBcJZHVnKRbIBQjwENH-23" target="9dBcJZHVnKRbIBQjwENH-25" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="9dBcJZHVnKRbIBQjwENH-23" value="((ParameterAware) &lt;b&gt;sqlStatementContext&lt;/b&gt;)&lt;br&gt;.setUpParameters(params);&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;实例化 paginationContext&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="720" y="1440" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="9dBcJZHVnKRbIBQjwENH-25" value="return new &lt;b&gt;QueryContext&lt;/b&gt;(sqlStatementContext, sql, params, hintValueContext, true);" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="720" y="1520" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="9dBcJZHVnKRbIBQjwENH-30" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="9dBcJZHVnKRbIBQjwENH-27" target="9dBcJZHVnKRbIBQjwENH-29" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="9dBcJZHVnKRbIBQjwENH-32" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="9dBcJZHVnKRbIBQjwENH-27" target="9dBcJZHVnKRbIBQjwENH-31" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="9dBcJZHVnKRbIBQjwENH-27" value="trafficInstanceId = getInstanceIdAndSet(queryContext)&lt;br&gt;.orElse(null);&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;其实就是根据 trafficRule 选择数据库服务器实例并设置到上下文&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="480" y="1600" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="9dBcJZHVnKRbIBQjwENH-29" value="trafficInstanceId = getInstanceIdAndSet(queryContext)&lt;br&gt;.orElse(null);&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;这里没有设置trafficRule 会返回空&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="720" y="1600" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="9dBcJZHVnKRbIBQjwENH-34" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="9dBcJZHVnKRbIBQjwENH-31" target="9dBcJZHVnKRbIBQjwENH-33" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="9dBcJZHVnKRbIBQjwENH-50" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="9dBcJZHVnKRbIBQjwENH-31" target="9dBcJZHVnKRbIBQjwENH-49" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="9dBcJZHVnKRbIBQjwENH-31" value="&lt;div&gt;useFederation = decide(queryContext, database&lt;span style=&quot;background-color: initial;&quot;&gt;,&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;ruleMetadata);&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;暂没用到暂略&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="480" y="1680" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="9dBcJZHVnKRbIBQjwENH-36" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="9dBcJZHVnKRbIBQjwENH-33" target="9dBcJZHVnKRbIBQjwENH-35" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="9dBcJZHVnKRbIBQjwENH-72" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="9dBcJZHVnKRbIBQjwENH-33" target="9dBcJZHVnKRbIBQjwENH-71" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="9dBcJZHVnKRbIBQjwENH-33" value="executionContext = createExecutionContext(queryContext);&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;创建执行上下文(创建前会执行sql审计)&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="480" y="1920" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="9dBcJZHVnKRbIBQjwENH-38" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="9dBcJZHVnKRbIBQjwENH-35" target="9dBcJZHVnKRbIBQjwENH-37" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="45BSm1O7VdkWARTOZIum-59" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="9dBcJZHVnKRbIBQjwENH-35" target="45BSm1O7VdkWARTOZIum-58" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="9dBcJZHVnKRbIBQjwENH-35" value="List&amp;lt;QueryResult&amp;gt; queryResults = executeQuery0();&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;执行查询（实际可能连接多个数据库或多个表而执行多次查询）&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="480" y="2480" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="9dBcJZHVnKRbIBQjwENH-40" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="9dBcJZHVnKRbIBQjwENH-37" target="9dBcJZHVnKRbIBQjwENH-39" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="9dBcJZHVnKRbIBQjwENH-37" value="MergedResult mergedResult = mergeQuery(queryResults);&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;合并多次查询结果&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="480" y="2560" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="9dBcJZHVnKRbIBQjwENH-42" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="9dBcJZHVnKRbIBQjwENH-39" target="9dBcJZHVnKRbIBQjwENH-41" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="9dBcJZHVnKRbIBQjwENH-39" value="List&amp;lt;ResultSet&amp;gt; resultSets = getResultSets();&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;取出结果集&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="480" y="2640" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="9dBcJZHVnKRbIBQjwENH-44" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="9dBcJZHVnKRbIBQjwENH-41" target="9dBcJZHVnKRbIBQjwENH-43" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="9dBcJZHVnKRbIBQjwENH-41" value="&lt;font style=&quot;font-size: 9px;&quot;&gt;result = new&amp;nbsp;&lt;b&gt;ShardingSphereResultSet&lt;/b&gt;(&lt;br&gt;&lt;b&gt;resultSets&lt;/b&gt;, mergedResult, this, selectContainsEnhancedTable, executionContext, columnLabelAndIndexMap);&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="480" y="2720" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="9dBcJZHVnKRbIBQjwENH-46" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="9dBcJZHVnKRbIBQjwENH-43" target="9dBcJZHVnKRbIBQjwENH-45" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="9dBcJZHVnKRbIBQjwENH-43" value="&lt;font size=&quot;1&quot;&gt;&lt;b&gt;catch&lt;/b&gt;:&lt;br&gt;&lt;/font&gt;handleExceptionInTransaction(connection, metaDataContexts);&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;事务回滚&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="480" y="2800" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="9dBcJZHVnKRbIBQjwENH-48" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="9dBcJZHVnKRbIBQjwENH-45" target="9dBcJZHVnKRbIBQjwENH-47" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="9dBcJZHVnKRbIBQjwENH-45" value="&lt;font size=&quot;1&quot;&gt;&lt;b&gt;finally&lt;/b&gt;:&lt;br&gt;&lt;/font&gt;clearBatch();" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="480" y="2880" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="9dBcJZHVnKRbIBQjwENH-47" value="&lt;div&gt;&lt;font size=&quot;1&quot;&gt;&lt;b&gt;currentResultSet&lt;/b&gt; = result;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font size=&quot;1&quot;&gt;return result;&lt;/font&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="480" y="2960" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="9dBcJZHVnKRbIBQjwENH-52" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="9dBcJZHVnKRbIBQjwENH-49" target="9dBcJZHVnKRbIBQjwENH-51" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="9dBcJZHVnKRbIBQjwENH-49" value="&lt;div&gt;&lt;b&gt;metaDataContexts&lt;/b&gt;.getMetaData()&lt;/div&gt;&lt;div&gt;.getDatabase(databaseName)&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;从元数据上下文中获取元数据中的数据库实例信息（包括数据源url、username、password等）&lt;/font&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="720" y="1680" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="9dBcJZHVnKRbIBQjwENH-56" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="9dBcJZHVnKRbIBQjwENH-51" target="9dBcJZHVnKRbIBQjwENH-55" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="9dBcJZHVnKRbIBQjwENH-51" value="&lt;div&gt;&lt;b&gt;metaDataContexts&lt;/b&gt;.getMetaData()&lt;/div&gt;&lt;div&gt;.getGlobalRuleMetaData()&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;从元数据上下文中获取元数据中的全局规则信息&lt;/font&gt;&lt;br&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="720" y="1760" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="9dBcJZHVnKRbIBQjwENH-53" value="&lt;font style=&quot;font-size: 10px;&quot;&gt;ShardingSpherePreparedStatement&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="490" y="1330" width="180" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="9dBcJZHVnKRbIBQjwENH-54" value="&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;&lt;b&gt;metaData&lt;/b&gt; = {ShardingSphereMetaData@6688}&amp;nbsp;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;&amp;nbsp;&lt;b&gt;databases&lt;/b&gt; = {ConcurrentHashMap@7453}&amp;nbsp; size = 6&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;&amp;nbsp; &quot;shardingsphere&quot; -&amp;gt; {ShardingSphereDatabase@7467}&amp;nbsp;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;&amp;nbsp; &quot;performance_schema&quot; -&amp;gt; {ShardingSphereDatabase@7469}&amp;nbsp;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;&amp;nbsp; &quot;information_schema&quot; -&amp;gt; {ShardingSphereDatabase@7471}&amp;nbsp;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;&amp;nbsp; &quot;&lt;b&gt;logic_db&lt;/b&gt;&quot; -&amp;gt; {ShardingSphereDatabase@7472}&amp;nbsp;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;&amp;nbsp; &amp;nbsp;key = &quot;logic_db&quot;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;&amp;nbsp; &amp;nbsp;value = {ShardingSphereDatabase@7472}&amp;nbsp;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;&amp;nbsp; &amp;nbsp; name = &quot;logic_db&quot;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;&amp;nbsp; &amp;nbsp; protocolType = {MySQLDatabaseType@7327}&amp;nbsp;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;&amp;nbsp; &amp;nbsp; resourceMetaData = {ResourceMetaData@7477}&amp;nbsp;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp;&lt;b&gt;dataSourceMap&lt;/b&gt; = {LinkedHashMap@7480}&amp;nbsp; size = 2&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp;storageUnitMetaData = {StorageUnitMetaData@7481}&amp;nbsp;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;&amp;nbsp; &amp;nbsp; ruleMetaData = {RuleMetaData@7478}&amp;nbsp;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;&amp;nbsp; &amp;nbsp; schemas = {ConcurrentHashMap@7479}&amp;nbsp; size = 1&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;&amp;nbsp; &quot;mysql&quot; -&amp;gt; {ShardingSphereDatabase@7474}&amp;nbsp;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;&amp;nbsp; &quot;sys&quot; -&amp;gt; {ShardingSphereDatabase@7476}&amp;nbsp;&lt;/font&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=top;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=9;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="940" y="1680" width="280" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="9dBcJZHVnKRbIBQjwENH-55" value="&lt;div&gt;return executor.&lt;b&gt;getSqlFederationEngine&lt;/b&gt;()&lt;/div&gt;&lt;div&gt;.decide(queryContext.getSqlStatementContext(), queryContext.getParameters(), database, globalRuleMetaData);&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;决定是否使用 sql Federation Engine&lt;/font&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="710" y="1840" width="220" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="9dBcJZHVnKRbIBQjwENH-61" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.75;exitDx=0;exitDy=0;entryX=1;entryY=0;entryDx=0;entryDy=0;fillColor=#d5e8d4;strokeColor=#82b366;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="9dBcJZHVnKRbIBQjwENH-59" target="9dBcJZHVnKRbIBQjwENH-49" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1700" y="1065" />
+              <mxPoint x="1700" y="1670" />
+              <mxPoint x="920" y="1670" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="9dBcJZHVnKRbIBQjwENH-63" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="9dBcJZHVnKRbIBQjwENH-59" target="9dBcJZHVnKRbIBQjwENH-62" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="9dBcJZHVnKRbIBQjwENH-59" value="MetaDataContexts 初始化" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;arcSize=11;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="1480" y="1020" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="9dBcJZHVnKRbIBQjwENH-62" value="todo" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;arcSize=11;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="1720" y="1020" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="9dBcJZHVnKRbIBQjwENH-65" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;endArrow=diamondThin;endFill=1;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="9dBcJZHVnKRbIBQjwENH-64" target="9dBcJZHVnKRbIBQjwENH-7" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="9dBcJZHVnKRbIBQjwENH-64" value="&lt;p style=&quot;margin: 4px 0px 0px; text-align: center;&quot;&gt;MetaDataContexts&lt;/p&gt;&lt;hr style=&quot;font-size: 10px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;元数据上下文，即在元数据持久化仓库中存储的元数据信息，支持 &lt;br&gt;JDBC、Zookeeper、ETCD、Consul&lt;br&gt;&lt;/font&gt;&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;//元数据持久话服务，提供获取元数据的接口&lt;/font&gt;&lt;br&gt;&lt;div&gt;private final MetaDataBasedPersistService persistService;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;//元数据信息中包含 数据库的连接信息、全局资源元数据、全局规则元数据、配置属性、临时属性&lt;/font&gt;&lt;/div&gt;&lt;div&gt;private final &lt;b&gt;ShardingSphereMetaData&lt;/b&gt; &lt;b&gt;metaData&lt;/b&gt;;&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp;&amp;nbsp;&lt;/div&gt;&lt;div&gt;private final ShardingSphereStatistics statistics;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=10;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="-1000" y="1400" width="439" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="9dBcJZHVnKRbIBQjwENH-67" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;endArrow=diamondThin;endFill=1;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="9dBcJZHVnKRbIBQjwENH-66" target="9dBcJZHVnKRbIBQjwENH-64" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="9dBcJZHVnKRbIBQjwENH-66" value="&lt;p style=&quot;margin: 4px 0px 0px; text-align: center;&quot;&gt;ShardingSphereMetaData&lt;/p&gt;&lt;hr style=&quot;font-size: 10px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;元数据&lt;br&gt;&lt;/font&gt;&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;//数据库信息，里面除了业务数据库logic_db, 还有shardingsphere数据库，元数据库，&lt;br&gt;//比如mysql：performance_schema information_schema mysql sys&lt;/font&gt;&lt;br&gt;&lt;div&gt;private final Map&amp;lt;String, ShardingSphereDatabase&amp;gt; databases;&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp;&amp;nbsp;&lt;/div&gt;&lt;div&gt;private final ResourceMetaData globalResourceMetaData;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;//全局的规则元数据：AuthortyRule\SQLParserRule\TrafficRule等&lt;/font&gt;&lt;/div&gt;&lt;div&gt;private final RuleMetaData globalRuleMetaData;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;//配置属性：比如 sql.show&lt;/font&gt;&lt;/div&gt;&lt;div&gt;private final ConfigurationProperties props;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;private final TemporaryConfigurationProperties temporaryProps;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=10;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="-1480" y="1400" width="439" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="45BSm1O7VdkWARTOZIum-61" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="9dBcJZHVnKRbIBQjwENH-68" target="45BSm1O7VdkWARTOZIum-60" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Bpu915Tbay1XUohn53v4-46" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="9dBcJZHVnKRbIBQjwENH-68" target="Bpu915Tbay1XUohn53v4-45" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="9dBcJZHVnKRbIBQjwENH-68" value="parseASTNode= parserEngine&lt;br&gt;.&lt;b&gt;parse&lt;/b&gt;(sql, false)&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;解析逻辑sql，获取语法树对象&lt;/font&gt;&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;这里重点关注怎么用&lt;/font&gt;&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;Antlr4解析语法树并获取语法树对象的&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;arcSize=11;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="2200" y="1100" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="9dBcJZHVnKRbIBQjwENH-70" value="&lt;font color=&quot;#007fff&quot;&gt;使用条件：select (方言数据库 或者 OpenGuass system catalog&amp;nbsp;&amp;nbsp;&lt;br&gt;或者 （开启sqlFederationRule &amp;amp;&amp;amp; 满足任一SQLFederationDecider条件)&lt;br&gt;？？？&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="930" y="1870" width="340" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="9dBcJZHVnKRbIBQjwENH-74" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="9dBcJZHVnKRbIBQjwENH-71" target="9dBcJZHVnKRbIBQjwENH-73" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="9dBcJZHVnKRbIBQjwENH-71" value="从 &lt;b&gt;metaDataContexts&lt;/b&gt; 中先获取&lt;br&gt;全局规则元数据&amp;nbsp;&lt;b&gt;globalRuleMetaData&lt;/b&gt; 和 当前要查询的逻辑数据库 &lt;b&gt;database&lt;/b&gt; (即配置的多个物理数据库)" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="720" y="1920" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="9dBcJZHVnKRbIBQjwENH-79" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="9dBcJZHVnKRbIBQjwENH-73" target="9dBcJZHVnKRbIBQjwENH-78" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="9dBcJZHVnKRbIBQjwENH-89" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="9dBcJZHVnKRbIBQjwENH-73" target="9dBcJZHVnKRbIBQjwENH-88" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="9dBcJZHVnKRbIBQjwENH-73" value="&lt;b&gt;SQLAuditEngine&lt;/b&gt;.&lt;b&gt;audit&lt;/b&gt;(queryContext&lt;br&gt;.getSqlStatementContext(), queryContext.getParameters(), globalRuleMetaData, currentDatabase, null, queryContext.getHintValueContext());&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;执行sql审计算法，拦截非法sql或进行统计&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="720" y="2000" width="200" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="9dBcJZHVnKRbIBQjwENH-81" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="9dBcJZHVnKRbIBQjwENH-78" target="9dBcJZHVnKRbIBQjwENH-82" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1240" y="2040" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="9dBcJZHVnKRbIBQjwENH-78" value="&lt;font style=&quot;font-size: 9px;&quot;&gt;for &lt;b&gt;OrderedSPILoader&lt;/b&gt;.getServices(&lt;br&gt;&lt;b&gt;SQLAuditor&lt;/b&gt;.class, rules).entrySet() :&lt;br&gt;entry.getValue().&lt;b&gt;audit&lt;/b&gt;(sqlStatementContext, params, grantee, globalRuleMetaData, database, entry.getKey(), hintValueContext);&lt;br&gt;&lt;font style=&quot;font-size: 9px;&quot; color=&quot;#007fff&quot;&gt;SPI 加载 SQLAuditor, 并依次执行审计，默认只有 ShardingSQLAuditor, 不过可以自己拓展&lt;/font&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;arcSize=8;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="960" y="2000" width="200" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="9dBcJZHVnKRbIBQjwENH-87" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="9dBcJZHVnKRbIBQjwENH-82" target="9dBcJZHVnKRbIBQjwENH-86" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="9dBcJZHVnKRbIBQjwENH-82" value="for&amp;nbsp;auditStrategies:&lt;br&gt;&lt;b&gt;rule&lt;/b&gt;.&lt;b&gt;getAuditors&lt;/b&gt;().get(auditorName)&lt;br&gt;.&lt;b&gt;check&lt;/b&gt;(sqlStatementContext, params, grantee, globalRuleMetaData, database);&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;&lt;font style=&quot;font-size: 9px;&quot;&gt;这里可以看到实际的审计器(ShardingAuditAlgorithm)其实是规则的一部分，SPI加载的SQLAuditor只是表示要启动哪个审计器&lt;/font&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;arcSize=7;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="1200" y="2000" width="200" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="9dBcJZHVnKRbIBQjwENH-84" value="&lt;font style=&quot;font-size: 10px;&quot;&gt;ShardingSQLAuditor&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="1250" y="1980" width="100" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="9dBcJZHVnKRbIBQjwENH-85" value="&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;关于&lt;b&gt;审计器 SQLAuditor&lt;/b&gt;：每个审计器针对一种规则，比如默认加载的 ShardingSQLAuditor 针对 ShardingRule 进行审计&lt;br&gt;一个审计器里面可以有多个审计策略&lt;br&gt;&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="720" y="2080" width="560" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="9dBcJZHVnKRbIBQjwENH-86" value="&lt;font style=&quot;font-size: 9px;&quot;&gt;DMLShardingConditionsShardingAuditAlgorithm&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;内部只是检查分片数据表AST where条件是否不为空，为空会抛异常&lt;/font&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;arcSize=15;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="1440" y="2010" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="9dBcJZHVnKRbIBQjwENH-91" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="9dBcJZHVnKRbIBQjwENH-88" target="9dBcJZHVnKRbIBQjwENH-90" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="9dBcJZHVnKRbIBQjwENH-88" value="ExecutionContext result = &lt;b&gt;kernelProcessor&lt;br&gt;&lt;/b&gt;.generateExecutionContext(...);" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="720" y="2140" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="9dBcJZHVnKRbIBQjwENH-93" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="9dBcJZHVnKRbIBQjwENH-90" target="9dBcJZHVnKRbIBQjwENH-92" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="45BSm1O7VdkWARTOZIum-1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="9dBcJZHVnKRbIBQjwENH-90" target="45BSm1O7VdkWARTOZIum-0" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="9dBcJZHVnKRbIBQjwENH-90" value="&lt;b&gt;RouteContext&lt;/b&gt; routeContext = this.&lt;b&gt;route&lt;/b&gt;(queryContext, database, globalRuleMetaData, props, connectionContext);&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;根据规则获取逻辑数据库、表对应的真实数据库、表&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="960" y="2130" width="200" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="9dBcJZHVnKRbIBQjwENH-95" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="9dBcJZHVnKRbIBQjwENH-92" target="9dBcJZHVnKRbIBQjwENH-94" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="45BSm1O7VdkWARTOZIum-21" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="9dBcJZHVnKRbIBQjwENH-92" target="45BSm1O7VdkWARTOZIum-20" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="9dBcJZHVnKRbIBQjwENH-92" value="&lt;b&gt;SQLRewriteResult&lt;/b&gt; rewriteResult = this.rewrite(queryContext, database, globalRuleMetaData, props, routeContext, connectionContext);&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;重写sql语句：根据上面的真实库、表， 将逻辑sql（语法树对象）重写为真正的sql&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="960" y="2300" width="200" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="9dBcJZHVnKRbIBQjwENH-94" value="ExecutionContext result = this.&lt;b&gt;createExecutionContext&lt;/b&gt;(queryContext, database, &lt;b&gt;routeContext&lt;/b&gt;, rewriteResult);&lt;br&gt;return result;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="960" y="2400" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="9dBcJZHVnKRbIBQjwENH-96" value="&lt;font style=&quot;font-size: 10px;&quot;&gt;KernelProcessor&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="1010" y="2110" width="100" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="45BSm1O7VdkWARTOZIum-12" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;endArrow=diamondThin;endFill=1;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="9dBcJZHVnKRbIBQjwENH-97" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="-920" y="1720" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="9dBcJZHVnKRbIBQjwENH-97" value="&lt;p style=&quot;margin: 4px 0px 0px; text-align: center;&quot;&gt;QueryContext&lt;/p&gt;&lt;hr style=&quot;font-size: 10px;&quot;&gt;&lt;br&gt;&lt;br&gt;&lt;div&gt;&lt;div&gt;private final SQLStatementContext sqlStatementContext;&lt;/div&gt;&lt;div&gt;private final String sql;&lt;/div&gt;&lt;div&gt;private final List&amp;lt;Object&amp;gt; parameters;&lt;/div&gt;&lt;div&gt;private final String databaseName;&lt;/div&gt;&lt;div&gt;private final String schemaName;&lt;/div&gt;&lt;div&gt;private final HintValueContext hintValueContext;&lt;/div&gt;&lt;div&gt;private final boolean useCache;&lt;/div&gt;&lt;/div&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=10;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="-1400" y="1640" width="439" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="9dBcJZHVnKRbIBQjwENH-98" value="&lt;p style=&quot;margin: 4px 0px 0px; text-align: center;&quot;&gt;ExectionContext&lt;/p&gt;&lt;hr style=&quot;font-size: 10px;&quot;&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;private final QueryContext &lt;b&gt;queryContext&lt;/b&gt;;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;private final Collection&amp;lt;ExecutionUnit&amp;gt; executionUnits;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;private final RouteContext &lt;b&gt;routeContext&lt;/b&gt;;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=10;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="-920" y="1640" width="359" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="45BSm1O7VdkWARTOZIum-3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="45BSm1O7VdkWARTOZIum-0" target="45BSm1O7VdkWARTOZIum-2" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="45BSm1O7VdkWARTOZIum-7" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="45BSm1O7VdkWARTOZIum-0" target="45BSm1O7VdkWARTOZIum-6" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="45BSm1O7VdkWARTOZIum-0" value="SQLRouteExecutor executor = this.isNeedAllSchemas(...) ? new AllSQLRouteExecutor() : new &lt;b&gt;PartialSQLRouteExecutor&lt;/b&gt;(this.rules, this.props);" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="1200" y="2140" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="45BSm1O7VdkWARTOZIum-5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="45BSm1O7VdkWARTOZIum-2" target="45BSm1O7VdkWARTOZIum-4" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="45BSm1O7VdkWARTOZIum-2" value="this.routers = OrderedSPILoader.getServices(&lt;br&gt;&lt;b&gt;SQLRouter&lt;/b&gt;.class, rules);" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="1440" y="2140" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="45BSm1O7VdkWARTOZIum-4" value="&lt;div&gt;ShardingRule&amp;nbsp; -&amp;gt; &lt;b&gt;ShardingSQLRouter&lt;/b&gt;&amp;nbsp;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;SingleRule -&amp;gt; &lt;b&gt;SingleSQLRouter&lt;/b&gt;&lt;/span&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="1680" y="2140" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="45BSm1O7VdkWARTOZIum-9" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="45BSm1O7VdkWARTOZIum-6" target="45BSm1O7VdkWARTOZIum-8" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="45BSm1O7VdkWARTOZIum-6" value="return executor.&lt;b&gt;route&lt;/b&gt;(connectionContext, queryContext, globalRuleMetaData, database);&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;遍历 SQLRouter 创建路由上下文&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="1200" y="2220" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="45BSm1O7VdkWARTOZIum-15" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="45BSm1O7VdkWARTOZIum-8" target="45BSm1O7VdkWARTOZIum-14" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="45BSm1O7VdkWARTOZIum-8" value="RouteContext result = &lt;b&gt;ShardingRouteEngineFactory&lt;br&gt;&lt;/b&gt;.newInstance(...).route(rule);" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="1440" y="2220" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="45BSm1O7VdkWARTOZIum-11" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endArrow=diamondThin;endFill=1;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="45BSm1O7VdkWARTOZIum-10" target="9dBcJZHVnKRbIBQjwENH-98" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="45BSm1O7VdkWARTOZIum-10" value="&lt;p style=&quot;margin: 4px 0px 0px; text-align: center;&quot;&gt;RouteContext&lt;/p&gt;&lt;hr style=&quot;font-size: 10px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;某次执行的路由上下文&lt;br&gt;&lt;/font&gt;&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;//涉及的数据节点列表（节点信息包括真实的数据库名和数据表名），后续通过规则处理后会清空&lt;br&gt;&lt;/font&gt;&lt;div&gt;&lt;div&gt;private final Collection&amp;lt;Collection&amp;lt;DataNode&amp;gt;&amp;gt; &lt;b&gt;originalDataNodes&lt;/b&gt; = new LinkedList&amp;lt;&amp;gt;();&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;//和数据节点信息差不多，不过多了逻辑节点名字，经过规则处理后存储实际查询的真实数据库&lt;br&gt;和数据表名&lt;/font&gt;&lt;/div&gt;&lt;div&gt;private final Collection&amp;lt;RouteUnit&amp;gt; &lt;b&gt;routeUnits&lt;/b&gt; = new LinkedHashSet&amp;lt;&amp;gt;();&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;private final Map&amp;lt;Class&amp;lt;? extends ShardingSphereRule&amp;gt;, RouteStageContext&amp;gt;&amp;nbsp;&lt;/div&gt;&lt;div&gt;&amp;nbsp; &lt;b&gt;routeStageContexts&lt;/b&gt; = new LinkedHashMap&amp;lt;&amp;gt;();&lt;/div&gt;&lt;/div&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=10;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="-1400" y="1840" width="439" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="45BSm1O7VdkWARTOZIum-13" value="&lt;font style=&quot;font-size: 10px;&quot;&gt;SQLRouteEngine&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="1250" y="2120" width="100" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="45BSm1O7VdkWARTOZIum-14" value="其实就是从 ShardingRule 中根据当前查询提供的逻辑表等信息获取根据规则和算法计算实际应该查询的&lt;b&gt;真实表&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;路径太深了，暂略&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="1680" y="2220" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="45BSm1O7VdkWARTOZIum-18" value="&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;ShardingRouteEngine&lt;br&gt;有多种实现，后面再研究&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="1895" y="2230" width="130" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="45BSm1O7VdkWARTOZIum-19" value="&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;result = {RouteContext@7522}&amp;nbsp;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;&amp;nbsp;originalDataNodes = {LinkedList@7575}&amp;nbsp; size = 0&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;&amp;nbsp;routeUnits = {LinkedHashSet@7576}&amp;nbsp; size = 2&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;&amp;nbsp; 0 = {RouteUnit@7579}&amp;nbsp;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;&amp;nbsp; &amp;nbsp;&lt;b&gt;dataSourceMapper&lt;/b&gt; = {RouteMapper@7583} &quot;RouteMapper(logicName=ds0, actualName=ds0)&quot;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;&amp;nbsp; &amp;nbsp;&lt;b&gt;tableMappers&lt;/b&gt; = {LinkedList@7584}&amp;nbsp; size = 2&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;&amp;nbsp; &amp;nbsp; 0 = {RouteMapper@7595} &quot;RouteMapper(logicName=t_order_item, actualName=t_order_item_0)&quot;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;&amp;nbsp; &amp;nbsp; 1 = {RouteMapper@7591} &quot;RouteMapper(logicName=t_order, actualName=t_order_1)&quot;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;&amp;nbsp; 1 = {RouteUnit@7580}&amp;nbsp;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;&amp;nbsp; &amp;nbsp;&lt;b&gt;dataSourceMapper&lt;/b&gt; = {RouteMapper@7586} &quot;RouteMapper(logicName=ds0, actualName=ds0)&quot;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;&amp;nbsp; &amp;nbsp;&lt;b&gt;tableMappers&lt;/b&gt; = {LinkedList@7587}&amp;nbsp; size = 2&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;&amp;nbsp; &amp;nbsp; 0 = {RouteMapper@7590} &quot;RouteMapper(logicName=t_order_item, actualName=t_order_item_1)&quot;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;&amp;nbsp; &amp;nbsp; 1 = {RouteMapper@7591} &quot;RouteMapper(logicName=t_order, actualName=t_order_1)&quot;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;&amp;nbsp;routeStageContexts = {LinkedHashMap@7577}&amp;nbsp; size = 0&lt;/font&gt;&lt;/div&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="-1400" y="2000" width="470" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="45BSm1O7VdkWARTOZIum-26" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="45BSm1O7VdkWARTOZIum-20" target="45BSm1O7VdkWARTOZIum-25" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="45BSm1O7VdkWARTOZIum-20" value="&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font style=&quot;font-size: 9px;&quot;&gt;SQLRewriteEntry sqlRewriteEntry = new &lt;b&gt;SQLRewriteEntry&lt;/b&gt;(database, globalRuleMetaData, props);&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;&lt;font style=&quot;font-size: 9px;&quot;&gt;return sqlRewriteEntry.&lt;b&gt;rewrite&lt;/b&gt;(queryContext.getSql(), queryContext.getParameters(), queryContext.getSqlStatementContext(), routeContext, connectionContext, queryContext.getHintValueContext());&lt;/font&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="1200" y="2310" width="440" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="45BSm1O7VdkWARTOZIum-22" value="DriverExecutor 初始化" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;arcSize=11;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="1480" y="1180" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="45BSm1O7VdkWARTOZIum-24" value="&lt;p style=&quot;margin: 4px 0px 0px; text-align: center;&quot;&gt;SQLRewriteEntry&lt;/p&gt;&lt;hr style=&quot;font-size: 10px;&quot;&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;div&gt;private final ShardingSphereDatabase database;&lt;/div&gt;&lt;div&gt;private final RuleMetaData globalRuleMetaData;&lt;/div&gt;&lt;div&gt;private final ConfigurationProperties props;&lt;/div&gt;&lt;div&gt;private final Map&amp;lt;ShardingSphereRule, SQLRewriteContextDecorator&amp;gt; decorators;&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=10;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="-480" y="2120" width="439" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="45BSm1O7VdkWARTOZIum-28" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="45BSm1O7VdkWARTOZIum-25" target="45BSm1O7VdkWARTOZIum-27" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="45BSm1O7VdkWARTOZIum-25" value="SQLTranslatorRule rule = globalRuleMetaData.getSingleRule(&lt;br&gt;SQLTranslatorRule.class);" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="1680" y="2310" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="45BSm1O7VdkWARTOZIum-30" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="45BSm1O7VdkWARTOZIum-27" target="45BSm1O7VdkWARTOZIum-29" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="45BSm1O7VdkWARTOZIum-33" value="Y" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="45BSm1O7VdkWARTOZIum-30" vertex="1" connectable="0">
+          <mxGeometry x="-0.0019" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="45BSm1O7VdkWARTOZIum-32" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="45BSm1O7VdkWARTOZIum-27" target="45BSm1O7VdkWARTOZIum-31" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="45BSm1O7VdkWARTOZIum-34" value="N" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="45BSm1O7VdkWARTOZIum-32" vertex="1" connectable="0">
+          <mxGeometry x="-0.0171" y="2" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="45BSm1O7VdkWARTOZIum-27" value="routeContext&lt;br&gt;.getRouteUnits()&lt;br&gt;.isEmpty()" style="rhombus;whiteSpace=wrap;html=1;fontSize=10;rounded=1;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="1720" y="2420" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="45BSm1O7VdkWARTOZIum-29" value="new &lt;b&gt;GenericSQLRewriteEngine&lt;/b&gt;(rule, protocolType, storageUnits).rewrite(sqlRewriteContext)" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="1900" y="2390" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="45BSm1O7VdkWARTOZIum-36" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="45BSm1O7VdkWARTOZIum-31" target="45BSm1O7VdkWARTOZIum-35" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="45BSm1O7VdkWARTOZIum-31" value="new &lt;b&gt;RouteSQLRewriteEngine&lt;/b&gt;(rule, protocolType,storageUnits)&lt;br&gt;.&lt;b&gt;rewrite&lt;/b&gt;(&lt;b&gt;sqlRewriteContext&lt;/b&gt;, routeContext)" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="1900" y="2470" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="45BSm1O7VdkWARTOZIum-38" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="45BSm1O7VdkWARTOZIum-35" target="45BSm1O7VdkWARTOZIum-37" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="45BSm1O7VdkWARTOZIum-42" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="45BSm1O7VdkWARTOZIum-35" target="45BSm1O7VdkWARTOZIum-41" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="45BSm1O7VdkWARTOZIum-35" value="&lt;font style=&quot;font-size: 9px;&quot;&gt;for routeUnits：&lt;br&gt;&lt;b&gt;sqlRewriteUnits&lt;/b&gt;.put(each, new &lt;b&gt;SQLRewriteUnit&lt;/b&gt;(new &lt;b&gt;RouteSQLBuilder&lt;/b&gt;(sqlRewriteContext, each).&lt;b&gt;toSQL&lt;/b&gt;(), getParameters(sqlRewriteContext.getParameterBuilder(), routeContext, each)));&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;这里有两个RouteUnit，右边展示了其中一个routeUnit的实际sql组装流程&lt;/font&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="2118" y="2460" width="242" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="45BSm1O7VdkWARTOZIum-40" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="45BSm1O7VdkWARTOZIum-37" target="45BSm1O7VdkWARTOZIum-39" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="45BSm1O7VdkWARTOZIum-37" value="return new RouteSQLRewriteResult(&lt;br&gt;&lt;b&gt;translate&lt;/b&gt;(sqlRewriteContext&lt;br&gt;.getSqlStatementContext().getSqlStatement(), sqlRewriteUnits));&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;sqlRewriteUnits 本质即 routeUnits&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="2139" y="2710" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="45BSm1O7VdkWARTOZIum-39" value="for sqlRewriteUnits.entrySet()：&lt;br&gt;String sql = &lt;b&gt;translatorRule&lt;/b&gt;.translate(&lt;br&gt;entry.getValue().getSql(), sqlStatement, protocolType, storageType);&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;对实际的sql再进行转换一次，并没有用到略&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="2380" y="2710" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="45BSm1O7VdkWARTOZIum-46" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="45BSm1O7VdkWARTOZIum-41" target="45BSm1O7VdkWARTOZIum-45" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="45BSm1O7VdkWARTOZIum-41" value="AbstractSQLBuilder$toSQL()&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;原逻辑sql + AST对象+RouteUnit -&amp;gt; 实际sql&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="2380" y="2470" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="45BSm1O7VdkWARTOZIum-43" value="&lt;font style=&quot;font-size: 10px;&quot;&gt;AbstractSQLBuilder&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="2425" y="2440" width="110" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="45BSm1O7VdkWARTOZIum-44" value="&lt;p style=&quot;margin: 4px 0px 0px; text-align: center;&quot;&gt;SQLRewriteContext&lt;/p&gt;&lt;hr style=&quot;font-size: 10px;&quot;&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;//&lt;/div&gt;&lt;div&gt;&lt;div&gt;private final ShardingSphereDatabase database;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;private final SQLStatementContext &lt;b&gt;sqlStatementContext&lt;/b&gt;;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;private final String sql;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;private final List&amp;lt;Object&amp;gt; parameters;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;private final ParameterBuilder parameterBuilder;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;private final List&amp;lt;SQLToken&amp;gt; sqlTokens = new LinkedList&amp;lt;&amp;gt;();&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;private final SQLTokenGenerators sqlTokenGenerators = new SQLTokenGenerators();&lt;/span&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;private final ConnectionContext connectionContext;&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=10;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="-480" y="2280" width="439" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="45BSm1O7VdkWARTOZIum-48" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="45BSm1O7VdkWARTOZIum-45" target="45BSm1O7VdkWARTOZIum-47" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="45BSm1O7VdkWARTOZIum-45" value="Collections.sort(context.getSqlTokens());&lt;br&gt;StringBuilder result = new StringBuilder();&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;SqlToken 按 startIndex 排序, 此测试中&lt;br&gt;是两个 TableToken&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="2620" y="2470" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="45BSm1O7VdkWARTOZIum-50" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="45BSm1O7VdkWARTOZIum-47" target="45BSm1O7VdkWARTOZIum-49" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="45BSm1O7VdkWARTOZIum-47" value="&lt;font style=&quot;font-size: 9px;&quot;&gt;result.append(context.&lt;b&gt;getSql&lt;/b&gt;(), 0, context.getSqlTokens().get(0).getStartIndex());&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;把 sql [0, startIndex) 的子序列存入StringBuilder&lt;/font&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="2620" y="2550" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="45BSm1O7VdkWARTOZIum-53" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="45BSm1O7VdkWARTOZIum-49" target="45BSm1O7VdkWARTOZIum-52" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="45BSm1O7VdkWARTOZIum-49" value="&lt;font size=&quot;1&quot;&gt;for context.getSqlTokens()&lt;br&gt;result.append(getSQLTokenText(each));&lt;br&gt;result.append(getConjunctionText(each));&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;追加实际表名、追加连接子序列&lt;/font&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="2620" y="2630" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="45BSm1O7VdkWARTOZIum-51" value="&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;&quot;&gt;&lt;font style=&quot;&quot;&gt;&lt;font style=&quot;&quot;&gt;&lt;br&gt;实际SQL组装流程：（只需要根据 TableToken&amp;nbsp;&lt;span style=&quot;font-size: 10px;&quot;&gt;替换数据表名）&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size: 10px;&quot;&gt;context.getSql() 获取的是原逻辑 sql：&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size: 10px;&quot;&gt;SELECT i.* FROM &lt;/span&gt;&lt;b style=&quot;font-size: 10px;&quot;&gt;t_order&lt;/b&gt;&lt;span style=&quot;font-size: 10px;&quot;&gt; o JOIN &lt;/span&gt;&lt;b style=&quot;font-size: 10px;&quot;&gt;t_order_item&lt;/b&gt;&lt;span style=&quot;font-size: 10px;&quot;&gt; i ON o.order_id=i.order_id WHERE o.user_id=? AND o.order_id=?&lt;/span&gt;&lt;br&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;[0,16) 的子序列 + 追加实际表名 + 追加原逻辑表名末尾到下一个逻辑表明开始之前的字段 +&amp;nbsp;&lt;/font&gt;&lt;/font&gt;&lt;/font&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;同理替换第二个TableToken&lt;/font&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;&lt;br&gt;&lt;/font&gt;&quot;SELECT i.* FROM &quot; + “t_order_1&quot; + &quot; o JOIN &quot; + ”t_order_item_0“ + &quot;&lt;/font&gt;&lt;/font&gt;&lt;span style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp;i ON o.order_id=i.order_id WHERE o.user_id=? AND o.order_id=?&lt;/span&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;&quot;&lt;br&gt;&lt;/font&gt;&lt;/font&gt;&lt;/font&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px;&quot;&gt;&lt;br&gt;&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="2830" y="2490" width="630" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="45BSm1O7VdkWARTOZIum-52" value="&lt;font style=&quot;font-size: 9px;&quot;&gt;String actualTableName = TokenUtils.&lt;b&gt;getLogicAndActualTableMap&lt;/b&gt;(&lt;br&gt;routeUnit, sqlStatementContext, shardingRule).get(tableName.getValue()&lt;br&gt;.toLowerCase());&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="2860" y="2630" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="45BSm1O7VdkWARTOZIum-54" value="&lt;font style=&quot;font-size: 10px;&quot;&gt;TableToken&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="2925" y="2600" width="70" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="45BSm1O7VdkWARTOZIum-57" value="&lt;font style=&quot;font-size: 10px;&quot;&gt;SQLTranslatorRule&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="2425" y="2680" width="110" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="45BSm1O7VdkWARTOZIum-58" value="" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="720" y="2480" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Bpu915Tbay1XUohn53v4-1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="45BSm1O7VdkWARTOZIum-60" target="Bpu915Tbay1XUohn53v4-0" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="45BSm1O7VdkWARTOZIum-60" value="return &lt;b&gt;useCache&lt;/b&gt; ? parseTreeCache.get(sql) : sqlParserExecutor.parse(sql);&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;因为前面sqlStatementParserEngine&lt;br&gt;有缓存了这里就不需要了再开启了&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;arcSize=11;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="2440" y="1100" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Bpu915Tbay1XUohn53v4-3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="Bpu915Tbay1XUohn53v4-0" target="Bpu915Tbay1XUohn53v4-2" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Bpu915Tbay1XUohn53v4-0" value="return useCache ? parseTreeCache.get(sql) : sqlParserExecutor.&lt;b&gt;parse&lt;/b&gt;(sql);" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;arcSize=11;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="2680" y="1100" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Bpu915Tbay1XUohn53v4-6" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="Bpu915Tbay1XUohn53v4-2" target="Bpu915Tbay1XUohn53v4-5" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Bpu915Tbay1XUohn53v4-2" value="SQLDialectParserFacade sqlParserFacade = DatabaseTypedSPILoader&lt;br&gt;.getService(&lt;b&gt;SQLDialectParserFacade&lt;/b&gt;.class, databaseType);" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;arcSize=11;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="2920" y="1100" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Bpu915Tbay1XUohn53v4-4" value="SqlParserExecutor" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="2960" y="1070" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Bpu915Tbay1XUohn53v4-8" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="Bpu915Tbay1XUohn53v4-5" target="Bpu915Tbay1XUohn53v4-7" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Bpu915Tbay1XUohn53v4-20" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="Bpu915Tbay1XUohn53v4-5" target="Bpu915Tbay1XUohn53v4-14" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Bpu915Tbay1XUohn53v4-5" value="&lt;b&gt;SQLParser&lt;/b&gt; sqlParser = &lt;b&gt;SQLParserFactory&lt;/b&gt;.newInstance(sql, sqlParserFacade.&lt;b&gt;getLexerClass&lt;/b&gt;(), sqlParserFacade.&lt;b&gt;getParserClass&lt;/b&gt;());&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;这里获取Antlr4词法分析器,语法解析器&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;arcSize=11;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="2920" y="1181" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Bpu915Tbay1XUohn53v4-10" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="Bpu915Tbay1XUohn53v4-7" target="Bpu915Tbay1XUohn53v4-9" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Bpu915Tbay1XUohn53v4-7" value="((Parser) sqlParser).getInterpreter()&lt;br&gt;.setPredictionMode(PredictionMode.SLL);" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;arcSize=11;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="2920" y="1340" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Bpu915Tbay1XUohn53v4-18" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="Bpu915Tbay1XUohn53v4-9" target="Bpu915Tbay1XUohn53v4-17" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Bpu915Tbay1XUohn53v4-9" value="return (ParseASTNode) sqlParser.&lt;b&gt;parse&lt;/b&gt;();" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;arcSize=11;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="2920" y="1500" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Bpu915Tbay1XUohn53v4-11" value="&lt;p style=&quot;margin: 4px 0px 0px; text-align: center;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;hr style=&quot;font-size: 10px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;ShardingSphere&amp;nbsp;&lt;br&gt;&lt;/font&gt;&lt;br&gt;&lt;br&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=10;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="-961" y="1100" width="439" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="Bpu915Tbay1XUohn53v4-27" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="Bpu915Tbay1XUohn53v4-12" target="Bpu915Tbay1XUohn53v4-26" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Bpu915Tbay1XUohn53v4-12" value="return createSQLParser(tokenStream, parserClass);" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;arcSize=11;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="3160" y="1340" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Bpu915Tbay1XUohn53v4-21" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="Bpu915Tbay1XUohn53v4-14" target="Bpu915Tbay1XUohn53v4-12" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Bpu915Tbay1XUohn53v4-23" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="Bpu915Tbay1XUohn53v4-14" target="Bpu915Tbay1XUohn53v4-22" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Bpu915Tbay1XUohn53v4-14" value="tokenStream = createTokenStream(sql, lexerClass)" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;arcSize=11;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="3160" y="1181" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Bpu915Tbay1XUohn53v4-34" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="Bpu915Tbay1XUohn53v4-17" target="Bpu915Tbay1XUohn53v4-33" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Bpu915Tbay1XUohn53v4-36" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="Bpu915Tbay1XUohn53v4-17" target="Bpu915Tbay1XUohn53v4-35" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Bpu915Tbay1XUohn53v4-17" value="executeContext = this.&lt;b&gt;execute&lt;/b&gt;()&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;MySQLParser 继承 MySQLStatementParser&lt;br&gt;后者是Antlr4自动生成的&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;arcSize=11;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="3160" y="1500" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Bpu915Tbay1XUohn53v4-25" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="Bpu915Tbay1XUohn53v4-22" target="Bpu915Tbay1XUohn53v4-24" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Bpu915Tbay1XUohn53v4-31" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="Bpu915Tbay1XUohn53v4-22" target="Bpu915Tbay1XUohn53v4-30" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Bpu915Tbay1XUohn53v4-22" value="&lt;font style=&quot;font-size: 9px;&quot;&gt;&lt;font style=&quot;font-size: 9px;&quot;&gt;Lexer lexer = (Lexer) &lt;b&gt;lexerClass&lt;/b&gt;.getConstructor(CharStream.class)&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size: 9px;&quot;&gt;.newInstance(getSQLCharStream(sql));&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size: 9px;&quot;&gt;lexer.&lt;b&gt;removeErrorListener&lt;/b&gt;(&lt;br&gt;ConsoleErrorListener.INSTANCE);&lt;/font&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;arcSize=11;fillColor=#d5e8d4;strokeColor=#82b366;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="3400" y="1181" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Bpu915Tbay1XUohn53v4-24" value="&lt;font style=&quot;&quot;&gt;&lt;font size=&quot;1&quot;&gt;return new &lt;b&gt;CommonTokenStream&lt;/b&gt;(lexer);&lt;/font&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;arcSize=11;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="3400" y="1260" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Bpu915Tbay1XUohn53v4-29" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="Bpu915Tbay1XUohn53v4-26" target="Bpu915Tbay1XUohn53v4-28" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Bpu915Tbay1XUohn53v4-26" value="SQLParser result = &lt;b&gt;parserClass&lt;/b&gt;&lt;br&gt;.getConstructor(TokenStream.class)&lt;br&gt;.newInstance(tokenStream);" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;arcSize=11;fillColor=#d5e8d4;strokeColor=#82b366;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="3400" y="1340" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Bpu915Tbay1XUohn53v4-28" value="&lt;div&gt;((Parser) result).&lt;b&gt;setErrorHandler&lt;/b&gt;(new BailErrorStrategy());&lt;/div&gt;&lt;div&gt;((Parser) result).&lt;b&gt;removeErrorListener&lt;/b&gt;(&lt;/div&gt;&lt;div&gt;ConsoleErrorListener.INSTANCE);&lt;/div&gt;&lt;div&gt;return result;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;arcSize=11;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="3400" y="1420" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Bpu915Tbay1XUohn53v4-30" value="&lt;font style=&quot;&quot;&gt;&lt;font size=&quot;1&quot;&gt;CodePointBuffer buffer = CodePointBuffer.withChars(&lt;br&gt;CharBuffer.wrap(sql.toCharArray()));&lt;br&gt;&lt;/font&gt;return CodePointCharStream.fromBuffer(buffer);&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;arcSize=11;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="3640" y="1181" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Bpu915Tbay1XUohn53v4-32" value="MySQLParser" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="3210" y="1470" width="100" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Bpu915Tbay1XUohn53v4-33" value="return new &lt;b&gt;ParseASTNode&lt;/b&gt;(executeContext, (CommonTokenStream) getTokenStream());" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;arcSize=11;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="3160" y="1580" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Bpu915Tbay1XUohn53v4-35" value="MySQLStatementParser$&lt;b&gt;execute&lt;/b&gt;()" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;arcSize=11;fillColor=#d5e8d4;strokeColor=#82b366;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="3400" y="1500" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Bpu915Tbay1XUohn53v4-41" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="Bpu915Tbay1XUohn53v4-37" target="Bpu915Tbay1XUohn53v4-40" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Bpu915Tbay1XUohn53v4-37" value="return this.sqlStatementParserEngine.parse(sql, useCache);" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;arcSize=11;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="1480" y="1100" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Bpu915Tbay1XUohn53v4-42" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="Bpu915Tbay1XUohn53v4-43" target="9dBcJZHVnKRbIBQjwENH-68" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Bpu915Tbay1XUohn53v4-40" value="return &lt;b&gt;useCache&lt;/b&gt; ? sqlStatementCache.get(sql) : sqlStatementParserExecutor.parse(sql);&lt;br&gt;&lt;font style=&quot;font-size: 9px;&quot; color=&quot;#007fff&quot;&gt;这里使用了缓存的，所以到下一步之间还有caffine缓存，不存在则创建的逻辑，先忽略&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;arcSize=11;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="1720" y="1100" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Bpu915Tbay1XUohn53v4-44" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="Bpu915Tbay1XUohn53v4-40" target="Bpu915Tbay1XUohn53v4-43" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1920" y="1130" as="sourcePoint" />
+            <mxPoint x="2200" y="1130" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Bpu915Tbay1XUohn53v4-43" value="return &lt;b&gt;sqlStatementParserExecutor&lt;/b&gt;.parse(sql);" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;arcSize=11;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="1960" y="1100" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Bpu915Tbay1XUohn53v4-51" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="Bpu915Tbay1XUohn53v4-45" target="Bpu915Tbay1XUohn53v4-50" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Bpu915Tbay1XUohn53v4-45" value="return visitorEngine.&lt;b&gt;visit&lt;/b&gt;(parseASTNode);&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;将上面原始的 &lt;b&gt;AST&lt;/b&gt;（ParseASTNode）转成 &lt;b&gt;SQlStatement (继承 ASTNode, 是更易读的AST)&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;arcSize=11;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="2200" y="1420" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Bpu915Tbay1XUohn53v4-47" value="&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;result = {&lt;b style=&quot;&quot;&gt;ParseASTNode&lt;/b&gt;@6910}&amp;nbsp;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;&amp;nbsp;&lt;b&gt;parseTree&lt;/b&gt; = {MySQLStatementParser$ExecuteContext@6911} &quot;[]&quot;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;&amp;nbsp; children = {ArrayList@6913}&amp;nbsp; size = 2&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;&amp;nbsp; start = {CommonToken@6914} &quot;[@0,0:5=&#39;SELECT&#39;,&amp;lt;639&amp;gt;,1:0]&quot;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;&amp;nbsp; stop = {CommonToken@6915} &quot;[@29,105:104=&#39;&amp;lt;EOF&amp;gt;&#39;,&amp;lt;-1&amp;gt;,1:105]&quot;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;&amp;nbsp; exception = null&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;&amp;nbsp; parent = null&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;&amp;nbsp; invokingState = -1&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;&amp;nbsp;&lt;b&gt;tokenStream&lt;/b&gt; = {CommonTokenStream@6836}&amp;nbsp;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;&amp;nbsp; channel = 0&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;&amp;nbsp; tokenSource = {MySQLLexer@6933}&amp;nbsp;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;&amp;nbsp; tokens = {ArrayList@6934}&amp;nbsp; size = 30&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;&amp;nbsp; p = 29&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#007fff&quot;&gt;&amp;nbsp; fetchedEOF = true&lt;/font&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="2310" y="1170" width="330" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="Bpu915Tbay1XUohn53v4-53" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="Bpu915Tbay1XUohn53v4-50" target="Bpu915Tbay1XUohn53v4-52" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Bpu915Tbay1XUohn53v4-55" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="Bpu915Tbay1XUohn53v4-50" target="Bpu915Tbay1XUohn53v4-54" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Bpu915Tbay1XUohn53v4-50" value="SQLStatementVisitor visitor = &lt;b&gt;SQLStatementVisitorFactory&lt;/b&gt;.newInstance(&lt;br&gt;databaseType, SQLVisitorRule.valueOf(parseASTNode&lt;br&gt;.getRootNode().getClass()));" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;arcSize=11;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="2440" y="1420" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Bpu915Tbay1XUohn53v4-58" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="Bpu915Tbay1XUohn53v4-52" target="Bpu915Tbay1XUohn53v4-56" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2660" y="1530" />
+              <mxPoint x="2660" y="1570" />
+              <mxPoint x="2420" y="1570" />
+              <mxPoint x="2420" y="1610" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Bpu915Tbay1XUohn53v4-52" value="ASTNode result = parseASTNode&lt;br&gt;.getRootNode().&lt;b&gt;accept&lt;/b&gt;(visitor);&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;这里走到Antlr4自动生成的代码，会回调VIsitor 方法&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;arcSize=11;fillColor=#d5e8d4;strokeColor=#82b366;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="2440" y="1500" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Bpu915Tbay1XUohn53v4-54" value="&lt;font style=&quot;font-size: 9px;&quot;&gt;SQLStatementVisitorFacade facade = DatabaseTypedSPILoader.getService(&lt;br&gt;&lt;b&gt;SQLStatementVisitorFacade&lt;/b&gt;.class, databaseType);&lt;br&gt;return &lt;b&gt;createParseTreeVisitor&lt;/b&gt;(facade, visitorRule.getType());&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;arcSize=11;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="2670" y="1420" width="220" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Bpu915Tbay1XUohn53v4-60" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="zc8bMzdUZFDcH8a9lfG6-1" source="Bpu915Tbay1XUohn53v4-56" target="Bpu915Tbay1XUohn53v4-59" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Bpu915Tbay1XUohn53v4-56" value="MySQLStatementVisitor$&lt;br&gt;&lt;b&gt;visitSelect&lt;/b&gt;(final SelectContext ctx)&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;这里看到就是通过 Visitor 转换的，&lt;br&gt;返回ASTNode&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;arcSize=11;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="2440" y="1580" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Bpu915Tbay1XUohn53v4-59" value="详细参考&amp;nbsp;&lt;br&gt;program-compilation/antlr4-example&lt;br&gt;抽离并简化了解析流程" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;arcSize=11;" parent="zc8bMzdUZFDcH8a9lfG6-1" vertex="1">
+          <mxGeometry x="2680" y="1580" width="200" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
