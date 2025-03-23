@@ -48,10 +48,12 @@
   + [自动化测试](#自动化测试)
 * [Go](#Go)
   + [SDK](#SDK-1)
+  + [服务调用](#服务调用-1)
   + [微服务](#微服务-1)
   + [注册中心/配置中心](#注册中心/配置中心-1)
   + [数据库相关](#数据库相关-1)
   + [分布式事务](#分布式事务-1)
+  + [音视频](#音视频)
 * [Rust](#Rust)
   + [异步框架](#异步框架)
   + [其他](#其他)
@@ -62,6 +64,8 @@
 > 后面列举的框架并非都分析过源码（心有余而力不足），有些只是计划，已经分析过源码的都有流程图链接。
 >
 > 有些分析流程图之前记录在其他仓库后续会转移到这里，慢慢补充吧。
+>
+> 学过的东西不使用过一段事件都只能留个大概的印象，这个无法避免，为此打算后面再罗列一些要点辅助快速回忆流程。
 
 
 
@@ -141,6 +145,18 @@
 
     + [ThreadLocal.drawio](docs/java/jdk/concurrent/ThreadLocal.drawio)
     + [ThreadLocal.drawio.png](docs/java/jdk/concurrent/ThreadLocal.drawio.png)
+
+    关键问题：
+
+    + ThreadLocal 为何会内存泄漏？
+
+      要点：不使用remove() 主动清理、两条引用链（使用线程池核心线程的话从这个线程对象开始到ThreadLocalMap Entry 到   value 对象的强引用始终存在，如果后续没有读写操作也不会通过检查清除过期的值，那么只要线程存在这个值就不会回收）。
+
+    + 弱引用是怎么在一定程度上解决内存泄漏问题的？
+
+      要点：弱引用 + 读写时检查清除过期Entry。
+
+      > key 是 ThreadLocal 对象的弱引用，ThreadLocal 被回收后，即使之前没有调用 remove() , key 在下次GC 也会被回收，当后续读写时发现 entry 不为null 但是 key 为 null，会执行 expungeStateEntry 或 replaceStateEntry 清理过期 entry。
 
 + **容器类**
 
@@ -590,7 +606,7 @@
 
 + **K8S**
 
-  K8S 通过自身容器管理功能以及集成微服务组件容器实现微服务支持。
+  K8S 通过自身容器管理功能以及集成微服务组件容器实现微服务支持，参考 Go 部分。
 
 ### 服务网格
 
@@ -1285,6 +1301,8 @@
 
   用于集成大语言模型到Java应用。
 
++ [**Spring-AI**](https://docs.spring.io/spring-ai/reference/)
+
 ### 自动化测试
 
 + [goreply](https://github.com/buger/goreplay)
@@ -1296,7 +1314,17 @@
 
 ### SDK
 
+### 服务调用
+
++ **gorilla/websocket**
+
 ### 微服务
+
++ **gopub**
+
+  基于 Beego + Vue 开发的一个 K8S 运维管理发布系统，支持 GitLab、Jenkins 发布，支持 Docker & K8S 管理服务镜像。
+
+  学习 K8S 运维，个人推荐使用 [`gopub`](https://github.com/linclin/gopub) 结合 [`sock-shop`](https://github.com/microservices-demo/microservices-demo)（可以替换为自己的Web项目）实战部署学习。
 
 + **Istio**
 
@@ -1315,7 +1343,30 @@
 
 + **DTM**
 
+### 通信框架
 
++ **WebRTC**
+
+  [WebRTC](https://github.com/RTC-Developer/WebRTC-Documentation-in-Chinese/blob/master/resource/Chapter1/1%20%E4%BB%8B%E7%BB%8D.md) 是一种Web实时通信规范，提供点对点通信、流媒体传输等功能。
+
+  + **[pion/webrtc](docs/go/pion/pion-webrtc.md)**
+  
+    连接建立流程：
+  
+    + [webrtc.drawio.png](docs/go/pion/imgs/webrtc.drawio.png)
+  
+    使用 Docker 虚拟网络模拟打洞流程参考：[kwseeker/p2p](https://github.com/kwseeker/p2p)。
+
+### 音视频
+
++ **lal**
+
+  从源码实现上看 lal 其实就是基于 **TCP** + **RTMP 等传输协议**实现的一个音视频流**转发**服务器。音视频发布者上传音视频数据块后，lal 会先读取并缓存在 Stream 对象（Stream 本质是个带着**读写双指针的缓冲**，最大存储 1MB 数据），直到读取到一个完整的消息（一个完整的消息可能比较大需要分成多个块传输）后会将这个消息**广播**发送给所有音视频订阅者（广播的实现方式是遍历订阅者连接会话逐个写）。
+
+  源码流程图：
+
+  + [lal.drawio](docs/go/lal/lal.drawio)
+  + [lal.drawio.png](docs/go/lal/lal.drawio.png)
 
 ## Rust
 
@@ -1380,6 +1431,8 @@
   曾经为了解决这个问题，试着写过源码分析文档（Markdown，写的多了回顾发现和重新看源码一样无法立刻回想起这段代码的作用和其他模块的关系）、画过思维导图、流程图（流程复杂了看着很乱）、时序图（绘制复杂且空间利用率低，即不方便看）但是效果都不好，最后突然想到为何不按时序图的编排方式画流程图，即使流程复杂也不会乱且格式较时序图更紧凑且方便绘制，后来因为流程图只能体现”算法“逻辑无法体现”数据结构“，又添加进去了简化的UML图，最终形成了现在的流程图。
 
   通过现在的流程图，可以快速回顾框架的主流程以及架构。
+
+  > 也可能是我属于视觉空间学习者，所以需要借助图表理解感觉更清晰更容易接受。
 
 + **大部分框架源码是复杂但不是难，只是梳理过程比较费时间**
 
