@@ -645,7 +645,7 @@
 
 + [**Jd-Hotkey**](docs/java/jd-hotkey/jd-hotkey.md)
 
-  热Key指的是频繁访问的数据；Hotkey 依赖的关键组件：Netty、Etcd、Caffeine、Guava。
+  热Key指的是频繁访问的数据；Jd-Hotkey 依赖的关键组件：Netty、Etcd、Caffeine、Guava。
 
   源码流程图：
 
@@ -669,6 +669,8 @@
   业务使用：
 
   + [jd-hotkey-usage.png](docs/java/jd-hotkey/imgs/jd-hotkey-usage.png)
+
+  > 得物出了一个[基于Redis内核的热key统计实现方案](https://tech.dewu.com/article?id=149)，实现原理是对 Redis Server 进行二开，拦截客户端请求**通过 LRU 进行热 key 统计**，然后外部可以通过**订阅通道**读取统计数据。
 
 + [**Sentinel**](docs/java/sentinel/sentinel-workflow.md)
 
@@ -1303,6 +1305,10 @@
 
 + [**Spring-AI**](https://docs.spring.io/spring-ai/reference/)
 
++ **MCP**
+
+  
+
 ### 自动化测试
 
 + [goreply](https://github.com/buger/goreplay)
@@ -1317,6 +1323,16 @@
 ### 服务调用
 
 + **gorilla/websocket**
+
+### 服务器
+
++ [**pocketbase**](https://github.com/pocketbase/pocketbase)
+
+  一个开源的 Go 后端应用。包括：具有实时订阅的嵌入式数据库 （SQLite）、内置文件和用户管理、方便的 Admin dashboard UI
+
+  和简单的 REST 式 API，另外**还可以使用 Go / JS 进行业务拓展**（比如自定义路由、接入数据库、事件钩子、任务调度、模板引擎、实时消息、文件系统、日志等等）。可以作为标准的后端应用、开发框架、工具包。
+
+  > 感觉定位上更接近是一个支持灵活拓展的低代码平台。
 
 ### 微服务
 
