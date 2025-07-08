@@ -1,1 +1,426 @@
-<mxfile host="Electron" modified="2022-11-22T14:24:25.759Z" agent="5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/16.1.2 Chrome/96.0.4664.55 Electron/16.0.5 Safari/537.36" etag="v_bu-YgNWCabYZc6UHDx" version="16.1.2" type="device"><diagram id="FIsGvV5R7z35TfT9LvNj" name="SET_STRING">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</diagram></mxfile>
+<mxfile host="Electron" modified="2024-12-19T12:28:28.059Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.6.5 Chrome/114.0.5735.243 Electron/25.3.1 Safari/537.36" etag="3Dtsx_P-v6yV6-nc5Jua" version="21.6.5" type="device">
+  <diagram id="FIsGvV5R7z35TfT9LvNj" name="SET_STRING">
+    <mxGraphModel dx="2261" dy="879" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="WDMRLD2G0XIC8tVrVw6H-48" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=10;fontColor=#007FFF;" parent="1" source="WDMRLD2G0XIC8tVrVw6H-2" target="WDMRLD2G0XIC8tVrVw6H-47" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="WDMRLD2G0XIC8tVrVw6H-2" value="void setCommand(client *c)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="40" y="40" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="WDMRLD2G0XIC8tVrVw6H-5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;curved=1;" parent="1" source="WDMRLD2G0XIC8tVrVw6H-3" target="WDMRLD2G0XIC8tVrVw6H-4" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="WDMRLD2G0XIC8tVrVw6H-7" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontColor=#007FFF;curved=1;" parent="1" source="WDMRLD2G0XIC8tVrVw6H-3" target="WDMRLD2G0XIC8tVrVw6H-6" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="WDMRLD2G0XIC8tVrVw6H-3" value="&lt;font style=&quot;font-size: 10px&quot;&gt;c-&amp;gt;argv[2] = tryObjectEncoding(c-&amp;gt;argv[2])&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;argv[2]是value的指针&lt;/font&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="240" y="120" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="WDMRLD2G0XIC8tVrVw6H-53" value="" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;fontColor=#007FFF;" parent="1" source="WDMRLD2G0XIC8tVrVw6H-4" target="WDMRLD2G0XIC8tVrVw6H-52" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="WDMRLD2G0XIC8tVrVw6H-4" value="&lt;font&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;setGenericCommand(c,flags,c-&amp;gt;argv[1],&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;c-&amp;gt;argv[2],expire,unit,NULL,NULL)&lt;/span&gt;&lt;br&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 8px&quot;&gt;后面的参数依次是key、value、超时时间、时间单位&lt;/font&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="240" y="400" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="WDMRLD2G0XIC8tVrVw6H-9" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;fontColor=#007FFF;" parent="1" source="WDMRLD2G0XIC8tVrVw6H-6" target="WDMRLD2G0XIC8tVrVw6H-8" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="WDMRLD2G0XIC8tVrVw6H-6" value="&lt;font&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;len = sdslen(s)&lt;br&gt;&lt;/span&gt;&lt;font style=&quot;font-size: 10px&quot; color=&quot;#007fff&quot;&gt;读取value内容长度&lt;/font&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="480" y="120" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="WDMRLD2G0XIC8tVrVw6H-13" value="len&amp;lt;=20" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;fontColor=#007FFF;curved=1;" parent="1" source="WDMRLD2G0XIC8tVrVw6H-8" target="WDMRLD2G0XIC8tVrVw6H-12" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="WDMRLD2G0XIC8tVrVw6H-15" value="len&amp;lt;=44" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=10;fontColor=#007FFF;curved=1;" parent="1" source="WDMRLD2G0XIC8tVrVw6H-8" target="WDMRLD2G0XIC8tVrVw6H-14" edge="1">
+          <mxGeometry x="0.0909" relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="640" y="250" />
+              <mxPoint x="640" y="300" />
+            </Array>
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="tFVNvqbKiq71Rdus_Qge-13" value="len&amp;gt;44" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontColor=#007FFF;" parent="1" source="WDMRLD2G0XIC8tVrVw6H-8" target="tFVNvqbKiq71Rdus_Qge-12" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="WDMRLD2G0XIC8tVrVw6H-8" value="len" style="rhombus;whiteSpace=wrap;html=1;rounded=1;" parent="1" vertex="1">
+          <mxGeometry x="520" y="210" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="WDMRLD2G0XIC8tVrVw6H-18" value="转换失败" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=10;fontColor=#007FFF;" parent="1" source="WDMRLD2G0XIC8tVrVw6H-12" target="WDMRLD2G0XIC8tVrVw6H-14" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="WDMRLD2G0XIC8tVrVw6H-20" value="转换成功" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;fontColor=#007FFF;" parent="1" source="WDMRLD2G0XIC8tVrVw6H-12" target="WDMRLD2G0XIC8tVrVw6H-19" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="WDMRLD2G0XIC8tVrVw6H-12" value="string2l(s,len,&amp;amp;value)&lt;br&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px&quot;&gt;尝试将value字符串转成long&lt;br&gt;一旦转换成功value指针将改为指向转换后的数字&lt;br&gt;&lt;/font&gt;" style="whiteSpace=wrap;html=1;rounded=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="680" y="190" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="WDMRLD2G0XIC8tVrVw6H-42" value="否则" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;fontSize=10;fontColor=#007FFF;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="WDMRLD2G0XIC8tVrVw6H-14" target="tFVNvqbKiq71Rdus_Qge-14" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="WDMRLD2G0XIC8tVrVw6H-14" value="&lt;font style=&quot;font-size: 10px&quot;&gt;如果之前的encoding就是OBJ_ENCODING_EMBSTR，直接返回&lt;br&gt;&lt;/font&gt;" style="whiteSpace=wrap;html=1;rounded=1;" parent="1" vertex="1">
+          <mxGeometry x="680" y="280" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="WDMRLD2G0XIC8tVrVw6H-16" value="比如 set name arvin&lt;br&gt;值传到这里sds类型就已经决定了，TODO 前面哪一步决定的？" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#007FFF;" parent="1" vertex="1">
+          <mxGeometry x="40" y="80" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="WDMRLD2G0XIC8tVrVw6H-17" value="碰到非数字字符直接返回0，即转换失败" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#007FFF;" parent="1" vertex="1">
+          <mxGeometry x="700" y="160" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="WDMRLD2G0XIC8tVrVw6H-28" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;fontSize=10;fontColor=#007FFF;" parent="1" source="WDMRLD2G0XIC8tVrVw6H-19" target="WDMRLD2G0XIC8tVrVw6H-27" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="WDMRLD2G0XIC8tVrVw6H-35" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=10;fontColor=#007FFF;" parent="1" source="WDMRLD2G0XIC8tVrVw6H-19" target="WDMRLD2G0XIC8tVrVw6H-29" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="WDMRLD2G0XIC8tVrVw6H-37" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=10;fontColor=#007FFF;" parent="1" source="WDMRLD2G0XIC8tVrVw6H-19" target="WDMRLD2G0XIC8tVrVw6H-33" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="WDMRLD2G0XIC8tVrVw6H-19" value="&lt;font style=&quot;font-size: 10px&quot;&gt;根据值大小以及编码方式&lt;br&gt;决定最终内部存储数据结构&lt;br&gt;&lt;/font&gt;" style="whiteSpace=wrap;html=1;rounded=1;" parent="1" vertex="1">
+          <mxGeometry x="920" y="200" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="tFVNvqbKiq71Rdus_Qge-7" value="" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontColor=#007FFF;" parent="1" source="WDMRLD2G0XIC8tVrVw6H-27" target="tFVNvqbKiq71Rdus_Qge-6" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="WDMRLD2G0XIC8tVrVw6H-27" value="&lt;font style=&quot;font-size: 10px&quot;&gt;OBJ_SHARED_INTEGERS&lt;br&gt;&lt;font style=&quot;font-size: 10px&quot; color=&quot;#007fff&quot;&gt;转换后值范围位于0～10000, 这部分整数是共享的，类似JVM常量池的数据&lt;/font&gt;&lt;br&gt;&lt;/font&gt;" style="whiteSpace=wrap;html=1;rounded=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxGeometry x="1120" y="200" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="WDMRLD2G0XIC8tVrVw6H-41" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;fontSize=10;fontColor=#007FFF;" parent="1" source="WDMRLD2G0XIC8tVrVw6H-29" target="WDMRLD2G0XIC8tVrVw6H-31" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="WDMRLD2G0XIC8tVrVw6H-29" value="&lt;font style=&quot;font-size: 10px&quot;&gt;OBJ_ENCODING_RAW&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;如果之前是RAW类型&lt;/font&gt;&lt;br style=&quot;font-size: 10px&quot;&gt;&lt;/font&gt;" style="whiteSpace=wrap;html=1;rounded=1;fontSize=10;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxGeometry x="1120" y="260" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="WDMRLD2G0XIC8tVrVw6H-30" value="object.c" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;fontColor=#007FFF;" parent="1" vertex="1">
+          <mxGeometry x="535" y="100" width="50" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="tFVNvqbKiq71Rdus_Qge-9" value="" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontColor=#007FFF;" parent="1" source="WDMRLD2G0XIC8tVrVw6H-31" target="tFVNvqbKiq71Rdus_Qge-8" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="WDMRLD2G0XIC8tVrVw6H-31" value="&lt;font style=&quot;font-size: 10px&quot;&gt;OBJ_ENCODING_INT&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;转成整数编码&lt;/font&gt;&lt;br style=&quot;font-size: 10px&quot;&gt;&lt;/font&gt;" style="whiteSpace=wrap;html=1;rounded=1;fontSize=10;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxGeometry x="1360" y="260" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="tFVNvqbKiq71Rdus_Qge-11" value="" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontColor=#007FFF;" parent="1" source="WDMRLD2G0XIC8tVrVw6H-33" target="tFVNvqbKiq71Rdus_Qge-10" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="WDMRLD2G0XIC8tVrVw6H-33" value="&lt;font&gt;OBJ_ENCODING_EMBSTR&lt;br&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 8px&quot;&gt;如果之前是EMBSTR, EMBSTR是EmbeddedString缩写&lt;/font&gt;&lt;br style=&quot;font-size: 10px&quot;&gt;&lt;/font&gt;" style="whiteSpace=wrap;html=1;rounded=1;fontSize=10;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxGeometry x="1120" y="320" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="WDMRLD2G0XIC8tVrVw6H-38" value="这里转换条件细节省略，看源码吧" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;fontColor=#007FFF;" parent="1" vertex="1">
+          <mxGeometry x="910" y="240" width="170" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="WDMRLD2G0XIC8tVrVw6H-46" value="&lt;font style=&quot;font-size: 10px&quot;&gt;这一步主要是&lt;b&gt;对value重新编码&lt;/b&gt;：&lt;br&gt;从setCommand传进来的编码类型可能是OBJ_ENCODING_EMBSTR、OBJ_ENCODING_RAW；&lt;br&gt;估计是考虑空间占用以及读写效率等因素，这里加了转换。&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=8;fontColor=#007FFF;" parent="1" vertex="1">
+          <mxGeometry x="350" y="170" width="170" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="WDMRLD2G0XIC8tVrVw6H-49" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;fontSize=8;fontColor=#007FFF;" parent="1" source="WDMRLD2G0XIC8tVrVw6H-47" target="WDMRLD2G0XIC8tVrVw6H-3" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="WDMRLD2G0XIC8tVrVw6H-47" value="&lt;font&gt;&lt;font style=&quot;font-size: 9px&quot;&gt;if(parseExtendedStringArgumentsOrReply(...))&lt;br&gt;&lt;/font&gt;&lt;font style=&quot;font-size: 9px&quot;&gt;return;&lt;br&gt;&lt;/font&gt;&lt;font style=&quot;font-size: 8px&quot; color=&quot;#007fff&quot;&gt;处理什么拓展的参数，成功直接返回？先忽略&lt;/font&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="240" y="40" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="WDMRLD2G0XIC8tVrVw6H-51" value="&lt;font style=&quot;font-size: 10px&quot;&gt;参数说明：&lt;br&gt;client *c,&amp;nbsp;&lt;span&gt;&#x9;&lt;/span&gt;客户端请求上下文&lt;br&gt;int flags,&amp;nbsp;&lt;span&gt;&#x9;&lt;/span&gt;set命令的选项, 6.2.6版本有9个选项，具体参考官方文档&lt;br&gt;robj *key,&lt;span style=&quot;white-space: pre&quot;&gt;&#x9;&lt;/span&gt;key数据对象&lt;br&gt;robj *val,&lt;span style=&quot;white-space: pre&quot;&gt;&#x9;&lt;/span&gt;value额数据对象&lt;br&gt;robj *expire,&amp;nbsp;&lt;span style=&quot;white-space: pre&quot;&gt;&#x9;&lt;/span&gt;超时时间的数据对象&lt;br&gt;int unit,&lt;span style=&quot;white-space: pre&quot;&gt;&#x9;&lt;/span&gt;时间单位类型&lt;br&gt;robj *ok_reply,&lt;span style=&quot;white-space: pre&quot;&gt;&#x9;&lt;/span&gt;正常返回值对象&lt;br&gt;robj *abort_reply&lt;span style=&quot;white-space: pre&quot;&gt;&#x9;&lt;/span&gt;异常返回值对象&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=8;fontColor=#007FFF;" parent="1" vertex="1">
+          <mxGeometry x="240" y="470" width="210" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="WDMRLD2G0XIC8tVrVw6H-55" value="" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;fontColor=#007FFF;" parent="1" source="WDMRLD2G0XIC8tVrVw6H-52" target="WDMRLD2G0XIC8tVrVw6H-54" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="WDMRLD2G0XIC8tVrVw6H-52" value="&lt;font&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;超时时间选项处理 EX 、PX&lt;/span&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="480" y="410" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="WDMRLD2G0XIC8tVrVw6H-57" value="" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;fontColor=#007FFF;" parent="1" source="WDMRLD2G0XIC8tVrVw6H-54" target="WDMRLD2G0XIC8tVrVw6H-56" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="WDMRLD2G0XIC8tVrVw6H-54" value="&lt;font&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;NX、XX选项处理&lt;br&gt;&lt;/span&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px&quot;&gt;暂略&lt;/font&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="480" y="480" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="WDMRLD2G0XIC8tVrVw6H-59" value="" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;fontColor=#007FFF;" parent="1" source="WDMRLD2G0XIC8tVrVw6H-56" target="WDMRLD2G0XIC8tVrVw6H-58" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="WDMRLD2G0XIC8tVrVw6H-56" value="&lt;font&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;SET_GET 选项&lt;br&gt;&lt;/span&gt;&lt;span style=&quot;color: rgb(0 , 127 , 255) ; font-size: 10px&quot;&gt;暂略&lt;/span&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="480" y="550" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="WDMRLD2G0XIC8tVrVw6H-61" value="" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;fontColor=#007FFF;" parent="1" source="WDMRLD2G0XIC8tVrVw6H-58" target="WDMRLD2G0XIC8tVrVw6H-60" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="WDMRLD2G0XIC8tVrVw6H-63" value="" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;fontColor=#007FFF;" parent="1" source="WDMRLD2G0XIC8tVrVw6H-58" target="WDMRLD2G0XIC8tVrVw6H-62" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="WDMRLD2G0XIC8tVrVw6H-58" value="&lt;font&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;&amp;nbsp;带 TTL 选项的set操作&lt;/span&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="480" y="624.5" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="WDMRLD2G0XIC8tVrVw6H-60" value="&lt;font&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;EXAT、PXAT 选项&lt;br&gt;&lt;/span&gt;&lt;span style=&quot;color: rgb(0 , 127 , 255) ; font-size: 10px&quot;&gt;暂略&lt;/span&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="480" y="700" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="WDMRLD2G0XIC8tVrVw6H-65" value="" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;fontColor=#007FFF;" parent="1" source="WDMRLD2G0XIC8tVrVw6H-62" target="WDMRLD2G0XIC8tVrVw6H-64" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="WDMRLD2G0XIC8tVrVw6H-67" value="" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;fontColor=#007FFF;" parent="1" source="WDMRLD2G0XIC8tVrVw6H-62" target="WDMRLD2G0XIC8tVrVw6H-66" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="WDMRLD2G0XIC8tVrVw6H-62" value="&lt;font&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;genericSetKey(c,c-&amp;gt;db,key, val,flags &amp;amp; OBJ_KEEPTTL,1)&lt;/span&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="680" y="624.5" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="WDMRLD2G0XIC8tVrVw6H-64" value="&lt;font&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;notifyKeyspaceEvent(&lt;br&gt;NOTIFY_STRING,&quot;set&quot;,key,&lt;br&gt;c-&amp;gt;db-&amp;gt;id)&lt;/span&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="680" y="700" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="WDMRLD2G0XIC8tVrVw6H-74" value="" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;fontColor=#007FFF;" parent="1" source="WDMRLD2G0XIC8tVrVw6H-66" target="WDMRLD2G0XIC8tVrVw6H-73" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="WDMRLD2G0XIC8tVrVw6H-83" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;fontSize=10;fontColor=#007FFF;" parent="1" source="WDMRLD2G0XIC8tVrVw6H-66" target="WDMRLD2G0XIC8tVrVw6H-82" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="WDMRLD2G0XIC8tVrVw6H-66" value="&lt;font&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;lookupKeyWrite(db,key) == NULL&lt;br&gt;&lt;/span&gt;&lt;font style=&quot;font-size: 10px&quot; color=&quot;#007fff&quot;&gt;此分库此key-value是否已存在&lt;/font&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="880" y="624.5" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="WDMRLD2G0XIC8tVrVw6H-79" value="Y" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=10;fontColor=#007FFF;" parent="1" source="WDMRLD2G0XIC8tVrVw6H-73" target="WDMRLD2G0XIC8tVrVw6H-77" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="WDMRLD2G0XIC8tVrVw6H-80" value="N" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=10;fontColor=#007FFF;" parent="1" source="WDMRLD2G0XIC8tVrVw6H-73" target="WDMRLD2G0XIC8tVrVw6H-78" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="WDMRLD2G0XIC8tVrVw6H-73" value="NULL ?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;rounded=1;" parent="1" vertex="1">
+          <mxGeometry x="921" y="930" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="bWw8nc-qsxXhkrvXqzMB-33" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;fontColor=#007FFF;" parent="1" source="WDMRLD2G0XIC8tVrVw6H-77" target="bWw8nc-qsxXhkrvXqzMB-32" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="WDMRLD2G0XIC8tVrVw6H-77" value="&lt;font&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;dbAdd(db,key,val)&lt;br&gt;&lt;/span&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px&quot;&gt;插值&lt;/font&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="1081" y="920" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="bWw8nc-qsxXhkrvXqzMB-25" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;fontColor=#007FFF;" parent="1" source="WDMRLD2G0XIC8tVrVw6H-78" target="bWw8nc-qsxXhkrvXqzMB-24" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="WDMRLD2G0XIC8tVrVw6H-78" value="&lt;font&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;dbOverwrite(db,key,val);&lt;br&gt;&lt;/span&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px&quot;&gt;覆盖&lt;/font&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="1080" y="1180" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="WDMRLD2G0XIC8tVrVw6H-86" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=10;fontColor=#007FFF;" parent="1" source="WDMRLD2G0XIC8tVrVw6H-82" target="WDMRLD2G0XIC8tVrVw6H-85" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="WDMRLD2G0XIC8tVrVw6H-88" value="" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;fontColor=#007FFF;" parent="1" source="WDMRLD2G0XIC8tVrVw6H-82" target="WDMRLD2G0XIC8tVrVw6H-87" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="WDMRLD2G0XIC8tVrVw6H-82" value="&lt;font&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;expireIfNeeded(db,key)&lt;br&gt;&lt;/span&gt;&lt;font style=&quot;font-size: 8px&quot; color=&quot;#007fff&quot;&gt;判断key是否超时，是则删除，这里可以看到key过期可能并不是立即删除&lt;/font&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="1080" y="625" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="WDMRLD2G0XIC8tVrVw6H-84" value="db.c" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;fontColor=#007FFF;" parent="1" vertex="1">
+          <mxGeometry x="745" y="605" width="30" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="bWw8nc-qsxXhkrvXqzMB-17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;fontSize=10;fontColor=#007FFF;" parent="1" source="WDMRLD2G0XIC8tVrVw6H-85" target="bWw8nc-qsxXhkrvXqzMB-16" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="WDMRLD2G0XIC8tVrVw6H-85" value="&lt;font&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;lookupKey(db,key,flags)&lt;/span&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="1080" y="680" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="bWw8nc-qsxXhkrvXqzMB-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;fontSize=8;fontColor=#007FFF;" parent="1" source="WDMRLD2G0XIC8tVrVw6H-87" target="bWw8nc-qsxXhkrvXqzMB-6" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="WDMRLD2G0XIC8tVrVw6H-87" value="&lt;font&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;de = dictFind(db-&amp;gt;expires,key-&amp;gt;ptr)&lt;br&gt;&lt;/span&gt;&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 10px&quot;&gt;查找key的dictEntry节点，和java Map差不多&lt;/font&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="1280" y="625" width="180" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="WDMRLD2G0XIC8tVrVw6H-90" value="即Redis key的超时时间是在&lt;b&gt; db-&amp;gt;expires (哈希表)&lt;/b&gt;中存储的，&lt;br&gt;dict *expires;&amp;nbsp;&lt;br&gt;对 key siphash 求得索引" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#007FFF;" parent="1" vertex="1">
+          <mxGeometry x="1280" y="570" width="280" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="bWw8nc-qsxXhkrvXqzMB-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.25;exitDx=0;exitDy=0;entryX=1;entryY=0;entryDx=0;entryDy=0;fontSize=8;fontColor=#007FFF;curved=1;" parent="1" source="bWw8nc-qsxXhkrvXqzMB-1" target="bWw8nc-qsxXhkrvXqzMB-2" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="-340" y="300" />
+              <mxPoint x="-340" y="260" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bWw8nc-qsxXhkrvXqzMB-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=-0.002;exitY=0.585;exitDx=0;exitDy=0;entryX=1;entryY=0;entryDx=0;entryDy=0;fontSize=8;fontColor=#007FFF;curved=1;exitPerimeter=0;" parent="1" source="bWw8nc-qsxXhkrvXqzMB-1" target="bWw8nc-qsxXhkrvXqzMB-3" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="-340" y="354" />
+              <mxPoint x="-340" y="420" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bWw8nc-qsxXhkrvXqzMB-1" value="&lt;p style=&quot;margin: 4px 0px 0px ; text-align: center ; text-decoration: underline&quot;&gt;&lt;font&gt;&lt;span style=&quot;color: rgb(0 , 0 , 0)&quot;&gt;struct dict&lt;/span&gt;&lt;br&gt;&lt;/font&gt;&lt;/p&gt;&lt;hr style=&quot;font-size: 10px&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 8px&quot;&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;&lt;font color=&quot;#000000&quot;&gt;dictType *type;&lt;/font&gt;&lt;span style=&quot;color: rgb(0 , 0 , 0)&quot;&gt;&#x9;&lt;/span&gt;//内部包含一组函数指针&lt;br&gt;（如果把struct当做对象，type就是方法集合）&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 8px&quot;&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;&lt;font color=&quot;#000000&quot;&gt;void *privdata;&lt;/font&gt;&lt;span style=&quot;color: rgb(0 , 0 , 0)&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;color: rgb(0 , 0 , 0)&quot;&gt;&#x9;&lt;/span&gt;//私有数据指针，&lt;/span&gt;&lt;/p&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;某些操作被调用时会传回给调用者&lt;/span&gt;&lt;p style=&quot;margin: 0px 0px 0px 8px&quot;&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;&lt;font color=&quot;#000000&quot;&gt;dictht ht[2];&lt;/font&gt;//两个 hash table, 类似Java Map, &lt;br&gt;ht[1] 用于rehash 阶段&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 8px&quot;&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;&lt;font color=&quot;#000000&quot;&gt;long rehashidx;&lt;/font&gt;&lt;span style=&quot;color: rgb(0 , 0 , 0)&quot;&gt;&#x9;&lt;/span&gt;//rehash进行到的位置，-1：没有rehash&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 8px&quot;&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 8px&quot;&gt;&lt;font color=&quot;#000000&quot;&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;int16_t pauserehash;&lt;/span&gt;&lt;/font&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;fontColor=#007FFF;" parent="1" vertex="1">
+          <mxGeometry x="-320" y="260" width="280" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="bWw8nc-qsxXhkrvXqzMB-2" value="&lt;p style=&quot;margin: 4px 0px 0px ; text-align: center ; text-decoration: underline&quot;&gt;&lt;font&gt;&lt;span style=&quot;color: rgb(0 , 0 , 0)&quot;&gt;struct dictType (一组函数指针)&lt;/span&gt;&lt;br&gt;&lt;/font&gt;&lt;/p&gt;&lt;hr style=&quot;font-size: 10px&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 8px&quot;&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;&lt;font color=&quot;#000000&quot;&gt;uint64_t (*hashFunction)(const void *key);&lt;/font&gt;&lt;span style=&quot;color: rgb(0 , 0 , 0) ; white-space: pre&quot;&gt;&#x9;&lt;/span&gt;//hash函数&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 8px&quot;&gt;&lt;font color=&quot;#000000&quot;&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;void *(*keyDup)(void *privdata, const void *key);&lt;/span&gt;&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 8px&quot;&gt;&lt;font color=&quot;#000000&quot;&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;void *(*valDup)(void *privdata, const void *obj);&lt;/span&gt;&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 8px&quot;&gt;&lt;font color=&quot;#000000&quot;&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;int (*keyCompare)(void *privdata, const void *key1, const void *key2);&lt;/span&gt;&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 8px&quot;&gt;&lt;font color=&quot;#000000&quot;&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;void (*keyDestructor)(void *privdata, void *key);&lt;/span&gt;&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 8px&quot;&gt;&lt;font color=&quot;#000000&quot;&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;void (*valDestructor)(void *privdata, void *obj);&lt;/span&gt;&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 8px&quot;&gt;&lt;font color=&quot;#000000&quot;&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;int (*expandAllowed)(size_t moreMem, double usedRatio);&lt;/span&gt;&lt;/font&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;fontColor=#007FFF;" parent="1" vertex="1">
+          <mxGeometry x="-700" y="260" width="340" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="bWw8nc-qsxXhkrvXqzMB-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.002;exitY=0.313;exitDx=0;exitDy=0;entryX=-0.003;entryY=0.156;entryDx=0;entryDy=0;entryPerimeter=0;fontSize=8;fontColor=#007FFF;curved=1;exitPerimeter=0;" parent="1" source="bWw8nc-qsxXhkrvXqzMB-3" target="bWw8nc-qsxXhkrvXqzMB-8" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="bWw8nc-qsxXhkrvXqzMB-3" value="&lt;p style=&quot;margin: 4px 0px 0px ; text-align: center ; text-decoration: underline&quot;&gt;&lt;font&gt;&lt;span style=&quot;color: rgb(0 , 0 , 0)&quot;&gt;struct dictht （dict hash table）&lt;/span&gt;&lt;br&gt;&lt;/font&gt;&lt;/p&gt;&lt;hr style=&quot;font-size: 10px&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 8px&quot;&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;&lt;font color=&quot;#000000&quot;&gt;dictEntry **table;&lt;/font&gt;&lt;span style=&quot;color: rgb(0 , 0 , 0) ; white-space: pre&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;color: rgb(0 , 0 , 0) ; white-space: pre&quot;&gt;&#x9;&lt;/span&gt;//二维指针，可以当作二维数组&lt;br&gt;（每行都是不同hash值，同一行存储hash冲突的key value）&lt;br&gt;&amp;nbsp;dictEntry内部结构类似Java Map Entry&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 8px&quot;&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;&lt;font color=&quot;#000000&quot;&gt;unsigned long size;&amp;nbsp;&lt;/font&gt;&lt;span style=&quot;color: rgb(0 , 0 , 0) ; white-space: pre&quot;&gt;&#x9;&lt;/span&gt;//table大小&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 8px&quot;&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;&lt;font color=&quot;#000000&quot;&gt;unsigned long sizemask;&lt;/font&gt;&lt;span style=&quot;color: rgb(0 , 0 , 0) ; white-space: pre&quot;&gt;&#x9;&lt;/span&gt;//table长度掩码&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 8px&quot;&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;&lt;font color=&quot;#000000&quot;&gt;unsigned long used;&lt;/font&gt;&lt;span style=&quot;color: rgb(0 , 0 , 0) ; white-space: pre&quot;&gt;&#x9;&lt;/span&gt;//现有节点数量&lt;/span&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;fontColor=#007FFF;" parent="1" vertex="1">
+          <mxGeometry x="-700" y="420" width="340" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="bWw8nc-qsxXhkrvXqzMB-4" value="&lt;font style=&quot;font-size: 10px&quot;&gt;计算超时时间&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontColor=#007FFF;" parent="1" vertex="1">
+          <mxGeometry x="645" y="420" width="80" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="bWw8nc-qsxXhkrvXqzMB-6" value="&lt;font&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;&lt;b&gt;siphash&lt;/b&gt;(key,len,dict_hash_function_seed)&lt;/span&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="1500" y="625" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="tFVNvqbKiq71Rdus_Qge-3" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=-0.001;exitY=0.435;exitDx=0;exitDy=0;entryX=0;entryY=0;entryDx=0;entryDy=0;fontColor=#007FFF;exitPerimeter=0;" parent="1" source="bWw8nc-qsxXhkrvXqzMB-8" target="tFVNvqbKiq71Rdus_Qge-2" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="-720" y="638" />
+              <mxPoint x="-720" y="760" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bWw8nc-qsxXhkrvXqzMB-8" value="&lt;p style=&quot;margin: 4px 0px 0px ; text-align: center ; text-decoration: underline&quot;&gt;&lt;font&gt;&lt;span style=&quot;color: rgb(0 , 0 , 0)&quot;&gt;struct dictEntry&lt;/span&gt;&lt;br&gt;&lt;/font&gt;&lt;/p&gt;&lt;hr style=&quot;font-size: 10px&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 8px&quot;&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;&lt;font color=&quot;#000000&quot;&gt;void *key;&lt;/font&gt;&lt;span style=&quot;color: rgb(0 , 0 , 0) ; white-space: pre&quot;&gt;&#x9;&lt;span style=&quot;white-space: pre&quot;&gt;&#x9;&lt;/span&gt;&lt;/span&gt;//存储 key，类型也是redisObject, &lt;br&gt;&lt;span style=&quot;white-space: pre&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt;&#x9;&lt;/span&gt;//其中ptr指向类型是 sds&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 8px&quot;&gt;&lt;font color=&quot;#000000&quot;&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;union {&lt;/span&gt;&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 8px&quot;&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;&lt;font color=&quot;#000000&quot;&gt;&amp;nbsp; &amp;nbsp; void *val;&lt;/font&gt;&lt;span style=&quot;color: rgb(0 , 0 , 0) ; white-space: pre&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;color: rgb(0 , 0 , 0) ; white-space: pre&quot;&gt;&#x9;&lt;/span&gt;//存储 value，类型是redisObject&lt;br&gt;&lt;span style=&quot;white-space: pre&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt;&#x9;&lt;/span&gt;//不同的值类型，存储的数据结构也不同&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 8px&quot;&gt;&lt;font color=&quot;#000000&quot;&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;&amp;nbsp; &amp;nbsp; uint64_t u64;&lt;/span&gt;&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 8px&quot;&gt;&lt;font color=&quot;#000000&quot;&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;&amp;nbsp; &amp;nbsp; int64_t s64;&lt;/span&gt;&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 8px&quot;&gt;&lt;font color=&quot;#000000&quot;&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;&amp;nbsp; &amp;nbsp; double d;&lt;/span&gt;&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 8px&quot;&gt;&lt;font color=&quot;#000000&quot;&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;} v;&lt;/span&gt;&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 8px&quot;&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;&lt;font color=&quot;#000000&quot;&gt;struct dictEntry *next;&lt;/font&gt;&lt;span style=&quot;color: rgb(0 , 0 , 0) ; white-space: pre&quot;&gt;&#x9;&lt;/span&gt;//指向下一个entry，也是拉链法解决hash冲突&lt;/span&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;fontColor=#007FFF;" parent="1" vertex="1">
+          <mxGeometry x="-700" y="560" width="340" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="bWw8nc-qsxXhkrvXqzMB-14" value="&lt;div style=&quot;font-size: 10px&quot;&gt;&lt;font style=&quot;font-size: 10px&quot;&gt;对比 Java Map Node(Entry) 定义&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px&quot;&gt;&lt;font style=&quot;font-size: 10px&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px&quot;&gt;&lt;font style=&quot;font-size: 10px&quot;&gt;final int hash;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px&quot;&gt;&lt;font style=&quot;font-size: 10px&quot;&gt;final K key;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px&quot;&gt;&lt;font style=&quot;font-size: 10px&quot;&gt;V value;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px&quot;&gt;&lt;font style=&quot;font-size: 10px&quot;&gt;Node&amp;lt;K,V&amp;gt; next;&lt;/font&gt;&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=8;fontColor=#007FFF;" parent="1" vertex="1">
+          <mxGeometry x="-350" y="587.5" width="150" height="105" as="geometry" />
+        </mxCell>
+        <mxCell id="bWw8nc-qsxXhkrvXqzMB-19" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;fontColor=#007FFF;" parent="1" source="bWw8nc-qsxXhkrvXqzMB-16" target="bWw8nc-qsxXhkrvXqzMB-18" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="bWw8nc-qsxXhkrvXqzMB-16" value="&lt;font&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;de = dictFind(db-&amp;gt;expires,key-&amp;gt;ptr)&lt;/span&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="1280" y="680" width="180" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="bWw8nc-qsxXhkrvXqzMB-21" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;fontColor=#007FFF;" parent="1" source="bWw8nc-qsxXhkrvXqzMB-18" target="bWw8nc-qsxXhkrvXqzMB-20" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="bWw8nc-qsxXhkrvXqzMB-18" value="&lt;font&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;robj *val = dictGetVal(de)&lt;/span&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="1280" y="740" width="180" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="bWw8nc-qsxXhkrvXqzMB-23" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;fontColor=#007FFF;" parent="1" source="bWw8nc-qsxXhkrvXqzMB-20" target="bWw8nc-qsxXhkrvXqzMB-22" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="bWw8nc-qsxXhkrvXqzMB-20" value="&lt;font&gt;内存淘汰相关处理&lt;br&gt;&lt;font style=&quot;font-size: 10px&quot; color=&quot;#007fff&quot;&gt;暂略&lt;/font&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="1280" y="800" width="180" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="bWw8nc-qsxXhkrvXqzMB-22" value="&lt;font&gt;return val&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="1280" y="860" width="180" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="bWw8nc-qsxXhkrvXqzMB-27" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;fontColor=#007FFF;" parent="1" source="bWw8nc-qsxXhkrvXqzMB-24" target="bWw8nc-qsxXhkrvXqzMB-26" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="bWw8nc-qsxXhkrvXqzMB-24" value="&lt;font&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;dictEntry *de = dictFind(db-&amp;gt;dict,key-&amp;gt;ptr)&lt;/span&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="1279" y="1180" width="180" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="bWw8nc-qsxXhkrvXqzMB-29" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;fontColor=#007FFF;" parent="1" source="bWw8nc-qsxXhkrvXqzMB-26" target="bWw8nc-qsxXhkrvXqzMB-28" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="bWw8nc-qsxXhkrvXqzMB-26" value="&lt;font&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;robj *old = dictGetVal(de)&lt;/span&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="1279" y="1237" width="180" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="bWw8nc-qsxXhkrvXqzMB-31" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;fontColor=#007FFF;" parent="1" source="bWw8nc-qsxXhkrvXqzMB-28" target="bWw8nc-qsxXhkrvXqzMB-30" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="bWw8nc-qsxXhkrvXqzMB-28" value="&lt;font&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;dictSetVal(db-&amp;gt;dict, de, val);&lt;/span&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="1280" y="1297" width="180" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="bWw8nc-qsxXhkrvXqzMB-30" value="&lt;font&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;dictFreeVal(db-&amp;gt;dict, &amp;amp;auxentry)&lt;/span&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="1280" y="1360" width="180" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="bWw8nc-qsxXhkrvXqzMB-35" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;fontColor=#007FFF;" parent="1" source="bWw8nc-qsxXhkrvXqzMB-32" target="bWw8nc-qsxXhkrvXqzMB-34" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="bWw8nc-qsxXhkrvXqzMB-32" value="&lt;font&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;sds copy = sdsdup(key-&amp;gt;ptr)&lt;/span&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="1280" y="920" width="180" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="bWw8nc-qsxXhkrvXqzMB-38" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;fontSize=10;fontColor=#007FFF;" parent="1" source="bWw8nc-qsxXhkrvXqzMB-34" target="bWw8nc-qsxXhkrvXqzMB-36" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="bWw8nc-qsxXhkrvXqzMB-34" value="&lt;font&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;retval = &lt;b&gt;dictAdd&lt;/b&gt;(db-&amp;gt;dict, copy, val)&lt;/span&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="1280" y="980" width="180" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="bWw8nc-qsxXhkrvXqzMB-39" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=10;fontColor=#007FFF;" parent="1" source="bWw8nc-qsxXhkrvXqzMB-36" target="bWw8nc-qsxXhkrvXqzMB-37" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="bWw8nc-qsxXhkrvXqzMB-36" value="&lt;font&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;signalKeyAsReady(db, key, val-&amp;gt;type)&lt;/span&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="1280" y="1040" width="180" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="bWw8nc-qsxXhkrvXqzMB-37" value="&lt;font&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;if (server.cluster_enabled) slotToKeyAdd(key-&amp;gt;ptr)&lt;/span&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="1280" y="1100" width="180" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="tFVNvqbKiq71Rdus_Qge-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=-0.003;exitY=0.18;exitDx=0;exitDy=0;entryX=0;entryY=0;entryDx=0;entryDy=0;fontColor=#007FFF;curved=1;exitPerimeter=0;" parent="1" source="bWw8nc-qsxXhkrvXqzMB-40" target="bWw8nc-qsxXhkrvXqzMB-1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="-340" y="76" />
+              <mxPoint x="-340" y="260" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bWw8nc-qsxXhkrvXqzMB-40" value="&lt;p style=&quot;margin: 4px 0px 0px ; text-align: center ; text-decoration: underline&quot;&gt;&lt;font&gt;&lt;span style=&quot;color: rgb(0 , 0 , 0)&quot;&gt;struct redisDb&lt;/span&gt;&lt;br&gt;&lt;/font&gt;&lt;/p&gt;&lt;hr style=&quot;font-size: 10px&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 8px&quot;&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;&lt;font color=&quot;#000000&quot;&gt;dict *dict;&lt;/font&gt;&lt;span style=&quot;color: rgb(0 , 0 , 0)&quot;&gt;&#x9;&lt;/span&gt;//存储键值对的hash表&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 8px&quot;&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;&lt;font color=&quot;#000000&quot;&gt;dict *expires;&amp;nbsp; &lt;/font&gt;//存储key超时时间的hash表&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 8px&quot;&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;&lt;font color=&quot;#000000&quot;&gt;dict *blocking_keys;&lt;/font&gt;//存储处于阻塞状态的key及对应的client的&lt;br&gt;hash表&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 8px&quot;&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;&lt;font color=&quot;#000000&quot;&gt;dict *ready_keys;&lt;/font&gt;//数据已就绪可以解除阻塞状态的键&lt;br&gt;和对应的client的hash表&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 8px&quot;&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;&lt;font color=&quot;#000000&quot;&gt;dict *watched_keys; &lt;/font&gt;//被watch命令监控的key及对应的client&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 8px&quot;&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;&lt;font color=&quot;#000000&quot;&gt;int id;&lt;span&gt;&#x9;&lt;/span&gt;&lt;/font&gt;//数据库ID&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 8px&quot;&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;&lt;font color=&quot;#000000&quot;&gt;long long avg_ttl; &lt;/font&gt;//数据库所有键的平均TTL(生存时间)&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 8px&quot;&gt;&lt;font color=&quot;#000000&quot;&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;unsigned long expires_cursor;&lt;/span&gt;&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 8px&quot;&gt;&lt;font color=&quot;#000000&quot;&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;list *defrag_later;&lt;/span&gt;&lt;/font&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;fontColor=#007FFF;" parent="1" vertex="1">
+          <mxGeometry x="-320" y="40" width="280" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="tFVNvqbKiq71Rdus_Qge-21" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontColor=#007FFF;" parent="1" source="tFVNvqbKiq71Rdus_Qge-2" target="tFVNvqbKiq71Rdus_Qge-19" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="-340" y="920" />
+              <mxPoint x="-340" y="790" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="tFVNvqbKiq71Rdus_Qge-22" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;fontColor=#007FFF;" parent="1" source="tFVNvqbKiq71Rdus_Qge-2" target="tFVNvqbKiq71Rdus_Qge-20" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="-340" y="920" />
+              <mxPoint x="-340" y="865" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="tFVNvqbKiq71Rdus_Qge-28" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0;entryDx=0;entryDy=0;fontSize=10;fontColor=#007FFF;" parent="1" source="tFVNvqbKiq71Rdus_Qge-2" target="tFVNvqbKiq71Rdus_Qge-23" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="-340" y="920" />
+              <mxPoint x="-340" y="960" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="tFVNvqbKiq71Rdus_Qge-2" value="&lt;p style=&quot;margin: 4px 0px 0px ; text-align: center ; text-decoration: underline&quot;&gt;&lt;font&gt;&lt;span style=&quot;color: rgb(0 , 0 , 0)&quot;&gt;struct redisObject&lt;/span&gt;&lt;br&gt;&lt;/font&gt;&lt;/p&gt;&lt;hr style=&quot;font-size: 10px&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 8px&quot;&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;//前3个字段共用一个unsigned int 存储&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 8px&quot;&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;&lt;font color=&quot;#000000&quot;&gt;unsigned type:4;&lt;/font&gt;&lt;span style=&quot;color: rgb(0 , 0 , 0)&quot;&gt;&#x9;&lt;/span&gt;&lt;font color=&quot;#000000&quot;&gt;&amp;nbsp; &amp;nbsp;&lt;/font&gt;//数据类型（占unsigned int 中4位），如：OBJ_STRING...&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 8px&quot;&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;&lt;font color=&quot;#000000&quot;&gt;unsigned encoding:4;&amp;nbsp; &amp;nbsp;&lt;/font&gt;//编码类型（占unsigned int 中4位），&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 8px&quot;&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;&lt;span style=&quot;white-space: pre&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt;&#x9;&lt;/span&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp;//就是value内部存储结构，如RAW、INT...&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 8px&quot;&gt;&lt;font color=&quot;#000000&quot;&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;unsigned lru:LRU_BITS; /* LRU time (relative to global lru_clock) or&lt;/span&gt;&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 8px&quot;&gt;&lt;font color=&quot;#000000&quot;&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &lt;span style=&quot;white-space: pre&quot;&gt;&#x9;&lt;/span&gt;* LFU data (least significant 8 bits frequency&lt;/span&gt;&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 8px&quot;&gt;&lt;font color=&quot;#000000&quot;&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &lt;span style=&quot;white-space: pre&quot;&gt;&#x9;&lt;/span&gt;* and most significant 16 bits access time). */&lt;/span&gt;&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 8px&quot;&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;&lt;font color=&quot;#000000&quot;&gt;int refcount; &lt;/font&gt;//引用计数&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 8px&quot;&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;&lt;font color=&quot;#000000&quot;&gt;void *ptr;&lt;/font&gt;&lt;span style=&quot;color: rgb(0 , 0 , 0)&quot;&gt;&#x9;&#x9;&#x9;&lt;/span&gt;&lt;font color=&quot;#000000&quot;&gt;&amp;nbsp; &amp;nbsp;&lt;/font&gt;//实际的内部存储结构，如果是String类型，这里就是整数或sds&lt;/span&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;fontColor=#007FFF;" parent="1" vertex="1">
+          <mxGeometry x="-700" y="760" width="340" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="tFVNvqbKiq71Rdus_Qge-6" value="&lt;font&gt;&lt;span style=&quot;font-size: 10px&quot;&gt;return &lt;b&gt;shared.integers&lt;/b&gt;[value];&lt;/span&gt;&lt;br&gt;&lt;/font&gt;" style="whiteSpace=wrap;html=1;rounded=1;" parent="1" vertex="1">
+          <mxGeometry x="1360" y="200" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="tFVNvqbKiq71Rdus_Qge-8" value="&lt;font&gt;&lt;div&gt;o-&amp;gt;encoding = OBJ_ENCODING_INT;&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; o-&amp;gt;ptr = (void*) value;&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;指针直接存储value值&lt;/font&gt;&lt;/div&gt;&lt;/font&gt;" style="whiteSpace=wrap;html=1;rounded=1;fontSize=10;" parent="1" vertex="1">
+          <mxGeometry x="1560" y="260" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="tFVNvqbKiq71Rdus_Qge-26" value="" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;fontColor=#007FFF;" parent="1" source="tFVNvqbKiq71Rdus_Qge-10" target="tFVNvqbKiq71Rdus_Qge-25" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="tFVNvqbKiq71Rdus_Qge-10" value="&lt;font&gt;createStringObjectFromLongLongForValue(value)&lt;br style=&quot;font-size: 10px&quot;&gt;&lt;/font&gt;" style="whiteSpace=wrap;html=1;rounded=1;fontSize=10;" parent="1" vertex="1">
+          <mxGeometry x="1360" y="320" width="240" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="tFVNvqbKiq71Rdus_Qge-12" value="&lt;font style=&quot;font-size: 10px&quot;&gt;return o;&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;直接返回原编码对象&lt;/font&gt;&lt;br&gt;&lt;/font&gt;" style="whiteSpace=wrap;html=1;rounded=1;" parent="1" vertex="1">
+          <mxGeometry x="680" y="360" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="tFVNvqbKiq71Rdus_Qge-17" value="" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontColor=#007FFF;" parent="1" source="tFVNvqbKiq71Rdus_Qge-14" target="tFVNvqbKiq71Rdus_Qge-16" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="tFVNvqbKiq71Rdus_Qge-14" value="&lt;font&gt;OBJ_ENCODING_EMBSTR&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;转成EMBSTR&lt;/font&gt;&lt;br&gt;&lt;/font&gt;" style="whiteSpace=wrap;html=1;rounded=1;fontSize=10;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxGeometry x="1120" y="380" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="tFVNvqbKiq71Rdus_Qge-16" value="&lt;font&gt;emb = createEmbeddedStringObject(s,sdslen(s));&lt;br style=&quot;font-size: 10px&quot;&gt;&lt;/font&gt;" style="whiteSpace=wrap;html=1;rounded=1;fontSize=10;" parent="1" vertex="1">
+          <mxGeometry x="1360" y="380" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="tFVNvqbKiq71Rdus_Qge-18" value="即对可转换为long型的值：&lt;br&gt;转换后值位于0-10000, 直接返回对应索引位置预设的对象（OBJ_ENCODING_INT），&lt;br&gt;其他对于值字符串len小于20（long long最大长度是19,加上一‘\0’,最长20字节）的，ptr直接存储value值 (OBJ_ENCODING_INT);&lt;br&gt;值字符串len大于20，小于44,这部分不能转成long long 数字类型，但是可以在一个缓存行中存储的字符串存储为 OBJ_ENCODING_EMBSTR；&lt;br&gt;值字符串长度大于44, 使用 OBJ_ENCODING_RAW类型存储，即 redisObject ptr 指针指向 sds 的内存空间。" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#007FFF;" parent="1" vertex="1">
+          <mxGeometry x="1120" y="80" width="720" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="tFVNvqbKiq71Rdus_Qge-19" value="&lt;p style=&quot;margin: 4px 0px 0px ; text-align: center&quot;&gt;&lt;font&gt;&lt;font color=&quot;#000000&quot;&gt;&lt;u&gt;&lt;span style=&quot;font-size: 11px&quot;&gt;OBJ_ENCODING_INT (&lt;/span&gt;&lt;font style=&quot;font-size: 8px&quot;&gt;结合前面redisObject共同构成&lt;/font&gt;&lt;span style=&quot;font-size: 11px&quot;&gt;)&lt;/span&gt;&lt;/u&gt;&lt;/font&gt;&lt;br&gt;&lt;/font&gt;&lt;/p&gt;&lt;hr style=&quot;font-size: 10px&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 8px&quot;&gt;(void *) value;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;fontColor=#007FFF;" parent="1" vertex="1">
+          <mxGeometry x="-320" y="760" width="280" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="tFVNvqbKiq71Rdus_Qge-20" value="&lt;p style=&quot;margin: 4px 0px 0px ; text-align: center&quot;&gt;&lt;font&gt;&lt;font color=&quot;#000000&quot;&gt;&lt;u&gt;OBJ_ENCODING_EMBSTR&lt;/u&gt;&lt;/font&gt;&lt;br&gt;&lt;/font&gt;&lt;/p&gt;&lt;hr style=&quot;font-size: 10px&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 8px&quot;&gt;//下面这些内容存储在ptr后的连续空间，ptr指向buf&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 8px&quot;&gt;uint8_t len;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 8px&quot;&gt;uint8_t alloc;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 8px&quot;&gt;unsigned char flags;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 8px&quot;&gt;char buf[];&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;fontColor=#007FFF;" parent="1" vertex="1">
+          <mxGeometry x="-320" y="840" width="280" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="tFVNvqbKiq71Rdus_Qge-23" value="&lt;p style=&quot;margin: 4px 0px 0px ; text-align: center&quot;&gt;&lt;font&gt;&lt;font color=&quot;#000000&quot;&gt;&lt;u&gt;OBJ_ENCODING_RAW&lt;/u&gt;&lt;/font&gt;&lt;br&gt;&lt;/font&gt;&lt;/p&gt;&lt;hr style=&quot;font-size: 10px&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 8px&quot;&gt;//下面这些内容存储在和ptr不连续的空间,ptr指向buf&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 8px&quot;&gt;uint8_t len;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 8px&quot;&gt;uint8_t alloc;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 8px&quot;&gt;unsigned char flags;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 8px&quot;&gt;char buf[];&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;fontColor=#007FFF;" parent="1" vertex="1">
+          <mxGeometry x="-320" y="960" width="280" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="tFVNvqbKiq71Rdus_Qge-24" value="&lt;div style=&quot;font-size: 10px&quot;&gt;&lt;font style=&quot;font-size: 10px&quot;&gt;// 0-10000 redis预先设置好了，如存100&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px&quot;&gt;&lt;font style=&quot;font-size: 10px&quot;&gt;type = {unsigned int} 0&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px&quot;&gt;&lt;font style=&quot;font-size: 10px&quot;&gt;encoding = {unsigned int} 1&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px&quot;&gt;&lt;font style=&quot;font-size: 10px&quot;&gt;lru = {unsigned int} 7990932&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px&quot;&gt;&lt;font style=&quot;font-size: 10px&quot;&gt;refcount = {int} 2147483647&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px&quot;&gt;&lt;font style=&quot;font-size: 10px&quot;&gt;ptr = {void *} 0x64&amp;nbsp;&lt;/font&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontColor=#007FFF;" parent="1" vertex="1">
+          <mxGeometry x="-30" y="745" width="190" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="tFVNvqbKiq71Rdus_Qge-25" value="&lt;font&gt;&lt;div&gt;o = createObject(OBJ_STRING, NULL);&lt;/div&gt;&lt;div&gt;o-&amp;gt;encoding = &lt;b&gt;OBJ_ENCODING_INT&lt;/b&gt;;&lt;/div&gt;&lt;div&gt;o-&amp;gt;ptr = (void*)((long)value);&lt;/div&gt;&lt;/font&gt;" style="whiteSpace=wrap;html=1;rounded=1;fontSize=10;" parent="1" vertex="1">
+          <mxGeometry x="1640" y="320" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="tFVNvqbKiq71Rdus_Qge-27" value="// 0-10000 以外，比如100000&lt;br&gt;&lt;div&gt;type = {unsigned int} 0&lt;/div&gt;&lt;div&gt;encoding = {unsigned int} 1&lt;/div&gt;&lt;div&gt;lru = {unsigned int} 8019551&lt;/div&gt;&lt;div&gt;refcount = {int} 1&lt;/div&gt;&lt;div&gt;ptr = {void *} 0x186a0&amp;nbsp;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;fontColor=#007FFF;" parent="1" vertex="1">
+          <mxGeometry x="160" y="755" width="150" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="tFVNvqbKiq71Rdus_Qge-32" value="&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;分配连续空间的代码&lt;/div&gt;&lt;div&gt;robj *o = zmalloc(sizeof(robj)+sizeof(struct sdshdr8)+len+1);&lt;/div&gt;&lt;div&gt;struct sdshdr8 *sh = (void*)(o+1);&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;fontColor=#007FFF;" parent="1" vertex="1">
+          <mxGeometry x="-30" y="865" width="280" height="50" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

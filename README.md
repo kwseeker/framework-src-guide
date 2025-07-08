@@ -44,8 +44,10 @@
   + [工具类](#工具类)
   + [语法解析器](#语法解析器)
   + [表达式引擎](#表达式引擎)
-  + [AI接入](#AI接入)
   + [自动化测试](#自动化测试)
+* [AI](#AI)
+  * [接入工具](#接入工具)
+  * [产品](#产品)
 * [Go](#Go)
   + [SDK](#SDK-1)
   + [服务调用](#服务调用-1)
@@ -69,9 +71,9 @@
 
 
 
-## Java
+## 1 Java
 
-### SDK
+### 1.1 SDK
 
 > JDK 一些类的源码少于2000行的一般没必要画流程图，数据结构和逻辑不画图也能梳理清楚，时间久了忘记了重新看也花不了多长时间。
 
@@ -185,7 +187,7 @@
   + [java-reference.drawio](docs/java/jdk/reference/java-reference.drawio)
   + [java-reference.drawio.png](docs/java/jdk/reference/java-reference.drawio.png)
 
-### 网关
+### 1.2 网关
 
 + **[Spring Cloud Gateway](docs/java/gateway/SpringCloudGateway原理.md)**
 
@@ -200,7 +202,7 @@
 
 + **Zuul**
 
-### 服务调用
+### 1.3 服务调用
 
 + **Dubbo**
 
@@ -225,7 +227,7 @@
 
 + **Thrift**
 
-### 负载均衡
+### 1.4 负载均衡
 
 + **Ribbon**
 
@@ -240,7 +242,7 @@
   + [spring-cloud-loadbalancer.drawio](docs/java/spring-cloud-loadbalancer/spring-cloud-loadbalancer.drawio)
   + [spring-cloud-loadbalancer.drawio.png](docs/java/spring-cloud-loadbalancer/spring-cloud-loadbalancer.drawio.png)
 
-### 消息队列
+### 1.5 消息队列
 
 + **[Disruptor](docs/java/message-queue/disruptor/disruptor.md)**
 
@@ -289,7 +291,7 @@
 
 + **RabbitMQ**
 
-### 作业调度
+### 1.6 作业调度
 
 + **Elastic-Job**
 
@@ -307,7 +309,7 @@
 
     任务管理器工作流程。
 
-### 服务器
+### 1.7 服务器
 
 + **Jetty**
 
@@ -375,7 +377,7 @@
 
   基于 Netty 实现的事件驱动服务器。
 
-### Web相关
+### 1.8 Web相关
 
 + **Spring**
 
@@ -568,7 +570,7 @@
   
   + **Web**
 
-### 响应式
+### 1.9 响应式
 
 响应式编程框架有点类似工具类框架没有主线或者说只有各个接口类实现的独立的主线。
 
@@ -598,7 +600,7 @@
 
 + **RxJava**
 
-### 微服务框架
+### 1.10 微服务框架
 
 + **Spring Cloud**
 
@@ -608,13 +610,13 @@
 
   K8S 通过自身容器管理功能以及集成微服务组件容器实现微服务支持，参考 Go 部分。
 
-### 服务网格
+### 1.11 服务网格
 
 + **Istio**
 
   服务都会启动SideCar代理，可以拦截和处理来自其他服务实例的网络流量并提供各种功能，包括负载均衡、故障转移、熔断、限流、安全、监控等等。
 
-### 注册中心/配置中心
+### 1.12 注册中心/配置中心
 
 + **Apollo**
 
@@ -624,7 +626,7 @@
 
   + [nacos.drawio](docs/java/nacos/nacos.drawio)
 
-### 分布式协调
+### 1.13 分布式协调
 
 + **Zookeeper**
   
@@ -641,7 +643,7 @@
       TODO。
 
 
-### 服务保障
+### 1.14 服务保障
 
 + [**Jd-Hotkey**](docs/java/jd-hotkey/jd-hotkey.md)
 
@@ -709,7 +711,7 @@
 
   单纯的限流组件，基于令牌桶算法。
 
-### 链路追踪
+### 1.15 链路追踪
 
 + **Skywalking**
 
@@ -724,7 +726,7 @@
 
 + OpenTelemetry
 
-### 监控系统
+### 1.16 监控系统
 
 + **Prometheus**
 
@@ -752,7 +754,7 @@
     + [micrometer-registry-prometheus.drawio](docs/java/prometheus/micrometer-registry-prometheus.drawio)
     + [micrometer-registry-prometheus.drawio.png](docs/java/prometheus/imgs/micrometer-registry-prometheus.drawio.png)
 
-### 安全框架
+### 1.17 安全框架
 
 + **Apache Shiro**
 
@@ -817,7 +819,7 @@
     比较简单不详述了。
 
 
-### ORM框架
+### 1.18 ORM框架
 
 + **Mybatis**
 
@@ -856,7 +858,7 @@
 + Mybatis-Spring
 + **Mybatis Plus**
 
-### 数据库相关
+### 1.19 数据库相关
 
 + **Canal**
 
@@ -921,8 +923,8 @@
   + Redis 6.0 开始到底哪里支持了多线程
 
     看上面 [redis-server.drawio.png](docs/java/redis/imgs/redis-server.drawio.png) 会发现没有用到多线程啊？这是因为**IO多线程默认是关闭的**需要修改服务端配置（redis.conf），然后 `redis-server redis.conf` 启动，启动后 `ps -T -p <pid>` 可以看到多线程模式相对于单线程模式多出来几个线程 `io_thd_<n>`，暂时没时间看这部分源码，可以先参考[Redis 6.0的多线程](https://cloud.tencent.com/developer/article/1940123) 这篇文章，后面会添加流程图（TODO）。
-
-    ```ini
+    
+    ```shell
     # 开启网络IO多线程
     io-threads-do-reads yes
     # 设置IO线程数量为8
@@ -969,7 +971,7 @@
   
 
 
-### 分布式事务
+### 1.20 分布式事务
 
 + **Atomikos**
 
@@ -1075,7 +1077,7 @@
 
 + **TCC-Transaction**
 
-### 搜索引擎
+### 1.21 搜索引擎
 
 + **ElasticSearch**
 
@@ -1090,16 +1092,16 @@
       ElasticSearch 官方提供的一个组件，支持使用 JDBC 接口规范访问 ES。
 
 
-### 规则引擎
+### 1.22 规则引擎
 
 + **Drools**
 
-### 工作流引擎
+### 1.23 工作流引擎
 
 + **Activiti**
 + **Spring Flowable**
 
-### 缓存
+### 1.24 缓存
 
 + **Caffeine**
 
@@ -1107,7 +1109,7 @@
 
   TODO。
 
-### 分布式
+### 1.25 分布式
 
 + **一致性协议**
 
@@ -1137,12 +1139,12 @@
       + [raft-java.drawio.png](docs/java/distributed/consistency/raft-java.drawio.png)
   
 
-### 命令行
+### 1.26 命令行
 
 + **JCommander**
 + **CLI**
 
-### 日志
+### 1.27 日志
 
 + **Slf4j**
 
@@ -1157,7 +1159,7 @@
   + [logback.drawio](docs/java/logging/logback.drawio)
   + [logback.drawio.png](docs/java/logging/imgs/logback.drawio.png)
 
-### 序列化
+### 1.28 序列化
 
 + **Fastjson**
 
@@ -1185,7 +1187,7 @@
 
 + **Protostuff**
 
-### 工具类
+### 1.29 工具类
 
 + **Arthas**
 
@@ -1287,44 +1289,49 @@
     源码量不高，作者加了很多注释，代码很容易理解，这里不详细画流程图了，只看数据结构的 UML就能推导出逻辑 。
 
 
-### 语法解析器
+### 1.30 语法解析器
 
 + **Antlr**
 
   Sharding-JDBC 中 借助 Antlr 实现对 SQL 语句的重构（原SQL -> AST -> 新SQL），将 SQL 转换成针对某个分表的 SQL。
 
-### 表达式引擎
+### 1.31 表达式引擎
 
 + **Aviator**
 
-### AI接入
-
-+ [**langchain4j**](https://github.com/langchain4j/langchain4j)
-
-  用于集成大语言模型到Java应用。
-
-+ [**Spring-AI**](https://docs.spring.io/spring-ai/reference/)
-
-+ **MCP**
-
-  
-
-### 自动化测试
+### 1.32 自动化测试
 
 + [goreply](https://github.com/buger/goreplay)
 + [JSONassert](https://github.com/skyscreamer/JSONassert)
 
+### 1.33 AI
 
++ [**langchain4j**](https://github.com/langchain4j/langchain4j)
 
-## Go
++ [**Spring-AI**](https://docs.spring.io/spring-ai/reference/)
 
-### SDK
+## 2 Python
 
-### 服务调用
+### 2.1 AI
+
++ [**CoorAgent**](https://github.com/LeapLabTHU/cooragent)
+
++ [**MetaGPT**](https://github.com/FoundationAgents/MetaGPT)
+
+    源码流程图：
+
+    + [metagpt.drawio](docs/python/ai/agent/metagpt.drawio.png)
+    + [metagpt.drawio.png](docs/python/ai/agent/metagpt.drawio.png)
+
+## 3 Go
+
+### 3.1 SDK
+
+### 3.2 服务调用
 
 + **gorilla/websocket**
 
-### 服务器
+### 3.3 服务器
 
 + [**pocketbase**](https://github.com/pocketbase/pocketbase)
 
@@ -1334,7 +1341,7 @@
 
   > 感觉定位上更接近是一个支持灵活拓展的低代码平台。
 
-### 微服务
+### 3.4 微服务
 
 + **gopub**
 
@@ -1346,20 +1353,20 @@
 
 + **K8S**
 
-### 注册中心/配置中心
+### 3.5 注册中心/配置中心
 
 + **Consul**
 + **Etcd**
 
-### 数据库相关
+### 3.6 数据库相关
 
 + [**Godis**](docs/go/godis)
 
-### 分布式事务
+### 3.7 分布式事务
 
 + **DTM**
 
-### 通信框架
+### 3.8 通信框架
 
 + **WebRTC**
 
@@ -1373,7 +1380,7 @@
   
     使用 Docker 虚拟网络模拟打洞流程参考：[kwseeker/p2p](https://github.com/kwseeker/p2p)。
 
-### 音视频
+### 3.9 音视频
 
 + **lal**
 
@@ -1384,13 +1391,15 @@
   + [lal.drawio](docs/go/lal/lal.drawio)
   + [lal.drawio.png](docs/go/lal/lal.drawio.png)
 
-## Rust
 
-### 异步框架
+
+## 4 Rust
+
+### 4.1 异步框架
 
 + **Tokio**
 
-### 其他
+### 4.2 其他
 
 + **音乐**
 
@@ -1402,7 +1411,7 @@
 
 
 
-## 为何读源码
+## 5 为何读源码
 
 **读框架源码的初衷**：
 
@@ -1483,8 +1492,8 @@
 
 
 
-## 资源
+## 6 资源
 
-### 书籍
+### 6.1 书籍
 
 有电子版的书基本上在 [ZLibrary](https://zh.z-lib.gs/) 都能找到。

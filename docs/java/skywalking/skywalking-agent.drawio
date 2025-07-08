@@ -1,6 +1,6 @@
-<mxfile host="Electron" modified="2024-05-02T13:17:37.355Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.6.5 Chrome/114.0.5735.243 Electron/25.3.1 Safari/537.36" etag="RsygwKS659M5-wRSbTd9" version="21.6.5" type="device">
+<mxfile host="Electron" modified="2024-10-08T09:12:24.890Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.6.5 Chrome/114.0.5735.243 Electron/25.3.1 Safari/537.36" etag="tQG05KjuMtNRQ6Fh3Ngq" version="21.6.5" type="device">
   <diagram id="PYI9xT5d_eNirprLVBCl" name="Skywalking-Agent 工作原理 (v8.14.0) ">
-    <mxGraphModel dx="2364" dy="702" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+    <mxGraphModel dx="2603" dy="879" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />

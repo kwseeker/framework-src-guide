@@ -1,4 +1,4 @@
-<mxfile host="Electron" modified="2024-12-24T06:40:10.878Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.6.5 Chrome/114.0.5735.243 Electron/25.3.1 Safari/537.36" etag="yooGT5wyrkYGPna-P4Ev" version="21.6.5" type="device" pages="4">
+<mxfile host="Electron" modified="2025-04-18T14:45:32.263Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.6.5 Chrome/114.0.5735.243 Electron/25.3.1 Safari/537.36" etag="wrYKRTMOIVkZdNmXT9jJ" version="21.6.5" type="device" pages="4">
   <diagram name="Producer" id="6497DEjvEHfmiQGX_mvA">
     <mxGraphModel dx="5569" dy="879" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -1923,7 +1923,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="XyQ5pNo4CcYP3uo7oZJW" name="Broker">
-    <mxGraphModel dx="3915" dy="879" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="6066" dy="2198" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />

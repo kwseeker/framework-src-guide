@@ -1,0 +1,341 @@
+<mxfile host="Electron" modified="2025-06-23T17:53:17.735Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.6.5 Chrome/114.0.5735.243 Electron/25.3.1 Safari/537.36" etag="Kw-C90MF0B-yIxjDnSe1" version="21.6.5" type="device">
+  <diagram name="第 1 页" id="aY5aauBScyjGQ5DQ4PZY">
+    <mxGraphModel dx="2400" dy="764" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="wADNUqXdICKrNf2AoUfC-4" value="" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=auto;html=1;rounded=1;" parent="1" source="wADNUqXdICKrNf2AoUfC-1" target="wADNUqXdICKrNf2AoUfC-3" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="wADNUqXdICKrNf2AoUfC-1" value="&lt;b&gt;Click 命令行&lt;br&gt;无命令组启动&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+          <mxGeometry x="40" y="120" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="wADNUqXdICKrNf2AoUfC-2" value="&lt;h1&gt;Cooragent 工作原理&lt;/h1&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="40" y="10" width="480" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="wADNUqXdICKrNf2AoUfC-6" value="" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=auto;html=1;rounded=1;" parent="1" source="wADNUqXdICKrNf2AoUfC-3" target="wADNUqXdICKrNf2AoUfC-5" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="wADNUqXdICKrNf2AoUfC-10" value="" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=auto;html=1;rounded=1;" parent="1" source="wADNUqXdICKrNf2AoUfC-3" target="wADNUqXdICKrNf2AoUfC-9" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="wADNUqXdICKrNf2AoUfC-3" value="&lt;b&gt;初始化服务器&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="280" y="120" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="wADNUqXdICKrNf2AoUfC-8" value="" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=auto;html=1;rounded=1;" parent="1" source="wADNUqXdICKrNf2AoUfC-5" target="wADNUqXdICKrNf2AoUfC-7" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="wADNUqXdICKrNf2AoUfC-5" value="&lt;b&gt;循环读取输入并拆分&lt;/b&gt;&lt;br&gt;&lt;b&gt;然后异步调用子命令&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;（命令行启动直接调用Server的方法，不通过Web接口）&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="280" y="620" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="wADNUqXdICKrNf2AoUfC-32" value="" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=auto;html=1;rounded=1;" parent="1" source="wADNUqXdICKrNf2AoUfC-7" target="wADNUqXdICKrNf2AoUfC-31" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="wADNUqXdICKrNf2AoUfC-7" value="&lt;b&gt;run 子命令&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxGeometry x="520" y="620" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="wADNUqXdICKrNf2AoUfC-13" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;rounded=1;" parent="1" source="wADNUqXdICKrNf2AoUfC-9" target="wADNUqXdICKrNf2AoUfC-11" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="wADNUqXdICKrNf2AoUfC-9" value="&lt;b&gt;初始化 readline&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;(用于记录历史命令)&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="520" y="120" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="wADNUqXdICKrNf2AoUfC-16" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;rounded=1;" parent="1" source="wADNUqXdICKrNf2AoUfC-11" target="wADNUqXdICKrNf2AoUfC-15" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="wADNUqXdICKrNf2AoUfC-11" value="&lt;b&gt;打印 Banner&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="520" y="200" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="wADNUqXdICKrNf2AoUfC-18" value="" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=auto;html=1;rounded=1;" parent="1" source="wADNUqXdICKrNf2AoUfC-15" target="wADNUqXdICKrNf2AoUfC-17" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="wADNUqXdICKrNf2AoUfC-15" value="&lt;b&gt;创建 Server 实例&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;（一个HTTP服务器，借助 FastAPI 实现, 即预留了Web接口）&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="520" y="280" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="wADNUqXdICKrNf2AoUfC-20" value="" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=auto;html=1;rounded=1;" parent="1" source="wADNUqXdICKrNf2AoUfC-17" target="wADNUqXdICKrNf2AoUfC-19" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="980" y="310" />
+              <mxPoint x="980" y="150" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="wADNUqXdICKrNf2AoUfC-23" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;rounded=1;" parent="1" source="wADNUqXdICKrNf2AoUfC-17" target="wADNUqXdICKrNf2AoUfC-21" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="wADNUqXdICKrNf2AoUfC-24" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;rounded=1;" parent="1" source="wADNUqXdICKrNf2AoUfC-17" target="wADNUqXdICKrNf2AoUfC-22" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="wADNUqXdICKrNf2AoUfC-26" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;rounded=1;" parent="1" source="wADNUqXdICKrNf2AoUfC-17" target="wADNUqXdICKrNf2AoUfC-25" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="wADNUqXdICKrNf2AoUfC-28" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;rounded=1;" parent="1" source="wADNUqXdICKrNf2AoUfC-17" target="wADNUqXdICKrNf2AoUfC-27" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="wADNUqXdICKrNf2AoUfC-30" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;rounded=1;" parent="1" source="wADNUqXdICKrNf2AoUfC-17" target="wADNUqXdICKrNf2AoUfC-29" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="wADNUqXdICKrNf2AoUfC-17" value="launch() 方法注册了6个HTTP接口&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;（但是命令行启动并不会通过Web请求调用接口）&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="760" y="280" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="wADNUqXdICKrNf2AoUfC-37" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;rounded=1;" parent="1" source="wADNUqXdICKrNf2AoUfC-19" target="wADNUqXdICKrNf2AoUfC-36" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="wADNUqXdICKrNf2AoUfC-19" value="POST&amp;nbsp;/v1/workflow" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxGeometry x="1000" y="120" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="wADNUqXdICKrNf2AoUfC-21" value="POST&amp;nbsp;/v1/list_agents" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxGeometry x="1000" y="200" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="wADNUqXdICKrNf2AoUfC-22" value="GET /v1/list_default_agents" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxGeometry x="1000" y="280" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="wADNUqXdICKrNf2AoUfC-25" value="GET /v1/list_default_tools" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxGeometry x="1000" y="360" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="wADNUqXdICKrNf2AoUfC-27" value="POST /v1/edit_agent" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxGeometry x="1000" y="440" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="wADNUqXdICKrNf2AoUfC-29" value="POST /v1/remove_agent" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxGeometry x="1000" y="520" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="wADNUqXdICKrNf2AoUfC-35" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;rounded=1;" parent="1" source="wADNUqXdICKrNf2AoUfC-31" target="wADNUqXdICKrNf2AoUfC-33" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="wADNUqXdICKrNf2AoUfC-38" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.75;entryDx=0;entryDy=0;rounded=1;" parent="1" source="wADNUqXdICKrNf2AoUfC-31" target="wADNUqXdICKrNf2AoUfC-36" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1220" y="650" />
+              <mxPoint x="1220" y="165" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="wADNUqXdICKrNf2AoUfC-31" value="&lt;b&gt;server._run_agent_workflow(&lt;br&gt;request)&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="760" y="620" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="wADNUqXdICKrNf2AoUfC-33" value="&lt;b&gt;异步流式处理返回值, 即打印&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="760" y="700" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="wADNUqXdICKrNf2AoUfC-40" value="" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=auto;html=1;rounded=1;" parent="1" source="wADNUqXdICKrNf2AoUfC-36" target="wADNUqXdICKrNf2AoUfC-39" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="wADNUqXdICKrNf2AoUfC-36" value="Server#&lt;b&gt;_run_agent_workflow&lt;/b&gt;(&lt;br&gt;request: &quot;AgentRequest&quot;)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e3c800;fontColor=#000000;strokeColor=#B09500;" parent="1" vertex="1">
+          <mxGeometry x="1240" y="120" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="wADNUqXdICKrNf2AoUfC-42" value="" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=auto;html=1;rounded=1;" parent="1" source="wADNUqXdICKrNf2AoUfC-39" target="wADNUqXdICKrNf2AoUfC-41" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="wADNUqXdICKrNf2AoUfC-39" value="&lt;div style=&quot;font-size: 10px;&quot;&gt;response_stream = &lt;b&gt;run_agent_workflow&lt;/b&gt;(&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp; &amp;nbsp; request.user_id,&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp; &amp;nbsp; request.&lt;b&gt;task_type&lt;/b&gt;,&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp; &amp;nbsp; &lt;b&gt;session_messages&lt;/b&gt;,&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp; &amp;nbsp; request.debug,&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp; &amp;nbsp; request.deep_thinking_mode,&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp; &amp;nbsp; request.search_before_planning,&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp; &amp;nbsp; request.coor_agents&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;)&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;arcSize=4;fontSize=10;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="1480" y="90" width="200" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="wADNUqXdICKrNf2AoUfC-44" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;rounded=1;" parent="1" source="wADNUqXdICKrNf2AoUfC-41" target="wADNUqXdICKrNf2AoUfC-43" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="550szYZ8-_55CTVGK7oN-2" value="" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=auto;html=1;rounded=1;" parent="1" source="wADNUqXdICKrNf2AoUfC-41" target="550szYZ8-_55CTVGK7oN-1" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="550szYZ8-_55CTVGK7oN-4" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;rounded=1;" parent="1" source="wADNUqXdICKrNf2AoUfC-41" target="550szYZ8-_55CTVGK7oN-3" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="wADNUqXdICKrNf2AoUfC-41" value="&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;b&gt;1. 创建 Graph&lt;/b&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;（创建Agent工作流的流图, 是&lt;b&gt;有向无环图&lt;/b&gt;的数据结构，包括节点和边，&lt;/font&gt;&lt;/div&gt;&lt;font color=&quot;#007fff&quot;&gt;这一步只有节点没有边&lt;/font&gt;&lt;span style=&quot;color: rgb(0, 127, 255); background-color: initial;&quot;&gt;）&lt;/span&gt;&lt;font color=&quot;#007fff&quot;&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;align=center;arcSize=12;fontSize=10;" parent="1" vertex="1">
+          <mxGeometry x="1720" y="120" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="wADNUqXdICKrNf2AoUfC-46" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;rounded=1;" parent="1" source="wADNUqXdICKrNf2AoUfC-43" target="wADNUqXdICKrNf2AoUfC-45" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="wADNUqXdICKrNf2AoUfC-43" value="&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;b&gt;2. 获取所有可用的 Agent、Tool&lt;/b&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;align=center;arcSize=12;fontSize=10;" parent="1" vertex="1">
+          <mxGeometry x="1720" y="360" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="wADNUqXdICKrNf2AoUfC-48" value="" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=auto;html=1;rounded=1;" parent="1" source="wADNUqXdICKrNf2AoUfC-45" target="wADNUqXdICKrNf2AoUfC-47" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="wADNUqXdICKrNf2AoUfC-45" value="&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;b&gt;3. 结合上面获取的 Agent、Tool、任务描述等信息，异步执行&amp;nbsp;&lt;/b&gt;&lt;/div&gt;&lt;b&gt;_process_workflow() 并流式返回结果&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;align=center;arcSize=12;fontSize=10;" parent="1" vertex="1">
+          <mxGeometry x="1720" y="930" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="QjgCt9aAx_B8vFiCopZa-4" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.25;exitDx=0;exitDy=0;rounded=1;" parent="1" source="wADNUqXdICKrNf2AoUfC-47" target="550szYZ8-_55CTVGK7oN-11" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="wADNUqXdICKrNf2AoUfC-47" value="&lt;div style=&quot;&quot;&gt;&lt;div style=&quot;&quot;&gt;current_node = workflow.&lt;b&gt;start_node&lt;/b&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;state = &lt;b&gt;State&lt;/b&gt;(**initial_state)&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;b&gt;&lt;font color=&quot;#007fff&quot;&gt;# Agent 处理流程就是一个大循环&lt;/font&gt;&lt;/b&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;b&gt;while&lt;/b&gt; &lt;b&gt;current_node != &quot;__end__&quot;&lt;/b&gt;:&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp; &amp;nbsp; agent_name = current_node&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp; &amp;nbsp; logger.info(f&quot;Started node: {agent_name}&quot;)&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;&lt;b&gt;&amp;nbsp; &amp;nbsp; # 1 借助 yield 实现流式返回值&lt;/b&gt;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp; &amp;nbsp; yield {&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &quot;event&quot;: &quot;start_of_agent&quot;,&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &quot;data&quot;: {&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &quot;agent_name&quot;: agent_name,&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &quot;agent_id&quot;: f&quot;{workflow_id}_{agent_name}_1&quot;,&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; },&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp; &amp;nbsp; }&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;font style=&quot;&quot; color=&quot;#007fff&quot;&gt;&lt;b&gt;&amp;nbsp; &amp;nbsp; # 2 获取当前节点的 NodeFunc 并异步执行，响应结果会封装到 Command&lt;/b&gt;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp; &amp;nbsp; node_func = workflow.&lt;b&gt;nodes&lt;/b&gt;[current_node]&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp; &amp;nbsp; command = await &lt;b&gt;node_func&lt;/b&gt;(&lt;b&gt;state&lt;/b&gt;)&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp; &amp;nbsp;&amp;nbsp;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp; &amp;nbsp; &lt;font color=&quot;#007fff&quot;&gt;&lt;b&gt;# 3&lt;/b&gt;&amp;nbsp;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp; &amp;nbsp; if &lt;b&gt;hasattr&lt;/b&gt;(command, &#39;&lt;b&gt;update&lt;/b&gt;&#39;) and command.update:&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &lt;b&gt;for&lt;/b&gt; key, value in command.update.&lt;b&gt;items&lt;/b&gt;():&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&amp;nbsp; &amp;nbsp; # 非 messages 信息直接更新到 State&lt;/font&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; if key != &quot;messages&quot;:&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; state[key] = value&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; # messages 信息处理：&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; # 除了最后一条信息，其他直接追加到 State[&quot;messages&quot;]&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; # 最后一条信息到底是什么？&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; if key == &quot;messages&quot; and isinstance(value, list) and value:&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; state[&quot;messages&quot;] += value&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; last_message = value[-1]&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; if &#39;content&#39; in last_message:&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;&lt;b&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&amp;nbsp; &amp;nbsp; # coordinator 最后一条消息的 content 内容中有 handover 的话，设置转交状态&lt;br&gt;&lt;/b&gt;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; if agent_name == &quot;coordinator&quot;:&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; content = last_message[&quot;content&quot;]&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; if content.startswith(&quot;handover&quot;):&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; # mark handoff, do not send maesages&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; global is_handoff_case&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &lt;b&gt;is_handoff_case&lt;/b&gt; = True&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; continue&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;&lt;b&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; # coordinator planner agent_proxy 节点返回的最后一条消息的内容分块返回&lt;/b&gt;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; if agent_name in [&quot;planner&quot;, &quot;coordinator&quot;, &quot;agent_proxy&quot;]:&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; content = &lt;b&gt;last_message&lt;/b&gt;[&quot;content&quot;]&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; chunk_size = 10&amp;nbsp; # send 10 words for each chunk&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; for i in range(0, len(content), chunk_size):&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; chunk = content[i:i+chunk_size]&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; if &#39;processing_agent_name&#39; in state:&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; agent_name = state[&#39;processing_agent_name&#39;]&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; yield {&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &quot;event&quot;: &quot;messages&quot;,&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &quot;agent_name&quot;: agent_name,&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &quot;data&quot;: {&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &quot;message_id&quot;: f&quot;{workflow_id}_{agent_name}_msg_{i}&quot;,&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &quot;delta&quot;: {&quot;content&quot;: chunk},&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; },&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; }&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; await asyncio.sleep(0.01)&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; # 返回有新的 agent 被创建的信息&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; if agent_name == &quot;agent_factory&quot; and key == &quot;new_agent_name&quot;:&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; yield {&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &quot;event&quot;: &quot;new_agent_created&quot;,&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &quot;agent_name&quot;: value,&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &quot;data&quot;: {&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &quot;new_agent_name&quot;: value,&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &quot;agent_obj&quot;: agent_manager.available_agents[value],&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; },&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; }&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;&amp;nbsp; &amp;nbsp;&lt;b&gt; # 4&lt;/b&gt;&amp;nbsp;返回节点处理结束信息&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp; &amp;nbsp; yield {&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &quot;event&quot;: &quot;end_of_agent&quot;,&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &quot;data&quot;: {&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &quot;agent_name&quot;: agent_name,&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &quot;agent_id&quot;: f&quot;{workflow_id}_{agent_name}_1&quot;,&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; },&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp; &amp;nbsp; }&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp; &amp;nbsp;&amp;nbsp;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp; &amp;nbsp; &lt;b&gt;next_node&lt;/b&gt; = command.&lt;b&gt;goto&lt;/b&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&amp;nbsp; &amp;nbsp; current_node = next_node&lt;/div&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;arcSize=2;fontSize=10;" parent="1" vertex="1">
+          <mxGeometry x="1960" y="440" width="440" height="1040" as="geometry" />
+        </mxCell>
+        <mxCell id="550szYZ8-_55CTVGK7oN-6" value="" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=auto;html=1;rounded=1;" parent="1" source="550szYZ8-_55CTVGK7oN-1" target="550szYZ8-_55CTVGK7oN-5" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="550szYZ8-_55CTVGK7oN-1" value="TaskType.&lt;b&gt;AGENT_FACTORY&lt;/b&gt;&lt;br&gt;AgentWorkflow" style="rounded=1;whiteSpace=wrap;html=1;align=center;arcSize=12;fontSize=12;" parent="1" vertex="1">
+          <mxGeometry x="1960" y="120" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="550szYZ8-_55CTVGK7oN-8" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;rounded=1;" parent="1" source="550szYZ8-_55CTVGK7oN-3" target="550szYZ8-_55CTVGK7oN-7" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="550szYZ8-_55CTVGK7oN-3" value="TaskType.&lt;b&gt;AGENT_WORKFLOW&lt;/b&gt;&lt;br&gt;AgentWorkflow" style="rounded=1;whiteSpace=wrap;html=1;align=center;arcSize=12;fontSize=12;" parent="1" vertex="1">
+          <mxGeometry x="1960" y="250" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="550szYZ8-_55CTVGK7oN-10" value="" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=auto;html=1;rounded=1;" parent="1" source="550szYZ8-_55CTVGK7oN-5" target="550szYZ8-_55CTVGK7oN-9" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="550szYZ8-_55CTVGK7oN-5" value="&lt;div style=&quot;font-size: 10px;&quot;&gt;def agent_factory_graph():&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp; &amp;nbsp; workflow = &lt;b&gt;AgentWorkflow&lt;/b&gt;()&amp;nbsp; &amp;nbsp;&amp;nbsp;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp; &amp;nbsp; workflow.add_node(&quot;&lt;b&gt;coordinator&lt;/b&gt;&quot;, coordinator_node)&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp; &amp;nbsp; workflow.add_node(&quot;&lt;b&gt;planner&lt;/b&gt;&quot;, planner_node)&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp; &amp;nbsp; workflow.add_node(&quot;&lt;b&gt;publisher&lt;/b&gt;&quot;, publisher_node)&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp; &amp;nbsp; workflow.add_node(&quot;&lt;b&gt;agent_factory&lt;/b&gt;&quot;, agent_factory_node)&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp; &amp;nbsp; workflow.set_start(&quot;coordinator&quot;)&amp;nbsp; &amp;nbsp;&amp;nbsp;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&amp;nbsp; &amp;nbsp; return workflow.compile()&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;arcSize=12;fontSize=10;" parent="1" vertex="1">
+          <mxGeometry x="2200" y="100" width="440" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="550szYZ8-_55CTVGK7oN-16" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;rounded=1;" parent="1" source="550szYZ8-_55CTVGK7oN-7" target="550szYZ8-_55CTVGK7oN-9" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="550szYZ8-_55CTVGK7oN-7" value="&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;div&gt;def build_graph():&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&amp;nbsp; &amp;nbsp; workflow = &lt;b&gt;AgentWorkflow&lt;/b&gt;()&amp;nbsp; &amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; workflow.add_node(&quot;&lt;b&gt;coordinator&lt;/b&gt;&quot;, coordinator_node)&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; workflow.add_node(&quot;&lt;b&gt;planner&lt;/b&gt;&quot;, planner_node)&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; workflow.add_node(&quot;&lt;b&gt;publisher&lt;/b&gt;&quot;, publisher_node)&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; workflow.add_node(&quot;&lt;b&gt;agent_factory&lt;/b&gt;&quot;, agent_factory_node)&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; workflow.add_node(&quot;&lt;b&gt;agent_proxy&lt;/b&gt;&quot;, agent_proxy_node)&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; workflow.set_start(&quot;coordinator&quot;)&amp;nbsp; &amp;nbsp;&amp;nbsp;&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; return workflow.compile()&lt;/div&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;arcSize=12;fontSize=10;" parent="1" vertex="1">
+          <mxGeometry x="2200" y="220" width="440" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="550szYZ8-_55CTVGK7oN-9" value="&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;b&gt;AgentWorkflow&lt;/b&gt; 数据结构：&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;&lt;b&gt;&amp;nbsp; &amp;nbsp; # 节点, 每个节点是 str -&amp;gt; NodeFunc&lt;/b&gt;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;&lt;b&gt;&amp;nbsp; &amp;nbsp; # NodeFunc 是函数类型，接收 State 参数返回 LangGraph Command 实例&lt;/b&gt;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; self.&lt;b&gt;nodes&lt;/b&gt;: Dict[str, NodeFunc] = {}&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;&lt;b&gt;&amp;nbsp; &amp;nbsp; # 连接节点的边&lt;/b&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; self.&lt;b&gt;edges&lt;/b&gt;: Dict[str, List[str]] = {}&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;&lt;b&gt;&amp;nbsp; &amp;nbsp; # 起始节点&lt;/b&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; self.&lt;b&gt;start_node&lt;/b&gt;: Optional[str] = None&lt;/div&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;arcSize=12;fontSize=10;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxGeometry x="2680" y="155" width="200" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="550szYZ8-_55CTVGK7oN-20" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;rounded=1;" parent="1" source="550szYZ8-_55CTVGK7oN-11" target="550szYZ8-_55CTVGK7oN-12" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="QjgCt9aAx_B8vFiCopZa-9" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;rounded=1;" parent="1" source="550szYZ8-_55CTVGK7oN-11" target="QjgCt9aAx_B8vFiCopZa-8" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="550szYZ8-_55CTVGK7oN-11" value="coordinator -&amp;gt;&lt;br&gt;coordinator_node&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;（起始节点）&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+          <mxGeometry x="2480" y="440" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="550szYZ8-_55CTVGK7oN-22" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;rounded=1;" parent="1" source="550szYZ8-_55CTVGK7oN-12" target="550szYZ8-_55CTVGK7oN-13" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="QjgCt9aAx_B8vFiCopZa-11" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;rounded=1;" parent="1" source="550szYZ8-_55CTVGK7oN-12" target="QjgCt9aAx_B8vFiCopZa-10" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="550szYZ8-_55CTVGK7oN-12" value="planner -&amp;gt;&lt;br&gt;planner_node&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;（生成执行计划）&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="2480" y="600" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="QjgCt9aAx_B8vFiCopZa-1" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;rounded=1;" parent="1" source="550szYZ8-_55CTVGK7oN-13" target="550szYZ8-_55CTVGK7oN-15" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="mr9CcgssMXKMQSdi5I9p-24" value="agent_factory" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="QjgCt9aAx_B8vFiCopZa-1">
+          <mxGeometry x="0.45" y="3" relative="1" as="geometry">
+            <mxPoint x="-3" y="-8" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="mr9CcgssMXKMQSdi5I9p-14" value="" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=auto;html=1;rounded=1;" edge="1" parent="1" source="550szYZ8-_55CTVGK7oN-13" target="mr9CcgssMXKMQSdi5I9p-15">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="2680" y="800" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="mr9CcgssMXKMQSdi5I9p-17" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;rounded=1;" edge="1" parent="1" source="550szYZ8-_55CTVGK7oN-13" target="550szYZ8-_55CTVGK7oN-14">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2540" y="860" />
+              <mxPoint x="2460" y="860" />
+              <mxPoint x="2460" y="1060" />
+              <mxPoint x="2540" y="1060" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="mr9CcgssMXKMQSdi5I9p-25" value="agent_proxy" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="mr9CcgssMXKMQSdi5I9p-17">
+          <mxGeometry x="-0.58" y="-3" relative="1" as="geometry">
+            <mxPoint x="24" y="-7" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="mr9CcgssMXKMQSdi5I9p-22" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;rounded=1;" edge="1" parent="1" source="550szYZ8-_55CTVGK7oN-13" target="550szYZ8-_55CTVGK7oN-21">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2540" y="860" />
+              <mxPoint x="2620" y="860" />
+              <mxPoint x="2620" y="1220" />
+              <mxPoint x="2540" y="1220" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="mr9CcgssMXKMQSdi5I9p-23" value="FINISH" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="mr9CcgssMXKMQSdi5I9p-22">
+          <mxGeometry x="-0.7288" y="-3" relative="1" as="geometry">
+            <mxPoint x="-16" y="-13" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="550szYZ8-_55CTVGK7oN-13" value="publisher -&amp;gt;&lt;br&gt;publisher_node&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;（协调执行）&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="2480" y="760" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="mr9CcgssMXKMQSdi5I9p-27" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;rounded=1;" edge="1" parent="1" source="550szYZ8-_55CTVGK7oN-14" target="550szYZ8-_55CTVGK7oN-13">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2540" y="1180" />
+              <mxPoint x="2430" y="1180" />
+              <mxPoint x="2430" y="740" />
+              <mxPoint x="2540" y="740" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="mr9CcgssMXKMQSdi5I9p-29" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;rounded=1;" edge="1" parent="1" source="550szYZ8-_55CTVGK7oN-14" target="mr9CcgssMXKMQSdi5I9p-28">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="550szYZ8-_55CTVGK7oN-14" value="agent_proxy -&amp;gt;&lt;br&gt;agent_proxy_node&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;（Agent执行）&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="2480" y="1080" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="mr9CcgssMXKMQSdi5I9p-21" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;rounded=1;" edge="1" parent="1" source="550szYZ8-_55CTVGK7oN-15" target="mr9CcgssMXKMQSdi5I9p-20">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="mr9CcgssMXKMQSdi5I9p-26" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;rounded=1;" edge="1" parent="1" source="550szYZ8-_55CTVGK7oN-15" target="550szYZ8-_55CTVGK7oN-13">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2540" y="1020" />
+              <mxPoint x="2440" y="1020" />
+              <mxPoint x="2440" y="740" />
+              <mxPoint x="2540" y="740" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="550szYZ8-_55CTVGK7oN-15" value="agent_factory -&amp;gt;&lt;br&gt;agent_factory_node&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;（Agent创建）&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="2480" y="920" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="550szYZ8-_55CTVGK7oN-18" value="以 AGENT_WORKFLOW 为例：" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
+          <mxGeometry x="2480" y="390" width="200" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="550szYZ8-_55CTVGK7oN-21" value="__end__" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+          <mxGeometry x="2480" y="1240.5" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="QjgCt9aAx_B8vFiCopZa-5" value="&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 11px;&quot;&gt;&lt;b style=&quot;font-size: 11px;&quot;&gt;Command&lt;/b&gt;&amp;nbsp;是用于更新图状态并向后续节点发送消息的一个或多个命令&lt;br style=&quot;font-size: 11px;&quot;&gt;包括四个字段：&lt;br style=&quot;font-size: 11px;&quot;&gt;&lt;div style=&quot;font-size: 11px;&quot;&gt;&lt;b style=&quot;font-size: 11px;&quot;&gt;graph&lt;/b&gt;: 指令发往的目标图。支持以下值:&lt;/div&gt;&lt;div style=&quot;font-size: 11px;&quot;&gt;&amp;nbsp; &amp;nbsp; - None: 当前图（默认值）&lt;/div&gt;&lt;div style=&quot;font-size: 11px;&quot;&gt;&amp;nbsp; &amp;nbsp; - Command.PARENT: 最近的父图&lt;/div&gt;&lt;div style=&quot;font-size: 11px;&quot;&gt;&lt;b style=&quot;font-size: 11px;&quot;&gt;update&lt;/b&gt;: 对图状态应用的更新。&lt;/div&gt;&lt;div style=&quot;font-size: 11px;&quot;&gt;&lt;b style=&quot;font-size: 11px;&quot;&gt;resume&lt;/b&gt;: 恢复执行时使用的值。需与 [`interrupt()`][langgraph.types.interrupt] 配合使用。&lt;/div&gt;&lt;div style=&quot;font-size: 11px;&quot;&gt;&lt;b style=&quot;font-size: 11px;&quot;&gt;goto&lt;/b&gt;: 可以是以下任意一种:&lt;/div&gt;&lt;div style=&quot;font-size: 11px;&quot;&gt;&amp;nbsp; &amp;nbsp; - 要跳转的下一个节点名称（需属于指定的 `graph`）&lt;/div&gt;&lt;div style=&quot;font-size: 11px;&quot;&gt;&amp;nbsp; &amp;nbsp; - 要依次跳转的节点名称序列&lt;/div&gt;&lt;div style=&quot;font-size: 11px;&quot;&gt;&amp;nbsp; &amp;nbsp; - `Send` 对象（用指定输入执行某个节点）&lt;/div&gt;&lt;div style=&quot;font-size: 11px;&quot;&gt;&amp;nbsp; &amp;nbsp; - `Send` 对象序列&lt;/div&gt;&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=top;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=11;" parent="1" vertex="1">
+          <mxGeometry x="2900" y="120" width="450" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="QjgCt9aAx_B8vFiCopZa-8" value="&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;b&gt;1. 调用coordinator提示词模板生成提示词&lt;/b&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;b&gt;2. 同步调用 basic LLM生成响应并封装到 Command返回&lt;/b&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;align=left;arcSize=12;fontSize=10;" parent="1" vertex="1">
+          <mxGeometry x="2680" y="450" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="QjgCt9aAx_B8vFiCopZa-10" value="&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;div&gt;&lt;b&gt;1. 调用planner提示词模板生成提示词&lt;/b&gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;2. 异步调用 reasoning LLM生成执行计划并封装到 Command返回&lt;/b&gt;&lt;/div&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;align=left;arcSize=12;fontSize=10;" parent="1" vertex="1">
+          <mxGeometry x="2680" y="610" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="QjgCt9aAx_B8vFiCopZa-12" value="&lt;font color=&quot;#007fff&quot; style=&quot;font-size: 11px;&quot;&gt;&lt;b style=&quot;font-size: 11px;&quot;&gt;提示词模板是 /src/prompts 下的 Markdown 文件，每种节点有自己的提示词模板，&lt;br style=&quot;font-size: 11px;&quot;&gt;&lt;/b&gt;&lt;span style=&quot;font-size: 11px;&quot;&gt;&lt;span style=&quot;font-size: 11px;&quot;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;/span&gt;比如 coordinator 节点的提示词模板是 coordinator.md；对应的还有 planner.md、publisher.md、&lt;br style=&quot;font-size: 11px;&quot;&gt;&lt;span style=&quot;font-size: 11px;&quot;&gt;&lt;span style=&quot;font-size: 11px;&quot;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;/span&gt;agent_factory.md、agent_proxy.md。&lt;br style=&quot;font-size: 11px;&quot;&gt;&lt;span style=&quot;font-size: 11px;&quot;&gt;&lt;span style=&quot;font-size: 11px;&quot;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;/span&gt;&lt;b style=&quot;font-size: 11px;&quot;&gt;apply_prompt_template&lt;/b&gt;(prompt_name: str, state: AgentState, template:str=None) -&amp;gt; list 方法将State 中的消息进行格式化，&lt;br style=&quot;font-size: 11px;&quot;&gt;&amp;nbsp; &amp;nbsp; 节点的提示词模板作为&lt;b style=&quot;font-size: 11px;&quot;&gt;系统提示词&lt;/b&gt;，添加到格式化信息中。&lt;br style=&quot;font-size: 11px;&quot;&gt;&amp;nbsp; &amp;nbsp; 格式化的提示词：&lt;br style=&quot;font-size: 11px;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; {&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: xxx}&lt;br style=&quot;font-size: 11px;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; {&quot;role&quot;: &quot;assistant&quot;, &quot;content&quot;: xxx}&lt;br style=&quot;font-size: 11px;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; {&quot;role&quot;: &quot;system&quot;, &quot;content&quot;: xxx}&lt;br style=&quot;font-size: 11px;&quot;&gt;&lt;b style=&quot;font-size: 11px;&quot;&gt;coordinator 节点中会结合上面的提示词调用 basic 指定的 LLM；&lt;br style=&quot;font-size: 11px;&quot;&gt;LLM 响应中如果有 “handover_to_planner” 则下一步转交给 planner 节点处理，否则直接转交给 __end__ 节点（退出）&lt;br&gt;&amp;nbsp; &amp;nbsp; &lt;/b&gt;&lt;span style=&quot;font-size: 11px;&quot;&gt;响应的内容取决于系统提示词，&lt;b&gt;coordinator.md 中的提示词规定 coordinator 仅仅专注于处理问候和闲聊，复杂的任务则转交给planner 处理&lt;/b&gt;&lt;br&gt;&lt;/span&gt;&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=11;" parent="1" vertex="1">
+          <mxGeometry x="2890" y="395" width="720" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="mr9CcgssMXKMQSdi5I9p-1" value="process.py" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="2140" y="410" width="80" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="mr9CcgssMXKMQSdi5I9p-8" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;endArrow=block;endFill=0;rounded=1;" edge="1" parent="1" source="mr9CcgssMXKMQSdi5I9p-6" target="mr9CcgssMXKMQSdi5I9p-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="mr9CcgssMXKMQSdi5I9p-6" value="&lt;p style=&quot;margin: 4px 0px 0px; text-align: center;&quot;&gt;&lt;font style=&quot;&quot; color=&quot;#330033&quot;&gt;&lt;b&gt;State&lt;/b&gt;(MessagesState)&lt;br&gt;&lt;/font&gt;&lt;/p&gt;&lt;hr style=&quot;font-size: 11px;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 11px;&quot;&gt;&lt;b&gt;&lt;font color=&quot;#007fff&quot;&gt;State 类型本质上还是个 dict 类型，代码中 State 对象赋值给 AgentState 参数本质还是 dict -&amp;gt; dict 的传参&lt;/font&gt;&lt;/b&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 11px;&quot;&gt;&lt;b&gt;&lt;font color=&quot;#007fff&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/b&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 11px;&quot;&gt;TEAM_MEMBERS: list[str]&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 11px;&quot;&gt;TEAM_MEMBERS_DESCRIPTION: str&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 11px;&quot;&gt;user_id: str&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 11px;&quot;&gt;next: str&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 11px;&quot;&gt;full_plan: str&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 11px;&quot;&gt;deep_thinking_mode: bool&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 11px;&quot;&gt;search_before_planning: bool&lt;/p&gt;&lt;hr style=&quot;font-size: 11px;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 11px;&quot;&gt;&lt;br style=&quot;font-size: 11px;&quot;&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=11;fontFamily=Helvetica;html=1;whiteSpace=wrap;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="-440" y="240" width="400" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="mr9CcgssMXKMQSdi5I9p-7" value="&lt;p style=&quot;margin: 4px 0px 0px; text-align: center;&quot;&gt;&lt;b&gt;MessagesState&lt;/b&gt;(TypedDict)&lt;br&gt;&lt;/p&gt;&lt;hr style=&quot;font-size: 11px;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;messages: Annotated[list[AnyMessage], add_messages]&lt;br&gt;&lt;/p&gt;&lt;hr style=&quot;font-size: 11px;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 11px;&quot;&gt;&lt;br style=&quot;font-size: 11px;&quot;&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=11;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="-440" y="120" width="400" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="mr9CcgssMXKMQSdi5I9p-9" value="&lt;p style=&quot;margin: 4px 0px 0px; text-align: center;&quot;&gt;&lt;b&gt;AgentState&lt;/b&gt;(TypedDict)&lt;br&gt;&lt;/p&gt;&lt;hr style=&quot;font-size: 11px;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;&lt;b&gt;AgentState 类型本质上也还是个 dict 类型&lt;/b&gt;&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;messages: Annotated[Sequence[BaseMessage], add_messages]&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;is_last_step: IsLastStep&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;remaining_steps: RemainingSteps&lt;/p&gt;&lt;hr style=&quot;font-size: 11px;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 11px;&quot;&gt;&lt;br style=&quot;font-size: 11px;&quot;&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=11;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="-880" y="120" width="400" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="mr9CcgssMXKMQSdi5I9p-11" value="&lt;p style=&quot;margin: 4px 0px 0px; text-align: center;&quot;&gt;&lt;font color=&quot;#330033&quot;&gt;&lt;b style=&quot;&quot;&gt;Command&lt;/b&gt;(Generic[N], ToolOutputMixin)&lt;br&gt;&lt;/font&gt;&lt;/p&gt;&lt;hr style=&quot;font-size: 11px;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 11px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;&lt;b&gt;上一节点执行结果和下一步处理的数据载体&lt;/b&gt;&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 11px;&quot;&gt;&lt;b&gt;&lt;font color=&quot;#007fff&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/b&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font style=&quot;&quot; color=&quot;#007fff&quot;&gt;# 指令发往的目标图&lt;br&gt;&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;graph: Optional[str] = None&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;# 更新图状态信息&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;update: Optional[Any] = None&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;resume: Optional[Union[dict[str, Any], Any]] = None&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;font color=&quot;#007fff&quot;&gt;# 转交给下一个节点&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;goto: Union[Send, Sequence[Union[Send, N]], N] = ()&lt;/p&gt;&lt;hr style=&quot;font-size: 11px;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 11px;&quot;&gt;&lt;br style=&quot;font-size: 11px;&quot;&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=11;fontFamily=Helvetica;html=1;whiteSpace=wrap;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="-440" y="480" width="400" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="mr9CcgssMXKMQSdi5I9p-12" value="&lt;font color=&quot;#007fff&quot; style=&quot;&quot;&gt;&lt;b style=&quot;font-size: 11px;&quot;&gt;planner 节点会调用推理模型，即 reasoning 指定的 LLM&lt;/b&gt;&lt;br&gt;&lt;b style=&quot;font-size: 11px;&quot;&gt;如果 State 中&amp;nbsp;&lt;/b&gt;&lt;b&gt;search_before_planning 为 true 会借助 tavily 工具执行相关搜索，搜索结果用于丰富提示词内容&lt;/b&gt;&lt;br&gt;&lt;b style=&quot;font-size: 11px;&quot;&gt;planner 节点的提示词（planner.md）规定 planner 作为一个&lt;/b&gt;&lt;/font&gt;&lt;font color=&quot;#007fff&quot;&gt;&lt;b&gt;专业规划 Agent 能否精准分析用户需求并智能地选择 Agent 完成任务&lt;br&gt;&amp;nbsp; &amp;nbsp; &lt;/b&gt;要求 planner 分析用户需求并&lt;b&gt;组建 Agent 团队&lt;/b&gt;完成任务，首先从现有团队&amp;lt;&amp;lt;TEAM_MEMBERS&amp;gt;&amp;gt;中筛选合适的 Agent，必要时可建立新 Agent;&amp;nbsp;&lt;br&gt;&amp;nbsp; &amp;nbsp; 强调将核心议题拆分为子任务，并可以适当地拓展用户初始问题的深度和广度。&lt;br&gt;&amp;nbsp; &amp;nbsp; 提示词模板中定义好了&lt;b&gt;执行计划（步骤+Agent）&lt;/b&gt;、步骤（子任务），以及新建 Agent 的数据结构。&lt;br&gt;&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="2890" y="595" width="730" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="mr9CcgssMXKMQSdi5I9p-15" value="&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;div&gt;&lt;b&gt;1. 调用publisher提示词模板生成提示词&lt;/b&gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;2. 异步调用 basic LLM生成执行计划并封装到 Command返回&lt;/b&gt;&lt;/div&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;align=left;arcSize=12;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="2680" y="770" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="mr9CcgssMXKMQSdi5I9p-19" value="&lt;font color=&quot;#007fff&quot; style=&quot;&quot;&gt;&lt;b style=&quot;font-size: 11px;&quot;&gt;publisher 节点会调用basic模型，即 basic 指定的 LLM&lt;/b&gt;&lt;br&gt;&lt;/font&gt;&lt;font color=&quot;#007fff&quot;&gt;&lt;b&gt;publisher 节点提示词（publisher.md）规定 publisher 根据执行计划按序执行，任务全部完成后响应 {&quot;next&quot;: &quot;FINISH&quot;}&lt;br&gt;计划执行过程中可能需要借助其他 Agent 帮助，会返回&amp;nbsp;{&quot;next&quot;: &quot;worker_name&quot;}&lt;/b&gt;&lt;br&gt;&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="2890" y="775" width="620" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="mr9CcgssMXKMQSdi5I9p-20" value="&lt;div style=&quot;&quot;&gt;&lt;div style=&quot;&quot;&gt;&lt;b style=&quot;font-size: 10px;&quot;&gt;1. 调用&lt;/b&gt;&lt;b&gt;agent_factory&lt;/b&gt;&lt;b style=&quot;font-size: 10px;&quot;&gt;提示词模板生成提示词&lt;/b&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;b&gt;2. 同步调用 basic LLM生成用于创建新 Agent 的信息&lt;/b&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px;&quot;&gt;&lt;b&gt;3. 通过 agent_manager和上一步信息创建Agent 并保存，并将 agent 名称加入 TEAM_MEMBERS&lt;/b&gt;&lt;/div&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;align=left;arcSize=12;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="2680" y="920" width="200" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="mr9CcgssMXKMQSdi5I9p-28" value="&lt;div style=&quot;&quot;&gt;&lt;div style=&quot;&quot;&gt;&lt;b&gt;1. 根据 State 信息生成 ReAct Agent 并异步调用获取返回值封装为 Command 下一步传给 publisher&lt;/b&gt;&lt;/div&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;align=left;arcSize=12;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="2680" y="1080" width="200" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="mr9CcgssMXKMQSdi5I9p-30" value="&lt;font color=&quot;#007fff&quot;&gt;&lt;b&gt;新创建的 agent 保存在项目根目录 store/agents 下面&lt;/b&gt;&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="2890" y="945" width="310" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
